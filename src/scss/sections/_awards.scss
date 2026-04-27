@@ -1,0 +1,121 @@
+// components/_awards.scss
+// Figma: white bg, padding 64px 120px, cards 285×310, 9 certs in a row (scrolls)
+
+.awards {
+  background: var(--surface-white);
+  padding: 64px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  overflow: hidden;
+
+  &__track-wrap {
+    width: 100%;
+    overflow: hidden;
+    padding-block: 16px;
+    mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+  }
+
+  &__track {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    width: max-content;
+    animation: cert-scroll 30s linear infinite;
+
+    [dir="rtl"] & { animation-direction: reverse; }
+  }
+}
+
+@keyframes cert-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(calc(-50% - 10px)); }
+}
+
+// Cert card (Figma: 285×310, centered logo 154×154, grayscale filter)
+.cert {
+  flex-shrink: 0;
+  width: 285px;
+  height: 310px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: grayscale(1);
+  opacity: 0.75;
+  transition: filter var(--dur) var(--ease), opacity var(--dur) var(--ease);
+
+  &:hover {
+    filter: grayscale(0);
+    opacity: 1;
+  }
+
+  img {
+    width: 154px;
+    height: 154px;
+    object-fit: contain;
+  }
+
+  &__fallback {
+    display: inline-block;
+    font-family: var(--font-en);
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--primary-500);
+    letter-spacing: 0.04em;
+  }
+
+  &__circle {
+    width: 154px;
+    height: 154px;
+    border-radius: 50%;
+    border: 2px solid var(--primary-500);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    span {
+      font-family: var(--font-en);
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--primary-500);
+      text-align: center;
+      line-height: 1.3;
+
+      small {
+        font-size: 10px;
+        font-weight: 400;
+        letter-spacing: 0.1em;
+      }
+    }
+  }
+
+  &__iso {
+    width: 154px;
+    height: 154px;
+    border: 2px solid var(--primary-500);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+
+    strong {
+      font-family: var(--font-en);
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--primary-500);
+      letter-spacing: 0.02em;
+      line-height: 1;
+    }
+
+    small {
+      font-family: var(--font-en);
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--primary-500);
+      letter-spacing: 0.04em;
+    }
+  }
+}

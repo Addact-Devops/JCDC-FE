@@ -1,0 +1,88 @@
+// sections/_jcd-slider.scss
+// Auto-cycling background images behind fixed text content. No controls shown.
+
+.jcd-slider {
+  padding: 64px 120px;
+  background: var(--surface-white);
+  display: flex;
+  justify-content: center;
+
+  &__card {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    height: 675px;
+    border-radius: 8px;
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  // ── Background images (stacked, cross-fade) ─────────
+  &__bg {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1.2s var(--ease);
+
+    &.is-active { opacity: 1; }
+  }
+
+  // ── Gradient overlay ────────────────────────────────
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.55) 100%);
+  }
+
+  // ── Content (absolute, left-anchored per Figma) ─────
+  &__content {
+    position: absolute;
+    inset-block-start: 50%;
+    inset-inline-start: 5.33%;
+    inset-inline-end: 44.33%;
+    transform: translateY(-50%);
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;         // so button hugs its own content
+    gap: 24px;
+    color: var(--text-50);
+
+    [dir="rtl"] & {
+      inset-inline-start: 44.33%;
+      inset-inline-end: 5.33%;
+      text-align: right;
+      align-items: flex-end;          // button hugs content on the right side
+    }
+  }
+
+  &__title {
+    font-family: var(--font-body);
+    font-size: var(--h2);
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--text-50);
+    white-space: nowrap;
+    margin: 0;
+  }
+
+  &__body {
+    font-family: var(--font-body);
+    font-size: var(--large);
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--text-50);
+    margin: 0;
+  }
+
+  // The CTA button in this context — intrinsic width (no `width: 100%`)
+  .btn {
+    align-self: flex-start;
+
+    [dir="rtl"] & { align-self: flex-end; }
+  }
+}

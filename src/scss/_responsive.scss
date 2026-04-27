@@ -1,0 +1,287 @@
+// _responsive.scss
+// Breakpoints:
+//   ≥ 1440px : design reference
+//   1024-1439: proportional scale using CSS clamp
+//   768-1023 : tablet adjustments
+//   ≤ 767px  : mobile layout per Figma mobile design
+
+// ═══════════════════════════════════════════════════
+//  DESKTOP GUARD — never let the mobile drawer or its
+//  overlay paint on desktop viewports, regardless of
+//  state left over from a prior viewport.
+// ═══════════════════════════════════════════════════
+@media (min-width: 1024px) {
+  .drawer,
+  .overlay {
+    display: none !important;
+  }
+}
+
+// ═══════════════════════════════════════════════════
+//  LARGE DESKTOP (1200-1439) — scale gutter proportionally
+// ═══════════════════════════════════════════════════
+@media (max-width: 1439px) and (min-width: 1200px) {
+  .hero__content  { inset-inline-start: clamp(48px, 8.33vw, 120px); inset-inline-end: clamp(48px, 8.33vw, 120px); }
+  .about          { padding-inline: clamp(48px, 8.33vw, 120px); }
+  .jcd-slider     { padding-inline: clamp(48px, 8.33vw, 120px); }
+  .news           { padding-inline: clamp(48px, 8.33vw, 120px); }
+  .footer         { padding-inline: clamp(48px, 8.33vw, 120px); }
+}
+
+// ═══════════════════════════════════════════════════
+//  TABLET / SMALL DESKTOP (1024-1199)
+// ═══════════════════════════════════════════════════
+@media (max-width: 1199px) {
+  :root { --gutter: 48px; }
+
+  .hero {
+    height: 600px;
+
+    &__content {
+      inset-block-start: 140px;
+      inset-inline-start: 48px;
+      inset-inline-end: 48px;
+      max-width: 640px;
+    }
+    &__title    { font-size: 52px; }
+    &__subtitle { font-size: 20px; }
+  }
+
+  .about {
+    padding: 56px 48px;
+
+    &__inner { gap: 48px; }
+    &__text  { flex: 0 0 440px; }
+    &__image { flex: 0 0 440px; width: 440px; height: 440px; }
+    &__title { font-size: 40px; }
+  }
+
+  .jcd-slider {
+    padding: 56px 48px;
+
+    &__card { height: 560px; }
+    &__title { font-size: 40px; white-space: normal; }
+  }
+
+  .news    { padding: 56px 48px; }
+  .footer  { padding: 24px 48px; }
+}
+
+// ═══════════════════════════════════════════════════
+//  TABLET (768-1023)
+// ═══════════════════════════════════════════════════
+@media (max-width: 1023px) {
+  :root { --gutter: 32px; --nav-height: 72px; }
+
+  // Hide desktop nav
+  .navbar__menu { display: none; }
+  .hamburger    { display: flex; }
+
+  .navbar {
+    padding: 12px 24px;
+  }
+
+  .hero {
+    height: 560px;
+
+    &__content {
+      inset-block-start: 120px;
+      inset-inline-start: 32px;
+      inset-inline-end: 32px;
+      max-width: none;
+    }
+    &__title    { font-size: 44px; }
+    &__subtitle { font-size: 18px; }
+  }
+
+  .about {
+    padding: 48px 32px;
+
+    &__inner {
+      flex-direction: column;
+      gap: 40px;
+    }
+    &__text  { flex: 1 1 auto; width: 100%; max-width: 600px; }
+    &__image { flex: 1 1 auto; width: 100%; max-width: 600px; height: auto; aspect-ratio: 1/1; }
+    &__title { font-size: 36px; }
+
+    [dir="rtl"] &__image { order: 0; }
+  }
+
+  .jcd-slider {
+    padding: 48px 32px;
+
+    &__card   { height: auto; min-height: 480px; }
+    &__content {
+      inset-block-start: auto;
+      inset-block-end: 0;
+      inset-inline-start: 0;
+      inset-inline-end: 0;
+      transform: none;
+      padding: 40px 32px;
+      max-width: none;
+
+      [dir="rtl"] & {
+        inset-inline-start: 0;
+        inset-inline-end: 0;
+      }
+    }
+    &__title { font-size: 36px; white-space: normal; }
+    &__body  { font-size: 16px; }
+  }
+
+  .jcd-slider__overlay {
+    background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.75) 100%);
+  }
+
+  .news {
+    padding: 48px 32px;
+
+    &__grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+  }
+
+  .section-title h2 { font-size: 32px; }
+
+  .footer {
+    padding: 24px 32px;
+
+    &__top {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 24px;
+    }
+    &__right { align-items: flex-start; width: 100%; }
+    &__nav   { justify-content: flex-start; gap: 12px; }
+
+    &__bottom {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+    }
+    &__legal { gap: 8px; }
+  }
+}
+
+// ═══════════════════════════════════════════════════
+//  MOBILE (≤767px) — matches Figma mobile design
+// ═══════════════════════════════════════════════════
+@media (max-width: 767px) {
+  :root { --nav-height: 64px; }
+
+  body { font-size: 14px; }
+
+  .navbar {
+    padding: 12px 20px;
+  }
+
+  .hero {
+    height: 520px;
+
+    &__content {
+      inset-block-start: 100px;
+      inset-inline-start: 20px;
+      inset-inline-end: 20px;
+    }
+    &__title    { font-size: 30px; line-height: 1.2; margin-bottom: 16px; }
+    &__subtitle { font-size: 14px; line-height: 1.5; }
+  }
+
+  .about {
+    padding: 40px 20px;
+
+    &__pattern { width: 400px; height: 400px; inset-block-start: -20px; opacity: 0.6; }
+    &__inner   { gap: 24px; }
+    &__text    { gap: 16px; }
+    &__title   { font-size: 28px; }
+    &__body    { font-size: 14px; line-height: 1.6; }
+    &__image   { border-radius: 6px; }
+  }
+
+  .jcd-slider {
+    padding: 40px 20px;
+
+    &__card    { min-height: 420px; border-radius: 6px; }
+    &__content { padding: 24px 20px; gap: 16px; }
+    &__title   { font-size: 24px; }
+    &__body    { font-size: 13px; line-height: 1.6; }
+  }
+
+  .btn {
+    height: 44px;
+    padding: 12px 16px;
+    font-size: 14px;
+    gap: 8px;
+
+    svg { width: 18px; height: 18px; }
+  }
+
+  .news {
+    padding: 40px 20px;
+    gap: 32px;
+
+    &__grid {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+  }
+
+  .news-card {
+    &__image { height: 200px; border-radius: 6px; }
+    &__title { font-size: 16px; }
+    &__cta   { font-size: 14px; }
+  }
+
+  .section-title h2 { font-size: 24px; }
+
+  .awards {
+    padding: 40px 0;
+
+    .cert {
+      width: 180px;
+      height: 200px;
+
+      img, &__circle, &__iso {
+        width: 110px;
+        height: 110px;
+      }
+      &__iso strong { font-size: 24px; }
+      &__iso small  { font-size: 11px; }
+    }
+  }
+
+  .footer {
+    padding: 24px 20px;
+
+    &__logo { width: 100px; height: 54px; }
+    &__social { gap: 16px; }
+    &__nav    { gap: 6px 12px; }
+    &__nav a  { font-size: 12px; padding: 4px 6px; }
+
+    &__legal {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
+
+      a, span { padding: 4px 0; font-size: 12px; }
+    }
+
+    &__pif { width: 150px; height: 28px; }
+  }
+
+  // Dots sizing
+  .hero__dot { width: 6px; height: 6px; }
+  .hero__dot--active { width: 18px; }
+}
+
+// ═══════════════════════════════════════════════════
+//  VERY SMALL MOBILE (≤400px)
+// ═══════════════════════════════════════════════════
+@media (max-width: 400px) {
+  .hero__title    { font-size: 26px; }
+  .about__title   { font-size: 24px; }
+  .jcd-slider__title { font-size: 20px; }
+  .section-title h2  { font-size: 22px; }
+}

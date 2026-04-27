@@ -1,0 +1,13 @@
+{
+  "name": "jcdc-homepage",
+  "version": "2.1.0",
+  "description": "JCDC Homepage — pixel-perfect Figma implementation in vanilla HTML/SCSS/JS",
+  "scripts": {
+    "build": "sass src/scss/main.scss dist/main.css --style=compressed --no-source-map",
+    "dev":   "sass src/scss/main.scss dist/main.css --watch --style=expanded",
+    "serve": "npx --yes http-server . -p 3000 -c-1"
+  },
+  "devDependencies": {
+    "sass": "^1.77.0"
+  }
+}

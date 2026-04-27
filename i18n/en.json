@@ -1,0 +1,60 @@
+{
+  "meta": { "title": "JCDC — Jeddah Central Development Company" },
+  "nav": {
+    "about": "About us",
+    "jcd": "Jeddah Central Destination",
+    "invest": "Invest",
+    "news": "News & Events",
+    "careers": "Careers",
+    "suppliers": "Suppliers",
+    "contact": "Contact Us",
+    "lang": "العربية",
+    "dropdown": {
+      "districts": "Districts",
+      "landmarks": "Landmarks",
+      "attractions": "Attractions",
+      "sustainability": "Sustainability"
+    }
+  },
+  "mobile": { "menu": "MENU" },
+  "hero": {
+    "title": "The Future of Living, Culture, and Leisure",
+    "subtitle": "Jeddah Central Development Company (JCDC) is developing destinations that celebrate heritage and bring culture, leisure, and contemporary living together."
+  },
+  "about": {
+    "title": "About JCDC",
+    "body": "Jeddah Central Development Company (JCDC) is a Public Investment Fund (PIF) company dedicated to developing world-class destinations in Jeddah. We blend the city's cultural heritage with forward-looking urban development to enhance quality of life and create new opportunities for communities.",
+    "cta": "Learn More"
+  },
+  "jcd": {
+    "title": "Discover Jeddah Central",
+    "body": "A destination for culture, leisure, and contemporary living on the Red Sea — home to vibrant neighborhoods, signature hospitality, retail and dining, and four iconic landmarks, set along a 9.5 km shoreline with a public beach and marina.",
+    "cta": "Explore Jeddah Central Destination"
+  },
+  "news": {
+    "title": "News & Events",
+    "viewAll": "View all",
+    "learnMore": "Learn More",
+    "items": [
+      "The Development of Jeddah Central Destination Continues with 12 billion Saudi Riyals Contract Award",
+      "First Real Estate Development to Receive Esteemed EFQM Organizational Excellence Recognition",
+      "Jeddah Central Development Company: Diamond Sponsor of The Global Project Management Forum - Second Edition"
+    ]
+  },
+  "awards": {
+    "title": "Awards & Certifications"
+  },
+  "footer": {
+    "aboutUs": "ABOUT US",
+    "jcd": "JEDDAH CENTRAL DESTINATION",
+    "invest": "INVEST",
+    "newsEvents": "NEWS & EVENTS",
+    "careers": "CAREERS",
+    "suppliers": "SUPPLIERS",
+    "contact": "CONTACT US",
+    "privacy": "Privacy Policy",
+    "terms": "Terms & Conditions",
+    "cookies": "Cookies Policy",
+    "copy": "© 2025 JCDC. ALL RIGHTS RESERVED"
+  }
+}

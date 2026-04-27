@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 786 783" fill="none" preserveAspectRatio="xMinYMid meet">
+  <g opacity="0.15">
+    <!-- Stylized JCDC monogram pattern -->
+    <rect x="0" y="200" width="120" height="120" fill="#CC9F53"/>
+    <rect x="120" y="200" width="60" height="60" fill="#CC9F53" opacity="0.6"/>
+    <rect x="120" y="280" width="60" height="40" fill="#CC9F53" opacity="0.8"/>
+    <rect x="0" y="340" width="120" height="80" fill="#CC9F53" opacity="0.5"/>
+    <rect x="200" y="200" width="40" height="120" fill="#CC9F53" opacity="0.4"/>
+    <path d="M0 450 L240 280 L0 110 Z" fill="#CC9F53" opacity="0.2"/>
+  </g>
+</svg>
