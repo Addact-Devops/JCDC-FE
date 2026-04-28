@@ -1,0 +1,180 @@
+// ==========================================
+// Variables
+// ==========================================
+
+$primary-color: #0076a9;
+$text-color: #5b5f62;
+$bg-color: #ffffff;
+
+// ==========================================
+// Section
+// ==========================================
+
+.vision-mission-section {
+    position: relative;
+    background: $bg-color;
+    width: 100%;
+    min-height: 684px;
+    padding: 64px 0;
+    display: flex;
+    justify-content: center;
+
+    margin: 0 auto;
+}
+
+// ==========================================
+// Container
+// ==========================================
+
+.vision-mission-container {
+    width: 100%; // added
+    max-width: 1440px; // added
+
+    margin: 0 auto; // added
+    display: flex;
+    gap: 20px;
+
+    justify-content: center; // added
+}
+
+// ==========================================
+// Card
+// ==========================================
+
+.vm-card {
+    position: relative;
+
+    width: 590px;
+    height: 556px;
+
+    background: #f2f1f0;
+
+    border-radius: 8px;
+
+    overflow: hidden;
+
+    // remove justify-content center
+    display: flex;
+    flex-direction: column;
+
+    // SAME alignment for both cards
+    padding: 311px 64px 123px 64px;
+}
+
+// ==========================================
+// Background Pattern
+// ==========================================
+
+.vm-bg {
+    position: absolute;
+
+    width: 307px;
+    height: 306px;
+
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    opacity: 0.25;
+    pointer-events: none;
+}
+
+// Vision (left pattern)
+.vision-bg {
+    top: -10px;
+    left: -10px;
+    background-image: url("../../../assets/vision.svg");
+}
+
+// Mission (right pattern)
+.mission-bg {
+    top: -10px;
+    left: 289px;
+
+    background-image: url("../../../assets/mission.svg");
+}
+
+// ==========================================
+// Title
+// ==========================================
+
+.vm-title {
+    font-family: "Ubuntu", sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 120%;
+
+    color: $primary-color;
+
+    margin: 0 0 16px; // better alignment
+}
+
+// ==========================================
+// Description
+// ==========================================
+
+.vm-description {
+    font-family: "Ubuntu", sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 150%;
+
+    color: $text-color;
+
+    max-width: 435px;
+
+    margin: 0;
+}
+
+// ==========================================
+// Responsive (≤ 425px)
+// ==========================================
+
+@media screen and (max-width: 425px) {
+    .vision-mission-section {
+        padding: 50px 0;
+    }
+
+    .vision-mission-container {
+        padding: 0 24px;
+        flex-direction: column;
+        align-items: center;
+        gap: 24px;
+    }
+
+    .vm-card {
+        width: 100%;
+        height: auto;
+
+        padding: 40px 20px;
+
+        align-items: center;
+        text-align: center;
+    }
+
+    .vm-title {
+        font-size: 28px;
+    }
+
+    .vm-description {
+        font-size: 16px;
+        line-height: 26px;
+    }
+
+    // Adjust background shapes for mobile
+    .vm-bg {
+        width: 250px;
+        height: 250px;
+        opacity: 0.15;
+    }
+
+    .vision-bg {
+        top: -80px;
+        left: -80px;
+    }
+
+    .mission-bg {
+        top: -80px;
+        left: auto;
+        right: -80px;
+    }
+}
