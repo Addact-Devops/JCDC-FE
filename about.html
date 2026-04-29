@@ -93,6 +93,39 @@
         </header>
 
         <!-- ════════════════════════════════════════════
+        HERO BANNER (transparent over hero, white on scroll)
+════════════════════════════════════════════ -->
+        <section class="banner">
+            <div class="hero__media">
+                <img src="assets/herobanner.svg" />
+            </div>
+            <div class="banner__overlay"></div>
+
+            <div class="container">
+                <div class="banner__content">
+                    <!-- Breadcrumbs -->
+                    <div class="banner__breadcrumbs">
+                        <a href="index.html" class="banner__breadcrumbs-link"> Home </a>
+
+                        <span class="banner__breadcrumbs-separator"> > </span>
+
+                        <span class="banner__breadcrumbs-current"> About Us </span>
+                    </div>
+
+                    <div>
+                        <!-- Title -->
+                        <h1 class="banner__title">About Us</h1>
+
+                        <!-- Description -->
+                        <p class="banner__description">
+                            We develop world-class destinations where heritage meets contemporary living, creating
+                            vibrant communities that celebrate culture.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ════════════════════════════════════════════
         OUR STORY section
 ════════════════════════════════════════════ -->
         <section class="our-story">
@@ -236,4 +269,8 @@
             </div>
         </footer>
     </body>
+    <script src="src/js/i18n.js"></script>
+
+    <script src="src/js/components/navbar.js"></script>
+    <script src="src/js/components/drawer.js"></script>
 </html>
