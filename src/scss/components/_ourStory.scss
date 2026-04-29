@@ -1,0 +1,222 @@
+// ==========================================
+// Our Story Section
+// ==========================================
+
+$primary-color: rgba(0, 118, 169, 1);
+$text-color: rgba(91, 95, 98, 1);
+
+// ==========================================
+// Main Container
+// ==========================================
+
+// .our-story-section {
+//     width: 1440px;
+//     min-height: 717px;
+
+//     padding: 0px 120px;
+
+//     display: flex;
+//     justify-content: center;
+
+//     background: #faf5ee;
+
+//     background-image: url("../../../assets/vector.svg");
+//     background-repeat: no-repeat;
+//     background-position: left center;
+//     background-size: 380px;
+
+//     margin: 0 auto;
+//     overflow: hidden;
+// }
+
+.our-story-section {
+    position: relative;
+
+    width: 1440px;
+    min-height: 717px;
+
+    padding: 0 120px;
+
+    display: flex;
+    justify-content: center;
+
+    background-color: #faf5ee;
+
+    overflow: hidden;
+
+    margin: 0 auto;
+}
+
+.our-story-section::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 380px;
+    height: 100%;
+
+    background-image: url("../../../assets/vector.svg");
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: contain;
+
+    opacity: 0.35; // reduce darkness
+
+    pointer-events: none;
+}
+
+// ==========================================
+// Inner Content Layout
+// ==========================================
+
+.our-story-content {
+    width: 100%;
+
+    display: flex;
+    gap: 123px;
+
+    position: relative;
+    z-index: 2;
+}
+
+// ==========================================
+// Left Content
+// ==========================================
+
+.our-story-text {
+    width: 488px;
+
+    padding-top: 70.5px;
+    padding-bottom: 70.5px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 32px;
+}
+
+// ==========================================
+// Title
+// ==========================================
+
+.our-story-title {
+    margin: 0;
+
+    font-family: "Ubuntu", sans-serif;
+    font-size: 48px;
+    font-weight: 500;
+    line-height: 120%;
+
+    color: $primary-color;
+}
+
+// ==========================================
+// Description
+// ==========================================
+
+.our-story-description {
+    display: flex;
+    flex-direction: column;
+
+    gap: 24px;
+
+    font-family: "Ubuntu", sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 160%;
+
+    color: $text-color;
+
+    p {
+        margin: 0;
+    }
+}
+
+// ==========================================
+// Right Image
+// ==========================================
+
+.our-story-image-wrapper {
+    width: 589px;
+
+    padding-top: 64px;
+    padding-bottom: 64px;
+}
+
+.our-story-image {
+    width: 100%;
+    height: auto;
+
+    display: block;
+
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+// ==========================================
+// Responsive - 425px and below
+// ==========================================
+
+@media screen and (max-width: 425px) {
+    .our-story-section {
+        width: 100%;
+        min-height: auto;
+
+        padding: 50px 24px;
+    }
+
+    .our-story-section::before {
+        width: 250px;
+        height: 800px;
+
+        top: 20px;
+        left: -40px;
+
+        background-size: contain;
+        background-position: top left;
+
+        opacity: 0.2;
+    }
+
+    .our-story-content {
+        flex-direction: column;
+        align-items: center;
+
+        gap: 45px;
+    }
+
+    .our-story-text {
+        width: 100%;
+
+        padding-top: 0;
+        padding-bottom: 0;
+
+        align-items: center;
+        text-align: center;
+
+        gap: 25px;
+    }
+
+    .our-story-title {
+        font-size: 36px;
+    }
+
+    .our-story-description {
+        font-size: 16px;
+        line-height: 26px;
+    }
+
+    .our-story-image-wrapper {
+        width: 100%;
+
+        padding-top: 0;
+        padding-bottom: 0;
+    }
+
+    .our-story-image {
+        width: 100%;
+    }
+}

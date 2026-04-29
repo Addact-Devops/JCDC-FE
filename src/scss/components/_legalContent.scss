@@ -11,7 +11,6 @@ $content-width: 960px;
 $section-padding-top: 64px;
 $section-padding-horizontal: 120px;
 $section-gap: 56px;
-
 $block-gap: 32px;
 
 // ==========================================
@@ -104,13 +103,13 @@ $block-gap: 32px;
 
 @media screen and (max-width: 425px) {
     .clauses-wrapper {
+        width: $container-width;
         padding: 50px 60px 50px 60px;
         gap: 45px;
     }
 
     .clause-section {
         width: 100%;
-        align-items: center;
         gap: 25px;
     }
 
@@ -120,6 +119,7 @@ $block-gap: 32px;
     }
 
     .clause-description {
+        width: 100%;
         font-size: 35px;
         line-height: 40px;
     }
