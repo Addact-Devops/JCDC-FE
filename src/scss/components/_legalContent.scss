@@ -14,113 +14,122 @@ $section-gap: 56px;
 $block-gap: 32px;
 
 // ==========================================
-// Main Wrapper
+// Block
 // ==========================================
 
-.clauses-wrapper {
+.clauses {
     width: $container-width;
+
     padding: $section-padding-top 360px 64px $section-padding-horizontal;
 
     display: flex;
     flex-direction: column;
 
-    // apply gap between all clauses
     gap: $section-gap;
-}
 
-// ==========================================
-// Each Clause Section
-// ==========================================
+    // ==========================================
+    // Section
+    // ==========================================
 
-.clause-section {
-    width: $content-width;
+    &__section {
+        width: $content-width;
 
-    display: flex;
-    flex-direction: column;
-    gap: $block-gap;
-}
+        display: flex;
+        flex-direction: column;
 
-// ==========================================
-// Clause Title
-// ==========================================
+        gap: $block-gap;
+    }
 
-.clause-title {
-    width: 960px;
-    min-height: 38px;
+    // ==========================================
+    // Title
+    // ==========================================
 
-    font-family: "Ubuntu", sans-serif;
-    font-size: 32px; // H4
-    font-weight: 500;
-    line-height: 120%;
-    letter-spacing: 0;
+    &__title {
+        width: 960px;
+        min-height: 38px;
 
-    color: $primary-color;
-    margin: 0;
-}
+        margin: 0;
 
-// ==========================================
-// Clause Description
-// ==========================================
+        font-family: "Ubuntu", sans-serif;
+        font-size: 32px;
+        font-weight: 500;
+        line-height: 120%;
+        letter-spacing: 0;
 
-.clause-description {
-    width: 960px;
+        color: $primary-color;
+    }
 
-    font-family: "Ubuntu", sans-serif;
-    font-size: 18px;
-    font-weight: 400;
-    line-height: 24px;
-    letter-spacing: 0;
+    // ==========================================
+    // Description
+    // ==========================================
 
-    color: $text-color;
-    margin: 0;
+    &__description {
+        width: 960px;
 
-    p {
-        margin-bottom: 0;
+        margin: 0;
 
-        &:last-child {
+        font-family: "Ubuntu", sans-serif;
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 24px;
+        letter-spacing: 0;
+
+        color: $text-color;
+
+        p {
+            margin-bottom: 0;
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+
+        ul {
+            margin: 0;
+            padding-left: 0;
+        }
+
+        li {
             margin-bottom: 0;
         }
-    }
 
-    ul {
-        margin: 0;
-        padding-left: 0;
-    }
+        a {
+            color: $primary-color;
+            text-decoration: none;
 
-    li {
-        margin-bottom: 0;
-    }
-
-    a {
-        color: $primary-color;
-        text-decoration: none;
-
-        &:hover {
-            text-decoration: underline;
+            &:hover {
+                text-decoration: underline;
+            }
         }
     }
-}
 
-@media screen and (max-width: 425px) {
-    .clauses-wrapper {
+    // ==========================================
+    // Responsive
+    // ==========================================
+
+    @media screen and (max-width: 425px) {
         width: $container-width;
+
         padding: 50px 60px 50px 60px;
+
         gap: 45px;
-    }
 
-    .clause-section {
-        width: 100%;
-        gap: 25px;
-    }
+        &__section {
+            width: 100%;
 
-    .clause-title {
-        font-size: 40px;
-        line-height: 130%;
-    }
+            gap: 25px;
+        }
 
-    .clause-description {
-        width: 100%;
-        font-size: 35px;
-        line-height: 40px;
+        &__title {
+            font-size: 40px;
+            line-height: 130%;
+        }
+
+        &__description {
+            width: 100%;
+
+            font-size: 35px;
+            line-height: 40px;
+        }
     }
 }
