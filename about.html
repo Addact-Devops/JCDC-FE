@@ -12,39 +12,228 @@
         />
         <link rel="stylesheet" href="dist/main.css" />
     </head>
-</html>
 
-<body>
-    <section class="our-story-section">
-        <div class="our-story-content">
-            <div class="our-story-text">
-                <h2 class="our-story-title">Our Story</h2>
+    <body>
+        <!-- ════════════════════════════════════════════
+        HEADER (transparent over hero, white on scroll)
+════════════════════════════════════════════ -->
+        <header class="navbar" id="navbar">
+            <div class="navbar__inner">
+                <a href="/" class="navbar__logo" aria-label="JCDC Home">
+                    <img src="assets/logo.svg" alt="JCDC" width="104" height="56" />
+                </a>
 
-                <div class="our-story-description">
-                    <p>
-                        Jeddah Central Development Company (JCDC), a Public Investment Fund (PIF) company was
-                        established in 2019 and is dedicated to developing world-class destinations that shape Jeddah's
-                        urban future.
+                <nav class="navbar__menu" aria-label="Main navigation">
+                    <a href="#" class="nav-item" data-i18n="nav.about">About us</a>
+
+                    <div class="nav-item nav-item--dropdown" data-dropdown>
+                        <button class="nav-item__btn" aria-haspopup="true" aria-expanded="false" data-dropdown-toggle>
+                            <span data-i18n="nav.jcd">Jeddah Central Destination</span>
+                            <svg
+                                class="chevron"
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                aria-hidden="true"
+                            >
+                                <path
+                                    d="M7 10l5 5 5-5"
+                                    stroke="currentColor"
+                                    stroke-width="1.5"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </svg>
+                        </button>
+                        <div class="dropdown">
+                            <a href="#" data-i18n="nav.dropdown.districts">Districts</a>
+                            <a href="#" data-i18n="nav.dropdown.landmarks">Landmarks</a>
+                            <a href="#" data-i18n="nav.dropdown.attractions">Attractions</a>
+                            <a href="#" data-i18n="nav.dropdown.sustainability">Sustainability</a>
+                        </div>
+                    </div>
+
+                    <a href="#" class="nav-item" data-i18n="nav.invest">Invest</a>
+                    <a href="#" class="nav-item" data-i18n="nav.news">News &amp; Events</a>
+                    <a href="#" class="nav-item" data-i18n="nav.careers">Careers</a>
+                    <a href="#" class="nav-item" data-i18n="nav.suppliers">Suppliers</a>
+                    <a href="#" class="nav-item" data-i18n="nav.contact">Contact Us</a>
+                </nav>
+
+                <div class="navbar__actions">
+                    <button class="icon-btn" aria-label="Search">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.5" />
+                            <path
+                                d="M16.5 16.5L21 21"
+                                stroke="currentColor"
+                                stroke-width="1.5"
+                                stroke-linecap="round"
+                            />
+                        </svg>
+                    </button>
+                    <button class="lang-btn" id="lang-btn" aria-label="Switch language">
+                        <span class="lang-btn__text" data-i18n="nav.lang">العربية</span>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5" />
+                            <path
+                                d="M12 3c-2.5 2-4 5.5-4 9s1.5 7 4 9c2.5-2 4-5.5 4-9s-1.5-7-4-9z"
+                                stroke="currentColor"
+                                stroke-width="1.5"
+                            />
+                            <path d="M3 9h18M3 15h18" stroke="currentColor" stroke-width="1.5" />
+                        </svg>
+                    </button>
+                    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+                        <span></span><span></span><span></span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- ════════════════════════════════════════════
+        OUR STORY section
+════════════════════════════════════════════ -->
+        <section class="our-story">
+            <div class="our-story__content">
+                <div class="our-story__text">
+                    <h2 class="our-story__title">Our Story</h2>
+
+                    <div class="our-story__description">
+                        <p>
+                            Jeddah Central Development Company (JCDC), a Public Investment Fund (PIF) company was
+                            established in 2019 and is dedicated to developing world-class destinations that shape
+                            Jeddah's urban future.
+                        </p>
+
+                        <p>
+                            As the master developer of the 5.7-million-square-meter Jeddah Central waterfront
+                            destination, JCDC leads every phase - from planning and execution to governance and
+                            operations - ensuring excellence in design, innovation, and sustainability.
+                        </p>
+
+                        <p>
+                            Guided by a strong governance framework and supported by 10+ ISO certifications across
+                            quality, environment, health and safety, business continuity, and information security, JCDC
+                            is redefining waterfront living and celebrating Jeddah's cultural identity through landmark
+                            developments that create lasting value for the city and its people.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="our-story__image-wrapper">
+                    <img src="assets/our story.webp" alt="Our Story" class="our-story__image" />
+                </div>
+            </div>
+        </section>
+
+        <!-- ════════════════════════════════════════════
+        VISION & MISSION section
+════════════════════════════════════════════ -->
+
+        <section class="vision-mission">
+            <div class="vision-mission__container">
+                <!-- Vision -->
+                <div class="vision-mission__card">
+                    <div class="vision-mission__bg vision-mission__bg--vision"></div>
+
+                    <h2 class="vision-mission__title">Vision</h2>
+
+                    <p class="vision-mission__description">
+                        To open the world’s eyes and hearts to Saudi through celebrating its heritage and contemporary
+                        culture.
                     </p>
+                </div>
 
-                    <p>
-                        As the master developer of the 5.7-million-square-meter Jeddah Central waterfront destination,
-                        JCDC leads every phase - from planning and execution to governance and operations - ensuring
-                        excellence in design, innovation, and sustainability.
-                    </p>
+                <!-- Mission -->
+                <div class="vision-mission__card">
+                    <div class="vision-mission__bg vision-mission__bg--mission"></div>
 
-                    <p>
-                        Guided by a strong governance framework and supported by 10+ ISO certifications across quality,
-                        environment, health and safety, business continuity, and information security, JCDC is
-                        redefining waterfront living and celebrating Jeddah's cultural identity through landmark
-                        developments that create lasting value for the city and its people
+                    <h2 class="vision-mission__title">Mission</h2>
+
+                    <p class="vision-mission__description">
+                        To provide a gift to the Jeddah Community by creating an unparalleled waterfront destination of
+                        real estate, leisure and entertainment accessible to all residents and visitors.
                     </p>
                 </div>
             </div>
+        </section>
 
-            <div class="our-story-image-wrapper">
-                <img src="assets\our story.webp" alt="Our Story" class="our-story-image" />
+        <!-- ════════════════════════════════════════════
+        FOOTER
+════════════════════════════════════════════ -->
+        <footer class="footer">
+            <div class="footer__top">
+                <div class="footer__logo-wrap">
+                    <img src="assets/logo.svg" alt="JCDC" width="132" height="72" class="footer__logo" />
+                </div>
+                <div class="footer__right">
+                    <div class="footer__social">
+                        <a href="#" aria-label="Facebook" class="social-link">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.33v6.99A10 10 0 0 0 22 12z"
+                                />
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Instagram" class="social-link">
+                            <svg
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                            >
+                                <rect x="3" y="3" width="18" height="18" rx="5" />
+                                <circle cx="12" cy="12" r="4" />
+                                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" />
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="X (Twitter)" class="social-link">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+                                />
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="LinkedIn" class="social-link">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14zM8.34 18.34v-7.4H5.67v7.4h2.67zM7 9.76a1.55 1.55 0 1 0 0-3.1 1.55 1.55 0 0 0 0 3.1zm11.34 8.58v-4.05c0-2.15-1.15-3.15-2.69-3.15-1.24 0-1.8.68-2.11 1.16v-1h-2.67v7.4h2.67v-4.13c0-.9.67-1.49 1.47-1.49.77 0 1.34.44 1.34 1.47v4.15h1.99z"
+                                />
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="YouTube" class="social-link">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M23.5 6.21a3.02 3.02 0 0 0-2.12-2.14C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.38.57A3.02 3.02 0 0 0 .5 6.21 31.48 31.48 0 0 0 0 12a31.48 31.48 0 0 0 .5 5.79 3.02 3.02 0 0 0 2.12 2.14C4.5 20.5 12 20.5 12 20.5s7.5 0 9.38-.57a3.02 3.02 0 0 0 2.12-2.14A31.48 31.48 0 0 0 24 12a31.48 31.48 0 0 0-.5-5.79zM9.6 15.6V8.4l6.24 3.6-6.24 3.6z"
+                                />
+                            </svg>
+                        </a>
+                    </div>
+                    <nav class="footer__nav" aria-label="Footer navigation">
+                        <a href="#" data-i18n="footer.aboutUs">ABOUT US</a>
+                        <a href="#" data-i18n="footer.jcd">JEDDAH CENTRAL DESTINATION</a>
+                        <a href="#" data-i18n="footer.invest">INVEST</a>
+                        <a href="#" data-i18n="footer.newsEvents">NEWS &amp; EVENTS</a>
+                        <a href="#" data-i18n="footer.careers">CAREERS</a>
+                        <a href="#" data-i18n="footer.suppliers">SUPPLIERS</a>
+                        <a href="#" data-i18n="footer.contact">CONTACT US</a>
+                    </nav>
+                </div>
             </div>
-        </div>
-    </section>
-</body>
+            <div class="footer__divider"></div>
+            <div class="footer__bottom">
+                <img src="assets/pif.svg" alt="A PIF Company" class="footer__pif" />
+                <div class="footer__legal">
+                    <a href="#" data-i18n="footer.privacy">Privacy Policy</a>
+                    <a href="#" data-i18n="footer.terms">Terms &amp; Conditions</a>
+                    <a href="#" data-i18n="footer.cookies">Cookies Policy</a>
+                    <span class="footer__copy" data-i18n="footer.copy">© 2025 JCDC. ALL RIGHTS RESERVED</span>
+                </div>
+            </div>
+        </footer>
+    </body>
+</html>
