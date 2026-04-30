@@ -8,6 +8,6 @@
         "dev": "npx --yes http-server . -p 3000 -c-1"
     },
     "devDependencies": {
-        "sass": "^1.77.0"
+        "sass": "^1.99.0"
     }
 }

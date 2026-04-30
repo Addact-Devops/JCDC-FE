@@ -1,0 +1,338 @@
+// ==========================================
+// Core Values
+// ==========================================
+
+.core-values {
+    width: 100%;
+    max-height: 718px;
+
+    padding: 64px 0;
+
+    background: #ffffff;
+
+    // ==========================================
+    // Container
+    // ==========================================
+
+    &__container {
+        width: 100%;
+        max-width: 1440px;
+
+        margin: 0 auto;
+
+        padding: 0 120px;
+    }
+
+    // ==========================================
+    // Header
+    // ==========================================
+
+    &__header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        gap: 16px;
+
+        margin-bottom: 56px;
+    }
+
+    // ==========================================
+    // Title
+    // ==========================================
+
+    &__title {
+        margin: 0;
+
+        font-family: "Ubuntu", sans-serif;
+
+        font-size: 48px;
+        font-weight: 500;
+        line-height: 120%;
+
+        color: #0076a9;
+
+        text-align: center;
+    }
+    // ==========================================
+    // Grid
+    // ==========================================
+
+    &__grid {
+        position: relative;
+        width: 1200px;
+        height: 454px;
+
+        display: flex;
+        border-radius: 8px;
+        overflow: hidden;
+    }
+
+    &__bg-vectors {
+        position: absolute;
+        inset: 0; // top: 0; right: 0; bottom: 0; left: 0
+        z-index: 3; // Above card backgrounds, below card content
+
+        pointer-events: none; // Clicks pass through to cards
+    }
+
+    &__bg-vector {
+        position: absolute;
+        top: 0;
+        height: 100%;
+
+        opacity: 0.08;
+        mix-blend-mode: screen; // ✅ Subtle overlay — adjust to match your design (0.08–0.18)
+
+        object-fit: contain;
+
+        // --- Left vector: anchored to the left side ---
+        &--left {
+            left: 0%;
+            transform: translateX(-20%); // nudge left to bleed off edge slightly
+            width: 35%;
+        }
+
+        // --- Middle vector: centered ---
+        &--middle {
+            left: 49%;
+            top: 0;
+            transform: translateX(-50%);
+            width: 50%;
+        }
+
+        // --- Right vector: anchored to the right side ---
+        &--right {
+            right: 0%;
+            transform: translateX(20%); // nudge right to bleed off edge slightly
+            width: 35%;
+        }
+    }
+
+    // ==========================================
+    // Card
+    // ==========================================
+
+    &__card {
+        position: relative;
+        z-index: 2;
+
+        width: 240px;
+        height: 454px;
+
+        padding: 77px 24px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        text-align: center;
+
+        color: #ffffff;
+
+        &:first-child {
+            border-top-left-radius: 8px;
+            border-bottom-left-radius: 8px;
+        }
+
+        &:last-child {
+            border-top-right-radius: 8px;
+            border-bottom-right-radius: 8px;
+        }
+
+        &--1 {
+            background: #183784;
+        }
+
+        &--2 {
+            background: #214d91;
+        }
+
+        &--3 {
+            background: #2a649e;
+        }
+
+        &--4 {
+            background: #2e6ea4;
+        }
+
+        &--5 {
+            background: #327aab;
+        }
+    }
+
+    // ==========================================
+    // Icon
+    // ==========================================
+
+    &__icon {
+        width: 88px;
+        height: 88px;
+
+        margin-bottom: 40px;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+    }
+
+    // ==========================================
+    // Card Title
+    // ==========================================
+
+    &__card-title {
+        margin: 0 0 24px;
+
+        font-family: "Ubuntu", sans-serif;
+
+        font-size: 25px;
+        font-weight: 500;
+        line-height: 120%;
+
+        color: #ffffff;
+    }
+
+    // ==========================================
+    // Card Description
+    // ==========================================
+
+    &__card-description {
+        margin: 0;
+
+        font-family: "Ubuntu", sans-serif;
+
+        font-size: 18px;
+        font-weight: 400;
+        line-height: 150%;
+
+        color: #ffffff;
+    }
+
+    @media (max-width: 768px) {
+        & {
+            max-height: unset;
+            padding: 40px 0;
+        }
+
+        &__container {
+            padding: 0 24px;
+        }
+
+        &__header {
+            margin-bottom: 32px;
+        }
+
+        &__title {
+            font-size: 32px;
+        }
+
+        &__grid {
+            width: 100%;
+            height: auto;
+            flex-direction: column; // ✅ Cards stack vertically
+            border-radius: 8px;
+        }
+
+        &__card {
+            width: 100%;
+            height: auto;
+            padding: 40px 24px;
+
+            flex-direction: row; // ✅ Icon on top, title, description below
+            align-items: center; // ✅ Center aligned like design
+            text-align: start; // ✅ Text aligned to the start
+            gap: 0; // ✅ Remove gap, use margins instead
+
+            &:first-child {
+                border-top-left-radius: 8px;
+                border-top-right-radius: 8px;
+                border-bottom-left-radius: 0;
+            }
+
+            &:last-child {
+                border-bottom-left-radius: 8px;
+                border-bottom-right-radius: 8px;
+                border-top-right-radius: 0;
+            }
+        }
+
+        &__icon {
+            width: 88px;
+            height: 88px;
+            flex-shrink: 0;
+            margin-bottom: 24px; // ✅ Space below icon
+            margin-right: 15px;
+        }
+
+        &__card-title {
+            font-size: 20px;
+            margin-bottom: 12px;
+        }
+
+        &__card-description {
+            font-size: 16px;
+        }
+
+        &__bg-vector {
+            &--left {
+                width: 350px;
+                height: 440px;
+                top: -30px;
+                left: -20px;
+            }
+
+            &--middle {
+                width: 100%; // ✅ Full width of the grid
+                height: auto; // ✅ Let it scale naturally
+                top: 50%; // ✅ Start from center
+                left: 0; // ✅ Reset left
+                right: 0; // ✅ Reset right
+                transform: translateY(-50%); // ✅ Only vertical centering needed
+                object-fit: contain;
+            }
+
+            &--right {
+                width: 350px;
+                height: 440px;
+                bottom: -150px;
+                top: auto;
+                left: auto;
+                right: -80px;
+            }
+        }
+    }
+
+    @media (max-width: 480px) {
+        & {
+            padding: 32px 0;
+        }
+
+        &__container {
+            padding: 0 16px;
+        }
+
+        &__title {
+            font-size: 28px;
+        }
+
+        &__card {
+            padding: 32px 20px;
+        }
+
+        &__icon {
+            width: 88px;
+            height: 88px;
+            margin-bottom: 20px;
+        }
+
+        &__card-title {
+            font-size: 18px;
+        }
+
+        &__card-description {
+            font-size: 15px;
+        }
+    }
+}
