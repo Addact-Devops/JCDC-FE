@@ -135,11 +135,12 @@ $text-color: rgba(91, 95, 98, 1);
             width: 250px;
             height: 800px;
 
-            top: 20px;
+            top: auto;
+            bottom: 0;
             left: -40px;
 
             background-size: contain;
-            background-position: top left;
+            background-position: bottom left;
 
             opacity: 0.2;
         }
@@ -147,7 +148,7 @@ $text-color: rgba(91, 95, 98, 1);
         &__content {
             padding: 50px 24px;
 
-            flex-direction: column;
+            flex-direction: column-reverse;
             align-items: center;
 
             gap: 45px;
@@ -159,8 +160,8 @@ $text-color: rgba(91, 95, 98, 1);
             padding-top: 0;
             padding-bottom: 0;
 
-            align-items: center;
-            text-align: center;
+            align-items: start;
+            text-align: start;
 
             gap: 25px;
         }
