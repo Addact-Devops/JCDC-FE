@@ -10,7 +10,7 @@
             href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&family=Cairo:wght@300;400;500;600;700&display=swap"
             rel="stylesheet"
         />
-        <link rel="stylesheet" href="dist/main.css" />
+        <link rel="stylesheet" href="dist/main.min.css" />
     </head>
     <body>
         <!-- ════════════════════════════════════════════
@@ -584,18 +584,7 @@
             </div>
         </footer>
 
-        <!-- i18n must load first so sections can subscribe -->
-        <script src="src/js/i18n.js"></script>
-
-        <!-- Reusable components -->
-        <script src="src/js/components/navbar.js"></script>
-        <script src="src/js/components/drawer.js"></script>
-
-        <!-- Page sections -->
-        <script src="src/js/sections/hero.js"></script>
-        <script src="src/js/sections/about.js"></script>
-        <script src="src/js/sections/jcd-slider.js"></script>
-        <script src="src/js/sections/news.js"></script>
-        <script src="src/js/sections/awards.js"></script>
+        <!-- Bundled & minified JS (built from src/js by `npm run build`) -->
+        <script src="dist/main.min.js" defer></script>
     </body>
 </html>
