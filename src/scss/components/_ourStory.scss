@@ -23,7 +23,7 @@ $text-color: rgba(91, 95, 98, 1);
     background-color: #faf5ee;
 
     overflow: hidden;
-
+    margin-bottom: 96px;
     &::before {
         content: "";
 
@@ -99,16 +99,29 @@ $text-color: rgba(91, 95, 98, 1);
 
     &__image-wrapper {
         width: 589px;
+        height: 589px;
         display: flex;
+        margin-top: 64px;
+        margin-bottom: 64px;
         justify-content: center;
         align-items: center;
+        overflow: hidden;
+        border-radius: 8px;
+        isolation: isolate;
+        position: relative;
     }
 
     &__image {
         width: 100%;
-        height: auto;
+        height: 100%;
         border-radius: 8px;
         object-fit: cover;
+        transition: transform 0.6s var(--ease);
+
+        &:hover {
+            transform: scale(1.02);
+            border-radius: 8px;
+        }
     }
 
     // ==========================================

@@ -114,24 +114,8 @@
 }
 
 .section-pattern {
+    position: relative;
     width: 104px;
     height: 24px;
-
-    background-image:
-        url("../assets/pattern1.svg"), url("../assets/pattern2.svg"), url("../assets/pattern1.svg"),
-        url("../assets/pattern2.svg");
-
-    background-repeat: no-repeat;
-
-    background-size:
-        22.46px 21.3px,
-        25.29px 24px,
-        22.46px 21.3px,
-        25.29px 24px;
-
-    background-position:
-        0 1.35px,
-        25.73px 0,
-        52px 1.35px,
-        78px 0;
+    flex-shrink: 0; // prevents it from squishing if header is flexbox
 }
