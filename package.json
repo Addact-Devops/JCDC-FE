@@ -10,12 +10,14 @@
         "build:js:min": "terser dist/main.js -o dist/main.min.js --compress --mangle",
         "build": "npm run clean && npm run build:css && npm run build:css:min && npm run build:js && npm run build:js:min",
         "watch:css": "sass src/scss/main.scss dist/main.css --watch --style=expanded",
+        "watch:css:min": "sass src/scss/main.scss dist/main.min.css --watch --style=compressed",
         "watch:js": "node build/watch-js.js",
-        "watch": "npm run build && (npm run watch:css & npm run watch:js)",
-        "dev": "npx --yes http-server . -p 3000 -c-1",
+        "serve": "npx --yes http-server . -p 3000 -c-1",
+        "dev": "npm-run-all --parallel watch:css watch:css:min watch:js serve",
         "start": "npm run build && npm run dev"
     },
     "devDependencies": {
+        "npm-run-all": "^4.1.5",
         "sass": "^1.77.0",
         "terser": "^5.31.0"
     }
