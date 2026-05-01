@@ -1,13 +1,22 @@
 {
     "name": "jcdc-homepage",
-    "version": "2.1.0",
+    "version": "2.2.0",
     "description": "JCDC Homepage — pixel-perfect Figma implementation in vanilla HTML/SCSS/JS",
     "scripts": {
-        "build": "sass src/scss/main.scss dist/main.css --style=compressed --no-source-map",
-        "sass-watch": "sass src/scss/main.scss dist/main.css --watch --style=expanded",
-        "dev": "npx --yes http-server . -p 3000 -c-1"
+        "clean": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true});require('fs').mkdirSync('dist',{recursive:true})\"",
+        "build:css": "sass src/scss/main.scss dist/main.css --style=expanded --no-source-map",
+        "build:css:min": "sass src/scss/main.scss dist/main.min.css --style=compressed --no-source-map",
+        "build:js": "node build/bundle-js.js",
+        "build:js:min": "terser dist/main.js -o dist/main.min.js --compress --mangle",
+        "build": "npm run clean && npm run build:css && npm run build:css:min && npm run build:js && npm run build:js:min",
+        "watch:css": "sass src/scss/main.scss dist/main.css --watch --style=expanded",
+        "watch:js": "node build/watch-js.js",
+        "watch": "npm run build && (npm run watch:css & npm run watch:js)",
+        "dev": "npx --yes http-server . -p 3000 -c-1",
+        "start": "npm run build && npm run dev"
     },
     "devDependencies": {
-        "sass": "^1.99.0"
+        "sass": "^1.77.0",
+        "terser": "^5.31.0"
     }
 }

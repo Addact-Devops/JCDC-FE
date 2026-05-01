@@ -10,7 +10,7 @@
             href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&family=Cairo:wght@300;400;500;600;700&display=swap"
             rel="stylesheet"
         />
-        <link rel="stylesheet" href="dist/main.css" />
+        <link rel="stylesheet" href="dist/main.min.css" />
     </head>
     <body>
         <!-- ════════════════════════════════════════════
@@ -364,7 +364,38 @@
         <section class="news">
             <header class="section-title">
                 <h2 data-i18n="news.title">News &amp; Events</h2>
-                <img alt="" class="section-pattern" />
+                <!-- <img alt="" class="section-pattern" /> -->
+
+                <div class="section-pattern">
+                    <img
+                        src="./assets/pattern1.svg"
+                        alt=""
+                        width="22.46"
+                        height="21.3"
+                        style="position: absolute; left: 0px; top: 1.35px"
+                    />
+                    <img
+                        src="./assets/pattern2.svg"
+                        alt=""
+                        width="25.29"
+                        height="24"
+                        style="position: absolute; left: 25.73px; top: 0px"
+                    />
+                    <img
+                        src="./assets/pattern1.svg"
+                        alt=""
+                        width="22.46"
+                        height="21.3"
+                        style="position: absolute; left: 52px; top: 1.35px"
+                    />
+                    <img
+                        src="./assets/pattern2.svg"
+                        alt=""
+                        width="25.29"
+                        height="24"
+                        style="position: absolute; left: 78px; top: 0px"
+                    />
+                </div>
             </header>
 
             <div class="news__grid" id="news-grid"></div>
@@ -391,7 +422,36 @@
         <section class="awards">
             <header class="section-title">
                 <h2 data-i18n="awards.title">Awards &amp; Certifications</h2>
-                <img alt="" class="section-pattern" />
+                <div class="section-pattern">
+                    <img
+                        src="./assets/pattern1.svg"
+                        alt=""
+                        width="22.46"
+                        height="21.3"
+                        style="position: absolute; left: 0px; top: 1.35px"
+                    />
+                    <img
+                        src="./assets/pattern2.svg"
+                        alt=""
+                        width="25.29"
+                        height="24"
+                        style="position: absolute; left: 25.73px; top: 0px"
+                    />
+                    <img
+                        src="./assets/pattern1.svg"
+                        alt=""
+                        width="22.46"
+                        height="21.3"
+                        style="position: absolute; left: 52px; top: 1.35px"
+                    />
+                    <img
+                        src="./assets/pattern2.svg"
+                        alt=""
+                        width="25.29"
+                        height="24"
+                        style="position: absolute; left: 78px; top: 0px"
+                    />
+                </div>
             </header>
 
             <div class="awards__track-wrap">
@@ -524,18 +584,7 @@
             </div>
         </footer>
 
-        <!-- i18n must load first so sections can subscribe -->
-        <script src="src/js/i18n.js"></script>
-
-        <!-- Reusable components -->
-        <script src="src/js/components/navbar.js"></script>
-        <script src="src/js/components/drawer.js"></script>
-
-        <!-- Page sections -->
-        <script src="src/js/sections/hero.js"></script>
-        <script src="src/js/sections/about.js"></script>
-        <script src="src/js/sections/jcd-slider.js"></script>
-        <script src="src/js/sections/news.js"></script>
-        <script src="src/js/sections/awards.js"></script>
+        <!-- Bundled & minified JS (built from src/js by `npm run build`) -->
+        <script src="dist/main.min.js" defer></script>
     </body>
 </html>
