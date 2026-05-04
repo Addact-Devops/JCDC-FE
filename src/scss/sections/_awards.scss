@@ -1,121 +1,132 @@
-// components/_awards.scss
-// Figma: white bg, padding 64px 120px, cards 285×310, 9 certs in a row (scrolls)
-
 .awards {
-  background: var(--surface-white);
-  padding: 64px 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 24px;
-  overflow: hidden;
-
-  &__track-wrap {
-    width: 100%;
+    background: var(--surface-white);
+    padding: 64px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
     overflow: hidden;
-    padding-block: 16px;
-    mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
-    -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
-  }
 
-  &__track {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    width: max-content;
-    animation: cert-scroll 30s linear infinite;
+    &__slider {
+        width: 100%;
+        overflow: hidden;
 
-    [dir="rtl"] & { animation-direction: reverse; }
-  }
-}
-
-@keyframes cert-scroll {
-  from { transform: translateX(0); }
-  to   { transform: translateX(calc(-50% - 10px)); }
-}
-
-// Cert card (Figma: 285×310, centered logo 154×154, grayscale filter)
-.cert {
-  flex-shrink: 0;
-  width: 285px;
-  height: 310px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  filter: grayscale(1);
-  opacity: 0.75;
-  transition: filter var(--dur) var(--ease), opacity var(--dur) var(--ease);
-
-  &:hover {
-    filter: grayscale(0);
-    opacity: 1;
-  }
-
-  img {
-    width: 154px;
-    height: 154px;
-    object-fit: contain;
-  }
-
-  &__fallback {
-    display: inline-block;
-    font-family: var(--font-en);
-    font-size: 28px;
-    font-weight: 700;
-    color: var(--primary-500);
-    letter-spacing: 0.04em;
-  }
-
-  &__circle {
-    width: 154px;
-    height: 154px;
-    border-radius: 50%;
-    border: 2px solid var(--primary-500);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    span {
-      font-family: var(--font-en);
-      font-size: 16px;
-      font-weight: 700;
-      color: var(--primary-500);
-      text-align: center;
-      line-height: 1.3;
-
-      small {
-        font-size: 10px;
-        font-weight: 400;
-        letter-spacing: 0.1em;
-      }
+        mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+        -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+        &:hover {
+            .certs {
+                animation-play-state: paused;
+            }
+        }
     }
-  }
+}
 
-  &__iso {
-    width: 154px;
-    height: 154px;
-    border: 2px solid var(--primary-500);
+.certs {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+
+    width: max-content;
+
+    animation: scrollAwards 30s linear infinite;
+}
+
+@keyframes scrollAwards {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(calc(-50% - 8px));
+    }
+}
+
+.cert-item {
+    width: 285px; // from Figma
+    height: 310px; // from Figma
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 6px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
 
-    strong {
-      font-family: var(--font-en);
-      font-size: 32px;
-      font-weight: 700;
-      color: var(--primary-500);
-      letter-spacing: 0.02em;
-      line-height: 1;
+    // ── Logo ──
+    &__logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transform: translateY(0);
+        transition:
+            transform 0.4s ease,
+            filter 0.4s ease;
+
+        img {
+            width: auto;
+            height: 120px;
+            object-fit: contain;
+            filter: grayscale(1) opacity(0.6); // 👈 grey by default
+            transition: filter 0.4s ease;
+        }
     }
 
-    small {
-      font-family: var(--font-en);
-      font-size: 13px;
-      font-weight: 400;
-      color: var(--primary-500);
-      letter-spacing: 0.04em;
+    // ── Title — hidden below, slides up on hover ──
+    &__title {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        padding: 0 20px;
+        margin: 0;
+        font-size: 14px;
+        font-weight: 400;
+        color: #5b5f62;
+        text-align: center;
+        line-height: 1.5;
+        opacity: 0;
+        transform: translateY(-60px); // 👈 starts below
+        transition: 0.4s ease;
     }
-  }
+
+    // ── Hover ──
+    &:hover {
+        .cert-item__logo {
+            transform: translateY(-20px); // 👈 logo slides up
+
+            img {
+                filter: grayscale(0) opacity(1); // 👈 original color restored
+            }
+        }
+
+        .cert-item__title {
+            opacity: 1;
+            // 👈 title slides up into view
+        }
+    }
+}
+
+@media (max-width: 425px) {
+    .awards {
+        padding: 50px 0;
+    }
+
+    .cert-item {
+        width: 220px;
+        height: 220px;
+        margin-right: 20px; // reduce spacing
+    }
+
+    .cert-item__logo img {
+        height: 80px;
+    }
+
+    .cert-item__title {
+        font-size: 12px;
+        padding: 0 10px;
+    }
+
+    // speed slightly faster on mobile (optional)
+    .certs {
+        animation-duration: 20s;
+    }
 }
