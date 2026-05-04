@@ -117,11 +117,10 @@ $text-color: rgba(91, 95, 98, 1);
         border-radius: 8px;
         object-fit: cover;
         transition: transform 0.6s var(--ease);
+    }
 
-        &:hover {
-            transform: scale(1.02);
-            border-radius: 8px;
-        }
+    &--hoverable:hover &__image {
+        transform: scale(1.02);
     }
 
     // ==========================================
