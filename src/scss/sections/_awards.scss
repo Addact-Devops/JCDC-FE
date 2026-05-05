@@ -10,7 +10,7 @@
     &__slider {
         width: 100%;
         overflow: hidden;
-
+        direction: ltr;
         mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
         -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
         &:hover {
@@ -25,10 +25,14 @@
     display: flex;
     align-items: flex-start;
     gap: 16px;
-
     width: max-content;
+    direction: ltr;
+    animation: scrollAwards 20s linear infinite;
 
-    animation: scrollAwards 30s linear infinite;
+    // [dir="rtl"] & {
+    //     direction: rtl;
+    //     animation: scrollAwards-ltr 10s linear infinite;
+    // }
 }
 
 @keyframes scrollAwards {
@@ -36,8 +40,11 @@
         transform: translateX(0);
     }
     100% {
-        transform: translateX(calc(-50% - 8px));
+        transform: translateX(-50%);
     }
+}
+[dir="rtl"] .certs {
+    animation-direction: reverse; // 👈 ONLY THIS
 }
 
 .cert-item {
@@ -101,6 +108,44 @@
         .cert-item__title {
             opacity: 1;
             // 👈 title slides up into view
+        }
+    }
+}
+
+@media (max-width: 767px) {
+    .awards__slider {
+        // 👈 remove hover pause on mobile
+        &:hover .certs {
+            animation-play-state: running;
+        }
+    }
+
+    .cert-item {
+        width: 200px;
+        height: 200px;
+        cursor: default; // 👈 no pointer on mobile
+
+        // 👈 restore original color — no grayscale
+        &__logo img {
+            filter: grayscale(0) opacity(1);
+            transition: none; // 👈 remove transition
+        }
+
+        // 👈 hide title completely on mobile
+        &__title {
+            opacity: 1; // 👈 always shown
+            position: static; // 👈 flows naturally below logo
+            transform: none; // 👈 no transform
+            padding: 0 12px;
+            margin-top: 12px;
+            font-size: 12px;
+        }
+
+        // 👈 disable hover effects
+        &:hover {
+            .cert-item__logo {
+                transform: translateY(0); // 👈 no slide up
+            }
         }
     }
 }
