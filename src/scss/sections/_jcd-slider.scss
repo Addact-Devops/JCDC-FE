@@ -55,10 +55,7 @@
         color: var(--text-50);
 
         [dir="rtl"] & {
-            inset-inline-start: 44.33%;
-            inset-inline-end: 5.33%;
             text-align: right;
-            align-items: flex-end; // button hugs content on the right side
         }
     }
 
@@ -70,6 +67,9 @@
         color: var(--text-50);
         white-space: nowrap;
         margin: 0;
+        [dir="rtl"] & {
+            white-space: normal; // 👈 ADDED — Arabic title wraps properly
+        }
     }
 
     &__body {
@@ -86,7 +86,7 @@
         align-self: flex-start;
 
         [dir="rtl"] & {
-            align-self: flex-end;
+            align-self: flex-start;
         }
     }
 }
