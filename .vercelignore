@@ -1,0 +1,21 @@
+# Dependencies — Vercel installs them itself
+node_modules/
+
+# Local build output — Vercel rebuilds via buildCommand
+dist/
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+*.swp
+
+# Local env
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+npm-debug.log*
