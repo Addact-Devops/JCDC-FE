@@ -58,6 +58,7 @@
     &__content {
         position: relative;
         width: 836px;
+        max-width: 100%;
         z-index: 2;
         margin: 0 auto;
         gap: 8px;
@@ -103,6 +104,15 @@
         color: #ffffff;
     }
 
+    &__breadcrumbs-separator {
+        display: inline-block;
+
+        // Flip the chevron direction in RTL so it points logically (right→left)
+        [dir="rtl"] & {
+            transform: scaleX(-1);
+        }
+    }
+
     // ==========================================
     // Title
     // ==========================================
@@ -128,7 +138,7 @@
     &__description {
         margin: 0;
 
-        width: 836px;
+        width: 100%;
         max-width: 836px;
 
         font-family: "Ubuntu", sans-serif;
@@ -142,13 +152,129 @@
 
         color: #ffffff;
     }
+
+    // ==========================================
+    // Logo (used on Invest hero — Jeddah Central destination mark)
+    // ==========================================
+    &__logo {
+        width: 80px;
+        height: auto;
+        margin-bottom: 16px;
+
+        img,
+        svg {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+    }
+
+    // ==========================================
+    // CTA wrapper (sits below description)
+    // ==========================================
+    &__cta-wrap {
+        margin-top: 32px;
+        display: flex;
+        justify-content: center;
+    }
+
+    // CTA button width override — slightly wider than default
+    &__cta {
+        min-width: 220px;
+    }
 }
 
 // ==========================================
 // Responsive
 // ==========================================
 
+// Tablet (≤ 1024)
+@media (max-width: 1024px) {
+    .banner {
+        min-height: 600px;
+
+        &__content {
+            width: 100%;
+            max-width: 720px;
+            padding: 0 24px;
+        }
+
+        &__title {
+            font-size: 56px;
+            margin: 0 0 24px;
+        }
+
+        &__description {
+            width: 100%;
+            max-width: 100%;
+            font-size: 20px;
+        }
+    }
+}
+
+// Mobile (≤ 768)
+@media (max-width: 768px) {
+    .banner {
+        min-height: 520px;
+
+        &__container {
+            padding: 0 24px;
+        }
+
+        &__content {
+            width: 100%;
+            padding: 0 16px;
+            gap: 12px;
+        }
+
+        &__breadcrumbs {
+            font-size: 14px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        &__title {
+            font-size: 40px;
+            margin: 0 0 16px;
+        }
+
+        &__description {
+            font-size: 16px;
+            line-height: 150%;
+        }
+
+        &__logo {
+            width: 64px;
+            margin-bottom: 12px;
+        }
+
+        &__cta-wrap {
+            margin-top: 24px;
+            width: 100%;
+        }
+
+        &__cta {
+            min-width: 0;
+            width: 100%;
+            max-width: 320px;
+        }
+    }
+}
+
+// Small mobile (≤ 425) — keeps the original .hero rules intact for backward compatibility
 @media screen and (max-width: 425px) {
+    .banner {
+        min-height: 480px;
+
+        &__title {
+            font-size: 32px;
+        }
+
+        &__description {
+            font-size: 15px;
+        }
+    }
+
     .hero {
         min-height: 600px;
 

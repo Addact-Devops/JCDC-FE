@@ -44,6 +44,112 @@
   "awards": {
     "title": "Awards & Certifications"
   },
+  "career": {
+    "breadcrumb": { "home": "Home", "current": "Careers" },
+    "hero": {
+      "title": "Careers at JCDC",
+      "description": "Be part of our journey to shape Jeddah's future. Explore meaningful opportunities, grow with a world-class team, and contribute to creating destinations that celebrate heritage and inspire generations."
+    },
+    "howWeSet": {
+      "title": "How We Set Ourselves Apart",
+      "cards": {
+        "impactTitle": "Impact with Purpose",
+        "impactDesc": "We develop destinations that honor our cultural heritage and contribute to Saudi's tourism landscape.",
+        "expertiseTitle": "Expertise Recognition",
+        "expertiseDesc": "Your experience matters, and your contributions make an impact from day one.",
+        "professionalTitle": "Professional Development",
+        "professionalDesc": "Continuous learning opportunities, leadership development, and career advancement.",
+        "standardsTitle": "World-Class Standards",
+        "standardsDesc": "Innovation, sustainability, and organizational excellence supported by globally recognized certifications."
+      }
+    },
+    "nextStep": {
+      "title": "Your Next Step",
+      "description": "Explore our available positions and be part of our journey at JCDC.",
+      "cta": "Explore Opportunities"
+    }
+  },
+  "invest": {
+    "breadcrumb": { "home": "Home", "current": "Invest" },
+    "hero": {
+      "title": "Investment Opportunities",
+      "description": "Jeddah Central is a strategic hub for investment, offering world-class residential, hospitality, retail, and mixed-use districts.",
+      "cta": "Register your interest"
+    },
+    "why": {
+      "title": "Why Jeddah Central?",
+      "subtitle": "Jeddah Central represents a significant opportunity within Saudi Arabia's growing Tourism, Culture, Entertainment, Sport, and Real Estate sectors supported by:",
+      "cards": {
+        "primeTitle": "Prime Location",
+        "primeDesc": "Centrally located on Jeddah's waterfront, with seamless access, landmark proximity, and strong footfall.",
+        "municipalityTitle": "Internal Municipality",
+        "municipalityDesc": "Internal Municipality services to have streamlined proceedings",
+        "regaTitle": "REGA Accreditation",
+        "regaDesc": "One of the only destinations to have REGA approval",
+        "multiTitle": "Multi-Asset Destination",
+        "multiDesc": "Blending tourism, entertainment, culture, sports, residential, and hospitality offerings",
+        "coolingTitle": "District Cooling",
+        "coolingDesc": "Efficient district cooling powering a sustainable, future-ready Jeddah Central",
+        "smartTitle": "Smart city infrastructure",
+        "smartDesc": "Integrated digital systems with the destination to increase the livability efficiency"
+      }
+    },
+    "register": {
+      "title": "Register your interest",
+      "intro": "Submit your details to express interest in Jeddah Central's investment opportunities.",
+      "contactInfo": "Contact Information",
+      "fields": {
+        "firstName": "First Name",
+        "lastName": "Last Name",
+        "email": "Email",
+        "mobile": "Mobile",
+        "company": "Company",
+        "country": "Country or region",
+        "city": "City",
+        "website": "Company's Website",
+        "engagementType": "Engagement Type",
+        "interests": "Interests",
+        "interestsHint": "Please select one or more options",
+        "targetSize": "Target Investment Size SAR",
+        "description": "Interest Description",
+        "select": "Select",
+        "selectCountry": "Select Country or region",
+        "typeHere": "Type here",
+        "emailPlaceholder": "you@mail.com",
+        "phonePlaceholder": "00 000 0000",
+        "descPlaceholder": "Please briefly describe your interest or concept ( max 255 characters)"
+      },
+      "engagement": {
+        "developers": "Developers",
+        "investors": "Investors",
+        "operators": "Operators",
+        "others": "Others"
+      },
+      "interestOptions": {
+        "mixedUse": "Mixed Use",
+        "residential": "Residential",
+        "hospitality": "Hospitality",
+        "retail": "Retail",
+        "landPurchase": "Land Purchase",
+        "landLease": "Land Lease",
+        "investmentEquity": "Investment Equity",
+        "other": "Other"
+      },
+      "consent": {
+        "terms": "I confirm that I have read and understood the",
+        "termsLink": "Terms & Conditions",
+        "and": "and",
+        "cookiesLink": "Cookies Notices",
+        "emails": "I accept to receive email communications from Jeddah Central Development Company"
+      },
+      "submit": "Register",
+      "success": {
+        "title": "Form Submitted Successfully",
+        "text": "Your inquiry has been received.",
+        "back": "Go Back to Homepage"
+      }
+    }
+  },
   "footer": {
     "aboutUs": "ABOUT US",
     "jcd": "JEDDAH CENTRAL DESTINATION",

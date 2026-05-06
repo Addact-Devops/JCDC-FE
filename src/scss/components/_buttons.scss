@@ -75,6 +75,53 @@
         }
     }
 
+    // Hero CTA — white outline + transparent → cream fill + primary text on hover
+    // Used on the Invest hero ("Register your interest" button with down-arrow)
+    &--hero-cta {
+        border-color: var(--surface-white);
+        color: var(--surface-white);
+        background: transparent;
+
+        svg {
+            transition: transform var(--dur) var(--ease);
+            // Down-arrow: don't flip horizontally in RTL
+            [dir="rtl"] & {
+                transform: none;
+            }
+        }
+
+        &:hover {
+            background: var(--secondary-50);
+            border-color: var(--secondary-50);
+            color: var(--primary-500);
+
+            svg {
+                transform: translateY(3px);
+
+                [dir="rtl"] & {
+                    transform: translateY(3px);
+                }
+            }
+        }
+
+        &:focus-visible {
+            outline: 2px solid var(--secondary-50);
+            outline-offset: 3px;
+        }
+    }
+
+    // Outlined gold (cream/secondary-50 bg) — used for the form Submit button
+    &--outline-gold {
+        background: var(--surface-white);
+        border-color: var(--secondary-500);
+        color: var(--secondary-500);
+
+        &:hover {
+            background: var(--secondary-500);
+            color: var(--surface-white);
+        }
+    }
+
     &:active {
         transform: scale(0.98);
     }

@@ -14,6 +14,7 @@
 @use "components/visionMission";
 @use "components/heroBanner";
 @use "components/coreValues";
+@use "components/form";
 
 // Page sections
 @use "sections/hero";
@@ -21,6 +22,10 @@
 @use "sections/jcd-slider";
 @use "sections/news";
 @use "sections/awards";
+@use "sections/howWeSet";
+@use "sections/nextStep";
+@use "sections/whyJeddah";
+@use "sections/registerInterest";
 
 // Responsive rules (last — overrides all above)
 @use "responsive";

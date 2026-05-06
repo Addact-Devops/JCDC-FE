@@ -1,0 +1,336 @@
+// ==========================================
+// Register your interest
+// 2-col layout: left intro / right form (or success)
+// Background: cream (--secondary-50 #FAF5EE)
+// ==========================================
+
+.register {
+    width: 100%;
+    background: var(--secondary-50);
+    padding: 64px 120px;
+    scroll-margin-top: 100px; // account for fixed header on anchor jump
+
+    // ==========================================
+    // Container
+    // ==========================================
+    &__container {
+        width: 100%;
+        max-width: 1440px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: 1fr 1.4fr;
+        gap: 56px;
+        align-items: start;
+    }
+
+    // ==========================================
+    // Left intro column
+    // ==========================================
+    &__intro {
+        display: flex;
+        flex-direction: column;
+        gap: 56px;
+        position: sticky;
+        top: 120px;
+    }
+
+    &__title {
+        margin: 0;
+        font-family: var(--font-body);
+        font-size: 48px;
+        font-weight: 500;
+        line-height: 120%;
+        color: var(--primary-500);
+    }
+
+    &__intro-card {
+        background: var(--surface-white);
+        border-radius: 4px;
+        padding: 16px 30px;
+    }
+
+    &__intro-text {
+        margin: 0;
+        font-family: var(--font-body);
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 150%;
+        color: var(--text-500);
+    }
+
+    // ==========================================
+    // Right column wrapper
+    // ==========================================
+    &__panel {
+        background: var(--surface-white);
+        border-radius: 4px;
+        padding: 32px 24px;
+        min-height: 200px;
+    }
+}
+
+// ==========================================
+// Form layout
+// ==========================================
+.register-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+
+    // [hidden] attribute must override display:flex
+    &[hidden] {
+        display: none;
+    }
+
+    &__title {
+        margin: 0 0 4px;
+        font-family: var(--font-body);
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 150%;
+        color: #101828;
+    }
+
+    &__row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+    }
+
+    // Engagement type radio cards (4-up grid)
+    &__engagement-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+    }
+
+    // Conditional sub-section (interests/target/description)
+    &__conditional {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        padding-top: 8px;
+        animation: register-fade-in 250ms var(--ease);
+
+        // [hidden] attribute must override display:flex
+        &[hidden] {
+            display: none;
+        }
+    }
+
+    // The character counter wrapper for textarea
+    &__textarea-wrap {
+        position: relative;
+
+        .form-field__hint {
+            margin-top: 4px;
+        }
+    }
+
+    // Submit
+    &__submit {
+        margin-top: 12px;
+        width: 100%;
+    }
+}
+
+@keyframes register-fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+// ==========================================
+// Success state (replaces form)
+// ==========================================
+.register-success {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px 0 24px;
+    animation: register-fade-in 300ms var(--ease);
+
+    // [hidden] attribute must override display:flex
+    &[hidden] {
+        display: none;
+    }
+
+    &__icon {
+        width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        background: var(--primary-500);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 16px;
+
+        svg {
+            width: 28px;
+            height: 28px;
+            color: var(--surface-white);
+        }
+    }
+
+    &__title {
+        margin: 0;
+        font-family: var(--font-body);
+        font-size: 32px;
+        font-weight: 500;
+        line-height: 120%;
+        color: var(--primary-500);
+    }
+
+    &__text {
+        margin: 0 0 8px;
+        font-family: var(--font-body);
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 150%;
+        color: var(--text-500);
+    }
+
+    &__link {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        font-family: var(--font-body);
+        font-size: 16px;
+        font-weight: 700;
+        color: var(--secondary-500);
+        text-decoration: none;
+        transition: gap var(--dur) var(--ease);
+
+        svg {
+            transition: transform var(--dur) var(--ease);
+
+            [dir="rtl"] & {
+                transform: scaleX(-1);
+            }
+        }
+
+        &:hover {
+            gap: 10px;
+
+            svg {
+                transform: translate(2px, -2px);
+
+                [dir="rtl"] & {
+                    transform: translate(-2px, -2px) scaleX(-1);
+                }
+            }
+        }
+    }
+}
+
+// ==========================================
+// Tablet (≤ 1024)
+// ==========================================
+@media (max-width: 1024px) {
+    .register {
+        padding: 64px 0;
+
+        &__container {
+            padding: 0 48px;
+            grid-template-columns: 1fr;
+            gap: 32px;
+        }
+
+        &__intro {
+            position: static;
+            top: auto;
+        }
+
+        &__title {
+            font-size: 36px;
+        }
+
+        &__panel {
+            padding: 28px;
+        }
+    }
+
+    .register-form {
+        &__engagement-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+}
+
+// ==========================================
+// Mobile (≤ 768)
+// ==========================================
+@media (max-width: 768px) {
+    .register {
+        padding: 48px 0;
+
+        &__container {
+            padding: 0 24px;
+            gap: 24px;
+        }
+
+        &__title {
+            font-size: 28px;
+        }
+
+        &__intro {
+            gap: 20px;
+        }
+
+        &__panel {
+            padding: 20px;
+        }
+    }
+
+    .register-form {
+        gap: 16px;
+
+        &__row {
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+
+        &__engagement-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+    }
+
+    .register-success {
+        &__title {
+            font-size: 24px;
+        }
+    }
+}
+
+// ==========================================
+// Small Mobile (≤ 480)
+// ==========================================
+@media (max-width: 480px) {
+    .register {
+        padding: 40px 0;
+
+        &__container {
+            padding: 0 16px;
+        }
+
+        &__title {
+            font-size: 26px;
+        }
+
+        &__panel {
+            padding: 16px;
+        }
+    }
+
+    .register-form {
+        &__engagement-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+}
