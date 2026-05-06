@@ -1,0 +1,204 @@
+// ==========================================
+// Culture in Motion Section
+// ==========================================
+
+.culture {
+    width: 100%;
+    background: var(--surface-cream, #faf5ee);
+    padding: 64px 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 48px;
+
+    &__container {
+        width: 100%;
+        max-width: 1440px;
+
+        margin: 0 auto;
+    }
+
+    // ==========================================
+    // Header
+    // ==========================================
+    &__header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+
+        margin-bottom: 56px;
+        text-align: center;
+    }
+
+    &__title {
+        margin: 0;
+        font-family: var(--font-body);
+        font-size: 40px;
+        font-weight: 500;
+        line-height: 120%;
+        color: var(--primary-500);
+        text-align: center;
+    }
+
+    // ==========================================
+    // Grid — 3 equal columns
+    // ==========================================
+    &__grid {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+    }
+
+    // ==========================================
+    // Card
+    // ==========================================
+    &__card {
+        position: relative;
+        border-radius: 8px;
+        overflow: hidden;
+        height: 500px; // card height from Figma
+        cursor: pointer;
+
+        // ── Image zoom on hover ──
+        &:hover &-img {
+            transform: scale(1.04);
+        }
+    }
+
+    &__card-img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s var(--ease);
+    }
+
+    // ── Dark gradient overlay ──
+    &__card-overlay {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.75) 100%);
+        z-index: 1;
+    }
+
+    // ── Text content ──
+    &__card-content {
+        position: absolute;
+
+        inset-inline-start: 0;
+        inset-inline-end: 0;
+
+        z-index: 2;
+        margin: 142px 0 0 0;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        gap: 12px;
+
+        color: #fff;
+        text-align: center;
+    }
+
+    &__card-title {
+        margin: 0 57px;
+        font-family: var(--font-body);
+        font-size: 32px;
+        font-weight: 500;
+        line-height: 120%;
+        color: var(--secondary-500);
+        text-align: center;
+        max-width: 272px;
+        [dir="rtl"] & {
+            text-align: center;
+        }
+    }
+
+    &__card-desc {
+        margin: 0;
+        max-width: 256px;
+        font-family: var(--font-body);
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 150%;
+        color: #ffffff;
+        text-align: center;
+        [dir="rtl"] & {
+            text-align: center;
+        }
+    }
+
+    // ==========================================
+    // Tablet (≤ 1024)
+    // ==========================================
+    @media (max-width: 1024px) {
+        padding: 56px 48px;
+
+        &__title {
+            font-size: 36px;
+        }
+
+        &__grid {
+            gap: 16px;
+        }
+
+        &__card {
+            height: 420px;
+        }
+    }
+
+    // ==========================================
+    // Mobile (≤ 768)
+    // ==========================================
+    @media (max-width: 768px) {
+        padding: 48px 24px;
+        gap: 32px;
+
+        &__title {
+            font-size: 28px;
+        }
+
+        &__grid {
+            grid-template-columns: 1fr; // 👈 stack vertically
+            gap: 16px;
+        }
+
+        &__card {
+            height: 360px;
+        }
+
+        &__card-content {
+            margin-top: 0;
+            padding: 24px 20px;
+            height: 100%;
+            justify-content: center;
+        }
+
+        &__card-title {
+            font-size: 20px;
+        }
+
+        &__card-desc {
+            font-size: 13px;
+        }
+    }
+
+    // ==========================================
+    // Small Mobile (≤ 480)
+    // ==========================================
+    @media (max-width: 480px) {
+        padding: 40px 16px;
+
+        &__title {
+            font-size: 24px;
+        }
+
+        &__card {
+            height: 300px;
+        }
+    }
+}
