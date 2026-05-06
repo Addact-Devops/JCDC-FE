@@ -28,6 +28,7 @@ const FILES = [
   'sections/jcd-slider.js',
   'sections/news.js',
   'sections/awards.js',
+  'sections/register-interest.js',
 ];
 
 function bundle() {

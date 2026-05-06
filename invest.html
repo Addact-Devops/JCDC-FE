@@ -1,0 +1,1185 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="description"
+            content="Investment Opportunities at Jeddah Central — a strategic hub for residential, hospitality, retail, and mixed-use districts."
+        />
+        <title data-i18n="meta.title">JCDC — Invest</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&family=Cairo:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="dist/main.min.css" />
+    </head>
+
+    <body>
+        <!-- ════════════════════════════════════════════
+        HEADER (reused)
+════════════════════════════════════════════ -->
+        <header class="navbar" id="navbar">
+            <div class="navbar__inner">
+                <a href="/" class="navbar__logo" aria-label="JCDC Home">
+                    <img class="navbar__logo--light" src="assets/Frame 2.svg" alt="JCDC" width="104" height="56" />
+                    <!-- Dark/colored logo — shown when scrolled -->
+                    <img
+                        class="navbar__logo--dark"
+                        src="assets/coporate-PNG-01 1.svg"
+                        alt="JCDC"
+                        width="104"
+                        height="56"
+                    />
+                </a>
+
+                <nav class="navbar__menu" aria-label="Main navigation">
+                    <a href="#" class="nav-item" data-i18n="nav.about">About us</a>
+
+                    <div class="nav-item nav-item--dropdown" data-dropdown>
+                        <button class="nav-item__btn" aria-haspopup="true" aria-expanded="false" data-dropdown-toggle>
+                            <span data-i18n="nav.jcd">Jeddah Central Destination</span>
+                            <svg
+                                class="chevron"
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                aria-hidden="true"
+                            >
+                                <path
+                                    d="M7 10l5 5 5-5"
+                                    stroke="currentColor"
+                                    stroke-width="1.5"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </svg>
+                        </button>
+                        <div class="dropdown">
+                            <a href="#" data-i18n="nav.dropdown.districts">Districts</a>
+                            <a href="#" data-i18n="nav.dropdown.landmarks">Landmarks</a>
+                            <a href="#" data-i18n="nav.dropdown.attractions">Attractions</a>
+                            <a href="#" data-i18n="nav.dropdown.sustainability">Sustainability</a>
+                        </div>
+                    </div>
+
+                    <a href="#" class="nav-item" data-i18n="nav.invest">Invest</a>
+                    <a href="#" class="nav-item" data-i18n="nav.news">News &amp; Events</a>
+                    <a href="#" class="nav-item" data-i18n="nav.careers">Careers</a>
+                    <a href="#" class="nav-item" data-i18n="nav.suppliers">Suppliers</a>
+                    <a href="#" class="nav-item" data-i18n="nav.contact">Contact Us</a>
+                </nav>
+
+                <div class="navbar__actions">
+                    <button class="icon-btn" aria-label="Search">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.5" />
+                            <path
+                                d="M16.5 16.5L21 21"
+                                stroke="currentColor"
+                                stroke-width="1.5"
+                                stroke-linecap="round"
+                            />
+                        </svg>
+                    </button>
+                    <button class="lang-btn" id="lang-btn" aria-label="Switch language">
+                        <span class="lang-btn__text" data-i18n="nav.lang">العربية</span>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5" />
+                            <path
+                                d="M12 3c-2.5 2-4 5.5-4 9s1.5 7 4 9c2.5-2 4-5.5 4-9s-1.5-7-4-9z"
+                                stroke="currentColor"
+                                stroke-width="1.5"
+                            />
+                            <path d="M3 9h18M3 15h18" stroke="currentColor" stroke-width="1.5" />
+                        </svg>
+                    </button>
+                    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+                        <span></span><span></span><span></span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Mobile drawer (reused) -->
+        <aside class="drawer" id="drawer" aria-hidden="true">
+            <div class="drawer__head">
+                <img src="assets/logo.svg" alt="JCDC" width="80" height="44" class="drawer__logo" />
+                <button class="drawer__close" id="drawer-close" aria-label="Close menu">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                    </svg>
+                </button>
+            </div>
+            <div class="drawer__divider"></div>
+            <p class="drawer__label" data-i18n="mobile.menu">MENU</p>
+
+            <ul class="drawer__nav">
+                <li>
+                    <button class="drawer__link" data-href="about.html">
+                        <span data-i18n="nav.about">About</span
+                        ><svg
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            class="drawer__arrow"
+                            aria-hidden="true"
+                        >
+                            <path
+                                d="M9 6l6 6-6 6"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            />
+                        </svg>
+                    </button>
+                </li>
+                <li>
+                    <button class="drawer__link">
+                        <span data-i18n="nav.jcd">Jeddah Central Destination</span
+                        ><svg
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            class="drawer__arrow"
+                            aria-hidden="true"
+                        >
+                            <path
+                                d="M9 6l6 6-6 6"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            />
+                        </svg>
+                    </button>
+                </li>
+                <li>
+                    <button class="drawer__link" data-href="invest.html">
+                        <span data-i18n="nav.invest">Invest</span
+                        ><svg
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            class="drawer__arrow"
+                            aria-hidden="true"
+                        >
+                            <path
+                                d="M9 6l6 6-6 6"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            />
+                        </svg>
+                    </button>
+                </li>
+                <li>
+                    <button class="drawer__link">
+                        <span data-i18n="nav.news">News &amp; Events</span
+                        ><svg
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            class="drawer__arrow"
+                            aria-hidden="true"
+                        >
+                            <path
+                                d="M9 6l6 6-6 6"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            />
+                        </svg>
+                    </button>
+                </li>
+                <li>
+                    <button class="drawer__link" data-href="career.html">
+                        <span data-i18n="nav.careers">Careers</span
+                        ><svg
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            class="drawer__arrow"
+                            aria-hidden="true"
+                        >
+                            <path
+                                d="M9 6l6 6-6 6"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            />
+                        </svg>
+                    </button>
+                </li>
+                <li>
+                    <button class="drawer__link">
+                        <span data-i18n="nav.suppliers">Suppliers</span
+                        ><svg
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            class="drawer__arrow"
+                            aria-hidden="true"
+                        >
+                            <path
+                                d="M9 6l6 6-6 6"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            />
+                        </svg>
+                    </button>
+                </li>
+                <li>
+                    <button class="drawer__link">
+                        <span data-i18n="nav.contact">Contact Us</span
+                        ><svg
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            class="drawer__arrow"
+                            aria-hidden="true"
+                        >
+                            <path
+                                d="M9 6l6 6-6 6"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            />
+                        </svg>
+                    </button>
+                </li>
+            </ul>
+
+            <div class="drawer__footer">
+                <button class="lang-btn lang-btn--drawer" id="lang-btn-drawer">
+                    <span class="lang-btn__text" data-i18n="nav.lang">العربية</span>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5" />
+                        <path
+                            d="M12 3c-2.5 2-4 5.5-4 9s1.5 7 4 9c2.5-2 4-5.5 4-9s-1.5-7-4-9z"
+                            stroke="currentColor"
+                            stroke-width="1.5"
+                        />
+                        <path d="M3 9h18M3 15h18" stroke="currentColor" stroke-width="1.5" />
+                    </svg>
+                </button>
+            </div>
+        </aside>
+        <div class="overlay" id="overlay"></div>
+
+        <!-- ════════════════════════════════════════════
+        HERO BANNER (reused, with logo + CTA button)
+════════════════════════════════════════════ -->
+        <section class="banner" aria-labelledby="invest-hero-title">
+            <div class="hero__media">
+                <img src="assets/herobanner.svg" alt="" loading="eager" />
+            </div>
+            <div class="banner__overlay"></div>
+
+            <div class="container">
+                <div class="banner__content">
+                    <!-- Jeddah Central destination logo -->
+                    <div class="banner__logo">
+                        <img src="assets/jeddah-central-mark.svg" alt="Jeddah Central" />
+                    </div>
+
+                    <!-- Breadcrumbs -->
+                    <nav class="banner__breadcrumbs" aria-label="Breadcrumb">
+                        <a href="index.html" class="banner__breadcrumbs-link" data-i18n="invest.breadcrumb.home"
+                            >Home</a
+                        >
+                        <span class="banner__breadcrumbs-separator" aria-hidden="true">›</span>
+                        <span class="banner__breadcrumbs-current" data-i18n="invest.breadcrumb.current">Invest</span>
+                    </nav>
+
+                    <div>
+                        <!-- Title -->
+                        <h1 class="banner__title" id="invest-hero-title" data-i18n="invest.hero.title">
+                            Investment Opportunities
+                        </h1>
+
+                        <!-- Description -->
+                        <p class="banner__description" data-i18n="invest.hero.description">
+                            Jeddah Central is a strategic hub for investment, offering world-class residential,
+                            hospitality, retail, and mixed-use districts.
+                        </p>
+                    </div>
+
+                    <!-- CTA Button -->
+                    <div class="banner__cta-wrap">
+                        <a
+                            href="#register"
+                            class="btn btn--outline-cream banner__cta"
+                            aria-label="Register your interest"
+                        >
+                            <span data-i18n="invest.hero.cta">Register your interest</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path
+                                    d="M12 5v14M6 13l6 6 6-6"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ════════════════════════════════════════════
+        WHY JEDDAH CENTRAL
+════════════════════════════════════════════ -->
+        <section class="why-jeddah" aria-labelledby="why-jeddah-title">
+            <div class="why-jeddah__container">
+                <div class="why-jeddah__header">
+                    <h2 class="why-jeddah__title" id="why-jeddah-title" data-i18n="invest.why.title">
+                        Why Jeddah Central?
+                    </h2>
+                    <p class="why-jeddah__subtitle" data-i18n="invest.why.subtitle">
+                        Jeddah Central represents a significant opportunity within Saudi Arabia's growing Tourism,
+                        Culture, Entertainment, Sport, and Real Estate sectors supported by:
+                    </p>
+
+                    <!-- xoxo pattern (reused) -->
+                    <div class="section-pattern" aria-hidden="true">
+                        <img
+                            src="./assets/pattern1.svg"
+                            alt=""
+                            width="22.46"
+                            height="21.3"
+                            style="position: absolute; left: 0px; top: 1.35px"
+                        />
+                        <img
+                            src="./assets/pattern2.svg"
+                            alt=""
+                            width="25.29"
+                            height="24"
+                            style="position: absolute; left: 25.73px; top: 0px"
+                        />
+                        <img
+                            src="./assets/pattern1.svg"
+                            alt=""
+                            width="22.46"
+                            height="21.3"
+                            style="position: absolute; left: 52px; top: 1.35px"
+                        />
+                        <img
+                            src="./assets/pattern2.svg"
+                            alt=""
+                            width="25.29"
+                            height="24"
+                            style="position: absolute; left: 78px; top: 0px"
+                        />
+                    </div>
+                </div>
+
+                <div class="why-jeddah__grid">
+                    <article class="why-jeddah__card">
+                        <div class="why-jeddah__icon">
+                            <img
+                                src="assets/why-prime-location.svg"
+                                alt=""
+                                aria-hidden="true"
+                                loading="lazy"
+                                width="48"
+                                height="48"
+                            />
+                        </div>
+                        <div>
+                            <h3 class="why-jeddah__card-title" data-i18n="invest.why.cards.primeTitle">
+                                Prime Location
+                            </h3>
+                            <p class="why-jeddah__card-description" data-i18n="invest.why.cards.primeDesc">
+                                Centrally located on Jeddah's waterfront, with seamless access, landmark proximity, and
+                                strong footfall.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="why-jeddah__card why-jeddah__card-border">
+                        <div class="why-jeddah__icon">
+                            <img
+                                src="assets/why-municipality.svg"
+                                alt=""
+                                aria-hidden="true"
+                                loading="lazy"
+                                width="48"
+                                height="48"
+                            />
+                        </div>
+                        <h3 class="why-jeddah__card-title" data-i18n="invest.why.cards.municipalityTitle">
+                            Internal Municipality
+                        </h3>
+                        <p class="why-jeddah__card-description" data-i18n="invest.why.cards.municipalityDesc">
+                            Internal Municipality services to have streamlined proceedings
+                        </p>
+                    </article>
+
+                    <article class="why-jeddah__card why-jeddah__card-border">
+                        <div class="why-jeddah__icon">
+                            <img
+                                src="assets/why-rega.svg"
+                                alt=""
+                                aria-hidden="true"
+                                loading="lazy"
+                                width="48"
+                                height="48"
+                            />
+                        </div>
+                        <h3 class="why-jeddah__card-title" data-i18n="invest.why.cards.regaTitle">
+                            REGA Accreditation
+                        </h3>
+                        <p class="why-jeddah__card-description" data-i18n="invest.why.cards.regaDesc">
+                            One of the only destinations to have REGA approval
+                        </p>
+                    </article>
+
+                    <article class="why-jeddah__card">
+                        <div class="why-jeddah__icon">
+                            <img
+                                src="assets/why-multi-asset.svg"
+                                alt=""
+                                aria-hidden="true"
+                                loading="lazy"
+                                width="48"
+                                height="48"
+                            />
+                        </div>
+                        <h3 class="why-jeddah__card-title" data-i18n="invest.why.cards.multiTitle">
+                            Multi-Asset Destination
+                        </h3>
+                        <p class="why-jeddah__card-description" data-i18n="invest.why.cards.multiDesc">
+                            Blending tourism, entertainment, culture, sports, residential, and hospitality offerings
+                        </p>
+                    </article>
+
+                    <article class="why-jeddah__card why-jeddah__card-border">
+                        <div class="why-jeddah__icon">
+                            <img
+                                src="assets/why-cooling.svg"
+                                alt=""
+                                aria-hidden="true"
+                                loading="lazy"
+                                width="48"
+                                height="48"
+                            />
+                        </div>
+                        <h3 class="why-jeddah__card-title" data-i18n="invest.why.cards.coolingTitle">
+                            District Cooling
+                        </h3>
+                        <p class="why-jeddah__card-description" data-i18n="invest.why.cards.coolingDesc">
+                            Efficient district cooling powering a sustainable, future-ready Jeddah Central
+                        </p>
+                    </article>
+
+                    <article class="why-jeddah__card why-jeddah__card-border">
+                        <div class="why-jeddah__icon">
+                            <img
+                                src="assets/why-smart-city.svg"
+                                alt=""
+                                aria-hidden="true"
+                                loading="lazy"
+                                width="48"
+                                height="48"
+                            />
+                        </div>
+                        <h3 class="why-jeddah__card-title" data-i18n="invest.why.cards.smartTitle">
+                            Smart city infrastructure
+                        </h3>
+                        <p class="why-jeddah__card-description" data-i18n="invest.why.cards.smartDesc">
+                            Integrated digital systems with the destination to increase the livability efficiency
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- ════════════════════════════════════════════
+        REGISTER YOUR INTEREST
+════════════════════════════════════════════ -->
+        <section class="register" id="register" aria-labelledby="register-title">
+            <div class="register__container">
+                <!-- Left intro column -->
+                <div class="register__intro">
+                    <h2 class="register__title" id="register-title" data-i18n="invest.register.title">
+                        Register your interest
+                    </h2>
+                    <div class="register__intro-card">
+                        <p class="register__intro-text" data-i18n="invest.register.intro">
+                            Submit your details to express interest in Jeddah Central's investment opportunities.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Right column: form OR success -->
+                <div class="register__panel" id="register-panel">
+                    <!-- ──────────── FORM ──────────── -->
+                    <form class="register-form" id="register-form" novalidate>
+                        <h3 class="register-form__title" data-i18n="invest.register.contactInfo">
+                            Contact Information
+                        </h3>
+
+                        <!-- First / Last name -->
+                        <div class="register-form__row">
+                            <div class="form-field">
+                                <label for="firstName" class="form-field__label">
+                                    <span data-i18n="invest.register.fields.firstName">First Name</span>
+                                    <span class="form-field__required" aria-hidden="true">*</span>
+                                </label>
+                                <input
+                                    type="text"
+                                    id="firstName"
+                                    name="firstName"
+                                    class="form-field__input"
+                                    placeholder="Type here"
+                                    data-i18n-placeholder="invest.register.fields.typeHere"
+                                    autocomplete="given-name"
+                                    required
+                                />
+                                <span class="form-field__error" aria-live="polite"></span>
+                            </div>
+                            <div class="form-field">
+                                <label for="lastName" class="form-field__label">
+                                    <span data-i18n="invest.register.fields.lastName">Last Name</span>
+                                    <span class="form-field__required" aria-hidden="true">*</span>
+                                </label>
+                                <input
+                                    type="text"
+                                    id="lastName"
+                                    name="lastName"
+                                    class="form-field__input"
+                                    placeholder="Type here"
+                                    data-i18n-placeholder="invest.register.fields.typeHere"
+                                    autocomplete="family-name"
+                                    required
+                                />
+                                <span class="form-field__error" aria-live="polite"></span>
+                            </div>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="form-field">
+                            <label for="email" class="form-field__label">
+                                <span data-i18n="invest.register.fields.email">Email</span>
+                                <span class="form-field__required" aria-hidden="true">*</span>
+                            </label>
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                class="form-field__input"
+                                placeholder="you@mail.com"
+                                data-i18n-placeholder="invest.register.fields.emailPlaceholder"
+                                autocomplete="email"
+                                required
+                            />
+                            <span class="form-field__error" aria-live="polite"></span>
+                        </div>
+
+                        <!-- Mobile -->
+                        <div class="form-field">
+                            <label for="mobile" class="form-field__label" data-i18n="invest.register.fields.mobile">
+                                Mobile
+                            </label>
+                            <div class="form-phone">
+                                <span class="form-phone__prefix">+966</span>
+                                <span class="form-phone__divider"></span>
+                                <input
+                                    type="tel"
+                                    id="mobile"
+                                    name="mobile"
+                                    class="form-phone__input"
+                                    placeholder="00 000 0000"
+                                    data-i18n-placeholder="invest.register.fields.phonePlaceholder"
+                                    autocomplete="tel-national"
+                                    inputmode="numeric"
+                                />
+                            </div>
+                            <span class="form-field__error" aria-live="polite"></span>
+                        </div>
+
+                        <!-- Company -->
+                        <div class="form-field">
+                            <label for="company" class="form-field__label">
+                                <span data-i18n="invest.register.fields.company">Company</span>
+                                <span class="form-field__required" aria-hidden="true">*</span>
+                            </label>
+                            <input
+                                type="text"
+                                id="company"
+                                name="company"
+                                class="form-field__input"
+                                placeholder="Type here"
+                                data-i18n-placeholder="invest.register.fields.typeHere"
+                                autocomplete="organization"
+                                required
+                            />
+                            <span class="form-field__error" aria-live="polite"></span>
+                        </div>
+
+                        <!-- Country -->
+                        <div class="form-field">
+                            <label for="country" class="form-field__label">
+                                <span data-i18n="invest.register.fields.country">Country or region</span>
+                                <span class="form-field__required" aria-hidden="true">*</span>
+                            </label>
+                            <select id="country" name="country" class="form-field__select" required>
+                                <option value="" data-i18n="invest.register.fields.selectCountry">
+                                    Select Country or region
+                                </option>
+                                <option value="SA">Saudi Arabia</option>
+                                <option value="AE">United Arab Emirates</option>
+                                <option value="KW">Kuwait</option>
+                                <option value="QA">Qatar</option>
+                                <option value="BH">Bahrain</option>
+                                <option value="OM">Oman</option>
+                                <option value="EG">Egypt</option>
+                                <option value="JO">Jordan</option>
+                                <option value="LB">Lebanon</option>
+                                <option value="GB">United Kingdom</option>
+                                <option value="US">United States</option>
+                                <option value="FR">France</option>
+                                <option value="DE">Germany</option>
+                                <option value="IT">Italy</option>
+                                <option value="IN">India</option>
+                                <option value="other">Other</option>
+                            </select>
+                            <span class="form-field__error" aria-live="polite"></span>
+                        </div>
+
+                        <!-- City -->
+                        <div class="form-field">
+                            <label for="city" class="form-field__label" data-i18n="invest.register.fields.city">
+                                City
+                            </label>
+                            <input
+                                type="text"
+                                id="city"
+                                name="city"
+                                class="form-field__input"
+                                placeholder="Type here"
+                                data-i18n-placeholder="invest.register.fields.typeHere"
+                                autocomplete="address-level2"
+                            />
+                            <span class="form-field__error" aria-live="polite"></span>
+                        </div>
+
+                        <!-- Company Website -->
+                        <div class="form-field">
+                            <label for="website" class="form-field__label" data-i18n="invest.register.fields.website">
+                                Company's Website
+                            </label>
+                            <input
+                                type="url"
+                                id="website"
+                                name="website"
+                                class="form-field__input"
+                                placeholder="Type here"
+                                data-i18n-placeholder="invest.register.fields.typeHere"
+                                autocomplete="url"
+                            />
+                            <span class="form-field__error" aria-live="polite"></span>
+                        </div>
+
+                        <!-- Engagement Type -->
+                        <fieldset class="form-group" data-engagement-wrap>
+                            <legend class="form-group__legend">
+                                <span data-i18n="invest.register.fields.engagementType">Engagement Type</span>
+                                <span class="form-field__required" aria-hidden="true">*</span>
+                            </legend>
+                            <div class="register-form__engagement-grid">
+                                <label class="radio-card">
+                                    <input
+                                        type="radio"
+                                        name="engagementType"
+                                        value="developers"
+                                        class="radio-card__input"
+                                        required
+                                    />
+                                    <span class="radio-card__circle" aria-hidden="true"></span>
+                                    <span class="radio-card__label" data-i18n="invest.register.engagement.developers"
+                                        >Developers</span
+                                    >
+                                </label>
+                                <label class="radio-card">
+                                    <input
+                                        type="radio"
+                                        name="engagementType"
+                                        value="investors"
+                                        class="radio-card__input"
+                                    />
+                                    <span class="radio-card__circle" aria-hidden="true"></span>
+                                    <span class="radio-card__label" data-i18n="invest.register.engagement.investors"
+                                        >Investors</span
+                                    >
+                                </label>
+                                <label class="radio-card">
+                                    <input
+                                        type="radio"
+                                        name="engagementType"
+                                        value="operators"
+                                        class="radio-card__input"
+                                    />
+                                    <span class="radio-card__circle" aria-hidden="true"></span>
+                                    <span class="radio-card__label" data-i18n="invest.register.engagement.operators"
+                                        >Operators</span
+                                    >
+                                </label>
+                                <label class="radio-card">
+                                    <input
+                                        type="radio"
+                                        name="engagementType"
+                                        value="others"
+                                        class="radio-card__input"
+                                    />
+                                    <span class="radio-card__circle" aria-hidden="true"></span>
+                                    <span class="radio-card__label" data-i18n="invest.register.engagement.others"
+                                        >Others</span
+                                    >
+                                </label>
+                            </div>
+                            <span class="form-group__error" aria-live="polite"></span>
+                        </fieldset>
+
+                        <!-- ──────── Conditional: Developers ──────── -->
+                        <div class="register-form__conditional" data-conditional="developers" hidden>
+                            <fieldset class="form-group">
+                                <legend class="form-group__legend" data-i18n="invest.register.fields.interests">
+                                    Interests
+                                </legend>
+                                <p class="form-group__hint" data-i18n="invest.register.fields.interestsHint">
+                                    Please select one or more options
+                                </p>
+                                <label class="form-check">
+                                    <input
+                                        type="checkbox"
+                                        name="interests"
+                                        value="mixed-use"
+                                        class="form-check__input"
+                                    />
+                                    <span class="form-check__box" aria-hidden="true"></span>
+                                    <span class="form-check__label" data-i18n="invest.register.interestOptions.mixedUse"
+                                        >Mixed Use</span
+                                    >
+                                </label>
+                                <label class="form-check">
+                                    <input
+                                        type="checkbox"
+                                        name="interests"
+                                        value="residential"
+                                        class="form-check__input"
+                                    />
+                                    <span class="form-check__box" aria-hidden="true"></span>
+                                    <span
+                                        class="form-check__label"
+                                        data-i18n="invest.register.interestOptions.residential"
+                                        >Residential</span
+                                    >
+                                </label>
+                                <label class="form-check">
+                                    <input
+                                        type="checkbox"
+                                        name="interests"
+                                        value="hospitality"
+                                        class="form-check__input"
+                                    />
+                                    <span class="form-check__box" aria-hidden="true"></span>
+                                    <span
+                                        class="form-check__label"
+                                        data-i18n="invest.register.interestOptions.hospitality"
+                                        >Hospitality</span
+                                    >
+                                </label>
+                                <label class="form-check">
+                                    <input type="checkbox" name="interests" value="other" class="form-check__input" />
+                                    <span class="form-check__box" aria-hidden="true"></span>
+                                    <span class="form-check__label" data-i18n="invest.register.interestOptions.other"
+                                        >Other</span
+                                    >
+                                </label>
+                            </fieldset>
+
+                            <div class="form-field">
+                                <label for="targetSizeDev" class="form-field__label">
+                                    <span data-i18n="invest.register.fields.targetSize"
+                                        >Target Investment Size SAR</span
+                                    >
+                                    <span class="form-field__required" aria-hidden="true">*</span>
+                                </label>
+                                <select id="targetSizeDev" name="targetSize" class="form-field__select" required>
+                                    <option value="" data-i18n="invest.register.fields.select">Select</option>
+                                    <option value="lt-10m">Less than 10M</option>
+                                    <option value="10-50m">10M - 50M</option>
+                                    <option value="50-100m">50M - 100M</option>
+                                    <option value="100-500m">100M - 500M</option>
+                                    <option value="gt-500m">Above 500M</option>
+                                </select>
+                                <span class="form-field__error" aria-live="polite"></span>
+                            </div>
+
+                            <div class="form-field register-form__textarea-wrap">
+                                <label for="descDev" class="form-field__label">
+                                    <span data-i18n="invest.register.fields.description">Interest Description</span>
+                                    <span class="form-field__required" aria-hidden="true">*</span>
+                                </label>
+                                <textarea
+                                    id="descDev"
+                                    name="description"
+                                    class="form-field__textarea"
+                                    placeholder="Please briefly describe your interest or concept ( max 255 characters)"
+                                    data-i18n-placeholder="invest.register.fields.descPlaceholder"
+                                    maxlength="255"
+                                    required
+                                ></textarea>
+                                <span class="form-field__hint">0 / 255</span>
+                                <span class="form-field__error" aria-live="polite"></span>
+                            </div>
+                        </div>
+
+                        <!-- ──────── Conditional: Investors ──────── -->
+                        <div class="register-form__conditional" data-conditional="investors" hidden>
+                            <fieldset class="form-group">
+                                <legend class="form-group__legend" data-i18n="invest.register.fields.interests">
+                                    Interests
+                                </legend>
+                                <p class="form-group__hint" data-i18n="invest.register.fields.interestsHint">
+                                    Please select one or more options
+                                </p>
+                                <label class="form-check">
+                                    <input
+                                        type="checkbox"
+                                        name="interests"
+                                        value="land-purchase"
+                                        class="form-check__input"
+                                    />
+                                    <span class="form-check__box" aria-hidden="true"></span>
+                                    <span
+                                        class="form-check__label"
+                                        data-i18n="invest.register.interestOptions.landPurchase"
+                                        >Land Purchase</span
+                                    >
+                                </label>
+                                <label class="form-check">
+                                    <input
+                                        type="checkbox"
+                                        name="interests"
+                                        value="land-lease"
+                                        class="form-check__input"
+                                    />
+                                    <span class="form-check__box" aria-hidden="true"></span>
+                                    <span
+                                        class="form-check__label"
+                                        data-i18n="invest.register.interestOptions.landLease"
+                                        >Land Lease</span
+                                    >
+                                </label>
+                                <label class="form-check">
+                                    <input
+                                        type="checkbox"
+                                        name="interests"
+                                        value="investment-equity"
+                                        class="form-check__input"
+                                    />
+                                    <span class="form-check__box" aria-hidden="true"></span>
+                                    <span
+                                        class="form-check__label"
+                                        data-i18n="invest.register.interestOptions.investmentEquity"
+                                        >Investment Equity</span
+                                    >
+                                </label>
+                                <label class="form-check">
+                                    <input type="checkbox" name="interests" value="other" class="form-check__input" />
+                                    <span class="form-check__box" aria-hidden="true"></span>
+                                    <span class="form-check__label" data-i18n="invest.register.interestOptions.other"
+                                        >Other</span
+                                    >
+                                </label>
+                            </fieldset>
+
+                            <div class="form-field">
+                                <label for="targetSizeInv" class="form-field__label">
+                                    <span data-i18n="invest.register.fields.targetSize"
+                                        >Target Investment Size SAR</span
+                                    >
+                                    <span class="form-field__required" aria-hidden="true">*</span>
+                                </label>
+                                <select id="targetSizeInv" name="targetSize" class="form-field__select" required>
+                                    <option value="" data-i18n="invest.register.fields.select">Select</option>
+                                    <option value="lt-10m">Less than 10M</option>
+                                    <option value="10-50m">10M - 50M</option>
+                                    <option value="50-100m">50M - 100M</option>
+                                    <option value="100-500m">100M - 500M</option>
+                                    <option value="gt-500m">Above 500M</option>
+                                </select>
+                                <span class="form-field__error" aria-live="polite"></span>
+                            </div>
+
+                            <div class="form-field register-form__textarea-wrap">
+                                <label for="descInv" class="form-field__label">
+                                    <span data-i18n="invest.register.fields.description">Interest Description</span>
+                                    <span class="form-field__required" aria-hidden="true">*</span>
+                                </label>
+                                <textarea
+                                    id="descInv"
+                                    name="description"
+                                    class="form-field__textarea"
+                                    placeholder="Please briefly describe your interest or concept ( max 255 characters)"
+                                    data-i18n-placeholder="invest.register.fields.descPlaceholder"
+                                    maxlength="255"
+                                    required
+                                ></textarea>
+                                <span class="form-field__hint">0 / 255</span>
+                                <span class="form-field__error" aria-live="polite"></span>
+                            </div>
+                        </div>
+
+                        <!-- ──────── Conditional: Operators ──────── -->
+                        <div class="register-form__conditional" data-conditional="operators" hidden>
+                            <fieldset class="form-group">
+                                <legend class="form-group__legend" data-i18n="invest.register.fields.interests">
+                                    Interests
+                                </legend>
+                                <p class="form-group__hint" data-i18n="invest.register.fields.interestsHint">
+                                    Please select one or more options
+                                </p>
+                                <label class="form-check">
+                                    <input
+                                        type="checkbox"
+                                        name="interests"
+                                        value="hospitality"
+                                        class="form-check__input"
+                                    />
+                                    <span class="form-check__box" aria-hidden="true"></span>
+                                    <span
+                                        class="form-check__label"
+                                        data-i18n="invest.register.interestOptions.hospitality"
+                                        >Hospitality</span
+                                    >
+                                </label>
+                                <label class="form-check">
+                                    <input type="checkbox" name="interests" value="retail" class="form-check__input" />
+                                    <span class="form-check__box" aria-hidden="true"></span>
+                                    <span class="form-check__label" data-i18n="invest.register.interestOptions.retail"
+                                        >Retail</span
+                                    >
+                                </label>
+                                <label class="form-check">
+                                    <input type="checkbox" name="interests" value="other" class="form-check__input" />
+                                    <span class="form-check__box" aria-hidden="true"></span>
+                                    <span class="form-check__label" data-i18n="invest.register.interestOptions.other"
+                                        >Other</span
+                                    >
+                                </label>
+                            </fieldset>
+
+                            <div class="form-field register-form__textarea-wrap">
+                                <label for="descOp" class="form-field__label">
+                                    <span data-i18n="invest.register.fields.description">Interest Description</span>
+                                    <span class="form-field__required" aria-hidden="true">*</span>
+                                </label>
+                                <textarea
+                                    id="descOp"
+                                    name="description"
+                                    class="form-field__textarea"
+                                    placeholder="Please briefly describe your interest or concept ( max 255 characters)"
+                                    data-i18n-placeholder="invest.register.fields.descPlaceholder"
+                                    maxlength="255"
+                                    required
+                                ></textarea>
+                                <span class="form-field__hint">0 / 255</span>
+                                <span class="form-field__error" aria-live="polite"></span>
+                            </div>
+                        </div>
+
+                        <!-- ──────── Conditional: Others ──────── -->
+                        <div class="register-form__conditional" data-conditional="others" hidden>
+                            <div class="form-field register-form__textarea-wrap">
+                                <label for="descOther" class="form-field__label">
+                                    <span data-i18n="invest.register.fields.description">Interest Description</span>
+                                    <span class="form-field__required" aria-hidden="true">*</span>
+                                </label>
+                                <textarea
+                                    id="descOther"
+                                    name="description"
+                                    class="form-field__textarea"
+                                    placeholder="Please briefly describe your interest or concept ( max 255 characters)"
+                                    data-i18n-placeholder="invest.register.fields.descPlaceholder"
+                                    maxlength="255"
+                                    required
+                                ></textarea>
+                                <span class="form-field__hint">0 / 255</span>
+                                <span class="form-field__error" aria-live="polite"></span>
+                            </div>
+                        </div>
+
+                        <!-- Consent checkboxes -->
+                        <label class="form-check">
+                            <input type="checkbox" name="acceptTerms" class="form-check__input" required />
+                            <span class="form-check__box" aria-hidden="true"></span>
+                            <span class="form-check__label">
+                                <span data-i18n="invest.register.consent.terms"
+                                    >I confirm that I have read and understood the</span
+                                >
+                                <a href="terms&condition.html" data-i18n="invest.register.consent.termsLink"
+                                    >Terms &amp; Conditions</a
+                                >
+                                <span data-i18n="invest.register.consent.and">and</span>
+                                <a href="cookiesPolicy.html" data-i18n="invest.register.consent.cookiesLink"
+                                    >Cookies Notices</a
+                                >.
+                            </span>
+                        </label>
+
+                        <label class="form-check">
+                            <input type="checkbox" name="acceptEmails" class="form-check__input" />
+                            <span class="form-check__box" aria-hidden="true"></span>
+                            <span class="form-check__label" data-i18n="invest.register.consent.emails">
+                                I accept to receive email communications from Jeddah Central Development Company
+                            </span>
+                        </label>
+
+                        <!-- Submit -->
+                        <button
+                            type="submit"
+                            class="btn btn--outline-gold register-form__submit"
+                            data-i18n="invest.register.submit"
+                        >
+                            Register
+                        </button>
+                    </form>
+
+                    <!-- ──────────── SUCCESS STATE ──────────── -->
+                    <div class="register-success" id="register-success" hidden tabindex="-1">
+                        <div class="register-success__icon" aria-hidden="true">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                                <path
+                                    d="M5 13l4 4L19 7"
+                                    stroke="currentColor"
+                                    stroke-width="2.4"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </svg>
+                        </div>
+                        <h3 class="register-success__title" data-i18n="invest.register.success.title">
+                            Form Submitted Successfully
+                        </h3>
+                        <p class="register-success__text" data-i18n="invest.register.success.text">
+                            Your inquiry has been received.
+                        </p>
+                        <a href="index.html" class="register-success__link">
+                            <span data-i18n="invest.register.success.back">Go Back to Homepage</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path
+                                    d="M7 17L17 7M9 7h8v8"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ════════════════════════════════════════════
+        FOOTER (reused)
+════════════════════════════════════════════ -->
+        <footer class="footer">
+            <div class="footer__top">
+                <a href="/" class="footer__logo-wrap">
+                    <img src="assets/coporate-PNG-01 1.svg" alt="JCDC" width="132" height="72" class="footer__logo" />
+                </a>
+                <div class="footer__right">
+                    <div class="footer__social">
+                        <a aria-label="Facebook" class="social-link">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.33v6.99A10 10 0 0 0 22 12z"
+                                />
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Instagram" class="social-link">
+                            <svg
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                            >
+                                <rect x="3" y="3" width="18" height="18" rx="5" />
+                                <circle cx="12" cy="12" r="4" />
+                                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" />
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="X (Twitter)" class="social-link">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+                                />
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="LinkedIn" class="social-link">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14zM8.34 18.34v-7.4H5.67v7.4h2.67zM7 9.76a1.55 1.55 0 1 0 0-3.1 1.55 1.55 0 0 0 0 3.1zm11.34 8.58v-4.05c0-2.15-1.15-3.15-2.69-3.15-1.24 0-1.8.68-2.11 1.16v-1h-2.67v7.4h2.67v-4.13c0-.9.67-1.49 1.47-1.49.77 0 1.34.44 1.34 1.47v4.15h1.99z"
+                                />
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="YouTube" class="social-link">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M23.5 6.21a3.02 3.02 0 0 0-2.12-2.14C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.38.57A3.02 3.02 0 0 0 .5 6.21 31.48 31.48 0 0 0 0 12a31.48 31.48 0 0 0 .5 5.79 3.02 3.02 0 0 0 2.12 2.14C4.5 20.5 12 20.5 12 20.5s7.5 0 9.38-.57a3.02 3.02 0 0 0 2.12-2.14A31.48 31.48 0 0 0 24 12a31.48 31.48 0 0 0-.5-5.79zM9.6 15.6V8.4l6.24 3.6-6.24 3.6z"
+                                />
+                            </svg>
+                        </a>
+                    </div>
+                    <nav class="footer__nav" aria-label="Footer navigation">
+                        <a href="#" data-i18n="footer.aboutUs">ABOUT US</a>
+                        <a href="#" data-i18n="footer.jcd">JEDDAH CENTRAL DESTINATION</a>
+                        <a href="#" data-i18n="footer.invest">INVEST</a>
+                        <a href="#" data-i18n="footer.newsEvents">NEWS &amp; EVENTS</a>
+                        <a href="#" data-i18n="footer.careers">CAREERS</a>
+                        <a href="#" data-i18n="footer.suppliers">SUPPLIERS</a>
+                        <a href="#" data-i18n="footer.contact">CONTACT US</a>
+                    </nav>
+                </div>
+            </div>
+            <div class="footer__divider"></div>
+            <div class="footer__bottom">
+                <a href="/"> <img src="assets/pif.svg" alt="A PIF Company" class="footer__pif" /></a>
+                <div class="footer__legal">
+                    <a href="#" data-i18n="footer.privacy">Privacy Policy</a>
+                    <a href="#" data-i18n="footer.terms">Terms &amp; Conditions</a>
+                    <a href="#" data-i18n="footer.cookies">Cookies Policy</a>
+                    <span class="footer__copy" data-i18n="footer.copy">© 2025 JCDC. ALL RIGHTS RESERVED</span>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Bundled & minified JS (built from src/js by `npm run build`) -->
+        <script src="dist/main.min.js" defer></script>
+    </body>
+</html>
