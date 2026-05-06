@@ -154,21 +154,6 @@
     }
 }
 
-// ==========================================
-// RTL Footer Fix
-// ==========================================
-
-[dir="rtl"] {
-    .footer {
-        &__right {
-            align-items: flex-start;
-        }
-        &__social {
-            flex-direction: row-reverse;
-        }
-    }
-}
-
 @media (max-width: 767px) {
     .footer {
         padding: 24px 16px;

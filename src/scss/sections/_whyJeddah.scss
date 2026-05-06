@@ -7,7 +7,7 @@
 .why-jeddah {
     width: 100%;
     background: var(--surface-white);
-    padding: 64px 120px;
+    padding: 80px 0;
 
     // ==========================================
     // Container
@@ -16,7 +16,7 @@
         width: 100%;
         max-width: 1440px;
         margin: 0 auto;
-        padding: 0;
+        padding: 0 120px;
     }
 
     // ==========================================
@@ -26,8 +26,8 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 8px;
-        margin-bottom: 56px;
+        gap: 16px;
+        margin-bottom: 64px;
         text-align: center;
     }
 
@@ -58,8 +58,7 @@
     &__grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        padding: 56px;
-        gap: 56px 20px;
+        gap: 48px 32px;
         width: 100%;
     }
 
@@ -72,8 +71,8 @@
         gap: 16px;
 
         // Logical border so it flips automatically in RTL
-
-        padding-inline-start: 20px;
+        border-inline-start: 1px solid var(--secondary-500);
+        padding-inline-start: 24px;
 
         transition: transform var(--dur) var(--ease);
 
@@ -85,42 +84,12 @@
             }
         }
     }
-    &__card-border {
-        position: relative;
-
-        &::before {
-            content: "";
-
-            position: absolute;
-
-            top: 50%;
-
-            inset-inline-start: 0;
-
-            transform: translateY(-50%);
-
-            width: 1px;
-            height: 80px;
-
-            background: var(--secondary-500);
-        }
-    }
-
-    [dir="rtl"] {
-        .why-jeddah {
-            &__card-border::before {
-                inset-inline-start: auto;
-
-                inset-inline-end: 0;
-            }
-        }
-    }
 
     &__icon {
-        width: 72px;
-        height: 72px;
+        width: 48px;
+        height: 48px;
         flex-shrink: 0;
-        margin-bottom: 16px;
+        margin-bottom: 8px;
 
         img,
         svg {
@@ -154,10 +123,10 @@
 // ==========================================
 @media (max-width: 1024px) {
     .why-jeddah {
-        padding: 64px 48px;
+        padding: 64px 0;
 
         &__container {
-            padding: 0;
+            padding: 0 48px;
         }
 
         &__title {
@@ -205,23 +174,7 @@
         }
 
         &__card {
-            position: relative;
             padding-inline-start: 20px;
-        }
-        &__card::before {
-            content: "";
-
-            position: absolute;
-
-            top: 50%;
-            inset-inline-start: 0;
-
-            transform: translateY(-50%);
-
-            width: 1px;
-            height: 80px;
-
-            background: var(--secondary-500);
         }
 
         &__icon {

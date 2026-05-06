@@ -7,7 +7,7 @@
 .how-we-set {
     width: 100%;
     background: var(--surface-white);
-    padding: 64px 120px;
+    padding: 80px 0;
 
     // ==========================================
     // Container
@@ -16,6 +16,7 @@
         width: 100%;
         max-width: 1440px;
         margin: 0 auto;
+        padding: 0 120px;
     }
 
     // ==========================================
@@ -25,7 +26,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 8px;
+        gap: 16px;
         margin-bottom: 56px;
     }
 
@@ -45,7 +46,7 @@
     &__grid {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        gap: 20px;
+        gap: 24px;
         width: 100%;
     }
 
@@ -55,11 +56,11 @@
     &__card {
         background: var(--surface-grey);
         border-radius: 8px;
-        padding: 40px 24px;
+        padding: 40px;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        gap: 40px;
+        gap: 24px;
 
         transition:
             transform var(--dur) var(--ease),
@@ -73,8 +74,8 @@
     }
 
     &__icon {
-        width: 72px;
-        height: 72px;
+        width: 56px;
+        height: 56px;
         display: flex;
         align-items: center;
         justify-content: center;

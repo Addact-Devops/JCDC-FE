@@ -298,17 +298,16 @@
         &::after {
             content: "";
             position: absolute;
-            top: 50%;
-            left: 50%;
             inset: 0;
             margin: auto;
-            width: 9px;
-            height: 5px;
+            width: 10px;
+            height: 6px;
             border-left: 2px solid var(--surface-white);
             border-bottom: 2px solid var(--surface-white);
-            transform: translate(-50%, -60%) rotate(-45deg) scale(0);
+            transform: rotate(-45deg) scale(0);
             transform-origin: center;
             transition: transform var(--dur) var(--ease);
+            margin-top: -2px; // optical centering of the tick
         }
     }
 
