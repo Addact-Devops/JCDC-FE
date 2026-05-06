@@ -87,22 +87,33 @@
     }
     &__card-border {
         position: relative;
+
+        &::before {
+            content: "";
+
+            position: absolute;
+
+            top: 50%;
+
+            inset-inline-start: 0;
+
+            transform: translateY(-50%);
+
+            width: 1px;
+            height: 80px;
+
+            background: var(--secondary-500);
+        }
     }
 
-    &__card-border::before {
-        content: "";
+    [dir="rtl"] {
+        .why-jeddah {
+            &__card-border::before {
+                inset-inline-start: auto;
 
-        position: absolute;
-
-        top: 50%;
-        left: 0;
-
-        transform: translateY(-50%);
-
-        width: 1px;
-        height: 80px;
-
-        background: var(--secondary-500);
+                inset-inline-end: 0;
+            }
+        }
     }
 
     &__icon {
