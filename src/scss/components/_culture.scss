@@ -62,9 +62,9 @@
         cursor: pointer;
 
         // ── Image zoom on hover ──
-        &:hover &-img {
-            transform: scale(1.04);
-        }
+        // &:hover &-img {
+        //     transform: scale(1.04);
+        // }
     }
 
     &__card-img {

@@ -20,7 +20,15 @@
         <header class="navbar" id="navbar">
             <div class="navbar__inner">
                 <a href="/" class="navbar__logo" aria-label="JCDC Home">
-                    <img src="assets/logo.svg" alt="JCDC" width="104" height="56" />
+                    <img class="navbar__logo--light" src="assets/Frame 2.svg" alt="JCDC" width="104" height="56" />
+                    <!-- Dark/colored logo — shown when scrolled -->
+                    <img
+                        class="navbar__logo--dark"
+                        src="assets/coporate-PNG-01 1.svg"
+                        alt="JCDC"
+                        width="104"
+                        height="56"
+                    />
                 </a>
 
                 <nav class="navbar__menu" aria-label="Main navigation">
@@ -257,6 +265,27 @@
                             aria-hidden="true"
                         />
                     </div>
+                    <!-- Background Mobile Vectors -->
+                    <div class="core-values__bg-vectors-mobile">
+                        <img
+                            class="core-values__bg-vector-mobile core-values__bg-vector-mobile--left"
+                            src="assets/vectorLeftMobile.svg"
+                            alt=""
+                            aria-hidden="true"
+                        />
+                        <img
+                            class="core-values__bg-vector-mobile core-values__bg-vector-mobile--middle"
+                            src="assets/vectorBetweenMobile.svg"
+                            alt=""
+                            aria-hidden="true"
+                        />
+                        <img
+                            class="core-values__bg-vector-mobile core-values__bg-vector-mobile--right"
+                            src="assets/vectorRightMobile.svg"
+                            alt=""
+                            aria-hidden="true"
+                        />
+                    </div>
 
                     <!-- Card 1 -->
                     <div class="core-values__card core-values__card--1">
@@ -424,9 +453,9 @@
 ════════════════════════════════════════════ -->
         <footer class="footer">
             <div class="footer__top">
-                <div class="footer__logo-wrap">
-                    <img src="assets/logo.svg" alt="JCDC" width="132" height="72" class="footer__logo" />
-                </div>
+                <a href="/" class="footer__logo-wrap">
+                    <img src="assets/coporate-PNG-01 1.svg" alt="JCDC" width="132" height="72" class="footer__logo" />
+                </a>
                 <div class="footer__right">
                     <div class="footer__social">
                         <a href="#" aria-label="Facebook" class="social-link">
@@ -485,7 +514,7 @@
             </div>
             <div class="footer__divider"></div>
             <div class="footer__bottom">
-                <img src="assets/pif.svg" alt="A PIF Company" class="footer__pif" />
+                <a href="/"> <img src="assets/pif.svg" alt="A PIF Company" class="footer__pif" /></a>
                 <div class="footer__legal">
                     <a href="#" data-i18n="footer.privacy">Privacy Policy</a>
                     <a href="#" data-i18n="footer.terms">Terms &amp; Conditions</a>

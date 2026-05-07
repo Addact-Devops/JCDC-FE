@@ -209,15 +209,61 @@
 
         color: #ffffff;
     }
+    .core-values__bg-vectors-mobile {
+        display: none; // 👈 hidden on desktop
+    }
 
     @media (max-width: 768px) {
+        .core-values__bg-vectors {
+            display: none;
+        }
+        // 👈 show mobile vectors
+        .core-values__bg-vectors-mobile {
+            display: block;
+            position: absolute;
+            inset: 0;
+            z-index: 3;
+            pointer-events: none;
+        }
+
+        .core-values__bg-vector-mobile {
+            position: absolute;
+            opacity: 0.08;
+            mix-blend-mode: screen;
+            object-fit: contain;
+
+            // ── Left vector ──
+            &--left {
+                top: 0;
+                left: 0;
+                width: 180px; // 👈 adjust to match Figma
+                height: auto;
+            }
+
+            // ── Middle vector ──
+            &--middle {
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                width: 100%; // 👈 adjust to match Figma
+                height: auto;
+            }
+
+            // ── Right vector ──
+            &--right {
+                bottom: 0;
+                right: 0;
+                width: 180px; // 👈 adjust to match Figma
+                height: auto;
+            }
+        }
         & {
             max-height: unset;
-            padding: 40px 0;
+            padding: 64px 0;
         }
 
         &__container {
-            padding: 0 24px;
+            padding: 0 16px;
         }
 
         &__header {
@@ -238,7 +284,7 @@
         &__card {
             width: 100%;
             height: auto;
-            padding: 40px 24px;
+            padding: 24px 24px;
 
             flex-direction: row; // ✅ Icon on top, title, description below
             align-items: center; // ✅ Center aligned like design
@@ -267,72 +313,49 @@
         }
 
         &__card-title {
-            font-size: 20px;
-            margin-bottom: 12px;
+            font-size: 30px;
+            font-weight: 500;
+            margin-bottom: 16px;
         }
 
         &__card-description {
             font-size: 16px;
-        }
-
-        &__bg-vector {
-            &--left {
-                width: 350px;
-                height: 440px;
-                top: -30px;
-                left: -20px;
-            }
-
-            &--middle {
-                width: 100%; // ✅ Full width of the grid
-                height: auto; // ✅ Let it scale naturally
-                top: 50%; // ✅ Start from center
-                left: 0; // ✅ Reset left
-                right: 0; // ✅ Reset right
-                transform: translateY(-50%); // ✅ Only vertical centering needed
-                object-fit: contain;
-            }
-
-            &--right {
-                width: 350px;
-                height: 440px;
-                bottom: -150px;
-                top: auto;
-                left: auto;
-                right: -80px;
-            }
+            font-weight: 400;
         }
     }
 
-    @media (max-width: 480px) {
-        & {
-            padding: 32px 0;
-        }
+    // @media (max-width: 480px) {
+    //     & {
+    //         padding: 32px 0;
+    //     }
 
-        &__container {
-            padding: 0 16px;
-        }
+    //     &__container {
+    //         padding: 0 16px;
+    //     }
 
-        &__title {
-            font-size: 28px;
-        }
+    //     &__title {
+    //         font-size: 28px;
+    //     }
 
-        &__card {
-            padding: 32px 20px;
-        }
+    //     &__card {
+    //         gap: 24px;
+    //         padding: 32px 20px;
+    //     }
 
-        &__icon {
-            width: 88px;
-            height: 88px;
-            margin-bottom: 20px;
-        }
+    //     &__icon {
+    //         width: 88px;
+    //         height: 88px;
+    //         margin-bottom: 20px;
+    //     }
 
-        &__card-title {
-            font-size: 18px;
-        }
+    //     &__card-title {
+    //         font-size: 30px;
+    //         font-weight: 500;
+    //     }
 
-        &__card-description {
-            font-size: 15px;
-        }
-    }
+    //     &__card-description {
+    //         font-size: 17px;
+    //         font-weight: 400;
+    //     }
+    // }
 }
