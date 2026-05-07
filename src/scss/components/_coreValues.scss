@@ -82,7 +82,7 @@
         height: 100%;
 
         opacity: 0.08;
-        mix-blend-mode: screen; // ✅ Subtle overlay — adjust to match your design (0.08–0.18)
+        mix-blend-mode: screen; // Subtle overlay — adjust to match your design (0.08–0.18)
 
         object-fit: contain;
 
@@ -210,14 +210,14 @@
         color: #ffffff;
     }
     .core-values__bg-vectors-mobile {
-        display: none; // 👈 hidden on desktop
+        display: none; //  hidden on desktop
     }
 
     @media (max-width: 768px) {
         .core-values__bg-vectors {
             display: none;
         }
-        // 👈 show mobile vectors
+        //  show mobile vectors
         .core-values__bg-vectors-mobile {
             display: block;
             position: absolute;
@@ -236,7 +236,7 @@
             &--left {
                 top: 0;
                 left: 0;
-                width: 180px; // 👈 adjust to match Figma
+                width: 180px; //  adjust to match Figma
                 height: auto;
             }
 
@@ -245,7 +245,7 @@
                 top: 50%;
                 left: 50%;
                 transform: translate(-50%, -50%);
-                width: 100%; // 👈 adjust to match Figma
+                width: 100%; //  adjust to match Figma
                 height: auto;
             }
 
@@ -253,7 +253,7 @@
             &--right {
                 bottom: 0;
                 right: 0;
-                width: 180px; // 👈 adjust to match Figma
+                width: 180px; //  adjust to match Figma
                 height: auto;
             }
         }
@@ -277,7 +277,7 @@
         &__grid {
             width: 100%;
             height: auto;
-            flex-direction: column; // ✅ Cards stack vertically
+            flex-direction: column; // Cards stack vertically
             border-radius: 8px;
         }
 
@@ -286,10 +286,10 @@
             height: auto;
             padding: 24px 24px;
 
-            flex-direction: row; // ✅ Icon on top, title, description below
-            align-items: center; // ✅ Center aligned like design
-            text-align: start; // ✅ Text aligned to the start
-            gap: 0; // ✅ Remove gap, use margins instead
+            flex-direction: row; // Icon on top, title, description below
+            align-items: center; // Center aligned like design
+            text-align: start; //  Text aligned to the start
+            gap: 0; //  Remove gap, use margins instead
 
             &:first-child {
                 border-top-left-radius: 8px;
@@ -308,7 +308,7 @@
             width: 88px;
             height: 88px;
             flex-shrink: 0;
-            margin-bottom: 24px; // ✅ Space below icon
+            margin-bottom: 24px; //  Space below icon
             margin-right: 15px;
         }
 
