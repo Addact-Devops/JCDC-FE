@@ -38,7 +38,7 @@
         overflow: hidden;
 
         svg {
-            transform: translateX(-4px); // 👈 resting position (slightly left)
+            transform: translateX(-4px); // resting position (slightly left)
             transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
@@ -47,7 +47,7 @@
             color: var(--secondary-500);
 
             svg {
-                transform: translateX(4px); // 👈 slides right on hover
+                transform: translateX(4px); // slides right on hover
             }
         }
     }

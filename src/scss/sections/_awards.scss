@@ -44,7 +44,7 @@
     }
 }
 [dir="rtl"] .certs {
-    animation-direction: reverse; // 👈 ONLY THIS
+    animation-direction: reverse; //  ONLY THIS
 }
 
 .cert-item {
@@ -72,7 +72,7 @@
             width: auto;
             height: 120px;
             object-fit: contain;
-            filter: grayscale(1) opacity(0.6); // 👈 grey by default
+            filter: grayscale(1) opacity(0.6); //  grey by default
             transition: filter 0.4s ease;
         }
     }
@@ -91,30 +91,30 @@
         text-align: center;
         line-height: 1.5;
         opacity: 0;
-        transform: translateY(-60px); // 👈 starts below
+        transform: translateY(-60px); //  starts below
         transition: 0.4s ease;
     }
 
     // ── Hover ──
     &:hover {
         .cert-item__logo {
-            transform: translateY(-20px); // 👈 logo slides up
+            transform: translateY(-20px); // logo slides up
 
             img {
-                filter: grayscale(0) opacity(1); // 👈 original color restored
+                filter: grayscale(0) opacity(1); //  original color restored
             }
         }
 
         .cert-item__title {
             opacity: 1;
-            // 👈 title slides up into view
+            //  title slides up into view
         }
     }
 }
 
 @media (max-width: 767px) {
     .awards__slider {
-        // 👈 remove hover pause on mobile
+        //  remove hover pause on mobile
         &:hover .certs {
             animation-play-state: running;
         }
@@ -123,28 +123,28 @@
     .cert-item {
         width: 200px;
         height: 200px;
-        cursor: default; // 👈 no pointer on mobile
+        cursor: default; //  no pointer on mobile
 
-        // 👈 restore original color — no grayscale
+        //  restore original color — no grayscale
         &__logo img {
             filter: grayscale(0) opacity(1);
-            transition: none; // 👈 remove transition
+            transition: none; //  remove transition
         }
 
-        // 👈 hide title completely on mobile
+        //  hide title completely on mobile
         &__title {
-            opacity: 1; // 👈 always shown
-            position: static; // 👈 flows naturally below logo
-            transform: none; // 👈 no transform
+            opacity: 1; //  always shown
+            position: static; //  flows naturally below logo
+            transform: none; //  no transform
             padding: 0 12px;
             margin-top: 12px;
             font-size: 12px;
         }
 
-        // 👈 disable hover effects
+        //  disable hover effects
         &:hover {
             .cert-item__logo {
-                transform: translateY(0); // 👈 no slide up
+                transform: translateY(0); //  no slide up
             }
         }
     }

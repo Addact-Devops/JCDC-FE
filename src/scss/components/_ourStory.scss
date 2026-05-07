@@ -131,7 +131,7 @@ $text-color: rgba(91, 95, 98, 1);
         margin-bottom: 0;
 
         &__content {
-            padding: 64px 16px; // 👈 slightly more padding than 425
+            padding: 64px 16px; //  slightly more padding than 425
             flex-direction: column-reverse;
             align-items: center;
             gap: 40px;
@@ -145,7 +145,7 @@ $text-color: rgba(91, 95, 98, 1);
         }
 
         &__title {
-            font-size: 40px; // 👈 between desktop(48px) and 425(36px)
+            font-size: 40px; //  between desktop(48px) and 425(36px)
         }
 
         &__description {

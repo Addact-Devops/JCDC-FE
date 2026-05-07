@@ -13,10 +13,10 @@ window.Awards = (function () {
             totalWidth += item.offsetWidth + gap;
         });
 
-        // 👈 set on track element directly
+        //  set on track element directly
         track.style.setProperty("--scroll-width", `-${totalWidth}px`);
 
-        // 👈 force animation restart with new value
+        //  force animation restart with new value
         track.style.animation = "none";
         track.offsetHeight; // reflow
         track.style.animation = "";
@@ -29,7 +29,7 @@ window.Awards = (function () {
         const track = root.querySelector(".certs");
         if (!track) return;
 
-        // 👈 wait for all images to load before measuring
+        //  wait for all images to load before measuring
         const images = track.querySelectorAll("img");
         let loaded = 0;
         const total = images.length;
@@ -37,7 +37,7 @@ window.Awards = (function () {
         function onLoad() {
             loaded++;
             if (loaded >= total) {
-                initScrollWidth(root); // 👈 measure after all images loaded
+                initScrollWidth(root); //  measure after all images loaded
             }
         }
 
