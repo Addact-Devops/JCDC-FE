@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en" dir="ltr" data-lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="description"
+            content="Investment Opportunities at Jeddah Central — a strategic hub for residential, hospitality, retail, and mixed-use districts."
+        />
+        <title data-i18n="meta.title">JCDC — Invest</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&family=Cairo:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="dist/main.min.css" />
+    </head>
+
+    <body>
+        <!-- Header -->
+        <header class="navbar" id="navbar">
+            <div class="navbar__inner">
+                <a href="/" class="navbar__logo" aria-label="JCDC Home">
+                    <img class="navbar__logo--light" src="assets/Frame 2.svg" alt="JCDC" width="104" height="56" />
+                    <!-- Dark/colored logo — shown when scrolled -->
+                    <img
+                        class="navbar__logo--dark"
+                        src="assets/coporate-PNG-01 1.svg"
+                        alt="JCDC"
+                        width="104"
+                        height="56"
+                    />
+                </a>
+
+                <nav class="navbar__menu" aria-label="Main navigation">
+                    <a href="#" class="nav-item" data-i18n="nav.about">About us</a>
+
+                    <div class="nav-item nav-item--dropdown" data-dropdown>
+                        <button class="nav-item__btn" aria-haspopup="true" aria-expanded="false" data-dropdown-toggle>
+                            <span data-i18n="nav.jcd">Jeddah Central Destination</span>
+                            <svg
+                                class="chevron"
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                aria-hidden="true"
+                            >
+                                <path
+                                    d="M7 10l5 5 5-5"
+                                    stroke="currentColor"
+                                    stroke-width="1.5"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </svg>
+                        </button>
+                        <div class="dropdown">
+                            <a href="#" data-i18n="nav.dropdown.districts">Districts</a>
+                            <a href="#" data-i18n="nav.dropdown.landmarks">Landmarks</a>
+                            <a href="#" data-i18n="nav.dropdown.attractions">Attractions</a>
+                            <a href="#" data-i18n="nav.dropdown.sustainability">Sustainability</a>
+                        </div>
+                    </div>
+
+                    <a href="#" class="nav-item" data-i18n="nav.invest">Invest</a>
+                    <a href="#" class="nav-item" data-i18n="nav.news">News &amp; Events</a>
+                    <a href="#" class="nav-item" data-i18n="nav.careers">Careers</a>
+                    <a href="#" class="nav-item" data-i18n="nav.suppliers">Suppliers</a>
+                    <a href="#" class="nav-item" data-i18n="nav.contact">Contact Us</a>
+                </nav>
+
+                <div class="navbar__actions">
+                    <button class="icon-btn" aria-label="Search">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.5" />
+                            <path
+                                d="M16.5 16.5L21 21"
+                                stroke="currentColor"
+                                stroke-width="1.5"
+                                stroke-linecap="round"
+                            />
+                        </svg>
+                    </button>
+                    <button class="lang-btn" id="lang-btn" aria-label="Switch language">
+                        <span class="lang-btn__text" data-i18n="nav.lang">العربية</span>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5" />
+                            <path
+                                d="M12 3c-2.5 2-4 5.5-4 9s1.5 7 4 9c2.5-2 4-5.5 4-9s-1.5-7-4-9z"
+                                stroke="currentColor"
+                                stroke-width="1.5"
+                            />
+                            <path d="M3 9h18M3 15h18" stroke="currentColor" stroke-width="1.5" />
+                        </svg>
+                    </button>
+                    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+                        <span></span><span></span><span></span>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="banner" aria-labelledby="invest-hero-title">
+            <div class="hero__media">
+                <img src="assets/herobanner.svg" alt="" loading="eager" />
+            </div>
+            <div class="banner__overlay"></div>
+
+            <div class="container">
+                <div class="banner__content">
+                    <!-- Jeddah Central destination logo -->
+                    <div class="banner__logo">
+                        <img src="assets/jcdc-logo--white.ashx.svg" alt="Jeddah Central" />
+                    </div>
+
+                    <!-- Breadcrumbs -->
+                    <nav class="banner__breadcrumbs" aria-label="Breadcrumb">
+                        <a href="index.html" class="banner__breadcrumbs-link" data-i18n="invest.breadcrumb.home"
+                            >Home</a
+                        >
+                        <span class="banner__breadcrumbs-separator" aria-hidden="true">›</span>
+                        <span class="banner__breadcrumbs-current" data-i18n="invest.breadcrumb.current"
+                            >Jeddah Central Destination</span
+                        >
+                    </nav>
+
+                    <div>
+                        <!-- Title -->
+                        <h1 class="banner__title" id="invest-hero-title" data-i18n="invest.hero.title">
+                            Welcome to Jeddah Central
+                        </h1>
+
+                        <!-- Description -->
+                        <p class="banner__description" data-i18n="invest.hero.description">
+                            Jeddah Central spans 5.7 million square meters of Red Sea waterfront, anchored by four
+                            architectural landmarks. The destination will feature ten attractions across six districts
+                            that combine culture, hospitality, retail, and waterfront recreation for residents and
+                            visitors.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- about -->
+
+        <section class="jcdc">
+            <div class="jcdc__content">
+                <!-- Left Content -->
+                <div class="jcdc__left">
+                    <h2 class="jcdc__title">
+                        In the heart of Jeddah, Jeddah Central offers easy access to the city’s major points of interest
+                    </h2>
+                </div>
+
+                <!-- Right Map -->
+                <div class="jcdc__media">
+                    <img src="./assets/image 141.svg" alt="Jeddah Central Map" class="jcdc__image" />
+                </div>
+            </div>
+        </section>
+
+        <!-- Invest in Jeddah Central -->
+        <section class="invest-central">
+            <div class="invest-central__content">
+                <!-- Image -->
+                <div class="invest-central__image-wrapper">
+                    <img
+                        src="assets/our story.webp"
+                        alt="Invest in Jeddah Central"
+                        loading="lazy"
+                        class="invest-central__image"
+                    />
+                </div>
+
+                <!-- Content -->
+                <div class="invest-central__text">
+                    <h2 class="invest-central__title" data-i18n="invest.title">Invest in Jeddah Central</h2>
+
+                    <div class="invest-central__description">
+                        <p data-i18n="invest.description">
+                            Discover investment opportunities in residential, hospitality, retail, wellness, and
+                            commercial within a world-class waterfront destination. Anchored by iconic landmarks, Jeddah
+                            Central delivers sustainable growth and long-term value.
+                        </p>
+
+                        <a href="#" class="btn-text">
+                            <span data-i18n="invest.cta"> Register your Interest </span>
+
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="btn-text__arrow">
+                                <path
+                                    d="M7 17L17 7M9 7h8v8"
+                                    stroke="currentColor"
+                                    stroke-width="1.5"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer__top">
+                <a href="/" class="footer__logo-wrap">
+                    <img src="assets/coporate-PNG-01 1.svg" alt="JCDC" width="132" height="72" class="footer__logo" />
+                </a>
+                <div class="footer__right">
+                    <div class="footer__social">
+                        <a href="#" aria-label="Facebook" class="social-link">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.33v6.99A10 10 0 0 0 22 12z"
+                                />
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="Instagram" class="social-link">
+                            <svg
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                            >
+                                <rect x="3" y="3" width="18" height="18" rx="5" />
+                                <circle cx="12" cy="12" r="4" />
+                                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" />
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="X (Twitter)" class="social-link">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+                                />
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="LinkedIn" class="social-link">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14zM8.34 18.34v-7.4H5.67v7.4h2.67zM7 9.76a1.55 1.55 0 1 0 0-3.1 1.55 1.55 0 0 0 0 3.1zm11.34 8.58v-4.05c0-2.15-1.15-3.15-2.69-3.15-1.24 0-1.8.68-2.11 1.16v-1h-2.67v7.4h2.67v-4.13c0-.9.67-1.49 1.47-1.49.77 0 1.34.44 1.34 1.47v4.15h1.99z"
+                                />
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="YouTube" class="social-link">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M23.5 6.21a3.02 3.02 0 0 0-2.12-2.14C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.38.57A3.02 3.02 0 0 0 .5 6.21 31.48 31.48 0 0 0 0 12a31.48 31.48 0 0 0 .5 5.79 3.02 3.02 0 0 0 2.12 2.14C4.5 20.5 12 20.5 12 20.5s7.5 0 9.38-.57a3.02 3.02 0 0 0 2.12-2.14A31.48 31.48 0 0 0 24 12a31.48 31.48 0 0 0-.5-5.79zM9.6 15.6V8.4l6.24 3.6-6.24 3.6z"
+                                />
+                            </svg>
+                        </a>
+                    </div>
+                    <nav class="footer__nav" aria-label="Footer navigation">
+                        <a href="#" data-i18n="footer.aboutUs">ABOUT US</a>
+                        <a href="#" data-i18n="footer.jcd">JEDDAH CENTRAL DESTINATION</a>
+                        <a href="#" data-i18n="footer.invest">INVEST</a>
+                        <a href="#" data-i18n="footer.newsEvents">NEWS &amp; EVENTS</a>
+                        <a href="#" data-i18n="footer.careers">CAREERS</a>
+                        <a href="#" data-i18n="footer.suppliers">SUPPLIERS</a>
+                        <a href="#" data-i18n="footer.contact">CONTACT US</a>
+                    </nav>
+                </div>
+            </div>
+            <div class="footer__divider"></div>
+            <div class="footer__bottom">
+                <a href="/"> <img src="assets/pif.svg" alt="A PIF Company" class="footer__pif" /></a>
+                <div class="footer__legal">
+                    <a href="#" data-i18n="footer.privacy">Privacy Policy</a>
+                    <a href="#" data-i18n="footer.terms">Terms &amp; Conditions</a>
+                    <a href="#" data-i18n="footer.cookies">Cookies Policy</a>
+                    <span class="footer__copy" data-i18n="footer.copy">© 2025 JCDC. ALL RIGHTS RESERVED</span>
+                </div>
+            </div>
+        </footer>
+        <script src="dist/main.min.js" defer></script>
+    </body>
+</html>
