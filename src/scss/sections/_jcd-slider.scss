@@ -43,19 +43,30 @@
     // ── Content (absolute, left-anchored per Figma) ─────
     &__content {
         position: absolute;
+
         inset-block-start: 50%;
         inset-inline-start: 5.33%;
         inset-inline-end: 44.33%;
+
         transform: translateY(-50%);
+
         z-index: 3;
-        display: flex;
+
+        display: none; // 👈 IMPORTANT
+
         flex-direction: column;
-        align-items: flex-start; // so button hugs its own content
+        align-items: flex-start;
+
         gap: 24px;
+
         color: var(--text-50);
 
         [dir="rtl"] & {
             text-align: right;
+        }
+
+        &.is-active {
+            display: flex; // 👈 IMPORTANT
         }
     }
 

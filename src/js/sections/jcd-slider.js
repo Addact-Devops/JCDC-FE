@@ -1,58 +1,52 @@
-/**
- * sections/jcd-slider.js — Discover Jeddah Central
- *
- * Auto-cycles through multiple background images while the foreground
- * text/button stays static. No arrows, no dots — fully automatic.
- *
- * Each <div class="jcd-slider__bg" data-bg="url(...)"> is a slide.
- * The first one with class "is-active" starts visible; the others
- * fade in on a timer.
- */
 window.JCDSlider = (function () {
     "use strict";
 
-    const INTERVAL_MS = 2000; // how long each image stays
-    const tickers = new WeakMap();
+    const INTERVAL_MS = 2000;
 
     function init(root) {
         root = root || document.querySelector(".jcd-slider");
+
         if (!root) return;
 
-        // Stop any pre-existing ticker on this root (e.g. hot-reload)
-        if (tickers.has(root)) {
-            clearInterval(tickers.get(root));
-            tickers.delete(root);
+        const slides = root.querySelectorAll(".jcd-slider__bg");
+        const contents = root.querySelectorAll(".jcd-slider__content");
+
+        console.log("contentsa", contents);
+
+        let current = 0;
+
+        // reset all
+        function reset() {
+            slides.forEach((slide) => {
+                slide.classList.remove("is-active");
+            });
+
+            contents.forEach((content) => {
+                content.classList.remove("is-active");
+            });
         }
 
-        const slides = Array.from(root.querySelectorAll(".jcd-slider__bg"));
-        if (slides.length < 2) return;
+        // show current
+        function show(index) {
+            reset();
 
-        // Ensure exactly one slide starts active
-        let active = slides.findIndex((s) => s.classList.contains("is-active"));
-        if (active < 0) {
-            active = 0;
-            slides[0].classList.add("is-active");
+            slides[index].classList.add("is-active");
+            contents[index].classList.add("is-active");
         }
 
-        function advance() {
-            slides[active].classList.remove("is-active");
-            active = (active + 1) % slides.length;
-            slides[active].classList.add("is-active");
-        }
+        // initial
+        show(current);
 
-        const timerId = setInterval(advance, INTERVAL_MS);
-        tickers.set(root, timerId);
+        // autoplay
+        setInterval(() => {
+            current++;
 
-        // Pause when tab is hidden to save CPU
-        const onVisibility = () => {
-            if (document.hidden) {
-                clearInterval(tickers.get(root));
-            } else {
-                const newId = setInterval(advance, INTERVAL_MS);
-                tickers.set(root, newId);
+            if (current >= slides.length) {
+                current = 0;
             }
-        };
-        document.addEventListener("visibilitychange", onVisibility);
+
+            show(current);
+        }, INTERVAL_MS);
     }
 
     if (document.readyState === "loading") {
