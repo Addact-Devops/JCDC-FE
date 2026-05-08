@@ -16,9 +16,10 @@
         />
         <link rel="stylesheet" href="dist/main.min.css" />
     </head>
-
     <body>
-        <!-- Header -->
+        <!-- ════════════════════════════════════════════
+        HEADER (reused)
+════════════════════════════════════════════ -->
         <header class="navbar" id="navbar">
             <div class="navbar__inner">
                 <a href="/" class="navbar__logo" aria-label="JCDC Home">
@@ -122,165 +123,35 @@
                             >Home</a
                         >
                         <span class="banner__breadcrumbs-separator" aria-hidden="true">›</span>
-                        <span class="banner__breadcrumbs-current">Jeddah Central Destination</span>
+                        <a href="index.html" class="banner__breadcrumbs-link">Jeddah Central Destination</a>
+                        <span class="banner__breadcrumbs-separator" aria-hidden="true">›</span>
+                        <span class="banner__breadcrumbs-current" data-i18n="invest.breadcrumb.current"
+                            >Sustainability</span
+                        >
                     </nav>
 
                     <div>
                         <!-- Title -->
-                        <h1 class="banner__title">Welcome to Jeddah Central</h1>
+                        <h1 class="banner__title">Sustainability at Jeddah Central</h1>
 
                         <!-- Description -->
                         <p class="banner__description">
-                            Jeddah Central spans 5.7 million square meters of Red Sea waterfront, anchored by four
-                            architectural landmarks. The destination will feature ten attractions across six districts
-                            that combine culture, hospitality, retail, and waterfront recreation for residents and
-                            visitors.
+                            From master planning to operations, we're guided by environmental balance, social
+                            responsibility, and economic resilience; aligned with Vision 2030 and global standards like
+                            LEED, GRI, and ISO.
                         </p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- about -->
-        <section class="jcdc">
-            <div class="jcdc__content">
-                <!-- Left Content -->
-                <div class="jcdc__left">
-                    <h2 class="jcdc__title">
-                        In the heart of Jeddah, Jeddah Central offers easy access to the city’s major points of interest
-                    </h2>
-                </div>
-
-                <!-- Right Map -->
-                <div class="jcdc__media">
-                    <img src="./assets/image 141.svg" alt="Jeddah Central Map" class="jcdc__image" />
-                </div>
-            </div>
-        </section>
-
-        <!-- attractions for evryone section -->
-        <section class="attractions">
-            <div class="attractions__container">
+        <!-- Sustainability Pillars -->
+        <section class="sustainability-pillars" aria-labelledby="sustainability-pillars-title">
+            <div class="sustainability-pillars__container">
                 <!-- Header -->
-                <div class="attractions__header">
-                    <h2 class="attractions__title" data-i18n="attractions.title">Attractions For Everyone</h2>
-
-                    <p class="attractions__desc" data-i18n="attractions.desc">
-                        From vibrant public spaces to shoreline escapes, Jeddah Central’s attractions are made for
-                        discovery, connection, and enjoyment; open to all.
-                    </p>
-
-                    <div class="section-pattern" aria-hidden="true">
-                        <img
-                            src="./assets/pattern1.svg"
-                            alt=""
-                            width="22.46"
-                            height="21.3"
-                            style="position: absolute; left: 0; top: 1.35px"
-                        />
-                        <img
-                            src="./assets/pattern2.svg"
-                            alt=""
-                            width="25.29"
-                            height="24"
-                            style="position: absolute; left: 25.73px; top: 0"
-                        />
-                        <img
-                            src="./assets/pattern1.svg"
-                            alt=""
-                            width="22.46"
-                            height="21.3"
-                            style="position: absolute; left: 52px; top: 1.35px"
-                        />
-                        <img
-                            src="./assets/pattern2.svg"
-                            alt=""
-                            width="25.29"
-                            height="24"
-                            style="position: absolute; left: 78px; top: 0"
-                        />
-                    </div>
-                </div>
-
-                <!-- Grid -->
-                <div class="attractions__grid">
-                    <!-- Card 1 -->
-                    <article class="attractions__card">
-                        <img src="./assets/Image 1.svg" alt="Entertainment Pier" class="attractions__card-img" />
-
-                        <div class="attractions__overlay"></div>
-
-                        <div class="attractions__content">
-                            <h3 class="attractions__card-title" data-i18n="attractions.cards.0.title">
-                                Entertainment Pier
-                            </h3>
-                            <p class="attractions__card-desc" data-i18n="attractions.cards.0.desc">
-                                Jeddah’s main marine gateway for regional and international cruise travel.
-                            </p>
-                        </div>
-                    </article>
-
-                    <!-- Card 2 -->
-                    <article class="attractions__card">
-                        <img src="./assets/Mask group1.svg" alt="Public Beach" class="attractions__card-img" />
-
-                        <div class="attractions__overlay"></div>
-
-                        <div class="attractions__content">
-                            <h3 class="attractions__card-title" data-i18n="attractions.cards.1.title">Public Beach</h3>
-                            <p class="attractions__card-desc" data-i18n="attractions.cards.1.desc">
-                                A 2.1 km stretch of accessible coastline for families, tourists, and residents.
-                            </p>
-                        </div>
-                    </article>
-
-                    <!-- Card 3 -->
-                    <article class="attractions__card">
-                        <img src="./assets/Mask group 2.svg" alt="Cruise Terminal" class="attractions__card-img" />
-
-                        <div class="attractions__overlay"></div>
-
-                        <div class="attractions__content">
-                            <h3 class="attractions__card-title" data-i18n="attractions.cards.2.title">
-                                Cruise Terminal
-                            </h3>
-                            <p class="attractions__card-desc" data-i18n="attractions.cards.2.desc">
-                                A premier Red Sea gateway linking Jeddah to regional and international cruise routes.
-                            </p>
-                        </div>
-                    </article>
-                </div>
-
-                <!-- Bottom CTA -->
-                <div class="attractions__bottom">
-                    <a href="#" class="btn-text">
-                        <span data-i18n="attractions.cta"> Explore more attractions </span>
-
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="btn-text__arrow">
-                            <path
-                                d="M7 17L17 7M9 7h8v8"
-                                stroke="currentColor"
-                                stroke-width="1.5"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                            />
-                        </svg>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- Sustainability by Design -->
-        <section class="sustainability-design" aria-labelledby="sustainability-design-title">
-            <div class="sustainability-design__container">
-                <!-- Header -->
-                <div class="sustainability-design__header">
-                    <h2
-                        class="sustainability-design__title"
-                        id="sustainability-design-title"
-                        data-i18n="sustainability.title"
-                    >
-                        Sustainability by Design
+                <div class="sustainability-pillars__header">
+                    <h2 class="sustainability-pillars__title" id="sustainability-pillars-title">
+                        Our Sustainability Pillars
                     </h2>
 
                     <div class="section-pattern" aria-hidden="true">
@@ -291,6 +162,7 @@
                             height="21.3"
                             style="position: absolute; left: 0px; top: 1.35px"
                         />
+
                         <img
                             src="./assets/pattern2.svg"
                             alt=""
@@ -298,6 +170,7 @@
                             height="24"
                             style="position: absolute; left: 25.73px; top: 0px"
                         />
+
                         <img
                             src="./assets/pattern1.svg"
                             alt=""
@@ -305,6 +178,7 @@
                             height="21.3"
                             style="position: absolute; left: 52px; top: 1.35px"
                         />
+
                         <img
                             src="./assets/pattern2.svg"
                             alt=""
@@ -316,161 +190,326 @@
                 </div>
 
                 <!-- Grid -->
-                <div class="sustainability-design__grid">
+                <div class="sustainability-pillars__grid">
                     <!-- Card 1 -->
-                    <article class="sustainability-design__card">
-                        <div class="sustainability-design__icon">
+                    <article class="sustainability-pillars__card">
+                        <div class="sustainability-pillars__icon">
                             <img src="./assets/Coral.svg" alt="" />
                         </div>
 
-                        <div class="sustainability-design__content">
-                            <h3 class="sustainability-design__card-title">Coral Reef Restoration</h3>
+                        <div class="sustainability-pillars__content">
+                            <h3 class="sustainability-pillars__card-title">Environmental Balance</h3>
 
-                            <p class="sustainability-design__card-description">
-                                Regenerating Red Sea ecosystems in collaboration with marine partners.
+                            <p class="sustainability-pillars__card-description">
+                                Use resources wisely, protect biodiversity, and reduce emissions.
                             </p>
                         </div>
                     </article>
 
                     <!-- Card 2 -->
-                    <article class="sustainability-design__card">
-                        <div class="sustainability-design__icon">
-                            <img src="./assets/Public Realm.svg" alt="" />
+                    <article class="sustainability-pillars__card">
+                        <div class="sustainability-pillars__icon">
+                            <img src="./assets/Active Cooling.svg" alt="" />
                         </div>
 
-                        <div class="sustainability-design__content">
-                            <h3 class="sustainability-design__card-title">40% Public Realm</h3>
+                        <div class="sustainability-pillars__content">
+                            <h3 class="sustainability-pillars__card-title">Social & Cultural Wellbeing</h3>
 
-                            <p class="sustainability-design__card-description">
-                                Nearly half of the destination is dedicated to parks, open space, and walkability.
+                            <p class="sustainability-pillars__card-description">
+                                Support local communities, celebrate heritage, and design for inclusion.
                             </p>
                         </div>
                     </article>
 
                     <!-- Card 3 -->
-                    <article class="sustainability-design__card">
-                        <div class="sustainability-design__icon">
+                    <article class="sustainability-pillars__card">
+                        <div class="sustainability-pillars__icon">
                             <img src="./assets/Shading.svg" alt="" />
                         </div>
 
-                        <div class="sustainability-design__content">
-                            <h3 class="sustainability-design__card-title">Shading Systems</h3>
+                        <div class="sustainability-pillars__content">
+                            <h3 class="sustainability-pillars__card-title">Resilient Urban Design</h3>
 
-                            <p class="sustainability-design__card-description">
-                                Designed facades and passive cooling to reduce heat exposure and energy use.
+                            <p class="sustainability-pillars__card-description">
+                                Build safe, flexible, and climate-responsive public spaces.
                             </p>
                         </div>
                     </article>
 
                     <!-- Card 4 -->
-                    <article class="sustainability-design__card">
-                        <div class="sustainability-design__icon">
-                            <img src="./assets/Smart Mobility.svg" alt="" />
-                        </div>
-
-                        <div class="sustainability-design__content">
-                            <h3 class="sustainability-design__card-title">Smart Mobility</h3>
-
-                            <p class="sustainability-design__card-description">
-                                An integrated system of transit options, marina links, and reduced carbon impact.
-                            </p>
-                        </div>
-                    </article>
-
-                    <!-- Card 5 -->
-                    <article class="sustainability-design__card">
-                        <div class="sustainability-design__icon">
+                    <article class="sustainability-pillars__card">
+                        <div class="sustainability-pillars__icon">
                             <img src="./assets/Smart Infra.svg" alt="" />
                         </div>
 
-                        <div class="sustainability-design__content">
-                            <h3 class="sustainability-design__card-title">Smart Infrastructure</h3>
+                        <div class="sustainability-pillars__content">
+                            <h3 class="sustainability-pillars__card-title">Strong Governance</h3>
 
-                            <p class="sustainability-design__card-description">
-                                Energy-efficient utilities and digital systems for long-term performance.
+                            <p class="sustainability-pillars__card-description">
+                                Operate with transparency, ethical procurement, and clear oversight.
                             </p>
                         </div>
                     </article>
-
-                    <!-- Card 6 -->
-                    <article class="sustainability-design__card">
-                        <div class="sustainability-design__icon">
-                            <img src="./assets/Active Cooling.svg" alt="" />
-                        </div>
-
-                        <div class="sustainability-design__content">
-                            <h3 class="sustainability-design__card-title">Active Outdoor Cooling</h3>
-
-                            <p class="sustainability-design__card-description">
-                                Wind management, shaded walkways, and cooling systems in specific areas for year-round
-                                comfort.
-                            </p>
-                        </div>
-                    </article>
-                </div>
-
-                <!-- CTA -->
-                <div class="sustainability-design__cta">
-                    <a href="#" class="btn-text">
-                        <span>Our Sustainability Promise</span>
-
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <path
-                                d="M7 17L17 7M9 7h8v8"
-                                stroke="currentColor"
-                                stroke-width="1.5"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                            />
-                        </svg>
-                    </a>
                 </div>
             </div>
         </section>
 
-        <!-- Invest in Jeddah Central -->
-        <section class="invest-central">
-            <div class="invest-central__content">
-                <!-- Image -->
-                <div class="invest-central__image-wrapper">
-                    <img
-                        src="assets/our story.webp"
-                        alt="Invest in Jeddah Central"
-                        loading="lazy"
-                        class="invest-central__image"
-                    />
+        <!-- Environmental Impact -->
+        <section class="environmental-impact">
+            <div class="environmental-impact__container">
+                <!-- Header -->
+                <div class="environmental-impact__header">
+                    <h2 class="environmental-impact__title">Environmental Impact by the Numbers</h2>
+
+                    <div class="section-pattern" aria-hidden="true">
+                        <img
+                            src="./assets/pattern1.svg"
+                            alt=""
+                            width="22.46"
+                            height="21.3"
+                            style="position: absolute; left: 0px; top: 1.35px"
+                        />
+
+                        <img
+                            src="./assets/pattern2.svg"
+                            alt=""
+                            width="25.29"
+                            height="24"
+                            style="position: absolute; left: 25.73px; top: 0px"
+                        />
+
+                        <img
+                            src="./assets/pattern1.svg"
+                            alt=""
+                            width="22.46"
+                            height="21.3"
+                            style="position: absolute; left: 52px; top: 1.35px"
+                        />
+
+                        <img
+                            src="./assets/pattern2.svg"
+                            alt=""
+                            width="25.29"
+                            height="24"
+                            style="position: absolute; left: 78px; top: 0px"
+                        />
+                    </div>
                 </div>
 
-                <!-- Content -->
-                <div class="invest-central__text">
-                    <h2 class="invest-central__title" data-i18n="invest.title">Invest in Jeddah Central</h2>
+                <!-- Stats -->
+                <div class="environmental-impact__stats">
+                    <div class="environmental-impact__item">
+                        <h3 class="environmental-impact__number">80%</h3>
 
-                    <div class="invest-central__description">
-                        <p data-i18n="invest.description">
-                            Discover investment opportunities in residential, hospitality, retail, wellness, and
-                            commercial within a world-class waterfront destination. Anchored by iconic landmarks, Jeddah
-                            Central delivers sustainable growth and long-term value.
+                        <p class="environmental-impact__text">
+                            of construction materials recycled or sustainably sourced
                         </p>
+                    </div>
 
-                        <a href="#" class="btn-text">
-                            <span data-i18n="invest.cta"> Register your Interest </span>
+                    <div class="environmental-impact__divider"></div>
 
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="btn-text__arrow">
-                                <path
-                                    d="M7 17L17 7M9 7h8v8"
-                                    stroke="currentColor"
-                                    stroke-width="1.5"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                />
-                            </svg>
-                        </a>
+                    <div class="environmental-impact__item">
+                        <h3 class="environmental-impact__number">100%</h3>
+
+                        <p class="environmental-impact__text">wastewater treatment and reuse systems implemented</p>
+                    </div>
+
+                    <div class="environmental-impact__divider"></div>
+
+                    <div class="environmental-impact__item">
+                        <h3 class="environmental-impact__number">13</h3>
+
+                        <p class="environmental-impact__text">environmental emergency preparedness drills completed</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Footer -->
+        <!-- Sustainability in Action -->
+        <section class="sustainability-action" aria-labelledby="sustainability-action-title">
+            <div class="sustainability-action__container">
+                <!-- Header -->
+                <div class="sustainability-action__header">
+                    <h2 class="sustainability-action__title" id="sustainability-action-title">
+                        Sustainability in Action
+                    </h2>
+
+                    <div class="section-pattern" aria-hidden="true">
+                        <img
+                            src="./assets/pattern1.svg"
+                            alt=""
+                            width="22.46"
+                            height="21.3"
+                            style="position: absolute; left: 0px; top: 1.35px"
+                        />
+
+                        <img
+                            src="./assets/pattern2.svg"
+                            alt=""
+                            width="25.29"
+                            height="24"
+                            style="position: absolute; left: 25.73px; top: 0px"
+                        />
+
+                        <img
+                            src="./assets/pattern1.svg"
+                            alt=""
+                            width="22.46"
+                            height="21.3"
+                            style="position: absolute; left: 52px; top: 1.35px"
+                        />
+
+                        <img
+                            src="./assets/pattern2.svg"
+                            alt=""
+                            width="25.29"
+                            height="24"
+                            style="position: absolute; left: 78px; top: 0px"
+                        />
+                    </div>
+                </div>
+
+                <!-- Grid -->
+                <div class="sustainability-action__grid">
+                    <!-- Card 1 -->
+                    <article class="sustainability-action__card">
+                        <img src="./assets/Image 1.svg" alt="Coral Cove" class="sustainability-action__card-img" />
+
+                        <div class="sustainability-action__overlay"></div>
+
+                        <div class="sustainability-action__card-content">
+                            <h3 class="sustainability-action__card-title">Coral Cove</h3>
+
+                            <p class="sustainability-action__card-desc">
+                                Jeddah’s main marine gateway for regional and international cruise travel.
+                            </p>
+                        </div>
+                    </article>
+
+                    <!-- Card 2 -->
+                    <article class="sustainability-action__card">
+                        <img
+                            src="./assets/Mask group1.svg"
+                            alt="Climate-Responsive Streetscapes"
+                            class="sustainability-action__card-img"
+                        />
+
+                        <div class="sustainability-action__overlay"></div>
+
+                        <div class="sustainability-action__card-content">
+                            <h3 class="sustainability-action__card-title">Climate-Responsive Streetscapes</h3>
+
+                            <p class="sustainability-action__card-desc">
+                                City blocks and walkways feature solar-reflective materials, passive cooling strategies,
+                                and native planting.
+                            </p>
+                        </div>
+                    </article>
+
+                    <!-- Card 3 -->
+                    <article class="sustainability-action__card">
+                        <img
+                            src="./assets/Mask group 2.svg"
+                            alt="Coastal Conservation Zones"
+                            class="sustainability-action__card-img"
+                        />
+
+                        <div class="sustainability-action__overlay"></div>
+
+                        <div class="sustainability-action__card-content">
+                            <h3 class="sustainability-action__card-title">Coastal Conservation Zones</h3>
+
+                            <p class="sustainability-action__card-desc">
+                                Natural coastal buffers and green infrastructure help protect marine ecosystems and
+                                reduce heat exposure.
+                            </p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Global Environmental Standards -->
+        <section class="global-standards">
+            <div class="global-standards__container">
+                <div class="global-standards__header">
+                    <h2 class="global-standards__title">Global Environmental Standards</h2>
+
+                    <p class="global-standards__desc">
+                        Jeddah Central Development Company maintains internationally recognized environmental
+                        certifications reflecting our commitment to sustainable development and responsible resource
+                        management.
+                    </p>
+
+                    <div class="section-pattern" aria-hidden="true">
+                        <img
+                            src="./assets/pattern1.svg"
+                            alt=""
+                            width="22.46"
+                            height="21.3"
+                            style="position: absolute; left: 0px; top: 1.35px"
+                        />
+
+                        <img
+                            src="./assets/pattern2.svg"
+                            alt=""
+                            width="25.29"
+                            height="24"
+                            style="position: absolute; left: 25.73px; top: 0px"
+                        />
+
+                        <img
+                            src="./assets/pattern1.svg"
+                            alt=""
+                            width="22.46"
+                            height="21.3"
+                            style="position: absolute; left: 52px; top: 1.35px"
+                        />
+
+                        <img
+                            src="./assets/pattern2.svg"
+                            alt=""
+                            width="25.29"
+                            height="24"
+                            style="position: absolute; left: 78px; top: 0px"
+                        />
+                    </div>
+                </div>
+
+                <div class="global-standards__grid">
+                    <article class="global-standards__item">
+                        <div class="global-standards__logo">
+                            <img src="./assets/usgcb.svg" alt="LEED Gold USGBC" />
+                        </div>
+
+                        <p class="global-standards__label">
+                            LEED Gold Certification for sustainable development excellence
+                        </p>
+                    </article>
+
+                    <article class="global-standards__item">
+                        <div class="global-standards__logo">
+                            <img src="./assets/iso.svg" alt="ISO 14001:2015" />
+                        </div>
+
+                        <p class="global-standards__label">Environmental Management Systems ISO 14001:2015</p>
+                    </article>
+
+                    <article class="global-standards__item">
+                        <div class="global-standards__logo">
+                            <img src="./assets/usgcb.svg" alt="Sustainable Building" />
+                        </div>
+
+                        <p class="global-standards__label">
+                            Sustainable Building Standards & Green Construction Practices
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <!-- ════════════════════════════════════════════
+        FOOTER (reused)
+        ════════════════════════════════════════════ -->
         <footer class="footer">
             <div class="footer__top">
                 <a href="/" class="footer__logo-wrap">
@@ -543,6 +582,7 @@
                 </div>
             </div>
         </footer>
+        <!-- Bundled & minified JS (built from src/js by `npm run build`) -->
         <script src="dist/main.min.js" defer></script>
     </body>
 </html>
