@@ -80,11 +80,11 @@
             transform var(--dur) var(--ease),
             box-shadow var(--dur) var(--ease);
 
-        &:hover {
-            transform: translateY(-4px);
+        // &:hover {
+        //     transform: translateY(-4px);
 
-            box-shadow: 0 12px 30px rgba(0, 118, 169, 0.08);
-        }
+        //     box-shadow: 0 12px 30px rgba(0, 118, 169, 0.08);
+        // }
     }
 
     &__icon {
