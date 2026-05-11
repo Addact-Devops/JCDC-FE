@@ -451,6 +451,9 @@
         <!-- ════════════════════════════════════════════
         LEADERSHIP — Board of Directors / Executive Management
         Two tabs; Executive cards open a modal with full bio.
+        All markup is STATIC; JS only toggles classes.
+        Localized strings use data-i18n / data-i18n-alt attributes so the
+        existing i18n engine swaps text on EN ↔ AR switch.
 ════════════════════════════════════════════ -->
         <section class="leadership" id="leadership" aria-labelledby="leadership-heading">
             <div class="leadership__container">
@@ -487,7 +490,7 @@
                     </div>
                 </div>
 
-                <!-- Board of Directors panel -->
+                <!-- ═══ Board of Directors panel ═══ -->
                 <div
                     class="leadership__panel leadership__panel--active"
                     id="leadership-panel-board"
@@ -495,11 +498,166 @@
                     aria-labelledby="leadership-tab-board"
                     data-leader-panel="board"
                 >
-                    <div class="leadership__chairman" id="leadership-chairman"></div>
-                    <div class="leadership__grid" id="leadership-directors"></div>
+                    <!-- Chairman card (full-width) -->
+                    <div class="leadership__chairman">
+                        <div class="leadership__chairman-photo">
+                            <img
+                                src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Crown_Prince_Mohammed_bin_Salman_in_2024.png/640px-Crown_Prince_Mohammed_bin_Salman_in_2024.png"
+                                alt="His Royal Highness Prince Mohammed bin Salman bin Abdulaziz Al-Saud"
+                                data-i18n-alt="leadership.chairman.name"
+                                loading="lazy"
+                                width="280"
+                                height="280"
+                            />
+                        </div>
+                        <div class="leadership__chairman-body">
+                            <p class="leadership__chairman-role" data-i18n="leadership.chairman.role">Chairman</p>
+                            <h3 class="leadership__chairman-name" data-i18n="leadership.chairman.name">His Royal Highness Prince Mohammed bin Salman bin Abdulaziz Al-Saud</h3>
+                            <p class="leadership__chairman-description" data-i18n="leadership.chairman.description">Crown Prince / Prime Minister / Chairman of the Council of Economic and Development Affairs / Chairman of the Public Investment Fund / Chairman of Jeddah Central Development Company</p>
+                        </div>
+                    </div>
+
+                    <!-- Directors grid -->
+                    <div class="leadership__grid">
+                        <article class="leader-card">
+                            <div class="leader-card__photo">
+                                <img
+                                    src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=85"
+                                    alt="His Royal Highness Prince Saud bin Mishaal bin Abdulaziz Al-Saud"
+                                    data-i18n-alt="leadership.directors.0.name"
+                                    loading="lazy"
+                                    width="320"
+                                    height="320"
+                                />
+                            </div>
+                            <p class="leader-card__role" data-i18n="leadership.directors.0.role">Board Member</p>
+                            <h3 class="leader-card__name" data-i18n="leadership.directors.0.name">His Royal Highness Prince Saud bin Mishaal bin Abdulaziz Al-Saud</h3>
+                            <p class="leader-card__description" data-i18n="leadership.directors.0.description">Deputy Governor of Makkah Region</p>
+                        </article>
+                        <article class="leader-card">
+                            <div class="leader-card__photo">
+                                <img
+                                    src="https://images.unsplash.com/photo-1556157382-97eda2d62296?w=600&q=85"
+                                    alt="H.E. Ahmed Aqil Al-Khateeb"
+                                    data-i18n-alt="leadership.directors.1.name"
+                                    loading="lazy"
+                                    width="320"
+                                    height="320"
+                                />
+                            </div>
+                            <p class="leader-card__role" data-i18n="leadership.directors.1.role">Board Member & Secretary General</p>
+                            <h3 class="leader-card__name" data-i18n="leadership.directors.1.name">H.E. Ahmed Aqil Al-Khateeb</h3>
+                            <p class="leader-card__description" data-i18n="leadership.directors.1.description">Minister of Tourism</p>
+                        </article>
+                        <article class="leader-card">
+                            <div class="leader-card__photo">
+                                <img
+                                    src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&q=85"
+                                    alt="H.E. Ibrahim Muhammad AlSultan"
+                                    data-i18n-alt="leadership.directors.2.name"
+                                    loading="lazy"
+                                    width="320"
+                                    height="320"
+                                />
+                            </div>
+                            <p class="leader-card__role" data-i18n="leadership.directors.2.role">Board Member</p>
+                            <h3 class="leader-card__name" data-i18n="leadership.directors.2.name">H.E. Ibrahim Muhammad AlSultan</h3>
+                            <p class="leader-card__description" data-i18n="leadership.directors.2.description">Minister of State and Member of the Council of Ministers</p>
+                        </article>
+                        <article class="leader-card">
+                            <div class="leader-card__photo">
+                                <img
+                                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=600&q=85"
+                                    alt="H.E. Dr. Majid Abdullah Al-Kasabi"
+                                    data-i18n-alt="leadership.directors.3.name"
+                                    loading="lazy"
+                                    width="320"
+                                    height="320"
+                                />
+                            </div>
+                            <p class="leader-card__role" data-i18n="leadership.directors.3.role">Board Member</p>
+                            <h3 class="leader-card__name" data-i18n="leadership.directors.3.name">H.E. Dr. Majid Abdullah Al-Kasabi</h3>
+                            <p class="leader-card__description" data-i18n="leadership.directors.3.description">Minister of Commerce</p>
+                        </article>
+                        <article class="leader-card">
+                            <div class="leader-card__photo">
+                                <img
+                                    src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&q=85"
+                                    alt="H.E. Saleh Ali Al-Turki"
+                                    data-i18n-alt="leadership.directors.4.name"
+                                    loading="lazy"
+                                    width="320"
+                                    height="320"
+                                />
+                            </div>
+                            <p class="leader-card__role" data-i18n="leadership.directors.4.role">Board Member</p>
+                            <h3 class="leader-card__name" data-i18n="leadership.directors.4.name">H.E. Saleh Ali Al-Turki</h3>
+                            <p class="leader-card__description" data-i18n="leadership.directors.4.description">Mayor of Jeddah Municipality</p>
+                        </article>
+                        <article class="leader-card">
+                            <div class="leader-card__photo">
+                                <img
+                                    src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&q=85"
+                                    alt="Mr. Sabty Bin Sulaiman Al Sabty"
+                                    data-i18n-alt="leadership.directors.5.name"
+                                    loading="lazy"
+                                    width="320"
+                                    height="320"
+                                />
+                            </div>
+                            <p class="leader-card__role" data-i18n="leadership.directors.5.role">Board Member</p>
+                            <h3 class="leader-card__name" data-i18n="leadership.directors.5.name">Mr. Sabty Bin Sulaiman Al Sabty</h3>
+                            <p class="leader-card__description" data-i18n="leadership.directors.5.description">ZATCA Board Member</p>
+                        </article>
+                        <article class="leader-card">
+                            <div class="leader-card__photo">
+                                <img
+                                    src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=85"
+                                    alt="Read Ibrahim Al Mudaiheem"
+                                    data-i18n-alt="leadership.directors.6.name"
+                                    loading="lazy"
+                                    width="320"
+                                    height="320"
+                                />
+                            </div>
+                            <p class="leader-card__role" data-i18n="leadership.directors.6.role">Board Member</p>
+                            <h3 class="leader-card__name" data-i18n="leadership.directors.6.name">Read Ibrahim Al Mudaiheem</h3>
+                            <p class="leader-card__description" data-i18n="leadership.directors.6.description">JedCo Chairman</p>
+                        </article>
+                        <article class="leader-card">
+                            <div class="leader-card__photo">
+                                <img
+                                    src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&q=85"
+                                    alt="Aiman Mohammed AlMudaifer"
+                                    data-i18n-alt="leadership.directors.7.name"
+                                    loading="lazy"
+                                    width="320"
+                                    height="320"
+                                />
+                            </div>
+                            <p class="leader-card__role" data-i18n="leadership.directors.7.role">Board Member</p>
+                            <h3 class="leader-card__name" data-i18n="leadership.directors.7.name">Aiman Mohammed AlMudaifer</h3>
+                            <p class="leader-card__description" data-i18n="leadership.directors.7.description">PIF Representative</p>
+                        </article>
+                        <article class="leader-card">
+                            <div class="leader-card__photo">
+                                <img
+                                    src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&q=85"
+                                    alt="Mr. Naif Al Hamdan"
+                                    data-i18n-alt="leadership.directors.8.name"
+                                    loading="lazy"
+                                    width="320"
+                                    height="320"
+                                />
+                            </div>
+                            <p class="leader-card__role" data-i18n="leadership.directors.8.role">Board Member</p>
+                            <h3 class="leader-card__name" data-i18n="leadership.directors.8.name">Mr. Naif Al Hamdan</h3>
+                            <p class="leader-card__description" data-i18n="leadership.directors.8.description">PIF Representative</p>
+                        </article>
+                    </div>
                 </div>
 
-                <!-- Executive Management panel -->
+                <!-- ═══ Executive Management panel ═══ -->
                 <div
                     class="leadership__panel"
                     id="leadership-panel-executive"
@@ -508,12 +666,136 @@
                     data-leader-panel="executive"
                     hidden
                 >
-                    <div class="leadership__grid" id="leadership-executives"></div>
+                    <div class="leadership__grid">
+                        <button
+                            type="button"
+                            class="leader-card leader-card--executive"
+                            data-leader-exec="0"
+                            aria-haspopup="dialog"
+                            aria-controls="leader-modal"
+                        >
+                            <span class="leader-card__photo">
+                                <img
+                                    src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=85"
+                                    alt="Ahmed A. Al Sulaim"
+                                    data-i18n-alt="leadership.executives.0.name"
+                                    loading="lazy"
+                                    width="320"
+                                    height="320"
+                                />
+                            </span>
+                            <span class="leader-card__role" data-i18n="leadership.executives.0.role">Chief Executive Officer</span>
+                            <span class="leader-card__name" data-i18n="leadership.executives.0.name">Ahmed A. Al Sulaim</span>
+                        </button>
+                        <button
+                            type="button"
+                            class="leader-card leader-card--executive"
+                            data-leader-exec="1"
+                            aria-haspopup="dialog"
+                            aria-controls="leader-modal"
+                        >
+                            <span class="leader-card__photo">
+                                <img
+                                    src="https://images.unsplash.com/photo-1556157382-97eda2d62296?w=600&q=85"
+                                    alt="Ahmed O. AlAredhi"
+                                    data-i18n-alt="leadership.executives.1.name"
+                                    loading="lazy"
+                                    width="320"
+                                    height="320"
+                                />
+                            </span>
+                            <span class="leader-card__role" data-i18n="leadership.executives.1.role">Chief Customer Experience Officer</span>
+                            <span class="leader-card__name" data-i18n="leadership.executives.1.name">Ahmed O. AlAredhi</span>
+                        </button>
+                        <button
+                            type="button"
+                            class="leader-card leader-card--executive"
+                            data-leader-exec="2"
+                            aria-haspopup="dialog"
+                            aria-controls="leader-modal"
+                        >
+                            <span class="leader-card__photo">
+                                <img
+                                    src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&q=85"
+                                    alt="Mardi Al Mansour"
+                                    data-i18n-alt="leadership.executives.2.name"
+                                    loading="lazy"
+                                    width="320"
+                                    height="320"
+                                />
+                            </span>
+                            <span class="leader-card__role" data-i18n="leadership.executives.2.role">Chief Delivery Officer</span>
+                            <span class="leader-card__name" data-i18n="leadership.executives.2.name">Mardi Al Mansour</span>
+                        </button>
+                        <button
+                            type="button"
+                            class="leader-card leader-card--executive"
+                            data-leader-exec="3"
+                            aria-haspopup="dialog"
+                            aria-controls="leader-modal"
+                        >
+                            <span class="leader-card__photo">
+                                <img
+                                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=600&q=85"
+                                    alt="Wissam Fasih Al-Din"
+                                    data-i18n-alt="leadership.executives.3.name"
+                                    loading="lazy"
+                                    width="320"
+                                    height="320"
+                                />
+                            </span>
+                            <span class="leader-card__role" data-i18n="leadership.executives.3.role">Chief Financial Officer</span>
+                            <span class="leader-card__name" data-i18n="leadership.executives.3.name">Wissam Fasih Al-Din</span>
+                        </button>
+                        <button
+                            type="button"
+                            class="leader-card leader-card--executive"
+                            data-leader-exec="4"
+                            aria-haspopup="dialog"
+                            aria-controls="leader-modal"
+                        >
+                            <span class="leader-card__photo">
+                                <img
+                                    src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&q=85"
+                                    alt="Omar Al Senayen"
+                                    data-i18n-alt="leadership.executives.4.name"
+                                    loading="lazy"
+                                    width="320"
+                                    height="320"
+                                />
+                            </span>
+                            <span class="leader-card__role" data-i18n="leadership.executives.4.role">Chief of Staff</span>
+                            <span class="leader-card__name" data-i18n="leadership.executives.4.name">Omar Al Senayen</span>
+                        </button>
+                        <button
+                            type="button"
+                            class="leader-card leader-card--executive"
+                            data-leader-exec="5"
+                            aria-haspopup="dialog"
+                            aria-controls="leader-modal"
+                        >
+                            <span class="leader-card__photo">
+                                <img
+                                    src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&q=85"
+                                    alt="Amer Albahiti"
+                                    data-i18n-alt="leadership.executives.5.name"
+                                    loading="lazy"
+                                    width="320"
+                                    height="320"
+                                />
+                            </span>
+                            <span class="leader-card__role" data-i18n="leadership.executives.5.role">Chief Support Functions Officer</span>
+                            <span class="leader-card__name" data-i18n="leadership.executives.5.name">Amer Albahiti</span>
+                        </button>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Executive bio modal (single instance, reused) -->
+        <!-- ═══ Executive bio modal ═══
+             Single modal element with one pre-rendered content block per
+             executive. JS toggles which content block is active (no HTML
+             injection). The dialog frame / close button are shared. -->
         <div
             class="leader-modal"
             id="leader-modal"
@@ -523,20 +805,157 @@
             aria-labelledby="leader-modal-name"
         >
             <div class="leader-modal__dialog">
-                <button class="leader-modal__close" type="button" aria-label="Close" data-leader-modal-close>
+                <button
+                    class="leader-modal__close"
+                    type="button"
+                    aria-label="Close"
+                    data-leader-modal-close
+                >
                     <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
                         <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
                     </svg>
                 </button>
-                <div class="leader-modal__photo">
-                    <img id="leader-modal-photo" src="" alt="" />
+
+                <div
+                    class="leader-modal__content leader-modal__content--active"
+                    data-leader-modal-content="0"
+                >
+                    <div class="leader-modal__photo">
+                        <img
+                            src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=85"
+                            alt="Ahmed A. Al Sulaim"
+                            data-i18n-alt="leadership.executives.0.name"
+                            loading="lazy"
+                        />
+                    </div>
+                    <div class="leader-modal__body">
+                        <p class="leader-modal__role" data-i18n="leadership.executives.0.role">Chief Executive Officer</p>
+                        <h3
+                            class="leader-modal__name"
+                            id="leader-modal-name-0"
+                            data-i18n="leadership.executives.0.name"
+                        >Ahmed A. Al Sulaim</h3>
+                        <p class="leader-modal__description" data-i18n="leadership.executives.0.description">Eng. Ahmed has over 30 years of leadership experience in strategic project delivery and national transformation programs. He holds a degree in Computer Engineering and an executive certification from Harvard University, and has held executive roles at ARAMCO and the Public Investment Fund. As Chief Executive Officer of JCDC, he sets the company's strategic direction, driving its vision to create world-class destinations that deliver lasting economic, cultural, and social impact.</p>
+                    </div>
                 </div>
-                <div class="leader-modal__body">
-                    <p class="leader-modal__role" id="leader-modal-role"></p>
-                    <h3 class="leader-modal__name" id="leader-modal-name"></h3>
-                    <p class="leader-modal__description" id="leader-modal-description"></p>
+
+                <div
+                    class="leader-modal__content"
+                    data-leader-modal-content="1"
+                >
+                    <div class="leader-modal__photo">
+                        <img
+                            src="https://images.unsplash.com/photo-1556157382-97eda2d62296?w=600&q=85"
+                            alt="Ahmed O. AlAredhi"
+                            data-i18n-alt="leadership.executives.1.name"
+                            loading="lazy"
+                        />
+                    </div>
+                    <div class="leader-modal__body">
+                        <p class="leader-modal__role" data-i18n="leadership.executives.1.role">Chief Customer Experience Officer</p>
+                        <h3
+                            class="leader-modal__name"
+                            id="leader-modal-name-1"
+                            data-i18n="leadership.executives.1.name"
+                        >Ahmed O. AlAredhi</h3>
+                        <p class="leader-modal__description" data-i18n="leadership.executives.1.description">Eng. Ahmed has over 26 years of experience in strategic operations and urban planning. He was previously the CEO of Makkah Region Development Authority and has held senior leadership roles in complex development projects. At JCDC, he leads the creation of guest-centric operational models that reflect the cultural and social fabric of Jeddah Central Destination, ensuring operational excellence.</p>
+                    </div>
+                </div>
+
+                <div
+                    class="leader-modal__content"
+                    data-leader-modal-content="2"
+                >
+                    <div class="leader-modal__photo">
+                        <img
+                            src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&q=85"
+                            alt="Mardi Al Mansour"
+                            data-i18n-alt="leadership.executives.2.name"
+                            loading="lazy"
+                        />
+                    </div>
+                    <div class="leader-modal__body">
+                        <p class="leader-modal__role" data-i18n="leadership.executives.2.role">Chief Delivery Officer</p>
+                        <h3
+                            class="leader-modal__name"
+                            id="leader-modal-name-2"
+                            data-i18n="leadership.executives.2.name"
+                        >Mardi Al Mansour</h3>
+                        <p class="leader-modal__description" data-i18n="leadership.executives.2.description">Eng. Mardi has over 30 years of experience leading and delivering major development projects across the Kingdom. He has held senior roles at ARAMCO, specializing in integrated planning and risk management. At JCDC, he leads the delivery of the Jeddah Central destination and its key landmarks, ensuring the highest standards of quality, efficiency, and sustainability.</p>
+                    </div>
+                </div>
+
+                <div
+                    class="leader-modal__content"
+                    data-leader-modal-content="3"
+                >
+                    <div class="leader-modal__photo">
+                        <img
+                            src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=600&q=85"
+                            alt="Wissam Fasih Al-Din"
+                            data-i18n-alt="leadership.executives.3.name"
+                            loading="lazy"
+                        />
+                    </div>
+                    <div class="leader-modal__body">
+                        <p class="leader-modal__role" data-i18n="leadership.executives.3.role">Chief Financial Officer</p>
+                        <h3
+                            class="leader-modal__name"
+                            id="leader-modal-name-3"
+                            data-i18n="leadership.executives.3.name"
+                        >Wissam Fasih Al-Din</h3>
+                        <p class="leader-modal__description" data-i18n="leadership.executives.3.description">Wissam has over 20 years of experience in the banking sector. He holds a master's degree in Business Administration and has held prominent financial leadership roles, including Chief Financial Officer at AlAhli Capital. He has also participated in international executive leadership programs. At JCDC, he leads the company's financial strategy to ensure its sustainability and long-term growth.</p>
+                    </div>
+                </div>
+
+                <div
+                    class="leader-modal__content"
+                    data-leader-modal-content="4"
+                >
+                    <div class="leader-modal__photo">
+                        <img
+                            src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&q=85"
+                            alt="Omar Al Senayen"
+                            data-i18n-alt="leadership.executives.4.name"
+                            loading="lazy"
+                        />
+                    </div>
+                    <div class="leader-modal__body">
+                        <p class="leader-modal__role" data-i18n="leadership.executives.4.role">Chief of Staff</p>
+                        <h3
+                            class="leader-modal__name"
+                            id="leader-modal-name-4"
+                            data-i18n="leadership.executives.4.name"
+                        >Omar Al Senayen</h3>
+                        <p class="leader-modal__description" data-i18n="leadership.executives.4.description">Omar has over 30 years of experience in strategy development, corporate governance, and human resources. He holds a bachelor's degree in Information Systems and has held executive roles at ARAMCO and the Public Investment Fund. At JCDC, he leads the company's strategy, enterprise performance, and governance matrix to ensure institutional resilience and forward-looking execution.</p>
+                    </div>
+                </div>
+
+                <div
+                    class="leader-modal__content"
+                    data-leader-modal-content="5"
+                >
+                    <div class="leader-modal__photo">
+                        <img
+                            src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&q=85"
+                            alt="Amer Albahiti"
+                            data-i18n-alt="leadership.executives.5.name"
+                            loading="lazy"
+                        />
+                    </div>
+                    <div class="leader-modal__body">
+                        <p class="leader-modal__role" data-i18n="leadership.executives.5.role">Chief Support Functions Officer</p>
+                        <h3
+                            class="leader-modal__name"
+                            id="leader-modal-name-5"
+                            data-i18n="leadership.executives.5.name"
+                        >Amer Albahiti</h3>
+                        <p class="leader-modal__description" data-i18n="leadership.executives.5.description">Amer has over 20 years of experience in human capital management and organizational transformation. He holds a bachelor's degree in Marketing and has held senior roles at leading companies such as Tasnee and Unilever across local and international markets. At JCDC, he leads the company's support functions, enabling a high-performing organizational infrastructure that drives efficiency and long-term operational excellence.</p>
+                    </div>
                 </div>
             </div>
+        </div>
+
         </div>
 
         <!-- ════════════════════════════════════════════
