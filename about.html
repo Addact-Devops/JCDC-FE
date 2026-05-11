@@ -449,6 +449,238 @@
         </section>
 
         <!-- ════════════════════════════════════════════
+        LEADERSHIP — Board of Directors / Executive Management
+        Two tabs; Executive cards open a modal with full bio.
+════════════════════════════════════════════ -->
+        <section class="leadership" id="leadership" aria-labelledby="leadership-heading">
+            <div class="leadership__container">
+                <h2 id="leadership-heading" class="visually-hidden">Leadership</h2>
+
+                <!-- Tab switcher -->
+                <div class="leadership__tabs-wrap">
+                    <div class="leadership__tabs" role="tablist" aria-label="Leadership">
+                        <button
+                            class="leadership__tab leadership__tab--active"
+                            type="button"
+                            role="tab"
+                            id="leadership-tab-board"
+                            aria-controls="leadership-panel-board"
+                            aria-selected="true"
+                            data-leader-tab="board"
+                            data-i18n="leadership.tabs.board"
+                        >
+                            Board of Directors
+                        </button>
+                        <button
+                            class="leadership__tab"
+                            type="button"
+                            role="tab"
+                            id="leadership-tab-executive"
+                            aria-controls="leadership-panel-executive"
+                            aria-selected="false"
+                            tabindex="-1"
+                            data-leader-tab="executive"
+                            data-i18n="leadership.tabs.executive"
+                        >
+                            Executive Management
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Board of Directors panel -->
+                <div
+                    class="leadership__panel leadership__panel--active"
+                    id="leadership-panel-board"
+                    role="tabpanel"
+                    aria-labelledby="leadership-tab-board"
+                    data-leader-panel="board"
+                >
+                    <div class="leadership__chairman" id="leadership-chairman"></div>
+                    <div class="leadership__grid" id="leadership-directors"></div>
+                </div>
+
+                <!-- Executive Management panel -->
+                <div
+                    class="leadership__panel"
+                    id="leadership-panel-executive"
+                    role="tabpanel"
+                    aria-labelledby="leadership-tab-executive"
+                    data-leader-panel="executive"
+                    hidden
+                >
+                    <div class="leadership__grid" id="leadership-executives"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Executive bio modal (single instance, reused) -->
+        <div
+            class="leader-modal"
+            id="leader-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-hidden="true"
+            aria-labelledby="leader-modal-name"
+        >
+            <div class="leader-modal__dialog">
+                <button class="leader-modal__close" type="button" aria-label="Close" data-leader-modal-close>
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                    </svg>
+                </button>
+                <div class="leader-modal__photo">
+                    <img id="leader-modal-photo" src="" alt="" />
+                </div>
+                <div class="leader-modal__body">
+                    <p class="leader-modal__role" id="leader-modal-role"></p>
+                    <h3 class="leader-modal__name" id="leader-modal-name"></h3>
+                    <p class="leader-modal__description" id="leader-modal-description"></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ════════════════════════════════════════════
+        AWARDS & CERTIFICATIONS (copied from homepage)
+════════════════════════════════════════════ -->
+        <section class="awards">
+            <header class="section-title">
+                <h2 data-i18n="awards.title">Awards &amp; Certifications</h2>
+                <div class="section-pattern">
+                    <img
+                        src="./assets/pattern1.svg"
+                        alt=""
+                        width="22.46"
+                        height="21.3"
+                        style="position: absolute; left: 0px; top: 1.35px"
+                    />
+                    <img
+                        src="./assets/pattern2.svg"
+                        alt=""
+                        width="25.29"
+                        height="24"
+                        style="position: absolute; left: 25.73px; top: 0px"
+                    />
+                    <img
+                        src="./assets/pattern1.svg"
+                        alt=""
+                        width="22.46"
+                        height="21.3"
+                        style="position: absolute; left: 52px; top: 1.35px"
+                    />
+                    <img
+                        src="./assets/pattern2.svg"
+                        alt=""
+                        width="25.29"
+                        height="24"
+                        style="position: absolute; left: 78px; top: 0px"
+                    />
+                </div>
+            </header>
+            <div class="awards__slider">
+                <div class="certs">
+                    <div class="cert-item">
+                        <div class="cert-item__logo">
+                            <img src="./assets/efqm-logo-2024 1.svg" alt="EFQM" />
+                        </div>
+                        <p class="cert-item__title">Recognized as A 4-star organization using the EFQM Model</p>
+                    </div>
+                    <div class="cert-item">
+                        <div class="cert-item__logo">
+                            <img src="./assets/usgcb.svg" alt="LEED Gold USGBC" />
+                        </div>
+                        <p class="cert-item__title">LEED Gold Pre-Certificate</p>
+                    </div>
+                    <div class="cert-item">
+                        <div class="cert-item__logo">
+                            <img src="./assets/iso.svg" alt="ISO 9001:2015" />
+                        </div>
+                        <p class="cert-item__title">Quality Management Systems</p>
+                    </div>
+                    <div class="cert-item">
+                        <div class="cert-item__logo">
+                            <img src="./assets/iso.svg" alt="ISO 14001:2015" />
+                        </div>
+                        <p class="cert-item__title">Environmental Management Systems</p>
+                    </div>
+                    <div class="cert-item">
+                        <div class="cert-item__logo">
+                            <img src="./assets/iso.svg" alt="ISO 14001:2015" />
+                        </div>
+                        <p class="cert-item__title">Environmental Management Systems</p>
+                    </div>
+                    <div class="cert-item">
+                        <div class="cert-item__logo">
+                            <img src="./assets/iso.svg" alt="ISO 14001:2015" />
+                        </div>
+                        <p class="cert-item__title">Environmental Management Systems</p>
+                    </div>
+                    <div class="cert-item">
+                        <div class="cert-item__logo">
+                            <img src="./assets/efqm-logo-2024 1.svg" alt="EFQM" />
+                        </div>
+                        <p class="cert-item__title">Recognized as A 4-star organization using the EFQM Model</p>
+                    </div>
+                    <div class="cert-item">
+                        <div class="cert-item__logo">
+                            <img src="./assets/usgcb.svg" alt="LEED Gold USGBC" />
+                        </div>
+                        <p class="cert-item__title">LEED Gold Pre-Certificate</p>
+                    </div>
+
+                    <!-- Duplicates for seamless marquee loop (hidden from a11y tree) -->
+                    <div class="cert-item" aria-hidden="true">
+                        <div class="cert-item__logo">
+                            <img src="./assets/efqm-logo-2024 1.svg" alt="" />
+                        </div>
+                        <p class="cert-item__title">Recognized as A 4-star organization using the EFQM Model</p>
+                    </div>
+                    <div class="cert-item" aria-hidden="true">
+                        <div class="cert-item__logo">
+                            <img src="./assets/usgcb.svg" alt="" />
+                        </div>
+                        <p class="cert-item__title">LEED Gold Pre-Certificate</p>
+                    </div>
+                    <div class="cert-item" aria-hidden="true">
+                        <div class="cert-item__logo">
+                            <img src="./assets/iso.svg" alt="" />
+                        </div>
+                        <p class="cert-item__title">Quality Management Systems</p>
+                    </div>
+                    <div class="cert-item" aria-hidden="true">
+                        <div class="cert-item__logo">
+                            <img src="./assets/iso.svg" alt="" />
+                        </div>
+                        <p class="cert-item__title">Environmental Management Systems</p>
+                    </div>
+                    <div class="cert-item" aria-hidden="true">
+                        <div class="cert-item__logo">
+                            <img src="./assets/iso.svg" alt="" />
+                        </div>
+                        <p class="cert-item__title">Environmental Management Systems</p>
+                    </div>
+                    <div class="cert-item" aria-hidden="true">
+                        <div class="cert-item__logo">
+                            <img src="./assets/iso.svg" alt="" />
+                        </div>
+                        <p class="cert-item__title">Environmental Management Systems</p>
+                    </div>
+                    <div class="cert-item" aria-hidden="true">
+                        <div class="cert-item__logo">
+                            <img src="./assets/efqm-logo-2024 1.svg" alt="" />
+                        </div>
+                        <p class="cert-item__title">Recognized as A 4-star organization using the EFQM Model</p>
+                    </div>
+                    <div class="cert-item" aria-hidden="true">
+                        <div class="cert-item__logo">
+                            <img src="./assets/usgcb.svg" alt="" />
+                        </div>
+                        <p class="cert-item__title">LEED Gold Pre-Certificate</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ════════════════════════════════════════════
         FOOTER
 ════════════════════════════════════════════ -->
         <footer class="footer">

@@ -1,0 +1,475 @@
+// ==========================================================================
+//  JCD Map (jcdc.html) — Interactive 6-District Map
+//  Figma desktop: 7357:32925   |   Figma mobile: 9745:19182
+//
+//  Architecture
+//  ------------
+//   .jcd-map                    full-bleed dark section
+//      └─ .jcd-map__container  centered, max-width 1440, flex row
+//           ├─ .jcd-map__viewport  (left/top)
+//           │     ├─ .jcd-map__stage   <- the part that scales on zoom
+//           │     │     ├─ <img .jcd-map__bg>     satellite layer
+//           │     │     ├─ <svg .jcd-map__svg>    dim-mask + district paths
+//           │     │     └─ .jcd-map__icons        absolutely-positioned hotspots
+//           │     └─ .jcd-map__tooltip  hover / pinned tooltip (outside the
+//           │                           stage so it doesn't scale)
+//           └─ .jcd-map__panel  (right/bottom)
+//                 ├─ .jcd-map__intro   default copy
+//                 └─ .jcd-map__detail  district / attraction details
+//
+//  Two visual states (toggled by `.is-detail` on .jcd-map__viewport)
+//   default — all 6 districts visible, hover tints the polygon gold and
+//             pops a tooltip with the district name.
+//   detail  — the active district stays bright (gold-outlined), the rest
+//             of the map is darkened via the SVG <rect mask=…/> spotlight,
+//             and the stage scales subtly toward the active district's
+//             centroid. Attraction icons appear and are clickable.
+//
+//  RTL note
+//   The container uses default `flex-direction: row` — browsers in
+//   `dir="rtl"` automatically reverse the visual order, so map ends up
+//   on the right and panel on the left without any explicit override.
+// ==========================================================================
+
+.jcd-map {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    background: #0e1722;            // deep navy / sea — matches Figma background
+
+    // Subtle radial vignette to lift the dark canvas
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+        background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.04) 0%, rgba(0, 0, 0, 0.35) 100%);
+    }
+
+    // ── Outer container ────────────────────────────────────────────
+    &__container {
+        position: relative;
+        z-index: 1;
+        max-width: 1440px;
+        margin: 0 auto;
+        padding: 80px 80px;
+        display: flex;
+        align-items: stretch;
+        gap: 0;
+        min-height: 720px;
+    }
+
+    // ── Map viewport (left on desktop / top on mobile) ─────────────
+    &__viewport {
+        flex: 1 1 60%;
+        position: relative;
+        aspect-ratio: 1000 / 800;       // matches the SVG viewBox
+        max-height: 720px;
+        user-select: none;
+        -webkit-tap-highlight-color: transparent;
+        overflow: hidden;                // clip the zoomed stage to viewport bounds
+    }
+
+    // Stage — the layer that scales / translates on detail mode.
+    // Everything that should track the active district's zoom lives here.
+    &__stage {
+        position: absolute;
+        inset: 0;
+        transform-origin: 50% 50%;      // JS overrides on selection
+        transition:
+            transform 0.55s cubic-bezier(0.65, 0, 0.35, 1);
+        will-change: transform;
+    }
+
+    // Satellite background image (always at full opacity, behind the SVG).
+    &__bg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center;
+        pointer-events: none;
+    }
+
+    // SVG overlay containing the dim mask + 6 district paths + labels.
+    &__svg {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+    // ── A single district polygon ──────────────────────────────────
+    .jcd-map__district {
+        fill: rgba(204, 159, 83, 0.0);
+        stroke: rgba(0, 0, 0, 0.85);
+        stroke-width: 1.25;
+        stroke-linejoin: round;
+        cursor: pointer;
+        transition:
+            fill 0.25s var(--ease),
+            stroke 0.25s var(--ease),
+            stroke-width 0.25s var(--ease),
+            opacity 0.35s var(--ease);
+
+        &:hover,
+        &:focus-visible {
+            fill: rgba(204, 159, 83, 0.45);
+            stroke: var(--secondary-500);
+            stroke-width: 2;
+            outline: none;
+        }
+    }
+
+    // Dim overlay for the spotlight effect in detail mode. The mask cuts
+    // a hole the shape of the active district so it stays bright.
+    &__dim {
+        fill: #0e1722;
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.45s var(--ease);
+    }
+
+    // Mobile name labels (built by JS, hidden by default on desktop)
+    &__label {
+        font-family: var(--font-body);
+        font-size: 11px;
+        font-weight: 500;
+        fill: #fff;
+        text-anchor: middle;
+        dominant-baseline: middle;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.3s var(--ease);
+    }
+
+    // ── Hover / pinned tooltip — positioned by JS in viewport coords ─
+    &__tooltip {
+        position: absolute;
+        z-index: 5;
+        background: #fff;
+        color: #1a1a1a;
+        font-family: var(--font-body);
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 1.2;
+        padding: 8px 12px;
+        border-radius: 4px;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+        pointer-events: none;
+        white-space: nowrap;
+        transform: translate(-50%, calc(-100% - 12px));
+        opacity: 0;
+        transition: opacity 0.18s var(--ease);
+
+        &.is-visible {
+            opacity: 1;
+        }
+
+        // Down-pointing caret
+        &::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 100%;
+            width: 0;
+            height: 0;
+            transform: translateX(-50%);
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-top: 6px solid #fff;
+        }
+    }
+
+    // ── Attraction icon hotspots layer ─────────────────────────────
+    &__icons {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;     // children re-enable
+    }
+
+    &__icon {
+        position: absolute;
+        // left/top set inline as percentages on the unscaled viewBox; the
+        // parent .jcd-map__stage carries the same scale so the icon stays
+        // attached to its target. We counter-scale the icon itself so it
+        // appears the same visual size regardless of zoom.
+        transform: translate(-50%, -50%) scale(var(--icon-counter-scale, 1));
+        width: 36px;
+        height: 36px;
+        border: none;
+        border-radius: 50%;
+        background: var(--primary-500);
+        color: #fff;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        pointer-events: auto;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        opacity: 0;
+        transition:
+            opacity 0.4s var(--ease),
+            background 0.2s var(--ease),
+            transform 0.25s var(--ease);
+
+        svg {
+            width: 18px;
+            height: 18px;
+        }
+
+        &:hover,
+        &:focus-visible {
+            background: #005c83;
+            outline: none;
+            transform: translate(-50%, -50%) scale(calc(var(--icon-counter-scale, 1) * 1.12));
+        }
+
+        &.is-active {
+            background: var(--secondary-500);
+            transform: translate(-50%, -50%) scale(calc(var(--icon-counter-scale, 1) * 1.12));
+        }
+    }
+
+    // ── Detail-mode toggles ───────────────────────────────────────
+    &__viewport.is-detail {
+
+        .jcd-map__district:not(.is-active) {
+            pointer-events: none;
+            opacity: 0;
+        }
+
+        .jcd-map__district.is-active {
+            fill: rgba(204, 159, 83, 0.0);     // bright satellite shows through the cutout
+            stroke: var(--secondary-500);
+            stroke-width: 2.5;
+            cursor: default;
+        }
+
+        .jcd-map__dim {
+            opacity: 0.62;
+        }
+
+        .jcd-map__icon {
+            opacity: 1;
+        }
+    }
+
+    // ── Right-side info panel ──────────────────────────────────────
+    &__panel {
+        flex: 0 0 40%;
+        max-width: 480px;
+        align-self: stretch;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 32px 40px;
+        position: relative;
+        color: #fff;
+    }
+
+    // Shared text bits
+    &__panel-title {
+        font-family: var(--font-body);
+        font-size: 36px;
+        font-weight: 500;
+        line-height: 1.18;
+        color: var(--secondary-500);
+        margin: 0 0 24px;
+        letter-spacing: 0.5px;
+    }
+
+    &__panel-divider {
+        display: block;
+        width: 64px;
+        height: 1px;
+        background: var(--secondary-500);
+        margin: 0 0 24px;
+    }
+
+    &__panel-desc {
+        font-family: var(--font-body);
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 1.6;
+        color: #d8d8d8;
+        margin: 0 0 24px;
+    }
+
+    &__panel-hint {
+        font-family: var(--font-body);
+        font-size: 14px;
+        font-weight: 700;
+        color: #fff;
+        margin: 16px 0 0;
+    }
+
+    &__panel-subtitle {
+        font-family: var(--font-body);
+        font-size: 16px;
+        font-weight: 500;
+        color: var(--secondary-500);
+        margin: -12px 0 16px;
+    }
+
+    // Detail panel content
+    &__detail {
+        position: relative;
+        animation: jcdMapFadeIn 0.35s var(--ease) both;
+    }
+
+    &__detail-img-wrap {
+        position: relative;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        margin-bottom: 28px;
+        border-radius: 4px;
+        overflow: hidden;
+        background: #1a1a1a;
+    }
+
+    &__detail-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    // Close button (X) — anchored to the panel itself so it always shows
+    // in the same spot regardless of whether the image loaded.
+    &__close {
+        position: absolute;
+        top: 16px;
+        inset-inline-start: 16px;
+        z-index: 4;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: rgba(20, 20, 20, 0.85);
+        border: none;
+        color: #fff;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition:
+            background var(--dur) var(--ease),
+            transform var(--dur) var(--ease);
+
+        svg {
+            width: 16px;
+            height: 16px;
+        }
+
+        &:hover,
+        &:focus-visible {
+            background: var(--secondary-500);
+            outline: none;
+            transform: scale(1.06);
+        }
+    }
+
+    // CTA button — explicit width
+    &__cta {
+        align-self: flex-start;
+    }
+
+    &__intro,
+    &__detail {
+        &[hidden] { display: none; }
+    }
+
+    @keyframes jcdMapFadeIn {
+        from { opacity: 0; transform: translateY(8px); }
+        to   { opacity: 1; transform: translateY(0); }
+    }
+}
+
+// ──────────────────────────────────────────────────────────────────────
+//  Tablet (≤ 1199)
+// ──────────────────────────────────────────────────────────────────────
+@media (max-width: 1199px) {
+    .jcd-map__container {
+        padding: 64px 48px;
+        gap: 24px;
+    }
+    .jcd-map__panel {
+        padding: 16px 24px;
+    }
+    .jcd-map__panel-title {
+        font-size: 30px;
+    }
+}
+
+// ──────────────────────────────────────────────────────────────────────
+//  Mobile (≤ 767) — stacked, panel below the map (Figma 9745:19182)
+//  In default state, district names are visible directly on the map.
+// ──────────────────────────────────────────────────────────────────────
+@media (max-width: 767px) {
+    .jcd-map__container {
+        flex-direction: column;
+        padding: 48px 16px 32px;
+        min-height: 0;
+        gap: 0;
+    }
+
+    .jcd-map__viewport {
+        max-height: none;
+    }
+
+    // Show the labels on the map by default (mobile-default state)
+    .jcd-map__viewport:not(.is-detail) .jcd-map__label {
+        opacity: 1;
+    }
+
+    .jcd-map__panel {
+        flex: 1 1 auto;
+        max-width: none;
+        width: 100%;
+        padding: 24px 8px 0;
+    }
+
+    .jcd-map__panel-title {
+        font-size: 24px;
+        margin-bottom: 16px;
+    }
+
+    .jcd-map__panel-desc {
+        font-size: 14px;
+        margin-bottom: 16px;
+    }
+
+    .jcd-map__icon {
+        width: 30px;
+        height: 30px;
+
+        svg {
+            width: 14px;
+            height: 14px;
+        }
+    }
+
+    .jcd-map__detail-img-wrap {
+        aspect-ratio: 16 / 9;
+        margin-bottom: 20px;
+    }
+
+    .jcd-map__close {
+        top: 8px;
+        inset-inline-start: 8px;
+        width: 32px;
+        height: 32px;
+    }
+
+    .jcd-map__tooltip {
+        font-size: 11px;
+        padding: 6px 10px;
+    }
+}
+
+@media (max-width: 425px) {
+    .jcd-map__panel-title {
+        font-size: 22px;
+    }
+}

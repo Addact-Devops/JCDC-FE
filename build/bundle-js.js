@@ -29,6 +29,14 @@ const FILES = [
   'sections/news.js',
   'sections/awards.js',
   'sections/register-interest.js',
+  'sections/contact-us.js',
+  'sections/search-page.js',
+  'sections/news-listing.js',
+  'sections/news-item.js',
+  'sections/leadership.js',
+  'sections/landmark-slider.js',
+  'sections/attraction-page.js',
+  'sections/jcd-map.js',
 ];
 
 function bundle() {

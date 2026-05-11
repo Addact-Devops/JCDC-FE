@@ -1,0 +1,338 @@
+// ==========================================
+// Attraction Slider (attraction.html)
+// Figma node: 7357:20545
+// Layout:
+//   - Big "active" image with a translucent title overlay at the bottom-left
+//   - Below the image: District line + description (regular text, no card)
+//   - Below the description: a horizontally-scrollable strip of all
+//     attraction thumbnails. Clicking a thumbnail makes it the active one.
+//   - No autoplay, no prev/next arrows.
+// ==========================================
+
+.attraction-slider {
+    width: 100%;
+    background: var(--surface-white);
+    padding: 56px 120px 96px;
+
+    &__container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    // ==========================================
+    // Active image with title overlay
+    // ==========================================
+    &__active {
+        position: relative;
+        width: 100%;
+        margin-bottom: 16px;
+    }
+
+    &__active-image {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        border-radius: 8px;
+        overflow: hidden;
+        background: #f3f3f3;
+        position: relative;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: opacity 0.35s var(--ease);
+        }
+
+        &.is-fading img {
+            opacity: 0.35;
+        }
+    }
+
+    // Translucent title bar near the bottom-left of the image
+    &__title-overlay {
+        position: absolute;
+        inset-inline-start: 56px;
+        inset-inline-end: 56px;
+        bottom: 40px;
+        background: rgba(255, 255, 255, 0.78);
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        border-radius: 8px;
+        padding: 22px 32px;
+        // Fade-swap on change (handled via .__active-info container below)
+        transition: opacity 0.35s var(--ease);
+
+        &.is-fading {
+            opacity: 0;
+        }
+    }
+
+    &__title {
+        margin: 0;
+        font-family: var(--font-body);
+        font-size: 28px;
+        font-weight: 700;
+        line-height: 1.2;
+        color: var(--primary-500);
+    }
+
+    // ==========================================
+    // District + description (below the image)
+    // Inset 56px from each edge so it lines up with the title overlay
+    // (which is also inset 56px on both sides above).
+    // ==========================================
+    &__info {
+        margin: 0 56px 64px;
+        transition: opacity 0.35s var(--ease);
+
+        &.is-fading {
+            opacity: 0;
+        }
+    }
+
+    &__district {
+        margin: 0 0 12px;
+        font-family: var(--font-body);
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 1.5;
+        color: var(--text-500);
+
+        strong {
+            font-weight: 700;
+            color: var(--text-500);
+        }
+    }
+
+    &__description {
+        margin: 0;
+        font-family: var(--font-body);
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 1.7;
+        color: var(--text-500);
+        max-width: 920px;
+    }
+
+    // ==========================================
+    // Thumbnail strip — horizontally scrollable
+    // Inset 56px from each edge to line up with the active image edges
+    // (minus the matching 56px gutter the title overlay uses).
+    // ==========================================
+    &__strip {
+        display: flex;
+        gap: 16px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding: 4px 56px 16px;     // 56px inline = matches title-overlay inset
+        scroll-padding-inline: 56px; // keep snap-aligned thumbs respecting the inset
+        scroll-behavior: smooth;
+        scroll-snap-type: x proximity;
+
+        // Hide scrollbars for a cleaner look while still allowing scroll
+        scrollbar-width: thin;
+        scrollbar-color: rgba(0, 118, 169, 0.20) transparent;
+
+        &::-webkit-scrollbar {
+            height: 6px;
+        }
+        &::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        &::-webkit-scrollbar-thumb {
+            background: rgba(0, 118, 169, 0.20);
+            border-radius: 3px;
+        }
+        &::-webkit-scrollbar-thumb:hover {
+            background: rgba(0, 118, 169, 0.35);
+        }
+    }
+}
+
+// ==========================================
+// Single thumbnail
+// Inactive thumbnails are slightly dimmed; hovering or activating one
+// restores full opacity. Matches the Figma rest/hover treatment.
+// ==========================================
+.attraction-thumb {
+    flex: 0 0 auto;
+    width: 130px;
+    border: 0;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    scroll-snap-align: start;
+    text-align: center;
+
+    &:focus-visible {
+        outline: 2px solid var(--primary-500);
+        outline-offset: 4px;
+        border-radius: 6px;
+    }
+
+    &__image {
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        border-radius: 6px;
+        overflow: hidden;
+        background: #f3f3f3;
+        opacity: 0.55;                 // dimmed at rest
+        transition:
+            opacity var(--dur) var(--ease),
+            transform var(--dur) var(--ease),
+            box-shadow var(--dur) var(--ease);
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+    }
+
+    &__label {
+        margin: 0;
+        font-family: var(--font-body);
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 1.35;
+        color: var(--text-500);   // inactive label is muted grey
+        transition: color var(--dur) var(--ease);
+    }
+
+    // Hover — full opacity, slight lift, blue label
+    &:hover &__image,
+    &:focus-visible &__image {
+        opacity: 1;
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.10);
+    }
+
+    &:hover &__label,
+    &:focus-visible &__label {
+        color: var(--primary-500);
+    }
+
+    // Active thumbnail — always full opacity, blue + bold label
+    &--active &__image {
+        opacity: 1;
+        box-shadow: 0 4px 12px rgba(0, 118, 169, 0.18);
+    }
+
+    &--active &__label {
+        color: var(--primary-500);
+        font-weight: 700;
+    }
+}
+
+// ==========================================
+// Tablet (≤ 1024)
+// ==========================================
+@media (max-width: 1024px) {
+    .attraction-slider {
+        padding: 56px 48px 64px;
+
+        &__title-overlay {
+            inset-inline-start: 32px;
+            inset-inline-end: 32px;
+            bottom: 24px;
+            padding: 18px 24px;
+        }
+
+        &__title {
+            font-size: 24px;
+        }
+
+        &__info {
+            margin: 0 32px 40px;
+        }
+
+        &__strip {
+            padding-inline: 32px;
+            scroll-padding-inline: 32px;
+        }
+    }
+
+    .attraction-thumb {
+        width: 110px;
+
+        &__label {
+            font-size: 12px;
+        }
+    }
+}
+
+// ==========================================
+// Mobile (≤ 768)
+// ==========================================
+@media (max-width: 768px) {
+    .attraction-slider {
+        padding: 40px 24px 56px;
+
+        &__active-image {
+            aspect-ratio: 4 / 3;
+        }
+
+        &__title-overlay {
+            inset-inline-start: 16px;
+            inset-inline-end: 16px;
+            bottom: 16px;
+            padding: 14px 18px;
+            border-radius: 6px;
+        }
+
+        &__title {
+            font-size: 20px;
+        }
+
+        &__info {
+            margin: 0 16px 32px;
+        }
+
+        &__district,
+        &__description {
+            font-size: 15px;
+        }
+
+        &__strip {
+            gap: 12px;
+            padding-inline: 16px;
+            scroll-padding-inline: 16px;
+        }
+    }
+
+    .attraction-thumb {
+        width: 96px;
+
+        &__label {
+            font-size: 12px;
+        }
+    }
+}
+
+// ==========================================
+// Small Mobile (≤ 480)
+// ==========================================
+@media (max-width: 480px) {
+    .attraction-slider {
+        padding: 32px 16px 48px;
+
+        &__info {
+            margin-inline: 8px;
+        }
+
+        &__strip {
+            padding-inline: 8px;
+            scroll-padding-inline: 8px;
+        }
+    }
+
+    .attraction-thumb {
+        width: 88px;
+    }
+}

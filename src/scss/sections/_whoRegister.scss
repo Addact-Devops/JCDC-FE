@@ -1,0 +1,170 @@
+// ==========================================
+// Who Should Register (supplier page)
+// 2x2 grid of categories. Each card: title (gold or
+// primary in alternating columns) + description.
+// Cards are separated by a thin gold vertical divider
+// between the two columns.
+// ==========================================
+
+.who-register {
+    width: 100%;
+    background: var(--surface-white);
+    padding: 64px 120px;
+
+    &__container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    &__header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 56px;
+        text-align: center;
+    }
+
+    &__title {
+        margin: 0;
+        font-family: var(--font-body);
+        font-size: 48px;
+        font-weight: 500;
+        line-height: 120%;
+        color: var(--primary-500);
+    }
+
+    &__subtitle {
+        margin: 0;
+        font-family: var(--font-body);
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 150%;
+        color: var(--text-500);
+    }
+
+    // ==========================================
+    // 2x2 grid with vertical gold dividers between
+    // the columns (Figma shows thin gold lines).
+    // ==========================================
+    &__grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 48px 80px;
+        position: relative;
+    }
+
+    // ==========================================
+    // Category card
+    // Left column: gold title.
+    // Right column: primary blue title.
+    // The vertical divider is drawn with a left border on
+    // the cards in the right column.
+    // ==========================================
+    &__card {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        padding-block: 8px;
+        position: relative;
+
+        &:nth-child(even) {
+            padding-inline-start: 48px;
+            border-inline-start: 1px solid var(--secondary-500);
+
+            [dir="rtl"] & {
+                padding-inline-start: 48px;
+            }
+        }
+    }
+
+    &__card-title {
+        margin: 0;
+        font-family: var(--font-body);
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 120%;
+        color: var(--primary-500);
+    }
+
+    &__card-description {
+        margin: 0;
+        font-family: var(--font-body);
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 150%;
+        color: var(--text-500);
+    }
+}
+
+// ==========================================
+// Tablet (≤ 1024)
+// ==========================================
+@media (max-width: 1024px) {
+    .who-register {
+        padding: 64px 48px;
+
+        &__title {
+            font-size: 40px;
+        }
+
+        &__grid {
+            gap: 40px 48px;
+        }
+
+        &__card {
+            &:nth-child(even) {
+                padding-inline-start: 32px;
+            }
+        }
+    }
+}
+
+// ==========================================
+// Mobile (≤ 768)
+// ==========================================
+@media (max-width: 768px) {
+    .who-register {
+        padding: 48px 24px;
+
+        &__title {
+            font-size: 32px;
+        }
+
+        &__header {
+            margin-bottom: 32px;
+        }
+
+        &__grid {
+            grid-template-columns: 1fr;
+            gap: 32px;
+        }
+
+        &__card {
+            &:nth-child(even) {
+                padding-inline-start: 0;
+                border-inline-start: none;
+                padding-block-start: 32px;
+                border-block-start: 1px solid var(--secondary-500);
+            }
+        }
+
+        &__card-title {
+            font-size: 20px;
+        }
+    }
+}
+
+// ==========================================
+// Small Mobile (≤ 480)
+// ==========================================
+@media (max-width: 480px) {
+    .who-register {
+        padding: 40px 16px;
+
+        &__title {
+            font-size: 28px;
+        }
+    }
+}

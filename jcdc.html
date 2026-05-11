@@ -158,6 +158,188 @@
             </div>
         </section>
 
+        <!-- ════════════════════════════════════════════
+        JCD INTERACTIVE MAP
+        Six-district map with hover tooltips, zoom-on-click, and a
+        right-side info panel that swaps in attraction details when
+        an icon is clicked. Content sourced from i18n (jcdMap.*) so
+        EN/AR work. Mobile: stacks vertically (Figma 9745:19182).
+════════════════════════════════════════════ -->
+        <section class="jcd-map" id="jcd-map" aria-label="Jeddah Central districts map">
+            <div class="jcd-map__container">
+                <!-- ── Map viewport (left on desktop / top on mobile) ── -->
+                <div class="jcd-map__viewport" id="jcd-map-viewport">
+                    <!-- Stage wraps everything that scales/translates on zoom -->
+                    <div class="jcd-map__stage" id="jcd-map-stage">
+                        <!-- Satellite background image. Replace with the real
+                             map asset when available; for now we reuse the
+                             existing image 141.svg that already ships with the
+                             project so the section renders on first load. -->
+                        <img class="jcd-map__bg" src="./assets/image 141.svg" alt="" draggable="false" />
+
+                        <!-- SVG overlay: dim mask + 6 district paths + mobile labels -->
+                        <svg
+                            class="jcd-map__svg"
+                            id="jcd-map-svg"
+                            viewBox="0 0 1000 800"
+                            preserveAspectRatio="xMidYMid meet"
+                            aria-hidden="true"
+                        >
+                            <defs>
+                                <!-- Mask used by the dim layer:
+                                     white  = paint dim,  black = leave bright.
+                                     JS sets the cutout's `d` to the active
+                                     district's path so it stays bright while
+                                     the rest is darkened. -->
+                                <mask id="jcd-map-dim-mask">
+                                    <rect x="0" y="0" width="1000" height="800" fill="white" />
+                                    <path id="jcd-map-cutout" d="M 0 0 Z" fill="black" />
+                                </mask>
+                            </defs>
+
+                            <!-- Dim layer (faded in by .is-detail) -->
+                            <rect
+                                class="jcd-map__dim"
+                                x="0"
+                                y="0"
+                                width="1000"
+                                height="800"
+                                mask="url(#jcd-map-dim-mask)"
+                            />
+
+                            <!-- District paths — built by JS from DISTRICT_PATHS -->
+                            <g id="jcd-map-districts"></g>
+
+                            <!-- Mobile name labels — built by JS, hidden on desktop -->
+                            <g id="jcd-map-labels"></g>
+                        </svg>
+
+                        <!-- Attraction icon hotspots — populated by JS on selection -->
+                        <div class="jcd-map__icons" id="jcd-map-icons" aria-live="polite"></div>
+                    </div>
+
+                    <!-- Hover / pinned tooltip — outside the stage so it
+                         doesn't scale with the zoom. Positioned by JS. -->
+                    <div class="jcd-map__tooltip" id="jcd-map-tooltip" role="tooltip" hidden></div>
+                </div>
+
+                <!-- ── Info panel (right on desktop / below on mobile) ── -->
+                <aside class="jcd-map__panel" id="jcd-map-panel" aria-live="polite">
+                    <!-- Intro state — populated by JS from i18n (jcdMap.intro.*) -->
+                    <div class="jcd-map__intro" data-panel-state="intro"></div>
+
+                    <!-- Detail state — populated by JS when a district / attraction is selected -->
+                    <div class="jcd-map__detail" data-panel-state="detail" hidden></div>
+                </aside>
+            </div>
+        </section>
+
+        <!-- ════════════════════════════════════════════
+        LANDMARK SLIDER
+        Full-width slider — active slide centered, prev + next slides peek
+        in from the edges. The info card (title / description / Explore CTA)
+        is a STATIC overlay at the bottom of the viewport: it does not slide
+        with the track. Its inner content fades out → swaps → fades in on
+        each slide change. Dots sit below the entire slider.
+        Slides are rendered from i18n (landmarkSlider.items) so EN/AR work.
+════════════════════════════════════════════ -->
+        <section
+            class="landmark-slider"
+            id="landmark-slider"
+            aria-roledescription="carousel"
+            aria-label="Major Landmarks"
+        >
+            <header class="landmark-slider__header">
+                <h2 class="landmark-slider__title" data-i18n="landmarkSlider.title">Jeddah Central</h2>
+                <div class="section-pattern" aria-hidden="true">
+                    <img
+                        src="./assets/pattern1.svg"
+                        alt=""
+                        width="22.46"
+                        height="21.3"
+                        style="position: absolute; left: 0; top: 1.35px"
+                    />
+                    <img
+                        src="./assets/pattern2.svg"
+                        alt=""
+                        width="25.29"
+                        height="24"
+                        style="position: absolute; left: 25.73px; top: 0"
+                    />
+                    <img
+                        src="./assets/pattern1.svg"
+                        alt=""
+                        width="22.46"
+                        height="21.3"
+                        style="position: absolute; left: 52px; top: 1.35px"
+                    />
+                    <img
+                        src="./assets/pattern2.svg"
+                        alt=""
+                        width="25.29"
+                        height="24"
+                        style="position: absolute; left: 78px; top: 0"
+                    />
+                </div>
+            </header>
+
+            <div class="landmark-slider__viewport">
+                <!-- Track of slide images (rendered by JS) -->
+                <div class="landmark-slider__track" id="landmark-slider-track" aria-live="polite"></div>
+
+                <!-- Prev / Next arrows -->
+                <button
+                    type="button"
+                    class="landmark-slider__nav landmark-slider__nav--prev"
+                    data-landmark-prev
+                    aria-label="Previous slide"
+                >
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path
+                            d="M15 18l-6-6 6-6"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        />
+                    </svg>
+                </button>
+
+                <button
+                    type="button"
+                    class="landmark-slider__nav landmark-slider__nav--next"
+                    data-landmark-next
+                    aria-label="Next slide"
+                >
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path
+                            d="M9 6l6 6-6 6"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        />
+                    </svg>
+                </button>
+
+                <!-- Static info card — does NOT translate with the track.
+                     Its inner content is fade-swapped on slide change. -->
+                <div class="landmark-slider__card" aria-live="polite">
+                    <div class="landmark-slider__card-inner" id="landmark-slider-card-inner">
+                        <!-- Content rendered by JS (text + Explore button) -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dots — sit BELOW the viewport (rendered by JS) -->
+            <ul
+                class="landmark-slider__dots"
+                id="landmark-slider-dots"
+                role="tablist"
+                aria-label="Slide navigation"
+            ></ul>
+        </section>
+
         <!-- attractions for evryone section -->
         <section class="attractions">
             <div class="attractions__container">

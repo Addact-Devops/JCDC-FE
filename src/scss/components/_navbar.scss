@@ -15,7 +15,8 @@
         box-shadow var(--dur) var(--ease);
 
     // Solid state (scrolled)
-    &.is-solid {
+    &.is-solid,
+    &--always-solid {
         background: rgba(255, 255, 255, 0.97);
         backdrop-filter: blur(4px);
         -webkit-backdrop-filter: blur(4px);

@@ -1,0 +1,336 @@
+// ==========================================
+// Contact Us Page
+// Figma: 50/50 split — form (left) + address card (right)
+// Background: surface-grey (#F3F3F3)
+// Layout uses 1440px design width with 120px gutter.
+// ==========================================
+
+.contact-us {
+    width: 100%;
+    background: var(--surface-grey); // #F3F3F3
+    padding: 80px 120px;
+
+    // ==========================================
+    // Container
+    // ==========================================
+    &__container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    // ==========================================
+    // Two-column layout (50 / 50)
+    // ==========================================
+    &__grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: flex-start;
+    }
+
+    // ==========================================
+    // Left column — form / success
+    // ==========================================
+    &__left {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+        min-width: 0;
+    }
+
+    &__heading {
+        margin: 0;
+        font-family: var(--font-body);
+        font-size: 40px;
+        font-weight: 700;
+        line-height: 120%;
+        color: var(--primary-500);
+    }
+
+    // ==========================================
+    // Right column — address card + get directions
+    // Sticks 320px from top so it visually aligns
+    // with the form's first field on desktop.
+    // ==========================================
+    &__right {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        margin-top: 320px;
+
+        [dir="rtl"] & {
+            // RTL: keep same offset, content flows right-to-left
+        }
+    }
+
+    // ==========================================
+    // Address card
+    // ==========================================
+    &__address-card {
+        background: var(--surface-white);
+        border-radius: 8px;
+        padding: 32px;
+
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    &__address-title {
+        margin: 0;
+        font-family: var(--font-body);
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 120%;
+        color: var(--primary-500);
+    }
+
+    &__address-text {
+        margin: 0;
+        font-family: var(--font-body);
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 180%;
+        color: var(--text-500);
+    }
+
+    // ==========================================
+    // Get Directions link
+    // ==========================================
+    &__directions {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        align-self: flex-start;
+        font-family: var(--font-body);
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 150%;
+        color: var(--secondary-500);
+        text-decoration: none;
+        transition: gap var(--dur) var(--ease);
+
+        svg {
+            flex-shrink: 0;
+            transition: transform var(--dur) var(--ease);
+
+            [dir="rtl"] & {
+                transform: scaleX(-1);
+            }
+        }
+
+        &:hover {
+            gap: 12px;
+
+            svg {
+                transform: translate(2px, -2px);
+
+                [dir="rtl"] & {
+                    transform: translate(-2px, -2px) scaleX(-1);
+                }
+            }
+        }
+    }
+}
+
+// ==========================================
+// Contact form (BEM block — sits inside .contact-us__left)
+// ==========================================
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+
+    &__row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+    }
+
+    &__terms-row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    &__submit-row {
+        display: flex;
+        justify-content: center;
+        margin-top: 16px;
+    }
+
+    &__submit {
+        min-width: 160px;
+    }
+}
+
+// ==========================================
+// Contact success / "Message Received" state
+// Replaces the form on submit.
+// Layout: small icon + title + paragraph + back link.
+// ==========================================
+.contact-success {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 8px 0;
+    outline: none;
+
+    // Respect the HTML `hidden` attribute even though we set display:flex
+    &[hidden] {
+        display: none;
+    }
+
+    &__icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        background: var(--primary-500);
+        color: var(--surface-white);
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 8px;
+    }
+
+    &__title {
+        margin: 0;
+        font-family: var(--font-body);
+        font-size: 32px;
+        font-weight: 700;
+        line-height: 120%;
+        color: var(--primary-500);
+    }
+
+    &__text {
+        margin: 0;
+        max-width: 520px;
+        font-family: var(--font-body);
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 150%;
+        color: var(--text-500);
+    }
+
+    &__link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 8px;
+        font-family: var(--font-body);
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 150%;
+        color: var(--secondary-500);
+        text-decoration: none;
+        transition: gap var(--dur) var(--ease);
+
+        svg {
+            flex-shrink: 0;
+            transition: transform var(--dur) var(--ease);
+
+            [dir="rtl"] & {
+                transform: scaleX(-1);
+            }
+        }
+
+        &:hover {
+            gap: 12px;
+
+            svg {
+                transform: translate(2px, -2px);
+
+                [dir="rtl"] & {
+                    transform: translate(-2px, -2px) scaleX(-1);
+                }
+            }
+        }
+    }
+}
+
+// ==========================================
+// Tablet (≤ 1024)
+// ==========================================
+@media (max-width: 1024px) {
+    .contact-us {
+        padding: 64px 48px;
+
+        &__grid {
+            gap: 48px;
+        }
+
+        &__heading {
+            font-size: 32px;
+        }
+
+        &__right {
+            margin-top: 240px;
+        }
+    }
+}
+
+// ==========================================
+// Mobile (≤ 768)
+// ==========================================
+@media (max-width: 768px) {
+    .contact-us {
+        padding: 48px 24px;
+
+        &__grid {
+            grid-template-columns: 1fr;
+            gap: 32px;
+        }
+
+        &__left {
+            gap: 24px;
+        }
+
+        &__heading {
+            font-size: 28px;
+        }
+
+        &__right {
+            margin-top: 0;
+        }
+
+        &__address-card {
+            padding: 24px;
+        }
+
+        &__address-title {
+            font-size: 20px;
+        }
+    }
+
+    .contact-form {
+        gap: 20px;
+
+        &__row {
+            grid-template-columns: 1fr;
+            gap: 16px;
+        }
+    }
+
+    .contact-success {
+        &__title {
+            font-size: 24px;
+        }
+    }
+}
+
+// ==========================================
+// Small Mobile (≤ 480)
+// ==========================================
+@media (max-width: 480px) {
+    .contact-us {
+        padding: 40px 16px;
+
+        &__heading {
+            font-size: 24px;
+        }
+    }
+}
