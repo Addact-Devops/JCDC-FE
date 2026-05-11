@@ -1,180 +1,840 @@
 {
-    "meta": { "title": "JCDC — Jeddah Central Development Company" },
-    "nav": {
-        "about": "About us",
-        "jcd": "Jeddah Central Destination",
-        "invest": "Invest",
-        "news": "News & Events",
-        "careers": "Careers",
-        "suppliers": "Suppliers",
-        "contact": "Contact Us",
-        "lang": "العربية",
-        "dropdown": {
-            "districts": "Districts",
-            "landmarks": "Landmarks",
-            "attractions": "Attractions",
-            "sustainability": "Sustainability"
-        }
-    },
-    "mobile": { "menu": "MENU" },
-    "hero": {
-        "title": "The Future of Living, Culture, and Leisure",
-        "subtitle": "Jeddah Central Development Company (JCDC) is developing destinations that celebrate heritage and bring culture, leisure, and contemporary living together."
-    },
-    "about": {
-        "title": "About JCDC",
-        "body": "Jeddah Central Development Company (JCDC) is a Public Investment Fund (PIF) company dedicated to developing world-class destinations in Jeddah. We blend the city's cultural heritage with forward-looking urban development to enhance quality of life and create new opportunities for communities.",
-        "cta": "Learn More"
-    },
-    "jcd": {
-        "slides": [
-            {
-                "title": "Discover Jeddah Central 1",
-                "body": "A destination for culture, leisure, and contemporary living on the Red Sea — home to vibrant neighborhoods, signature hospitality, retail and dining, and four iconic landmarks, set along a 9.5 km shoreline with a public beach and marina 123.",
-                "cta": "Explore Jeddah Central Destination 1"
-            },
-            {
-                "title": "Discover Jeddah Central 2",
-                "body": "A destination for culture, leisure, and contemporary living on the Red Sea — home to vibrant neighborhoods, signature hospitality, retail and dining, and four iconic landmarks, set along a 9.5 km shoreline with a public beach and marina 456.",
-                "cta": "Explore Jeddah Central Destination 2"
-            },
-            {
-                "title": "Discover Jeddah Central 3",
-                "body": "A destination for culture, leisure, and contemporary living on the Red Sea — home to vibrant neighborhoods, signature hospitality, retail and dining, and four iconic landmarks, set along a 9.5 km shoreline with a public beach and marina 789.",
-                "cta": "Explore Jeddah Central Destination 3"
-            }
-        ]
-    },
-    "news": {
-        "title": "News & Events",
-        "viewAll": "View all",
-        "learnMore": "Learn More",
-        "items": [
-            "The Development of Jeddah Central Destination Continues with 12 billion Saudi Riyals Contract Award",
-            "First Real Estate Development to Receive Esteemed EFQM Organizational Excellence Recognition",
-            "Jeddah Central Development Company: Diamond Sponsor of The Global Project Management Forum - Second Edition"
-        ]
-    },
-    "awards": {
-        "title": "Awards & Certifications"
-    },
-    "career": {
-        "breadcrumb": { "home": "Home", "current": "Careers" },
-        "hero": {
-            "title": "Careers at JCDC",
-            "description": "Be part of our journey to shape Jeddah's future. Explore meaningful opportunities, grow with a world-class team, and contribute to creating destinations that celebrate heritage and inspire generations."
-        },
-        "howWeSet": {
-            "title": "How We Set Ourselves Apart",
-            "cards": {
-                "impactTitle": "Impact with Purpose",
-                "impactDesc": "We develop destinations that honor our cultural heritage and contribute to Saudi's tourism landscape.",
-                "expertiseTitle": "Expertise Recognition",
-                "expertiseDesc": "Your experience matters, and your contributions make an impact from day one.",
-                "professionalTitle": "Professional Development",
-                "professionalDesc": "Continuous learning opportunities, leadership development, and career advancement.",
-                "standardsTitle": "World-Class Standards",
-                "standardsDesc": "Innovation, sustainability, and organizational excellence supported by globally recognized certifications."
-            }
-        },
-        "nextStep": {
-            "title": "Your Next Step",
-            "description": "Explore our available positions and be part of our journey at JCDC.",
-            "cta": "Explore Opportunities"
-        }
-    },
-    "invest": {
-        "breadcrumb": { "home": "Home", "current": "Invest" },
-        "hero": {
-            "title": "Investment Opportunities",
-            "description": "Jeddah Central is a strategic hub for investment, offering world-class residential, hospitality, retail, and mixed-use districts.",
-            "cta": "Register your interest"
-        },
-        "why": {
-            "title": "Why Jeddah Central?",
-            "subtitle": "Jeddah Central represents a significant opportunity within Saudi Arabia's growing Tourism, Culture, Entertainment, Sport, and Real Estate sectors supported by:",
-            "cards": {
-                "primeTitle": "Prime Location",
-                "primeDesc": "Centrally located on Jeddah's waterfront, with seamless access, landmark proximity, and strong footfall.",
-                "municipalityTitle": "Internal Municipality",
-                "municipalityDesc": "Internal Municipality services to have streamlined proceedings",
-                "regaTitle": "REGA Accreditation",
-                "regaDesc": "One of the only destinations to have REGA approval",
-                "multiTitle": "Multi-Asset Destination",
-                "multiDesc": "Blending tourism, entertainment, culture, sports, residential, and hospitality offerings",
-                "coolingTitle": "District Cooling",
-                "coolingDesc": "Efficient district cooling powering a sustainable, future-ready Jeddah Central",
-                "smartTitle": "Smart city infrastructure",
-                "smartDesc": "Integrated digital systems with the destination to increase the livability efficiency"
-            }
-        },
-        "register": {
-            "title": "Register your interest",
-            "intro": "Submit your details to express interest in Jeddah Central's investment opportunities.",
-            "contactInfo": "Contact Information",
-            "fields": {
-                "firstName": "First Name",
-                "lastName": "Last Name",
-                "email": "Email",
-                "mobile": "Mobile",
-                "company": "Company",
-                "country": "Country or region",
-                "city": "City",
-                "website": "Company's Website",
-                "engagementType": "Engagement Type",
-                "interests": "Interests",
-                "interestsHint": "Please select one or more options",
-                "targetSize": "Target Investment Size SAR",
-                "description": "Interest Description",
-                "select": "Select",
-                "selectCountry": "Select Country or region",
-                "typeHere": "Type here",
-                "emailPlaceholder": "you@mail.com",
-                "phonePlaceholder": "00 000 0000",
-                "descPlaceholder": "Please briefly describe your interest or concept ( max 255 characters)"
-            },
-            "engagement": {
-                "developers": "Developers",
-                "investors": "Investors",
-                "operators": "Operators",
-                "others": "Others"
-            },
-            "interestOptions": {
-                "mixedUse": "Mixed Use",
-                "residential": "Residential",
-                "hospitality": "Hospitality",
-                "retail": "Retail",
-                "landPurchase": "Land Purchase",
-                "landLease": "Land Lease",
-                "investmentEquity": "Investment Equity",
-                "other": "Other"
-            },
-            "consent": {
-                "terms": "I confirm that I have read and understood the",
-                "termsLink": "Terms & Conditions",
-                "and": "and",
-                "cookiesLink": "Cookies Notices",
-                "emails": "I accept to receive email communications from Jeddah Central Development Company"
-            },
-            "submit": "Register",
-            "success": {
-                "title": "Form Submitted Successfully",
-                "text": "Your inquiry has been received.",
-                "back": "Go Back to Homepage"
-            }
-        }
-    },
-    "footer": {
-        "aboutUs": "ABOUT US",
-        "jcd": "JEDDAH CENTRAL DESTINATION",
-        "invest": "INVEST",
-        "newsEvents": "NEWS & EVENTS",
-        "careers": "CAREERS",
-        "suppliers": "SUPPLIERS",
-        "contact": "CONTACT US",
-        "privacy": "Privacy Policy",
-        "terms": "Terms & Conditions",
-        "cookies": "Cookies Policy",
-        "copy": "© 2025 JCDC. ALL RIGHTS RESERVED"
+  "meta": {
+    "title": "JCDC — Jeddah Central Development Company"
+  },
+  "nav": {
+    "about": "About us",
+    "jcd": "Jeddah Central Destination",
+    "invest": "Invest",
+    "news": "News & Events",
+    "careers": "Careers",
+    "suppliers": "Suppliers",
+    "contact": "Contact Us",
+    "lang": "العربية",
+    "dropdown": {
+      "districts": "Districts",
+      "landmarks": "Landmarks",
+      "attractions": "Attractions",
+      "sustainability": "Sustainability"
     }
+  },
+  "mobile": {
+    "menu": "MENU"
+  },
+  "hero": {
+    "title": "The Future of Living, Culture, and Leisure",
+    "subtitle": "Jeddah Central Development Company (JCDC) is developing destinations that celebrate heritage and bring culture, leisure, and contemporary living together."
+  },
+  "about": {
+    "title": "About JCDC",
+    "body": "Jeddah Central Development Company (JCDC) is a Public Investment Fund (PIF) company dedicated to developing world-class destinations in Jeddah. We blend the city's cultural heritage with forward-looking urban development to enhance quality of life and create new opportunities for communities.",
+    "cta": "Learn More"
+  },
+  "jcd": {
+    "slides": [
+      {
+        "title": "Discover Jeddah Central 1",
+        "body": "A destination for culture, leisure, and contemporary living on the Red Sea — home to vibrant neighborhoods, signature hospitality, retail and dining, and four iconic landmarks, set along a 9.5 km shoreline with a public beach and marina 123.",
+        "cta": "Explore Jeddah Central Destination 1"
+      },
+      {
+        "title": "Discover Jeddah Central 2",
+        "body": "A destination for culture, leisure, and contemporary living on the Red Sea — home to vibrant neighborhoods, signature hospitality, retail and dining, and four iconic landmarks, set along a 9.5 km shoreline with a public beach and marina 456.",
+        "cta": "Explore Jeddah Central Destination 2"
+      },
+      {
+        "title": "Discover Jeddah Central 3",
+        "body": "A destination for culture, leisure, and contemporary living on the Red Sea — home to vibrant neighborhoods, signature hospitality, retail and dining, and four iconic landmarks, set along a 9.5 km shoreline with a public beach and marina 789.",
+        "cta": "Explore Jeddah Central Destination 3"
+      }
+    ]
+  },
+  "news": {
+    "title": "News & Events",
+    "viewAll": "View all",
+    "learnMore": "Learn More",
+    "items": [
+      "The Development of Jeddah Central Destination Continues with 12 billion Saudi Riyals Contract Award",
+      "First Real Estate Development to Receive Esteemed EFQM Organizational Excellence Recognition",
+      "Jeddah Central Development Company: Diamond Sponsor of The Global Project Management Forum - Second Edition"
+    ]
+  },
+  "awards": {
+    "title": "Awards & Certifications"
+  },
+  "career": {
+    "breadcrumb": {
+      "home": "Home",
+      "current": "Careers"
+    },
+    "hero": {
+      "title": "Careers at JCDC",
+      "description": "Be part of our journey to shape Jeddah's future. Explore meaningful opportunities, grow with a world-class team, and contribute to creating destinations that celebrate heritage and inspire generations."
+    },
+    "howWeSet": {
+      "title": "How We Set Ourselves Apart",
+      "cards": {
+        "impactTitle": "Impact with Purpose",
+        "impactDesc": "We develop destinations that honor our cultural heritage and contribute to Saudi's tourism landscape.",
+        "expertiseTitle": "Expertise Recognition",
+        "expertiseDesc": "Your experience matters, and your contributions make an impact from day one.",
+        "professionalTitle": "Professional Development",
+        "professionalDesc": "Continuous learning opportunities, leadership development, and career advancement.",
+        "standardsTitle": "World-Class Standards",
+        "standardsDesc": "Innovation, sustainability, and organizational excellence supported by globally recognized certifications."
+      }
+    },
+    "nextStep": {
+      "title": "Your Next Step",
+      "description": "Explore our available positions and be part of our journey at JCDC.",
+      "cta": "Explore Opportunities"
+    }
+  },
+  "invest": {
+    "breadcrumb": {
+      "home": "Home",
+      "current": "Invest"
+    },
+    "hero": {
+      "title": "Investment Opportunities",
+      "description": "Jeddah Central is a strategic hub for investment, offering world-class residential, hospitality, retail, and mixed-use districts.",
+      "cta": "Register your interest"
+    },
+    "why": {
+      "title": "Why Jeddah Central?",
+      "subtitle": "Jeddah Central represents a significant opportunity within Saudi Arabia's growing Tourism, Culture, Entertainment, Sport, and Real Estate sectors supported by:",
+      "cards": {
+        "primeTitle": "Prime Location",
+        "primeDesc": "Centrally located on Jeddah's waterfront, with seamless access, landmark proximity, and strong footfall.",
+        "municipalityTitle": "Internal Municipality",
+        "municipalityDesc": "Internal Municipality services to have streamlined proceedings",
+        "regaTitle": "REGA Accreditation",
+        "regaDesc": "One of the only destinations to have REGA approval",
+        "multiTitle": "Multi-Asset Destination",
+        "multiDesc": "Blending tourism, entertainment, culture, sports, residential, and hospitality offerings",
+        "coolingTitle": "District Cooling",
+        "coolingDesc": "Efficient district cooling powering a sustainable, future-ready Jeddah Central",
+        "smartTitle": "Smart city infrastructure",
+        "smartDesc": "Integrated digital systems with the destination to increase the livability efficiency"
+      }
+    },
+    "register": {
+      "title": "Register your interest",
+      "intro": "Submit your details to express interest in Jeddah Central's investment opportunities.",
+      "contactInfo": "Contact Information",
+      "fields": {
+        "firstName": "First Name",
+        "lastName": "Last Name",
+        "email": "Email",
+        "mobile": "Mobile",
+        "company": "Company",
+        "country": "Country or region",
+        "city": "City",
+        "website": "Company's Website",
+        "engagementType": "Engagement Type",
+        "interests": "Interests",
+        "interestsHint": "Please select one or more options",
+        "targetSize": "Target Investment Size SAR",
+        "description": "Interest Description",
+        "select": "Select",
+        "selectCountry": "Select Country or region",
+        "typeHere": "Type here",
+        "emailPlaceholder": "you@mail.com",
+        "phonePlaceholder": "00 000 0000",
+        "descPlaceholder": "Please briefly describe your interest or concept ( max 255 characters)"
+      },
+      "engagement": {
+        "developers": "Developers",
+        "investors": "Investors",
+        "operators": "Operators",
+        "others": "Others"
+      },
+      "interestOptions": {
+        "mixedUse": "Mixed Use",
+        "residential": "Residential",
+        "hospitality": "Hospitality",
+        "retail": "Retail",
+        "landPurchase": "Land Purchase",
+        "landLease": "Land Lease",
+        "investmentEquity": "Investment Equity",
+        "other": "Other"
+      },
+      "consent": {
+        "terms": "I confirm that I have read and understood the",
+        "termsLink": "Terms & Conditions",
+        "and": "and",
+        "cookiesLink": "Cookies Notices",
+        "emails": "I accept to receive email communications from Jeddah Central Development Company"
+      },
+      "submit": "Register",
+      "success": {
+        "title": "Form Submitted Successfully",
+        "text": "Your inquiry has been received.",
+        "back": "Go Back to Homepage"
+      }
+    }
+  },
+  "error403": {
+    "metaTitle": "JCDC — 403 Access Denied",
+    "code": "403",
+    "title": "Access Denied",
+    "description1": "You do not have permission to access this page.",
+    "description2": "Try using the search bar or head back to the Home page.",
+    "cta": "Go to Homepage"
+  },
+  "error404": {
+    "metaTitle": "JCDC — 404 Page Not Found",
+    "code": "404",
+    "title": "Page Not Found",
+    "description1": "Sorry, the page you're looking for doesn't exist or may have been moved.",
+    "description2": "Try using the search bar or head back to the Home page.",
+    "cta": "Go to Homepage"
+  },
+  "contact": {
+    "metaTitle": "JCDC — Contact Us",
+    "breadcrumb": {
+      "home": "Home",
+      "current": "Contact Us"
+    },
+    "hero": {
+      "title": "Contact Us",
+      "description": "Have a question or inquiry? Whether it's about business opportunities, media relations, or general information, we're ready to assist."
+    },
+    "form": {
+      "heading": "Please fill out the form below and the relevant team will reach out to assist you.",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "email": "Email",
+      "phone": "Phone Number",
+      "topic": "Choose a Topic",
+      "selectTopic": "Select Topic",
+      "topics": {
+        "business": "Business Opportunities",
+        "media": "Media Relations",
+        "general": "General Information",
+        "careers": "Careers",
+        "suppliers": "Suppliers"
+      },
+      "message": "Message",
+      "terms": "I accept the",
+      "termsLink": "Terms and Conditions",
+      "submit": "Submit"
+    },
+    "address": {
+      "title": "JCDC Head Office",
+      "line1": "Jeddah Central Development Company",
+      "line2": "7051 Prince Sultan - As Salamah Dist.",
+      "line3": "Unit No 9959",
+      "line4": "Jeddah 23525 - 2661",
+      "line5": "Kingdom of Saudi Arabia",
+      "directions": "Get Directions"
+    },
+    "success": {
+      "title": "Message Received",
+      "text": "Thank you for reaching out. Our team has received your message and will get back to you soon.",
+      "back": "Go Back to Homepage"
+    }
+  },
+  "supplier": {
+    "metaTitle": "JCDC — Suppliers",
+    "breadcrumb": {
+      "home": "Home",
+      "current": "Suppliers"
+    },
+    "hero": {
+      "title": "Supplier Registration",
+      "description": "We welcome qualified suppliers who share our commitment to quality, reliability, and operational excellence. Begin your registration to be considered for future opportunities."
+    },
+    "whoRegister": {
+      "title": "Who Should Register",
+      "subtitle": "If you provide any of the following, we encourage you to register",
+      "cards": {
+        "constructionTitle": "Construction & Specialized Work",
+        "constructionDesc": "Contractors, construction companies, and specialized trade professionals",
+        "consultingTitle": "Consulting & Professional Services",
+        "consultingDesc": "Consultants, advisors, and professional service providers",
+        "materialsTitle": "Materials, Finishes & Equipment Supply",
+        "materialsDesc": "Suppliers of construction materials, finishes, and equipment",
+        "techTitle": "Technology, Digital & Sustainable Solutions",
+        "techDesc": "Digital solutions, technology providers, and sustainability specialists"
+      }
+    },
+    "process": {
+      "title": "Registration Process",
+      "step1Number": "01",
+      "step1Title": "Submit Supplier Self-Registration Request",
+      "step1Desc": "Complete and submit the Supplier Self-Registration Request Form through the link below for initial review.",
+      "step2Number": "02",
+      "step2Title": "Complete Supplier Registration Questionnaire",
+      "step2Desc": "Upon preliminary approval, you will receive an SAP Ariba notification to complete the Supplier Registration Questionnaire and upload the required documents.",
+      "step3Number": "03",
+      "step3Title": "Evaluation and Approval",
+      "step3Desc": "Once submitted, your application will be evaluated in accordance with our procurement policies and business requirements.",
+      "noticeTitle": "Important Notice",
+      "noticeText": "Please Note: Submission of an application does not guarantee qualification, engagement, or contract award. All registrations are subject to review in line with company procedures.",
+      "noticeCta": "Access Supplier Portal"
+    }
+  },
+  "search": {
+    "metaTitle": "JCDC — Search",
+    "breadcrumb": {
+      "home": "Home",
+      "current": "Search"
+    },
+    "hero": {
+      "title": "Search"
+    },
+    "label": "Search Query",
+    "placeholder": "Search Query",
+    "submit": "Search",
+    "showingFor": "Showing Results for",
+    "empty": "No results found. Try different keywords."
+  },
+  "newsListing": {
+    "metaTitle": "JCDC — News & Events",
+    "breadcrumb": {
+      "home": "Home",
+      "current": "News & Events"
+    },
+    "hero": {
+      "title": "News and Events",
+      "description": "Stay up to date with Jeddah Central Development Company (JCDC) as we build partnerships, achieve milestones, and advance the development of Jeddah Central."
+    },
+    "search": "Search",
+    "searchPlaceholder": "Search for topic",
+    "from": "From",
+    "to": "To",
+    "chooseDate": "Choose Date",
+    "filtersLabel": "Filters:",
+    "categoryNames": {
+      "all": "All News",
+      "companyUpdates": "Company Updates",
+      "projectMilestones": "Project Milestones",
+      "communityEvents": "Community Events",
+      "awardsRecognition": "Awards & Recognition"
+    },
+    "readMore": "Read More",
+    "empty": "No articles match your filters. Try clearing filters or searching for something else.",
+    "items": [
+      {
+        "title": "The Development of Jeddah Central Destination Continues with 12 billion Saudi Riyals Contract Award",
+        "excerpt": "Jeddah Central Development Company, a wholly owned company by the Public...",
+        "body": [
+          "Jeddah Central Development Company, a wholly owned company by the Public Investment Fund (PIF) and the master developer of the Jeddah Central destination, signed four construction contracts for the destination's first three landmarks – the Stadium, the Opera House and the Oceanarium– in addition to phase one infrastructure and utilities works, with a total value of 12 billion Saudi Riyals. The contract signing ceremony was held today at the destination's site.",
+          "China Harbour Engineering Arabia Company Limited (CHEC) won the contract for the infrastructure construction. Modern Building Leaders (MBL) were awarded the contracts for the Oceanarium, and the Opera House, while the Sports Stadium and the surrounding villages contract went to The Consortium China Railway Construction Corp. LTD. Saudi Branch and Sama Construction for Contracting.",
+          "Engineer Ahmed Al-Sulaim, CEO of Jeddah Central Development, highlighted the significance of this day, marking the start of the construction of the main architectural landmarks and the infrastructure for phase one, in line with the timeline to transform Jeddah Central into a global destination. Aligning with Vision 2030, this step reflects Jeddah Central Development Company's commitment towards economic advancement, job creation, and enriching the cultural and recreational landscape of Jeddah.",
+          "Al-Sulaim added: \"The construction contracts were awarded following thorough procedures, high standards of governance, and transparency. All awarded companies demonstrated eligibility through their proven track record of experience in implementing various projects according to international best practices.\""
+        ]
+      },
+      {
+        "title": "First Real Estate Development to Receive Esteemed EFQM Organizational Excellence Recognition",
+        "excerpt": "Jeddah Central Development Company (JCDC), a company wholly owned by the...",
+        "body": [
+          "Jeddah Central Development Company (JCDC), a company wholly owned by the Public Investment Fund (PIF), has been recognized for its commitment to organizational excellence by the European Foundation for Quality Management (EFQM).",
+          "The recognition reflects JCDC's continuous efforts to embed quality, sustainability, and innovation across all areas of operation. The achievement positions JCDC as a benchmark for excellence in real estate development across the region."
+        ]
+      },
+      {
+        "title": "Jeddah Central Development Company: Diamond Sponsor of The Global Project Management Forum - Second Edition",
+        "excerpt": "Jeddah Central Development Company (JCDC), a wholly owned company by the Public...",
+        "body": [
+          "Jeddah Central Development Company (JCDC), a wholly owned company by the Public Investment Fund (PIF), is proud to announce its role as Diamond Sponsor of The Global Project Management Forum — Second Edition.",
+          "The forum brings together global project management leaders to share best practices, advance the profession, and foster collaboration. JCDC's sponsorship reaffirms its commitment to excellence in project delivery and continuous learning."
+        ]
+      },
+      {
+        "title": "Jeddah Central Development Company Concludes its Participation in Cityscape Global",
+        "excerpt": "Jeddah Central Development Company (JCDC), a wholly-owned company by the...",
+        "body": [
+          "Jeddah Central Development Company (JCDC) successfully concluded its participation in Cityscape Global, the largest real estate event in the region.",
+          "Throughout the event, JCDC engaged with investors, partners, and stakeholders, presenting the latest progress on the Jeddah Central destination and signing several agreements to accelerate development."
+        ]
+      },
+      {
+        "title": "Jeddah Central Development Company (JCDC) Becomes a Diamond Member of EFQM",
+        "excerpt": "Saudi Arabia's Jeddah Central Development Company (JCDC), a wholly owned...",
+        "body": [
+          "Saudi Arabia's Jeddah Central Development Company (JCDC), a wholly owned company by the Public Investment Fund (PIF), has been awarded Diamond membership of the European Foundation for Quality Management (EFQM).",
+          "Diamond membership represents the highest tier of EFQM partnership, granting JCDC access to global best practices, expert assessments, and a network of leading organizations across industries."
+        ]
+      },
+      {
+        "title": "Jeddah Central Development Company Signs MoU With Corinthia Group to Develop and Operate Projects within its Marina District",
+        "excerpt": "Saudi Arabia's Jeddah Central Development Company (JCDC)...",
+        "body": [
+          "Saudi Arabia's Jeddah Central Development Company (JCDC) has signed a Memorandum of Understanding (MoU) with Corinthia Group to develop and operate hospitality and lifestyle projects within the Marina District of the Jeddah Central destination.",
+          "The partnership will bring world-class hospitality experiences to the destination's waterfront, complementing the broader masterplan and elevating Jeddah's position as a premier global destination."
+        ]
+      },
+      {
+        "title": "JCDC Reports Strong Q1 Progress Across Phase One Construction",
+        "excerpt": "JCDC announces significant progress on phase one construction across all four landmarks...",
+        "body": [
+          "JCDC announces significant progress on phase one construction across all four landmarks, with milestones being achieved on schedule.",
+          "The company continues to work closely with its construction partners to ensure quality, safety, and timely delivery."
+        ]
+      },
+      {
+        "title": "Jeddah Central Adopts LEED Gold Standards for All Major Buildings",
+        "excerpt": "JCDC commits to LEED Gold pre-certification for all major buildings within the destination...",
+        "body": [
+          "Jeddah Central Development Company commits to LEED Gold pre-certification for all major buildings within the destination, reinforcing its commitment to sustainable urban development.",
+          "The decision aligns with global best practices in green building and supports Saudi Arabia's broader sustainability ambitions under Vision 2030."
+        ]
+      },
+      {
+        "title": "JCDC Hosts Community Day Celebrating Jeddah's Heritage",
+        "excerpt": "JCDC hosted a community day featuring cultural performances, heritage exhibits, and family activities...",
+        "body": [
+          "Jeddah Central Development Company hosted a community day at its visitor center, featuring cultural performances, heritage exhibits, and family activities celebrating Jeddah's rich history.",
+          "The event drew thousands of attendees and reinforced JCDC's commitment to community engagement and cultural preservation."
+        ]
+      }
+    ]
+  },
+  "newsItem": {
+    "metaTitle": "JCDC — News & Events",
+    "breadcrumb": {
+      "home": "Home",
+      "news": "News & Events",
+      "current": "News Item"
+    },
+    "sidebarTitle": "Other Articles"
+  },
+  "leadership": {
+    "tabs": {
+      "board": "Board of Directors",
+      "executive": "Executive Management"
+    },
+    "chairman": {
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/06/Crown_Prince_Mohammed_bin_Salman_in_2024.png/640px-Crown_Prince_Mohammed_bin_Salman_in_2024.png",
+      "role": "Chairman",
+      "name": "His Royal Highness Prince Mohammed bin Salman bin Abdulaziz Al-Saud",
+      "description": "Crown Prince / Prime Minister / Chairman of the Council of Economic and Development Affairs / Chairman of the Public Investment Fund / Chairman of Jeddah Central Development Company"
+    },
+    "directors": [
+      {
+        "image": "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=85",
+        "role": "Board Member",
+        "name": "His Royal Highness Prince Saud bin Mishaal bin Abdulaziz Al-Saud",
+        "description": "Deputy Governor of Makkah Region"
+      },
+      {
+        "image": "https://images.unsplash.com/photo-1556157382-97eda2d62296?w=600&q=85",
+        "role": "Board Member & Secretary General",
+        "name": "H.E. Ahmed Aqil Al-Khateeb",
+        "description": "Minister of Tourism"
+      },
+      {
+        "image": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&q=85",
+        "role": "Board Member",
+        "name": "H.E. Ibrahim Muhammad AlSultan",
+        "description": "Minister of State and Member of the Council of Ministers"
+      },
+      {
+        "image": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=600&q=85",
+        "role": "Board Member",
+        "name": "H.E. Dr. Majid Abdullah Al-Kasabi",
+        "description": "Minister of Commerce"
+      },
+      {
+        "image": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&q=85",
+        "role": "Board Member",
+        "name": "H.E. Saleh Ali Al-Turki",
+        "description": "Mayor of Jeddah Municipality"
+      },
+      {
+        "image": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&q=85",
+        "role": "Board Member",
+        "name": "Mr. Sabty Bin Sulaiman Al Sabty",
+        "description": "ZATCA Board Member"
+      },
+      {
+        "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&q=85",
+        "role": "Board Member",
+        "name": "Read Ibrahim Al Mudaiheem",
+        "description": "JedCo Chairman"
+      },
+      {
+        "image": "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?w=600&q=85",
+        "role": "Board Member",
+        "name": "Aiman Mohammed AlMudaifer",
+        "description": "PIF Representative"
+      },
+      {
+        "image": "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&q=85",
+        "role": "Board Member",
+        "name": "Mr. Naif Al Hamdan",
+        "description": "PIF Representative"
+      }
+    ],
+    "executives": [
+      {
+        "image": "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=85",
+        "role": "Chief Executive Officer",
+        "name": "Ahmed A. Al Sulaim",
+        "description": "Eng. Ahmed has over 30 years of leadership experience in strategic project delivery and national transformation programs. He holds a degree in Computer Engineering and an executive certification from Harvard University, and has held executive roles at ARAMCO and the Public Investment Fund. As Chief Executive Officer of JCDC, he sets the company's strategic direction, driving its vision to create world-class destinations that deliver lasting economic, cultural, and social impact."
+      },
+      {
+        "image": "https://images.unsplash.com/photo-1556157382-97eda2d62296?w=600&q=85",
+        "role": "Chief Customer Experience Officer",
+        "name": "Ahmed O. AlAredhi",
+        "description": "Eng. Ahmed has over 26 years of experience in strategic operations and urban planning. He was previously the CEO of Makkah Region Development Authority and has held senior leadership roles in complex development projects. At JCDC, he leads the creation of guest-centric operational models that reflect the cultural and social fabric of Jeddah Central Destination, ensuring operational excellence."
+      },
+      {
+        "image": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&q=85",
+        "role": "Chief Delivery Officer",
+        "name": "Mardi Al Mansour",
+        "description": "Eng. Mardi has over 30 years of experience leading and delivering major development projects across the Kingdom. He has held senior roles at ARAMCO, specializing in integrated planning and risk management. At JCDC, he leads the delivery of the Jeddah Central destination and its key landmarks, ensuring the highest standards of quality, efficiency, and sustainability."
+      },
+      {
+        "image": "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=600&q=85",
+        "role": "Chief Financial Officer",
+        "name": "Wissam Fasih Al-Din",
+        "description": "Wissam has over 20 years of experience in the banking sector. He holds a master's degree in Business Administration and has held prominent financial leadership roles, including Chief Financial Officer at AlAhli Capital. He has also participated in international executive leadership programs. At JCDC, he leads the company's financial strategy to ensure its sustainability and long-term growth."
+      },
+      {
+        "image": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=600&q=85",
+        "role": "Chief of Staff",
+        "name": "Omar Al Senayen",
+        "description": "Omar has over 30 years of experience in strategy development, corporate governance, and human resources. He holds a bachelor's degree in Information Systems and has held executive roles at ARAMCO and the Public Investment Fund. At JCDC, he leads the company's strategy, enterprise performance, and governance matrix to ensure institutional resilience and forward-looking execution."
+      },
+      {
+        "image": "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&q=85",
+        "role": "Chief Support Functions Officer",
+        "name": "Amer Albahiti",
+        "description": "Amer has over 20 years of experience in human capital management and organizational transformation. He holds a bachelor's degree in Marketing and has held senior roles at leading companies such as Tasnee and Unilever across local and international markets. At JCDC, he leads the company's support functions, enabling a high-performing organizational infrastructure that drives efficiency and long-term operational excellence."
+      }
+    ]
+  },
+  "landmarkSlider": {
+    "title": "Jeddah Central",
+    "cta": "Explore",
+    "items": [
+      {
+        "image": "https://images.unsplash.com/photo-1577223625816-7546f13df25d?w=1400&q=85",
+        "title": "Stadium",
+        "description": "Blending local architecture with cutting-edge technology to create a world-class sports, entertainment & cultural hub",
+        "href": "#"
+      },
+      {
+        "image": "https://images.unsplash.com/photo-1518998053901-5348d3961a04?w=1400&q=85",
+        "title": "Opera House",
+        "description": "A cultural landmark elevating Jeddah's standing as the capital of performing arts across the region",
+        "href": "#"
+      },
+      {
+        "image": "https://images.unsplash.com/photo-1535591273668-578e31182c4f?w=1400&q=85",
+        "title": "Oceanarium",
+        "description": "An immersive marine experience showcasing the rich aquatic life of the Red Sea, built to the highest international standards",
+        "href": "#"
+      },
+      {
+        "image": "https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?w=1400&q=85",
+        "title": "Museum",
+        "description": "Galleries hosting world-class exhibitions that celebrate Jeddah's heritage and inspire future generations",
+        "href": "#"
+      }
+    ]
+  },
+  "attraction": {
+    "metaTitle": "JCDC — Attractions",
+    "breadcrumb": {
+      "home": "Home",
+      "destination": "Jeddah Central Destination",
+      "current": "Attractions"
+    },
+    "logoLabel": "Jeddah Central",
+    "hero": {
+      "title": "Explore Jeddah Central's Attractions",
+      "description": "Jeddah Central is home to 10 signature attractions designed to foster connection, culture, and community. From its scenic marina and pier to public beaches and vibrant parks - each experience invites exploration for residents, families, and visitors alike."
+    },
+    "districtLabel": "District:",
+    "items": [
+      {
+        "title": "Pier",
+        "district": "Beach, Leisure & Lifestyle District",
+        "description": "A dynamic seafront hub with cafés, open walkways, and entertainment spaces seamlessly connecting Jeddah's public realm to the Red Sea.",
+        "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1400&q=85",
+        "thumbnail": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=300&q=80"
+      },
+      {
+        "title": "Luxury Cruise Terminal",
+        "district": "Marina & Waterfront District",
+        "description": "A premium gateway welcoming international cruise lines, designed with elegant terminals and world-class hospitality services for global travelers.",
+        "image": "https://images.unsplash.com/photo-1548574505-5e239809ee19?w=1400&q=85",
+        "thumbnail": "https://images.unsplash.com/photo-1548574505-5e239809ee19?w=300&q=80"
+      },
+      {
+        "title": "Marina",
+        "district": "Marina & Waterfront District",
+        "description": "A vibrant marina with berths for yachts and pleasure craft, surrounded by waterfront promenades, dining, and retail experiences.",
+        "image": "https://images.unsplash.com/photo-1561728108-c5a35b8d51fa?w=1400&q=85",
+        "thumbnail": "https://images.unsplash.com/photo-1561728108-c5a35b8d51fa?w=300&q=80"
+      },
+      {
+        "title": "Bazaar",
+        "district": "Cultural & Heritage District",
+        "description": "A bustling marketplace celebrating Jeddah's heritage, where artisans, traders, and craftsmen come together in a vibrant cultural setting.",
+        "image": "https://images.unsplash.com/photo-1519642918688-7e43b19245d8?w=1400&q=85",
+        "thumbnail": "https://images.unsplash.com/photo-1519642918688-7e43b19245d8?w=300&q=80"
+      },
+      {
+        "title": "JCD Park",
+        "district": "Parks & Public Realm District",
+        "description": "A landscaped urban oasis with walking trails, family play areas, and green public spaces for relaxation and community gatherings.",
+        "image": "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1400&q=85",
+        "thumbnail": "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=300&q=80"
+      },
+      {
+        "title": "Central Plaza",
+        "district": "Cultural & Heritage District",
+        "description": "The civic heart of the destination, hosting events, performances, and gatherings in an elegantly designed open plaza.",
+        "image": "https://images.unsplash.com/photo-1519567241046-7f570eee3ce6?w=1400&q=85",
+        "thumbnail": "https://images.unsplash.com/photo-1519567241046-7f570eee3ce6?w=300&q=80"
+      },
+      {
+        "title": "Coral Cove",
+        "district": "Beach, Leisure & Lifestyle District",
+        "description": "A pristine sheltered cove with calm turquoise waters, ideal for families, swimmers, and snorkellers exploring the Red Sea's coral reefs.",
+        "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1400&q=85&blur=2",
+        "thumbnail": "https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=300&q=80"
+      },
+      {
+        "title": "Ribbon Park",
+        "district": "Parks & Public Realm District",
+        "description": "A linear park weaving through the destination, connecting neighborhoods with cycling paths, gardens, and public art installations.",
+        "image": "https://images.unsplash.com/photo-1490578474895-699cd4e2cf59?w=1400&q=85",
+        "thumbnail": "https://images.unsplash.com/photo-1490578474895-699cd4e2cf59?w=300&q=80"
+      },
+      {
+        "title": "Beach Promenade",
+        "district": "Beach, Leisure & Lifestyle District",
+        "description": "A scenic shoreline walkway lined with palm trees and pavilions, offering uninterrupted views of the Red Sea and a vibrant family-friendly atmosphere.",
+        "image": "https://images.unsplash.com/photo-1519046904884-53103b34b206?w=1400&q=85",
+        "thumbnail": "https://images.unsplash.com/photo-1519046904884-53103b34b206?w=300&q=80"
+      },
+      {
+        "title": "Cultural Quarter",
+        "district": "Cultural & Heritage District",
+        "description": "A district blending museums, galleries, and performance venues that honor Jeddah's rich history while championing contemporary creativity.",
+        "image": "https://images.unsplash.com/photo-1545569310-1d9a6f2feaa3?w=1400&q=85",
+        "thumbnail": "https://images.unsplash.com/photo-1545569310-1d9a6f2feaa3?w=300&q=80"
+      }
+    ]
+  },
+  "footer": {
+    "aboutUs": "ABOUT US",
+    "jcd": "JEDDAH CENTRAL DESTINATION",
+    "invest": "INVEST",
+    "newsEvents": "NEWS & EVENTS",
+    "careers": "CAREERS",
+    "suppliers": "SUPPLIERS",
+    "contact": "CONTACT US",
+    "privacy": "Privacy Policy",
+    "terms": "Terms & Conditions",
+    "cookies": "Cookies Policy",
+    "copy": "© 2025 JCDC. ALL RIGHTS RESERVED"
+  },
+  "jcdMap": {
+    "intro": {
+      "title": "Six Districts. One Destination.",
+      "description": "Each district in Jeddah Central serves a distinct purpose; from cultural expression and wellness to entertainment, retail, and everyday living. Together, they form a unified destination built on walkability, sustainability, and human-centered design.",
+      "hint": "Click on a district to learn more"
+    },
+    "districtCta": "Explore District",
+    "attractionCta": "Explore Attractions",
+    "closeLabel": "Close",
+    "districts": [
+      {
+        "id": "beach",
+        "name": "Beach, Leisure & Lifestyle District",
+        "description": "A dynamic shoreline escape blending leisure, hospitality, and open access to the Red Sea.",
+        "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=85",
+        "href": "#",
+        "attractions": [
+          {
+            "id": "opera",
+            "name": "Opera House",
+            "description": "A cultural landmark elevating Jeddah's standing as the capital of performing arts across the region.",
+            "image": "https://images.unsplash.com/photo-1518998053901-5348d3961a04?w=1200&q=85",
+            "x": 32,
+            "y": 35,
+            "href": "#"
+          },
+          {
+            "id": "publicBeach",
+            "name": "Public Beach",
+            "description": "A 2.1 km stretch of accessible coastline for families, tourists, and residents.",
+            "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=85",
+            "x": 58,
+            "y": 50,
+            "href": "#"
+          },
+          {
+            "id": "entertainment",
+            "name": "Entertainment Pier",
+            "description": "Jeddah's main marine gateway for regional and international cruise travel.",
+            "image": "https://images.unsplash.com/photo-1583492936424-067be2bbcfc1?w=1200&q=85",
+            "x": 78,
+            "y": 40,
+            "href": "#"
+          }
+        ]
+      },
+      {
+        "id": "wellness",
+        "name": "Wellness District",
+        "description": "A walkable haven for innovation, healing, and holistic wellbeing.",
+        "image": "https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1200&q=85",
+        "href": "#",
+        "attractions": [
+          {
+            "id": "wellnessHub",
+            "name": "Wellness Hub",
+            "description": "A holistic wellbeing campus combining clinics, spas, and biophilic public space.",
+            "image": "https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1200&q=85",
+            "x": 48,
+            "y": 30,
+            "href": "#"
+          },
+          {
+            "id": "innovationLab",
+            "name": "Innovation Lab",
+            "description": "A research-led centre dedicated to advancing healthcare and life-science.",
+            "image": "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1200&q=85",
+            "x": 56,
+            "y": 35,
+            "href": "#"
+          }
+        ]
+      },
+      {
+        "id": "central",
+        "name": "Central District",
+        "description": "The vibrant and cultural heart of Jeddah Central.",
+        "image": "https://images.unsplash.com/photo-1518684079-3c830dcef090?w=1200&q=85",
+        "href": "#",
+        "attractions": [
+          {
+            "id": "civicSquare",
+            "name": "Civic Square",
+            "description": "A landmark public square at the heart of the destination, anchoring everyday life and civic events.",
+            "image": "https://images.unsplash.com/photo-1518684079-3c830dcef090?w=1200&q=85",
+            "x": 32,
+            "y": 47,
+            "href": "#"
+          },
+          {
+            "id": "retailHub",
+            "name": "Retail Hub",
+            "description": "A walkable retail district blending heritage architecture with global brands.",
+            "image": "https://images.unsplash.com/photo-1481437156560-3205f6a55735?w=1200&q=85",
+            "x": 42,
+            "y": 60,
+            "href": "#"
+          }
+        ]
+      },
+      {
+        "id": "culture",
+        "name": "Culture & Creativity District",
+        "description": "Where industrial heritage meets creative expression, shaping the future of arts and culture.",
+        "image": "https://images.unsplash.com/photo-1565024144419-c8e2afb22a98?w=1200&q=85",
+        "href": "#",
+        "attractions": [
+          {
+            "id": "museum",
+            "name": "Museum",
+            "description": "Galleries hosting world-class exhibitions that celebrate Jeddah's heritage.",
+            "image": "https://images.unsplash.com/photo-1565024144419-c8e2afb22a98?w=1200&q=85",
+            "x": 16,
+            "y": 50,
+            "href": "#"
+          },
+          {
+            "id": "creativeYard",
+            "name": "Creative Yard",
+            "description": "A reimagined industrial yard programmed with art studios, performances, and pop-ups.",
+            "image": "https://images.unsplash.com/photo-1499781350541-7783f6c6a0c8?w=1200&q=85",
+            "x": 14,
+            "y": 60,
+            "href": "#"
+          }
+        ]
+      },
+      {
+        "id": "sport",
+        "name": "Sport Park District",
+        "description": "A year-round destination for play, wellness, and world-class sporting experiences.",
+        "image": "https://images.unsplash.com/photo-1577223625816-7546f13df25d?w=1200&q=85",
+        "href": "#",
+        "attractions": [
+          {
+            "id": "stadium",
+            "name": "Stadium",
+            "description": "Blending local architecture with cutting-edge technology to create a world-class sports & cultural hub.",
+            "image": "https://images.unsplash.com/photo-1577223625816-7546f13df25d?w=1200&q=85",
+            "x": 50,
+            "y": 75,
+            "href": "#"
+          },
+          {
+            "id": "sportPark",
+            "name": "Sport Park",
+            "description": "A network of pitches, tracks, and play areas open to all ages.",
+            "image": "https://images.unsplash.com/photo-1517649763962-0c623066013b?w=1200&q=85",
+            "x": 60,
+            "y": 78,
+            "href": "#"
+          }
+        ]
+      },
+      {
+        "id": "marina",
+        "name": "Marina District",
+        "description": "Jeddah's global gateway to the sea — where waterfront living meets marine discovery.",
+        "image": "https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?w=1200&q=85",
+        "href": "#",
+        "attractions": [
+          {
+            "id": "luxuryCruise",
+            "name": "Luxury Cruise Terminal",
+            "description": "A maritime gateway for international and regional cruise travel linking the Red Sea to the world.",
+            "image": "https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?w=1200&q=85",
+            "x": 42,
+            "y": 88,
+            "href": "#"
+          },
+          {
+            "id": "yachtClub",
+            "name": "Yacht Club",
+            "description": "An exclusive harbour for yachts and small craft, with restaurants and promenades.",
+            "image": "https://images.unsplash.com/photo-1542728928-1413d1894ed1?w=1200&q=85",
+            "x": 32,
+            "y": 90,
+            "href": "#"
+          },
+          {
+            "id": "marinaPromenade",
+            "name": "Marina Promenade",
+            "description": "A waterfront walkway lined with cafes, retail, and shaded seating overlooking the harbour.",
+            "image": "https://images.unsplash.com/photo-1502920514313-52581002a659?w=1200&q=85",
+            "x": 26,
+            "y": 86,
+            "href": "#"
+          },
+          {
+            "id": "marineDiscovery",
+            "name": "Marine Discovery",
+            "description": "Interactive exhibits and dive experiences celebrating Red Sea ecology.",
+            "image": "https://images.unsplash.com/photo-1535591273668-578e31182c4f?w=1200&q=85",
+            "x": 38,
+            "y": 92,
+            "href": "#"
+          }
+        ]
+      }
+    ]
+  }
 }

@@ -1,0 +1,386 @@
+// ==========================================
+// Landmark Slider (jcdc.html) — full-width version
+// Figma node: 7357:32903
+// Layout:
+//   - Section spans full viewport width (no left/right padding)
+//   - Three slides visible at once: prev (peek left), active (centered),
+//     next (peek right)
+//   - The info card with title/description/CTA is a STATIC overlay anchored
+//     at the bottom of the viewport — it does not slide. Only its inner
+//     content fades out → swaps → fades back in on slide change.
+//   - Prev/Next arrows sit on the side edges; dots below the card.
+// ==========================================
+
+.landmark-slider {
+    width: 100%;
+    background: var(--surface-white);
+    // No horizontal padding — slides touch the screen edges
+    padding: 64px 0 80px;
+
+    // ==========================================
+    // Header (title + xoxo pattern) — keeps a small horizontal pad so
+    // the title stays readable on narrow viewports.
+    // ==========================================
+    &__header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 40px;
+        padding: 0 24px;
+        text-align: center;
+    }
+
+    &__title {
+        margin: 0;
+        max-width: 700px;
+        font-family: var(--font-body);
+        font-size: 36px;
+        font-weight: 700;
+        line-height: 1.2;
+        color: var(--primary-500);
+    }
+
+    // ==========================================
+    // Viewport — full screen width, clips overflow
+    // The track translates inside it. Card and arrows are absolutely
+    // positioned within the viewport so they overlay the slide images.
+    // --slide-width is set on this element by JS at runtime so the SCSS
+    // doesn't need to know the exact pixel size; we expose a sensible
+    // default for first-paint via media queries below.
+    // ==========================================
+    &__viewport {
+        --slide-width: 80vw;     // override by media queries / JS
+        --slide-gap: 16px;
+
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        // height accounts for image + the card overhang below it
+        // (image aspect-ratio drives the height; card extends past the bottom)
+        padding-block-end: 120px; // room for the static card's lower half
+    }
+
+    // The track holds all slide images side-by-side. It animates via
+    // translateX and is centered such that the active slide is in the
+    // middle of the viewport.
+    &__track {
+        display: flex;
+        gap: var(--slide-gap);
+        transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        will-change: transform;
+        // Initial transform set by JS based on viewport math
+    }
+
+    // ==========================================
+    // Single slide — image only (no card!)
+    // ==========================================
+    &__slide {
+        flex: 0 0 var(--slide-width);
+        min-width: 0;
+        position: relative;
+        border-radius: 12px;
+        overflow: hidden;
+        background: #f3f3f3;
+        aspect-ratio: 16 / 9;
+        // Subtle dim on non-active slides so the active one stands out
+        transition: opacity 0.45s var(--ease);
+
+        &:not(.is-active) {
+            // Slight desaturation cue for peek slides; remove if not wanted
+            // opacity stays full so the peek is fully visible
+        }
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            user-select: none;
+            -webkit-user-drag: none;
+            pointer-events: none; // image clicks shouldn't fight pointer-drag
+        }
+    }
+
+    // ==========================================
+    // Static info card — overlays the bottom of the viewport, centered
+    // horizontally. It does NOT translate with the track.
+    // The inner content has its own opacity transition for the fade swap.
+    // ==========================================
+    &__card {
+        position: absolute;
+        inset-inline: 0;
+        bottom: 32px;
+        margin-inline: auto;
+        max-width: min(1140px, calc(100vw - 64px));
+        z-index: 4;
+        background: #f6f6f6;
+        border-radius: 8px;
+        padding: 24px 28px;
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    // Inner wrapper that fades on slide change
+    &__card-inner {
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        width: 100%;
+        opacity: 1;
+        transition: opacity 0.25s var(--ease);
+
+        &.is-fading {
+            opacity: 0;
+        }
+    }
+
+    &__card-text {
+        flex: 1;
+        min-width: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    &__card-title {
+        margin: 0;
+        font-family: var(--font-body);
+        font-size: 22px;
+        font-weight: 700;
+        line-height: 1.3;
+        color: var(--primary-500);
+    }
+
+    &__card-description {
+        margin: 0;
+        font-family: var(--font-body);
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 1.6;
+        color: var(--text-500);
+    }
+
+    &__card-cta {
+        flex-shrink: 0;
+    }
+
+    // ==========================================
+    // Prev / Next arrow buttons — at the screen edges
+    // Anchored to the image area (not the card area).
+    // ==========================================
+    &__nav {
+        position: absolute;
+        top: 50%;
+        // Subtract padding-block-end of viewport (card overhang) from center
+        transform: translateY(calc(-50% - 60px));
+        width: 44px;
+        height: 44px;
+        border-radius: 6px;
+        background: var(--surface-white);
+        border: 1px solid #e6e6e6;
+        color: var(--primary-500);
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 5;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.10);
+        transition:
+            background var(--dur) var(--ease),
+            color var(--dur) var(--ease),
+            border-color var(--dur) var(--ease),
+            box-shadow var(--dur) var(--ease);
+
+        &:hover:not(:disabled) {
+            background: var(--primary-500);
+            color: var(--surface-white);
+            border-color: var(--primary-500);
+            box-shadow: 0 6px 20px rgba(0, 118, 169, 0.25);
+        }
+
+        &:focus-visible {
+            outline: 2px solid var(--primary-500);
+            outline-offset: 3px;
+        }
+
+        &:disabled {
+            opacity: 0.45;
+            cursor: not-allowed;
+        }
+
+        svg {
+            width: 18px;
+            height: 18px;
+
+            [dir="rtl"] & {
+                transform: scaleX(-1);
+            }
+        }
+
+        &--prev {
+            inset-inline-start: 24px;
+        }
+
+        &--next {
+            inset-inline-end: 24px;
+        }
+    }
+
+    // ==========================================
+    // Dots (slide indicators) — sit beneath the entire viewport
+    // ==========================================
+    &__dots {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        list-style: none;
+        margin: 24px 0 0;
+        padding: 0;
+    }
+
+    &__dot {
+        width: 10px;
+        height: 10px;
+        border: 1.5px solid var(--primary-500);
+        border-radius: 50%;
+        background: transparent;
+        padding: 0;
+        cursor: pointer;
+        transition:
+            background var(--dur) var(--ease),
+            transform var(--dur) var(--ease);
+
+        &:hover:not(&--active) {
+            background: rgba(0, 118, 169, 0.20);
+        }
+
+        &:focus-visible {
+            outline: 2px solid var(--primary-500);
+            outline-offset: 3px;
+        }
+
+        &--active {
+            background: var(--primary-500);
+            cursor: default;
+        }
+    }
+}
+
+// ==========================================
+// Tablet (≤ 1024)
+// ==========================================
+@media (max-width: 1024px) {
+    .landmark-slider {
+        padding: 56px 0 64px;
+
+        &__title {
+            font-size: 30px;
+        }
+
+        &__viewport {
+            --slide-width: 84vw;
+            --slide-gap: 14px;
+            padding-block-end: 100px;
+        }
+
+        &__card {
+            bottom: 24px;
+            max-width: calc(100vw - 48px);
+            padding: 20px 24px;
+        }
+
+        &__card-title {
+            font-size: 20px;
+        }
+
+        &__nav {
+            transform: translateY(calc(-50% - 50px));
+
+            &--prev { inset-inline-start: 12px; }
+            &--next { inset-inline-end: 12px; }
+        }
+    }
+}
+
+// ==========================================
+// Mobile (≤ 768)
+// ==========================================
+@media (max-width: 768px) {
+    .landmark-slider {
+        padding: 48px 0 56px;
+
+        &__title {
+            font-size: 24px;
+        }
+
+        &__header {
+            margin-bottom: 24px;
+        }
+
+        &__viewport {
+            --slide-width: 88vw;
+            --slide-gap: 12px;
+            padding-block-end: 156px; // taller card on mobile (stacked CTA)
+        }
+
+        &__card {
+            bottom: 16px;
+            max-width: calc(100vw - 32px);
+            padding: 16px 18px;
+        }
+
+        &__card-inner {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        &__card-title {
+            font-size: 18px;
+        }
+
+        &__card-cta {
+            width: 100%;
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+        }
+
+        &__nav {
+            width: 36px;
+            height: 36px;
+            // anchor higher so arrows stay over the image (taller card on mobile)
+            transform: translateY(calc(-50% - 100px));
+
+            svg {
+                width: 16px;
+                height: 16px;
+            }
+
+            &--prev { inset-inline-start: 8px; }
+            &--next { inset-inline-end: 8px; }
+        }
+    }
+}
+
+// ==========================================
+// Small Mobile (≤ 480)
+// ==========================================
+@media (max-width: 480px) {
+    .landmark-slider {
+        padding: 40px 0 48px;
+
+        &__title {
+            font-size: 22px;
+        }
+
+        &__viewport {
+            --slide-width: 90vw;
+        }
+    }
+}

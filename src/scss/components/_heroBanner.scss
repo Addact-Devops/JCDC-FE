@@ -114,6 +114,36 @@
     }
 
     // ==========================================
+    // Logo mark (small diamond mark + wordmark above breadcrumb)
+    // Used on pages like attraction.html where Figma shows the mini
+    // Jeddah Central mark above the breadcrumb.
+    // ==========================================
+    &__logo-mark {
+        display: inline-flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 6px;
+        margin-bottom: 8px;
+        color: #ffffff;
+
+        img,
+        svg {
+            display: block;
+            width: 56px;
+            height: auto;
+        }
+    }
+
+    &__logo-wordmark {
+        font-family: "Ubuntu", sans-serif;
+        font-size: 11px;
+        font-weight: 500;
+        letter-spacing: 0.18em;
+        color: #ffffff;
+        text-transform: uppercase;
+    }
+
+    // ==========================================
     // Title
     // ==========================================
 

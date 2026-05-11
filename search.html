@@ -3,11 +3,8 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta
-            name="description"
-            content="Careers at JCDC — Be part of our journey to shape Jeddah's future. Explore meaningful opportunities and grow with a world-class team."
-        />
-        <title data-i18n="meta.title">JCDC — Careers</title>
+        <meta name="description" content="Search the JCDC website for news, projects, opportunities, and more." />
+        <title data-i18n="search.metaTitle">JCDC — Search</title>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
@@ -16,15 +13,22 @@
         />
         <link rel="stylesheet" href="dist/main.min.css" />
     </head>
-
     <body>
         <!-- ════════════════════════════════════════════
-        HEADER (reused — same as other pages)
+     HEADER (transparent over hero, white on scroll)
 ════════════════════════════════════════════ -->
         <header class="navbar" id="navbar">
             <div class="navbar__inner">
-                <a href="index.html" class="navbar__logo" aria-label="JCDC Home">
-                    <img src="assets/logo.svg" alt="JCDC" width="104" height="56" />
+                <a href="/" class="navbar__logo" aria-label="JCDC Home">
+                    <img class="navbar__logo--light" src="assets/Frame 2.svg" alt="JCDC" width="104" height="56" />
+                    <!-- Dark/colored logo — shown when scrolled -->
+                    <img
+                        class="navbar__logo--dark"
+                        src="assets/coporate-PNG-01 1.svg"
+                        alt="JCDC"
+                        width="104"
+                        height="56"
+                    />
                 </a>
 
                 <nav class="navbar__menu" aria-label="Main navigation">
@@ -60,14 +64,14 @@
 
                     <a href="#" class="nav-item" data-i18n="nav.invest">Invest</a>
                     <a href="#" class="nav-item" data-i18n="nav.news">News &amp; Events</a>
-                    <a href="#" class="nav-item nav-item--active" data-i18n="nav.careers">Careers</a>
+                    <a href="#" class="nav-item" data-i18n="nav.careers">Careers</a>
                     <a href="#" class="nav-item" data-i18n="nav.suppliers">Suppliers</a>
                     <a href="#" class="nav-item" data-i18n="nav.contact">Contact Us</a>
                 </nav>
 
                 <div class="navbar__actions">
                     <button class="icon-btn" aria-label="Search">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                             <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.5" />
                             <path
                                 d="M16.5 16.5L21 21"
@@ -96,12 +100,12 @@
             </div>
         </header>
 
-        <!-- Mobile drawer (reused) -->
+        <!-- Mobile drawer -->
         <aside class="drawer" id="drawer" aria-hidden="true">
             <div class="drawer__head">
                 <img src="assets/logo.svg" alt="JCDC" width="80" height="44" class="drawer__logo" />
                 <button class="drawer__close" id="drawer-close" aria-label="Close menu">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                         <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
                     </svg>
                 </button>
@@ -111,16 +115,9 @@
 
             <ul class="drawer__nav">
                 <li>
-                    <a href="#" class="drawer__link"
-                        ><span data-i18n="nav.about">About</span>
-                        <svg
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            class="drawer__arrow"
-                            aria-hidden="true"
-                        >
+                    <button class="drawer__link" data-href="#">
+                        <span data-i18n="nav.about">About</span
+                        ><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="drawer__arrow">
                             <path
                                 d="M9 6l6 6-6 6"
                                 stroke="currentColor"
@@ -129,19 +126,40 @@
                                 stroke-linejoin="round"
                             />
                         </svg>
-                    </a>
+                    </button>
                 </li>
-                <li>
-                    <button class="drawer__link">
+
+                <li class="drawer__item drawer__item--has-sub">
+                    <button class="drawer__link drawer__link--expand" data-mobile-expand>
                         <span data-i18n="nav.jcd">Jeddah Central Destination</span>
                         <svg
                             width="24"
                             height="24"
                             viewBox="0 0 24 24"
                             fill="none"
-                            class="drawer__arrow"
-                            aria-hidden="true"
+                            class="drawer__arrow drawer__arrow--down"
                         >
+                            <path
+                                d="M7 10l5 5 5-5"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            />
+                        </svg>
+                    </button>
+                    <ul class="drawer__sub">
+                        <li><a href="#" data-i18n="nav.dropdown.districts">Districts</a></li>
+                        <li><a href="#" data-i18n="nav.dropdown.landmarks">Landmarks</a></li>
+                        <li><a href="#" data-i18n="nav.dropdown.attractions">Attractions</a></li>
+                        <li><a href="#" data-i18n="nav.dropdown.sustainability">Sustainability</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <button class="drawer__link">
+                        <span data-i18n="nav.invest">Invest</span
+                        ><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="drawer__arrow">
                             <path
                                 d="M9 6l6 6-6 6"
                                 stroke="currentColor"
@@ -153,16 +171,9 @@
                     </button>
                 </li>
                 <li>
-                    <a href="#" class="drawer__link"
-                        ><span data-i18n="nav.invest">Invest</span>
-                        <svg
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            class="drawer__arrow"
-                            aria-hidden="true"
-                        >
+                    <button class="drawer__link">
+                        <span data-i18n="nav.news">News &amp; Events</span
+                        ><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="drawer__arrow">
                             <path
                                 d="M9 6l6 6-6 6"
                                 stroke="currentColor"
@@ -171,19 +182,12 @@
                                 stroke-linejoin="round"
                             />
                         </svg>
-                    </a>
+                    </button>
                 </li>
                 <li>
-                    <a href="#" class="drawer__link"
-                        ><span data-i18n="nav.news">News & Events</span>
-                        <svg
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            class="drawer__arrow"
-                            aria-hidden="true"
-                        >
+                    <button class="drawer__link">
+                        <span data-i18n="nav.careers">Careers</span
+                        ><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="drawer__arrow">
                             <path
                                 d="M9 6l6 6-6 6"
                                 stroke="currentColor"
@@ -192,19 +196,12 @@
                                 stroke-linejoin="round"
                             />
                         </svg>
-                    </a>
+                    </button>
                 </li>
                 <li>
-                    <a href="#" class="drawer__link"
-                        ><span data-i18n="nav.careers">Careers</span>
-                        <svg
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            class="drawer__arrow"
-                            aria-hidden="true"
-                        >
+                    <button class="drawer__link">
+                        <span data-i18n="nav.suppliers">Suppliers</span
+                        ><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="drawer__arrow">
                             <path
                                 d="M9 6l6 6-6 6"
                                 stroke="currentColor"
@@ -213,19 +210,12 @@
                                 stroke-linejoin="round"
                             />
                         </svg>
-                    </a>
+                    </button>
                 </li>
                 <li>
-                    <a href="#" class="drawer__link"
-                        ><span data-i18n="nav.suppliers">Suppliers</span>
-                        <svg
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            class="drawer__arrow"
-                            aria-hidden="true"
-                        >
+                    <button class="drawer__link">
+                        <span data-i18n="nav.contact">Contact Us</span
+                        ><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="drawer__arrow">
                             <path
                                 d="M9 6l6 6-6 6"
                                 stroke="currentColor"
@@ -234,28 +224,7 @@
                                 stroke-linejoin="round"
                             />
                         </svg>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" class="drawer__link"
-                        ><span data-i18n="nav.contact">Contact Us</span>
-                        <svg
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            class="drawer__arrow"
-                            aria-hidden="true"
-                        >
-                            <path
-                                d="M9 6l6 6-6 6"
-                                stroke="currentColor"
-                                stroke-width="1.8"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                            />
-                        </svg>
-                    </a>
+                    </button>
                 </li>
             </ul>
 
@@ -277,9 +246,9 @@
         <div class="overlay" id="overlay"></div>
 
         <!-- ════════════════════════════════════════════
-        HERO BANNER (reused component, career-specific copy)
+        HERO BANNER (reused — Search copy)
 ════════════════════════════════════════════ -->
-        <section class="banner" aria-labelledby="career-hero-title">
+        <section class="banner" aria-labelledby="search-hero-title">
             <div class="hero__media">
                 <img src="assets/herobanner.svg" alt="" loading="eager" />
             </div>
@@ -287,213 +256,74 @@
 
             <div class="container">
                 <div class="banner__content">
-                    <!-- Breadcrumbs -->
                     <nav class="banner__breadcrumbs" aria-label="Breadcrumb">
-                        <a href="index.html" class="banner__breadcrumbs-link" data-i18n="career.breadcrumb.home"
+                        <a href="index.html" class="banner__breadcrumbs-link" data-i18n="search.breadcrumb.home"
                             >Home</a
                         >
                         <span class="banner__breadcrumbs-separator" aria-hidden="true">›</span>
-                        <span class="banner__breadcrumbs-current" data-i18n="career.breadcrumb.current">Careers</span>
+                        <span class="banner__breadcrumbs-current" data-i18n="search.breadcrumb.current">Search</span>
                     </nav>
 
                     <div>
-                        <!-- Title -->
-                        <h1 class="banner__title" id="career-hero-title" data-i18n="career.hero.title">
-                            Careers at JCDC
-                        </h1>
-
-                        <!-- Description -->
-                        <p class="banner__description" data-i18n="career.hero.description">
-                            Be part of our journey to shape Jeddah's future. Explore meaningful opportunities, grow with
-                            a world-class team, and contribute to creating destinations that celebrate heritage and
-                            inspire generations.
-                        </p>
+                        <h1 class="banner__title" id="search-hero-title" data-i18n="search.hero.title">Search</h1>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- ════════════════════════════════════════════
-        HOW WE SET OURSELVES APART
+        SEARCH PAGE — input + results + pagination
 ════════════════════════════════════════════ -->
-        <section class="how-we-set" aria-labelledby="how-we-set-title">
-            <div class="how-we-set__container">
-                <!-- Heading + xoxo pattern (reused from other pages) -->
-                <div class="how-we-set__header">
-                    <h2 class="how-we-set__title" id="how-we-set-title" data-i18n="career.howWeSet.title">
-                        How We Set Ourselves Apart
-                    </h2>
-
-                    <div class="section-pattern" aria-hidden="true">
-                        <img
-                            src="./assets/pattern1.svg"
-                            alt=""
-                            width="22.46"
-                            height="21.3"
-                            style="position: absolute; left: 0px; top: 1.35px"
+        <section class="search-page" id="search-page" aria-labelledby="search-hero-title">
+            <div class="search-page__container">
+                <form class="search-page__search" id="search-form" novalidate>
+                    <label class="search-page__label" for="search-input" data-i18n="search.label"> Search Query </label>
+                    <div class="search-page__row">
+                        <input
+                            class="search-page__input"
+                            id="search-input"
+                            name="q"
+                            type="search"
+                            autocomplete="off"
+                            data-i18n-placeholder="search.placeholder"
+                            placeholder="Search Query"
                         />
-                        <img
-                            src="./assets/pattern2.svg"
-                            alt=""
-                            width="25.29"
-                            height="24"
-                            style="position: absolute; left: 25.73px; top: 0px"
-                        />
-                        <img
-                            src="./assets/pattern1.svg"
-                            alt=""
-                            width="22.46"
-                            height="21.3"
-                            style="position: absolute; left: 52px; top: 1.35px"
-                        />
-                        <img
-                            src="./assets/pattern2.svg"
-                            alt=""
-                            width="25.29"
-                            height="24"
-                            style="position: absolute; left: 78px; top: 0px"
-                        />
+                        <button type="submit" class="btn btn--outline-gold search-page__submit">
+                            <span data-i18n="search.submit">Search</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path
+                                    d="M5 12h14M13 6l6 6-6 6"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </svg>
+                        </button>
                     </div>
-                </div>
+                </form>
 
-                <!-- 4 cards: Impact / Expertise / Professional / Standards -->
-                <div class="how-we-set__grid">
-                    <!-- Card 1: Impact with Purpose -->
-                    <article class="how-we-set__card">
-                        <div class="how-we-set__icon">
-                            <img
-                                src="assets/career-impact.svg"
-                                alt=""
-                                aria-hidden="true"
-                                loading="lazy"
-                                width="56"
-                                height="56"
-                            />
-                        </div>
-                        <div class="how-we-set__card-content">
-                            <h3 class="how-we-set__card-title" data-i18n="career.howWeSet.cards.impactTitle">
-                                Impact with Purpose
-                            </h3>
-                            <p class="how-we-set__card-description" data-i18n="career.howWeSet.cards.impactDesc">
-                                We develop destinations that honor our cultural heritage and contribute to Saudi's
-                                tourism landscape.
-                            </p>
-                        </div>
-                    </article>
+                <p class="search-page__meta" id="search-meta" hidden></p>
 
-                    <!-- Card 2: Expertise Recognition -->
-                    <article class="how-we-set__card">
-                        <div class="how-we-set__icon">
-                            <img
-                                src="assets/career-expertise.svg"
-                                alt=""
-                                aria-hidden="true"
-                                loading="lazy"
-                                width="56"
-                                height="56"
-                            />
-                        </div>
-                        <div class="how-we-set__card-content">
-                            <h3 class="how-we-set__card-title" data-i18n="career.howWeSet.cards.expertiseTitle">
-                                Expertise Recognition
-                            </h3>
-                            <p class="how-we-set__card-description" data-i18n="career.howWeSet.cards.expertiseDesc">
-                                Your experience matters, and your contributions make an impact from day one.
-                            </p>
-                        </div>
-                    </article>
+                <ol class="search-page__results" id="search-results"></ol>
 
-                    <!-- Card 3: Professional Development -->
-                    <article class="how-we-set__card">
-                        <div class="how-we-set__icon">
-                            <img
-                                src="assets/career-professional.svg"
-                                alt=""
-                                aria-hidden="true"
-                                loading="lazy"
-                                width="56"
-                                height="56"
-                            />
-                        </div>
-                        <div class="how-we-set__card-content">
-                            <h3 class="how-we-set__card-title" data-i18n="career.howWeSet.cards.professionalTitle">
-                                Professional Development
-                            </h3>
-                            <p class="how-we-set__card-description" data-i18n="career.howWeSet.cards.professionalDesc">
-                                Continuous learning opportunities, leadership development, and career advancement.
-                            </p>
-                        </div>
-                    </article>
+                <p class="search-page__empty" id="search-empty" data-i18n="search.empty" hidden>
+                    No results found. Try different keywords.
+                </p>
 
-                    <!-- Card 4: World-Class Standards -->
-                    <article class="how-we-set__card">
-                        <div class="how-we-set__icon">
-                            <img
-                                src="assets/career-standards.svg"
-                                alt=""
-                                aria-hidden="true"
-                                loading="lazy"
-                                width="56"
-                                height="56"
-                            />
-                        </div>
-                        <div class="how-we-set__card-content">
-                            <h3 class="how-we-set__card-title" data-i18n="career.howWeSet.cards.standardsTitle">
-                                World-Class Standards
-                            </h3>
-                            <p class="how-we-set__card-description" data-i18n="career.howWeSet.cards.standardsDesc">
-                                Innovation, sustainability, and organizational excellence supported by globally
-                                recognized certifications.
-                            </p>
-                        </div>
-                    </article>
-                </div>
+                <ul class="pagination" id="search-pagination" aria-label="Search pagination"></ul>
             </div>
         </section>
 
-        <!-- ════════════════════════════════════════════
-        YOUR NEXT STEP (CTA banner)
-════════════════════════════════════════════ -->
-        <section class="next-step" aria-labelledby="next-step-title">
-            <div class="next-step__container">
-                <div class="next-step__banner">
-                    <div class="next-step__text">
-                        <h2 class="next-step__title" id="next-step-title" data-i18n="career.nextStep.title">
-                            Your Next Step
-                        </h2>
-                        <p class="next-step__description" data-i18n="career.nextStep.description">
-                            Explore our available positions and be part of our journey at JCDC.
-                        </p>
-                    </div>
-
-                    <a href="#" class="btn next-step__cta" aria-label="Explore Opportunities">
-                        <span data-i18n="career.nextStep.cta">Explore Opportunities</span>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                            <path
-                                d="M5 12h14M13 6l6 6-6 6"
-                                stroke="currentColor"
-                                stroke-width="2"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                            />
-                        </svg>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <!-- ════════════════════════════════════════════
-        FOOTER (reused)
-════════════════════════════════════════════ -->
         <footer class="footer">
             <div class="footer__top">
-                <div class="footer__logo-wrap">
-                    <img src="assets/logo.svg" alt="JCDC" width="132" height="72" class="footer__logo" />
-                </div>
+                <a href="/" class="footer__logo-wrap">
+                    <img src="assets/coporate-PNG-01 1.svg" alt="JCDC" width="132" height="72" class="footer__logo" />
+                </a>
                 <div class="footer__right">
                     <div class="footer__social">
                         <a href="#" aria-label="Facebook" class="social-link">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                                 <path
                                     d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.33v6.99A10 10 0 0 0 22 12z"
                                 />
@@ -507,7 +337,6 @@
                                 fill="none"
                                 stroke="currentColor"
                                 stroke-width="1.8"
-                                aria-hidden="true"
                             >
                                 <rect x="3" y="3" width="18" height="18" rx="5" />
                                 <circle cx="12" cy="12" r="4" />
@@ -515,21 +344,21 @@
                             </svg>
                         </a>
                         <a href="#" aria-label="X (Twitter)" class="social-link">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                                 <path
                                     d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
                                 />
                             </svg>
                         </a>
                         <a href="#" aria-label="LinkedIn" class="social-link">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                                 <path
                                     d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14zM8.34 18.34v-7.4H5.67v7.4h2.67zM7 9.76a1.55 1.55 0 1 0 0-3.1 1.55 1.55 0 0 0 0 3.1zm11.34 8.58v-4.05c0-2.15-1.15-3.15-2.69-3.15-1.24 0-1.8.68-2.11 1.16v-1h-2.67v7.4h2.67v-4.13c0-.9.67-1.49 1.47-1.49.77 0 1.34.44 1.34 1.47v4.15h1.99z"
                                 />
                             </svg>
                         </a>
                         <a href="#" aria-label="YouTube" class="social-link">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                                 <path
                                     d="M23.5 6.21a3.02 3.02 0 0 0-2.12-2.14C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.38.57A3.02 3.02 0 0 0 .5 6.21 31.48 31.48 0 0 0 0 12a31.48 31.48 0 0 0 .5 5.79 3.02 3.02 0 0 0 2.12 2.14C4.5 20.5 12 20.5 12 20.5s7.5 0 9.38-.57a3.02 3.02 0 0 0 2.12-2.14A31.48 31.48 0 0 0 24 12a31.48 31.48 0 0 0-.5-5.79zM9.6 15.6V8.4l6.24 3.6-6.24 3.6z"
                                 />

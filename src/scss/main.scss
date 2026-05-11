@@ -24,6 +24,7 @@
 @use "components/sustainabilityAction";
 @use "components/globalEnvironment";
 @use "components/environmental";
+@use "components/pagination";
 
 // Page sections
 @use "sections/hero";
@@ -35,6 +36,17 @@
 @use "sections/nextStep";
 @use "sections/whyJeddah";
 @use "sections/registerInterest";
+@use "sections/errorPage";
+@use "sections/contactUs";
+@use "sections/whoRegister";
+@use "sections/registrationProcess";
+@use "sections/searchPage";
+@use "sections/newsListing";
+@use "sections/newsItem";
+@use "sections/leadership";
+@use "sections/landmarkSlider";
+@use "sections/attractionSlider";
+@use "sections/jcdMap";
 
 // Responsive rules (last — overrides all above)
 @use "responsive";
