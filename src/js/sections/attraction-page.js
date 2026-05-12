@@ -1,177 +1,139 @@
 /**
  * sections/attraction-page.js
  *
- * Drives the attraction page slider:
- *   - Click on a thumbnail swaps the active image, title, district, and
- *     description.
- *   - The swap is a brief fade-out → content swap → fade-in, so the change
- *     feels smooth even with no slide-in animation.
- *   - The active thumbnail label turns blue + bold; others stay grey.
- *   - The thumbnail strip is horizontally scrollable; clicking a partially
- *     visible thumbnail also scrolls it into view.
- *   - All copy is sourced from i18n so EN/AR both work.
+ * Drives the attraction page slider on attraction.html.
  *
- * Mock data lives in i18n (`attraction.items`) so it's editable without
- * touching JS. Replace with API data later — the renderer is unchanged.
+ * The DOM is fully STATIC — every active-image, title overlay, info block,
+ * and thumbnail is pre-rendered in attraction.html. This module does NOT
+ * inject HTML.
  *
- * IIFE pattern.
+ * Responsibilities:
+ *   - On thumbnail click, fade out the current variants → toggle the
+ *     .is-active / --active classes on the matching image, title, info,
+ *     and thumbnail → fade back in.
+ *   - Smooth-scroll the active thumbnail into view when the user clicks it
+ *     (so partially-visible thumbs get pulled into the viewport).
+ *
+ * IIFE pattern (matches the rest of the codebase).
  */
 (function () {
-    'use strict';
+    "use strict";
 
-    const FADE_MS = 250; // must match the .is-fading transition in SCSS
+    // Must match the .is-fading transition duration in _attractionSlider.scss
+    const FADE_MS = 250;
 
     function init() {
-        const root = document.getElementById('attraction-slider');
+        const root = document.getElementById("attraction-slider");
         if (!root) return;
 
-        const activeImageEl = root.querySelector('#attraction-active-image');
-        const activeImg     = activeImageEl && activeImageEl.querySelector('img');
-        const titleOverlay  = root.querySelector('#attraction-title-overlay');
-        const titleEl       = root.querySelector('#attraction-title');
-        const infoEl        = root.querySelector('#attraction-info');
-        const districtEl    = root.querySelector('#attraction-district');
-        const descriptionEl = root.querySelector('#attraction-description');
-        const stripEl       = root.querySelector('#attraction-strip');
+        const activeImageEl = root.querySelector("#attraction-active-image");
+        const titleOverlay = root.querySelector("#attraction-title-overlay");
+        const infoEl = root.querySelector("#attraction-info");
+        const stripEl = root.querySelector("#attraction-strip");
 
-        if (!activeImg || !titleEl || !districtEl || !descriptionEl || !stripEl) return;
+        if (!activeImageEl || !titleOverlay || !infoEl || !stripEl) return;
 
-        let items = [];
-        let currentIdx = 0;
+        const imageVariants = Array.from(activeImageEl.querySelectorAll("[data-attraction-image]"));
+        const titleVariants = Array.from(titleOverlay.querySelectorAll("[data-attraction-title]"));
+        const infoVariants = Array.from(infoEl.querySelectorAll("[data-attraction-info]"));
+        const thumbs = Array.from(stripEl.querySelectorAll("[data-attraction-idx]"));
 
-        // ──────────────────────────────────────
-        // Helpers
-        // ──────────────────────────────────────
-        function deepGet(o, k) {
-            return k.split('.').reduce((a, p) => a && a[p], o);
-        }
+        if (!thumbs.length) return;
 
-        function escapeHtml(s) {
-            return String(s)
-                .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-                .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
-        }
+        // Initial active index from the static markup (first .--active thumbnail)
+        let currentIdx = thumbs.findIndex((b) => b.classList.contains("attraction-thumb--active"));
+        if (currentIdx < 0) currentIdx = 0;
 
         // ──────────────────────────────────────
-        // Render the thumbnail strip
+        // Class-toggle helpers (no HTML mutation)
         // ──────────────────────────────────────
-        function renderStrip() {
-            stripEl.innerHTML = items.map((it, i) => `
-                <button type="button"
-                        class="attraction-thumb${i === currentIdx ? ' attraction-thumb--active' : ''}"
-                        data-attraction-idx="${i}"
-                        aria-label="Show ${escapeHtml(it.title)}"
-                        ${i === currentIdx ? 'aria-current="true"' : ''}>
-                    <span class="attraction-thumb__image">
-                        <img src="${escapeHtml(it.thumbnail || it.image)}"
-                             alt="${escapeHtml(it.title)}"
-                             loading="lazy" />
-                    </span>
-                    <span class="attraction-thumb__label">${escapeHtml(it.title)}</span>
-                </button>
-            `).join('');
-
-            stripEl.querySelectorAll('[data-attraction-idx]').forEach((btn) => {
-                btn.addEventListener('click', () => {
-                    const i = parseInt(btn.dataset.attractionIdx, 10);
-                    if (!isNaN(i) && i !== currentIdx) selectAttraction(i, true);
-                });
+        function setActiveVariant(elements, index, activeClass) {
+            elements.forEach((el, i) => {
+                el.classList.toggle(activeClass, i === index);
             });
         }
 
-        // ──────────────────────────────────────
-        // Paint the active state (no fade — used for first paint and for
-        // language change). Subsequent user clicks go through swapActive().
-        // ──────────────────────────────────────
-        function paintActive(item, t) {
-            if (!item) return;
-            const districtLabel = deepGet(t, 'attraction.districtLabel') || 'District:';
-
-            if (activeImg) {
-                activeImg.src = item.image || '';
-                activeImg.alt = item.title || '';
-            }
-            if (titleEl) titleEl.textContent = item.title || '';
-            if (districtEl) {
-                districtEl.innerHTML =
-                    `<strong>${escapeHtml(districtLabel)}</strong> ${escapeHtml(item.district || '')}`;
-            }
-            if (descriptionEl) descriptionEl.textContent = item.description || '';
+        function setActiveThumb(index) {
+            thumbs.forEach((btn, i) => {
+                const isActive = i === index;
+                btn.classList.toggle("attraction-thumb--active", isActive);
+                if (isActive) btn.setAttribute("aria-current", "true");
+                else btn.removeAttribute("aria-current");
+            });
         }
 
-        // Swap the active state with a fade.
-        // 1. Fade out title overlay + info text + image  (250 ms)
-        // 2. Swap content
-        // 3. Fade back in
-        function swapActive(item, t) {
-            const targets = [titleOverlay, infoEl, activeImageEl].filter(Boolean);
-            targets.forEach((el) => el.classList.add('is-fading'));
+        function applyActive(index) {
+            setActiveVariant(imageVariants, index, "is-active");
+            setActiveVariant(titleVariants, index, "is-active");
+            setActiveVariant(infoVariants, index, "is-active");
+            setActiveThumb(index);
+        }
+
+        // ──────────────────────────────────────
+        // Fade-swap on user selection:
+        //   1. Add .is-fading to the three big elements (image / title / info)
+        //   2. After the fade-out, toggle which variants are .--active
+        //   3. Remove .is-fading so they fade back in
+        // ──────────────────────────────────────
+        function fadeSwap(index) {
+            const fadeTargets = [activeImageEl, titleOverlay, infoEl];
+            fadeTargets.forEach((el) => el.classList.add("is-fading"));
 
             setTimeout(() => {
-                paintActive(item, t);
-                // Force reflow so the transition re-runs cleanly
+                applyActive(index);
+                // Force a reflow so the transition restarts cleanly
                 void root.offsetWidth;
-                targets.forEach((el) => el.classList.remove('is-fading'));
+                fadeTargets.forEach((el) => el.classList.remove("is-fading"));
             }, FADE_MS);
         }
 
         // ──────────────────────────────────────
-        // Select an attraction (called from thumbnail clicks)
+        // Thumbnail click handler
         // ──────────────────────────────────────
-        function selectAttraction(i, userInitiated) {
-            if (i < 0 || i >= items.length || i === currentIdx) return;
-            currentIdx = i;
+        function selectAttraction(index, userInitiated) {
+            if (index < 0 || index >= thumbs.length || index === currentIdx) return;
+            currentIdx = index;
 
-            // Refresh active class on thumbnails
-            stripEl.querySelectorAll('[data-attraction-idx]').forEach((btn, idx) => {
-                btn.classList.toggle('attraction-thumb--active', idx === currentIdx);
-                if (idx === currentIdx) btn.setAttribute('aria-current', 'true');
-                else btn.removeAttribute('aria-current');
-            });
+            fadeSwap(currentIdx);
 
-            const t = window.__I18N_CACHE__ || {};
-            swapActive(items[currentIdx], t);
-
-            // Scroll the active thumbnail into view (smoothly, but only if
-            // the user clicked — not on language-change-driven re-render)
+            // Smooth-scroll the active thumbnail into view on user click
             if (userInitiated) {
-                const target = stripEl.querySelector(`[data-attraction-idx="${currentIdx}"]`);
-                if (target && target.scrollIntoView) {
+                const target = thumbs[currentIdx];
+                if (target && typeof target.scrollIntoView === "function") {
                     target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'nearest',
-                        inline: 'center'
+                        behavior: "smooth",
+                        block: "nearest",
+                        inline: "center",
                     });
                 }
             }
         }
 
-        // ──────────────────────────────────────
-        // Bind to i18n (initial paint + language change)
-        // ──────────────────────────────────────
-        function bind() {
-            window.I18n.onLangChange((lang, t) => {
-                window.__I18N_CACHE__ = t;
-                items = (deepGet(t, 'attraction.items') || []).slice();
-                if (currentIdx >= items.length) currentIdx = 0;
-                renderStrip();
-                paintActive(items[currentIdx], t);
+        thumbs.forEach((btn) => {
+            btn.addEventListener("click", () => {
+                const i = parseInt(btn.dataset.attractionIdx, 10);
+                if (!isNaN(i)) selectAttraction(i, true);
             });
-        }
-        if (window.I18n && window.I18n.onLangChange) {
-            bind();
-        } else {
-            const poll = setInterval(() => {
-                if (window.I18n && window.I18n.onLangChange) {
-                    clearInterval(poll);
-                    bind();
-                }
-            }, 50);
-        }
+        });
+
+        // Keyboard navigation on the thumbnail strip (←/→ within the tablist)
+        stripEl.addEventListener("keydown", (e) => {
+            if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
+            const isRTL = document.documentElement.dir === "rtl";
+            const dir = (e.key === "ArrowRight" ? 1 : -1) * (isRTL ? -1 : 1);
+            const nextIdx = (currentIdx + dir + thumbs.length) % thumbs.length;
+            e.preventDefault();
+            selectAttraction(nextIdx, true);
+            const focused = thumbs[nextIdx];
+            if (focused) focused.focus();
+        });
+
+        // Initial paint to make sure the active classes match currentIdx
+        applyActive(currentIdx);
     }
 
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', init);
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", init);
     } else {
         init();
     }
