@@ -12,7 +12,7 @@
 .attraction-slider {
     width: 100%;
     background: var(--surface-white);
-    padding: 56px 120px 96px;
+    padding: 64px 120px;
 
     &__container {
         width: 100%;
@@ -113,7 +113,7 @@
     // is displayed. The wrapper itself fades during the swap.
     // ==========================================
     &__info {
-        margin: 0 56px 64px;
+        margin: 0 56px 23px;
         transition: opacity 0.35s var(--ease);
 
         &.is-fading {
@@ -131,7 +131,8 @@
     }
 
     &__district {
-        margin: 0 0 12px;
+        margin: 0 0 9px;
+        padding: 0 32px;
         font-family: var(--font-body);
         font-size: 16px;
         font-weight: 400;
@@ -147,6 +148,7 @@
     &__description {
         margin: 0;
         font-family: var(--font-body);
+        padding: 0 32px;
         font-size: 16px;
         font-weight: 400;
         line-height: 1.7;
@@ -161,10 +163,11 @@
     // ==========================================
     &__strip {
         display: flex;
-        gap: 16px;
+        gap: 13px;
         overflow-x: auto;
         overflow-y: hidden;
-        padding: 4px 56px 16px; // 56px inline = matches title-overlay inset
+        margin-left: 78px;
+        padding: 16px 56px 16px 6px; // 56px inline = matches title-overlay inset
         scroll-padding-inline: 56px; // keep snap-aligned thumbs respecting the inset
         scroll-behavior: smooth;
         scroll-snap-type: x proximity;
