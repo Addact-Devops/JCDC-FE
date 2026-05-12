@@ -1,20 +1,25 @@
 /**
  * sections/landmark-slider.js
  *
- * Full-width landmark slider for jcdc.html.
+ * Full-width landmark slider.
+ *
+ * Supports two variants via a modifier class on the root:
+ *   - .landmark-slider                       → with bottom info card
+ *   - .landmark-slider.landmark-slider--no-card  → image-only carousel
+ *
+ * Also supports multiple instances on the same page (queries by class
+ * within each root, not by ID).
  *
  * The DOM is fully STATIC — every slide, every dot, and every card-content
- * variant is rendered in jcdc.html. This module does NOT inject HTML.
+ * variant is rendered in HTML. This module does NOT inject HTML.
  *
  * Responsibilities:
  *   - Compute and apply the track translateX so the active slide is
  *     centered in the viewport (RTL-aware).
  *   - Toggle .is-active on slides and dots.
- *   - Fade-swap which `.landmark-slider__card-variant` has the
- *     `.landmark-slider__card-variant--active` class.
+ *   - When present, fade-swap which `.landmark-slider__card-variant`
+ *     has the `.landmark-slider__card-variant--active` class.
  *   - Wire up arrows, dots, keyboard arrow keys, pointer drag, autoplay.
- *
- * IIFE pattern.
  */
 (function () {
     "use strict";
@@ -22,24 +27,36 @@
     const AUTOPLAY_MS = 5000;
     const RESUME_AFTER_MS = 8000;
     const SWIPE_THRESHOLD = 60;
-    const FADE_MS = 250; // must stay in sync with the .is-fading transition in SCSS
+    const FADE_MS = 250; // keep in sync with .is-fading transition in SCSS
 
     function init() {
-        const root = document.getElementById("landmark-slider");
-        if (!root) return;
+        //  ▼ CHANGE #1 — find every slider on the page, not just one by id
+        const roots = document.querySelectorAll(".landmark-slider");
+        if (!roots.length) return;
+        roots.forEach(initOne);
+    }
 
+    function initOne(root) {
+        //  ▼ CHANGE #2 — query by class within root, not by global id.
+        //  Makes the slider safe to use multiple times on one page and
+        //  decouples the JS from the markup's id attribute.
         const viewport = root.querySelector(".landmark-slider__viewport");
-        const trackEl = root.querySelector("#landmark-slider-track");
-        const dotsEl = root.querySelector("#landmark-slider-dots");
+        const trackEl = root.querySelector(".landmark-slider__track");
+        const dotsEl = root.querySelector(".landmark-slider__dots");
         const prevBtn = root.querySelector("[data-landmark-prev]");
         const nextBtn = root.querySelector("[data-landmark-next]");
-        const cardInner = root.querySelector("#landmark-slider-card-inner");
+        const cardInner = root.querySelector(".landmark-slider__card-inner");
 
-        if (!viewport || !trackEl || !dotsEl || !cardInner) return;
+        //  ▼ CHANGE #3 — cardInner is no longer required to bail out.
+        if (!viewport || !trackEl) return;
 
         const slides = Array.from(trackEl.querySelectorAll(".landmark-slider__slide"));
-        const dotButtons = Array.from(dotsEl.querySelectorAll("[data-landmark-dot]"));
-        const cardVariants = Array.from(cardInner.querySelectorAll("[data-landmark-card]"));
+        const dotButtons = dotsEl ? Array.from(dotsEl.querySelectorAll("[data-landmark-dot]")) : [];
+
+        //  ▼ CHANGE #4 — card is optional. Guard the queries and remember
+        //  the result so we can skip card-touching code paths cleanly.
+        const cardVariants = cardInner ? Array.from(cardInner.querySelectorAll("[data-landmark-card]")) : [];
+        const hasCard = Boolean(cardInner && cardVariants.length);
 
         if (!slides.length) return;
 
@@ -74,9 +91,7 @@
             const { slideWidth, step, viewportWidth } = getMetrics();
 
             // Class & attribute toggles run unconditionally so the active
-            // state stays correct even before the layout has settled (e.g.
-            // when the slider mounts inside a hidden tab or before images
-            // have laid out).
+            // state stays correct even before the layout has settled.
             slides.forEach((el, i) => {
                 el.classList.toggle("is-active", i === current);
             });
@@ -88,8 +103,6 @@
             if (prevBtn) prevBtn.disabled = current === 0;
             if (nextBtn) nextBtn.disabled = current === slides.length - 1;
 
-            // Transform math depends on real layout — skip if measurements
-            // aren't available yet (we'll re-run after layout settles).
             if (!slideWidth) return;
 
             const direction = isRTL() ? -1 : 1;
@@ -107,16 +120,17 @@
         }
 
         // ──────────────────────────────────────
-        // Card content swap — no innerHTML; toggle class on pre-rendered
-        // variant blocks. Fade out → swap active class → fade back in.
+        // Card content swap — no-op when this slider has no card.
         // ──────────────────────────────────────
         function setActiveCardVariant(index) {
+            if (!hasCard) return; //  ▼ CHANGE #4 (cont.)
             cardVariants.forEach((el, i) => {
                 el.classList.toggle("landmark-slider__card-variant--active", i === index);
             });
         }
 
         function fadeSwapCard(index) {
+            if (!hasCard) return; //  ▼ CHANGE #4 (cont.)
             cardInner.classList.add("is-fading");
             setTimeout(() => {
                 setActiveCardVariant(index);
@@ -136,7 +150,7 @@
 
             current = index;
             applyTransform(true);
-            fadeSwapCard(current);
+            fadeSwapCard(current); //  safely no-ops on the card-less variant
 
             if (opts && opts.userInitiated) pauseFor(RESUME_AFTER_MS);
         }
@@ -270,16 +284,11 @@
 
         // ──────────────────────────────────────
         // Initial paint + language-change hook
-        //   - Initial: lay out the track once metrics are available.
-        //   - On lang change, the i18n engine swaps text in-place (no DOM
-        //     surgery needed here), but RTL ↔ LTR direction flips, so we
-        //     re-run the transform math.
         // ──────────────────────────────────────
         function refreshLayout() {
             requestAnimationFrame(() => {
                 applyTransform(false);
-                // Re-apply once more after images settle, in case aspect ratio
-                // changed any widths.
+                // Re-apply once more after images settle.
                 setTimeout(() => applyTransform(false), 60);
             });
         }

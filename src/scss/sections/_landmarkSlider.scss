@@ -14,20 +14,17 @@
 .landmark-slider {
     width: 100%;
     background: var(--surface-white);
-    // No horizontal padding — slides touch the screen edges
-    padding: 64px 0 80px;
+    padding: 64px 0;
 
     // ==========================================
-    // Header (title + xoxo pattern) — keeps a small horizontal pad so
-    // the title stays readable on narrow viewports.
+    // Header (title + xoxo pattern)
     // ==========================================
     &__header {
         display: flex;
         flex-direction: column;
         align-items: center;
         gap: 8px;
-        margin-bottom: 40px;
-        padding: 0 24px;
+        margin-bottom: 56px;
         text-align: center;
     }
 
@@ -42,39 +39,25 @@
     }
 
     // ==========================================
-    // Viewport — full screen width, clips overflow
-    // The track translates inside it. Card and arrows are absolutely
-    // positioned within the viewport so they overlay the slide images.
-    // --slide-width is set on this element by JS at runtime so the SCSS
-    // doesn't need to know the exact pixel size; we expose a sensible
-    // default for first-paint via media queries below.
+    // Viewport
     // ==========================================
     &__viewport {
-        --slide-width: 80vw; // override by media queries / JS
+        --slide-width: 80vw;
         --slide-gap: 16px;
 
         position: relative;
         width: 100%;
         overflow: hidden;
-        // height accounts for image + the card overhang below it
-        // (image aspect-ratio drives the height; card extends past the bottom)
-        padding-block-end: 120px; // room for the static card's lower half
+        padding-block-end: 120px;
     }
 
-    // The track holds all slide images side-by-side. It animates via
-    // translateX and is centered such that the active slide is in the
-    // middle of the viewport.
     &__track {
         display: flex;
         gap: var(--slide-gap);
         transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         will-change: transform;
-        // Initial transform set by JS based on viewport math
     }
 
-    // ==========================================
-    // Single slide — image only (no card!)
-    // ==========================================
     &__slide {
         flex: 0 0 var(--slide-width);
         min-width: 0;
@@ -83,13 +66,7 @@
         overflow: hidden;
         background: #f3f3f3;
         aspect-ratio: 16 / 9;
-        // Subtle dim on non-active slides so the active one stands out
         transition: opacity 0.45s var(--ease);
-
-        &:not(.is-active) {
-            // Slight desaturation cue for peek slides; remove if not wanted
-            // opacity stays full so the peek is fully visible
-        }
 
         img {
             width: 100%;
@@ -98,14 +75,12 @@
             display: block;
             user-select: none;
             -webkit-user-drag: none;
-            pointer-events: none; // image clicks shouldn't fight pointer-drag
+            pointer-events: none;
         }
     }
 
     // ==========================================
-    // Static info card — overlays the bottom of the viewport, centered
-    // horizontally. It does NOT translate with the track.
-    // The inner content has its own opacity transition for the fade swap.
+    // Static info card (desktop)
     // ==========================================
     &__card {
         position: absolute;
@@ -123,10 +98,6 @@
         box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
     }
 
-    // Inner wrapper that fades on slide change.
-    // It contains N stacked .landmark-slider__card-variant blocks (one per
-    // slide); only the .--active one is displayed. The wrapper-level
-    // .is-fading class drives the opacity transition during the swap.
     &__card-inner {
         position: relative;
         width: 100%;
@@ -138,8 +109,6 @@
         }
     }
 
-    // Single content variant — one per landmark, pre-rendered in HTML.
-    // Only the .--active one is shown.
     &__card-variant {
         display: none;
         align-items: center;
@@ -156,7 +125,7 @@
         min-width: 0;
         display: flex;
         flex-direction: column;
-        gap: 8px;
+        gap: 16px;
     }
 
     &__card-title {
@@ -182,13 +151,11 @@
     }
 
     // ==========================================
-    // Prev / Next arrow buttons — at the screen edges
-    // Anchored to the image area (not the card area).
+    // Prev / Next arrows (desktop — on image sides)
     // ==========================================
     &__nav {
         position: absolute;
         top: 50%;
-        // Subtract padding-block-end of viewport (card overhang) from center
         transform: translateY(calc(-50% - 60px));
         width: 44px;
         height: 44px;
@@ -244,14 +211,13 @@
     }
 
     // ==========================================
-    // Dots (slide indicators) — sit beneath the entire viewport
+    // Dots
     // ==========================================
     &__dots {
         display: flex;
         justify-content: center;
         gap: 10px;
         list-style: none;
-        margin: 24px 0 0;
         padding: 0;
     }
 
@@ -281,6 +247,42 @@
             cursor: default;
         }
     }
+}
+
+// ==========================================
+// Modifier — card-less variant
+// Use when the slider should be just images + arrows + dots.
+// Apply `.landmark-slider--no-card` on the .landmark-slider root.
+// ==========================================
+.landmark-slider--no-card {
+    .landmark-slider__viewport {
+        padding-block-end: 0; //  reclaim card-overhang space (was 120px)
+    }
+
+    //  Nav arrows go back to vertical center of the image
+    //  (default rule offsets them by -60px to dodge the card)
+    .landmark-slider__nav {
+        transform: translateY(-50%);
+    }
+
+    //  Defensive: if a stray .landmark-slider__card sneaks in, hide it
+    .landmark-slider__card,
+    .landmark-slider__dots {
+        display: none;
+    }
+
+    @media (max-width: 1024px) {
+        .landmark-slider__viewport {
+            padding-block-end: 0;
+        }
+        .landmark-slider__nav {
+            transform: translateY(-20%);
+        }
+    }
+
+    //  Mobile already places nav at top: 8px and card overlays the
+    //  image, so no further mobile overrides are needed — just make
+    //  sure the absent card doesn't leave a gap. Nothing to do.
 }
 
 // ==========================================
@@ -324,68 +326,150 @@
 }
 
 // ==========================================
-// Mobile (≤ 768)
+// Mobile (≤ 768) — matches Figma mobile layout:
+//   1. Header (title + pattern)
+//   2. Prev/Next buttons, side-by-side, centered
+//   3. Single full-width square image (no peeks)
+//   4. Info card overlays the bottom-LEFT of the image
+//   5. Dots below the viewport
 // ==========================================
 @media (max-width: 768px) {
     .landmark-slider {
-        padding: 48px 0 56px;
-
-        &__title {
-            font-size: 24px;
-        }
+        padding: 40px 16px 48px;
 
         &__header {
-            margin-bottom: 24px;
+            margin-bottom: 16px;
+            gap: 12px;
         }
 
+        &__title {
+            max-width: 280px;
+            font-size: 22px;
+            line-height: 1.3;
+            text-align: center;
+        }
+
+        // ==========================================
+        // Viewport — clip peeks, leave room at top for nav buttons
+        // ==========================================
         &__viewport {
-            --slide-width: 88vw;
-            --slide-gap: 12px;
-            padding-block-end: 156px; // taller card on mobile (stacked CTA)
+            --slide-width: 100%;
+            --slide-gap: 0;
+
+            position: relative;
+            overflow: hidden;
+            padding: 60px 0 0; // top space for the nav row; reset desktop padding-block-end
         }
 
+        // ==========================================
+        // Nav buttons — absolutely positioned at the top of the
+        // viewport, side-by-side, horizontally centered.
+        //
+        // Math (40px wide buttons, 16px gap):
+        //   total visual block = 40 + 16 + 40 = 96px → half = 48px
+        //   prev: inline-start at calc(50% - 48px)
+        //   next: inline-end   at calc(50% - 48px)
+        // Using logical properties so RTL mirrors correctly.
+        // ==========================================
+        &__nav {
+            position: absolute;
+            top: 8px;
+            transform: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 6px;
+            margin: 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+
+            &--prev {
+                inset-inline-start: calc(50% - 48px);
+                inset-inline-end: auto;
+            }
+
+            &--next {
+                inset-inline-end: calc(50% - 48px);
+                inset-inline-start: auto;
+            }
+        }
+
+        &__track {
+            gap: 0;
+        }
+
+        &__slide {
+            width: 100%;
+            border-radius: 8px;
+            aspect-ratio: 1 / 1; // square on mobile (343 / 343)
+        }
+
+        // ==========================================
+        // Card — overlays the bottom-LEFT of the active slide
+        // ==========================================
         &__card {
+            position: absolute;
             bottom: 16px;
-            max-width: calc(100vw - 32px);
-            padding: 16px 18px;
+            inset-inline-start: 16px;
+            inset-inline-end: auto;
+            top: auto;
+
+            margin: 0;
+            width: auto;
+            max-width: 75%;
+
+            padding: 16px;
+            border-radius: 8px;
+            background: #fff;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            z-index: 5;
         }
 
-        &__card-inner {
+        &__card-variant {
             flex-direction: column;
             align-items: flex-start;
             gap: 16px;
+
+            &--active {
+                display: flex;
+            }
+        }
+
+        &__card-text {
+            gap: 8px;
         }
 
         &__card-title {
-            font-size: 18px;
+            font-size: 16px;
+            line-height: 1.2;
+        }
+
+        &__card-description {
+            font-size: 12px;
+            line-height: 1.5;
         }
 
         &__card-cta {
-            width: 100%;
+            width: auto;
 
             .btn {
-                width: 100%;
-                justify-content: center;
+                width: auto;
+                min-width: 74px;
+                height: 32px;
+                padding: 0 12px;
+                font-size: 12px;
             }
         }
 
-        &__nav {
-            width: 36px;
-            height: 36px;
-            // anchor higher so arrows stay over the image (taller card on mobile)
-            transform: translateY(calc(-50% - 100px));
+        // ==========================================
+        // Dots
+        // ==========================================
+        &__dots {
+            margin-top: 16px;
+            gap: 6px;
+        }
 
-            svg {
-                width: 16px;
-                height: 16px;
-            }
-
-            &--prev {
-                inset-inline-start: 8px;
-            }
-            &--next {
-                inset-inline-end: 8px;
-            }
+        &__dot {
+            width: 6px;
+            height: 6px;
         }
     }
 }
@@ -395,14 +479,30 @@
 // ==========================================
 @media (max-width: 480px) {
     .landmark-slider {
-        padding: 40px 0 48px;
+        padding: 32px 16px 40px;
 
         &__title {
-            font-size: 22px;
+            font-size: 20px;
         }
 
-        &__viewport {
-            --slide-width: 90vw;
+        // viewport already overflow:hidden + padding-top:60px from 768
+        // just shrink the slide a touch if needed
+
+        &__card {
+            // remain bottom-LEFT (do NOT stretch full-width)
+            bottom: 12px;
+            inset-inline-start: 12px;
+            inset-inline-end: auto;
+            max-width: 78%;
+            padding: 14px;
+        }
+
+        &__card-title {
+            font-size: 15px;
+        }
+
+        &__card-description {
+            font-size: 11px;
         }
     }
 }
