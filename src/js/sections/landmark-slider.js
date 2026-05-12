@@ -17,44 +17,44 @@
  * IIFE pattern.
  */
 (function () {
-    'use strict';
+    "use strict";
 
-    const AUTOPLAY_MS    = 5000;
+    const AUTOPLAY_MS = 5000;
     const RESUME_AFTER_MS = 8000;
     const SWIPE_THRESHOLD = 60;
-    const FADE_MS         = 250; // must stay in sync with the .is-fading transition in SCSS
+    const FADE_MS = 250; // must stay in sync with the .is-fading transition in SCSS
 
     function init() {
-        const root = document.getElementById('landmark-slider');
+        const root = document.getElementById("landmark-slider");
         if (!root) return;
 
-        const viewport  = root.querySelector('.landmark-slider__viewport');
-        const trackEl   = root.querySelector('#landmark-slider-track');
-        const dotsEl    = root.querySelector('#landmark-slider-dots');
-        const prevBtn   = root.querySelector('[data-landmark-prev]');
-        const nextBtn   = root.querySelector('[data-landmark-next]');
-        const cardInner = root.querySelector('#landmark-slider-card-inner');
+        const viewport = root.querySelector(".landmark-slider__viewport");
+        const trackEl = root.querySelector("#landmark-slider-track");
+        const dotsEl = root.querySelector("#landmark-slider-dots");
+        const prevBtn = root.querySelector("[data-landmark-prev]");
+        const nextBtn = root.querySelector("[data-landmark-next]");
+        const cardInner = root.querySelector("#landmark-slider-card-inner");
 
         if (!viewport || !trackEl || !dotsEl || !cardInner) return;
 
-        const slides       = Array.from(trackEl.querySelectorAll('.landmark-slider__slide'));
-        const dotButtons   = Array.from(dotsEl.querySelectorAll('[data-landmark-dot]'));
-        const cardVariants = Array.from(cardInner.querySelectorAll('[data-landmark-card]'));
+        const slides = Array.from(trackEl.querySelectorAll(".landmark-slider__slide"));
+        const dotButtons = Array.from(dotsEl.querySelectorAll("[data-landmark-dot]"));
+        const cardVariants = Array.from(cardInner.querySelectorAll("[data-landmark-card]"));
 
         if (!slides.length) return;
 
-        let current = slides.findIndex((s) => s.classList.contains('is-active'));
+        let current = slides.findIndex((s) => s.classList.contains("is-active"));
         if (current < 0) current = 0;
 
-        let timer          = null;
-        let pauseTimeout   = null;
+        let timer = null;
+        let pauseTimeout = null;
         let autoplayPaused = false;
 
         // ──────────────────────────────────────
         // Helpers
         // ──────────────────────────────────────
         function isRTL() {
-            return document.documentElement.dir === 'rtl';
+            return document.documentElement.dir === "rtl";
         }
 
         // ──────────────────────────────────────
@@ -63,9 +63,9 @@
         function getMetrics() {
             const slideEl = slides[0];
             if (!slideEl) return { slideWidth: 0, gap: 0, step: 0, viewportWidth: 0 };
-            const slideWidth   = slideEl.getBoundingClientRect().width;
-            const styles       = getComputedStyle(trackEl);
-            const gap          = parseFloat(styles.columnGap || styles.gap || '0') || 0;
+            const slideWidth = slideEl.getBoundingClientRect().width;
+            const styles = getComputedStyle(trackEl);
+            const gap = parseFloat(styles.columnGap || styles.gap || "0") || 0;
             const viewportWidth = viewport.getBoundingClientRect().width;
             return { slideWidth, gap, step: slideWidth + gap, viewportWidth };
         }
@@ -78,12 +78,12 @@
             // when the slider mounts inside a hidden tab or before images
             // have laid out).
             slides.forEach((el, i) => {
-                el.classList.toggle('is-active', i === current);
+                el.classList.toggle("is-active", i === current);
             });
             dotButtons.forEach((btn, i) => {
-                btn.classList.toggle('landmark-slider__dot--active', i === current);
-                if (i === current) btn.setAttribute('aria-current', 'true');
-                else btn.removeAttribute('aria-current');
+                btn.classList.toggle("landmark-slider__dot--active", i === current);
+                if (i === current) btn.setAttribute("aria-current", "true");
+                else btn.removeAttribute("aria-current");
             });
             if (prevBtn) prevBtn.disabled = current === 0;
             if (nextBtn) nextBtn.disabled = current === slides.length - 1;
@@ -92,15 +92,17 @@
             // aren't available yet (we'll re-run after layout settles).
             if (!slideWidth) return;
 
-            const direction   = isRTL() ? -1 : 1;
-            const centerPos   = (viewportWidth - slideWidth) / 2;
+            const direction = isRTL() ? -1 : 1;
+            const centerPos = (viewportWidth - slideWidth) / 2;
             const slideOffset = current * step;
-            const tx          = direction * (centerPos - slideOffset);
+            const tx = direction * (centerPos - slideOffset);
 
-            if (!animate) trackEl.style.transition = 'none';
+            if (!animate) trackEl.style.transition = "none";
             trackEl.style.transform = `translateX(${tx}px)`;
             if (!animate) {
-                requestAnimationFrame(() => { trackEl.style.transition = ''; });
+                requestAnimationFrame(() => {
+                    trackEl.style.transition = "";
+                });
             }
         }
 
@@ -110,16 +112,16 @@
         // ──────────────────────────────────────
         function setActiveCardVariant(index) {
             cardVariants.forEach((el, i) => {
-                el.classList.toggle('landmark-slider__card-variant--active', i === index);
+                el.classList.toggle("landmark-slider__card-variant--active", i === index);
             });
         }
 
         function fadeSwapCard(index) {
-            cardInner.classList.add('is-fading');
+            cardInner.classList.add("is-fading");
             setTimeout(() => {
                 setActiveCardVariant(index);
                 void cardInner.offsetWidth; // reflow so transition restarts cleanly
-                cardInner.classList.remove('is-fading');
+                cardInner.classList.remove("is-fading");
             }, FADE_MS);
         }
 
@@ -164,38 +166,62 @@
             }, AUTOPLAY_MS);
         }
         function stopAutoplay() {
-            if (timer) { clearInterval(timer); timer = null; }
+            if (timer) {
+                clearInterval(timer);
+                timer = null;
+            }
         }
         function pauseFor(ms) {
             autoplayPaused = true;
             if (pauseTimeout) clearTimeout(pauseTimeout);
-            pauseTimeout = setTimeout(() => { autoplayPaused = false; }, ms);
+            pauseTimeout = setTimeout(() => {
+                autoplayPaused = false;
+            }, ms);
         }
 
-        viewport.addEventListener('mouseenter', () => { autoplayPaused = true; });
-        viewport.addEventListener('mouseleave', () => { autoplayPaused = false; });
-        viewport.addEventListener('focusin',    () => { autoplayPaused = true; });
-        viewport.addEventListener('focusout',   () => { autoplayPaused = false; });
+        viewport.addEventListener("mouseenter", () => {
+            autoplayPaused = true;
+        });
+        viewport.addEventListener("mouseleave", () => {
+            autoplayPaused = false;
+        });
+        viewport.addEventListener("focusin", () => {
+            autoplayPaused = true;
+        });
+        viewport.addEventListener("focusout", () => {
+            autoplayPaused = false;
+        });
 
-        document.addEventListener('visibilitychange', () => {
+        document.addEventListener("visibilitychange", () => {
             autoplayPaused = document.hidden;
         });
 
-        if (typeof IntersectionObserver !== 'undefined') {
-            const io = new IntersectionObserver(([entry]) => {
-                autoplayPaused = !entry.isIntersecting;
-            }, { threshold: 0.2 });
+        if (typeof IntersectionObserver !== "undefined") {
+            const io = new IntersectionObserver(
+                ([entry]) => {
+                    autoplayPaused = !entry.isIntersecting;
+                },
+                { threshold: 0.2 },
+            );
             io.observe(root);
         }
 
         // ──────────────────────────────────────
         // Event wiring
         // ──────────────────────────────────────
-        if (prevBtn) prevBtn.addEventListener('click', () => { prev(); pauseFor(RESUME_AFTER_MS); });
-        if (nextBtn) nextBtn.addEventListener('click', () => { next(); pauseFor(RESUME_AFTER_MS); });
+        if (prevBtn)
+            prevBtn.addEventListener("click", () => {
+                prev();
+                pauseFor(RESUME_AFTER_MS);
+            });
+        if (nextBtn)
+            nextBtn.addEventListener("click", () => {
+                next();
+                pauseFor(RESUME_AFTER_MS);
+            });
 
         dotButtons.forEach((btn) => {
-            btn.addEventListener('click', () => {
+            btn.addEventListener("click", () => {
                 const i = parseInt(btn.dataset.landmarkDot, 10);
                 if (!isNaN(i)) goTo(i, { userInitiated: true });
             });
@@ -203,12 +229,12 @@
 
         // Keyboard navigation when viewport has focus
         viewport.tabIndex = 0;
-        viewport.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowRight') {
+        viewport.addEventListener("keydown", (e) => {
+            if (e.key === "ArrowRight") {
                 e.preventDefault();
                 isRTL() ? prev() : next();
                 pauseFor(RESUME_AFTER_MS);
-            } else if (e.key === 'ArrowLeft') {
+            } else if (e.key === "ArrowLeft") {
                 e.preventDefault();
                 isRTL() ? next() : prev();
                 pauseFor(RESUME_AFTER_MS);
@@ -217,12 +243,12 @@
 
         // Pointer drag (swipe)
         let dragStart = null;
-        viewport.addEventListener('pointerdown', (e) => {
+        viewport.addEventListener("pointerdown", (e) => {
             // Don't hijack clicks on the card CTA or the arrow buttons
-            if (e.target.closest('a, button')) return;
+            if (e.target.closest("a, button")) return;
             dragStart = { x: e.clientX };
         });
-        viewport.addEventListener('pointerup', (e) => {
+        viewport.addEventListener("pointerup", (e) => {
             if (!dragStart) return;
             const dx = e.clientX - dragStart.x;
             dragStart = null;
@@ -231,11 +257,13 @@
             goNext ? next() : prev();
             pauseFor(RESUME_AFTER_MS);
         });
-        viewport.addEventListener('pointercancel', () => { dragStart = null; });
+        viewport.addEventListener("pointercancel", () => {
+            dragStart = null;
+        });
 
         // Resize — recompute the centered transform.
         let rzId = null;
-        window.addEventListener('resize', () => {
+        window.addEventListener("resize", () => {
             if (rzId) cancelAnimationFrame(rzId);
             rzId = requestAnimationFrame(() => applyTransform(false));
         });
@@ -266,8 +294,8 @@
         startAutoplay();
     }
 
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', init);
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", init);
     } else {
         init();
     }

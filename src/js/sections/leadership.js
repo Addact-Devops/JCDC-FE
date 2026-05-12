@@ -12,22 +12,20 @@
  * IIFE pattern (matches the rest of the codebase).
  */
 (function () {
-    'use strict';
+    "use strict";
 
     function init() {
-        const root = document.getElementById('leadership');
+        const root = document.getElementById("leadership");
         if (!root) return;
 
-        const tabBtns = root.querySelectorAll('[data-leader-tab]');
-        const panels  = root.querySelectorAll('[data-leader-panel]');
+        const tabBtns = root.querySelectorAll("[data-leader-tab]");
+        const panels = root.querySelectorAll("[data-leader-panel]");
 
         // Modal elements (pre-rendered in HTML — one shared dialog wrapper
         // with multiple `.leader-modal__content` blocks, one per executive).
-        const modal         = document.getElementById('leader-modal');
-        const modalClose    = modal && modal.querySelector('[data-leader-modal-close]');
-        const modalContents = modal
-            ? modal.querySelectorAll('[data-leader-modal-content]')
-            : [];
+        const modal = document.getElementById("leader-modal");
+        const modalClose = modal && modal.querySelector("[data-leader-modal-close]");
+        const modalContents = modal ? modal.querySelectorAll("[data-leader-modal-content]") : [];
 
         // ──────────────────────────────────────
         // Tab switching — toggles classes / aria attributes only.
@@ -35,26 +33,26 @@
         function activateTab(name) {
             tabBtns.forEach((btn) => {
                 const isActive = btn.dataset.leaderTab === name;
-                btn.classList.toggle('leadership__tab--active', isActive);
-                btn.setAttribute('aria-selected', String(isActive));
+                btn.classList.toggle("leadership__tab--active", isActive);
+                btn.setAttribute("aria-selected", String(isActive));
                 btn.tabIndex = isActive ? 0 : -1;
             });
             panels.forEach((panel) => {
                 const isActive = panel.dataset.leaderPanel === name;
-                panel.classList.toggle('leadership__panel--active', isActive);
+                panel.classList.toggle("leadership__panel--active", isActive);
                 panel.hidden = !isActive;
             });
         }
 
         tabBtns.forEach((btn) => {
-            btn.addEventListener('click', () => activateTab(btn.dataset.leaderTab));
+            btn.addEventListener("click", () => activateTab(btn.dataset.leaderTab));
             // Arrow-key navigation between tabs (WCAG tablist pattern)
-            btn.addEventListener('keydown', (e) => {
-                if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+            btn.addEventListener("keydown", (e) => {
+                if (e.key !== "ArrowRight" && e.key !== "ArrowLeft") return;
                 e.preventDefault();
                 const list = Array.from(tabBtns);
                 const i = list.indexOf(btn);
-                const dir = e.key === 'ArrowRight' ? 1 : -1;
+                const dir = e.key === "ArrowRight" ? 1 : -1;
                 const next = list[(i + dir + list.length) % list.length];
                 activateTab(next.dataset.leaderTab);
                 next.focus();
@@ -69,10 +67,10 @@
 
         function showModalContent(index) {
             // Keep aria-labelledby in sync with the visible person's name
-            if (modal) modal.setAttribute('aria-labelledby', `leader-modal-name-${index}`);
+            if (modal) modal.setAttribute("aria-labelledby", `leader-modal-name-${index}`);
             modalContents.forEach((el) => {
                 const isActive = String(el.dataset.leaderModalContent) === String(index);
-                el.classList.toggle('leader-modal__content--active', isActive);
+                el.classList.toggle("leader-modal__content--active", isActive);
             });
         }
 
@@ -82,9 +80,9 @@
 
             lastFocusedTrigger = document.activeElement;
 
-            modal.classList.add('is-open');
-            modal.setAttribute('aria-hidden', 'false');
-            document.body.style.overflow = 'hidden';
+            modal.classList.add("is-open");
+            modal.setAttribute("aria-hidden", "false");
+            document.body.style.overflow = "hidden";
 
             // Move focus to the close button for accessibility
             requestAnimationFrame(() => {
@@ -94,32 +92,32 @@
 
         function closeModal() {
             if (!modal) return;
-            modal.classList.remove('is-open');
-            modal.setAttribute('aria-hidden', 'true');
-            document.body.style.overflow = '';
-            if (lastFocusedTrigger && typeof lastFocusedTrigger.focus === 'function') {
+            modal.classList.remove("is-open");
+            modal.setAttribute("aria-hidden", "true");
+            document.body.style.overflow = "";
+            if (lastFocusedTrigger && typeof lastFocusedTrigger.focus === "function") {
                 lastFocusedTrigger.focus({ preventScroll: true });
                 lastFocusedTrigger = null;
             }
         }
 
         // Executive card → opens modal with the matching content block
-        root.querySelectorAll('[data-leader-exec]').forEach((btn) => {
-            btn.addEventListener('click', () => {
+        root.querySelectorAll("[data-leader-exec]").forEach((btn) => {
+            btn.addEventListener("click", () => {
                 const idx = parseInt(btn.dataset.leaderExec, 10);
                 if (!isNaN(idx)) openModal(idx);
             });
         });
 
         if (modal) {
-            if (modalClose) modalClose.addEventListener('click', closeModal);
+            if (modalClose) modalClose.addEventListener("click", closeModal);
             // Backdrop click closes
-            modal.addEventListener('click', (e) => {
+            modal.addEventListener("click", (e) => {
                 if (e.target === modal) closeModal();
             });
             // Escape closes
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && modal.classList.contains('is-open')) {
+            document.addEventListener("keydown", (e) => {
+                if (e.key === "Escape" && modal.classList.contains("is-open")) {
                     closeModal();
                 }
             });
@@ -129,16 +127,16 @@
         // mix of EN/AR while the i18n engine is swapping text.
         if (window.I18n && window.I18n.onLangChange) {
             window.I18n.onLangChange(() => {
-                if (modal && modal.classList.contains('is-open')) closeModal();
+                if (modal && modal.classList.contains("is-open")) closeModal();
             });
         }
 
         // Default tab — Board of Directors
-        activateTab('board');
+        activateTab("board");
     }
 
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', init);
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", init);
     } else {
         init();
     }

@@ -343,7 +343,7 @@
         transition: background var(--dur) var(--ease);
 
         &:hover {
-            background: rgba(204, 159, 83, 0.10);
+            background: rgba(204, 159, 83, 0.1);
         }
 
         &:focus-visible {

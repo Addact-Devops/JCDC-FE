@@ -164,14 +164,14 @@
         gap: 16px;
         overflow-x: auto;
         overflow-y: hidden;
-        padding: 4px 56px 16px;     // 56px inline = matches title-overlay inset
+        padding: 4px 56px 16px; // 56px inline = matches title-overlay inset
         scroll-padding-inline: 56px; // keep snap-aligned thumbs respecting the inset
         scroll-behavior: smooth;
         scroll-snap-type: x proximity;
 
         // Hide scrollbars for a cleaner look while still allowing scroll
         scrollbar-width: thin;
-        scrollbar-color: rgba(0, 118, 169, 0.20) transparent;
+        scrollbar-color: rgba(0, 118, 169, 0.2) transparent;
 
         &::-webkit-scrollbar {
             height: 6px;
@@ -180,7 +180,7 @@
             background: transparent;
         }
         &::-webkit-scrollbar-thumb {
-            background: rgba(0, 118, 169, 0.20);
+            background: rgba(0, 118, 169, 0.2);
             border-radius: 3px;
         }
         &::-webkit-scrollbar-thumb:hover {
@@ -219,7 +219,7 @@
         border-radius: 6px;
         overflow: hidden;
         background: #f3f3f3;
-        opacity: 0.55;                 // dimmed at rest
+        opacity: 0.55; // dimmed at rest
         transition:
             opacity var(--dur) var(--ease),
             transform var(--dur) var(--ease),
@@ -239,7 +239,7 @@
         font-size: 13px;
         font-weight: 500;
         line-height: 1.35;
-        color: var(--text-500);   // inactive label is muted grey
+        color: var(--text-500); // inactive label is muted grey
         transition: color var(--dur) var(--ease);
     }
 
@@ -248,7 +248,7 @@
     &:focus-visible &__image {
         opacity: 1;
         transform: translateY(-2px);
-        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.10);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
     }
 
     &:hover &__label,

@@ -50,7 +50,7 @@
     // default for first-paint via media queries below.
     // ==========================================
     &__viewport {
-        --slide-width: 80vw;     // override by media queries / JS
+        --slide-width: 80vw; // override by media queries / JS
         --slide-gap: 16px;
 
         position: relative;
@@ -201,7 +201,7 @@
         align-items: center;
         justify-content: center;
         z-index: 5;
-        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.10);
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
         transition:
             background var(--dur) var(--ease),
             color var(--dur) var(--ease),
@@ -268,7 +268,7 @@
             transform var(--dur) var(--ease);
 
         &:hover:not(&--active) {
-            background: rgba(0, 118, 169, 0.20);
+            background: rgba(0, 118, 169, 0.2);
         }
 
         &:focus-visible {
@@ -313,8 +313,12 @@
         &__nav {
             transform: translateY(calc(-50% - 50px));
 
-            &--prev { inset-inline-start: 12px; }
-            &--next { inset-inline-end: 12px; }
+            &--prev {
+                inset-inline-start: 12px;
+            }
+            &--next {
+                inset-inline-end: 12px;
+            }
         }
     }
 }
@@ -376,8 +380,12 @@
                 height: 16px;
             }
 
-            &--prev { inset-inline-start: 8px; }
-            &--next { inset-inline-end: 8px; }
+            &--prev {
+                inset-inline-start: 8px;
+            }
+            &--next {
+                inset-inline-end: 8px;
+            }
         }
     }
 }
