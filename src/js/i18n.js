@@ -65,6 +65,26 @@
       if (typeof value !== 'string') return;
       if ('placeholder' in node) node.placeholder = value;
     });
+
+    // 3. Alt-text translations: nodes with [data-i18n-alt="key"]
+    // Used on <img> elements whose alt text needs to be localized
+    // (e.g. person photos where alt = person's name).
+    document.querySelectorAll('[data-i18n-alt]').forEach(node => {
+      const key = node.getAttribute('data-i18n-alt');
+      if (!key) return;
+      const value = deepGet(translations, key);
+      if (typeof value !== 'string') return;
+      node.setAttribute('alt', value);
+    });
+
+    // 4. Aria-label translations: nodes with [data-i18n-aria-label="key"]
+    document.querySelectorAll('[data-i18n-aria-label]').forEach(node => {
+      const key = node.getAttribute('data-i18n-aria-label');
+      if (!key) return;
+      const value = deepGet(translations, key);
+      if (typeof value !== 'string') return;
+      node.setAttribute('aria-label', value);
+    });
   }
 
   function setDocumentAttrs(lang) {

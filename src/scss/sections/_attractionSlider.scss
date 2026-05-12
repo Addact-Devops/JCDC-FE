@@ -45,12 +45,33 @@
             transition: opacity 0.35s var(--ease);
         }
 
+        // Stacked image variants — one per attraction. Only the .is-active
+        // variant is visible. Positioned absolutely so they all occupy the
+        // same box.
         &.is-fading img {
             opacity: 0.35;
         }
     }
 
-    // Translucent title bar near the bottom-left of the image
+    // Single image variant inside __active-image. Only the .is-active one
+    // is displayed; the rest are hidden.
+    &__active-img {
+        position: absolute;
+        inset: 0;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+
+        &.is-active {
+            position: relative;
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+
+    // Translucent title bar near the bottom-left of the image.
+    // Contains N stacked .__title variants, one per attraction. The wrapper
+    // itself fades during the swap; only the .is-active title is visible.
     &__title-overlay {
         position: absolute;
         inset-inline-start: 56px;
@@ -61,7 +82,6 @@
         -webkit-backdrop-filter: blur(6px);
         border-radius: 8px;
         padding: 22px 32px;
-        // Fade-swap on change (handled via .__active-info container below)
         transition: opacity 0.35s var(--ease);
 
         &.is-fading {
@@ -76,12 +96,21 @@
         font-weight: 700;
         line-height: 1.2;
         color: var(--primary-500);
+
+        // Stacked variants — only the .is-active one is shown
+        display: none;
+
+        &.is-active {
+            display: block;
+        }
     }
 
     // ==========================================
     // District + description (below the image)
     // Inset 56px from each edge so it lines up with the title overlay
     // (which is also inset 56px on both sides above).
+    // Contains N stacked .__info-variant blocks, only the .is-active one
+    // is displayed. The wrapper itself fades during the swap.
     // ==========================================
     &__info {
         margin: 0 56px 64px;
@@ -89,6 +118,15 @@
 
         &.is-fading {
             opacity: 0;
+        }
+    }
+
+    // Single info variant — only the .is-active one is shown
+    &__info-variant {
+        display: none;
+
+        &.is-active {
+            display: block;
         }
     }
 

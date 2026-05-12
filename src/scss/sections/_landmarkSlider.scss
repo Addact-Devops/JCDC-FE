@@ -123,17 +123,31 @@
         box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
     }
 
-    // Inner wrapper that fades on slide change
+    // Inner wrapper that fades on slide change.
+    // It contains N stacked .landmark-slider__card-variant blocks (one per
+    // slide); only the .--active one is displayed. The wrapper-level
+    // .is-fading class drives the opacity transition during the swap.
     &__card-inner {
-        display: flex;
-        align-items: center;
-        gap: 24px;
+        position: relative;
         width: 100%;
         opacity: 1;
         transition: opacity 0.25s var(--ease);
 
         &.is-fading {
             opacity: 0;
+        }
+    }
+
+    // Single content variant — one per landmark, pre-rendered in HTML.
+    // Only the .--active one is shown.
+    &__card-variant {
+        display: none;
+        align-items: center;
+        gap: 24px;
+        width: 100%;
+
+        &--active {
+            display: flex;
         }
     }
 

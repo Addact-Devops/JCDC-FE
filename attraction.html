@@ -299,35 +299,403 @@
 
         <!-- ════════════════════════════════════════════
         ATTRACTION SLIDER
-        Active image with title overlay → district + description →
-        horizontally-scrollable thumbnail strip. Clicking a thumbnail
-        swaps the active content with a fade transition.
+        Big "active" image with translucent title overlay → district +
+        description → horizontally-scrollable thumbnail strip.
+        Markup is fully STATIC — every attraction's active-image, title
+        overlay, info block, and thumbnail is pre-rendered. JS only toggles
+        the .is-active / --active classes (and .is-fading for the swap
+        animation). NO HTML is injected. EN/AR text is handled by the i18n
+        engine via data-i18n attributes.
 ════════════════════════════════════════════ -->
         <section class="attraction-slider" id="attraction-slider" aria-label="Attractions">
             <div class="attraction-slider__container">
-                <!-- Active image with translucent title overlay -->
+                <!-- ═══ Active image area ═══
+                     One <div> per attraction, stacked. Only the .is-active
+                     one is displayed. -->
                 <div class="attraction-slider__active">
                     <div class="attraction-slider__active-image" id="attraction-active-image">
-                        <img src="" alt="" />
+                        <img
+                            class="attraction-slider__active-img is-active"
+                            data-attraction-image="0"
+                            src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1400&q=85"
+                            alt="Pier"
+                            data-i18n-alt="attraction.items.0.title"
+                            loading="eager"
+                        />
+                        <img
+                            class="attraction-slider__active-img"
+                            data-attraction-image="1"
+                            src="https://images.unsplash.com/photo-1548574505-5e239809ee19?w=1400&q=85"
+                            alt="Luxury Cruise Terminal"
+                            data-i18n-alt="attraction.items.1.title"
+                            loading="lazy"
+                        />
+                        <img
+                            class="attraction-slider__active-img"
+                            data-attraction-image="2"
+                            src="https://images.unsplash.com/photo-1561728108-c5a35b8d51fa?w=1400&q=85"
+                            alt="Marina"
+                            data-i18n-alt="attraction.items.2.title"
+                            loading="lazy"
+                        />
+                        <img
+                            class="attraction-slider__active-img"
+                            data-attraction-image="3"
+                            src="https://images.unsplash.com/photo-1519642918688-7e43b19245d8?w=1400&q=85"
+                            alt="Bazaar"
+                            data-i18n-alt="attraction.items.3.title"
+                            loading="lazy"
+                        />
+                        <img
+                            class="attraction-slider__active-img"
+                            data-attraction-image="4"
+                            src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=1400&q=85"
+                            alt="JCD Park"
+                            data-i18n-alt="attraction.items.4.title"
+                            loading="lazy"
+                        />
+                        <img
+                            class="attraction-slider__active-img"
+                            data-attraction-image="5"
+                            src="https://images.unsplash.com/photo-1519567241046-7f570eee3ce6?w=1400&q=85"
+                            alt="Central Plaza"
+                            data-i18n-alt="attraction.items.5.title"
+                            loading="lazy"
+                        />
+                        <img
+                            class="attraction-slider__active-img"
+                            data-attraction-image="6"
+                            src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1400&q=85&blur=2"
+                            alt="Coral Cove"
+                            data-i18n-alt="attraction.items.6.title"
+                            loading="lazy"
+                        />
+                        <img
+                            class="attraction-slider__active-img"
+                            data-attraction-image="7"
+                            src="https://images.unsplash.com/photo-1490578474895-699cd4e2cf59?w=1400&q=85"
+                            alt="Ribbon Park"
+                            data-i18n-alt="attraction.items.7.title"
+                            loading="lazy"
+                        />
+                        <img
+                            class="attraction-slider__active-img"
+                            data-attraction-image="8"
+                            src="https://images.unsplash.com/photo-1519046904884-53103b34b206?w=1400&q=85"
+                            alt="Beach Promenade"
+                            data-i18n-alt="attraction.items.8.title"
+                            loading="lazy"
+                        />
+                        <img
+                            class="attraction-slider__active-img"
+                            data-attraction-image="9"
+                            src="https://images.unsplash.com/photo-1545569310-1d9a6f2feaa3?w=1400&q=85"
+                            alt="Cultural Quarter"
+                            data-i18n-alt="attraction.items.9.title"
+                            loading="lazy"
+                        />
                     </div>
+
+                    <!-- Title overlay — one stacked variant per attraction -->
                     <div class="attraction-slider__title-overlay" id="attraction-title-overlay">
-                        <h2 class="attraction-slider__title" id="attraction-title">&nbsp;</h2>
+                        <h2
+                            class="attraction-slider__title is-active"
+                            data-attraction-title="0"
+                            data-i18n="attraction.items.0.title"
+                        >Pier</h2>
+                        <h2
+                            class="attraction-slider__title"
+                            data-attraction-title="1"
+                            data-i18n="attraction.items.1.title"
+                        >Luxury Cruise Terminal</h2>
+                        <h2
+                            class="attraction-slider__title"
+                            data-attraction-title="2"
+                            data-i18n="attraction.items.2.title"
+                        >Marina</h2>
+                        <h2
+                            class="attraction-slider__title"
+                            data-attraction-title="3"
+                            data-i18n="attraction.items.3.title"
+                        >Bazaar</h2>
+                        <h2
+                            class="attraction-slider__title"
+                            data-attraction-title="4"
+                            data-i18n="attraction.items.4.title"
+                        >JCD Park</h2>
+                        <h2
+                            class="attraction-slider__title"
+                            data-attraction-title="5"
+                            data-i18n="attraction.items.5.title"
+                        >Central Plaza</h2>
+                        <h2
+                            class="attraction-slider__title"
+                            data-attraction-title="6"
+                            data-i18n="attraction.items.6.title"
+                        >Coral Cove</h2>
+                        <h2
+                            class="attraction-slider__title"
+                            data-attraction-title="7"
+                            data-i18n="attraction.items.7.title"
+                        >Ribbon Park</h2>
+                        <h2
+                            class="attraction-slider__title"
+                            data-attraction-title="8"
+                            data-i18n="attraction.items.8.title"
+                        >Beach Promenade</h2>
+                        <h2
+                            class="attraction-slider__title"
+                            data-attraction-title="9"
+                            data-i18n="attraction.items.9.title"
+                        >Cultural Quarter</h2>
                     </div>
                 </div>
 
-                <!-- District + description (below the image) -->
+                <!-- ═══ Info block (district + description) ═══
+                     One stacked variant per attraction. -->
                 <div class="attraction-slider__info" id="attraction-info">
-                    <p class="attraction-slider__district" id="attraction-district">&nbsp;</p>
-                    <p class="attraction-slider__description" id="attraction-description">&nbsp;</p>
+                    <div class="attraction-slider__info-variant is-active" data-attraction-info="0">
+                        <p class="attraction-slider__district">
+                            <strong data-i18n="attraction.districtLabel">District:</strong>
+                            <span data-i18n="attraction.items.0.district">Beach, Leisure & Lifestyle District</span>
+                        </p>
+                        <p class="attraction-slider__description" data-i18n="attraction.items.0.description">A dynamic seafront hub with cafés, open walkways, and entertainment spaces seamlessly connecting Jeddah's public realm to the Red Sea.</p>
+                    </div>
+                    <div class="attraction-slider__info-variant" data-attraction-info="1">
+                        <p class="attraction-slider__district">
+                            <strong data-i18n="attraction.districtLabel">District:</strong>
+                            <span data-i18n="attraction.items.1.district">Marina & Waterfront District</span>
+                        </p>
+                        <p class="attraction-slider__description" data-i18n="attraction.items.1.description">A premium gateway welcoming international cruise lines, designed with elegant terminals and world-class hospitality services for global travelers.</p>
+                    </div>
+                    <div class="attraction-slider__info-variant" data-attraction-info="2">
+                        <p class="attraction-slider__district">
+                            <strong data-i18n="attraction.districtLabel">District:</strong>
+                            <span data-i18n="attraction.items.2.district">Marina & Waterfront District</span>
+                        </p>
+                        <p class="attraction-slider__description" data-i18n="attraction.items.2.description">A vibrant marina with berths for yachts and pleasure craft, surrounded by waterfront promenades, dining, and retail experiences.</p>
+                    </div>
+                    <div class="attraction-slider__info-variant" data-attraction-info="3">
+                        <p class="attraction-slider__district">
+                            <strong data-i18n="attraction.districtLabel">District:</strong>
+                            <span data-i18n="attraction.items.3.district">Cultural & Heritage District</span>
+                        </p>
+                        <p class="attraction-slider__description" data-i18n="attraction.items.3.description">A bustling marketplace celebrating Jeddah's heritage, where artisans, traders, and craftsmen come together in a vibrant cultural setting.</p>
+                    </div>
+                    <div class="attraction-slider__info-variant" data-attraction-info="4">
+                        <p class="attraction-slider__district">
+                            <strong data-i18n="attraction.districtLabel">District:</strong>
+                            <span data-i18n="attraction.items.4.district">Parks & Public Realm District</span>
+                        </p>
+                        <p class="attraction-slider__description" data-i18n="attraction.items.4.description">A landscaped urban oasis with walking trails, family play areas, and green public spaces for relaxation and community gatherings.</p>
+                    </div>
+                    <div class="attraction-slider__info-variant" data-attraction-info="5">
+                        <p class="attraction-slider__district">
+                            <strong data-i18n="attraction.districtLabel">District:</strong>
+                            <span data-i18n="attraction.items.5.district">Cultural & Heritage District</span>
+                        </p>
+                        <p class="attraction-slider__description" data-i18n="attraction.items.5.description">The civic heart of the destination, hosting events, performances, and gatherings in an elegantly designed open plaza.</p>
+                    </div>
+                    <div class="attraction-slider__info-variant" data-attraction-info="6">
+                        <p class="attraction-slider__district">
+                            <strong data-i18n="attraction.districtLabel">District:</strong>
+                            <span data-i18n="attraction.items.6.district">Beach, Leisure & Lifestyle District</span>
+                        </p>
+                        <p class="attraction-slider__description" data-i18n="attraction.items.6.description">A pristine sheltered cove with calm turquoise waters, ideal for families, swimmers, and snorkellers exploring the Red Sea's coral reefs.</p>
+                    </div>
+                    <div class="attraction-slider__info-variant" data-attraction-info="7">
+                        <p class="attraction-slider__district">
+                            <strong data-i18n="attraction.districtLabel">District:</strong>
+                            <span data-i18n="attraction.items.7.district">Parks & Public Realm District</span>
+                        </p>
+                        <p class="attraction-slider__description" data-i18n="attraction.items.7.description">A linear park weaving through the destination, connecting neighborhoods with cycling paths, gardens, and public art installations.</p>
+                    </div>
+                    <div class="attraction-slider__info-variant" data-attraction-info="8">
+                        <p class="attraction-slider__district">
+                            <strong data-i18n="attraction.districtLabel">District:</strong>
+                            <span data-i18n="attraction.items.8.district">Beach, Leisure & Lifestyle District</span>
+                        </p>
+                        <p class="attraction-slider__description" data-i18n="attraction.items.8.description">A scenic shoreline walkway lined with palm trees and pavilions, offering uninterrupted views of the Red Sea and a vibrant family-friendly atmosphere.</p>
+                    </div>
+                    <div class="attraction-slider__info-variant" data-attraction-info="9">
+                        <p class="attraction-slider__district">
+                            <strong data-i18n="attraction.districtLabel">District:</strong>
+                            <span data-i18n="attraction.items.9.district">Cultural & Heritage District</span>
+                        </p>
+                        <p class="attraction-slider__description" data-i18n="attraction.items.9.description">A district blending museums, galleries, and performance venues that honor Jeddah's rich history while championing contemporary creativity.</p>
+                    </div>
                 </div>
 
-                <!-- Horizontally-scrollable thumbnail strip -->
+                <!-- ═══ Thumbnail strip ═══
+                     STATIC — one button per attraction. Clicking switches
+                     the active variant above. -->
                 <div
                     class="attraction-slider__strip"
                     id="attraction-strip"
                     role="tablist"
                     aria-label="Choose an attraction"
-                ></div>
+                >
+                    <button
+                        type="button"
+                        class="attraction-thumb attraction-thumb--active"
+                        data-attraction-idx="0"
+                        aria-label="Show Pier"
+                        data-i18n-aria-label="attraction.items.0.title" aria-current="true"
+                    >
+                        <span class="attraction-thumb__image">
+                            <img
+                                src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=300&q=80"
+                                alt=""
+                                loading="lazy"
+                            />
+                        </span>
+                        <span class="attraction-thumb__label" data-i18n="attraction.items.0.title">Pier</span>
+                    </button>
+                    <button
+                        type="button"
+                        class="attraction-thumb"
+                        data-attraction-idx="1"
+                        aria-label="Show Luxury Cruise Terminal"
+                        data-i18n-aria-label="attraction.items.1.title"
+                    >
+                        <span class="attraction-thumb__image">
+                            <img
+                                src="https://images.unsplash.com/photo-1548574505-5e239809ee19?w=300&q=80"
+                                alt=""
+                                loading="lazy"
+                            />
+                        </span>
+                        <span class="attraction-thumb__label" data-i18n="attraction.items.1.title">Luxury Cruise Terminal</span>
+                    </button>
+                    <button
+                        type="button"
+                        class="attraction-thumb"
+                        data-attraction-idx="2"
+                        aria-label="Show Marina"
+                        data-i18n-aria-label="attraction.items.2.title"
+                    >
+                        <span class="attraction-thumb__image">
+                            <img
+                                src="https://images.unsplash.com/photo-1561728108-c5a35b8d51fa?w=300&q=80"
+                                alt=""
+                                loading="lazy"
+                            />
+                        </span>
+                        <span class="attraction-thumb__label" data-i18n="attraction.items.2.title">Marina</span>
+                    </button>
+                    <button
+                        type="button"
+                        class="attraction-thumb"
+                        data-attraction-idx="3"
+                        aria-label="Show Bazaar"
+                        data-i18n-aria-label="attraction.items.3.title"
+                    >
+                        <span class="attraction-thumb__image">
+                            <img
+                                src="https://images.unsplash.com/photo-1519642918688-7e43b19245d8?w=300&q=80"
+                                alt=""
+                                loading="lazy"
+                            />
+                        </span>
+                        <span class="attraction-thumb__label" data-i18n="attraction.items.3.title">Bazaar</span>
+                    </button>
+                    <button
+                        type="button"
+                        class="attraction-thumb"
+                        data-attraction-idx="4"
+                        aria-label="Show JCD Park"
+                        data-i18n-aria-label="attraction.items.4.title"
+                    >
+                        <span class="attraction-thumb__image">
+                            <img
+                                src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?w=300&q=80"
+                                alt=""
+                                loading="lazy"
+                            />
+                        </span>
+                        <span class="attraction-thumb__label" data-i18n="attraction.items.4.title">JCD Park</span>
+                    </button>
+                    <button
+                        type="button"
+                        class="attraction-thumb"
+                        data-attraction-idx="5"
+                        aria-label="Show Central Plaza"
+                        data-i18n-aria-label="attraction.items.5.title"
+                    >
+                        <span class="attraction-thumb__image">
+                            <img
+                                src="https://images.unsplash.com/photo-1519567241046-7f570eee3ce6?w=300&q=80"
+                                alt=""
+                                loading="lazy"
+                            />
+                        </span>
+                        <span class="attraction-thumb__label" data-i18n="attraction.items.5.title">Central Plaza</span>
+                    </button>
+                    <button
+                        type="button"
+                        class="attraction-thumb"
+                        data-attraction-idx="6"
+                        aria-label="Show Coral Cove"
+                        data-i18n-aria-label="attraction.items.6.title"
+                    >
+                        <span class="attraction-thumb__image">
+                            <img
+                                src="https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=300&q=80"
+                                alt=""
+                                loading="lazy"
+                            />
+                        </span>
+                        <span class="attraction-thumb__label" data-i18n="attraction.items.6.title">Coral Cove</span>
+                    </button>
+                    <button
+                        type="button"
+                        class="attraction-thumb"
+                        data-attraction-idx="7"
+                        aria-label="Show Ribbon Park"
+                        data-i18n-aria-label="attraction.items.7.title"
+                    >
+                        <span class="attraction-thumb__image">
+                            <img
+                                src="https://images.unsplash.com/photo-1490578474895-699cd4e2cf59?w=300&q=80"
+                                alt=""
+                                loading="lazy"
+                            />
+                        </span>
+                        <span class="attraction-thumb__label" data-i18n="attraction.items.7.title">Ribbon Park</span>
+                    </button>
+                    <button
+                        type="button"
+                        class="attraction-thumb"
+                        data-attraction-idx="8"
+                        aria-label="Show Beach Promenade"
+                        data-i18n-aria-label="attraction.items.8.title"
+                    >
+                        <span class="attraction-thumb__image">
+                            <img
+                                src="https://images.unsplash.com/photo-1519046904884-53103b34b206?w=300&q=80"
+                                alt=""
+                                loading="lazy"
+                            />
+                        </span>
+                        <span class="attraction-thumb__label" data-i18n="attraction.items.8.title">Beach Promenade</span>
+                    </button>
+                    <button
+                        type="button"
+                        class="attraction-thumb"
+                        data-attraction-idx="9"
+                        aria-label="Show Cultural Quarter"
+                        data-i18n-aria-label="attraction.items.9.title"
+                    >
+                        <span class="attraction-thumb__image">
+                            <img
+                                src="https://images.unsplash.com/photo-1545569310-1d9a6f2feaa3?w=300&q=80"
+                                alt=""
+                                loading="lazy"
+                            />
+                        </span>
+                        <span class="attraction-thumb__label" data-i18n="attraction.items.9.title">Cultural Quarter</span>
+                    </button>
+                </div>
             </div>
         </section>
 

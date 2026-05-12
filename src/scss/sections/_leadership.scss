@@ -298,9 +298,9 @@
         background: var(--surface-white);
         border-radius: 8px;
         box-shadow: 0 18px 48px rgba(0, 0, 0, 0.25);
-        display: grid;
-        grid-template-columns: 320px 1fr;
-        gap: 0;
+        // The dialog is now a generic wrapper that holds:
+        //   - the close button (absolute)
+        //   - N pre-rendered .leader-modal__content blocks, only one active
 
         // gentle scale-up on open
         transform: scale(0.98);
@@ -308,6 +308,21 @@
 
         .leader-modal.is-open & {
             transform: scale(1);
+        }
+    }
+
+    // ==========================================
+    // Modal content variants — one pre-rendered per executive.
+    // Only the .--active one is displayed. Each variant has the same
+    // photo-left / body-right grid layout the dialog used to have.
+    // ==========================================
+    &__content {
+        display: none;
+        grid-template-columns: 320px 1fr;
+        gap: 0;
+
+        &--active {
+            display: grid;
         }
     }
 
@@ -423,8 +438,11 @@
 
     .leader-modal {
         &__dialog {
-            grid-template-columns: 260px 1fr;
             max-width: 720px;
+        }
+
+        &__content {
+            grid-template-columns: 260px 1fr;
         }
 
         &__name {
@@ -475,8 +493,11 @@
         padding: 12px;
 
         &__dialog {
-            grid-template-columns: 1fr;
             max-height: calc(100vh - 24px);
+        }
+
+        &__content {
+            grid-template-columns: 1fr;
         }
 
         &__photo {
