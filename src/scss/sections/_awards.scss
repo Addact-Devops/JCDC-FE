@@ -1,3 +1,11 @@
+/* ════════════════════════════════════════════
+   AWARDS & CERTIFICATIONS
+   - Default behaviour: manual draggable scroll
+   - Add modifier `.awards--auto-scroll` on the
+     root `.awards` element to enable the
+     infinite auto-scroll animation instead.
+   ════════════════════════════════════════════ */
+
 .awards {
     background: var(--surface-white);
     padding: 64px 0;
@@ -9,30 +17,94 @@
 
     &__slider {
         width: 100%;
-        overflow: hidden;
         direction: ltr;
         mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
         -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-        &:hover {
-            .certs {
-                animation-play-state: paused;
-            }
-        }
     }
 }
 
+/* ── Track (shared between both modes) ── */
 .certs {
     display: flex;
     align-items: flex-start;
     gap: 16px;
     width: max-content;
     direction: ltr;
-    animation: scrollAwards 20s linear infinite;
+    /* no animation here on purpose — only the auto-scroll modifier adds it */
+}
 
-    // [dir="rtl"] & {
-    //     direction: rtl;
-    //     animation: scrollAwards-ltr 10s linear infinite;
-    // }
+/* ════════════════════════════════════════════
+   MODE 1 — AUTO-SCROLL (.awards--auto-scroll)
+   ════════════════════════════════════════════ */
+.awards--auto-scroll {
+    .awards__slider {
+        overflow: hidden;
+        cursor: default;
+
+        /* Pause the animation when hovering anywhere on the slider */
+        &:hover .certs {
+            animation-play-state: paused;
+        }
+    }
+
+    .certs {
+        animation: scrollAwards 20s linear infinite;
+    }
+
+    /* Mirror direction in RTL */
+    [dir="rtl"] & .certs {
+        animation-direction: reverse;
+    }
+}
+
+/* ════════════════════════════════════════════
+   MODE 2 — MANUAL / DRAGGABLE (default)
+   Applied when `.awards--auto-scroll` is absent
+   ════════════════════════════════════════════ */
+.awards:not(.awards--auto-scroll) {
+    .awards__slider {
+        overflow-x: auto;
+        overflow-y: hidden;
+        cursor: grab;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+
+        /* Hide scrollbar visually, keep functionality */
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE / old Edge */
+        &::-webkit-scrollbar {
+            display: none; /* Chrome / Safari */
+        }
+
+        /* Active drag state — set by JS */
+        &.is-dragging {
+            cursor: grabbing;
+            scroll-behavior: auto; /* disable smooth while dragging */
+            user-select: none;
+            -webkit-user-select: none;
+
+            img {
+                -webkit-user-drag: none;
+                user-drag: none;
+                pointer-events: none; /* prevent native image drag ghost */
+            }
+        }
+
+        /* Keyboard focus ring for accessibility */
+        &:focus-visible {
+            outline: 2px solid var(--brand-primary, #0a66c2);
+            outline-offset: 4px;
+        }
+    }
+
+    .certs {
+        animation: none;
+
+        /* Hide duplicates used for the infinite auto-scroll loop */
+        .cert-item[aria-hidden="true"] {
+            display: none;
+        }
+    }
 }
 
 @keyframes scrollAwards {
@@ -42,9 +114,6 @@
     100% {
         transform: translateX(-50%);
     }
-}
-[dir="rtl"] .certs {
-    animation-direction: reverse; //  ONLY THIS
 }
 
 .cert-item {
@@ -113,11 +182,9 @@
 }
 
 @media (max-width: 767px) {
-    .awards__slider {
-        //  remove hover pause on mobile
-        &:hover .certs {
-            animation-play-state: running;
-        }
+    /* Auto-scroll: remove hover pause on touch devices */
+    .awards--auto-scroll .awards__slider:hover .certs {
+        animation-play-state: running;
     }
 
     .cert-item {
@@ -128,23 +195,23 @@
         //  restore original color — no grayscale
         &__logo img {
             filter: grayscale(0) opacity(1);
-            transition: none; //  remove transition
+            transition: none;
         }
 
-        //  hide title completely on mobile
+        //  show title statically below logo on mobile
         &__title {
-            opacity: 1; //  always shown
-            position: static; //  flows naturally below logo
-            transform: none; //  no transform
+            opacity: 1;
+            position: static;
+            transform: none;
             padding: 0 12px;
             margin-top: 12px;
             font-size: 12px;
         }
 
-        //  disable hover effects
+        //  disable hover lift on mobile
         &:hover {
             .cert-item__logo {
-                transform: translateY(0); //  no slide up
+                transform: translateY(0);
             }
         }
     }
@@ -158,7 +225,7 @@
     .cert-item {
         width: 220px;
         height: 220px;
-        margin-right: 20px; // reduce spacing
+        margin-right: 20px;
     }
 
     .cert-item__logo img {
@@ -170,8 +237,7 @@
         padding: 0 10px;
     }
 
-    // speed slightly faster on mobile (optional)
-    .certs {
+    .awards--auto-scroll .certs {
         animation-duration: 20s;
     }
 }
