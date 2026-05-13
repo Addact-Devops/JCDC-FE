@@ -37,7 +37,8 @@
         position: absolute;
         inset: 0;
         z-index: 2;
-        background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.55) 100%);
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.65) 55%);
+        pointer-events: none;
     }
 
     // ── Content (absolute, left-anchored per Figma) ─────

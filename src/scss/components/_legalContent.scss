@@ -1,43 +1,39 @@
 // ==========================================
-// Privacy Policy / Clauses Section Styles
+// Legal / Clauses Page
 // ==========================================
 
 $primary-color: rgba(0, 118, 169, 1);
 $text-color: rgba(91, 95, 98, 1);
 
-$container-width: 1440px;
-$content-width: 960px;
-
-$section-padding-top: 64px;
-$section-padding-horizontal: 120px;
-$section-gap: 56px;
-$block-gap: 32px;
-
-// ==========================================
-// Block
-// ==========================================
-
 .clauses {
-    width: $container-width;
+    width: 100%;
 
-    padding: $section-padding-top 360px 64px $section-padding-horizontal;
+    max-width: 1440px;
+
+    margin: 0 auto;
+
+    padding: 64px 120px;
 
     display: flex;
     flex-direction: column;
 
-    gap: $section-gap;
+    gap: 56px;
+
+    background: #fff;
 
     // ==========================================
     // Section
     // ==========================================
 
     &__section {
-        width: $content-width;
+        width: 100%;
+
+        max-width: 960px;
 
         display: flex;
         flex-direction: column;
 
-        gap: $block-gap;
+        gap: 24px;
     }
 
     // ==========================================
@@ -45,16 +41,13 @@ $block-gap: 32px;
     // ==========================================
 
     &__title {
-        width: 960px;
-        min-height: 38px;
-
         margin: 0;
 
         font-family: "Ubuntu", sans-serif;
+
         font-size: 32px;
         font-weight: 500;
         line-height: 120%;
-        letter-spacing: 0;
 
         color: $primary-color;
     }
@@ -64,72 +57,175 @@ $block-gap: 32px;
     // ==========================================
 
     &__description {
-        width: 960px;
-
-        margin: 0;
+        width: 100%;
 
         font-family: "Ubuntu", sans-serif;
-        font-size: 18px;
+
+        font-size: 16px;
         font-weight: 400;
-        line-height: 24px;
-        letter-spacing: 0;
+        line-height: 170%;
 
         color: $text-color;
 
-        p {
-            margin-bottom: 0;
+        // ======================================
+        // Paragraphs
+        // ======================================
 
-            &:last-child {
-                margin-bottom: 0;
+        p {
+            margin: 0;
+
+            // only add spacing if another element comes after
+            &:not(:last-child) {
+                margin-bottom: 12px;
             }
         }
 
+        // ======================================
+        // Long paragraph spacing
+        // ======================================
+
+        p + p {
+            margin-top: 20px;
+        }
+
+        // ======================================
+        // Lists
+        // ======================================
+
+        ul,
+        ol {
+            margin: 12px 0 20px;
+
+            padding-left: 24px;
+
+            display: flex;
+            flex-direction: column;
+
+            gap: 8px;
+        }
+
+        // Bullet list
         ul {
-            margin: 0;
-            padding-left: 0;
+            list-style-type: disc;
+        }
+
+        // Number list
+        ol {
+            list-style-type: decimal;
         }
 
         li {
-            margin-bottom: 0;
+            line-height: 170%;
         }
+
+        // ======================================
+        // Links
+        // ======================================
 
         a {
             color: $primary-color;
+
             text-decoration: none;
 
+            transition: opacity 0.3s ease;
+
             &:hover {
-                text-decoration: underline;
+                opacity: 0.75;
             }
         }
+
+        // ======================================
+        // Bold text
+        // ======================================
+
+        strong,
+        b {
+            font-weight: 500;
+        }
     }
+}
 
-    // ==========================================
-    // Responsive
-    // ==========================================
+// ==========================================
+// Large Tablet
+// ==========================================
 
-    @media screen and (max-width: 425px) {
-        width: $container-width;
+@media (max-width: 1024px) {
+    .clauses {
+        padding: 56px 48px;
 
-        padding: 50px 60px 50px 60px;
-
-        gap: 45px;
+        gap: 48px;
 
         &__section {
-            width: 100%;
-
-            gap: 25px;
+            max-width: 100%;
         }
 
         &__title {
-            font-size: 40px;
+            font-size: 28px;
+        }
+
+        &__description {
+            font-size: 15px;
+        }
+    }
+}
+
+// ==========================================
+// Mobile
+// ==========================================
+
+@media (max-width: 768px) {
+    .clauses {
+        padding: 48px 24px;
+
+        gap: 40px;
+
+        &__section {
+            gap: 20px;
+        }
+
+        &__title {
+            font-size: 24px;
+
             line-height: 130%;
         }
 
         &__description {
-            width: 100%;
+            font-size: 15px;
 
-            font-size: 35px;
-            line-height: 40px;
+            line-height: 170%;
+
+            p {
+                margin-bottom: 16px;
+            }
+
+            ul,
+            ol {
+                padding-left: 20px;
+
+                gap: 8px;
+            }
+        }
+    }
+}
+
+// ==========================================
+// Small Mobile
+// ==========================================
+
+@media (max-width: 480px) {
+    .clauses {
+        padding: 40px 16px;
+
+        gap: 36px;
+
+        &__title {
+            font-size: 22px;
+        }
+
+        &__description {
+            font-size: 14px;
+
+            line-height: 165%;
         }
     }
 }
