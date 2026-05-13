@@ -64,6 +64,10 @@
 
         // Underline-on-hover (2nd card style in Figma, we apply to all for consistency)
         text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
     }
 
     &__cta {
@@ -78,13 +82,22 @@
         color: var(--secondary-500); // gold
         transition: gap var(--dur) var(--ease);
 
-        &:hover {
-            gap: 10px;
-        }
-
         svg {
             [dir="rtl"] & {
                 transform: scaleX(-1);
+            }
+        }
+
+        &:hover {
+            gap: 10px;
+            color: #d6b275;
+
+            svg {
+                transform: translateX(3px);
+
+                [dir="rtl"] & {
+                    transform: translateX(-2px) scaleX(-1);
+                }
             }
         }
     }
