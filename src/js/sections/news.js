@@ -8,31 +8,38 @@
  * to <div id="news-grid">; otherwise defaults below are used.
  */
 window.News = (function () {
-  'use strict';
+  "use strict";
 
   const DEFAULT_IMAGES = [
-    'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=85',
-    'https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=800&q=85',
-    'https://images.unsplash.com/photo-1591115765373-5207764f72e7?w=800&q=85'
+    "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=85",
+    "https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=800&q=85",
+    "https://images.unsplash.com/photo-1591115765373-5207764f72e7?w=800&q=85",
   ];
 
   function escapeHtml(s) {
     return String(s)
-      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;').replace(/'/g, '&#39;');
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;");
   }
 
   function render(grid, translations) {
     const items = translations?.news?.items || [];
-    const learnMore = translations?.news?.learnMore || 'Learn More';
+    const learnMore = translations?.news?.learnMore || "Learn More";
     if (!items.length) return;
 
     let images = DEFAULT_IMAGES;
     if (grid.dataset.images) {
-      try { images = JSON.parse(grid.dataset.images); } catch (_) {}
+      try {
+        images = JSON.parse(grid.dataset.images);
+      } catch (_) {}
     }
 
-    grid.innerHTML = items.map((title, i) => `
+    grid.innerHTML = items
+      .map(
+        (title, i) => `
       <article class="news-card">
         <div class="news-card__image">
           <img src="${images[i] || images[0]}" alt="${escapeHtml(title)}" loading="lazy" />
@@ -47,13 +54,16 @@ window.News = (function () {
           </svg>
         </a>
       </article>
-    `).join('');
+    `,
+      )
+      .join("");
   }
 
   function init(root) {
-    root = root || document.querySelector('.news');
+    root = root || document.querySelector(".news");
     if (!root) return;
-    const grid = root.querySelector('#news-grid') || root.querySelector('.news__grid');
+    const grid =
+      root.querySelector("#news-grid1") || root.querySelector(".news__grid1");
     if (!grid) return;
 
     // Subscribe to i18n — onLangChange fires immediately with current data
@@ -63,13 +73,16 @@ window.News = (function () {
       bind();
     } else {
       const poll = setInterval(() => {
-        if (window.I18n) { clearInterval(poll); bind(); }
+        if (window.I18n) {
+          clearInterval(poll);
+          bind();
+        }
       }, 50);
     }
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => init());
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", () => init());
   } else {
     init();
   }
