@@ -220,24 +220,54 @@
 @media (max-width: 425px) {
     .awards {
         padding: 50px 0;
+
+        &__slider {
+            overflow: hidden; //  remove scroll
+            cursor: default;
+            mask-image: none; //  remove fade edges
+            -webkit-mask-image: none;
+            padding: 0 16px;
+        }
+    }
+
+    .certs {
+        display: grid; //  grid instead of flex
+        grid-template-columns: repeat(2, 1fr); //  2 columns
+        gap: 12px;
+        width: 100%;
+        animation: none !important; //  no scroll animation
+
+        //  hide duplicates
+        .cert-item[aria-hidden="true"] {
+            display: none;
+        }
     }
 
     .cert-item {
-        width: 220px;
-        height: 220px;
-        margin-right: 20px;
-    }
+        width: 100%;
+        height: auto;
+        min-height: 180px;
+        cursor: default;
 
-    .cert-item__logo img {
-        height: 80px;
-    }
+        &__logo img {
+            height: 80px;
+            filter: grayscale(0) opacity(1);
+            transition: none;
+        }
 
-    .cert-item__title {
-        font-size: 12px;
-        padding: 0 10px;
-    }
+        &__title {
+            opacity: 1;
+            position: static;
+            transform: none;
+            font-size: 11px;
+            padding: 0 8px;
+            margin-top: 8px;
+        }
 
-    .awards--auto-scroll .certs {
-        animation-duration: 20s;
+        &:hover {
+            .cert-item__logo {
+                transform: translateY(0);
+            }
+        }
     }
 }

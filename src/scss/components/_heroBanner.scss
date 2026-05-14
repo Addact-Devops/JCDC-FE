@@ -251,28 +251,33 @@
 
         &__container {
             padding: 0 24px;
+            align-items: flex-start; //  ADDED
         }
 
         &__content {
             width: 100%;
             padding: 0 16px;
             gap: 12px;
+            align-items: flex-start; //  CHANGED — was center
+            text-align: left; //  ADDED
         }
 
         &__breadcrumbs {
             font-size: 14px;
             flex-wrap: wrap;
-            justify-content: center;
+            justify-content: flex-start; //  CHANGED — was center
         }
 
         &__title {
             font-size: 40px;
             margin: 0 0 16px;
+            text-align: left; //  ADDED
         }
 
         &__description {
             font-size: 16px;
             line-height: 150%;
+            text-align: left; //  ADDED
         }
 
         &__logo {
@@ -283,6 +288,7 @@
         &__cta-wrap {
             margin-top: 24px;
             width: 100%;
+            justify-content: flex-start; //  ADDED
         }
 
         &__cta {
@@ -298,12 +304,23 @@
     .banner {
         min-height: 480px;
 
+        &__content {
+            align-items: flex-start; //  ADDED
+            text-align: left; //  ADDED
+        }
+
+        &__breadcrumbs {
+            justify-content: flex-start; //  ADDED
+        }
+
         &__title {
             font-size: 32px;
+            text-align: left; //  ADDED
         }
 
         &__description {
             font-size: 15px;
+            text-align: left; //  ADDED
         }
     }
 
