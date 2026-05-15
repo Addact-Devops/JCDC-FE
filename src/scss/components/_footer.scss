@@ -255,13 +255,36 @@
     }
     [dir="rtl"] .footer__right {
         min-width: auto;
+        align-items: center;
+        width: 100%;
     }
 
     [dir="rtl"] .footer__legal {
         min-width: auto;
     }
     [dir="rtl"] .footer__social {
-        flex-direction: row; // remove row-reverse
-        justify-content: center; //  center icons
+        width: 100%;
+        justify-content: center;
+        flex-direction: row-reverse;
+    }
+}
+
+@media (max-width: 425px) {
+    [dir="rtl"] {
+        .footer__right {
+            align-items: center;
+            width: 100%;
+            min-width: auto;
+        }
+
+        .footer__social {
+            width: 100%;
+            justify-content: center;
+            flex-direction: row-reverse;
+        }
+
+        .footer__legal {
+            min-width: auto;
+        }
     }
 }
