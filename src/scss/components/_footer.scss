@@ -34,6 +34,7 @@
 
         [dir="rtl"] & {
             align-items: flex-start;
+            min-width: 850px;
         }
     }
 
@@ -55,8 +56,8 @@
             font-size: var(--small); // 14px
             font-weight: 400;
             line-height: 1.43;
-            color: var(--primary-500);
             padding: 8px;
+            color: var(--primary-500);
             white-space: nowrap;
             text-align: center;
             transition: opacity var(--dur) var(--ease);
@@ -105,6 +106,10 @@
         align-items: center;
         gap: 15px;
         flex-wrap: wrap;
+
+        [dir="rtl"] & {
+            min-width: 850px;
+        }
 
         a {
             font-size: var(--small);
@@ -247,5 +252,16 @@
                 text-align: center;
             }
         }
+    }
+    [dir="rtl"] .footer__right {
+        min-width: auto;
+    }
+
+    [dir="rtl"] .footer__legal {
+        min-width: auto;
+    }
+    [dir="rtl"] .footer__social {
+        flex-direction: row; // remove row-reverse
+        justify-content: center; //  center icons
     }
 }

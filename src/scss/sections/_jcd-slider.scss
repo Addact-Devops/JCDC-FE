@@ -84,6 +84,17 @@
         }
     }
 
+    //  ADDED — label above title
+    &__label {
+        font-family: var(--font-body);
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 140%;
+        color: var(--text-50);
+
+        letter-spacing: 0;
+    }
+
     &__body {
         font-family: var(--font-body);
         font-size: var(--large);

@@ -38,6 +38,7 @@ $bg-color: #ffffff;
         gap: 30px;
 
         justify-content: center;
+        direction: ltr;
     }
 
     // ==========================================
@@ -77,6 +78,7 @@ $bg-color: #ffffff;
 
         opacity: 0.25;
         pointer-events: none;
+        direction: ltr;
     }
 
     // Vision (left pattern)
@@ -110,6 +112,10 @@ $bg-color: #ffffff;
         color: $primary-color;
 
         margin: 0 0 16px;
+        [dir="rtl"] & {
+            direction: rtl; //  text reads RTL
+            text-align: right; //  text aligns right
+        }
     }
 
     // ==========================================
@@ -127,6 +133,10 @@ $bg-color: #ffffff;
         max-width: 435px;
 
         margin: 0;
+        [dir="rtl"] & {
+            direction: rtl; //  text reads RTL
+            text-align: right; //  text aligns right
+        }
     }
 
     // ==========================================
@@ -134,25 +144,24 @@ $bg-color: #ffffff;
     // ==========================================
 
     @media screen and (max-width: 425px) {
-        padding: 64px 0;
+        padding: 40px 0;
 
         &__container {
-            padding: 0 16px;
-
+            padding: 64px 16px;
             flex-direction: column;
             align-items: center;
-
             gap: 24px;
         }
 
         &__card {
             width: 100%;
             height: auto;
-
-            padding: 40px 20px;
-
-            align-items: center;
-            text-align: center;
+            min-height: 449px; //  Fixed (449px) from Figma
+            padding: 280px 16px 24px 16px; //  top pushes text below pattern, right/bottom/left from Figma
+            align-items: flex-start;
+            text-align: start;
+            gap: 10px; //  Gap 10px from Figma
+            border-radius: 8px; //  Radius 8px from Figma
         }
 
         &__title {
@@ -162,27 +171,26 @@ $bg-color: #ffffff;
         &__description {
             font-size: 16px;
             line-height: 26px;
+            max-width: 100%;
         }
-
-        // Adjust background shapes for mobile
 
         &__bg {
             width: 250px;
             height: 250px;
-
-            opacity: 0.15;
+            opacity: 0.25;
         }
 
         &__bg--vision {
-            top: -80px;
-            left: -80px;
+            top: -10px;
+            left: -10px;
+
+            background-image: url("../../../assets/vision.svg");
         }
 
         &__bg--mission {
-            top: -80px;
-
-            left: auto;
-            right: -80px;
+            top: -10px;
+            left: -10px;
+            background-image: url("../../../assets/vision.svg");
         }
     }
 }
