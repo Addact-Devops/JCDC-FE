@@ -138,11 +138,11 @@
 @media (max-width: 768px) {
     .jcdc {
         &__content {
-            flex-direction: column;
+            flex-direction: column-reverse;
 
-            padding: 48px 24px;
+            padding: 64px 24px;
 
-            gap: 40px;
+            gap: 32px;
         }
 
         &__left {
@@ -181,7 +181,7 @@
 @media (max-width: 480px) {
     .jcdc {
         &__content {
-            padding: 40px 16px;
+            padding: 64px 16px;
         }
 
         &__title {
