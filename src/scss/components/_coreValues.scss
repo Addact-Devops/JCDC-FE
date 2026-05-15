@@ -289,7 +289,7 @@
             flex-direction: row; // Icon on top, title, description below
             align-items: center; // Center aligned like design
             text-align: start; //  Text aligned to the start
-            gap: 0; //  Remove gap, use margins instead
+            gap: 24px; //  Remove gap, use margins instead
 
             &:first-child {
                 border-top-left-radius: 8px;

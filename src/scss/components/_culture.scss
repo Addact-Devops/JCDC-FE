@@ -35,7 +35,7 @@
         margin: 0;
         font-family: var(--font-body);
         font-size: 40px;
-        font-weight: 500;
+        font-weight: 700;
         line-height: 120%;
         color: var(--primary-500);
         text-align: center;
@@ -155,11 +155,14 @@
     // Mobile (≤ 768)
     // ==========================================
     @media (max-width: 768px) {
-        padding: 48px 24px;
+        padding: 64px 24px;
         gap: 32px;
 
         &__title {
-            font-size: 28px;
+            font-size: 32px;
+        }
+        &__header {
+            margin-bottom: 32px;
         }
 
         &__grid {
@@ -168,7 +171,7 @@
         }
 
         &__card {
-            height: 360px;
+            min-height: 500px;
         }
 
         &__card-content {
@@ -179,11 +182,13 @@
         }
 
         &__card-title {
-            font-size: 20px;
+            font-weight: 500;
+            line-height: 120%;
+            font-size: 30px;
         }
 
         &__card-desc {
-            font-size: 13px;
+            font-size: 17px;
         }
     }
 
@@ -191,14 +196,14 @@
     // Small Mobile (≤ 480)
     // ==========================================
     @media (max-width: 480px) {
-        padding: 40px 16px;
+        padding: 64px 16px;
 
         &__title {
-            font-size: 24px;
+            font-size: 32px;
         }
 
         &__card {
-            height: 300px;
+            min-height: 500px;
         }
     }
 }
