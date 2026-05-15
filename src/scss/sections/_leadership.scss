@@ -569,6 +569,7 @@
             padding: 16px;
 
             min-height: auto;
+            margin-bottom: 16px;
         }
 
         &__chairman-photo {
@@ -654,7 +655,7 @@
 
 @media (max-width: 480px) {
     .leadership {
-        padding: 40px 16px;
+        padding: 64px 16px;
     }
     .leader-modal {
         padding: 8px;
