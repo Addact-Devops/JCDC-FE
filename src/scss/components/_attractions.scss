@@ -227,12 +227,13 @@
     // ==========================================
 
     @media (max-width: 768px) {
-        padding: 48px 24px;
+        padding: 64px 24px;
         &__content {
             transform: none !important;
+            margin-bottom: 46px;
         }
         &__header {
-            margin-bottom: 40px;
+            margin-bottom: 32px;
         }
 
         &__title {
@@ -244,9 +245,12 @@
             transform: none;
             font-size: 14px;
         }
+        &__bottom {
+            margin-top: 32px;
+        }
 
         &__desc {
-            font-size: 15px;
+            font-size: 16px;
         }
 
         &__grid {
@@ -256,11 +260,14 @@
         }
 
         &__card {
-            height: 360px;
+            min-height: 500px;
         }
 
         &__card-title {
-            font-size: 24px;
+            font-size: 28px;
+        }
+        &__card-desc {
+            font-size: 15px;
         }
     }
 
@@ -269,18 +276,21 @@
     // ==========================================
 
     @media (max-width: 480px) {
-        padding: 40px 16px;
+        padding: 64px 16px;
 
         &__title {
             font-size: 24px;
         }
 
         &__card {
-            height: 320px;
+            min-height: 500px;
         }
 
         &__card-title {
-            font-size: 22px;
+            font-size: 28px;
+        }
+        &__card-desc {
+            font-size: 15px;
         }
     }
 }
