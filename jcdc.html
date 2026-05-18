@@ -168,59 +168,99 @@
         <section class="jcd-map" id="jcd-map" aria-label="Jeddah Central districts map">
             <div class="jcd-map__container">
                 <!-- ── Map viewport (left on desktop / top on mobile) ── -->
+                <!--
+                    On mobile, .jcd-map__viewport becomes horizontally scrollable
+                    so that only the map scrolls — not the whole page. The
+                    .jcd-map__scroll wrapper holds the fixed-width canvas so
+                    the SVG retains its design proportions on small screens.
+                -->
                 <div class="jcd-map__viewport" id="jcd-map-viewport">
-                    <!-- Stage wraps everything that scales/translates on zoom -->
-                    <div class="jcd-map__stage" id="jcd-map-stage">
-                        <!-- Satellite background image. Replace with the real
-                            map asset when available; for now we reuse the
-                            existing image 141.svg that already ships with the
-                            project so the section renders on first load. -->
-                        <img class="jcd-map__bg" src="./assets/image 141.svg" alt="" draggable="false" />
-
-                        <!-- SVG overlay: dim mask + 6 district paths + mobile labels -->
-                        <svg
-                            class="jcd-map__svg"
-                            id="jcd-map-svg"
-                            viewBox="0 0 1000 800"
-                            preserveAspectRatio="xMidYMid meet"
-                            aria-hidden="true"
-                        >
-                            <defs>
-                                <!-- Mask used by the dim layer:
-                                     white  = paint dim,  black = leave bright.
-                                     JS sets the cutout's `d` to the active
-                                     district's path so it stays bright while
-                                     the rest is darkened. -->
-                                <mask id="jcd-map-dim-mask">
-                                    <rect x="0" y="0" width="1000" height="800" fill="white" />
-                                    <path id="jcd-map-cutout" d="M 0 0 Z" fill="black" />
-                                </mask>
-                            </defs>
-
-                            <!-- Dim layer (faded in by .is-detail) -->
-                            <rect
-                                class="jcd-map__dim"
-                                x="0"
-                                y="0"
-                                width="1000"
-                                height="800"
-                                mask="url(#jcd-map-dim-mask)"
+                    <div class="jcd-map__scroll">
+                        <!-- Stage wraps everything that scales/translates on zoom -->
+                        <div class="jcd-map__stage" id="jcd-map-stage">
+                            <!--
+                                Background render layer (Render_MP1_2.svg).
+                                Lazy-loaded since the file is large and below
+                                the fold for most viewers.
+                            -->
+                            <img
+                                class="jcd-map__bg jcd-map__bg--render"
+                                src="./assets/Render_MP1_2.svg"
+                                alt=""
+                                draggable="false"
+                                loading="lazy"
+                                decoding="async"
                             />
 
-                            <!-- District paths — built by JS from DISTRICT_PATHS -->
-                            <g id="jcd-map-districts"></g>
+                            <!--
+                                Map overlay (Map2.svg) — sits exactly on top of
+                                the render background. Both share the same
+                                1049 × 773 viewBox so they line up pixel-perfect.
+                            -->
+                            <img
+                                class="jcd-map__bg jcd-map__bg--overlay"
+                                src="./assets/Map2.svg"
+                                alt=""
+                                draggable="false"
+                                loading="lazy"
+                                decoding="async"
+                            />
 
-                            <!-- Mobile name labels — built by JS, hidden on desktop -->
-                            <g id="jcd-map-labels"></g>
-                        </svg>
+                            <!--
+                                SVG overlay: dim mask + 6 district paths + mobile labels.
+                                preserveAspectRatio="xMidYMid meet" matches the
+                                CSS object-fit:contain on the backgrounds — the SVG
+                                viewBox is scaled to FIT inside the viewport without
+                                cropping. Because the viewport itself has
+                                aspect-ratio: 1049/773, this is effectively a 1:1
+                                mapping, so attraction-icon coordinates (stored as
+                                % of viewport width/height in i18n) land on the same
+                                points as the underlying SVG paths.
+                            -->
+                            <svg
+                                class="jcd-map__svg"
+                                id="jcd-map-svg"
+                                viewBox="0 0 1049 773"
+                                preserveAspectRatio="xMidYMid meet"
+                                aria-hidden="true"
+                            >
+                                <defs>
+                                    <!-- Mask used by the dim layer:
+                                         white  = paint dim,  black = leave bright.
+                                         JS sets the cutout's `d` to the active
+                                         district's path so it stays bright while
+                                         the rest is darkened. -->
+                                    <mask id="jcd-map-dim-mask">
+                                        <rect x="0" y="0" width="1049" height="773" fill="white" />
+                                        <path id="jcd-map-cutout" d="M 0 0 Z" fill="black" />
+                                    </mask>
+                                </defs>
 
-                        <!-- Attraction icon hotspots — populated by JS on selection -->
-                        <div class="jcd-map__icons" id="jcd-map-icons" aria-live="polite"></div>
+                                <!-- Dim layer (faded in by .is-detail) -->
+                                <rect
+                                    class="jcd-map__dim"
+                                    x="0"
+                                    y="0"
+                                    width="1049"
+                                    height="773"
+                                    mask="url(#jcd-map-dim-mask)"
+                                />
+
+                                <!-- District paths — built by JS from DISTRICT_PATHS -->
+                                <g id="jcd-map-districts"></g>
+
+                                <!-- Mobile name labels — built by JS, hidden on desktop -->
+                                <g id="jcd-map-labels"></g>
+                            </svg>
+
+                            <!-- Attraction icon hotspots — populated by JS on selection -->
+                            <div class="jcd-map__icons" id="jcd-map-icons" aria-live="polite"></div>
+                        </div>
+
+                        <!-- Hover / pinned tooltip — outside the stage so it
+                             doesn't scale with the zoom. Positioned by JS. -->
+                        <div class="jcd-map__tooltip" id="jcd-map-tooltip" role="tooltip" hidden></div>
                     </div>
-
-                    <!-- Hover / pinned tooltip — outside the stage so it
-                         doesn't scale with the zoom. Positioned by JS. -->
-                    <div class="jcd-map__tooltip" id="jcd-map-tooltip" role="tooltip" hidden></div>
                 </div>
 
                 <!-- ── Info panel (right on desktop / below on mobile) ── -->
