@@ -211,8 +211,8 @@
         the i18n engine via data-i18n attributes.
 ════════════════════════════════════════════ -->
 
-        <section
-            class="landmark-slider landmark-slider--no-card "
+       <section
+            class="landmark-slider landmark-slider--no-card"
             id="landmark-slider"
             aria-roledescription="carousel"
             aria-label="Major Landmarks"
@@ -261,12 +261,18 @@
                         aria-label="1 of 4"
                     >
                         <img
-                            src="https://images.unsplash.com/photo-1577223625816-7546f13df25d?w=1400&q=85"
+                            src="assets/JCDC/OceanArium subpage/1.png"
                             alt="Stadium"
                             data-i18n-alt="landmarkSlider.items.0.title"
                             loading="eager"
                             draggable="false"
                         />
+                        <div class="landmark-slider__slide-content">
+                            <h3 class="landmark-slider__slide-title">Shoreline and Mangrove</h3>
+                            <p class="landmark-slider__slide-desc">
+                                Explore coastal environments and their role in marine biodiversity.
+                            </p>
+                        </div>
                     </div>
                     <div
                         class="landmark-slider__slide"
@@ -275,12 +281,16 @@
                         aria-label="2 of 4"
                     >
                         <img
-                            src="https://images.unsplash.com/photo-1518998053901-5348d3961a04?w=1400&q=85"
+                            src="assets/JCDC/OceanArium subpage/2.png"
                             alt="Opera House"
                             data-i18n-alt="landmarkSlider.items.1.title"
                             loading="lazy"
                             draggable="false"
                         />
+                        <div class="landmark-slider__slide-content">
+                            <h3 class="landmark-slider__slide-title">Coral Reef</h3>
+                            <p class="landmark-slider__slide-desc">A vibrant walk-through habitat celebrating coral diversity and Red Sea reef life.</p>
+                        </div>
                     </div>
                     <div
                         class="landmark-slider__slide"
@@ -289,12 +299,16 @@
                         aria-label="3 of 4"
                     >
                         <img
-                            src="https://images.unsplash.com/photo-1535591273668-578e31182c4f?w=1400&q=85"
+                            src="assets/JCDC/OceanArium subpage/3.png"
                             alt="Oceanarium"
                             data-i18n-alt="landmarkSlider.items.2.title"
                             loading="lazy"
                             draggable="false"
                         />
+                        <div class="landmark-slider__slide-content">
+                            <h3 class="landmark-slider__slide-title">The Vortex</h3>
+                            <p class="landmark-slider__slide-desc">The Oceanarium’s architectural centerpiece; a dramatic multimedia experience using motion, sound, and light.</p>
+                        </div>
                     </div>
                     <div
                         class="landmark-slider__slide"
@@ -303,13 +317,18 @@
                         aria-label="4 of 4"
                     >
                         <img
-                            src="https://images.unsplash.com/photo-1506748686214-e9df14d4d9d0?w=1400&q=85"
+                            src="assets/JCDC/OceanArium subpage/4.png"
                             alt="Museum"
                             data-i18n-alt="landmarkSlider.items.3.title"
                             loading="lazy"
                             draggable="false"
                         />
+                        <div class="landmark-slider__slide-content">
+                            <h3 class="landmark-slider__slide-title">Depth of the Red Sea</h3>
+                            <p class="landmark-slider__slide-desc">Exhibits on deep-water species and marine habitats.</p>
+                        </div>
                     </div>
+                   
                 </div>
 
                 <button
@@ -350,117 +369,6 @@
                      It contains N pre-rendered content variants, only one
                      of which has the .--active class at a time. The wrapper
                      fades on slide change via the .is-fading class. -->
-                <div class="landmark-slider__card" aria-live="polite">
-                    <div class="landmark-slider__card-inner" id="landmark-slider-card-inner">
-                        <div
-                            class="landmark-slider__card-variant landmark-slider__card-variant--active"
-                            data-landmark-card="0"
-                        >
-                            <div class="landmark-slider__card-text">
-                                <h3 class="landmark-slider__card-title" data-i18n="landmarkSlider.items.0.title">
-                                    Stadium
-                                </h3>
-                                <p
-                                    class="landmark-slider__card-description"
-                                    data-i18n="landmarkSlider.items.0.description"
-                                >
-                                    Blending local architecture with cutting-edge technology to create a world-class
-                                    sports, entertainment & cultural hub
-                                </p>
-                            </div>
-                            <a class="btn btn--outline-gold landmark-slider__card-cta" href="#">
-                                <span data-i18n="landmarkSlider.cta">Explore</span>
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                                    <path
-                                        d="M5 12h14M13 6l6 6-6 6"
-                                        stroke="currentColor"
-                                        stroke-width="2"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                    />
-                                </svg>
-                            </a>
-                        </div>
-                        <div class="landmark-slider__card-variant" data-landmark-card="1">
-                            <div class="landmark-slider__card-text">
-                                <h3 class="landmark-slider__card-title" data-i18n="landmarkSlider.items.1.title">
-                                    Opera House
-                                </h3>
-                                <p
-                                    class="landmark-slider__card-description"
-                                    data-i18n="landmarkSlider.items.1.description"
-                                >
-                                    A cultural landmark elevating Jeddah's standing as the capital of performing arts
-                                    across the region
-                                </p>
-                            </div>
-                            <a class="btn btn--outline-gold landmark-slider__card-cta" href="#">
-                                <span data-i18n="landmarkSlider.cta">Explore</span>
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                                    <path
-                                        d="M5 12h14M13 6l6 6-6 6"
-                                        stroke="currentColor"
-                                        stroke-width="2"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                    />
-                                </svg>
-                            </a>
-                        </div>
-                        <div class="landmark-slider__card-variant" data-landmark-card="2">
-                            <div class="landmark-slider__card-text">
-                                <h3 class="landmark-slider__card-title" data-i18n="landmarkSlider.items.2.title">
-                                    Oceanarium
-                                </h3>
-                                <p
-                                    class="landmark-slider__card-description"
-                                    data-i18n="landmarkSlider.items.2.description"
-                                >
-                                    An immersive marine experience showcasing the rich aquatic life of the Red Sea,
-                                    built to the highest international standards
-                                </p>
-                            </div>
-                            <a class="btn btn--outline-gold landmark-slider__card-cta" href="#">
-                                <span data-i18n="landmarkSlider.cta">Explore</span>
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                                    <path
-                                        d="M5 12h14M13 6l6 6-6 6"
-                                        stroke="currentColor"
-                                        stroke-width="2"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                    />
-                                </svg>
-                            </a>
-                        </div>
-                        <div class="landmark-slider__card-variant" data-landmark-card="3">
-                            <div class="landmark-slider__card-text">
-                                <h3 class="landmark-slider__card-title" data-i18n="landmarkSlider.items.3.title">
-                                    Museum
-                                </h3>
-                                <p
-                                    class="landmark-slider__card-description"
-                                    data-i18n="landmarkSlider.items.3.description"
-                                >
-                                    Galleries hosting world-class exhibitions that celebrate Jeddah's heritage and
-                                    inspire future generations
-                                </p>
-                            </div>
-                            <a class="btn btn--outline-gold landmark-slider__card-cta" href="#">
-                                <span data-i18n="landmarkSlider.cta">Explore</span>
-                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                                    <path
-                                        d="M5 12h14M13 6l6 6-6 6"
-                                        stroke="currentColor"
-                                        stroke-width="2"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                    />
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
-                </div>
             </div>
 
             <!-- Dots — sit BELOW the viewport (STATIC) -->
