@@ -8,38 +8,38 @@
  * to <div id="news-grid">; otherwise defaults below are used.
  */
 window.News = (function () {
-  "use strict";
+    "use strict";
 
-  const DEFAULT_IMAGES = [
-    "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=85",
-    "https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=800&q=85",
-    "https://images.unsplash.com/photo-1591115765373-5207764f72e7?w=800&q=85",
-  ];
+    const DEFAULT_IMAGES = [
+        "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=85",
+        "https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=800&q=85",
+        "https://images.unsplash.com/photo-1591115765373-5207764f72e7?w=800&q=85",
+    ];
 
-  function escapeHtml(s) {
-    return String(s)
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;")
-      .replace(/'/g, "&#39;");
-  }
-
-  function render(grid, translations) {
-    const items = translations?.news?.items || [];
-    const learnMore = translations?.news?.learnMore || "Learn More";
-    if (!items.length) return;
-
-    let images = DEFAULT_IMAGES;
-    if (grid.dataset.images) {
-      try {
-        images = JSON.parse(grid.dataset.images);
-      } catch (_) {}
+    function escapeHtml(s) {
+        return String(s)
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#39;");
     }
 
-    grid.innerHTML = items
-      .map(
-        (title, i) => `
+    function render(grid, translations) {
+        const items = translations?.news?.items || [];
+        const learnMore = translations?.news?.learnMore || "Learn More";
+        if (!items.length) return;
+
+        let images = DEFAULT_IMAGES;
+        if (grid.dataset.images) {
+            try {
+                images = JSON.parse(grid.dataset.images);
+            } catch (_) {}
+        }
+
+        grid.innerHTML = items
+            .map(
+                (title, i) => `
       <article class="news-card">
         <div class="news-card__image">
           <img src="${images[i] || images[0]}" alt="${escapeHtml(title)}" loading="lazy" />
@@ -55,37 +55,69 @@ window.News = (function () {
         </a>
       </article>
     `,
-      )
-      .join("");
-  }
-
-  function init(root) {
-    root = root || document.querySelector(".news");
-    if (!root) return;
-    const grid =
-      root.querySelector("#news-grid1") || root.querySelector(".news__grid1");
-    if (!grid) return;
-
-    // Subscribe to i18n — onLangChange fires immediately with current data
-    const bind = () => window.I18n.onLangChange((lang, t) => render(grid, t));
-
-    if (window.I18n) {
-      bind();
-    } else {
-      const poll = setInterval(() => {
-        if (window.I18n) {
-          clearInterval(poll);
-          bind();
-        }
-      }, 50);
+            )
+            .join("");
     }
-  }
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", () => init());
-  } else {
-    init();
-  }
+    function init(root) {
+        root = root || document.querySelector(".news");
+        if (!root) return;
+        const grid = root.querySelector("#news-grid1") || root.querySelector(".news__grid1");
+        if (!grid) return;
 
-  return { init, render };
+        // Subscribe to i18n — onLangChange fires immediately with current data
+        const bind = () => window.I18n.onLangChange((lang, t) => render(grid, t));
+
+        if (window.I18n) {
+            bind();
+        } else {
+            const poll = setInterval(() => {
+                if (window.I18n) {
+                    clearInterval(poll);
+                    bind();
+                }
+            }, 50);
+        }
+    }
+
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", () => init());
+    } else {
+        init();
+    }
+
+    return { init, render };
+
+    (() => {
+        const section = document.getElementById("news-listing-be");
+        if (!section) return;
+
+        const form = section.querySelector("#nl-be-form");
+
+        ["nl-date-from-wrap", "nl-date-to-wrap"].forEach((wrapId) => {
+            const wrap = section.querySelector(`#${wrapId}`);
+            if (!wrap) return;
+
+            const input = wrap.querySelector(".news-listing__date-input");
+            if (!input) return;
+
+            wrap.addEventListener("click", (e) => {
+                if (e.target === input) return;
+
+                if (typeof input.showPicker === "function") {
+                    try {
+                        input.showPicker();
+                    } catch {
+                        input.focus();
+                    }
+                } else {
+                    input.focus();
+                }
+            });
+
+            input.addEventListener("change", () => {
+                form?.submit();
+            });
+        });
+    })();
 })();

@@ -43,7 +43,7 @@
     // ==========================================
     &__viewport {
         --slide-width: 80vw;
-        --slide-gap: 16px;
+        --slide-gap: 56px;
 
         position: relative;
         width: 100%;
@@ -240,30 +240,27 @@
     &__nav {
         position: absolute;
         top: 50%;
-        transform: translateY(calc(-50% - 60px));
-        width: 44px;
-        height: 44px;
-        border-radius: 6px;
+        transform: translateY(-50%);
+        width: 40px;
+        height: 40px;
+        border-radius: 8px;
         background: var(--surface-white);
-        border: 1px solid #e6e6e6;
+        border: 1.4px solid #b0d5e4;
         color: var(--primary-500);
         cursor: pointer;
         display: flex;
         align-items: center;
         justify-content: center;
         z-index: 5;
-        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
         transition:
             background var(--dur) var(--ease),
             color var(--dur) var(--ease),
-            border-color var(--dur) var(--ease),
-            box-shadow var(--dur) var(--ease);
+            border-color var(--dur) var(--ease);
 
         &:hover:not(:disabled) {
             background: var(--primary-500);
             color: var(--surface-white);
             border-color: var(--primary-500);
-            box-shadow: 0 6px 20px rgba(0, 118, 169, 0.25);
         }
 
         &:focus-visible {
@@ -277,8 +274,9 @@
         }
 
         svg {
-            width: 18px;
-            height: 18px;
+            width: 25px;
+            height: 30px;
+            flex-shrink: 2;
 
             [dir="rtl"] & {
                 transform: scaleX(-1);
@@ -286,11 +284,11 @@
         }
 
         &--prev {
-            inset-inline-start: 24px;
+            inset-inline-start: calc(50% - 600px - 22px); // 👈 half slide width + half button
         }
 
         &--next {
-            inset-inline-end: 24px;
+            inset-inline-end: calc(50% - 600px - 22px); // 👈 same on right side
         }
     }
 
@@ -350,9 +348,15 @@
     }
 
     //  Defensive: if a stray .landmark-slider__card sneaks in, hide it
-    .landmark-slider__card,
+    .landmark-slider__card {
+        display: none;
+    }
     .landmark-slider__dots {
         display: none;
+
+        @media (max-width: 480px) {
+            display: flex; // 👈 show on mobile
+        }
     }
 
     @media (max-width: 1024px) {
@@ -419,51 +423,37 @@
 // ==========================================
 @media (max-width: 768px) {
     .landmark-slider {
-        padding: 40px 16px 48px;
+        padding: 40px 0 48px; // 👈 CHANGED — remove side padding so slides touch edges
 
         &__header {
             margin-bottom: 16px;
             gap: 12px;
+            padding: 0 16px; // 👈 ADDED — keep header padded
         }
 
         &__title {
             max-width: 280px;
-            font-size: 22px;
+            font-size: 30px;
             line-height: 1.3;
             text-align: center;
         }
 
-        // ==========================================
-        // Viewport — clip peeks, leave room at top for nav buttons
-        // ==========================================
         &__viewport {
-            --slide-width: 100%;
-            --slide-gap: 0;
-
+            --slide-width: 75vw; // 👈 CHANGED — allows peek slides on sides
+            --slide-gap: 12px;
             position: relative;
             overflow: hidden;
-            padding: 60px 0 0; // top space for the nav row; reset desktop padding-block-end
+            padding: 60px 0 0;
         }
 
-        // ==========================================
-        // Nav buttons — absolutely positioned at the top of the
-        // viewport, side-by-side, horizontally centered.
-        //
-        // Math (40px wide buttons, 16px gap):
-        //   total visual block = 40 + 16 + 40 = 96px → half = 48px
-        //   prev: inline-start at calc(50% - 48px)
-        //   next: inline-end   at calc(50% - 48px)
-        // Using logical properties so RTL mirrors correctly.
-        // ==========================================
         &__nav {
             position: absolute;
             top: 8px;
             transform: none;
             width: 40px;
             height: 40px;
-            border-radius: 6px;
+            border-radius: 11.2px;
             margin: 0;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 
             &--prev {
                 inset-inline-start: calc(50% - 48px);
@@ -477,105 +467,60 @@
         }
 
         &__track {
-            gap: 0;
+            gap: 12px; // 👈 CHANGED
         }
 
         &__slide {
-            width: 100%;
-            border-radius: 8px;
-            aspect-ratio: 4/3;
-            transform: none; // 👈 remove scaleY effect on mobile
-            margin: 0; // 👈 remove top/bottom margins
-            opacity: 1; // 👈 all slides full opacity
+            flex: 0 0 75vw; // 👈 CHANGED — match --slide-width
+            width: 75vw; // 👈 CHANGED
+            height: 333px; // 👈 from Figma
+            aspect-ratio: unset;
+            border-radius: 12px;
+            transform: none;
+            margin: 0;
+            opacity: 0.6; // 👈 CHANGED — dim non-active
+
+            // 👈 image fills slide
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+
+            &.is-active {
+                opacity: 1; // 👈 active slide full opacity
+            }
 
             &:not(.is-active) {
                 transform: none;
                 margin: 0;
-                opacity: 1;
             }
         }
 
         &__slide-content {
-            bottom: 16px; // 👈 closer to bottom on mobile
-            inset-inline-start: 16px;
-            inset-inline-end: 16px;
-        }
-
-        // 👈 ADDED — show content on active slide only
-        &__slide.is-active &__slide-content {
-            opacity: 1;
+            bottom: 31px; // 👈 from Figma
+            inset-inline-start: 24px;
+            inset-inline-end: auto;
+            width: 252px;
+            margin: 0;
+            gap: 16px;
         }
 
         &__slide-title {
-            font-size: 16px; // 👈 smaller on mobile
-            line-height: 1.3;
+            font-size: 22px;
+            max-width: unset;
+            font-weight: 700;
+            line-height: 130%;
+            color: #ddbf8c;
         }
 
         &__slide-desc {
-            font-size: 12px; // 👈 smaller on mobile
-            line-height: 1.5;
+            font-size: 18px;
+            line-height: 150%;
+            min-height: unset; // 👈 remove min-height
+            color: #ffffff;
         }
 
-        // ==========================================
-        // Card — overlays the bottom-LEFT of the active slide
-        // ==========================================
-        &__card {
-            position: absolute;
-            bottom: 16px;
-            inset-inline-start: 16px;
-            inset-inline-end: auto;
-            top: auto;
-
-            margin: 0;
-            width: auto;
-            max-width: 75%;
-
-            padding: 16px;
-            border-radius: 8px;
-            background: #fff;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
-            z-index: 5;
-        }
-
-        &__card-variant {
-            flex-direction: column;
-            align-items: flex-start;
-            gap: 16px;
-
-            &--active {
-                display: flex;
-            }
-        }
-
-        &__card-text {
-            gap: 8px;
-        }
-
-        &__card-title {
-            font-size: 16px;
-            line-height: 1.2;
-        }
-
-        &__card-description {
-            font-size: 12px;
-            line-height: 1.5;
-        }
-
-        &__card-cta {
-            width: auto;
-
-            .btn {
-                width: auto;
-                min-width: 74px;
-                height: 32px;
-                padding: 0 12px;
-                font-size: 12px;
-            }
-        }
-
-        // ==========================================
-        // Dots
-        // ==========================================
         &__dots {
             margin-top: 16px;
             gap: 6px;
@@ -586,49 +531,43 @@
             height: 6px;
         }
     }
+
+    // 👈 full class name — shows content on active slide
+    .landmark-slider__slide.is-active .landmark-slider__slide-content {
+        opacity: 1;
+    }
 }
 
-// ==========================================
-// Small Mobile (≤ 480)
-// ==========================================
 @media (max-width: 480px) {
     .landmark-slider {
-        padding: 32px 16px 40px;
-
-        &__title {
-            font-size: 20px;
+        &__slide {
+            flex: 0 0 283px; // 👈 CHANGED — Fixed 283px from Figma
+            width: 283px;
+            height: 333px;
         }
+
+        &__viewport {
+            --slide-width: 283px;
+        }
+
         &__slide-content {
-            bottom: 12px;
-            inset-inline-start: 12px;
-            inset-inline-end: 12px;
+            bottom: 31px;
+            inset-inline-start: 24px;
+            inset-inline-end: auto;
+            width: 252px; // 👈 from Figma
         }
 
         &__slide-title {
-            font-size: 14px;
+            font-size: 30px;
+            font-weight: 500;
         }
 
         &__slide-desc {
-            font-size: 11px;
+            font-size: 16px;
         }
-        // viewport already overflow:hidden + padding-top:60px from 768
-        // just shrink the slide a touch if needed
+    }
 
-        &__card {
-            // remain bottom-LEFT (do NOT stretch full-width)
-            bottom: 12px;
-            inset-inline-start: 12px;
-            inset-inline-end: auto;
-            max-width: 78%;
-            padding: 14px;
-        }
-
-        &__card-title {
-            font-size: 15px;
-        }
-
-        &__card-description {
-            font-size: 11px;
-        }
+    .landmark-slider__slide.is-active .landmark-slider__slide-content {
+        opacity: 1;
     }
 }

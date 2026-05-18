@@ -300,7 +300,7 @@
         }
 
         refreshLayout();
-        startAutoplay();
+        // startAutoplay();
     }
 
     if (document.readyState === "loading") {
