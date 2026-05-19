@@ -131,7 +131,7 @@
 
 @media (max-width: 1024px) {
     .environmental-impact {
-        padding: 56px 48px;
+        padding: 64px 48px;
 
         &__title {
             font-size: 40px;
@@ -155,10 +155,10 @@
 
 @media (max-width: 768px) {
     .environmental-impact {
-        padding: 48px 24px;
+        padding: 64px 24px;
 
         &__header {
-            margin-bottom: 40px;
+            margin-bottom: 56px;
         }
 
         &__title {
@@ -170,23 +170,24 @@
         &__stats {
             grid-template-columns: 1fr;
 
-            gap: 32px;
+            gap: 40px;
 
             padding: 32px 24px;
         }
 
         &__divider {
-            width: 100%;
+            width: 80px;
 
             height: 1px;
+            margin-inline: auto;
         }
 
         &__number {
-            font-size: 32px;
+            font-size: 30px;
         }
 
         &__text {
-            font-size: 15px;
+            font-size: 14px;
         }
     }
 }
@@ -197,18 +198,18 @@
 
 @media (max-width: 480px) {
     .environmental-impact {
-        padding: 40px 16px;
+        padding: 64px 16px;
 
         &__title {
-            font-size: 28px;
+            font-size: 32px;
         }
 
         &__stats {
-            padding: 24px 20px;
+            padding: 56px;
         }
 
         &__number {
-            font-size: 28px;
+            font-size: 30px;
         }
     }
 }

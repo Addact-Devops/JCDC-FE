@@ -53,7 +53,7 @@
 
         grid-template-columns: repeat(3, 1fr);
 
-        gap: 12px;
+        gap: 20px;
 
         width: 100%;
     }
@@ -207,7 +207,7 @@
 
 @media (max-width: 768px) {
     .sustainability-action {
-        padding: 48px 24px;
+        padding: 64px 24px;
 
         &__header {
             margin-bottom: 32px;
@@ -224,31 +224,29 @@
         }
 
         &__card {
-            height: 380px;
+            min-height: 500px; //  CHANGED — was 380px, match attractions
+            height: auto;
         }
 
         &__card-content {
-            left: 24px;
-            right: 24px;
-            bottom: 24px;
-
-            gap: 12px;
+            left: 32px; //  CHANGED — was 24px, match attractions
+            right: 32px; //  CHANGED — was 24px, match attractions
+            bottom: 32px; //  CHANGED — was 24px, match attractions
+            gap: 16px; //  CHANGED — was 12px, match attractions
+            transform: none !important; //  ADDED — match attractions
+            margin-bottom: 46px; //  ADDED — match attractions
         }
 
         &__card-title {
-            font-size: 22px;
+            font-size: 28px;
         }
 
         &__card-desc {
             opacity: 1;
-
-            max-height: 200px;
-
+            max-height: unset; //  CHANGED — remove max-height restriction
             overflow: visible;
-
-            // transform: none;
-
-            font-size: 14px;
+            transform: none; //  CHANGED — match attractions
+            font-size: 14px; //  CHANGED — was 14px, keep same
         }
     }
 }
@@ -259,24 +257,27 @@
 
 @media (max-width: 480px) {
     .sustainability-action {
-        padding: 40px 16px;
+        padding: 64px 16px;
 
         &__title {
-            font-size: 28px;
+            font-size: 24px;
         }
 
         &__card {
-            height: 320px;
+            min-height: 500px;
         }
 
         &__card-content {
-            left: 20px;
-            right: 20px;
-            bottom: 20px;
+            left: 32px;
+            right: 32px;
+            bottom: 32px;
         }
 
         &__card-title {
-            font-size: 20px;
+            font-size: 28px;
+        }
+        &__card-desc {
+            font-size: 15px; //  CHANGED — match attractions
         }
     }
 }
