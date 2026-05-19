@@ -18,6 +18,9 @@
 ════════════════════════════════════════════ -->
         <header class="navbar" id="navbar">
             <div class="navbar__inner">
+                <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
                 <a href="/" class="navbar__logo" aria-label="JCDC Home">
                     <img class="navbar__logo--light" src="assets/Frame 2.svg" alt="JCDC" width="104" height="56" />
                     <!-- Dark/colored logo — shown when scrolled -->
@@ -34,7 +37,7 @@
                     <a href="about.html" class="nav-item" data-i18n="nav.about">About us</a>
 
                     <div class="nav-item nav-item--dropdown" data-dropdown>
-                        <a href="#" data-i18n="nav.jcd">Jeddah Central Destination</a>
+                        <a href="jcdc.html" data-i18n="nav.jcd">Jeddah Central Destination</a>
                         <button class="nav-item__btn" aria-haspopup="true" aria-expanded="false" data-dropdown-toggle>
                             <svg
                                 class="chevron"
@@ -56,16 +59,16 @@
                         <div class="dropdown">
                             <a href="#" data-i18n="nav.dropdown.districts">Districts</a>
                             <a href="#" data-i18n="nav.dropdown.landmarks">Landmarks</a>
-                            <a href="#" data-i18n="nav.dropdown.attractions">Attractions</a>
-                            <a href="#" data-i18n="nav.dropdown.sustainability">Sustainability</a>
+                            <a href="attraction.html" data-i18n="nav.dropdown.attractions">Attractions</a>
+                            <a href="sustainability.html" data-i18n="nav.dropdown.sustainability">Sustainability</a>
                         </div>
                     </div>
 
                     <a href="#" class="nav-item" data-i18n="nav.invest">Invest</a>
                     <a href="#" class="nav-item" data-i18n="nav.news">News &amp; Events</a>
-                    <a href="#" class="nav-item" data-i18n="nav.careers">Careers</a>
+                    <a href="career.html" class="nav-item" data-i18n="nav.careers">Careers</a>
                     <a href="#" class="nav-item" data-i18n="nav.suppliers">Suppliers</a>
-                    <a href="#" class="nav-item" data-i18n="nav.contact">Contact Us</a>
+                    <a href="contact.html" class="nav-item" data-i18n="nav.contact">Contact Us</a>
                 </nav>
 
                 <div class="navbar__actions">
@@ -92,9 +95,6 @@
                             <path d="M3 9h18M3 15h18" stroke="currentColor" stroke-width="1.5" />
                         </svg>
                     </button>
-                    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
-                        <span></span><span></span><span></span>
-                    </button>
                 </div>
             </div>
         </header>
@@ -102,7 +102,7 @@
         <!-- Mobile drawer -->
         <aside class="drawer" id="drawer" aria-hidden="true">
             <div class="drawer__head">
-                <img src="assets/logo.svg" alt="JCDC" width="80" height="44" class="drawer__logo" />
+                <img src="assets/coporate-PNG-01 1.svg" alt="JCDC" width="80" height="44" class="drawer__logo" />
                 <button class="drawer__close" id="drawer-close" aria-label="Close menu">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                         <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
@@ -235,7 +235,7 @@
                 </li>
             </ul>
 
-            <div class="drawer__footer">
+            <!-- <div class="drawer__footer">
                 <button class="lang-btn lang-btn--drawer" id="lang-btn-drawer">
                     <span class="lang-btn__text" data-i18n="nav.lang">العربية</span>
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -248,7 +248,7 @@
                         <path d="M3 9h18M3 15h18" stroke="currentColor" stroke-width="1.5" />
                     </svg>
                 </button>
-            </div>
+            </div> -->
         </aside>
         <div class="overlay" id="overlay"></div>
 
@@ -741,12 +741,12 @@
                     </div>
                     <nav class="footer__nav" aria-label="Footer navigation">
                         <a href="about.html" data-i18n="footer.aboutUs">ABOUT US</a>
-                        <a href="#" data-i18n="footer.jcd">JEDDAH CENTRAL DESTINATION</a>
+                        <a href="jcdc.html" data-i18n="footer.jcd">JEDDAH CENTRAL DESTINATION</a>
                         <a href="#" data-i18n="footer.invest">INVEST</a>
                         <a href="#" data-i18n="footer.newsEvents">NEWS &amp; EVENTS</a>
-                        <a href="#" data-i18n="footer.careers">CAREERS</a>
+                        <a href="career.html" data-i18n="footer.careers">CAREERS</a>
                         <a href="#" data-i18n="footer.suppliers">SUPPLIERS</a>
-                        <a href="#" data-i18n="footer.contact">CONTACT US</a>
+                        <a href="contact.html" data-i18n="footer.contact">CONTACT US</a>
                     </nav>
                 </div>
             </div>
