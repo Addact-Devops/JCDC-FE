@@ -128,6 +128,75 @@
             if (focused) focused.focus();
         });
 
+        // ──────────────────────────────────────
+        // Drag-to-scroll logic for thumbnail strip
+        // ──────────────────────────────────────
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+        let dragged = false;
+
+        stripEl.addEventListener("mousedown", (e) => {
+            // Only drag with left click
+            if (e.button !== 0) return;
+            isDown = true;
+            stripEl.classList.add("is-dragging");
+            
+            // Inline overrides so dragging is responsive even before CSS compilation
+            stripEl.style.scrollBehavior = "auto";
+            stripEl.style.scrollSnapType = "none";
+            
+            startX = e.pageX;
+            scrollLeft = stripEl.scrollLeft;
+            dragged = false;
+        });
+
+        const stopDragging = () => {
+            if (!isDown) return;
+            isDown = false;
+            stripEl.classList.remove("is-dragging");
+            
+            // Restore original scroll styles
+            stripEl.style.scrollBehavior = "";
+            stripEl.style.scrollSnapType = "";
+        };
+
+        stripEl.addEventListener("mouseleave", stopDragging);
+        stripEl.addEventListener("mouseup", stopDragging);
+
+        stripEl.addEventListener("mousemove", (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX;
+            const walk = (x - startX) * 1.5; // Drag speed multiplier
+            if (Math.abs(walk) > 5) {
+                dragged = true;
+            }
+            const isRTL = document.documentElement.dir === "rtl";
+            if (isRTL) {
+                stripEl.scrollLeft = scrollLeft + walk;
+            } else {
+                stripEl.scrollLeft = scrollLeft - walk;
+            }
+        });
+
+        // Prevent native HTML5 image/element dragging
+        stripEl.addEventListener("dragstart", (e) => {
+            e.preventDefault();
+        });
+
+        // Intercept clicks during dragging in the capture phase
+        stripEl.addEventListener(
+            "click",
+            (e) => {
+                if (dragged) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                }
+            },
+            true
+        );
+
         // Initial paint to make sure the active classes match currentIdx
         applyActive(currentIdx);
     }
