@@ -59,17 +59,12 @@
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        gap: 40px;
+        gap: 66px;
 
         transition:
             transform var(--dur) var(--ease),
             box-shadow var(--dur) var(--ease),
             background var(--dur) var(--ease);
-
-        &:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 32px rgba(0, 118, 169, 0.08);
-        }
     }
 
     &__icon {
@@ -164,7 +159,7 @@
 
         &__header {
             margin-bottom: 32px;
-            gap: 12px;
+            gap: 8px;
         }
 
         &__grid {
@@ -174,12 +169,16 @@
 
         &__card {
             padding: 24px;
-            gap: 16px;
+            gap: 66px;
+        }
+
+        &__card-content {
+            gap: 8px;
         }
 
         &__icon {
-            width: 48px;
-            height: 48px;
+            width: 72px;
+            height: 72px;
         }
 
         &__card-title {
@@ -197,7 +196,7 @@
 // ==========================================
 @media (max-width: 480px) {
     .how-we-set {
-        padding: 40px 0;
+        padding: 64px 0;
 
         &__container {
             padding: 0 16px;
@@ -208,7 +207,8 @@
         }
 
         &__card {
-            padding: 20px;
+            padding: 40px 24px;
+            gap: 66px;
         }
 
         &__card-title {
