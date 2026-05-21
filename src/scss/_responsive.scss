@@ -131,11 +131,26 @@
         &__inner {
             gap: 24px; //  CHANGED — fixed gap between items
             padding-top: 10px;
+
+            [dir="rtl"] & {
+                flex-direction: row-reverse;
+            }
         }
 
         &__logo {
             margin-inline: 0; //  ADDED — remove auto centering
             margin-inline-end: auto; //  ADDED — pushes actions to right
+
+            [dir="rtl"] & {
+                margin-inline-end: 0;
+                margin-inline-start: auto;
+            }
+        }
+
+        &__actions {
+            [dir="rtl"] & {
+                flex-direction: row-reverse;
+            }
         }
     }
 
@@ -230,33 +245,6 @@
     .section-title h2 {
         font-size: 32px;
     }
-
-    // .footer {
-    //     padding: 24px 32px;
-
-    //     &__top {
-    //         flex-direction: column;
-    //         align-items: flex-start;
-    //         gap: 24px;
-    //     }
-    //     &__right {
-    //         align-items: flex-start;
-    //         width: 100%;
-    //     }
-    //     &__nav {
-    //         justify-content: flex-start;
-    //         gap: 12px;
-    //     }
-
-    //     &__bottom {
-    //         flex-direction: column;
-    //         align-items: flex-start;
-    //         gap: 16px;
-    //     }
-    //     &__legal {
-    //         gap: 8px;
-    //     }
-    // }
 }
 
 // ═══════════════════════════════════════════════════
@@ -394,42 +382,6 @@
     .section-title h2 {
         font-size: 24px;
     }
-
-    // .footer {
-    //     padding: 24px 20px;
-
-    //     &__logo {
-    //         width: 100px;
-    //         height: 54px;
-    //     }
-    //     &__social {
-    //         gap: 16px;
-    //     }
-    //     &__nav {
-    //         gap: 6px 12px;
-    //     }
-    //     &__nav a {
-    //         font-size: 12px;
-    //         padding: 4px 6px;
-    //     }
-
-    //     &__legal {
-    //         flex-direction: column;
-    //         align-items: flex-start;
-    //         gap: 4px;
-
-    //         a,
-    //         span {
-    //             padding: 4px 0;
-    //             font-size: 12px;
-    //         }
-    //     }
-
-    //     &__pif {
-    //         width: 150px;
-    //         height: 28px;
-    //     }
-    // }
 
     // Dots sizing
     .hero__dot {
