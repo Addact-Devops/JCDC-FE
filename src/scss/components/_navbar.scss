@@ -17,7 +17,7 @@
     // Solid state (scrolled)
     &.is-solid,
     &--always-solid {
-        background: rgba(255, 255, 255, 0.97);
+        background: #fffffff2; // 95% opacity white
         backdrop-filter: blur(4px);
         -webkit-backdrop-filter: blur(4px);
         color: var(--primary-500);

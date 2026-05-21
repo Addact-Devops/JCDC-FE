@@ -174,7 +174,19 @@
     }
 }
 
-@media (max-width: 767px) {
+// 👈 ADDED — RTL footer fix for tablet range
+// @media (max-width: 1023px) and (min-width: 768px) {
+//     [dir="rtl"] .footer__right {
+//         min-width: auto; // 👈 removes 850px overflow
+//         max-width: 100%;
+//     }
+
+//     [dir="rtl"] .footer__legal {
+//         min-width: auto; // 👈 removes 850px overflow
+//     }
+// }
+
+@media (max-width: 1023px) {
     .footer {
         padding: 24px 16px;
         gap: 24px;
@@ -215,12 +227,12 @@
         &__nav {
             flex-direction: column;
             align-items: center;
-            gap: 0;
+            gap: 24px;
             width: 100%;
 
             a {
                 font-size: 14px;
-                padding: 12px 8px;
+                padding: 8px;
                 text-align: center;
                 width: 100%;
             }
@@ -230,7 +242,12 @@
         &__bottom {
             flex-direction: column;
             align-items: center;
-            gap: 16px;
+            gap: 35px;
+        }
+        &__pif-wrap {
+            order: 2;
+            display: flex;
+            justify-content: center;
         }
 
         &__pif {
@@ -240,32 +257,39 @@
 
         //  legal links stacked vertically centered
         &__legal {
+            order: 1;
             flex-direction: column;
             align-items: center;
-            gap: 4px;
+            gap: 15px;
             width: 100%;
 
             a,
             span {
                 font-size: 14px;
-                padding: 6px 0;
+                padding: 8px;
                 text-align: center;
             }
         }
     }
     [dir="rtl"] .footer__right {
-        min-width: auto;
+        min-width: auto !important;
         align-items: center;
         width: 100%;
     }
 
     [dir="rtl"] .footer__legal {
-        min-width: auto;
+        min-width: auto !important;
+        align-items: center;
+        width: 100%;
     }
     [dir="rtl"] .footer__social {
         width: 100%;
         justify-content: center;
         flex-direction: row-reverse;
+    }
+
+    [dir="rtl"] .footer__nav {
+        align-items: center;
     }
 }
 
