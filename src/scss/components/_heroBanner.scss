@@ -260,46 +260,46 @@
             padding: 0 16px;
             margin: 200px 0px;
             gap: 8px;
-            align-items: flex-start; //  CHANGED — was center
-            text-align: left; //  ADDED
+            align-items: center; //  CHANGED — was center
+            text-align: center; //  ADDED
 
             [dir="rtl"] & {
                 margin-right: 0;
-                margin-left: auto;
-                align-items: flex-end;
-                text-align: right;
+                margin-left: 0;
+                align-items: center;
+                text-align: center;
             }
         }
 
         &__breadcrumbs {
             font-size: 14px;
             flex-wrap: wrap;
-            justify-content: flex-start; //  CHANGED — was center
+            justify-content: center; //  CHANGED — was center
             [dir="rtl"] & {
                 width: 100%;
                 display: flex;
                 flex-direction: row-reverse;
-                justify-content: flex-end;
+                justify-content: center;
             }
         }
 
         &__title {
             font-size: 40px;
             margin: 0 0 32px;
-            text-align: left; //  ADDED
+            text-align: center; //  ADDED
             [dir="rtl"] & {
                 width: 100%;
-                text-align: right;
+                text-align: center;
             }
         }
 
         &__description {
             font-size: 16px;
             line-height: 150%;
-            text-align: left; //  ADDED
+            text-align: center; //  ADDED
             [dir="rtl"] & {
                 width: 100%;
-                text-align: right;
+                text-align: center;
             }
         }
 
@@ -339,13 +339,13 @@
         min-height: 689px;
 
         &__content {
-            align-items: flex-start; //  ADDED
-            text-align: left; //  ADDED
+            align-items: center; //  ADDED
+            text-align: center; //  ADDED
             [dir="rtl"] & {
                 margin-right: 0;
                 margin-left: auto;
-                align-items: flex-end;
-                text-align: right;
+                align-items: center;
+                text-align: center;
             }
         }
 
@@ -363,12 +363,12 @@
         }
 
         &__breadcrumbs {
-            justify-content: flex-start; //  ADDED
+            justify-content: center; //  ADDED
             [dir="rtl"] & {
                 width: 100%;
                 display: flex;
                 flex-direction: row-reverse;
-                justify-content: flex-end;
+                justify-content: center;
             }
         }
 
@@ -377,16 +377,16 @@
             text-align: left; //  ADDED
             [dir="rtl"] & {
                 width: 100%;
-                text-align: right;
+                text-align: center;
             }
         }
 
         &__description {
             font-size: 22px;
-            text-align: left; //  ADDED
+            text-align: center; //  ADDED
             [dir="rtl"] & {
                 width: 100%;
-                text-align: right;
+                text-align: center;
             }
         }
     }
