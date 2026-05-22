@@ -58,9 +58,13 @@
         }
         &__title {
             font-size: 52px;
+            line-height: 1.2;
+            margin-bottom: 32px;
         }
         &__subtitle {
             font-size: 20px;
+            line-height: 1.5;
+            max-width: 600px;
         }
     }
 
@@ -161,13 +165,17 @@
             inset-block-start: 120px;
             inset-inline-start: 32px;
             inset-inline-end: 32px;
-            max-width: none;
+            max-width: 600px;
         }
         &__title {
             font-size: 44px;
+            line-height: 1.2;
+            margin-bottom: 24px;
         }
         &__subtitle {
             font-size: 18px;
+            line-height: 1.5;
+            max-width: 560px;
         }
     }
 
@@ -405,5 +413,34 @@
     }
     .section-title h2 {
         font-size: 22px;
+    }
+}
+
+// ═══════════════════════════════════════════════════
+//  SMALL MOBILE (≤ 390px) — Samsung Galaxy S8+ fix
+// ═══════════════════════════════════════════════════
+@media (max-width: 390px) {
+    .hero {
+        height: 100svh; // 👈 ADDED — fills exact screen height
+        min-height: 580px; // 👈 ADDED — safety floor
+
+        &__content {
+            inset-block-start: auto; // 👈 CHANGED — remove fixed top
+            inset-inline-start: 16px;
+            inset-inline-end: 16px;
+            margin-top: 120px; // 👈 CHANGED — was 130px
+            padding: 16px;
+        }
+
+        &__title {
+            font-size: 32px; // 👈 CHANGED — fits 360px width
+            line-height: 1.2;
+            margin-bottom: 16px;
+        }
+
+        &__subtitle {
+            font-size: 15px; // 👈 CHANGED — readable on small screen
+            line-height: 1.5;
+        }
     }
 }
