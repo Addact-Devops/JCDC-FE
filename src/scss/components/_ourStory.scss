@@ -39,7 +39,7 @@ $text-color: rgba(91, 95, 98, 1);
         background-position: left center;
         background-size: contain;
 
-        opacity: 0.35;
+        opacity: 0.25;
 
         pointer-events: none;
     }
@@ -83,7 +83,7 @@ $text-color: rgba(91, 95, 98, 1);
     &__description {
         display: flex;
         flex-direction: column;
-        gap: 24px;
+        gap: 32px;
         font-family: "Ubuntu", sans-serif;
         font-size: 18px;
         font-weight: 400;

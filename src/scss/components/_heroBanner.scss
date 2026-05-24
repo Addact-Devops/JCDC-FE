@@ -222,23 +222,25 @@
 // Tablet (≤ 1024)
 @media (max-width: 1024px) {
     .banner {
-        min-height: 600px;
+        min-height: 560px;
 
         &__content {
             width: 100%;
-            max-width: 720px;
+            max-width: 680px;
             padding: 0 24px;
         }
 
         &__title {
-            font-size: 56px;
+            font-size: 48px;
             margin: 0 0 24px;
+            line-height: 1.2;
         }
 
         &__description {
             width: 100%;
             max-width: 100%;
-            font-size: 20px;
+            font-size: 18px;
+            line-height: 1.5;
         }
     }
 }
@@ -372,7 +374,7 @@
 
         &__title {
             font-size: 51px;
-            text-align: center; //  ADDED
+            text-align: left; //  ADDED
             [dir="rtl"] & {
                 width: 100%;
                 text-align: center;
