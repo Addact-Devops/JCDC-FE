@@ -253,7 +253,7 @@
 ════════════════════════════════════════════ -->
         <section class="banner" aria-labelledby="news-listing-hero-title">
             <div class="hero__media">
-                <img src="assets/herobanner.svg" alt="" loading="eager" />
+                <img src="assets/News and event/HeroBanner.svg" alt="" loading="eager" />
             </div>
             <div class="banner__overlay"></div>
 
@@ -405,10 +405,390 @@
                 </div>
 
                 <!-- Filter chips (rendered by JS) -->
-                <div class="news-listing__filters" id="news-listing-filters" role="group" aria-label="Filters"></div>
+                <!-- Filter chips (static) -->
+                <div class="news-listing__filters" id="news-listing-filters" role="group" aria-label="Filters">
+                    <span class="news-listing__filters-label" data-i18n="newsListing.filtersLabel">Filters:</span>
+
+                    <button type="button" class="filter-chip filter-chip--active" data-filter="all" aria-pressed="true">
+                        <span data-i18n="newsListing.categoryNames.all">All News</span>
+                        <svg class="filter-chip__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <path
+                                d="M6 6l12 12M18 6L6 18"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                stroke-linecap="round"
+                            />
+                        </svg>
+                    </button>
+
+                    <button type="button" class="filter-chip" data-filter="companyUpdates" aria-pressed="false">
+                        <span data-i18n="newsListing.categoryNames.companyUpdates">Company Updates</span>
+                    </button>
+
+                    <button type="button" class="filter-chip" data-filter="projectMilestones" aria-pressed="false">
+                        <span data-i18n="newsListing.categoryNames.projectMilestones">Project Milestones</span>
+                    </button>
+
+                    <button type="button" class="filter-chip" data-filter="communityEvents" aria-pressed="false">
+                        <span data-i18n="newsListing.categoryNames.communityEvents">Community Events</span>
+                    </button>
+
+                    <button type="button" class="filter-chip" data-filter="awardsRecognition" aria-pressed="false">
+                        <span data-i18n="newsListing.categoryNames.awardsRecognition">Awards & Recognition</span>
+                    </button>
+                </div>
 
                 <!-- Grid of cards (rendered by JS) -->
-                <div class="news-listing__grid" id="news-listing-grid"></div>
+                <!-- Grid of cards (static) -->
+                <div class="news-listing__grid" id="news-listing-grid">
+                    <!-- 1 -->
+                    <article
+                        class="news-list-card"
+                        data-category="projectMilestones"
+                        data-date="2024-09-15"
+                        data-search="development jeddah central destination 12 billion saudi riyals contract award construction stadium opera oceanarium infrastructure"
+                    >
+                        <a href="news-article.html" class="news-list-card__image">
+                            <img src="assets/news/news-1.jpg" alt="" loading="lazy" width="400" height="275" />
+                        </a>
+                        <div class="news-list-card__meta">
+                            <span class="news-list-card__tag" data-i18n="newsListing.categoryNames.projectMilestones"
+                                >Project Milestones</span
+                            >
+                            <time class="news-list-card__date" datetime="2024-09-15">15 September 2024</time>
+                        </div>
+                        <h3 class="news-list-card__title">
+                            <a href="news-article.html" data-i18n="newsListing.items.0.title">
+                                The Development of Jeddah Central Destination Continues with 12 billion Saudi Riyals
+                                Contract Award
+                            </a>
+                        </h3>
+                        <p class="news-list-card__excerpt" data-i18n="newsListing.items.0.excerpt">
+                            Jeddah Central Development Company, a wholly owned company by the Public...
+                        </p>
+                        <a href="news-article.html" class="news-list-card__cta">
+                            <span data-i18n="newsListing.readMore">Read More</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path
+                                    d="M5 12h14M13 5l7 7-7 7"
+                                    stroke="currentColor"
+                                    stroke-width="1.6"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </svg>
+                        </a>
+                    </article>
+
+                    <!-- 2 -->
+                    <article
+                        class="news-list-card"
+                        data-category="awardsRecognition"
+                        data-date="2024-10-22"
+                        data-search="first real estate development efqm organizational excellence recognition european foundation quality management"
+                    >
+                        <a href="news-article.html" class="news-list-card__image">
+                            <img src="assets/news/news-2.jpg" alt="" loading="lazy" width="400" height="275" />
+                        </a>
+                        <div class="news-list-card__meta">
+                            <span class="news-list-card__tag" data-i18n="newsListing.categoryNames.awardsRecognition"
+                                >Awards & Recognition</span
+                            >
+                            <time class="news-list-card__date" datetime="2024-10-22">22 October 2024</time>
+                        </div>
+                        <h3 class="news-list-card__title">
+                            <a href="news-article.html" data-i18n="newsListing.items.1.title">
+                                First Real Estate Development to Receive Esteemed EFQM Organizational Excellence
+                                Recognition
+                            </a>
+                        </h3>
+                        <p class="news-list-card__excerpt" data-i18n="newsListing.items.1.excerpt">
+                            Jeddah Central Development Company (JCDC), a company wholly owned by the...
+                        </p>
+                        <a href="news-article.html" class="news-list-card__cta">
+                            <span data-i18n="newsListing.readMore">Read More</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path
+                                    d="M5 12h14M13 5l7 7-7 7"
+                                    stroke="currentColor"
+                                    stroke-width="1.6"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </svg>
+                        </a>
+                    </article>
+
+                    <!-- 3 -->
+                    <article
+                        class="news-list-card"
+                        data-category="companyUpdates"
+                        data-date="2024-11-08"
+                        data-search="diamond sponsor global project management forum second edition jcdc"
+                    >
+                        <a href="news-article.html" class="news-list-card__image">
+                            <img src="assets/news/news-3.jpg" alt="" loading="lazy" width="400" height="275" />
+                        </a>
+                        <div class="news-list-card__meta">
+                            <span class="news-list-card__tag" data-i18n="newsListing.categoryNames.companyUpdates"
+                                >Company Updates</span
+                            >
+                            <time class="news-list-card__date" datetime="2024-11-08">8 November 2024</time>
+                        </div>
+                        <h3 class="news-list-card__title">
+                            <a href="news-article.html" data-i18n="newsListing.items.2.title">
+                                Jeddah Central Development Company: Diamond Sponsor of The Global Project Management
+                                Forum - Second Edition
+                            </a>
+                        </h3>
+                        <p class="news-list-card__excerpt" data-i18n="newsListing.items.2.excerpt">
+                            Jeddah Central Development Company (JCDC), a wholly owned company by the Public...
+                        </p>
+                        <a href="news-article.html" class="news-list-card__cta">
+                            <span data-i18n="newsListing.readMore">Read More</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path
+                                    d="M5 12h14M13 5l7 7-7 7"
+                                    stroke="currentColor"
+                                    stroke-width="1.6"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </svg>
+                        </a>
+                    </article>
+
+                    <!-- 4 -->
+                    <article
+                        class="news-list-card"
+                        data-category="companyUpdates"
+                        data-date="2024-11-28"
+                        data-search="cityscape global real estate event participation conclusion jcdc investors partners"
+                    >
+                        <a href="news-article.html" class="news-list-card__image">
+                            <img src="assets/news/news-4.jpg" alt="" loading="lazy" width="400" height="275" />
+                        </a>
+                        <div class="news-list-card__meta">
+                            <span class="news-list-card__tag" data-i18n="newsListing.categoryNames.companyUpdates"
+                                >Company Updates</span
+                            >
+                            <time class="news-list-card__date" datetime="2024-11-28">28 November 2024</time>
+                        </div>
+                        <h3 class="news-list-card__title">
+                            <a href="news-article.html" data-i18n="newsListing.items.3.title">
+                                Jeddah Central Development Company Concludes its Participation in Cityscape Global
+                            </a>
+                        </h3>
+                        <p class="news-list-card__excerpt" data-i18n="newsListing.items.3.excerpt">
+                            Jeddah Central Development Company (JCDC), a wholly-owned company by the...
+                        </p>
+                        <a href="news-article.html" class="news-list-card__cta">
+                            <span data-i18n="newsListing.readMore">Read More</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path
+                                    d="M5 12h14M13 5l7 7-7 7"
+                                    stroke="currentColor"
+                                    stroke-width="1.6"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </svg>
+                        </a>
+                    </article>
+
+                    <!-- 5 -->
+                    <article
+                        class="news-list-card"
+                        data-category="awardsRecognition"
+                        data-date="2025-01-14"
+                        data-search="jcdc diamond member efqm european foundation quality management partnership"
+                    >
+                        <a href="news-article.html" class="news-list-card__image">
+                            <img src="assets/news/news-5.jpg" alt="" loading="lazy" width="400" height="275" />
+                        </a>
+                        <div class="news-list-card__meta">
+                            <span class="news-list-card__tag" data-i18n="newsListing.categoryNames.awardsRecognition"
+                                >Awards & Recognition</span
+                            >
+                            <time class="news-list-card__date" datetime="2025-01-14">14 January 2025</time>
+                        </div>
+                        <h3 class="news-list-card__title">
+                            <a href="news-article.html" data-i18n="newsListing.items.4.title">
+                                Jeddah Central Development Company (JCDC) Becomes a Diamond Member of EFQM
+                            </a>
+                        </h3>
+                        <p class="news-list-card__excerpt" data-i18n="newsListing.items.4.excerpt">
+                            Saudi Arabia's Jeddah Central Development Company (JCDC), a wholly owned...
+                        </p>
+                        <a href="news-article.html" class="news-list-card__cta">
+                            <span data-i18n="newsListing.readMore">Read More</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path
+                                    d="M5 12h14M13 5l7 7-7 7"
+                                    stroke="currentColor"
+                                    stroke-width="1.6"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </svg>
+                        </a>
+                    </article>
+
+                    <!-- 6 -->
+                    <article
+                        class="news-list-card"
+                        data-category="companyUpdates"
+                        data-date="2025-02-20"
+                        data-search="mou corinthia group marina district hospitality lifestyle partnership waterfront"
+                    >
+                        <a href="news-article.html" class="news-list-card__image">
+                            <img src="assets/news/news-6.jpg" alt="" loading="lazy" width="400" height="275" />
+                        </a>
+                        <div class="news-list-card__meta">
+                            <span class="news-list-card__tag" data-i18n="newsListing.categoryNames.companyUpdates"
+                                >Company Updates</span
+                            >
+                            <time class="news-list-card__date" datetime="2025-02-20">20 February 2025</time>
+                        </div>
+                        <h3 class="news-list-card__title">
+                            <a href="news-article.html" data-i18n="newsListing.items.5.title">
+                                Jeddah Central Development Company Signs MoU With Corinthia Group to Develop and Operate
+                                Projects within its Marina District
+                            </a>
+                        </h3>
+                        <p class="news-list-card__excerpt" data-i18n="newsListing.items.5.excerpt">
+                            Saudi Arabia's Jeddah Central Development Company (JCDC)...
+                        </p>
+                        <a href="news-article.html" class="news-list-card__cta">
+                            <span data-i18n="newsListing.readMore">Read More</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path
+                                    d="M5 12h14M13 5l7 7-7 7"
+                                    stroke="currentColor"
+                                    stroke-width="1.6"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </svg>
+                        </a>
+                    </article>
+
+                    <!-- 7 -->
+                    <article
+                        class="news-list-card"
+                        data-category="projectMilestones"
+                        data-date="2025-03-30"
+                        data-search="q1 progress phase one construction landmarks milestones schedule"
+                    >
+                        <a href="news-article.html" class="news-list-card__image">
+                            <img src="assets/news/news-7.jpg" alt="" loading="lazy" width="400" height="275" />
+                        </a>
+                        <div class="news-list-card__meta">
+                            <span class="news-list-card__tag" data-i18n="newsListing.categoryNames.projectMilestones"
+                                >Project Milestones</span
+                            >
+                            <time class="news-list-card__date" datetime="2025-03-30">30 March 2025</time>
+                        </div>
+                        <h3 class="news-list-card__title">
+                            <a href="news-article.html" data-i18n="newsListing.items.6.title">
+                                JCDC Reports Strong Q1 Progress Across Phase One Construction
+                            </a>
+                        </h3>
+                        <p class="news-list-card__excerpt" data-i18n="newsListing.items.6.excerpt">
+                            JCDC announces significant progress on phase one construction across all four landmarks...
+                        </p>
+                        <a href="news-article.html" class="news-list-card__cta">
+                            <span data-i18n="newsListing.readMore">Read More</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path
+                                    d="M5 12h14M13 5l7 7-7 7"
+                                    stroke="currentColor"
+                                    stroke-width="1.6"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </svg>
+                        </a>
+                    </article>
+
+                    <!-- 8 -->
+                    <article
+                        class="news-list-card"
+                        data-category="projectMilestones"
+                        data-date="2025-04-15"
+                        data-search="leed gold standards major buildings sustainable green building vision 2030"
+                    >
+                        <a href="news-article.html" class="news-list-card__image">
+                            <img src="assets/news/news-8.jpg" alt="" loading="lazy" width="400" height="275" />
+                        </a>
+                        <div class="news-list-card__meta">
+                            <span class="news-list-card__tag" data-i18n="newsListing.categoryNames.projectMilestones"
+                                >Project Milestones</span
+                            >
+                            <time class="news-list-card__date" datetime="2025-04-15">15 April 2025</time>
+                        </div>
+                        <h3 class="news-list-card__title">
+                            <a href="news-article.html" data-i18n="newsListing.items.7.title">
+                                Jeddah Central Adopts LEED Gold Standards for All Major Buildings
+                            </a>
+                        </h3>
+                        <p class="news-list-card__excerpt" data-i18n="newsListing.items.7.excerpt">
+                            JCDC commits to LEED Gold pre-certification for all major buildings within the
+                            destination...
+                        </p>
+                        <a href="news-article.html" class="news-list-card__cta">
+                            <span data-i18n="newsListing.readMore">Read More</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path
+                                    d="M5 12h14M13 5l7 7-7 7"
+                                    stroke="currentColor"
+                                    stroke-width="1.6"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </svg>
+                        </a>
+                    </article>
+
+                    <!-- 9 -->
+                    <article
+                        class="news-list-card"
+                        data-category="communityEvents"
+                        data-date="2025-05-10"
+                        data-search="community day jeddah heritage cultural performances exhibits family activities visitor center"
+                    >
+                        <a href="news-article.html" class="news-list-card__image">
+                            <img src="assets/news/news-9.jpg" alt="" loading="lazy" width="400" height="275" />
+                        </a>
+                        <div class="news-list-card__meta">
+                            <span class="news-list-card__tag" data-i18n="newsListing.categoryNames.communityEvents"
+                                >Community Events</span
+                            >
+                            <time class="news-list-card__date" datetime="2025-05-10">10 May 2025</time>
+                        </div>
+                        <h3 class="news-list-card__title">
+                            <a href="news-article.html" data-i18n="newsListing.items.8.title">
+                                JCDC Hosts Community Day Celebrating Jeddah's Heritage
+                            </a>
+                        </h3>
+                        <p class="news-list-card__excerpt" data-i18n="newsListing.items.8.excerpt">
+                            JCDC hosted a community day featuring cultural performances, heritage exhibits, and family
+                            activities...
+                        </p>
+                        <a href="news-article.html" class="news-list-card__cta">
+                            <span data-i18n="newsListing.readMore">Read More</span>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path
+                                    d="M5 12h14M13 5l7 7-7 7"
+                                    stroke="currentColor"
+                                    stroke-width="1.6"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </svg>
+                        </a>
+                    </article>
+                </div>
 
                 <!-- Empty state -->
                 <p class="news-listing__empty" id="news-listing-empty" data-i18n="newsListing.empty" hidden>

@@ -1,123 +1,173 @@
 /**
- * sections/news.js — News & Events
+ * pages/news-listing.js — News & Events listing
  *
- * Renders the 3 news cards from i18n data. Re-renders on language change
- * so Arabic titles and flipped arrows appear automatically.
+ * Filters static cards by:
+ *   - search query (matches data-search + live title/excerpt text)
+ *   - active filter chip (matches data-category; "all" matches everything)
+ *   - From / To date range (matches data-date, inclusive)
  *
- * Images can be overridden by adding `data-images='["url1","url2","url3"]'`
- * to <div id="news-grid">; otherwise defaults below are used.
+ * Hides non-matching cards with the `hidden` attribute so screen
+ * readers and keyboard tab order skip them.
  */
-window.News = (function () {
+(function () {
     "use strict";
 
-    const DEFAULT_IMAGES = [
-        "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=85",
-        "https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=800&q=85",
-        "https://images.unsplash.com/photo-1591115765373-5207764f72e7?w=800&q=85",
-    ];
+    const section = document.getElementById("news-listing");
+    if (!section) return;
 
-    function escapeHtml(s) {
-        return String(s)
-            .replace(/&/g, "&amp;")
-            .replace(/</g, "&lt;")
-            .replace(/>/g, "&gt;")
-            .replace(/"/g, "&quot;")
-            .replace(/'/g, "&#39;");
+    const searchForm = section.querySelector("#nl-search-form");
+    const searchInput = section.querySelector("#nl-search");
+    const fromInput = section.querySelector("#nl-date-from");
+    const toInput = section.querySelector("#nl-date-to");
+    const fromWrap = section.querySelector("#nl-date-from-wrap");
+    const toWrap = section.querySelector("#nl-date-to-wrap");
+    const chips = Array.from(section.querySelectorAll(".filter-chip"));
+    const cards = Array.from(section.querySelectorAll(".news-list-card"));
+    const empty = section.querySelector("#news-listing-empty");
+
+    const state = {
+        query: "",
+        category: "all",
+        from: null,
+        to: null,
+    };
+
+    function parseDate(value) {
+        if (!value) return null;
+        const d = new Date(value);
+        return isNaN(d.getTime()) ? null : d;
     }
 
-    function render(grid, translations) {
-        const items = translations?.news?.items || [];
-        const learnMore = translations?.news?.learnMore || "Learn More";
-        if (!items.length) return;
+    // Pull live, language-aware search text from the card itself, then
+    // fall back to data-search for any extra keywords.
+    function getHaystack(card) {
+        const title = card.querySelector(".news-list-card__title")?.textContent || "";
+        const excerpt = card.querySelector(".news-list-card__excerpt")?.textContent || "";
+        const tag = card.querySelector(".news-list-card__tag")?.textContent || "";
+        const extra = card.dataset.search || "";
+        return (title + " " + excerpt + " " + tag + " " + extra).toLowerCase();
+    }
 
-        let images = DEFAULT_IMAGES;
-        if (grid.dataset.images) {
-            try {
-                images = JSON.parse(grid.dataset.images);
-            } catch (_) {}
+    function cardMatches(card) {
+        if (state.category !== "all" && card.dataset.category !== state.category) return false;
+
+        if (state.query) {
+            if (!getHaystack(card).includes(state.query)) return false;
         }
 
-        grid.innerHTML = items
-            .map(
-                (title, i) => `
-      <article class="news-card">
-        <div class="news-card__image">
-          <img src="${images[i] || images[0]}" alt="${escapeHtml(title)}" loading="lazy" />
-        </div>
-        <div class="news-card__body">
-          <h3 class="news-card__title">${escapeHtml(title)}</h3>
-        </div>
-        <a href="#" class="news-card__cta">
-          <span>${escapeHtml(learnMore)}</span>
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M5 12h14M13 5l7 7-7 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </a>
-      </article>
-    `,
-            )
-            .join("");
+        if (state.from || state.to) {
+            const cardDate = parseDate(card.dataset.date);
+            if (!cardDate) return false;
+            if (state.from && cardDate < state.from) return false;
+            if (state.to && cardDate > state.to) return false;
+        }
+
+        return true;
     }
 
-    function init(root) {
-        root = root || document.querySelector(".news");
-        if (!root) return;
-        const grid = root.querySelector("#news-grid1") || root.querySelector(".news__grid1");
-        if (!grid) return;
+    function applyFilters() {
+        let visibleCount = 0;
+        cards.forEach((card) => {
+            const match = cardMatches(card);
+            card.hidden = !match;
+            if (match) visibleCount++;
+        });
+        if (empty) empty.hidden = visibleCount !== 0;
+    }
 
-        // Subscribe to i18n — onLangChange fires immediately with current data
-        const bind = () => window.I18n.onLangChange((lang, t) => render(grid, t));
+    // ----- Chip behaviour -----
+    chips.forEach((chip) => {
+        chip.addEventListener("click", () => {
+            chips.forEach((c) => {
+                c.classList.remove("filter-chip--active");
+                c.setAttribute("aria-pressed", "false");
+            });
+            chip.classList.add("filter-chip--active");
+            chip.setAttribute("aria-pressed", "true");
 
-        if (window.I18n) {
-            bind();
+            state.category = chip.dataset.filter || "all";
+            applyFilters();
+        });
+    });
+
+    // ----- Search -----
+    if (searchForm) {
+        searchForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            state.query = (searchInput.value || "").trim().toLowerCase();
+            applyFilters();
+        });
+    }
+
+    if (searchInput) {
+        let t;
+        searchInput.addEventListener("input", () => {
+            clearTimeout(t);
+            t = setTimeout(() => {
+                state.query = (searchInput.value || "").trim().toLowerCase();
+                applyFilters();
+            }, 150);
+        });
+    }
+
+    // ----- Date inputs -----
+    function setHasValue(wrap, input, placeholderText) {
+        const textEl = wrap.querySelector(".news-listing__date-text");
+        if (input.value) {
+            wrap.classList.add("has-value");
+            const d = parseDate(input.value);
+            if (d && textEl) {
+                const locale = document.documentElement.lang === "ar" ? "ar" : "en";
+                textEl.textContent = d.toLocaleDateString(locale, {
+                    day: "2-digit",
+                    month: "short",
+                    year: "numeric",
+                });
+            }
         } else {
-            const poll = setInterval(() => {
-                if (window.I18n) {
-                    clearInterval(poll);
-                    bind();
-                }
-            }, 50);
+            wrap.classList.remove("has-value");
+            if (textEl) textEl.textContent = placeholderText;
         }
     }
 
-    if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", () => init());
-    } else {
-        init();
-    }
+    function wireDateField(wrap, input, stateKey) {
+        if (!wrap || !input) return;
 
-    return { init, render };
+        const placeholderEl = wrap.querySelector(".news-listing__date-text");
+        const placeholderText = placeholderEl?.textContent || "Choose Date";
 
-    (() => {
-        const section = document.getElementById("news-listing-be");
-        if (!section) return;
-
-        const form = section.querySelector("#nl-be-form");
-
-        ["nl-date-from-wrap", "nl-date-to-wrap"].forEach((wrapId) => {
-            const wrap = section.querySelector(`#${wrapId}`);
-            if (!wrap) return;
-
-            const input = wrap.querySelector(".news-listing__date-input");
-            if (!input) return;
-
-            wrap.addEventListener("click", (e) => {
-                if (e.target === input) return;
-
-                if (typeof input.showPicker === "function") {
-                    try {
-                        input.showPicker();
-                    } catch {
-                        input.focus();
-                    }
-                } else {
+        wrap.addEventListener("click", (e) => {
+            if (e.target === input) return;
+            if (typeof input.showPicker === "function") {
+                try {
+                    input.showPicker();
+                } catch {
                     input.focus();
                 }
-            });
-
-            input.addEventListener("change", () => {
-                form?.submit();
-            });
+            } else {
+                input.focus();
+            }
         });
-    })();
+
+        input.addEventListener("change", () => {
+            state[stateKey] = parseDate(input.value);
+            setHasValue(wrap, input, placeholderText);
+            applyFilters();
+        });
+    }
+
+    wireDateField(fromWrap, fromInput, "from");
+    wireDateField(toWrap, toInput, "to");
+
+    // ----- Re-filter when language changes (Arabic search support) -----
+    if (window.I18n && typeof window.I18n.onLangChange === "function") {
+        window.I18n.onLangChange(() => {
+            // Let the i18n system finish swapping text, then re-run filters
+            // so live haystack search picks up the new language.
+            requestAnimationFrame(applyFilters);
+        });
+    }
+
+    // ----- Initial render -----
+    applyFilters();
 })();
