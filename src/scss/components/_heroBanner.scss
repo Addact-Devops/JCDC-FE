@@ -341,13 +341,13 @@
         min-height: 689px;
 
         &__content {
-            align-items: center; //  ADDED
-            text-align: center; //  ADDED
+            align-items: flex-start; //  ADDED
+            text-align: left; //  ADDED
             [dir="rtl"] & {
                 margin-right: 0;
                 margin-left: auto;
-                align-items: center;
-                text-align: center;
+                align-items: flex-end;
+                text-align: right;
             }
         }
 
@@ -365,12 +365,12 @@
         }
 
         &__breadcrumbs {
-            justify-content: center; //  ADDED
+            justify-content: flex-start; //  ADDED
             [dir="rtl"] & {
                 width: 100%;
                 display: flex;
                 flex-direction: row-reverse;
-                justify-content: center;
+                justify-content: flex-end;
             }
         }
 
@@ -379,16 +379,16 @@
             text-align: left; //  ADDED
             [dir="rtl"] & {
                 width: 100%;
-                text-align: center;
+                text-align: right;
             }
         }
 
         &__description {
             font-size: 22px;
-            text-align: center; //  ADDED
+            text-align: left; //  ADDED
             [dir="rtl"] & {
                 width: 100%;
-                text-align: center;
+                text-align: right;
             }
         }
     }
