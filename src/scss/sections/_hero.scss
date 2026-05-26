@@ -38,16 +38,25 @@
     // ── Content ─────────────────────────────────────────
     &__content {
         position: absolute;
-        inset-block-start: 279px;
-        inset-inline-start: 120px;
-        inset-inline-end: 120px;
+
+        top: 279px;
+        left: 50%;
+        transform: translateX(-50%);
+
+        width: 100%;
+        max-width: 1200px;
+
+        padding: 0;
+
         z-index: 3;
-        max-width: 795px;
-        color: #fff;
 
         [dir="rtl"] & {
             text-align: right;
         }
+    }
+    &__content-inner {
+        max-width: 795px;
+        color: #fff;
     }
 
     &__title {
