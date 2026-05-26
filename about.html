@@ -17,8 +17,11 @@
         <!-- ════════════════════════════════════════════
         HEADER (transparent over hero, white on scroll)
 ════════════════════════════════════════════ -->
-        <header class="navbar" id="navbar">
+      <header class="navbar" id="navbar">
             <div class="navbar__inner">
+                <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
                 <a href="/" class="navbar__logo" aria-label="JCDC Home">
                     <img class="navbar__logo--light" src="assets/Frame 2.svg" alt="JCDC" width="104" height="56" />
                     <!-- Dark/colored logo — shown when scrolled -->
@@ -37,7 +40,6 @@
                     <div class="nav-item nav-item--dropdown" data-dropdown>
                         <a href="jcdc.html" data-i18n="nav.jcd">Jeddah Central Destination</a>
                         <button class="nav-item__btn" aria-haspopup="true" aria-expanded="false" data-dropdown-toggle>
-                           
                             <svg
                                 class="chevron"
                                 width="24"
@@ -56,17 +58,19 @@
                             </svg>
                         </button>
                         <div class="dropdown">
-                            <a href="#" data-i18n="nav.dropdown.districts">Districts</a>
-                            <a href="#" data-i18n="nav.dropdown.landmarks">Landmarks</a>
-                            <a href="attraction.html" data-i18n="nav.dropdown.attractions">Attractions</a>
-                            <a href="sustainability.html" data-i18n="nav.dropdown.sustainability">Sustainability</a>
+                            <a href="jcdc.html#jcd-map" data-i18n="nav.dropdown.districts">Districts</a>
+                            <a href="jcdc.html#landmark-slider" data-i18n="nav.dropdown.landmarks">Landmarks</a>
+                            <a href="jcdc.html#attractions" data-i18n="nav.dropdown.attractions">Attractions</a>
+                            <a href="jcdc.html#sustainability" data-i18n="nav.dropdown.sustainability"
+                                >Sustainability</a
+                            >
                         </div>
                     </div>
 
-                    <a href="#" class="nav-item" data-i18n="nav.invest">Invest</a>
-                    <a href="#" class="nav-item" data-i18n="nav.news">News &amp; Events</a>
+                    <a href="invest.html" class="nav-item" data-i18n="nav.invest">Invest</a>
+                    <a href="news.html" class="nav-item" data-i18n="nav.news">News &amp; Events</a>
                     <a href="career.html" class="nav-item" data-i18n="nav.careers">Careers</a>
-                    <a href="#" class="nav-item" data-i18n="nav.suppliers">Suppliers</a>
+                    <a href="supplier.html" class="nav-item" data-i18n="nav.suppliers">Suppliers</a>
                     <a href="contact.html" class="nav-item" data-i18n="nav.contact">Contact Us</a>
                 </nav>
 
@@ -93,9 +97,6 @@
                             />
                             <path d="M3 9h18M3 15h18" stroke="currentColor" stroke-width="1.5" />
                         </svg>
-                    </button>
-                    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
-                        <span></span><span></span><span></span>
                     </button>
                 </div>
             </div>
@@ -1103,7 +1104,7 @@
         <!-- ════════════════════════════════════════════
         FOOTER
 ════════════════════════════════════════════ -->
-      <footer class="footer">
+     <footer class="footer">
             <div class="footer__top">
                 <a href="/" class="footer__logo-wrap">
                     <img src="assets/coporate-PNG-01 1.svg" alt="JCDC" width="132" height="72" class="footer__logo" />
@@ -1158,17 +1159,19 @@
                     <nav class="footer__nav" aria-label="Footer navigation">
                         <a href="about.html" data-i18n="footer.aboutUs">ABOUT US</a>
                         <a href="jcdc.html" data-i18n="footer.jcd">JEDDAH CENTRAL DESTINATION</a>
-                        <a href="#" data-i18n="footer.invest">INVEST</a>
-                        <a href="#" data-i18n="footer.newsEvents">NEWS &amp; EVENTS</a>
+                        <a href="invest.html" data-i18n="footer.invest">INVEST</a>
+                        <a href="news.html" data-i18n="footer.newsEvents">NEWS &amp; EVENTS</a>
                         <a href="career.html" data-i18n="footer.careers">CAREERS</a>
-                        <a href="#" data-i18n="footer.suppliers">SUPPLIERS</a>
+                        <a href="supplier.html" data-i18n="footer.suppliers">SUPPLIERS</a>
                         <a href="contact.html" data-i18n="footer.contact">CONTACT US</a>
                     </nav>
                 </div>
             </div>
             <div class="footer__divider"></div>
             <div class="footer__bottom">
-                <a href="/"> <img src="./assets/footer/Layer_1.png" alt="A PIF Company" class="footer__pif" /></a>
+                <a href="/" class="footer__pif-wrap">
+                    <img src="./assets/footer/Layer_1.png" alt="A PIF Company" class="footer__pif"
+                /></a>
                 <div class="footer__legal">
                     <a href="privacyPolicy.html" data-i18n="footer.privacy">Privacy Policy</a>
                     <a href="terms&condition.html" data-i18n="footer.terms">Terms &amp; Conditions</a>
