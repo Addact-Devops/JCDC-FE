@@ -253,7 +253,7 @@
 ════════════════════════════════════════════ -->
         <section class="banner" aria-labelledby="news-listing-hero-title">
             <div class="hero__media">
-                <img src="assets/herobanner.svg" alt="" loading="eager" />
+                <img src="assets/News and event/HeroBanner.svg" alt="" loading="eager" />
             </div>
             <div class="banner__overlay"></div>
 
@@ -404,11 +404,503 @@
                     </div>
                 </div>
 
-                <!-- Filter chips (rendered by JS) -->
-                <div class="news-listing__filters" id="news-listing-filters" role="group" aria-label="Filters"></div>
+                <!-- Filter chips (static) -->
+                <div class="news-listing__filters" id="news-listing-filters" role="group" aria-label="Filters">
+                    <span class="news-listing__filters-label" data-i18n="newsListing.filtersLabel">Filters:</span>
 
-                <!-- Grid of cards (rendered by JS) -->
-                <div class="news-listing__grid" id="news-listing-grid"></div>
+                    <button type="button" class="filter-chip filter-chip--active" data-cat="all" aria-pressed="true">
+                        <span data-i18n="newsListing.categoryNames.all">All News</span>
+                        <svg class="filter-chip__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.6" />
+                            <path
+                                d="M9 9l6 6M15 9l-6 6"
+                                stroke="currentColor"
+                                stroke-width="1.6"
+                                stroke-linecap="round"
+                            />
+                        </svg>
+                    </button>
+
+                    <button type="button" class="filter-chip" data-cat="companyUpdates" aria-pressed="false">
+                        <span data-i18n="newsListing.categoryNames.companyUpdates">Company Updates</span>
+                        <svg class="filter-chip__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.6" />
+                            <path
+                                d="M9 9l6 6M15 9l-6 6"
+                                stroke="currentColor"
+                                stroke-width="1.6"
+                                stroke-linecap="round"
+                            />
+                        </svg>
+                    </button>
+
+                    <button type="button" class="filter-chip" data-cat="projectMilestones" aria-pressed="false">
+                        <span data-i18n="newsListing.categoryNames.projectMilestones">Project Milestones</span>
+                        <svg class="filter-chip__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.6" />
+                            <path
+                                d="M9 9l6 6M15 9l-6 6"
+                                stroke="currentColor"
+                                stroke-width="1.6"
+                                stroke-linecap="round"
+                            />
+                        </svg>
+                    </button>
+
+                    <button type="button" class="filter-chip" data-cat="communityEvents" aria-pressed="false">
+                        <span data-i18n="newsListing.categoryNames.communityEvents">Community Events</span>
+                        <svg class="filter-chip__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.6" />
+                            <path
+                                d="M9 9l6 6M15 9l-6 6"
+                                stroke="currentColor"
+                                stroke-width="1.6"
+                                stroke-linecap="round"
+                            />
+                        </svg>
+                    </button>
+
+                    <button type="button" class="filter-chip" data-cat="awardsRecognition" aria-pressed="false">
+                        <span data-i18n="newsListing.categoryNames.awardsRecognition">Awards & Recognition</span>
+                        <svg class="filter-chip__icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="1.6" />
+                            <path
+                                d="M9 9l6 6M15 9l-6 6"
+                                stroke="currentColor"
+                                stroke-width="1.6"
+                                stroke-linecap="round"
+                            />
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Grid of cards (static) -->
+                <div class="news-listing__grid" id="news-listing-grid">
+                    <article
+                        class="news-list-card"
+                        data-id="jc-12bn-contract"
+                        data-category="companyUpdates"
+                        data-date="2024-02-05"
+                    >
+                        <a
+                            class="news-list-card__image"
+                            href="news-item.html?id=jc-12bn-contract"
+                            aria-hidden="true"
+                            tabindex="-1"
+                        >
+                            <img
+                                src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=85"
+                                alt=""
+                                loading="lazy"
+                            />
+                        </a>
+                        <div class="news-list-card__meta">
+                            <span class="news-list-card__tag" data-i18n="newsListing.categoryNames.companyUpdates"
+                                >Company Updates</span
+                            >
+                            <time class="news-list-card__date" datetime="2024-02-05">Feb 05, 2024</time>
+                        </div>
+                        <h3 class="news-list-card__title">
+                            <a href="news-item.html?id=jc-12bn-contract" data-i18n="newsListing.items.0.title">
+                                JCDC Awards SAR 12bn Contract to Build the Central Spine
+                            </a>
+                        </h3>
+                        <p class="news-list-card__excerpt" data-i18n="newsListing.items.0.excerpt">
+                            A landmark agreement that accelerates the delivery of Jeddah Central's main transit corridor
+                            and supporting infrastructure.
+                        </p>
+                        <a class="news-list-card__cta" href="news-item.html?id=jc-12bn-contract">
+                            <span data-i18n="newsListing.readMore">Read More</span>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path
+                                    d="M5 12h14M13 6l6 6-6 6"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </svg>
+                        </a>
+                    </article>
+
+                    <article
+                        class="news-list-card"
+                        data-id="efqm-recognition"
+                        data-category="communityEvents"
+                        data-date="2023-10-12"
+                    >
+                        <a
+                            class="news-list-card__image"
+                            href="news-item.html?id=efqm-recognition"
+                            aria-hidden="true"
+                            tabindex="-1"
+                        >
+                            <img
+                                src="https://images.unsplash.com/photo-1573164574572-cb89e39749b4?w=800&q=85"
+                                alt=""
+                                loading="lazy"
+                            />
+                        </a>
+                        <div class="news-list-card__meta">
+                            <span class="news-list-card__tag" data-i18n="newsListing.categoryNames.communityEvents"
+                                >Community Events</span
+                            >
+                            <time class="news-list-card__date" datetime="2023-10-12">Oct 12, 2023</time>
+                        </div>
+                        <h3 class="news-list-card__title">
+                            <a href="news-item.html?id=efqm-recognition" data-i18n="newsListing.items.1.title">
+                                JCDC Receives EFQM Global Recognition for Excellence
+                            </a>
+                        </h3>
+                        <p class="news-list-card__excerpt" data-i18n="newsListing.items.1.excerpt">
+                            Independent assessors highlight JCDC's leadership, strategy and operations against
+                            international benchmarks.
+                        </p>
+                        <a class="news-list-card__cta" href="news-item.html?id=efqm-recognition">
+                            <span data-i18n="newsListing.readMore">Read More</span>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path
+                                    d="M5 12h14M13 6l6 6-6 6"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </svg>
+                        </a>
+                    </article>
+
+                    <article
+                        class="news-list-card"
+                        data-id="global-pm-forum"
+                        data-category="awardsRecognition"
+                        data-date="2023-06-12"
+                    >
+                        <a
+                            class="news-list-card__image"
+                            href="news-item.html?id=global-pm-forum"
+                            aria-hidden="true"
+                            tabindex="-1"
+                        >
+                            <img
+                                src="https://images.unsplash.com/photo-1591115765373-5207764f72e7?w=800&q=85"
+                                alt=""
+                                loading="lazy"
+                            />
+                        </a>
+                        <div class="news-list-card__meta">
+                            <span class="news-list-card__tag" data-i18n="newsListing.categoryNames.awardsRecognition"
+                                >Awards & Recognition</span
+                            >
+                            <time class="news-list-card__date" datetime="2023-06-12">Jun 12, 2023</time>
+                        </div>
+                        <h3 class="news-list-card__title">
+                            <a href="news-item.html?id=global-pm-forum" data-i18n="newsListing.items.2.title">
+                                JCDC Honored at the Global Project Management Forum
+                            </a>
+                        </h3>
+                        <p class="news-list-card__excerpt" data-i18n="newsListing.items.2.excerpt">
+                            Recognized for delivery practices on one of the Kingdom's most ambitious urban developments.
+                        </p>
+                        <a class="news-list-card__cta" href="news-item.html?id=global-pm-forum">
+                            <span data-i18n="newsListing.readMore">Read More</span>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path
+                                    d="M5 12h14M13 6l6 6-6 6"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </svg>
+                        </a>
+                    </article>
+
+                    <article
+                        class="news-list-card"
+                        data-id="cityscape-global"
+                        data-category="projectMilestones"
+                        data-date="2023-09-13"
+                    >
+                        <a
+                            class="news-list-card__image"
+                            href="news-item.html?id=cityscape-global"
+                            aria-hidden="true"
+                            tabindex="-1"
+                        >
+                            <img
+                                src="https://images.unsplash.com/photo-1520637836862-4d197d17c55a?w=800&q=85"
+                                alt=""
+                                loading="lazy"
+                            />
+                        </a>
+                        <div class="news-list-card__meta">
+                            <span class="news-list-card__tag" data-i18n="newsListing.categoryNames.projectMilestones"
+                                >Project Milestones</span
+                            >
+                            <time class="news-list-card__date" datetime="2023-09-13">Sep 13, 2023</time>
+                        </div>
+                        <h3 class="news-list-card__title">
+                            <a href="news-item.html?id=cityscape-global" data-i18n="newsListing.items.3.title">
+                                JCDC Showcases Jeddah Central at Cityscape Global
+                            </a>
+                        </h3>
+                        <p class="news-list-card__excerpt" data-i18n="newsListing.items.3.excerpt">
+                            New investor packages and updated masterplan visuals unveiled at the region's flagship real
+                            estate event.
+                        </p>
+                        <a class="news-list-card__cta" href="news-item.html?id=cityscape-global">
+                            <span data-i18n="newsListing.readMore">Read More</span>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path
+                                    d="M5 12h14M13 6l6 6-6 6"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </svg>
+                        </a>
+                    </article>
+
+                    <article
+                        class="news-list-card"
+                        data-id="efqm-diamond-member"
+                        data-category="projectMilestones"
+                        data-date="2023-04-02"
+                    >
+                        <a
+                            class="news-list-card__image"
+                            href="news-item.html?id=efqm-diamond-member"
+                            aria-hidden="true"
+                            tabindex="-1"
+                        >
+                            <img
+                                src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&q=85"
+                                alt=""
+                                loading="lazy"
+                            />
+                        </a>
+                        <div class="news-list-card__meta">
+                            <span class="news-list-card__tag" data-i18n="newsListing.categoryNames.projectMilestones"
+                                >Project Milestones</span
+                            >
+                            <time class="news-list-card__date" datetime="2023-04-02">Apr 02, 2023</time>
+                        </div>
+                        <h3 class="news-list-card__title">
+                            <a href="news-item.html?id=efqm-diamond-member" data-i18n="newsListing.items.4.title">
+                                JCDC Becomes EFQM Diamond Member
+                            </a>
+                        </h3>
+                        <p class="news-list-card__excerpt" data-i18n="newsListing.items.4.excerpt">
+                            A new milestone reflecting JCDC's continuing investment in operational excellence and
+                            benchmarking.
+                        </p>
+                        <a class="news-list-card__cta" href="news-item.html?id=efqm-diamond-member">
+                            <span data-i18n="newsListing.readMore">Read More</span>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path
+                                    d="M5 12h14M13 6l6 6-6 6"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </svg>
+                        </a>
+                    </article>
+
+                    <article
+                        class="news-list-card"
+                        data-id="corinthia-mou"
+                        data-category="projectMilestones"
+                        data-date="2023-03-30"
+                    >
+                        <a
+                            class="news-list-card__image"
+                            href="news-item.html?id=corinthia-mou"
+                            aria-hidden="true"
+                            tabindex="-1"
+                        >
+                            <img
+                                src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&q=85"
+                                alt=""
+                                loading="lazy"
+                            />
+                        </a>
+                        <div class="news-list-card__meta">
+                            <span class="news-list-card__tag" data-i18n="newsListing.categoryNames.projectMilestones"
+                                >Project Milestones</span
+                            >
+                            <time class="news-list-card__date" datetime="2023-03-30">Mar 30, 2023</time>
+                        </div>
+                        <h3 class="news-list-card__title">
+                            <a href="news-item.html?id=corinthia-mou" data-i18n="newsListing.items.5.title">
+                                JCDC Signs MoU with Corinthia for Flagship Hotel
+                            </a>
+                        </h3>
+                        <p class="news-list-card__excerpt" data-i18n="newsListing.items.5.excerpt">
+                            Partnership brings a globally recognized luxury hospitality brand to the heart of Jeddah
+                            Central.
+                        </p>
+                        <a class="news-list-card__cta" href="news-item.html?id=corinthia-mou">
+                            <span data-i18n="newsListing.readMore">Read More</span>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path
+                                    d="M5 12h14M13 6l6 6-6 6"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </svg>
+                        </a>
+                    </article>
+
+                    <article
+                        class="news-list-card"
+                        data-id="q1-progress"
+                        data-category="companyUpdates"
+                        data-date="2024-04-15"
+                        hidden
+                    >
+                        <a
+                            class="news-list-card__image"
+                            href="news-item.html?id=q1-progress"
+                            aria-hidden="true"
+                            tabindex="-1"
+                        >
+                            <img
+                                src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&q=85"
+                                alt=""
+                                loading="lazy"
+                            />
+                        </a>
+                        <div class="news-list-card__meta">
+                            <span class="news-list-card__tag" data-i18n="newsListing.categoryNames.companyUpdates"
+                                >Company Updates</span
+                            >
+                            <time class="news-list-card__date" datetime="2024-04-15">Apr 15, 2024</time>
+                        </div>
+                        <h3 class="news-list-card__title">
+                            <a href="news-item.html?id=q1-progress" data-i18n="newsListing.items.6.title">
+                                JCDC Releases Q1 Progress Report
+                            </a>
+                        </h3>
+                        <p class="news-list-card__excerpt" data-i18n="newsListing.items.6.excerpt">
+                            Highlights from the first quarter including infrastructure milestones, partnerships and
+                            community programs.
+                        </p>
+                        <a class="news-list-card__cta" href="news-item.html?id=q1-progress">
+                            <span data-i18n="newsListing.readMore">Read More</span>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path
+                                    d="M5 12h14M13 6l6 6-6 6"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </svg>
+                        </a>
+                    </article>
+
+                    <article
+                        class="news-list-card"
+                        data-id="green-buildings"
+                        data-category="projectMilestones"
+                        data-date="2024-05-20"
+                        hidden
+                    >
+                        <a
+                            class="news-list-card__image"
+                            href="news-item.html?id=green-buildings"
+                            aria-hidden="true"
+                            tabindex="-1"
+                        >
+                            <img
+                                src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?w=800&q=85"
+                                alt=""
+                                loading="lazy"
+                            />
+                        </a>
+                        <div class="news-list-card__meta">
+                            <span class="news-list-card__tag" data-i18n="newsListing.categoryNames.projectMilestones"
+                                >Project Milestones</span
+                            >
+                            <time class="news-list-card__date" datetime="2024-05-20">May 20, 2024</time>
+                        </div>
+                        <h3 class="news-list-card__title">
+                            <a href="news-item.html?id=green-buildings" data-i18n="newsListing.items.7.title">
+                                First Green-Certified Buildings Reach Topping-Out
+                            </a>
+                        </h3>
+                        <p class="news-list-card__excerpt" data-i18n="newsListing.items.7.excerpt">
+                            Sustainability-led design choices push the first cluster of buildings toward LEED
+                            certification targets.
+                        </p>
+                        <a class="news-list-card__cta" href="news-item.html?id=green-buildings">
+                            <span data-i18n="newsListing.readMore">Read More</span>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path
+                                    d="M5 12h14M13 6l6 6-6 6"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </svg>
+                        </a>
+                    </article>
+
+                    <article
+                        class="news-list-card"
+                        data-id="community-day"
+                        data-category="communityEvents"
+                        data-date="2024-06-08"
+                        hidden
+                    >
+                        <a
+                            class="news-list-card__image"
+                            href="news-item.html?id=community-day"
+                            aria-hidden="true"
+                            tabindex="-1"
+                        >
+                            <img
+                                src="https://images.unsplash.com/photo-1517457373958-b7bdd4587205?w=800&q=85"
+                                alt=""
+                                loading="lazy"
+                            />
+                        </a>
+                        <div class="news-list-card__meta">
+                            <span class="news-list-card__tag" data-i18n="newsListing.categoryNames.communityEvents"
+                                >Community Events</span
+                            >
+                            <time class="news-list-card__date" datetime="2024-06-08">Jun 08, 2024</time>
+                        </div>
+                        <h3 class="news-list-card__title">
+                            <a href="news-item.html?id=community-day" data-i18n="newsListing.items.8.title">
+                                JCDC Hosts Annual Community Day in Old Jeddah
+                            </a>
+                        </h3>
+                        <p class="news-list-card__excerpt" data-i18n="newsListing.items.8.excerpt">
+                            Residents, partners and JCDC team members gather to celebrate the area's heritage and shared
+                            progress.
+                        </p>
+                        <a class="news-list-card__cta" href="news-item.html?id=community-day">
+                            <span data-i18n="newsListing.readMore">Read More</span>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path
+                                    d="M5 12h14M13 6l6 6-6 6"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </svg>
+                        </a>
+                    </article>
+                </div>
 
                 <!-- Empty state -->
                 <p class="news-listing__empty" id="news-listing-empty" data-i18n="newsListing.empty" hidden>
