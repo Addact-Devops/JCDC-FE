@@ -22,6 +22,9 @@
 ════════════════════════════════════════════ -->
         <header class="navbar" id="navbar">
             <div class="navbar__inner">
+                <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
                 <a href="/" class="navbar__logo" aria-label="JCDC Home">
                     <img class="navbar__logo--light" src="assets/Frame 2.svg" alt="JCDC" width="104" height="56" />
                     <!-- Dark/colored logo — shown when scrolled -->
@@ -35,7 +38,7 @@
                 </a>
 
                 <nav class="navbar__menu" aria-label="Main navigation">
-                    <a href="#" class="nav-item" data-i18n="nav.about">About us</a>
+                    <a href="about.html" class="nav-item" data-i18n="nav.about">About us</a>
 
                     <div class="nav-item nav-item--dropdown" data-dropdown>
                         <a href="jcdc.html" data-i18n="nav.jcd">Jeddah Central Destination</a>
@@ -58,18 +61,20 @@
                             </svg>
                         </button>
                         <div class="dropdown">
-                            <a href="#" data-i18n="nav.dropdown.districts">Districts</a>
-                            <a href="#" data-i18n="nav.dropdown.landmarks">Landmarks</a>
-                            <a href="#" data-i18n="nav.dropdown.attractions">Attractions</a>
-                            <a href="#" data-i18n="nav.dropdown.sustainability">Sustainability</a>
+                            <a href="jcdc.html#jcd-map" data-i18n="nav.dropdown.districts">Districts</a>
+                            <a href="jcdc.html#landmark-slider" data-i18n="nav.dropdown.landmarks">Landmarks</a>
+                            <a href="jcdc.html#attractions" data-i18n="nav.dropdown.attractions">Attractions</a>
+                            <a href="jcdc.html#sustainability" data-i18n="nav.dropdown.sustainability"
+                                >Sustainability</a
+                            >
                         </div>
                     </div>
 
-                    <a href="#" class="nav-item" data-i18n="nav.invest">Invest</a>
-                    <a href="#" class="nav-item" data-i18n="nav.news">News &amp; Events</a>
-                    <a href="#" class="nav-item" data-i18n="nav.careers">Careers</a>
-                    <a href="#" class="nav-item" data-i18n="nav.suppliers">Suppliers</a>
-                    <a href="#" class="nav-item" data-i18n="nav.contact">Contact Us</a>
+                    <a href="invest.html" class="nav-item" data-i18n="nav.invest">Invest</a>
+                    <a href="news.html" class="nav-item" data-i18n="nav.news">News &amp; Events</a>
+                    <a href="career.html" class="nav-item" data-i18n="nav.careers">Careers</a>
+                    <a href="supplier.html" class="nav-item" data-i18n="nav.suppliers">Suppliers</a>
+                    <a href="contact.html" class="nav-item" data-i18n="nav.contact">Contact Us</a>
                 </nav>
 
                 <div class="navbar__actions">
@@ -95,9 +100,6 @@
                             />
                             <path d="M3 9h18M3 15h18" stroke="currentColor" stroke-width="1.5" />
                         </svg>
-                    </button>
-                    <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
-                        <span></span><span></span><span></span>
                     </button>
                 </div>
             </div>
@@ -326,23 +328,12 @@
                     <div class="news-listing__field">
                         <label class="news-listing__label" for="nl-date-from" data-i18n="newsListing.from">From</label>
                         <div class="news-listing__date" id="nl-date-from-wrap">
-                            <svg class="news-listing__date-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                                <rect
-                                    x="3"
-                                    y="5"
-                                    width="18"
-                                    height="16"
-                                    rx="2"
-                                    stroke="currentColor"
-                                    stroke-width="1.6"
-                                />
-                                <path
-                                    d="M3 9h18M8 3v4M16 3v4"
-                                    stroke="currentColor"
-                                    stroke-width="1.6"
-                                    stroke-linecap="round"
-                                />
-                            </svg>
+                            <img
+                                src="assets/icons/Calendar.svg"
+                                alt=""
+                                class="news-listing__date-icon"
+                                aria-hidden="true"
+                            />
                             <span class="news-listing__date-text" data-i18n="newsListing.chooseDate">Choose Date</span>
                             <svg class="news-listing__date-chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                                 <path
@@ -366,23 +357,12 @@
                     <div class="news-listing__field">
                         <label class="news-listing__label" for="nl-date-to" data-i18n="newsListing.to">To</label>
                         <div class="news-listing__date" id="nl-date-to-wrap">
-                            <svg class="news-listing__date-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                                <rect
-                                    x="3"
-                                    y="5"
-                                    width="18"
-                                    height="16"
-                                    rx="2"
-                                    stroke="currentColor"
-                                    stroke-width="1.6"
-                                />
-                                <path
-                                    d="M3 9h18M8 3v4M16 3v4"
-                                    stroke="currentColor"
-                                    stroke-width="1.6"
-                                    stroke-linecap="round"
-                                />
-                            </svg>
+                            <img
+                                src="assets/icons/Calendar.svg"
+                                alt=""
+                                class="news-listing__date-icon"
+                                aria-hidden="true"
+                            />
                             <span class="news-listing__date-text" data-i18n="newsListing.chooseDate">Choose Date</span>
                             <svg class="news-listing__date-chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                                 <path
@@ -488,11 +468,7 @@
                             aria-hidden="true"
                             tabindex="-1"
                         >
-                            <img
-                                src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&q=85"
-                                alt=""
-                                loading="lazy"
-                            />
+                            <img src="assets/News and event/news/1st.jpg" alt="" loading="lazy" />
                         </a>
                         <div class="news-list-card__meta">
                             <span class="news-list-card__tag" data-i18n="newsListing.categoryNames.companyUpdates"
@@ -509,16 +485,17 @@
                             A landmark agreement that accelerates the delivery of Jeddah Central's main transit corridor
                             and supporting infrastructure.
                         </p>
-                        <a class="news-list-card__cta" href="news-item.html?id=jc-12bn-contract">
-                            <span data-i18n="newsListing.readMore">Read More</span>
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+
+                        <a href="news-item.html?id=jc-12bn-contract" class="news-card__cta">
+                            <span>Read More</span>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                                 <path
-                                    d="M5 12h14M13 6l6 6-6 6"
+                                    d="M5 12h14M13 5l7 7-7 7"
                                     stroke="currentColor"
-                                    stroke-width="2"
+                                    stroke-width="1.5"
                                     stroke-linecap="round"
                                     stroke-linejoin="round"
-                                />
+                                ></path>
                             </svg>
                         </a>
                     </article>
@@ -535,11 +512,7 @@
                             aria-hidden="true"
                             tabindex="-1"
                         >
-                            <img
-                                src="https://images.unsplash.com/photo-1573164574572-cb89e39749b4?w=800&q=85"
-                                alt=""
-                                loading="lazy"
-                            />
+                            <img src="assets/News and event/news/2nd.jpg" alt="" loading="lazy" />
                         </a>
                         <div class="news-list-card__meta">
                             <span class="news-list-card__tag" data-i18n="newsListing.categoryNames.communityEvents"
@@ -556,16 +529,17 @@
                             Independent assessors highlight JCDC's leadership, strategy and operations against
                             international benchmarks.
                         </p>
-                        <a class="news-list-card__cta" href="news-item.html?id=efqm-recognition">
-                            <span data-i18n="newsListing.readMore">Read More</span>
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+
+                        <a href="news-item.html?id=efqm-recognition" class="news-card__cta">
+                            <span>Read More</span>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                                 <path
-                                    d="M5 12h14M13 6l6 6-6 6"
+                                    d="M5 12h14M13 5l7 7-7 7"
                                     stroke="currentColor"
-                                    stroke-width="2"
+                                    stroke-width="1.5"
                                     stroke-linecap="round"
                                     stroke-linejoin="round"
-                                />
+                                ></path>
                             </svg>
                         </a>
                     </article>
@@ -582,11 +556,7 @@
                             aria-hidden="true"
                             tabindex="-1"
                         >
-                            <img
-                                src="https://images.unsplash.com/photo-1591115765373-5207764f72e7?w=800&q=85"
-                                alt=""
-                                loading="lazy"
-                            />
+                            <img src="assets/News and event/news/3rd.jpg" alt="" loading="lazy" />
                         </a>
                         <div class="news-list-card__meta">
                             <span class="news-list-card__tag" data-i18n="newsListing.categoryNames.awardsRecognition"
@@ -602,16 +572,17 @@
                         <p class="news-list-card__excerpt" data-i18n="newsListing.items.2.excerpt">
                             Recognized for delivery practices on one of the Kingdom's most ambitious urban developments.
                         </p>
-                        <a class="news-list-card__cta" href="news-item.html?id=global-pm-forum">
-                            <span data-i18n="newsListing.readMore">Read More</span>
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+
+                        <a href="news-item.html?id=global-pm-forum" class="news-card__cta">
+                            <span>Read More</span>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                                 <path
-                                    d="M5 12h14M13 6l6 6-6 6"
+                                    d="M5 12h14M13 5l7 7-7 7"
                                     stroke="currentColor"
-                                    stroke-width="2"
+                                    stroke-width="1.5"
                                     stroke-linecap="round"
                                     stroke-linejoin="round"
-                                />
+                                ></path>
                             </svg>
                         </a>
                     </article>
@@ -628,11 +599,7 @@
                             aria-hidden="true"
                             tabindex="-1"
                         >
-                            <img
-                                src="https://images.unsplash.com/photo-1520637836862-4d197d17c55a?w=800&q=85"
-                                alt=""
-                                loading="lazy"
-                            />
+                            <img src="assets/News and event/news/4th.jpg" alt="" loading="lazy" />
                         </a>
                         <div class="news-list-card__meta">
                             <span class="news-list-card__tag" data-i18n="newsListing.categoryNames.projectMilestones"
@@ -649,16 +616,17 @@
                             New investor packages and updated masterplan visuals unveiled at the region's flagship real
                             estate event.
                         </p>
-                        <a class="news-list-card__cta" href="news-item.html?id=cityscape-global">
-                            <span data-i18n="newsListing.readMore">Read More</span>
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+
+                        <a href="news-item.html?id=cityscape-global" class="news-card__cta">
+                            <span>Read More</span>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                                 <path
-                                    d="M5 12h14M13 6l6 6-6 6"
+                                    d="M5 12h14M13 5l7 7-7 7"
                                     stroke="currentColor"
-                                    stroke-width="2"
+                                    stroke-width="1.5"
                                     stroke-linecap="round"
                                     stroke-linejoin="round"
-                                />
+                                ></path>
                             </svg>
                         </a>
                     </article>
@@ -675,11 +643,7 @@
                             aria-hidden="true"
                             tabindex="-1"
                         >
-                            <img
-                                src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&q=85"
-                                alt=""
-                                loading="lazy"
-                            />
+                            <img src="assets/News and event/news/5th.jpg" alt="" loading="lazy" />
                         </a>
                         <div class="news-list-card__meta">
                             <span class="news-list-card__tag" data-i18n="newsListing.categoryNames.projectMilestones"
@@ -696,16 +660,16 @@
                             A new milestone reflecting JCDC's continuing investment in operational excellence and
                             benchmarking.
                         </p>
-                        <a class="news-list-card__cta" href="news-item.html?id=efqm-diamond-member">
-                            <span data-i18n="newsListing.readMore">Read More</span>
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <a href="news-item.html?id=efqm-diamond-member" class="news-card__cta">
+                            <span>Read More</span>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                                 <path
-                                    d="M5 12h14M13 6l6 6-6 6"
+                                    d="M5 12h14M13 5l7 7-7 7"
                                     stroke="currentColor"
-                                    stroke-width="2"
+                                    stroke-width="1.5"
                                     stroke-linecap="round"
                                     stroke-linejoin="round"
-                                />
+                                ></path>
                             </svg>
                         </a>
                     </article>
@@ -722,11 +686,7 @@
                             aria-hidden="true"
                             tabindex="-1"
                         >
-                            <img
-                                src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&q=85"
-                                alt=""
-                                loading="lazy"
-                            />
+                            <img src="assets/News and event/news/6th.jpg" alt="" loading="lazy" />
                         </a>
                         <div class="news-list-card__meta">
                             <span class="news-list-card__tag" data-i18n="newsListing.categoryNames.projectMilestones"
@@ -743,16 +703,17 @@
                             Partnership brings a globally recognized luxury hospitality brand to the heart of Jeddah
                             Central.
                         </p>
-                        <a class="news-list-card__cta" href="news-item.html?id=corinthia-mou">
-                            <span data-i18n="newsListing.readMore">Read More</span>
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+
+                        <a href="news-item.html?id=corinthia-mou" class="news-card__cta">
+                            <span>Read More</span>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                                 <path
-                                    d="M5 12h14M13 6l6 6-6 6"
+                                    d="M5 12h14M13 5l7 7-7 7"
                                     stroke="currentColor"
-                                    stroke-width="2"
+                                    stroke-width="1.5"
                                     stroke-linecap="round"
                                     stroke-linejoin="round"
-                                />
+                                ></path>
                             </svg>
                         </a>
                     </article>
@@ -791,16 +752,17 @@
                             Highlights from the first quarter including infrastructure milestones, partnerships and
                             community programs.
                         </p>
-                        <a class="news-list-card__cta" href="news-item.html?id=q1-progress">
-                            <span data-i18n="newsListing.readMore">Read More</span>
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+
+                        <a href="news-item.html?id=q1-progress" class="news-card__cta">
+                            <span>Read More</span>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                                 <path
-                                    d="M5 12h14M13 6l6 6-6 6"
+                                    d="M5 12h14M13 5l7 7-7 7"
                                     stroke="currentColor"
-                                    stroke-width="2"
+                                    stroke-width="1.5"
                                     stroke-linecap="round"
                                     stroke-linejoin="round"
-                                />
+                                ></path>
                             </svg>
                         </a>
                     </article>
@@ -839,16 +801,17 @@
                             Sustainability-led design choices push the first cluster of buildings toward LEED
                             certification targets.
                         </p>
-                        <a class="news-list-card__cta" href="news-item.html?id=green-buildings">
-                            <span data-i18n="newsListing.readMore">Read More</span>
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+
+                        <a href="news-item.html?id=green-buildings" class="news-card__cta">
+                            <span>Read More</span>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                                 <path
-                                    d="M5 12h14M13 6l6 6-6 6"
+                                    d="M5 12h14M13 5l7 7-7 7"
                                     stroke="currentColor"
-                                    stroke-width="2"
+                                    stroke-width="1.5"
                                     stroke-linecap="round"
                                     stroke-linejoin="round"
-                                />
+                                ></path>
                             </svg>
                         </a>
                     </article>
@@ -887,16 +850,17 @@
                             Residents, partners and JCDC team members gather to celebrate the area's heritage and shared
                             progress.
                         </p>
-                        <a class="news-list-card__cta" href="news-item.html?id=community-day">
-                            <span data-i18n="newsListing.readMore">Read More</span>
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+
+                        <a href="news-item.html?id=community-day" class="news-card__cta">
+                            <span>Read More</span>
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                                 <path
-                                    d="M5 12h14M13 6l6 6-6 6"
+                                    d="M5 12h14M13 5l7 7-7 7"
                                     stroke="currentColor"
-                                    stroke-width="2"
+                                    stroke-width="1.5"
                                     stroke-linecap="round"
                                     stroke-linejoin="round"
-                                />
+                                ></path>
                             </svg>
                         </a>
                     </article>
@@ -967,17 +931,19 @@
                     <nav class="footer__nav" aria-label="Footer navigation">
                         <a href="about.html" data-i18n="footer.aboutUs">ABOUT US</a>
                         <a href="jcdc.html" data-i18n="footer.jcd">JEDDAH CENTRAL DESTINATION</a>
-                        <a href="#" data-i18n="footer.invest">INVEST</a>
-                        <a href="#" data-i18n="footer.newsEvents">NEWS &amp; EVENTS</a>
+                        <a href="invest.html" data-i18n="footer.invest">INVEST</a>
+                        <a href="news.html" data-i18n="footer.newsEvents">NEWS &amp; EVENTS</a>
                         <a href="career.html" data-i18n="footer.careers">CAREERS</a>
-                        <a href="#" data-i18n="footer.suppliers">SUPPLIERS</a>
+                        <a href="supplier.html" data-i18n="footer.suppliers">SUPPLIERS</a>
                         <a href="contact.html" data-i18n="footer.contact">CONTACT US</a>
                     </nav>
                 </div>
             </div>
             <div class="footer__divider"></div>
             <div class="footer__bottom">
-                <a href="/"> <img src="./assets/footer/Layer_1.png" alt="A PIF Company" class="footer__pif" /></a>
+                <a href="/" class="footer__pif-wrap">
+                    <img src="./assets/footer/Layer_1.png" alt="A PIF Company" class="footer__pif"
+                /></a>
                 <div class="footer__legal">
                     <a href="privacyPolicy.html" data-i18n="footer.privacy">Privacy Policy</a>
                     <a href="terms&condition.html" data-i18n="footer.terms">Terms &amp; Conditions</a>

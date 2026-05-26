@@ -19,18 +19,26 @@
     // Top row — Search + From + To
     // ==========================================
     &__controls {
-        display: grid;
-        grid-template-columns: 2fr 1fr 1fr;
-        gap: 24px;
-        align-items: end;
-        margin-bottom: 24px;
+        display: flex;
+        align-items: flex-end;
+        width: 100%;
+        gap: 16px;
+        margin-bottom: 32px;
     }
 
     &__field {
         display: flex;
         flex-direction: column;
-        gap: 6px;
-        min-width: 0;
+        gap: 8px;
+    }
+
+    &__field:first-child {
+        flex: 1;
+        max-width: 671px;
+    }
+
+    &__field:nth-child(2) {
+        margin-left: auto;
     }
 
     &__label {
@@ -45,12 +53,15 @@
     // filled button on the right within the same row).
     &__search {
         display: flex;
+        align-items: center;
         gap: 12px;
+        width: 100%;
     }
 
     &__search-input-wrap {
         position: relative;
         flex: 1;
+        gap: 8px;
         min-width: 0;
     }
 
@@ -59,22 +70,22 @@
         inset-inline-start: 14px;
         top: 50%;
         transform: translateY(-50%);
-        width: 16px;
-        height: 16px;
+        width: 24px;
+        height: 24px;
         color: #98a2b3;
         pointer-events: none;
     }
 
     &__search-input {
         width: 100%;
-        height: 44px;
-        padding: 10px 14px 10px 40px;
+        height: 48px;
+        padding: 12px 16px 12px 52px;
         background: var(--surface-white);
         border: 1px solid #d0d5dd;
         border-radius: 4px;
         font-family: var(--font-body);
         font-size: 16px;
-        line-height: 150%;
+        line-height: 24px;
         color: #101828;
 
         [dir="rtl"] & {
@@ -83,7 +94,7 @@
         }
 
         &::placeholder {
-            color: #98a2b3;
+            color: #7c7f81;
         }
 
         &:focus {
@@ -95,7 +106,8 @@
 
     &__search-btn {
         flex-shrink: 0;
-        height: 44px;
+        width: 136px;
+        height: 48px;
         min-width: 100px;
         padding: 0 24px;
         border-radius: 4px;
@@ -125,14 +137,22 @@
     // The native input is still the click target, so the OS calendar opens.
     // ==========================================
     &__date {
-        position: relative;
-        height: 44px;
-        background: var(--surface-white);
-        border: 1px solid #d0d5dd;
-        border-radius: 4px;
+        width: 195px;
+        height: 48px;
+
+        padding: 12px 16px;
+
         display: flex;
         align-items: center;
-        cursor: pointer;
+        gap: 8px;
+
+        background: #fff;
+
+        border: 1px solid #d0d5dd;
+        border-radius: 4px;
+
+        position: relative;
+        box-sizing: border-box;
         transition:
             border-color var(--dur) var(--ease),
             box-shadow var(--dur) var(--ease);
@@ -151,21 +171,17 @@
     // Visible "Choose Date" / formatted date label
     &__date-text {
         flex: 1;
-        min-width: 0;
-        padding-inline-start: 40px; // leave room for the calendar icon
-        padding-inline-end: 36px; // leave room for the chevron
-        font-family: var(--font-body);
+
         font-size: 16px;
-        line-height: 1;
-        color: #475467;
+        line-height: 24px;
+
+        color: #667085;
+
         white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        pointer-events: none; // clicks pass through to the underlying input
 
         // Empty state — lighter / placeholder colour
         .news-listing__date:not(.has-value) & {
-            color: #98a2b3;
+            color: #7c7f81;
         }
     }
 
@@ -199,28 +215,36 @@
         }
     }
 
-    &__date-icon {
-        position: absolute;
-        inset-inline-start: 14px;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 16px;
-        height: 16px;
-        color: #475467;
-        pointer-events: none;
-        z-index: 1;
-    }
+    // &__date-icon {
+    //     position: absolute;
+    //     inset-inline-start: 14px;
+    //     top: 50%;
+    //     transform: translateY(-50%);
+    //     width: 16px;
+    //     height: 16px;
+    //     color: #475467;
+    //     pointer-events: none;
+    //     z-index: 1;
+    // }
 
+    // &__date-chevron {
+    //     position: absolute;
+    //     inset-inline-end: 14px;
+    //     top: 50%;
+    //     transform: translateY(-50%);
+    //     width: 16px;
+    //     height: 16px;
+    //     color: #475467;
+    //     pointer-events: none;
+    //     z-index: 1;
+    // }
+
+    &__date-icon,
     &__date-chevron {
-        position: absolute;
-        inset-inline-end: 14px;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 16px;
-        height: 16px;
-        color: #475467;
-        pointer-events: none;
-        z-index: 1;
+        width: 24px;
+        height: 24px;
+        flex-shrink: 0;
+        color: #7c7f81;
     }
 
     // ==========================================
@@ -231,14 +255,14 @@
         flex-wrap: wrap;
         align-items: center;
         gap: 12px;
-        margin-bottom: 32px;
+        margin-bottom: 56px;
     }
 
     &__filters-label {
         font-family: var(--font-body);
-        font-size: 14px;
-        font-weight: 500;
-        color: var(--text-500);
+        font-size: 18px;
+        font-weight: 700;
+        color: #7c7f81;
     }
 
     // ==========================================
@@ -247,7 +271,7 @@
     &__grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        gap: 32px;
+        gap: 56px 20px;
         margin-bottom: 48px;
     }
 
@@ -270,15 +294,15 @@
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    height: 36px;
-    padding: 0 16px;
-    border: 1px solid var(--primary-500);
+    height: 40px;
+    padding: 8px 16px;
+    border: 1px solid #7c7f81;
     border-radius: 4px;
     background: var(--surface-white);
-    color: var(--primary-500);
+    color: #7c7f81;
     font-family: var(--font-body);
-    font-size: 14px;
-    font-weight: 700;
+    font-size: 12px;
+    font-weight: 400;
     line-height: 1;
     cursor: pointer;
 
@@ -291,6 +315,10 @@
         flex-shrink: 0;
         width: 14px;
         height: 14px;
+        display: none;
+    }
+    &--active &__icon {
+        display: inline-block;
     }
 
     // Selected (active filter)
@@ -309,10 +337,12 @@
     }
 }
 
-// ==========================================
 // News listing card (BEM block)
 // Slightly different from the homepage card: shows a category tag bar +
 // date in the body, and "Read More" link at the bottom.
+//
+// Figma node 7437:42389 — Components/Media Center/News Card
+// Specs: 387×auto · image 240h · gap 16px (16+33+16 stacking) · radius 8px
 // ==========================================
 .news-list-card {
     display: flex;
@@ -322,7 +352,7 @@
 
     &__image {
         width: 100%;
-        aspect-ratio: 16 / 11;
+        height: 240px; // ◆ Figma fixed height (was aspect-ratio 16/11)
         border-radius: 8px;
         overflow: hidden;
 
@@ -343,28 +373,32 @@
         align-items: center;
         justify-content: space-between;
         gap: 12px;
+        width: 100%;
     }
 
+    // ◆ MAJOR CHANGE: was filled blue background → now outlined gray
     &__tag {
         display: inline-flex;
         align-items: center;
-        height: 28px;
-        padding: 0 10px;
-        background: rgba(0, 118, 169, 0.08);
-        color: var(--primary-500);
+        justify-content: center;
+        padding: 4px 8px; // ◆ was 0 10px
+        // height removed — hugs content via padding  ◆
+        background: transparent; // ◆ was rgba(0,118,169,.08)
+        color: #7c7f81; // ◆ was var(--primary-500)
+        border: 1px solid #7c7f81; // ◆ was no border
         border-radius: 4px;
         font-family: var(--font-body);
         font-size: 12px;
-        font-weight: 500;
-        line-height: 1;
+        font-weight: 700; // ◆ was 500
+        line-height: 1.43; // ◆ was 1
     }
 
     &__date {
         font-family: var(--font-body);
         font-size: 12px;
         font-weight: 400;
-        line-height: 150%;
-        color: var(--text-500);
+        line-height: 1.43; // ◆ was 150%
+        color: #7c7f81; // ◆ was var(--text-500)
         white-space: nowrap;
     }
 
@@ -373,7 +407,7 @@
         font-family: var(--font-body);
         font-size: 18px;
         font-weight: 700;
-        line-height: 1.4;
+        line-height: 1.5; // ◆ was 1.4
         color: var(--primary-500);
 
         a {
@@ -390,10 +424,11 @@
 
     &__excerpt {
         margin: 0;
+        margin-top: 17px; // ◆ NEW — bridges card gap (16) up to Figma's 33
         font-family: var(--font-body);
-        font-size: 14px;
+        font-size: 16px; // ◆ was 14px
         font-weight: 400;
-        line-height: 150%;
+        line-height: 1.5;
         color: var(--text-500);
 
         display: -webkit-box;
@@ -405,17 +440,22 @@
     &__cta {
         display: inline-flex;
         align-items: center;
+        justify-content: center;
         gap: 6px;
+        height: 32px; // ◆ NEW — Figma height
         align-self: flex-start;
         font-family: var(--font-body);
-        font-size: 14px;
+        font-size: 18px; // ◆ was 14px
         font-weight: 700;
         line-height: 1.5;
         color: var(--secondary-500);
         text-decoration: none;
         transition: gap var(--dur) var(--ease);
 
+        // ◆ Override the inline width/height="14" on the SVG markup
         svg {
+            width: 24px; // ◆ was 14
+            height: 24px; // ◆ was 14
             transition: transform var(--dur) var(--ease);
 
             [dir="rtl"] & {
