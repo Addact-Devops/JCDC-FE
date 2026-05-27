@@ -94,7 +94,9 @@ $bg-color: #ffffff;
 
     &__bg--mission {
         top: -10px;
-        left: 289px;
+        // left: 289px;
+        left: auto;
+        right: 0;
 
         background-image: url("../../../assets/mission.svg");
     }
@@ -136,6 +138,130 @@ $bg-color: #ffffff;
         [dir="rtl"] & {
             direction: rtl; //  text reads RTL
             text-align: right; //  text aligns right
+        }
+    }
+
+    // ==========================================
+    // Responsive (≤ 1300px)
+    // ==========================================
+    @media screen and (max-width: 1300px) {
+        &__container {
+            padding: 0 80px;
+        }
+    }
+
+    // ==========================================
+    // Responsive (≤ 1200px)
+    // ==========================================
+    @media screen and (max-width: 1200px) {
+        &__container {
+            padding: 0 60px;
+        }
+
+        &__card {
+            width: 100%;
+            max-width: 500px;
+        }
+    }
+
+    // ==========================================
+    // Responsive (≤ 1024px)
+    // ==========================================
+    @media screen and (max-width: 1024px) {
+        &__container {
+            padding: 0 40px;
+            gap: 24px;
+        }
+
+        &__card {
+            width: 100%;
+            height: auto;
+            padding: 250px 40px 80px 40px;
+        }
+
+        &__title {
+            font-size: 36px;
+        }
+
+        &__description {
+            font-size: 16px;
+            line-height: 140%;
+        }
+
+        &__bg {
+            width: 250px;
+            height: 250px;
+        }
+        &__bg--mission {
+            top: -10px;
+            left: auto;
+            right: 0;
+        }
+    }
+
+    // ==========================================
+    // Responsive (≤ 768px)
+    // ==========================================
+    @media screen and (max-width: 768px) {
+        &__container {
+            padding: 0 24px;
+            flex-direction: column;
+            align-items: center;
+            gap: 24px;
+        }
+
+        &__card {
+            width: 100%;
+            height: auto;
+            padding: 250px 24px 60px 24px;
+            align-items: flex-start;
+            text-align: start;
+            border-radius: 8px;
+            overflow: hidden;
+            min-height: 380px;
+
+            [dir="rtl"] & {
+                align-items: flex-end !important;
+                text-align: right;
+            }
+        }
+
+        &__title {
+            font-size: 32px;
+
+            [dir="rtl"] & {
+                direction: rtl;
+                text-align: right;
+            }
+        }
+
+        &__description {
+            font-size: 16px;
+            line-height: 26px;
+            max-width: 100%;
+
+            [dir="rtl"] & {
+                direction: rtl;
+                text-align: right;
+            }
+        }
+
+        &__bg {
+            width: 220px;
+            height: 220px;
+            opacity: 0.25;
+        }
+
+        &__bg--vision {
+            top: -10px;
+            left: -10px;
+            background-image: url("../../../assets/vision.svg");
+        }
+
+        &__bg--mission {
+            top: -10px;
+            left: -10px;
+            background-image: url("../../../assets/vision.svg");
         }
     }
 
