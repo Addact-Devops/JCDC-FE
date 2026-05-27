@@ -14,7 +14,7 @@
 .landmark-slider {
     width: 100%;
     background: var(--surface-white);
-    padding: 64px 0;
+    // padding: 64px 0;
 
     // ==========================================
     // Header (title + xoxo pattern)
@@ -163,7 +163,7 @@
     // ==========================================
     &__card {
         position: absolute;
-        bottom: 70px;
+        bottom: 73px;
         left: 50%;
         transform: translateX(-50%);
         width: 1088px;
@@ -288,7 +288,7 @@
         }
 
         &--next {
-            inset-inline-end: calc(50% - 600px - 50px); // 👈 same on right side
+        inset-inline-end: calc(50% - 600px - 50px); // 👈 same on right side
         }
     }
 
