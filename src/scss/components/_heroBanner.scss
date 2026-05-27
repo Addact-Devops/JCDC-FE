@@ -107,7 +107,7 @@
 
         // Flip the chevron direction in RTL so it points logically (right→left)
         [dir="rtl"] & {
-            transform: scaleX(-1);
+            transform: scaleX(1);
         }
     }
 
@@ -319,7 +319,7 @@
         &__cta-wrap {
             margin-top: 24px;
             width: 100%;
-            justify-content: flex-start; //  ADDED
+            justify-content: center; //  ADDED
         }
 
         &__cta {
@@ -336,7 +336,7 @@
         min-height: 689px;
 
         &__content {
-            align-items: flex-start; //  ADDED
+            align-items: center; //  ADDED
             text-align: left; //  ADDED
             [dir="rtl"] & {
                 margin-right: 0;
@@ -371,7 +371,7 @@
 
         &__title {
             font-size: 51px;
-            text-align: left; //  ADDED
+            text-align: center; //  ADDED
             [dir="rtl"] & {
                 width: 100%;
                 text-align: right;
@@ -380,7 +380,7 @@
 
         &__description {
             font-size: 22px;
-            text-align: left; //  ADDED
+            text-align: center; //  ADDED
             [dir="rtl"] & {
                 width: 100%;
                 text-align: right;
