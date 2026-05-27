@@ -47,147 +47,22 @@
                         <a href="jcdc.html#sustainability" data-i18n="nav.dropdown.sustainability">Sustainability</a>
                     </div>
                 </div>
-            </div>
-        </header>
-        <!-- Mobile drawer -->
-        <aside class="drawer" id="drawer" aria-hidden="true">
-            <div class="drawer__head">
-                <img src="assets/coporate-PNG-01 1.svg" alt="JCDC" width="80" height="44" class="drawer__logo" />
-                <button class="drawer__close" id="drawer-close" aria-label="Close menu">
+
+                <a href="invest.html" class="nav-item" data-i18n="nav.invest">Invest</a>
+                <a href="news.html" class="nav-item" data-i18n="nav.news">News &amp; Events</a>
+                <a href="career.html" class="nav-item" data-i18n="nav.careers">Careers</a>
+                <a href="supplier.html" class="nav-item" data-i18n="nav.suppliers">Suppliers</a>
+                <a href="contact.html" class="nav-item" data-i18n="nav.contact">Contact Us</a>
+            </nav>
+
+            <div class="navbar__actions">
+                <button class="icon-btn" aria-label="Search">
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
                         <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.5" />
                         <path d="M16.5 16.5L21 21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" />
                     </svg>
                 </button>
-            </div>
-            <div class="drawer__divider"></div>
-            <p class="drawer__label" data-i18n="mobile.menu">MENU</p>
-
-            <ul class="drawer__nav">
-                <li>
-                    <button class="drawer__link" data-href="#">
-                        <span data-i18n="nav.about">About</span
-                        ><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="drawer__arrow">
-                            <path
-                                d="M9 6l6 6-6 6"
-                                stroke="currentColor"
-                                stroke-width="1.8"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                            />
-                        </svg>
-                    </button>
-                </li>
-
-                <li class="drawer__item drawer__item--has-sub">
-                    <button class="drawer__link drawer__link--expand" data-mobile-expand>
-                        <span data-i18n="nav.jcd">Jeddah Central Destination</span>
-                        <svg
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            class="drawer__arrow drawer__arrow--down"
-                        >
-                            <path
-                                d="M7 10l5 5 5-5"
-                                stroke="currentColor"
-                                stroke-width="1.8"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                            />
-                        </svg>
-                    </button>
-                    <ul class="drawer__sub">
-                        <li>
-                            <a href="#" data-i18n="nav.dropdown.districts">Districts</a>
-                        </li>
-                        <li>
-                            <a href="#" data-i18n="nav.dropdown.landmarks">Landmarks</a>
-                        </li>
-                        <li>
-                            <a href="#" data-i18n="nav.dropdown.attractions">Attractions</a>
-                        </li>
-                        <li>
-                            <a href="#" data-i18n="nav.dropdown.sustainability">Sustainability</a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li>
-                    <button class="drawer__link">
-                        <span data-i18n="nav.invest">Invest</span
-                        ><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="drawer__arrow">
-                            <path
-                                d="M9 6l6 6-6 6"
-                                stroke="currentColor"
-                                stroke-width="1.8"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                            />
-                        </svg>
-                    </button>
-                </li>
-                <li>
-                    <button class="drawer__link">
-                        <span data-i18n="nav.news">News &amp; Events</span
-                        ><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="drawer__arrow">
-                            <path
-                                d="M9 6l6 6-6 6"
-                                stroke="currentColor"
-                                stroke-width="1.8"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                            />
-                        </svg>
-                    </button>
-                </li>
-                <li>
-                    <button class="drawer__link">
-                        <span data-i18n="nav.careers">Careers</span
-                        ><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="drawer__arrow">
-                            <path
-                                d="M9 6l6 6-6 6"
-                                stroke="currentColor"
-                                stroke-width="1.8"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                            />
-                        </svg>
-                    </button>
-                </li>
-                <li>
-                    <button class="drawer__link">
-                        <span data-i18n="nav.suppliers">Suppliers</span
-                        ><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="drawer__arrow">
-                            <path
-                                d="M9 6l6 6-6 6"
-                                stroke="currentColor"
-                                stroke-width="1.8"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                            />
-                        </svg>
-                    </button>
-                </li>
-                <li>
-                    <button class="drawer__link">
-                        <span data-i18n="nav.contact">Contact Us</span
-                        ><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="drawer__arrow">
-                            <path
-                                d="M9 6l6 6-6 6"
-                                stroke="currentColor"
-                                stroke-width="1.8"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                            />
-                        </svg>
-                    </button>
-                </li>
-            </ul>
-
-            <!-- <div class="drawer__footer">
-                <button class="lang-btn lang-btn--drawer" id="lang-btn-drawer">
+                <button class="lang-btn" id="lang-btn" aria-label="Switch language">
                     <span class="lang-btn__text" data-i18n="nav.lang">العربية</span>
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                         <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5" />
@@ -196,11 +71,10 @@
                         <path d="M3 9h18M3 15h18" stroke="currentColor" stroke-width="1.5" />
                     </svg>
                 </button>
-            </div> -->
-        </aside>
-        <div class="overlay" id="overlay"></div>
-
-    <!-- Mobile drawer -->
+            </div>
+        </div>
+    </header>
+     <!-- Mobile drawer -->
     <aside class="drawer" id="drawer" aria-hidden="true">
         <div class="drawer__head">
             <img src="assets/coporate-PNG-01 1.svg" alt="JCDC" width="80" height="44" class="drawer__logo" />
@@ -215,84 +89,100 @@
 
         <ul class="drawer__nav">
             <li>
-                <button class="drawer__link" data-href="#">
-                    <span data-i18n="nav.about">About</span><svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                        class="drawer__arrow">
-                        <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                    </svg>
-                </button>
+                <a href="about.html">
+                    <button class="drawer__link" data-href="about.html">
+                        <span data-i18n="nav.about">About</span><svg width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" class="drawer__arrow">
+                            <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                </a>
             </li>
 
             <li class="drawer__item drawer__item--has-sub">
+
                 <button class="drawer__link drawer__link--expand" data-mobile-expand>
-                    <span data-i18n="nav.jcd">Jeddah Central Destination</span>
+                    <a href="jcdc.html">
+                        <span data-i18n="nav.jcd">Jeddah Central Destination</span>
+                    </a>
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                         class="drawer__arrow drawer__arrow--down">
                         <path d="M7 10l5 5 5-5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
                             stroke-linejoin="round" />
                     </svg>
                 </button>
+
                 <ul class="drawer__sub">
                     <li>
-                        <a href="#" data-i18n="nav.dropdown.districts">Districts</a>
+                        <a href="jcdc.html#jcd-map" data-i18n="nav.dropdown.districts">Districts</a>
                     </li>
                     <li>
-                        <a href="#" data-i18n="nav.dropdown.landmarks">Landmarks</a>
+                        <a href="jcdc.html#landmark-slider" data-i18n="nav.dropdown.landmarks">Landmarks</a>
                     </li>
                     <li>
-                        <a href="#" data-i18n="nav.dropdown.attractions">Attractions</a>
+                        <a href="jcdc.html#attractions" data-i18n="nav.dropdown.attractions">Attractions</a>
                     </li>
                     <li>
-                        <a href="#" data-i18n="nav.dropdown.sustainability">Sustainability</a>
+                        <a href="jcdc.html#sustainability" data-i18n="nav.dropdown.sustainability">Sustainability</a>
                     </li>
                 </ul>
             </li>
 
             <li>
-                <button class="drawer__link">
-                    <span data-i18n="nav.invest">Invest</span><svg width="24" height="24" viewBox="0 0 24 24"
-                        fill="none" class="drawer__arrow">
-                        <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                    </svg>
-                </button>
+                <a href="invest.html">
+                    <button class="drawer__link">
+                        <span data-i18n="nav.invest">Invest</span><svg width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" class="drawer__arrow">
+                            <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                </a>
             </li>
             <li>
-                <button class="drawer__link">
-                    <span data-i18n="nav.news">News &amp; Events</span><svg width="24" height="24" viewBox="0 0 24 24"
-                        fill="none" class="drawer__arrow">
-                        <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                    </svg>
-                </button>
+                <a href="news.html">
+                    <button class="drawer__link">
+                        <span data-i18n="nav.news">News &amp; Events</span><svg width="24" height="24"
+                            viewBox="0 0 24 24" fill="none" class="drawer__arrow">
+                            <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                </a>
             </li>
             <li>
-                <button class="drawer__link">
-                    <span data-i18n="nav.careers">Careers</span><svg width="24" height="24" viewBox="0 0 24 24"
-                        fill="none" class="drawer__arrow">
-                        <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                    </svg>
-                </button>
+                <a href="career.html">
+                    <button class="drawer__link">
+                        <span data-i18n="nav.careers">Careers</span><svg width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" class="drawer__arrow">
+                            <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                </a>
             </li>
             <li>
-                <button class="drawer__link">
-                    <span data-i18n="nav.suppliers">Suppliers</span><svg width="24" height="24" viewBox="0 0 24 24"
-                        fill="none" class="drawer__arrow">
-                        <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                    </svg>
-                </button>
+                <a href="supplier.html">
+                    <button class="drawer__link">
+                        <span data-i18n="nav.suppliers">Suppliers</span><svg width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" class="drawer__arrow">
+                            <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                </a>
             </li>
             <li>
-                <button class="drawer__link">
-                    <span data-i18n="nav.contact">Contact Us</span><svg width="24" height="24" viewBox="0 0 24 24"
-                        fill="none" class="drawer__arrow">
-                        <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
-                            stroke-linejoin="round" />
-                    </svg>
-                </button>
+                <a href="contact.html">
+                    <button class="drawer__link">
+                        <span data-i18n="nav.contact">Contact Us</span><svg width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" class="drawer__arrow">
+                            <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                </a>
             </li>
         </ul>
 
@@ -382,7 +272,8 @@
                                 stroke-linejoin="round" />
                         </svg> -->
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                             <path d="M18 9.00005C18 9.00005 13.5811 15 12 15C10.4188 15 6 9 6 9" stroke="#414346" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M18 9.00005C18 9.00005 13.5811 15 12 15C10.4188 15 6 9 6 9" stroke="#414346"
+                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                         <input class="news-listing__date-input" id="nl-date-from" name="from" type="date"
                             aria-label="From date" />
@@ -399,8 +290,9 @@
                             <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
                                 stroke-linejoin="round" />
                         </svg> -->
-                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                             <path d="M18 9.00005C18 9.00005 13.5811 15 12 15C10.4188 15 6 9 6 9" stroke="#414346" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path d="M18 9.00005C18 9.00005 13.5811 15 12 15C10.4188 15 6 9 6 9" stroke="#414346"
+                                stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
                         </svg>
                         <input class="news-listing__date-input" id="nl-date-to" name="to" type="date"
                             aria-label="To date" />
@@ -840,8 +732,7 @@
             <div class="footer__divider"></div>
             <div class="footer__bottom">
                 <a href="https://www.pif.gov.sa/en/" class="footer__pif-wrap">
-                    <img src="./assets/footer/Layer_1.png" alt="A PIF Company" class="footer__pif"
-                /></a>
+                    <img src="./assets/footer/Layer_1.png" alt="A PIF Company" class="footer__pif" /></a>
                 <div class="footer__legal">
                     <a href="privacyPolicy.html" data-i18n="footer.privacy">Privacy Policy</a>
                     <a href="terms&condition.html" data-i18n="footer.terms">Terms &amp; Conditions</a>
@@ -849,7 +740,7 @@
                     <span class="footer__copy" data-i18n="footer.copy">© 2025 JCDC. ALL RIGHTS RESERVED</span>
                 </div>
             </div>
-        </footer>
+    </footer>
 
     <!-- Bundled & minified JS (built from src/js by `npm run build`) -->
     <script src="dist/main.min.js" defer></script>
