@@ -23,6 +23,7 @@ const FILES = [
   'i18n.js',
   'components/navbar.js',
   'components/drawer.js',
+  'components/cookie-popup.js',
   'sections/hero.js',
   'sections/about.js',
   'sections/jcd-slider.js',
