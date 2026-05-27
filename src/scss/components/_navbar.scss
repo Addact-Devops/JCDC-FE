@@ -82,6 +82,60 @@
 }
 
 // ── Nav items ──────────────────────────────────────────
+// .nav-item {
+//     display: inline-flex;
+//     align-items: center;
+//     justify-content: center;
+//     height: 32px;
+//     padding: 8px;
+//     font-family: var(--font-body);
+//     font-size: var(--small);
+//     font-weight: 400;
+//     line-height: 1.43;
+//     color: inherit;
+//     white-space: nowrap;
+//     position: relative;
+//     transition: color var(--dur) var(--ease);
+
+//     &::after {
+//         content: "";
+//         position: absolute;
+//         inset-block-end: 2px;
+//         inset-inline-start: 8px;
+//         inset-inline-end: 8px;
+//         height: 1.5px;
+//         background: var(--primary-500);
+//         transform: scaleX(0);
+//         transform-origin: var(--origin, left);
+//         transition: transform var(--dur) var(--ease);
+//     }
+
+//     &:hover::after,
+//     &.is-active::after {
+//         transform: scaleX(1);
+//     }
+
+//     &--dropdown {
+//         padding: 0; // button handles its own padding
+//         position: relative; // dropdown anchors to THIS element
+//     }
+
+//     &__btn {
+//         display: inline-flex;
+//         align-items: center;
+//         gap: 4px;
+//         height: 32px;
+//         padding: 8px;
+//         font-family: var(--font-body);
+//         font-size: var(--small);
+//         font-weight: 400;
+//         line-height: 1.43;
+//         color: inherit;
+//         white-space: nowrap;
+//         cursor: pointer;
+//     }
+// }
+
 .nav-item {
     display: inline-flex;
     align-items: center;
@@ -96,6 +150,13 @@
     white-space: nowrap;
     position: relative;
     transition: color var(--dur) var(--ease);
+
+    // add this
+    a,
+    button {
+        color: inherit;
+        transition: color var(--dur) var(--ease);
+    }
 
     &::after {
         content: "";
@@ -116,8 +177,8 @@
     }
 
     &--dropdown {
-        padding: 0; // button handles its own padding
-        position: relative; // dropdown anchors to THIS element
+        padding: 0;
+        position: relative;
     }
 
     &__btn {
@@ -133,6 +194,7 @@
         color: inherit;
         white-space: nowrap;
         cursor: pointer;
+        transition: color var(--dur) var(--ease); // optional extra safety
     }
 }
 
@@ -141,8 +203,13 @@
 }
 
 .chevron {
-    transition: transform var(--dur) var(--ease);
+    transition:transform var(--dur) var(--ease),color var(--dur) var(--ease);
     flex-shrink: 0;
+
+    path {
+        transition: stroke var(--dur) var(--ease);
+    }
+
     [dir="rtl"] & {
         transform: scaleX(-1);
     }

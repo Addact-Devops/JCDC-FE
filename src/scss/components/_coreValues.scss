@@ -213,7 +213,79 @@
         display: none; //  hidden on desktop
     }
 
-    @media (max-width: 768px) {
+    // ==========================================
+    // Tablet & Medium Screens (1350px and below)
+    // ==========================================
+    @media (max-width: 1350px) {
+        &__container {
+            padding: 0 80px;
+        }
+
+        &__grid {
+            width: 100%;
+        }
+
+        &__card-description {
+            font-size: 16px;
+        }
+
+        &__card-title {
+            font-size: 22px;
+            margin-bottom: 16px;
+         }
+
+    }
+
+    // ==========================================
+    // Tablet & Medium Screens (1200px and below)
+    // ==========================================
+    @media (max-width: 1200px) {
+        &__container {
+            padding: 0 60px;
+        }
+
+        &__grid {
+            width: 100%;
+        }
+    }
+
+    // ==========================================
+    // Smaller Tablets (1024px and below)
+    // ==========================================
+    @media (max-width: 1024px) {
+        &__container {
+            padding: 0 40px;
+        }
+
+        &__card {
+            width: 200px;
+            padding: 60px 16px;
+        }
+
+        &__title {
+            font-size: 40px;
+        }
+
+        &__icon {
+            width: 72px;
+            height: 72px;
+            margin-bottom: 32px;
+        }
+
+        &__card-title {
+            font-size: 22px;
+            margin-bottom: 16px;
+        }
+
+        &__card-description {
+            font-size: 16px;
+        }
+    }
+
+    // ==========================================
+    // Targets tablets in portrait mode down to mobile phones
+    // ==========================================
+    @media (max-width:  991.98px) {
         .core-values__bg-vectors {
             display: none;
         }
