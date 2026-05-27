@@ -294,6 +294,30 @@
 }
 
 // ==========================================
+// Medium screens (1025-1199)
+// Smooth transition between desktop and tablet
+// ==========================================
+@media (max-width: 1199px) and (min-width: 1025px) {
+    .news-listing {
+        padding: 56px 48px;
+
+        &__controls {
+            margin-bottom: 24px;
+        }
+
+        &__filters {
+            margin-bottom: 40px;
+        }
+
+        &__grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 32px 20px;
+            margin-bottom: 40px;
+        }
+    }
+}
+
+// ==========================================
 // Filter chip — toggle styled
 // Default (selected): filled blue background, white text
 // Unselected:         outline blue with X icon
