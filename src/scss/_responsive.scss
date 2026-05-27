@@ -51,9 +51,16 @@
         height: 600px;
 
         &__content {
-            inset-block-start: 140px;
-            inset-inline-start: 48px;
-            inset-inline-end: 48px;
+            top: 140px;
+            left: 50%;
+            transform: translateX(-50%);
+
+            width: 100%;
+            max-width: 1200px;
+
+            padding-inline: 48px;
+        }
+        &__content-inner {
             max-width: 640px;
         }
         &__title {
@@ -162,9 +169,17 @@
         height: 560px;
 
         &__content {
-            inset-block-start: 120px;
-            inset-inline-start: 32px;
-            inset-inline-end: 32px;
+            top: 120px;
+            left: 50%;
+            transform: translateX(-50%);
+
+            width: 100%;
+            max-width: 1200px;
+
+            padding-inline: 32px;
+        }
+
+        &__content-inner {
             max-width: 600px;
         }
         &__title {
@@ -284,14 +299,17 @@
         height: 664px;
 
         &__content {
-            display: flex;
-            flex-direction: column;
-            justify-content: start;
-            margin-top: 130px;
-            padding: 20px 16px;
-            inset-block-start: 100px;
-            inset-inline-start: 20px;
-            inset-inline-end: 20px;
+            top: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+
+            width: 100%;
+            max-width: 1200px;
+
+            padding-inline: 20px;
+        }
+        &__content-inner {
+            max-width: 100%;
         }
         &__title {
             font-size: 50px;
@@ -425,11 +443,13 @@
         min-height: 580px; // 👈 ADDED — safety floor
 
         &__content {
-            inset-block-start: auto; // 👈 CHANGED — remove fixed top
-            inset-inline-start: 16px;
-            inset-inline-end: 16px;
-            margin-top: 120px; // 👈 CHANGED — was 130px
-            padding: 16px;
+            top: 120px;
+            left: 50%;
+            transform: translateX(-50%);
+
+            width: 100%;
+
+            padding-inline: 16px;
         }
 
         &__title {

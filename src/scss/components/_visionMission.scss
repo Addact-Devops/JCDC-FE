@@ -149,17 +149,20 @@ $bg-color: #ffffff;
             flex-direction: column;
             align-items: center;
             gap: 24px;
+            align-items: stretch;
         }
 
         &__card {
             width: 100%;
-            height: auto;
-            min-height: 449px; //  Fixed (449px) from Figma
-            padding: 280px 16px 24px 16px; //  top pushes text below pattern, right/bottom/left from Figma
+            height: 449px; // ◆ was height: auto + min-height: 449px
+            padding: 280px 16px 24px 16px;
             align-items: flex-start;
             text-align: start;
-            gap: 10px; //  Gap 10px from Figma
-            border-radius: 8px; //  Radius 8px from Figma
+            gap: 10px;
+            border-radius: 8px;
+            overflow: hidden;
+
+            flex: 0 0 449px;
             [dir="rtl"] & {
                 align-items: flex-end !important;
                 text-align: right;
@@ -178,6 +181,11 @@ $bg-color: #ffffff;
             font-size: 16px;
             line-height: 26px;
             max-width: 100%;
+
+            display: -webkit-box;
+            -webkit-line-clamp: 4; // ◆ cap at 4 lines
+            -webkit-box-orient: vertical;
+            overflow: hidden;
             [dir="rtl"] & {
                 direction: rtl; //  text reads RTL
                 text-align: right; //  text aligns right
