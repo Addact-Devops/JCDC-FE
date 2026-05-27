@@ -317,7 +317,83 @@
             "awardsRecognition": "Awards & Recognition"
         },
         "readMore": "Read More",
-        "empty": "No articles match your filters. Try clearing filters or searching for something else."
+        "empty": "No articles match your filters. Try clearing filters or searching for something else.",
+        "items": [
+            {
+                "title": "The Development of Jeddah Central Destination Continues with 12 billion Saudi Riyals Contract Award",
+                "excerpt": "Jeddah Central Development Company, a wholly owned company by the Public...",
+                "body": [
+                    "Jeddah Central Development Company, a wholly owned company by the Public Investment Fund (PIF) and the master developer of the Jeddah Central destination, signed four construction contracts for the destination's first three landmarks – the Stadium, the Opera House and the Oceanarium– in addition to phase one infrastructure and utilities works, with a total value of 12 billion Saudi Riyals. The contract signing ceremony was held today at the destination's site.",
+                    "China Harbour Engineering Arabia Company Limited (CHEC) won the contract for the infrastructure construction. Modern Building Leaders (MBL) were awarded the contracts for the Oceanarium, and the Opera House, while the Sports Stadium and the surrounding villages contract went to The Consortium China Railway Construction Corp. LTD. Saudi Branch and Sama Construction for Contracting.",
+                    "Engineer Ahmed Al-Sulaim, CEO of Jeddah Central Development, highlighted the significance of this day, marking the start of the construction of the main architectural landmarks and the infrastructure for phase one, in line with the timeline to transform Jeddah Central into a global destination. Aligning with Vision 2030, this step reflects Jeddah Central Development Company's commitment towards economic advancement, job creation, and enriching the cultural and recreational landscape of Jeddah.",
+                    "Al-Sulaim added: \"The construction contracts were awarded following thorough procedures, high standards of governance, and transparency. All awarded companies demonstrated eligibility through their proven track record of experience in implementing various projects according to international best practices.\""
+                ]
+            },
+            {
+                "title": "First Real Estate Development to Receive Esteemed EFQM Organizational Excellence Recognition",
+                "excerpt": "Jeddah Central Development Company (JCDC), a company wholly owned by the...",
+                "body": [
+                    "Jeddah Central Development Company (JCDC), a company wholly owned by the Public Investment Fund (PIF), has been recognized for its commitment to organizational excellence by the European Foundation for Quality Management (EFQM).",
+                    "The recognition reflects JCDC's continuous efforts to embed quality, sustainability, and innovation across all areas of operation. The achievement positions JCDC as a benchmark for excellence in real estate development across the region."
+                ]
+            },
+            {
+                "title": "Jeddah Central Development Company: Diamond Sponsor of The Global Project Management Forum - Second Edition",
+                "excerpt": "Jeddah Central Development Company (JCDC), a wholly owned company by the Public...",
+                "body": [
+                    "Jeddah Central Development Company (JCDC), a wholly owned company by the Public Investment Fund (PIF), is proud to announce its role as Diamond Sponsor of The Global Project Management Forum — Second Edition.",
+                    "The forum brings together global project management leaders to share best practices, advance the profession, and foster collaboration. JCDC's sponsorship reaffirms its commitment to excellence in project delivery and continuous learning."
+                ]
+            },
+            {
+                "title": "Jeddah Central Development Company Concludes its Participation in Cityscape Global",
+                "excerpt": "Jeddah Central Development Company (JCDC), a wholly-owned company by the...",
+                "body": [
+                    "Jeddah Central Development Company (JCDC) successfully concluded its participation in Cityscape Global, the largest real estate event in the region.",
+                    "Throughout the event, JCDC engaged with investors, partners, and stakeholders, presenting the latest progress on the Jeddah Central destination and signing several agreements to accelerate development."
+                ]
+            },
+            {
+                "title": "Jeddah Central Development Company (JCDC) Becomes a Diamond Member of EFQM",
+                "excerpt": "Saudi Arabia's Jeddah Central Development Company (JCDC), a wholly owned...",
+                "body": [
+                    "Saudi Arabia's Jeddah Central Development Company (JCDC), a wholly owned company by the Public Investment Fund (PIF), has been awarded Diamond membership of the European Foundation for Quality Management (EFQM).",
+                    "Diamond membership represents the highest tier of EFQM partnership, granting JCDC access to global best practices, expert assessments, and a network of leading organizations across industries."
+                ]
+            },
+            {
+                "title": "Jeddah Central Development Company Signs MoU With Corinthia Group to Develop and Operate Projects within its Marina District",
+                "excerpt": "Saudi Arabia's Jeddah Central Development Company (JCDC)...",
+                "body": [
+                    "Saudi Arabia's Jeddah Central Development Company (JCDC) has signed a Memorandum of Understanding (MoU) with Corinthia Group to develop and operate hospitality and lifestyle projects within the Marina District of the Jeddah Central destination.",
+                    "The partnership will bring world-class hospitality experiences to the destination's waterfront, complementing the broader masterplan and elevating Jeddah's position as a premier global destination."
+                ]
+            },
+            {
+                "title": "JCDC Reports Strong Q1 Progress Across Phase One Construction",
+                "excerpt": "JCDC announces significant progress on phase one construction across all four landmarks...",
+                "body": [
+                    "JCDC announces significant progress on phase one construction across all four landmarks, with milestones being achieved on schedule.",
+                    "The company continues to work closely with its construction partners to ensure quality, safety, and timely delivery."
+                ]
+            },
+            {
+                "title": "Jeddah Central Adopts LEED Gold Standards for All Major Buildings",
+                "excerpt": "JCDC commits to LEED Gold pre-certification for all major buildings within the destination...",
+                "body": [
+                    "Jeddah Central Development Company commits to LEED Gold pre-certification for all major buildings within the destination, reinforcing its commitment to sustainable urban development.",
+                    "The decision aligns with global best practices in green building and supports Saudi Arabia's broader sustainability ambitions under Vision 2030."
+                ]
+            },
+            {
+                "title": "JCDC Hosts Community Day Celebrating Jeddah's Heritage",
+                "excerpt": "JCDC hosted a community day featuring cultural performances, heritage exhibits, and family activities...",
+                "body": [
+                    "Jeddah Central Development Company hosted a community day at its visitor center, featuring cultural performances, heritage exhibits, and family activities celebrating Jeddah's rich history.",
+                    "The event drew thousands of attendees and reinforced JCDC's commitment to community engagement and cultural preservation."
+                ]
+            }
+        ]
     },
     "newsItem": {
         "metaTitle": "JCDC — News & Events",

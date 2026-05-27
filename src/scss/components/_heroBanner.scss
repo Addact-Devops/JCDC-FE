@@ -148,7 +148,6 @@
     &__title {
         font-family: "Ubuntu", sans-serif;
         width: 100%;
-        max-width: 452px;
         margin: 0 auto 32px auto;
         font-size: 64px;
         font-weight: 500;
@@ -207,6 +206,10 @@
     // CTA button width override — slightly wider than default
     &__cta {
         min-width: 220px;
+    }
+
+    &__two-line-title{
+        max-width: 452px;
     }
 }
 .legalBanner {
