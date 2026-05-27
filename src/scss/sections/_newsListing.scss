@@ -424,8 +424,8 @@
 
     &__excerpt {
         margin: 0;
-        margin-top: 17px; // ◆ NEW — bridges card gap (16) up to Figma's 33
         font-family: var(--font-body);
+        margin-top: -16px;
         font-size: 16px; // ◆ was 14px
         font-weight: 400;
         line-height: 1.5;
