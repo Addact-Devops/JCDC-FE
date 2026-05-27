@@ -293,6 +293,24 @@
     }
 }
 
+// Arabic-only spacing/alignment fix for date range controls ("From" / "To" / "Choose Date")
+[dir="rtl"] .news-listing {
+    &__field:nth-child(2) {
+        margin-left: 0;
+        margin-right: auto;
+    }
+
+    &__date {
+        direction: rtl;
+        gap: 10px;
+    }
+
+    &__date-text {
+        text-align: right;
+        padding-inline-start: 4px;
+    }
+}
+
 // ==========================================
 // Medium screens (1025-1199)
 // Smooth transition between desktop and tablet
