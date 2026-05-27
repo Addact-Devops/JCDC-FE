@@ -107,7 +107,7 @@
 
         // Flip the chevron direction in RTL so it points logically (right→left)
         [dir="rtl"] & {
-            transform: scaleX(-1);
+            transform: scaleX(1);
         }
     }
 
