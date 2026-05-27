@@ -121,14 +121,24 @@
         // ──────────────────────────────────────
         // Filter chips state
         // ──────────────────────────────────────
+        // function syncChips(activeCats) {
+        //     filtersWrap.querySelectorAll("[data-cat]").forEach((btn) => {
+        //         const cat = btn.dataset.cat;
+        //         // If nothing is selected at all, treat "All News" as visually active.
+        //         const isActive = activeCats.size === 0 ? cat === "all" : activeCats.has(cat);
+        //         btn.classList.toggle("filter-chip--active", isActive);
+        //         btn.setAttribute("aria-pressed", String(isActive));
+        //     });
+        // }
         function syncChips(activeCats) {
-            filtersWrap.querySelectorAll("[data-cat]").forEach((btn) => {
-                const cat = btn.dataset.cat;
-                // If nothing is selected at all, treat "All News" as visually active.
-                const isActive = activeCats.size === 0 ? cat === "all" : activeCats.has(cat);
-                btn.classList.toggle("filter-chip--active", isActive);
-                btn.setAttribute("aria-pressed", String(isActive));
-            });
+          filtersWrap.querySelectorAll("[data-cat]").forEach((btn) => {
+            const cat = btn.dataset.cat;
+
+            const isActive = activeCats.has(cat);
+
+            btn.classList.toggle("filter-chip--active", isActive);
+            btn.setAttribute("aria-pressed", String(isActive));
+          });
         }
 
         filtersWrap.querySelectorAll("[data-cat]").forEach((btn) => {
