@@ -44,9 +44,11 @@
         transform: translateX(-50%);
 
         width: 100%;
-        max-width: 1200px;
+        max-width: 1440px;
 
-        padding: 0;
+        padding-inline: 120px;
+
+        box-sizing: border-box;
 
         z-index: 3;
 
@@ -55,6 +57,7 @@
         }
     }
     &__content-inner {
+        width: 100%;
         max-width: 795px;
         color: #fff;
     }
