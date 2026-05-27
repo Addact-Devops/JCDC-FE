@@ -97,25 +97,28 @@
         // Date formatting (locale-aware)
         // ──────────────────────────────────────
         function formatDate(iso, lang) {
-            try {
-                const d = new Date(iso + "T00:00:00");
-                return d.toLocaleDateString(lang === "ar" ? "ar-SA" : "en-US", {
-                    year: "numeric",
-                    month: "short",
-                    day: "2-digit",
-                });
-            } catch (_) {
-                return iso;
-            }
-        }
-
-        function refreshDateLabels(lang) {
-            cards.forEach((card) => {
-                const t = card.querySelector(".news-list-card__date");
-                if (!t) return;
-                const iso = t.getAttribute("datetime");
-                if (iso) t.textContent = formatDate(iso, lang);
+          try {
+            const d = new Date(iso + "T00:00:00");
+    
+            return d.toLocaleDateString(lang === "ar" ? "ar-SA" : "en-US", {
+              year: "numeric",
+              month: "long",
+              day: "2-digit",
             });
+          } catch (_) {
+            return iso;
+          }
+        }
+    
+        function refreshDateLabels(lang) {
+          cards.forEach((card) => {
+            const t = card.querySelector(".news-list-card__date");
+            if (!t) return;
+            const iso = t.getAttribute("datetime");
+            if (iso) {
+              t.textContent = formatDate(iso, lang);
+            }
+          });
         }
 
         // ──────────────────────────────────────
