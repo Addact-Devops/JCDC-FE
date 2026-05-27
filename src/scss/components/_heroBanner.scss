@@ -146,17 +146,15 @@
     // ==========================================
 
     &__title {
-        margin: 0 0 32px;
-
         font-family: "Ubuntu", sans-serif;
-
+        width: 100%;
+        max-width: 452px;
+        margin: 0 auto 32px auto;
         font-size: 64px;
         font-weight: 500;
         line-height: 120%;
         letter-spacing: 0;
-
         text-align: center;
-
         color: #ffffff;
     }
 

@@ -21,10 +21,10 @@
 //  LARGE DESKTOP (1200-1439) — scale gutter proportionally
 // ═══════════════════════════════════════════════════
 @media (max-width: 1439px) and (min-width: 1200px) {
-    .hero__content {
-        inset-inline-start: clamp(48px, 8.33vw, 120px);
-        inset-inline-end: clamp(48px, 8.33vw, 120px);
-    }
+    // .hero__content {
+    //     inset-inline-start: clamp(48px, 8.33vw, 120px);
+    //     inset-inline-end: clamp(48px, 8.33vw, 120px);
+    // }
     .about {
         padding-inline: clamp(48px, 8.33vw, 120px);
     }
