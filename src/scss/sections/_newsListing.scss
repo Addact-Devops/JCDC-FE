@@ -252,10 +252,18 @@
     // ==========================================
     &__filters {
         display: flex;
-        flex-wrap: wrap;
+        flex-wrap: nowrap;
         align-items: center;
         gap: 12px;
         margin-bottom: 56px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
     }
 
     &__filters-label {
@@ -292,6 +300,7 @@
 // ==========================================
 .filter-chip {
     display: inline-flex;
+    flex: 0 0 auto;
     align-items: center;
     gap: 6px;
     height: 40px;
@@ -304,6 +313,7 @@
     font-size: 12px;
     font-weight: 400;
     line-height: 1;
+    white-space: nowrap;
     cursor: pointer;
 
     transition:
@@ -315,10 +325,7 @@
         flex-shrink: 0;
         width: 14px;
         height: 14px;
-        display: none;
-    }
-    &--active &__icon {
-        display: inline-block;
+        display: none !important;
     }
 
     // Selected (active filter)
@@ -508,16 +515,40 @@
         padding: 48px 24px;
 
         &__controls {
-            grid-template-columns: 1fr;
+            flex-direction: column;
+            align-items: stretch;
             gap: 16px;
         }
 
+        &__field {
+            width: 100%;
+        }
+
+        &__field:first-child {
+            max-width: none;
+        }
+
+        &__field:nth-child(2) {
+            margin-left: 0;
+        }
+
+        // Figma mobile keeps the search input + button on one row.
         &__search {
-            grid-column: auto;
-            flex-direction: column;
+            flex-direction: row;
+            gap: 12px;
+        }
+
+        &__search-input-wrap {
+            flex: 1;
         }
 
         &__search-btn {
+            width: 128px;
+            min-width: 128px;
+            padding: 0 16px;
+        }
+
+        &__date {
             width: 100%;
         }
 
@@ -530,6 +561,7 @@
         &__filters {
             gap: 8px;
             margin-bottom: 24px;
+            padding-bottom: 2px;
         }
     }
 }
