@@ -344,4 +344,36 @@
     } else {
         init();
     }
+    (() => {
+        const section = document.getElementById("news-listing-be");
+        if (!section) return;
+
+        const form = section.querySelector("#nl-be-form");
+
+        ["nl-date-from-wrap", "nl-date-to-wrap"].forEach((wrapId) => {
+            const wrap = section.querySelector(`#${wrapId}`);
+            if (!wrap) return;
+
+            const input = wrap.querySelector(".news-listing__date-input");
+            if (!input) return;
+
+            wrap.addEventListener("click", (e) => {
+                if (e.target === input) return;
+
+                if (typeof input.showPicker === "function") {
+                    try {
+                        input.showPicker();
+                    } catch {
+                        input.focus();
+                    }
+                } else {
+                    input.focus();
+                }
+            });
+
+            input.addEventListener("change", () => {
+                form?.submit();
+            });
+        });
+    })();
 })();
