@@ -52,6 +52,53 @@
         }
     }
 
+    // JCD Slider button — filled cream bg, gold text + arrow
+    // Width hugs parent (full-width inside slider content)
+    // Height hugs content — single line: 48px, wraps when text is long
+    // Figma: Components/General/Buttons/Button (filled cream variant)
+    &--slider {
+        width: 100%;
+        height: auto;
+        min-height: 48px;
+        justify-content: space-between;
+        gap: 20px;
+        background: var(--secondary-50); // #faf5ee cream
+        border-color: transparent;
+        color: var(--secondary-500); // #cc9f53 gold
+        white-space: normal; // allow text wrap
+        text-align: start;
+
+        span {
+            flex: 1;
+            min-width: 0;
+        }
+
+        svg {
+            width: 24px;
+            height: 24px;
+            color: var(--secondary-500);
+            transition: transform var(--dur) var(--ease);
+        }
+
+        &:hover {
+            background: #f0e6d2; // slightly darker cream
+            color: var(--secondary-500);
+
+            svg {
+                transform: translateX(4px);
+
+                [dir="rtl"] & {
+                    transform: translateX(-4px) scaleX(-1);
+                }
+            }
+        }
+
+        &:focus-visible {
+            outline: 2px solid var(--secondary-500);
+            outline-offset: 3px;
+        }
+    }
+
     // Filled gold
     &--gold {
         background: var(--secondary-500);

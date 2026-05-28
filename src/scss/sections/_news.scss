@@ -86,6 +86,9 @@
             [dir="rtl"] & {
                 transform: scaleX(-1);
             }
+            path {
+                stroke: var(--secondary-500);
+            }
         }
 
         &:hover {
