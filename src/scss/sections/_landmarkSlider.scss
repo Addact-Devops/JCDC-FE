@@ -445,11 +445,11 @@
         }
 
         &__viewport {
-            --slide-width: 75vw; // 👈 CHANGED — allows peek slides on sides
+            --slide-width: 100vw;
             --slide-gap: 12px;
             position: relative;
             overflow: hidden;
-            padding: 60px 0 0;
+            padding: 0;
         }
 
         &__nav {
@@ -473,20 +473,19 @@
         }
 
         &__track {
-            gap: 12px; // 👈 CHANGED
+            gap: 12px;
         }
 
         &__slide {
-            flex: 0 0 75vw; // 👈 CHANGED — match --slide-width
-            width: 75vw; // 👈 CHANGED
-            height: 333px; // 👈 from Figma
+            flex: 0 0 100vw;
+            width: 100vw;
+            height: 333px;
             aspect-ratio: unset;
-            border-radius: 12px;
+            border-radius: 8px;
             transform: none;
             margin: 0;
-            opacity: 0.6; // 👈 CHANGED — dim non-active
+            opacity: 1;
 
-            // 👈 image fills slide
             img {
                 width: 100%;
                 height: 100%;
@@ -494,13 +493,17 @@
             }
 
             &.is-active {
-                opacity: 1; // 👈 active slide full opacity
+                opacity: 1;
             }
 
             &:not(.is-active) {
                 transform: none;
                 margin: 0;
             }
+        }
+
+        &__slide::after {
+            display: none;
         }
 
         &__slide-content {
@@ -528,13 +531,57 @@
         }
 
         &__dots {
-            margin-top: 16px;
+            position: static;
+            margin: 24px 0 0;
             gap: 6px;
+            align-items: center;
         }
 
         &__dot {
-            width: 6px;
-            height: 6px;
+            width: 10px;
+            height: 10px;
+        }
+
+        &__card {
+            position: relative;
+            bottom: auto;
+            left: auto;
+            transform: none;
+            width: 337px;
+            max-width: calc(100vw - 24px);
+            margin: -100px auto 0;
+            padding: 24px;
+            border-radius: 8px;
+            background: rgba(243, 243, 243, 0.98);
+            box-shadow: none;
+            backdrop-filter: blur(10px);
+            display: block;
+        }
+
+        &__card-variant {
+            align-items: flex-start;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        &__card-text {
+            gap: 16px;
+        }
+
+        &__card-title {
+            font-size: 30px;
+            font-weight: 500;
+            line-height: 1.2;
+        }
+
+        &__card-description {
+            font-size: 18px;
+            line-height: 1.5;
+            color: #414346;
+        }
+
+        &__card-cta {
+            margin-top: 2px;
         }
     }
 
@@ -547,13 +594,13 @@
 @media (max-width: 480px) {
     .landmark-slider {
         &__slide {
-            flex: 0 0 283px; // 👈 CHANGED — Fixed 283px from Figma
-            width: 283px;
+            flex: 0 0 100vw;
+            width: 100vw;
             height: 333px;
         }
 
         &__viewport {
-            --slide-width: 283px;
+            --slide-width: 100vw;
         }
 
         &__slide-content {
@@ -570,6 +617,19 @@
 
         &__slide-desc {
             font-size: 16px;
+        }
+
+        &__card {
+            width: 337px;
+            max-width: calc(100vw - 24px);
+        }
+
+        &__card-title {
+            font-size: 30px;
+        }
+
+        &__card-description {
+            font-size: 18px;
         }
     }
 
