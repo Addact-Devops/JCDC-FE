@@ -14,7 +14,7 @@
 .landmark-slider {
     width: 100%;
     background: var(--surface-white);
-    // padding: 64px 0;
+    padding: 64px 0;
 
     // ==========================================
     // Header (title + xoxo pattern)
@@ -179,7 +179,6 @@
         gap: 40px;
         flex: 1;
         flex-shrink: 0;
-        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
     }
 
     &__card-inner {
@@ -288,7 +287,7 @@
         }
 
         &--next {
-        inset-inline-end: calc(50% - 600px - 50px); // 👈 same on right side
+            inset-inline-end: calc(50% - 600px - 50px); // 👈 same on right side
         }
     }
 
@@ -311,8 +310,8 @@
         width: 10px;
         height: 10px;
         border-radius: 50%;
-        background: #0076A9;
-         opacity: 0.5;
+        background: #0076a9;
+        opacity: 0.5;
         padding: 0;
         cursor: pointer;
         transition:
@@ -320,8 +319,8 @@
             transform var(--dur) var(--ease);
 
         &:hover:not(&--active) {
-            background: #0076A9;
-            opacity:1;
+            background: #0076a9;
+            opacity: 1;
         }
 
         &:focus-visible {
@@ -330,9 +329,9 @@
         }
 
         &--active {
-            background: #0076A9;
+            background: #0076a9;
             cursor: default;
-            opacity:1;
+            opacity: 1;
         }
     }
 }
