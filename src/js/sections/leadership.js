@@ -24,7 +24,6 @@
         // Modal elements (pre-rendered in HTML — one shared dialog wrapper
         // with multiple `.leader-modal__content` blocks, one per executive).
         const modal = document.getElementById("leader-modal");
-        const modalClose = modal && modal.querySelector("[data-leader-modal-close]");
         const modalContents = modal ? modal.querySelectorAll("[data-leader-modal-content]") : [];
 
         // ──────────────────────────────────────
@@ -84,9 +83,10 @@
             modal.setAttribute("aria-hidden", "false");
             document.body.style.overflow = "hidden";
 
-            // Move focus to the close button for accessibility
+            // Move focus to the close button of the CURRENTLY ACTIVE content block
             requestAnimationFrame(() => {
-                if (modalClose) modalClose.focus({ preventScroll: true });
+                const activeClose = modal.querySelector(".leader-modal__content--active [data-leader-modal-close]");
+                if (activeClose) activeClose.focus({ preventScroll: true });
             });
         }
 
@@ -110,11 +110,20 @@
         });
 
         if (modal) {
-            if (modalClose) modalClose.addEventListener("click", closeModal);
-            // Backdrop click closes
+            // Single delegated click handler — catches ALL 6 close buttons
+            // AND backdrop clicks with one listener.
             modal.addEventListener("click", (e) => {
-                if (e.target === modal) closeModal();
+                // Close button (or anything inside it, e.g. the SVG) clicked
+                if (e.target.closest("[data-leader-modal-close]")) {
+                    closeModal();
+                    return;
+                }
+                // Backdrop clicked (modal itself, not the dialog or anything inside)
+                if (e.target === modal) {
+                    closeModal();
+                }
             });
+
             // Escape closes
             document.addEventListener("keydown", (e) => {
                 if (e.key === "Escape" && modal.classList.contains("is-open")) {
