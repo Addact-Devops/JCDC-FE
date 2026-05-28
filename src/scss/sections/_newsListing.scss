@@ -409,7 +409,7 @@
 
     &__image {
         width: 100%;
-        height: 240px; // ◆ Figma fixed height (was aspect-ratio 16/11)
+        aspect-ratio: 16 / 11;
         border-radius: 8px;
         overflow: hidden;
 
