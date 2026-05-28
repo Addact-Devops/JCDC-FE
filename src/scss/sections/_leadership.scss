@@ -518,14 +518,17 @@
   }
 
   .leader-card {
-    &__name {
-      font-size: 18px;
-    }
+        height: auto;
+        overflow: visible;
 
-    &__description {
-      font-size: 14px;
+        &__name {
+            font-size: 18px;
+        }
+
+        &__description {
+            font-size: 14px;
+        }
     }
-  }
   .leader-modal {
     padding: 12px;
 
