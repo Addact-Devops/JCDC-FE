@@ -3,251 +3,251 @@
 // ==========================================
 
 .visually-hidden {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    white-space: nowrap;
-    border: 0;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 .leadership {
+  width: 100%;
+  background: var(--surface-white);
+  padding: 64px 120px 80px;
+
+  &__container {
     width: 100%;
-    background: var(--surface-white);
-    padding: 64px 120px 80px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
 
-    &__container {
-        width: 100%;
-        max-width: 1200px;
-        margin: 0 auto;
+  // ==========================================
+  // Tabs
+  // ==========================================
+  &__tabs-wrap {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 48px;
+  }
+
+  &__tabs {
+    display: inline-flex;
+    align-items: center;
+    border: 1px solid var(--secondary-500);
+    border-radius: 10px; // ◆ was 4px
+    overflow: hidden;
+    background: #fff;
+  }
+
+  &__tab {
+    min-width: 236px;
+    height: 78px;
+    padding: 10px 23px; // ◆ was 24.5px 23px
+    border: 0;
+    background: transparent;
+    font-family: var(--font-body);
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.2; // ◆ was 1
+    color: #7c7f81; // ◆ was var(--secondary-500)
+    cursor: pointer;
+    transition:
+      background 0.3s ease,
+      color 0.3s ease;
+
+    &:hover:not(&--active) {
+      background: rgba(204, 159, 83, 0.08);
     }
 
-    // ==========================================
-    // Tabs
-    // ==========================================
-    &__tabs-wrap {
-        display: flex;
-        justify-content: center;
-        margin-bottom: 48px;
+    &:focus-visible {
+      outline: 2px solid var(--primary-500);
+      outline-offset: 2px;
     }
 
-    &__tabs {
-        display: inline-flex;
-        align-items: center;
-        border: 1px solid var(--secondary-500);
-        border-radius: 10px; // ◆ was 4px
-        overflow: hidden;
-        background: #fff;
+    &--active {
+      background: var(--secondary-500);
+      color: #efefef; // ◆ was #fff
+      cursor: default;
     }
+  }
 
-    &__tab {
-        min-width: 236px;
-        height: 78px;
-        padding: 10px 23px; // ◆ was 24.5px 23px
-        border: 0;
-        background: transparent;
-        font-family: var(--font-body);
-        font-size: 24px;
-        font-weight: 500;
-        line-height: 1.2; // ◆ was 1
-        color: #7c7f81; // ◆ was var(--secondary-500)
-        cursor: pointer;
-        transition:
-            background 0.3s ease,
-            color 0.3s ease;
+  // ==========================================
+  // Panels
+  // ==========================================
+  &__panel {
+    display: none;
 
-        &:hover:not(&--active) {
-            background: rgba(204, 159, 83, 0.08);
-        }
-
-        &:focus-visible {
-            outline: 2px solid var(--primary-500);
-            outline-offset: 2px;
-        }
-
-        &--active {
-            background: var(--secondary-500);
-            color: #efefef; // ◆ was #fff
-            cursor: default;
-        }
+    &--active {
+      display: block;
     }
+  }
 
-    // ==========================================
-    // Panels
-    // ==========================================
-    &__panel {
-        display: none;
+  // ==========================================
+  // Chairman Card
+  // ==========================================
+  &__chairman {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 0 20px; // ◆ unchanged
+    margin-bottom: 56px;
+    border: 1px solid var(--secondary-500); // ◆ was #d6b36a
+    border-radius: 2px;
+    overflow: hidden;
+    // ◆ min-height REMOVED — image drives the height
+  }
 
-        &--active {
-            display: block;
-        }
+  &__chairman-photo {
+    flex: 0 0 545px; // ◆ was 0 0 420px
+    height: 419px; // ◆ was 340px
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
+      display: block;
     }
+  }
 
-    // ==========================================
-    // Chairman Card
-    // ==========================================
-    &__chairman {
-        display: flex;
-        align-items: center;
-        gap: 24px;
-        padding: 0 20px; // ◆ unchanged
-        margin-bottom: 56px;
-        border: 1px solid var(--secondary-500); // ◆ was #d6b36a
-        border-radius: 2px;
-        overflow: hidden;
-        // ◆ min-height REMOVED — image drives the height
-    }
+  &__chairman-body {
+    flex: 1;
+    max-width: 460px; // ◆ was 620px (matches Figma text width)
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 8px; // ◆ NEW — replaces individual margins
+  }
 
-    &__chairman-photo {
-        flex: 0 0 545px; // ◆ was 0 0 420px
-        height: 419px; // ◆ was 340px
+  &__chairman-role {
+    margin: 0; // ◆ was 0 0 12px
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 700; // ◆ was 600
+    line-height: 1.43; // ◆ was 150%
+    color: var(--secondary-500);
+  }
 
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: top;
-            display: block;
-        }
-    }
+  &__chairman-name {
+    margin: 0; // ◆ was 0 0 16px
+    font-family: var(--font-body);
+    font-size: 24px; // ◆ was 34px
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--primary-500);
+  }
 
-    &__chairman-body {
-        flex: 1;
-        max-width: 460px; // ◆ was 620px (matches Figma text width)
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        gap: 8px; // ◆ NEW — replaces individual margins
-    }
+  &__chairman-description {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.5; // ◆ was 170%
+    color: var(--text-500);
+  }
 
-    &__chairman-role {
-        margin: 0; // ◆ was 0 0 12px
-        font-family: var(--font-body);
-        font-size: 14px;
-        font-weight: 700; // ◆ was 600
-        line-height: 1.43; // ◆ was 150%
-        color: var(--secondary-500);
-    }
-
-    &__chairman-name {
-        margin: 0; // ◆ was 0 0 16px
-        font-family: var(--font-body);
-        font-size: 24px; // ◆ was 34px
-        font-weight: 500;
-        line-height: 1.2;
-        color: var(--primary-500);
-    }
-
-    &__chairman-description {
-        margin: 0;
-        font-family: var(--font-body);
-        font-size: 18px;
-        font-weight: 400;
-        line-height: 1.5; // ◆ was 170%
-        color: var(--text-500);
-    }
-
-    // ==========================================
-    // Grid
-    // ==========================================
-    &__grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 56px 20px;
-    }
+  // ==========================================
+  // Grid
+  // ==========================================
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 56px 20px;
+  }
 }
 
 // ==========================================
 // Leader Card
 // ==========================================
 .leader-card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px; // ◆ NEW — replaces individual margins
+  height: 440px; // ◆ NEW — fixed height per Figma
+  padding: 20px;
+  border: 1px solid var(--secondary-500); // ◆ was #d6b36a
+  border-radius: 0; // ◆ was 2px
+  background: #fff;
+  overflow: hidden; // ◆ NEW — clip any overflow at 440px
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+
+  &__photo {
+    width: 100%;
+    height: 240px;
+    border-radius: 0; // ◆ was 4px
+    overflow: hidden;
+    background: #f3f3f3;
+    // ◆ margin-bottom REMOVED — handled by parent gap
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 0%;
+      transition:
+        transform 0.6s ease,
+        opacity 0.6s ease;
+    }
+  }
+
+  &:hover &__photo img {
+    transform: scale(1.03);
+  }
+
+  &__role {
+    margin: 0; // ◆ was 0 0 8px
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 700; // ◆ was 600
+    line-height: 1.43; // ◆ was 150%
+    color: var(--secondary-500);
+  }
+
+  &__name {
+    margin: 0; // ◆ was 0 0 12px
+    font-family: var(--font-body);
+    font-size: 24px; // ◆ was 20px
+    font-weight: 500;
+    line-height: 1.2; // ◆ was 130%
+    color: var(--primary-500);
+  }
+
+  &__description {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: 18px; // ◆ was 14px
+    font-weight: 400;
+    line-height: 1.5; // ◆ was 160%
+    color: var(--text-500);
+  }
+
+  // ==========================================
+  // Executive Variant
+  // ==========================================
+  &--executive {
+    cursor: pointer;
+    text-align: start;
+    // ◆ min-height: 100% REMOVED — parent height: 440px is enough
+
+    &:focus-visible {
+      outline: 2px solid var(--primary-500);
+      outline-offset: 2px;
+    }
+  }
+
+  &__btn {
+    all: unset;
     display: flex;
     flex-direction: column;
-    gap: 8px; // ◆ NEW — replaces individual margins
-    height: 440px; // ◆ NEW — fixed height per Figma
-    padding: 20px;
-    border: 1px solid var(--secondary-500); // ◆ was #d6b36a
-    border-radius: 0; // ◆ was 2px
-    background: #fff;
-    overflow: hidden; // ◆ NEW — clip any overflow at 440px
-    transition:
-        transform 0.35s ease,
-        box-shadow 0.35s ease;
-
-    &__photo {
-        width: 100%;
-        height: 240px;
-        border-radius: 0; // ◆ was 4px
-        overflow: hidden;
-        background: #f3f3f3;
-        // ◆ margin-bottom REMOVED — handled by parent gap
-
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: center 0%;
-            transition:
-                transform 0.6s ease,
-                opacity 0.6s ease;
-        }
-    }
-
-    &:hover &__photo img {
-        transform: scale(1.03);
-    }
-
-    &__role {
-        margin: 0; // ◆ was 0 0 8px
-        font-family: var(--font-body);
-        font-size: 14px;
-        font-weight: 700; // ◆ was 600
-        line-height: 1.43; // ◆ was 150%
-        color: var(--secondary-500);
-    }
-
-    &__name {
-        margin: 0; // ◆ was 0 0 12px
-        font-family: var(--font-body);
-        font-size: 24px; // ◆ was 20px
-        font-weight: 500;
-        line-height: 1.2; // ◆ was 130%
-        color: var(--primary-500);
-    }
-
-    &__description {
-        margin: 0;
-        font-family: var(--font-body);
-        font-size: 18px; // ◆ was 14px
-        font-weight: 400;
-        line-height: 1.5; // ◆ was 160%
-        color: var(--text-500);
-    }
-
-    // ==========================================
-    // Executive Variant
-    // ==========================================
-    &--executive {
-        cursor: pointer;
-        text-align: start;
-        // ◆ min-height: 100% REMOVED — parent height: 440px is enough
-
-        &:focus-visible {
-            outline: 2px solid var(--primary-500);
-            outline-offset: 2px;
-        }
-    }
-
-    &__btn {
-        all: unset;
-        display: flex;
-        flex-direction: column;
-        width: 100%;
-        cursor: pointer;
-    }
+    width: 100%;
+    cursor: pointer;
+  }
 }
 
 // ==========================================
@@ -258,145 +258,145 @@
 // Modal
 // ==========================================
 .leader-modal {
-    position: fixed;
-    inset: 0;
-    z-index: 1000;
-    background: rgba(0, 0, 0, 0.55);
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+
+  &.is-open {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &__dialog {
+    position: relative;
+    width: 100%;
+    max-width: 1030px;
+    height: 470px;
+    max-height: calc(100vh - 48px);
+    overflow: hidden;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 18px 48px rgba(0, 0, 0, 0.25);
+    transform: scale(0.98);
+    transition: transform 0.3s ease;
+
+    .leader-modal.is-open & {
+      transform: scale(1);
+    }
+  }
+
+  // ◆ CHANGED: was grid, now flex with items-end per Figma
+  &__content {
+    display: none;
+    gap: 24px;
+    align-items: flex-end; // ◆ NEW — content sits at the bottom
+    height: 100%;
+
+    &--active {
+      display: flex; // ◆ was: grid
+    }
+  }
+
+  // ◆ Close button — REMOVED absolute positioning.
+  //   Now lives inside the body column at the top-right.
+  &__close {
+    align-self: flex-end; // ◆ NEW — sit at the end of its column
+    width: 34px; // ◆ was 32px
+    height: 34px; // ◆ was 32px
+    border: 0;
+    background: transparent;
+    color: var(--secondary-500);
+    cursor: pointer;
+    border-radius: 4px;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 24px;
-    opacity: 0;
-    visibility: hidden;
-    transition:
-        opacity 0.3s ease,
-        visibility 0.3s ease;
+    flex-shrink: 0;
+    transition: opacity 0.3s ease;
 
-    &.is-open {
-        opacity: 1;
-        visibility: visible;
+    &:hover {
+      opacity: 0.7; // ◆ was rgba(204,159,83,0.1) bg
     }
 
-    &__dialog {
-        position: relative;
-        width: 100%;
-        max-width: 1030px;
-        height: 470px;
-        max-height: calc(100vh - 48px);
-        overflow: hidden;
-        background: #fff;
-        border-radius: 8px;
-        box-shadow: 0 18px 48px rgba(0, 0, 0, 0.25);
-        transform: scale(0.98);
-        transition: transform 0.3s ease;
-
-        .leader-modal.is-open & {
-            transform: scale(1);
-        }
+    svg {
+      width: 24px; // ◆ was 18px — bigger to match Figma
+      height: 24px;
     }
+  }
 
-    // ◆ CHANGED: was grid, now flex with items-end per Figma
-    &__content {
-        display: none;
-        gap: 24px;
-        align-items: flex-end; // ◆ NEW — content sits at the bottom
-        height: 100%;
+  &__photo {
+    width: 492px;
+    height: 434px;
+    overflow: hidden;
+    border-radius: 8px 0 0 8px;
+    flex-shrink: 0; // ◆ NEW — prevent shrinking in flex
 
-        &--active {
-            display: flex; // ◆ was: grid
-        }
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
     }
+  }
 
-    // ◆ Close button — REMOVED absolute positioning.
-    //   Now lives inside the body column at the top-right.
-    &__close {
-        align-self: flex-end; // ◆ NEW — sit at the end of its column
-        width: 34px; // ◆ was 32px
-        height: 34px; // ◆ was 32px
-        border: 0;
-        background: transparent;
-        color: var(--secondary-500);
-        cursor: pointer;
-        border-radius: 4px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-shrink: 0;
-        transition: opacity 0.3s ease;
+  // ◆ CHANGED: body now uses items-end + height: 100%
+  //   Close button + text block stack vertically inside.
+  &__body {
+    flex: 1; // ◆ NEW — fills remaining width
+    min-width: 0; // ◆ NEW — allow text to wrap
+    height: 100%; // ◆ NEW
+    min-height: 470px;
+    padding: 40px 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    // ◆ justify-content: center REMOVED — content sits at bottom via items-end on parent
+  }
 
-        &:hover {
-            opacity: 0.7; // ◆ was rgba(204,159,83,0.1) bg
-        }
+  // ◆ NEW wrapper — text content block (role / name / description)
+  &__text {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
 
-        svg {
-            width: 24px; // ◆ was 18px — bigger to match Figma
-            height: 24px;
-        }
-    }
+  &__role {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: 16px; // ◆ was 14px
+    font-weight: 700; // ◆ was 500
+    line-height: 1.5;
+    color: var(--secondary-500);
+  }
 
-    &__photo {
-        width: 492px;
-        height: 434px;
-        overflow: hidden;
-        border-radius: 8px 0 0 8px;
-        flex-shrink: 0; // ◆ NEW — prevent shrinking in flex
+  &__name {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: 32px;
+    font-weight: 500; // ◆ was 700 (Figma uses Medium)
+    line-height: 1.2;
+    color: var(--primary-500);
+  }
 
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            object-position: top center;
-        }
-    }
-
-    // ◆ CHANGED: body now uses items-end + height: 100%
-    //   Close button + text block stack vertically inside.
-    &__body {
-        flex: 1; // ◆ NEW — fills remaining width
-        min-width: 0; // ◆ NEW — allow text to wrap
-        height: 100%; // ◆ NEW
-        min-height: 470px;
-        padding: 40px 32px;
-        display: flex;
-        flex-direction: column;
-        align-items: stretch;
-        gap: 8px;
-        // ◆ justify-content: center REMOVED — content sits at bottom via items-end on parent
-    }
-
-    // ◆ NEW wrapper — text content block (role / name / description)
-    &__text {
-        display: flex;
-        flex-direction: column;
-        gap: 8px;
-    }
-
-    &__role {
-        margin: 0;
-        font-family: var(--font-body);
-        font-size: 16px; // ◆ was 14px
-        font-weight: 700; // ◆ was 500
-        line-height: 1.5;
-        color: var(--secondary-500);
-    }
-
-    &__name {
-        margin: 0;
-        font-family: var(--font-body);
-        font-size: 32px;
-        font-weight: 500; // ◆ was 700 (Figma uses Medium)
-        line-height: 1.2;
-        color: var(--primary-500);
-    }
-
-    &__description {
-        margin: 0; // ◆ was 8px 0 0 — gap on parent handles it
-        font-family: var(--font-body);
-        font-size: 18px; // ◆ was 16px
-        font-weight: 400;
-        line-height: 1.5; // ◆ was 170%
-        color: var(--text-500);
-    }
+  &__description {
+    margin: 0; // ◆ was 8px 0 0 — gap on parent handles it
+    font-family: var(--font-body);
+    font-size: 18px; // ◆ was 16px
+    font-weight: 400;
+    line-height: 1.5; // ◆ was 170%
+    color: var(--text-500);
+  }
 }
 
 // ==========================================
@@ -404,49 +404,55 @@
 // ==========================================
 
 @media (max-width: 1024px) {
-    .leadership {
-        padding: 64px 48px;
+  .leadership {
+    padding: 64px 48px;
 
-        &__chairman {
-            gap: 32px;
+    &__chairman {
+      gap: 32px;
 
-            padding-right: 32px;
-        }
-
-        &__chairman-photo {
-            flex: 0 0 320px;
-
-            height: 320px;
-        }
-
-        &__chairman-name {
-            font-size: 30px;
-        }
-
-        &__grid {
-            grid-template-columns: repeat(2, 1fr);
-
-            gap: 20px;
-        }
+      padding-right: 32px;
     }
 
-    .leader-modal {
-        &__dialog {
-            max-width: 720px;
-        }
+    &__chairman-photo {
+      flex: 0 0 320px;
 
-        &__content {
-            grid-template-columns: 280px 1fr;
-        }
-
-        &__body {
-            padding: 32px;
-        }
-
-        &__name {
-            font-size: 28px;
-        }
+      height: 320px;
     }
+
+    &__chairman-name {
+      font-size: 30px;
+    }
+
+    &__grid {
+      grid-template-columns: repeat(2, 1fr);
+
+      gap: 20px;
+    }
+  }
+
+  .leader-modal {
+    &__dialog {
+      max-width: 720px;
+    }
+
+    &__content {
+      align-items: stretch;
+    }
+
+    &__photo {
+      width: 280px;
+      height: 100%;
+    }
+
+    &__body {
+      padding: 32px;
+      min-height: auto;
+    }
+
+    &__name {
+      font-size: 28px;
+    }
+  }
 }
 
 // ==========================================
@@ -454,115 +460,117 @@
 // ==========================================
 
 @media (max-width: 768px) {
-    .leadership {
-        padding: 48px 24px;
+  .leadership {
+    padding: 48px 24px;
 
-        &__tabs-wrap {
-            margin-bottom: 40px;
-        }
-
-        &__tabs {
-            width: 100%;
-        }
-
-        &__tab {
-            flex: 1;
-
-            min-width: auto;
-
-            height: 44px;
-
-            padding: 0 16px;
-
-            font-size: 14px;
-        }
-
-        &__chairman {
-            flex-direction: column;
-
-            gap: 24px;
-
-            padding: 16px;
-
-            min-height: auto;
-            margin-bottom: 16px;
-        }
-
-        &__chairman-photo {
-            flex: unset;
-
-            width: 100%;
-
-            height: auto;
-        }
-
-        &__chairman-name {
-            font-size: 28px;
-        }
-
-        &__chairman-description {
-            font-size: 16px;
-        }
-
-        &__grid {
-            grid-template-columns: 1fr;
-
-            gap: 16px;
-        }
+    &__tabs-wrap {
+      margin-bottom: 40px;
     }
 
-    .leader-card {
-        &__name {
-            font-size: 18px;
-        }
-
-        &__description {
-            font-size: 14px;
-        }
+    &__tabs {
+      width: 100%;
     }
-    .leader-modal {
-        padding: 12px;
 
-        &__dialog {
-            width: 100%;
-            height: auto; //  auto height — content drives it
-            max-height: calc(100vh - 24px);
-            overflow-y: auto; //  scroll if content overflows
-        }
+    &__tab {
+      flex: 1;
 
-        &__content {
-            grid-template-columns: 1fr; //  stack vertically
-            min-height: auto;
-        }
+      min-width: auto;
 
-        &__photo {
-            width: 100%;
-            height: auto; //  fixed height on mobile
-            aspect-ratio: unset;
-            border-radius: 8px 8px 0 0; //  round top corners only
+      height: 44px;
 
-            img {
-                width: 100%;
-                height: auto; //  CHANGED — natural height
-                object-fit: contain; //  CHANGED — show full image
-                object-position: center center; //  CHANGED — centered
-            }
-        }
+      padding: 0 16px;
 
-        &__body {
-            padding: 24px;
-            gap: 8px;
-        }
-
-        &__name {
-            font-size: 24px;
-        }
-
-        &__description {
-            font-size: 14px;
-            line-height: 1.6;
-        }
+      font-size: 14px;
     }
+
+    &__chairman {
+      flex-direction: column;
+
+      gap: 24px;
+
+      padding: 16px;
+
+      min-height: auto;
+      margin-bottom: 16px;
+    }
+
+    &__chairman-photo {
+      flex: unset;
+
+      width: 100%;
+
+      height: auto;
+    }
+
+    &__chairman-name {
+      font-size: 28px;
+    }
+
+    &__chairman-description {
+      font-size: 16px;
+    }
+
+    &__grid {
+      grid-template-columns: 1fr;
+
+      gap: 16px;
+    }
+  }
+
+  .leader-card {
+    &__name {
+      font-size: 18px;
+    }
+
+    &__description {
+      font-size: 14px;
+    }
+  }
+  .leader-modal {
+    padding: 12px;
+
+    &__dialog {
+      width: 100%;
+      height: auto; //  auto height — content drives it
+      max-height: calc(100vh - 24px);
+      overflow-y: auto; //  scroll if content overflows
+    }
+
+    &__content {
+      flex-direction: column;
+      align-items: stretch;
+      min-height: auto;
+    }
+
+    &__photo {
+      width: 100%;
+      height: auto; //  fixed height on mobile
+      aspect-ratio: unset;
+      border-radius: 8px 8px 0 0; //  round top corners only
+
+      img {
+        width: 100%;
+        height: auto; //  CHANGED — natural height
+        object-fit: contain; //  CHANGED — show full image
+        object-position: center center; //  CHANGED — centered
+      }
+    }
+
+    &__body {
+      padding: 24px;
+      gap: 8px;
+      min-height: auto;
+    }
+
+    &__name {
+      font-size: 24px;
+    }
+
+    &__description {
+      font-size: 14px;
+      line-height: 1.6;
+    }
+  }
 }
 
 // ==========================================
@@ -570,40 +578,40 @@
 // ==========================================
 
 @media (max-width: 480px) {
-    .leadership {
-        padding: 64px 16px;
+  .leadership {
+    padding: 64px 16px;
+  }
+  .leader-modal {
+    padding: 8px;
+
+    &__dialog {
+      max-height: calc(100vh - 16px);
+      margin: 0 10px;
     }
-    .leader-modal {
-        padding: 8px;
 
-        &__dialog {
-            max-height: calc(100vh - 16px);
-            margin: 0 10px;
-        }
-
-        &__photo {
-            img {
-                width: 100%;
-                height: auto;
-                object-fit: contain;
-            }
-        }
-
-        &__body {
-            padding: 20px 16px;
-        }
-
-        &__name {
-            font-size: 20px;
-        }
-
-        &__role {
-            font-size: 13px;
-        }
-
-        &__description {
-            font-size: 13px;
-            margin-top: 4px;
-        }
+    &__photo {
+      img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+      }
     }
+
+    &__body {
+      padding: 20px 16px;
+    }
+
+    &__name {
+      font-size: 20px;
+    }
+
+    &__role {
+      font-size: 13px;
+    }
+
+    &__description {
+      font-size: 13px;
+      margin-top: 4px;
+    }
+  }
 }
