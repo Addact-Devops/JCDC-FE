@@ -138,39 +138,64 @@
     //         btn.setAttribute("aria-pressed", String(isActive));
     //     });
     // }
+    
     function syncChips(activeCats) {
       filtersWrap.querySelectorAll("[data-cat]").forEach((btn) => {
         const cat = btn.dataset.cat;
 
         const isActive = activeCats.has(cat);
 
-        btn.classList.toggle("filter-chip--active", isActive);
+        if (isActive) {
+          btn.classList.add("filter-chip--active");
+        } else {
+          btn.classList.remove("filter-chip--active");
+        }
+
         btn.setAttribute("aria-pressed", String(isActive));
       });
     }
 
     filtersWrap.querySelectorAll("[data-cat]").forEach((btn) => {
-      btn.addEventListener("click", () => {
+      btn.addEventListener("click", (e) => {
+        // Ignore svg click
+        if (e.target.closest(".filter-chip__icon")) return;
+
         const cat = btn.dataset.cat;
         const params = getParams();
 
         if (cat === "all") {
-          // Click All News → clear everything else, set "all".
-          // Click again (already only "all") → clear back to default.
-          if (params.cats.has("all")) {
-            params.cats = new Set();
-          } else {
-            params.cats = new Set(["all"]);
-          }
+          // Activate only all tab
+          params.cats = new Set(["all"]);
         } else {
+          // Remove all tab when selecting other tabs
           params.cats.delete("all");
-          if (params.cats.has(cat)) params.cats.delete(cat);
-          else params.cats.add(cat);
+
+          // Add selected tab
+          params.cats.add(cat);
         }
+
         params.page = 1;
         setParams(params);
         update();
       });
+
+      const icon = btn.querySelector(".filter-chip__icon");
+
+      if (icon) {
+        icon.addEventListener("click", (e) => {
+          e.stopPropagation();
+
+          const cat = btn.dataset.cat;
+          const params = getParams();
+
+          // Remove clicked category
+          params.cats.delete(cat);
+
+          params.page = 1;
+          setParams(params);
+          update();
+        });
+      }
     });
 
     // ──────────────────────────────────────
