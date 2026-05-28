@@ -372,13 +372,21 @@
 
     // Selected (active filter)
     &--active {
-        background: var(--primary-500);
-        color: var(--surface-white);
+        //  background: var(--primary-500);
+        background: #E6F1F6;
+        // color: var(--surface-white);
+        color:#0C7CAD;
+        border-color: #0C7CAD;
+        font-weight: 600;
+        
+        .filter-chip__icon {
+            display: block !important;
+        }
     }
 
-    &:hover:not(&--active) {
-        background: rgba(0, 118, 169, 0.08);
-    }
+    // &:hover:not(&--active) {
+    //     background: rgba(0, 118, 169, 0.08);
+    // }
 
     &:focus-visible {
         outline: 2px solid var(--primary-500);
