@@ -61,6 +61,14 @@ $bg-color: #ffffff;
         flex-direction: column;
 
         padding: 311px 64px 123px 64px;
+
+        &:has(.vision-mission__bg--vision) {
+            order: 1;
+        }
+
+        &:has(.vision-mission__bg--mission) {
+            order: 2;
+        }
     }
 
     // ==========================================
