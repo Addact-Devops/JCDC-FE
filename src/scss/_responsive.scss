@@ -51,14 +51,11 @@
         height: 600px;
 
         &__content {
-            // top: 140px;
+            top: 50%; // ◆ NEW
             left: 50%;
-            transform: translateX(-50%);
-
+            transform: translate(-50%, -50%); // ◆ added Y axis
             width: 100%;
             max-width: 1200px;
-
-            padding-inline: 48px;
         }
         &__content-inner {
             max-width: 640px;
@@ -299,26 +296,36 @@
         height: 664px;
 
         &__content {
-            // top: 100px;
-            left: 50%;
-            transform: translateX(-50%);
+            // ◆ Use top + padding for anchoring (per Figma's exact spacing)
+            top: 231px; // ◆ exact Figma top spacing
+            left: 0;
+            right: 0;
+            bottom: auto;
+            transform: none; // ◆ kill the translate from desktop
 
             width: 100%;
-            max-width: 1200px;
-
-            padding-inline: 20px;
+            max-width: 100%;
+            padding-inline: 16px; // ◆ exact Figma horizontal padding
+            padding-bottom: 64px; // ◆ exact Figma bottom spacing
         }
+
         &__content-inner {
             max-width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 24px; // ◆ exact Figma gap between title and subtitle
         }
+
         &__title {
             font-size: 50px;
-            line-height: 120%;
-            margin-bottom: 24px;
+            line-height: 1.2;
+            margin-bottom: 0; // ◆ was 24px — gap on parent handles spacing now
         }
+
         &__subtitle {
-            font-size: 20px;
+            font-size: 22px;
             line-height: 1.5;
+            margin: 0; // ◆ clean reset
         }
     }
 
@@ -460,27 +467,32 @@
 // ═══════════════════════════════════════════════════
 @media (max-width: 390px) {
     .hero {
-        height: 100svh; // 👈 ADDED — fills exact screen height
-        min-height: 580px; // 👈 ADDED — safety floor
+        height: 100svh;
+        min-height: 580px;
 
         &__content {
-            // top: 120px;
-            left: 50%;
-            transform: translateX(-50%);
-
+            top: 240px; // ◆ same exact Figma top
+            left: 0;
+            right: 0;
+            bottom: auto;
+            transform: none;
             width: 100%;
-
             padding-inline: 16px;
+            padding-bottom: 64px;
+        }
+
+        &__content-inner {
+            gap: 24px; // ◆ Figma gap
         }
 
         &__title {
-            font-size: 32px; // 👈 CHANGED — fits 360px width
+            font-size: 32px;
             line-height: 1.2;
-            margin-bottom: 16px;
+            margin-bottom: 0; // ◆ was 16px — gap handles it
         }
 
         &__subtitle {
-            font-size: 15px; // 👈 CHANGED — readable on small screen
+            font-size: 15px;
             line-height: 1.5;
         }
     }
