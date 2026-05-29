@@ -199,6 +199,16 @@
         transform: scale(1.09);
     }
 
+    &--slow {
+        .leader-card__photo img {
+            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        &:hover .leader-card__photo img {
+            transform: scale(1.05);
+        }
+    }
+
     &__role {
         margin: 0; // ◆ was 0 0 8px
         font-family: var(--font-body);
@@ -611,6 +621,7 @@
             height: 252px; // ◆ slightly shorter than 450px mobile
 
             img {
+                height: 252px;
                 object-position: center top;
             }
         }
