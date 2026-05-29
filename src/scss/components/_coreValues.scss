@@ -343,7 +343,7 @@
             height: auto;
             flex-direction: column; // Cards stack vertically
             border-radius: 8px;
-            overflow: visible;
+            overflow: hidden;
         }
 
         &__card {
