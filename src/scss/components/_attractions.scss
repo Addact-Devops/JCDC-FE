@@ -124,7 +124,7 @@
         position: absolute;
         inset: 0;
 
-        background: linear-gradient(180deg, rgba(0, 0, 0, 0) 46%, rgba(5, 18, 27, 0.72) 78%, rgba(3, 14, 21, 0.92) 100%);
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 100%);
 
         z-index: 1;
     }
@@ -160,7 +160,7 @@
         font-weight: 500;
         line-height: 120%;
 
-        color: var(--secondary-500);
+        color: #ddbf8c;
 
         transition: transform 0.45s ease;
     }
@@ -176,7 +176,7 @@
         font-weight: 400;
         line-height: 150%;
 
-        color: #ffffff;
+        color: #efefef;
 
         opacity: 0;
 

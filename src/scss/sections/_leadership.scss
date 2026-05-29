@@ -167,12 +167,13 @@
     display: flex;
     flex-direction: column;
     gap: 8px; // ◆ NEW — replaces individual margins
-    height: 440px; // ◆ NEW — fixed height per Figma
+    // height: 440px; // ◆ NEW — fixed height per Figma
+
     padding: 20px;
     border: 1px solid var(--secondary-500); // ◆ was #d6b36a
     border-radius: 0; // ◆ was 2px
     background: #fff;
-    overflow: hidden; // ◆ NEW — clip any overflow at 440px
+    // overflow: hidden; // ◆ NEW — clip any overflow at 440px
     transition:
         transform 0.35s ease,
         box-shadow 0.35s ease;
@@ -183,21 +184,19 @@
         border-radius: 0; // ◆ was 4px
         overflow: hidden;
         background: #f3f3f3;
-        // ◆ margin-bottom REMOVED — handled by parent gap
+        flex-shrink: 0;
 
         img {
             width: 100%;
             height: 100%;
             object-fit: cover;
             object-position: center 0%;
-            transition:
-                transform 0.6s ease,
-                opacity 0.6s ease;
+            transition: transform 0.2s ease-out;
         }
     }
 
     &:hover &__photo img {
-        transform: scale(1.03);
+        transform: scale(1.09);
     }
 
     &__role {
@@ -435,10 +434,10 @@
 
         // ◆ NEW — taller photo on tablet so full portrait shows (head + face + shoulders)
         &__photo {
-            height: 360px; // ◆ was 240px from desktop default
+            height: 360px; // ◆ taller for wider cards (2-col)
 
             img {
-                object-position: center top; // ◆ anchor to top to keep the head visible
+                object-position: center top; // ◆ anchor at top
             }
         }
     }
@@ -539,7 +538,11 @@
         }
 
         &__photo {
-            height: 400px; // ◆ NEW — taller photo at full-width
+            height: 450px; // ◆ was 400px — taller for full-width portraits
+
+            img {
+                object-position: center top; // ◆ anchor at top
+            }
         }
 
         &__description {
@@ -600,6 +603,14 @@
 @media (max-width: 480px) {
     .leadership {
         padding: 64px 16px;
+    }
+
+    .leader-card__photo {
+        height: 252px; // ◆ slightly shorter than 450px mobile
+
+        img {
+            object-position: center top;
+        }
     }
     .leader-modal {
         padding: 8px;
