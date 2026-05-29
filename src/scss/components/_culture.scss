@@ -146,8 +146,28 @@
             gap: 16px;
         }
 
-        &__card {
-            height: 420px;
+       &__card {
+            height: 460px;
+        }
+
+        &__card-content {
+            inset: 0;
+            margin: 0;
+            padding: 32px 20px;
+            height: 100%;
+            justify-content: center;
+        }
+
+        &__card-title {
+            margin: 0;
+            max-width: 100%;
+            font-size: 26px;
+        }
+
+        &__card-desc {
+            max-width: 100%;
+            font-size: 15px;
+            line-height: 1.45;
         }
     }
 
