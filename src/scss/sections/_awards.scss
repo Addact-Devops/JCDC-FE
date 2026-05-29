@@ -8,7 +8,7 @@
 
 .awards {
     background: var(--surface-white);
-    padding: 64px 0;
+    padding-top: 64px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -18,6 +18,8 @@
     &__slider {
         width: 100%;
         direction: ltr;
+        padding: 0 120px; // ◆ NEW — 120px gutters left and right
+        box-sizing: border-box; // ◆ NEW — padding included in width
         mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
         -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
     }
@@ -27,7 +29,7 @@
 .certs {
     display: flex;
     align-items: flex-start;
-    gap: 16px;
+    gap: 20px;
     width: max-content;
     direction: ltr;
     /* no animation here on purpose — only the auto-scroll modifier adds it */
@@ -40,11 +42,6 @@
     .awards__slider {
         overflow: hidden;
         cursor: default;
-
-        /* Pause the animation when hovering anywhere on the slider */
-        &:hover .certs {
-            animation-play-state: paused;
-        }
     }
 
     .certs {
@@ -138,8 +135,8 @@
             filter 0.4s ease;
 
         img {
-            width: auto;
-            height: 120px;
+            width: 154px;
+            height: 154px;
             object-fit: contain;
             filter: grayscale(1) opacity(0.6); //  grey by default
             transition: filter 0.4s ease;
@@ -165,40 +162,36 @@
     }
 
     // ── Hover ──
-    &:hover {
-        .cert-item__logo {
-            transform: translateY(-20px); // logo slides up
+    &__logo:hover {
+        // ◆ was: &:hover (whole card)
+        transform: translateY(-20px);
 
-            img {
-                filter: grayscale(0) opacity(1); //  original color restored
-            }
+        img {
+            filter: grayscale(0) opacity(1);
         }
+    }
 
-        .cert-item__title {
-            opacity: 1;
-            //  title slides up into view
-        }
+    // ◆ When the logo is hovered, also show the title
+    &__logo:hover ~ &__title {
+        // ◆ sibling selector
+        opacity: 1;
     }
 }
 
 @media (max-width: 767px) {
-    /* Auto-scroll: remove hover pause on touch devices */
-    .awards--auto-scroll .awards__slider:hover .certs {
-        animation-play-state: running;
-    }
-
     .cert-item {
         width: 200px;
-        height: 200px;
-        cursor: default; //  no pointer on mobile
+        height: auto; // ◆ was 200px — let content drive height
+        min-height: 200px; // ◆ NEW — keep a sensible minimum
+        padding: 16px 0; // ◆ NEW — breathing room above/below
+        overflow: visible; // ◆ NEW — override the base overflow:hidden
+        cursor: default;
 
-        //  restore original color — no grayscale
         &__logo img {
             filter: grayscale(0) opacity(1);
             transition: none;
         }
 
-        //  show title statically below logo on mobile
         &__title {
             opacity: 1;
             position: static;
@@ -208,7 +201,6 @@
             font-size: 12px;
         }
 
-        //  disable hover lift on mobile
         &:hover {
             .cert-item__logo {
                 transform: translateY(0);

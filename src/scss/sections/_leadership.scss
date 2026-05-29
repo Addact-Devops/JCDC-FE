@@ -192,6 +192,10 @@
             object-fit: cover;
             object-position: center 0%;
             transition: transform 0.2s ease-out;
+
+            transform: translateZ(0);
+            backface-visibility: hidden;
+            will-change: transform;
         }
     }
 
