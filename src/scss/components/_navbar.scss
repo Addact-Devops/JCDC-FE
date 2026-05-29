@@ -287,7 +287,7 @@
     align-items: center;
     gap: 4px;
     height: 32px;
-    padding: 8px;
+    padding: 0px;
     font-size: var(--small);
     font-weight: 400;
     line-height: 16px;
@@ -295,7 +295,12 @@
     transition: opacity var(--dur) var(--ease);
     white-space: nowrap;
 
+    [dir="rtl"] & {
+        flex-direction: row-reverse;
+    }
+
     &__text {
+        padding: 8px;
         font-family: var(--font-ar); // Arabic text "العربية" in English state
         [dir="rtl"] & {
             font-family: var(--font-en);
