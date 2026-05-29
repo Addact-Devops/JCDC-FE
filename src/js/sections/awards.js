@@ -8,8 +8,8 @@
 window.Awards = (function () {
     "use strict";
 
-    const DRAG_THRESHOLD = 4; //  px before a press is treated as a drag
-    const KEY_STEP = 200; //  px scrolled per arrow keypress
+    const DRAG_THRESHOLD = 4;
+    const KEY_STEP = 200;
 
     /* ─────────────────────────────────────────────
        Helpers
@@ -39,9 +39,6 @@ window.Awards = (function () {
         });
     }
 
-    /* ─────────────────────────────────────────────
-       Mode 1 — Auto-scroll (existing behaviour)
-       ───────────────────────────────────────────── */
     function initScrollWidth(root) {
         const track = root.querySelector(".certs");
         if (!track) return;
@@ -55,13 +52,17 @@ window.Awards = (function () {
 
         track.style.setProperty("--scroll-width", `-${totalWidth}px`);
 
-        //  force animation restart with new measurement
+        // force animation restart with new measurement
         track.style.animation = "none";
         // eslint-disable-next-line no-unused-expressions
-        track.offsetHeight; //  reflow
+        track.offsetHeight; // reflow
         track.style.animation = "";
     }
 
+    /* ─────────────────────────────────────────────
+       Mode 1 — Auto-scroll
+       Pauses ONLY when hovering an individual logo
+       ───────────────────────────────────────────── */
     function initAutoScroll(root) {
         const track = root.querySelector(".certs");
         if (!track) return;
@@ -70,7 +71,7 @@ window.Awards = (function () {
 
         window.addEventListener("resize", () => initScrollWidth(root));
 
-        //  Respect prefers-reduced-motion
+        // Respect prefers-reduced-motion + tab visibility
         const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)");
         const apply = () => {
             track.style.animationPlayState = prefersReduced.matches || document.hidden ? "paused" : "running";
@@ -79,23 +80,28 @@ window.Awards = (function () {
         prefersReduced.addEventListener?.("change", apply);
         document.addEventListener("visibilitychange", apply);
 
-        //  Pause on hover
-        root.addEventListener("mouseenter", () => {
-            track.style.animationPlayState = "paused";
-        });
-        root.addEventListener("mouseleave", apply);
+        // Pause ONLY when hovering an actual logo image, not the whole section.
+        // Skipped on touch devices (no hover).
+        if (window.matchMedia("(hover: hover)").matches) {
+            const logos = root.querySelectorAll(".cert-item__logo");
+            logos.forEach((logo) => {
+                logo.addEventListener("mouseenter", () => {
+                    track.style.animationPlayState = "paused";
+                });
+                logo.addEventListener("mouseleave", apply);
+            });
+        }
 
         apply();
     }
 
     /* ─────────────────────────────────────────────
-       Mode 2 — Manual draggable scroll (default)
+       Mode 2 — Manual draggable scroll
        ───────────────────────────────────────────── */
     function initManualScroll(root) {
         const slider = root.querySelector(".awards__slider");
         if (!slider) return;
 
-        //  Accessibility — make the slider a focusable region
         if (!slider.hasAttribute("tabindex")) slider.setAttribute("tabindex", "0");
         if (!slider.hasAttribute("role")) slider.setAttribute("role", "region");
         if (!slider.hasAttribute("aria-label")) {
@@ -108,7 +114,7 @@ window.Awards = (function () {
         let moved = false;
 
         const onMouseDown = (e) => {
-            if (e.button !== 0) return; //  left-click only
+            if (e.button !== 0) return;
             isDown = true;
             moved = false;
             startX = e.pageX;
@@ -121,7 +127,7 @@ window.Awards = (function () {
             const walk = e.pageX - startX;
             if (Math.abs(walk) > DRAG_THRESHOLD) moved = true;
             slider.scrollLeft = startScrollLeft - walk;
-            e.preventDefault(); //  prevent text/image selection while dragging
+            e.preventDefault();
         };
 
         const endDrag = () => {
@@ -130,8 +136,6 @@ window.Awards = (function () {
             slider.classList.remove("is-dragging");
         };
 
-        //  Suppress the click that fires at the end of a drag so cert-items
-        //  don't accidentally trigger their own click handlers / navigation.
         const onClickCapture = (e) => {
             if (moved) {
                 e.preventDefault();
@@ -141,13 +145,12 @@ window.Awards = (function () {
         };
 
         slider.addEventListener("mousedown", onMouseDown);
-        //  Listen on window so a fast drag that exits the slider still updates
         window.addEventListener("mousemove", onMouseMove);
         window.addEventListener("mouseup", endDrag);
         slider.addEventListener("mouseleave", endDrag);
         slider.addEventListener("click", onClickCapture, true);
 
-        //  Keyboard support (WCAG)
+        // Keyboard support
         slider.addEventListener("keydown", (e) => {
             switch (e.key) {
                 case "ArrowRight":
@@ -170,17 +173,12 @@ window.Awards = (function () {
                     break;
             }
         });
-
-        //  Touch is handled natively by `overflow-x: auto` — no JS needed,
-        //  which preserves momentum scrolling on iOS / Android.
     }
 
     /* ─────────────────────────────────────────────
-       Public init — supports multiple .awards roots
+       Public init
        ───────────────────────────────────────────── */
     function init(root) {
-        //  If a specific root is passed, init just that one.
-        //  Otherwise init every .awards on the page.
         const roots = root ? [root] : Array.from(document.querySelectorAll(".awards"));
         roots.forEach((el) => {
             if (!el || !el.querySelector(".certs")) return;

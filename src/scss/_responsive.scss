@@ -461,39 +461,3 @@
         font-size: 22px;
     }
 }
-
-// ═══════════════════════════════════════════════════
-//  SMALL MOBILE (≤ 390px) — Samsung Galaxy S8+ fix
-// ═══════════════════════════════════════════════════
-@media (max-width: 390px) {
-    .hero {
-        height: 100svh;
-        min-height: 580px;
-
-        &__content {
-            top: 240px; // ◆ same exact Figma top
-            left: 0;
-            right: 0;
-            bottom: auto;
-            transform: none;
-            width: 100%;
-            padding-inline: 16px;
-            padding-bottom: 64px;
-        }
-
-        &__content-inner {
-            gap: 24px; // ◆ Figma gap
-        }
-
-        &__title {
-            font-size: 32px;
-            line-height: 1.2;
-            margin-bottom: 0; // ◆ was 16px — gap handles it
-        }
-
-        &__subtitle {
-            font-size: 15px;
-            line-height: 1.5;
-        }
-    }
-}
