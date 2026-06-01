@@ -382,14 +382,13 @@
     }
 
     .btn {
-        width: 100%;
-        height: auto;
-        min-height: 80px;
+        width: 136px;
+        height: 48px;
         justify-content: space-between;
         gap: 20px;
-        background: var(--secondary-50); // #faf5ee cream
-        border-color: transparent;
-        color: var(--secondary-500); // #cc9f53 gold
+        background: #CC9F53; // #faf5ee cream
+        border-color: #CC9F53;
+        color: #EFEFEF; // #cc9f53 gold
         white-space: normal; // allow text wrap
         text-align: start;
 
@@ -405,7 +404,7 @@
             transition: transform var(--dur) var(--ease);
 
             path {
-                stroke: var(--secondary-500);
+                stroke: #EFEFEF;
             }
         }
     }
