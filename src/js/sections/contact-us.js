@@ -18,6 +18,7 @@
 
         const formWrap = document.getElementById('contact-form-wrap');
         const successEl = document.getElementById('contact-success');
+        const contactSection = form.closest('.contact-us');
 
         // ──────────────────────────────────────────
         // Validation helpers
@@ -143,6 +144,7 @@
 
             // Swap UI: hide form wrap, show success card
             if (formWrap) formWrap.hidden = true;
+            if (contactSection) contactSection.classList.add('is-success');
             if (successEl) {
                 successEl.hidden = false;
                 // Move focus for screen readers
@@ -152,8 +154,9 @@
                 } catch (_) {
                     successEl.focus();
                 }
-                // Smooth-scroll to top of success card
-                successEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                // Keep the page structure visible after the state swap.
+                const banner = document.querySelector('.banner');
+                (banner || contactSection || successEl).scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         });
     }
