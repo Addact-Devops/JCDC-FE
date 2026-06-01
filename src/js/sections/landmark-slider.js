@@ -100,8 +100,8 @@
                 if (i === current) btn.setAttribute("aria-current", "true");
                 else btn.removeAttribute("aria-current");
             });
-            if (prevBtn) prevBtn.disabled = current === 0;
-            if (nextBtn) nextBtn.disabled = current === slides.length - 1;
+            if (prevBtn) prevBtn.classList.toggle("landmark-slider__nav--hidden", current === 0);
+            if (nextBtn) nextBtn.classList.toggle("landmark-slider__nav--hidden", current === slides.length - 1);
 
             if (!slideWidth) return;
 

@@ -42,13 +42,7 @@ window.Awards = (function () {
     function initScrollWidth(root) {
         const track = root.querySelector(".certs");
         if (!track) return;
-
-        const items = track.querySelectorAll(".cert-item:not([aria-hidden])");
-        const gap = 16;
-        let totalWidth = 0;
-        items.forEach((item) => {
-            totalWidth += item.offsetWidth + gap;
-        });
+        const totalWidth = items.length * (285 + gap);
 
         track.style.setProperty("--scroll-width", `-${totalWidth}px`);
 
@@ -67,7 +61,17 @@ window.Awards = (function () {
         const track = root.querySelector(".certs");
         if (!track) return;
 
-        whenImagesReady(track, () => initScrollWidth(root));
+        track.style.visibility = "hidden";
+
+        whenImagesReady(track, () => {
+            initScrollWidth(root);
+
+            track.style.visibility = "visible";
+        });
+
+        requestAnimationFrame(() => {
+            initScrollWidth(root);
+        });
 
         window.addEventListener("resize", () => initScrollWidth(root));
 
