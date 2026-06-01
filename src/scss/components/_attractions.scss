@@ -131,55 +131,45 @@
 
     &__content {
         position: absolute;
-
         inset-inline: 0;
-
         bottom: 32px;
-
         z-index: 2;
-
         padding: 0 32px;
 
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-
         gap: 16px;
 
-        transform: translateY(52px); //  title stays lower initially
-
+        transform: translateY(81px); // ◆ default — content sits lower
         transition: transform 0.45s ease;
     }
 
     &__card-title {
         margin: 0;
-
         font-family: var(--font-body);
-
         font-size: 32px;
         font-weight: 500;
         line-height: 120%;
-
         color: #ddbf8c;
-
         transition: transform 0.45s ease;
     }
 
     &__card-desc {
         margin: 0;
-
         max-width: 320px;
 
-        font-family: var(--font-body);
+        // ◆ NEW — fixed height so all descriptions reserve the same space
+        height: 81px; // 3 lines × 27px (18 × 1.5)
+        overflow: hidden; // hide overflow if text is longer
 
+        font-family: var(--font-body);
         font-size: 18px;
         font-weight: 400;
         line-height: 150%;
-
         color: #efefef;
 
         opacity: 0;
-
         transform: translateY(16px);
 
         transition:
