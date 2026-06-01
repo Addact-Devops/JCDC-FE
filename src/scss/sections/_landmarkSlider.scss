@@ -428,12 +428,12 @@
 // ==========================================
 @media (max-width: 768px) {
     .landmark-slider {
-        padding: 40px 0 48px; // 👈 CHANGED — remove side padding so slides touch edges
+        padding: 64px 16px;
 
         &__header {
             margin-bottom: 16px;
             gap: 12px;
-            padding: 0 16px; // 👈 ADDED — keep header padded
+            padding: 0;
         }
 
         &__title {
@@ -444,30 +444,45 @@
         }
 
         &__viewport {
-            --slide-width: 100vw;
+            --slide-width: calc(100vw - 32px);
             --slide-gap: 12px;
             position: relative;
             overflow: hidden;
-            padding: 0;
+            padding: 88px 0 0;
         }
 
         &__nav {
             position: absolute;
-            top: 8px;
+            top: 16px;
             transform: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 11.2px;
+            width: 56px;
+            height: 56px;
+            border-radius: 8px;
             margin: 0;
+            background: var(--primary-500);
+            color: var(--surface-white);
+            border-color: var(--primary-500);
 
             &--prev {
-                inset-inline-start: calc(50% - 48px);
+                inset-inline-start: calc(50% - 64px);
                 inset-inline-end: auto;
             }
 
             &--next {
-                inset-inline-end: calc(50% - 48px);
+                inset-inline-end: calc(50% - 64px);
                 inset-inline-start: auto;
+            }
+
+            &:disabled {
+                background: var(--surface-white);
+                border: 1.4px solid #b0d5e4;
+                color: #b0d5e4;
+                opacity: 1;
+            }
+
+            svg {
+                width: 24px;
+                height: 24px;
             }
         }
 
@@ -476,8 +491,8 @@
         }
 
         &__slide {
-            flex: 0 0 100vw;
-            width: 100vw;
+            flex: 0 0 calc(100vw - 32px);
+            width: calc(100vw - 32px);
             height: 333px;
             aspect-ratio: unset;
             border-radius: 8px;
@@ -547,7 +562,7 @@
             left: auto;
             transform: none;
             width: 337px;
-            max-width: calc(100vw - 24px);
+            max-width: 100%;
             margin: -100px auto 0;
             padding: 24px;
             border-radius: 8px;
@@ -581,6 +596,8 @@
 
         &__card-cta {
             margin-top: 2px;
+            gap: 20px;
+            color: #efefef;
         }
     }
 
@@ -593,13 +610,13 @@
 @media (max-width: 480px) {
     .landmark-slider {
         &__slide {
-            flex: 0 0 100vw;
-            width: 100vw;
+            flex: 0 0 calc(100vw - 32px);
+            width: calc(100vw - 32px);
             height: 333px;
         }
 
         &__viewport {
-            --slide-width: 100vw;
+            --slide-width: calc(100vw - 32px);
         }
 
         &__slide-content {
@@ -620,7 +637,7 @@
 
         &__card {
             width: 337px;
-            max-width: calc(100vw - 24px);
+            max-width: 100%;
         }
 
         &__card-title {
