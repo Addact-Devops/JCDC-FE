@@ -291,6 +291,12 @@
         }
     }
 
+    .landmark-slider__nav.landmark-slider__nav--hidden {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+    }
+
     // ==========================================
     // Dots
     // ==========================================
