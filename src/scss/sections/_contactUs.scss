@@ -66,6 +66,12 @@
         }
     }
 
+    &.is-success {
+        .contact-us__right {
+            margin-top: 0;
+        }
+    }
+
     // ==========================================
     // Address card
     // ==========================================
@@ -283,6 +289,12 @@
 
         &__right {
             margin-top: 280px;
+        }
+
+        &.is-success {
+            .contact-us__right {
+                margin-top: 0;
+            }
         }
     }
 }

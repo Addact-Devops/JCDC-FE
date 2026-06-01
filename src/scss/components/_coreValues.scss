@@ -343,18 +343,25 @@
             height: auto;
             flex-direction: column; // Cards stack vertically
             border-radius: 8px;
-            overflow: hidden;
+            overflow: visible;
         }
 
         &__card {
             width: 100%;
+            height: auto;
             min-height: auto;
             padding: 32px 24px;
+            overflow: visible;
 
             flex-direction: row; // Icon left, text right
-            align-items: flex-start; 
+            align-items: center;
             text-align: start;
             gap: 20px; 
+
+            > div:not(.core-values__icon) {
+                flex: 1;
+                min-width: 0;
+            }
 
             &:first-child {
                 border-top-left-radius: 8px;
@@ -370,8 +377,8 @@
         }
 
         &__icon {
-            width: 48px;
-            height: 48px;
+            width: 88px;
+            height: 88px;
             flex-shrink: 0;
             margin-bottom: 0; 
             margin-right: 0;
@@ -386,6 +393,8 @@
         &__card-description {
             font-size: 14px;
             font-weight: 400;
+            overflow: visible;
+            overflow-wrap: break-word;
         }
     }
 }
