@@ -416,19 +416,38 @@
             transition: transform var(--dur) var(--ease);
 
             path {
-                stroke: #efefef;
+                stroke: currentColor;
+            }
+        }
+
+        &--gold {
+            background: var(--secondary-500);
+            border-color: var(--secondary-500);
+            color: #fff;
+            min-height: 48px;
+
+            &:hover {
+                background: #b98a3d;
+                border-color: #b98a3d;
             }
         }
     }
+    .jcd-slider .btn--outline-cream {
+        color: #cc9f53;
 
+        svg path {
+            stroke: #cc9f53;
+        }
+    }
     .banner .banner__cta {
         width: 244px;
         max-width: 100%;
+        min-height: 0;
         height: 48px;
         padding: 16px;
         gap: 20px;
         border-radius: 4px;
-        justify-content: center;
+        justify-content: start;
         background: var(--secondary-50);
         border-color: var(--secondary-50);
         color: var(--secondary-500);

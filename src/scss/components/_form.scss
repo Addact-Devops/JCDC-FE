@@ -330,7 +330,6 @@
         flex: 1;
 
         a {
-            color: var(--primary-500);
             text-decoration: underline;
             text-underline-offset: 2px;
 
@@ -386,5 +385,18 @@
 
     &.has-error &__error {
         display: block;
+    }
+}
+
+@media (max-width: 767px) {
+    .form-field {
+        &__label {
+            font-size: 12px;
+        }
+        &__input,
+        &__select,
+        &__textarea {
+            font-size: 14px;
+        }
     }
 }
