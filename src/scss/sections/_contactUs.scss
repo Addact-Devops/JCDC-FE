@@ -304,7 +304,7 @@
 // ==========================================
 @media (max-width: 1023px) {
     .contact-us {
-        padding: 56px 32px;
+        padding: 64px 32px;
 
         &__grid {
             gap: 40px;
@@ -381,10 +381,14 @@
         }
         .btn {
             width: 86px !important;
+            background: var(--secondary-500);
+            color: #e6f1f6;
+            min-height: 0px;
         }
 
         &__submit-row {
             justify-content: flex-end; // ◆ Figma — submit aligned to right
+            margin-top: 4px;
         }
 
         // ◆ Mobile submit per Figma — filled gold (not outlined)
@@ -408,17 +412,17 @@
 // ==========================================
 @media (max-width: 480px) {
     .contact-us {
-        padding: 48px 16px;
+        padding: 64px 16px;
 
         &__heading {
-            font-size: 28px;
+            font-size: 32px;
             margin-bottom: 24px;
         }
     }
 
     .contact-form {
         &__row {
-            grid-template-columns: 1fr; // ◆ stack on very small screens
+            grid-template-rows: 1fr; // ◆ stack on very small screens
             gap: 20px;
         }
     }
