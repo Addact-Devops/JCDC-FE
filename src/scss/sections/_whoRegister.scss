@@ -8,7 +8,7 @@
 
 .who-register {
     width: 100%;
-    background: var(--surface-white);
+    background: var(--surface-grey);
     padding: 64px 120px;
 
     &__container {
@@ -21,7 +21,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        gap: 12px;
+        gap: 8px;
         margin-bottom: 56px;
         text-align: center;
     }
@@ -29,7 +29,7 @@
     &__title {
         margin: 0;
         font-family: var(--font-body);
-        font-size: 48px;
+        font-size: 40px;
         font-weight: 500;
         line-height: 120%;
         color: var(--primary-500);
@@ -38,7 +38,7 @@
     &__subtitle {
         margin: 0;
         font-family: var(--font-body);
-        font-size: 16px;
+        font-size: 18px;
         font-weight: 400;
         line-height: 150%;
         color: var(--text-500);
@@ -51,7 +51,7 @@
     &__grid {
         display: grid;
         grid-template-columns: 1fr 1fr;
-        gap: 48px 80px;
+        gap: 40px;
         position: relative;
     }
 
@@ -65,16 +65,36 @@
     &__card {
         display: flex;
         flex-direction: column;
-        gap: 12px;
-        padding-block: 8px;
+        gap: 8px;
+        padding: 24px;
+        max-width: 517px;
         position: relative;
 
         &:nth-child(even) {
-            padding-inline-start: 48px;
-            border-inline-start: 1px solid var(--secondary-500);
+            // padding-inline-start: 48px;
+            // border-inline-start: 1px solid var(--secondary-500);
 
+            position: relative;
+
+            &::before {
+                content: "";
+
+                position: absolute;
+
+                top: 50%;
+
+                inset-inline-start: -40px;
+                transform: translateY(-50%);
+
+                width: 1px;
+                height: 80px;
+
+                background: var(--secondary-500);
+            }
             [dir="rtl"] & {
-                padding-inline-start: 48px;
+                inset-inline-start: auto;
+
+                inset-inline-end: 0;
             }
         }
     }
@@ -83,7 +103,7 @@
         margin: 0;
         font-family: var(--font-body);
         font-size: 24px;
-        font-weight: 700;
+        font-weight: 500;
         line-height: 120%;
         color: var(--primary-500);
     }
@@ -91,7 +111,7 @@
     &__card-description {
         margin: 0;
         font-family: var(--font-body);
-        font-size: 16px;
+        font-size: 18px;
         font-weight: 400;
         line-height: 150%;
         color: var(--text-500);
