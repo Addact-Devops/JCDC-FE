@@ -382,29 +382,41 @@
     }
 
     .btn {
-        width: 136px;
-        height: 48px;
+        width: auto;
+        min-height: 80px;
+
+        padding: 16px;
+
+        display: inline-flex;
+        align-items: center;
         justify-content: space-between;
+
         gap: 20px;
-        background: #CC9F53; // #faf5ee cream
-        border-color: #CC9F53;
-        color: #EFEFEF; // #cc9f53 gold
+        background: #faf5ee; // #faf5ee cream
+        border-color: #cc9f53;
+        color: #cc9f53; // #cc9f53 gold
         white-space: normal; // allow text wrap
         text-align: start;
 
         span {
             flex: 1;
             min-width: 0;
+            white-space: normal;
+            line-height: 1.4;
+            text-align: left;
+
+            max-width: 220px;
         }
 
         svg {
+            flex-shrink: 0;
             width: 24px;
             height: 24px;
 
             transition: transform var(--dur) var(--ease);
 
             path {
-                stroke: #EFEFEF;
+                stroke: #efefef;
             }
         }
     }
