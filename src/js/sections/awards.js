@@ -1,19 +1,9 @@
-/* ════════════════════════════════════════════════════════════
-   Awards module
-   - If the root `.awards` element has the modifier
-     `awards--auto-scroll`, the infinite marquee animation runs.
-   - Otherwise the slider becomes a manual draggable scroller
-     (mouse drag, native touch scroll, keyboard arrows).
-   ════════════════════════════════════════════════════════════ */
 window.Awards = (function () {
     "use strict";
 
     const DRAG_THRESHOLD = 4;
     const KEY_STEP = 200;
 
-    /* ─────────────────────────────────────────────
-       Helpers
-       ───────────────────────────────────────────── */
     function isAutoScroll(root) {
         return root.classList.contains("awards--auto-scroll");
     }
@@ -42,40 +32,32 @@ window.Awards = (function () {
     function initScrollWidth(root) {
         const track = root.querySelector(".certs");
         if (!track) return;
-        const totalWidth = items.length * (285 + gap);
+
+        const items = track.querySelectorAll(".cert-item:not([aria-hidden])");
+        const styles = getComputedStyle(track);
+        const gap = parseFloat(styles.columnGap || styles.gap || "0") || 0;
+
+        let totalWidth = 0;
+        items.forEach((item) => {
+            totalWidth += item.offsetWidth + gap;
+        });
 
         track.style.setProperty("--scroll-width", `-${totalWidth}px`);
 
-        // force animation restart with new measurement
         track.style.animation = "none";
         // eslint-disable-next-line no-unused-expressions
-        track.offsetHeight; // reflow
+        track.offsetHeight;
         track.style.animation = "";
     }
 
-    /* ─────────────────────────────────────────────
-       Mode 1 — Auto-scroll
-       Pauses ONLY when hovering an individual logo
-       ───────────────────────────────────────────── */
     function initAutoScroll(root) {
         const track = root.querySelector(".certs");
         if (!track) return;
 
-        track.style.visibility = "hidden";
-
-        whenImagesReady(track, () => {
-            initScrollWidth(root);
-
-            track.style.visibility = "visible";
-        });
-
-        requestAnimationFrame(() => {
-            initScrollWidth(root);
-        });
+        whenImagesReady(track, () => initScrollWidth(root));
 
         window.addEventListener("resize", () => initScrollWidth(root));
 
-        // Respect prefers-reduced-motion + tab visibility
         const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)");
         const apply = () => {
             track.style.animationPlayState = prefersReduced.matches || document.hidden ? "paused" : "running";
@@ -84,8 +66,6 @@ window.Awards = (function () {
         prefersReduced.addEventListener?.("change", apply);
         document.addEventListener("visibilitychange", apply);
 
-        // Pause ONLY when hovering an actual logo image, not the whole section.
-        // Skipped on touch devices (no hover).
         if (window.matchMedia("(hover: hover)").matches) {
             const logos = root.querySelectorAll(".cert-item__logo");
             logos.forEach((logo) => {
@@ -99,9 +79,6 @@ window.Awards = (function () {
         apply();
     }
 
-    /* ─────────────────────────────────────────────
-       Mode 2 — Manual draggable scroll
-       ───────────────────────────────────────────── */
     function initManualScroll(root) {
         const slider = root.querySelector(".awards__slider");
         if (!slider) return;
@@ -154,7 +131,6 @@ window.Awards = (function () {
         slider.addEventListener("mouseleave", endDrag);
         slider.addEventListener("click", onClickCapture, true);
 
-        // Keyboard support
         slider.addEventListener("keydown", (e) => {
             switch (e.key) {
                 case "ArrowRight":
@@ -179,9 +155,6 @@ window.Awards = (function () {
         });
     }
 
-    /* ─────────────────────────────────────────────
-       Public init
-       ───────────────────────────────────────────── */
     function init(root) {
         const roots = root ? [root] : Array.from(document.querySelectorAll(".awards"));
         roots.forEach((el) => {
