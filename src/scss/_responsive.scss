@@ -10,7 +10,7 @@
 //  overlay paint on desktop viewports, regardless of
 //  state left over from a prior viewport.
 // ═══════════════════════════════════════════════════
-@media (min-width: 1024px) {
+@media (min-width: 1200px) {
     .drawer,
     .overlay {
         display: none !important;
@@ -45,6 +45,34 @@
 @media (max-width: 1199px) {
     :root {
         --gutter: 48px;
+    }
+
+    .navbar__menu {
+        display: none;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .navbar {
+        &__logo {
+            width: 80px;
+            height: 44px;
+            margin-inline: 0;
+            margin-inline-end: auto;
+
+            [dir="rtl"] & {
+                margin-inline-end: 0;
+                margin-inline-start: auto;
+            }
+        }
+
+        &__actions {
+            [dir="rtl"] & {
+                flex-direction: row-reverse;
+            }
+        }
     }
 
     .hero {
@@ -130,7 +158,6 @@
 
     .navbar {
         padding: 12px 24px;
-        padding-block-start: 32px;
 
         // &.is-solid {
         //     padding-block-start: 20px; // 👈 normal padding when solid
@@ -138,7 +165,7 @@
 
         &__inner {
             gap: 24px; //  CHANGED — fixed gap between items
-            padding-top: 10px;
+            padding-top: 0;
 
             [dir="rtl"] & {
                 flex-direction: row-reverse;
@@ -287,6 +314,8 @@
         }
 
         &__logo {
+            width: 72px;
+            height: 40px;
             margin-inline: 0; //  ADDED
             margin-inline-end: auto; //  ADDED — logo next to hamburger, actions on right
         }
