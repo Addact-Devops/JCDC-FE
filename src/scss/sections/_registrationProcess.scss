@@ -6,7 +6,7 @@
 
 .registration-process {
     width: 100%;
-    background: var(--surface-grey); // light grey
+    background: var(--surface-white);
     padding: 64px 120px;
 
     &__container {
@@ -20,13 +20,13 @@
         flex-direction: column;
         align-items: center;
         gap: 8px;
-        margin-bottom: 48px;
+        margin-bottom: 56px;
     }
 
     &__title {
         margin: 0;
         font-family: var(--font-body);
-        font-size: 48px;
+        font-size: 40px;
         font-weight: 500;
         line-height: 120%;
         color: var(--primary-500);
@@ -49,7 +49,7 @@
     &__steps {
         display: flex;
         flex-direction: column;
-        gap: 40px;
+        gap: 20px;
     }
 }
 
@@ -60,7 +60,8 @@
 .process-step {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    padding: 24px;
+    gap: 12px;
 
     &__number {
         margin: 0;
@@ -73,19 +74,19 @@
     }
 
     &__title {
-        margin: 0;
+        margin-top: 4px;
         font-family: var(--font-body);
-        font-size: 22px;
-        font-weight: 700;
+        font-size: 24px;
+        font-weight: 500;
         line-height: 130%;
         color: var(--primary-500);
     }
 
     &__description {
         margin: 0;
-        max-width: 540px;
+        max-width: 542px;
         font-family: var(--font-body);
-        font-size: 16px;
+        font-size: 18px;
         font-weight: 400;
         line-height: 150%;
         color: var(--text-500);
@@ -96,9 +97,9 @@
 // Important Notice card (right)
 // ==========================================
 .notice-card {
-    background: var(--surface-white);
+    background: var(--surface-grey);
     border-radius: 8px;
-    padding: 32px;
+    padding: 40px;
 
     display: flex;
     flex-direction: column;
@@ -107,8 +108,8 @@
     &__title {
         margin: 0;
         font-family: var(--font-body);
-        font-size: 24px;
-        font-weight: 700;
+        font-size: 32px;
+        font-weight: 500;
         line-height: 120%;
         color: var(--primary-500);
     }
@@ -116,7 +117,7 @@
     &__text {
         margin: 0;
         font-family: var(--font-body);
-        font-size: 16px;
+        font-size: 18px;
         font-weight: 400;
         line-height: 150%;
         color: var(--text-500);
