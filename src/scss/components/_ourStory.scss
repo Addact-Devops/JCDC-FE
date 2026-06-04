@@ -228,3 +228,13 @@ $text-color: rgba(91, 95, 98, 1);
         }
     }
 }
+
+[dir="rtl"] .our-story {
+    &::before {
+        left: auto;
+        right: 0;
+
+        transform: scaleX(-1);
+        transform-origin: center;
+    }
+}
