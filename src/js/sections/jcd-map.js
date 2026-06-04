@@ -146,12 +146,21 @@
                     return;
                 }
                 if (!bbox || !isFinite(bbox.width) || bbox.width === 0) return;
-                var cx = bbox.x + bbox.width / 2;
-                var cy = bbox.y + bbox.height / 2;
+                var cx = labelEl.dataset.manualX !== undefined
+                    ? parseFloat(labelEl.dataset.manualX)
+                    : bbox.x + bbox.width / 2 + (parseFloat(labelEl.dataset.offsetX) || 0);
+                var cy = labelEl.dataset.manualY !== undefined
+                    ? parseFloat(labelEl.dataset.manualY)
+                    : bbox.y + bbox.height / 2 + (parseFloat(labelEl.dataset.offsetY) || 0);
                 labelEl.setAttribute("x", cx);
                 labelEl.setAttribute("y", cy);
-                // Re-wrap with the new x so tspans inherit the centre
-                var current = labelEl.textContent.trim();
+                // Cache the original text once so subsequent calls don't read
+                // the corrupted tspan concatenation (tspans have no space
+                // between them in textContent).
+                if (!labelEl.dataset.labelText) {
+                    labelEl.dataset.labelText = labelEl.textContent.trim();
+                }
+                var current = labelEl.dataset.labelText;
                 if (current) setMultilineLabel(labelEl, current);
             });
         }
