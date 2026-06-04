@@ -171,12 +171,10 @@
     // Visible "Choose Date" / formatted date label
     &__date-text {
         flex: 1;
-
+        min-width: 0;
         font-size: 16px;
         line-height: 24px;
-
         color: #667085;
-
         white-space: nowrap;
 
         // Empty state — lighter / placeholder colour
@@ -375,12 +373,13 @@
         //  background: var(--primary-500);
         background: #e6f1f6;
         // color: var(--surface-white);
-        color: #0c7cad;
-        border-color: #0c7cad;
+        color: var(--primary-500);
+        border-color: var(--primary-500);
         font-weight: 600;
 
         .filter-chip__icon {
             display: block !important;
+            color: var(--primary-500);
         }
     }
 
@@ -564,10 +563,13 @@
     .news-listing {
         padding: 48px 24px;
 
+        // ◆ Use grid so we can split layout: search full-width, From+To side-by-side
         &__controls {
-            flex-direction: column;
-            align-items: stretch;
+            display: grid;
+            grid-template-columns: 1fr 1fr; // ◆ 2 columns for From and To
+            align-items: end;
             gap: 16px;
+            margin-bottom: 32px;
         }
 
         &__label {
@@ -578,15 +580,23 @@
             width: 100%;
         }
 
+        // ◆ Search field spans the full row (above From/To)
         &__field:first-child {
+            grid-column: 1 / -1; // ◆ full width
             max-width: none;
         }
 
+        // ◆ From and To each take one column on the same row
         &__field:nth-child(2) {
             margin-left: 0;
+            grid-column: 1; // ◆ left column
         }
 
-        // Figma mobile keeps the search input + button on one row.
+        &__field:nth-child(3) {
+            grid-column: 2; // ◆ right column
+        }
+
+        // Search input + button still on one row
         &__search {
             flex-direction: row;
             gap: 12px;
@@ -608,8 +618,29 @@
             font-size: 14px;
         }
 
+        // ◆ Date inputs — full width of their column
         &__date {
             width: 100%;
+            padding: 12px 16px; // ◆ keep same Figma padding
+            gap: 8px;
+            max-width: 172px;
+            height: 66px;
+        }
+
+        &__date-icon {
+            width: 24px;
+            height: 24px;
+            flex-shrink: 0;
+            margin: 0; // ◆ ensure no extra margin
+            padding: 0; // ◆ ensure no extra padding
+        }
+
+        &__date-text {
+            font-size: 14px;
+            white-space: normal; // ◆ NEW — allow 2-line wrap on mobile
+            line-height: 1.5;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         &__grid {
@@ -623,6 +654,7 @@
             margin-bottom: 32px;
             padding-bottom: 2px;
         }
+
         &__filters-label {
             font-size: 16px;
         }
