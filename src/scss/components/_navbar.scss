@@ -344,3 +344,34 @@
         }
     }
 }
+
+@media (max-width: 1320px) and (min-width: 1200px) {
+    .navbar {
+        padding-inline: 24px;
+
+        &__inner {
+            gap: 16px;
+        }
+
+        &__menu {
+            gap: 4px;
+        }
+
+        &__actions {
+            gap: 12px;
+        }
+    }
+
+    .nav-item {
+        padding-inline: 10px;
+        font-size: 13px;
+    }
+
+    .nav-item__btn {
+        padding-inline: 4px;
+    }
+
+    .lang-btn__text {
+        padding-inline: 4px;
+    }
+}

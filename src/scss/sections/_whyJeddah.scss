@@ -201,35 +201,54 @@
 
         &__grid {
             grid-template-columns: 1fr;
-            gap: 28px;
+            gap: 24px;
+            width: 100%;
+            max-width: 361px;
+            margin: 0 auto;
+            padding: 0;
         }
 
         &__card {
             position: relative;
-            padding-inline-start: 20px;
+            width: 100%;
+            align-items: flex-start;
+            gap: 0;
+            padding-inline-start: 0;
+            text-align: start;
+
+            &:hover {
+                transform: none;
+            }
         }
-        &__card::before {
-            content: "";
 
-            position: absolute;
+        &__card::before,
+        &__card-border::before {
+            display: none;
+        }
 
-            top: 50%;
-            inset-inline-start: 0;
-
-            transform: translateY(-50%);
-
-            width: 1px;
-            height: 80px;
-
-            background: var(--secondary-500);
+        &__card::after {
+            display: none;
         }
 
         &__icon {
+            position: relative;
             width: 44px;
             height: 44px;
+            margin-bottom: 40px;
+
+            &::after {
+                content: "";
+                position: absolute;
+                inset-inline-start: 0;
+                bottom: -24px;
+                width: 80px;
+                height: 0;
+                border-top: 1px solid var(--secondary-500);
+            }
         }
 
         &__card-title {
+            margin-bottom: 16px;
             font-size: 18px;
         }
 
