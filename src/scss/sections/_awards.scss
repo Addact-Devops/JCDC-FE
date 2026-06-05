@@ -47,13 +47,11 @@
     .certs {
         animation: scrollAwards 20s linear infinite;
     }
-
-    /* Mirror direction in RTL */
-    [dir="rtl"] & .certs {
-        animation-direction: reverse;
-    }
 }
 
+[dir="rtl"] .awards--auto-scroll .certs {
+    animation-direction: reverse;
+}
 /* ════════════════════════════════════════════
    MODE 2 — MANUAL / DRAGGABLE (default)
    Applied when `.awards--auto-scroll` is absent
@@ -106,10 +104,10 @@
 
 @keyframes scrollAwards {
     0% {
-        transform: translateX(0);
+        transform: translateX(-50%);
     }
     100% {
-        transform: translateX(-50%);
+        transform: translateX(0);
     }
 }
 

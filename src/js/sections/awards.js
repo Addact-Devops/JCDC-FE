@@ -43,11 +43,7 @@ window.Awards = (function () {
         });
 
         track.style.setProperty("--scroll-width", `-${totalWidth}px`);
-
-        track.style.animation = "none";
-        // eslint-disable-next-line no-unused-expressions
-        track.offsetHeight;
-        track.style.animation = "";
+        // ◆ Animation reset removed — was breaking RTL direction
     }
 
     function initAutoScroll(root) {
@@ -57,6 +53,18 @@ window.Awards = (function () {
         whenImagesReady(track, () => initScrollWidth(root));
 
         window.addEventListener("resize", () => initScrollWidth(root));
+
+        // ◆ Watch for language/dir changes and restart animation
+        const dirObserver = new MutationObserver(() => {
+            track.style.animation = "none";
+            // eslint-disable-next-line no-unused-expressions
+            track.offsetHeight;
+            track.style.animation = "";
+        });
+        dirObserver.observe(document.documentElement, {
+            attributes: true,
+            attributeFilter: ["dir", "lang"],
+        });
 
         const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)");
         const apply = () => {
