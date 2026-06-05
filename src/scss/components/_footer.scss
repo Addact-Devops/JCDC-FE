@@ -34,7 +34,9 @@
 
         [dir="rtl"] & {
             align-items: flex-start;
-            min-width: 850px;
+            width: 100%;
+            min-width: none;
+            max-width: 850px;
         }
     }
 
@@ -198,18 +200,6 @@
         }
     }
 }
-
-// 👈 ADDED — RTL footer fix for tablet range
-// @media (max-width: 1023px) and (min-width: 768px) {
-//     [dir="rtl"] .footer__right {
-//         min-width: auto; // 👈 removes 850px overflow
-//         max-width: 100%;
-//     }
-
-//     [dir="rtl"] .footer__legal {
-//         min-width: auto; // 👈 removes 850px overflow
-//     }
-// }
 
 @media (max-width: 1023px) {
     .footer {
