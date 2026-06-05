@@ -352,6 +352,9 @@
                     <div class="jcd-map__scroll">
                         <!-- Stage wraps everything that scales/translates on zoom -->
                         <div class="jcd-map__stage" id="jcd-map-stage">
+                            <!-- Layers: the three map visuals that zoom/translate together.
+                                 The stage background stays fixed so edge exposure is impossible. -->
+                            <div class="jcd-map__layers" id="jcd-map-layers">
 
                             <img
                                 class="jcd-map__bg jcd-map__bg--mask"
@@ -988,6 +991,7 @@
                                     </svg>
                                 </button>
                             </div>
+                            </div><!-- /.jcd-map__layers -->
                         </div>
 
                         <!-- Hover / pinned tooltip — outside the stage so it
@@ -1011,7 +1015,11 @@
                         </p>
                     </div>
 
-                    <div class="jcd-map__detail" data-panel-state="detail" hidden>
+                </aside>
+                </div>
+                <!-- Detail side-panel — sits OUTSIDE the viewport as a grid column -->
+                <aside class="jcd-map__side-panel" id="jcd-map-side-panel" hidden>
+                    <div class="jcd-map__detail" data-panel-state="detail">
                         <button
                             type="button"
                             class="jcd-map__close"
@@ -1050,8 +1058,7 @@
                             </a>
                         </div>
                     </div>
-                </aside> 
-                </div>
+                </aside>
             </div>
         </section>
 

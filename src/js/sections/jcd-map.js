@@ -54,9 +54,11 @@
         inited = true;
 
         // ─── Static element references ──────────────────────────────
+        var container = root.querySelector(".jcd-map__container");
         var viewport = root.querySelector("#jcd-map-viewport");
         var scrollWrap = viewport && viewport.querySelector(".jcd-map__scroll");
         var stage = root.querySelector("#jcd-map-stage");
+        var layers = root.querySelector("#jcd-map-layers");
         var svg = root.querySelector("#jcd-map-svg");
         var districtsLayer = root.querySelector("#jcd-map-districts");
         var labelsLayer = root.querySelector("#jcd-map-labels");
@@ -64,10 +66,11 @@
         var iconsHost = root.querySelector("#jcd-map-icons");
         var tooltip = root.querySelector("#jcd-map-tooltip");
         var panel = root.querySelector("#jcd-map-panel");
+        var sidePanel = root.querySelector("#jcd-map-side-panel");
         var introEl = root.querySelector('[data-panel-state="intro"]');
         var detailEl = root.querySelector('[data-panel-state="detail"]');
 
-        if (!viewport || !stage || !svg || !districtsLayer || !cutout || !panel) {
+        if (!viewport || !stage || !layers || !svg || !districtsLayer || !cutout || !panel) {
             return false;
         }
 
@@ -377,9 +380,9 @@
         //  to: P' = s·(P − 50) + 50 + t
         //  Setting P' = 50 for P = centre gives t = (50 − P)·s.
         // ───────────────────────────────────────────────────────
-        var TARGET_FILL_PCT = 88;
-        var MIN_ZOOM = 1.3;
-        var MAX_ZOOM = 2.4;
+        var TARGET_FILL_PCT = 65;
+        var MIN_ZOOM = 1.1;
+        var MAX_ZOOM = 2.2;
 
         function applyZoom() {
             var pathEl = activeDistrictId
@@ -388,8 +391,8 @@
 
             if (!pathEl) {
                 // Reset to identity transform (back to overview).
-                stage.style.transform = "";
-                stage.style.transformOrigin = "";
+                layers.style.transform = "";
+                layers.style.transformOrigin = "";
                 iconsHost.style.setProperty("--icon-counter-scale", "1");
                 return;
             }
@@ -414,12 +417,23 @@
             var zoom = Math.min(fitX, fitY);
             zoom = Math.max(MIN_ZOOM, Math.min(zoom, MAX_ZOOM));
 
-            // Translate so the bbox centre lands at (50%, 50%) of the viewport
+            // Translate so the bbox centre lands at (50%, 50%) of the viewport.
+            // Clamp so the stage never shifts far enough to expose the
+            // viewport background (max safe shift = 50% * (zoom - 1)).
             var tx = (50 - cxPct) * zoom;
             var ty = (50 - cyPct) * zoom;
+            // Allow a few extra percent of translation beyond the hard
+            // edge so districts whose paths touch the SVG boundary (e.g.
+            // Sport at y=0, Culture at x=0) get a small breathing margin.
+            // The stage background (dark gradient) covers the tiny exposed
+            // strip — it will never be white.
+            var EDGE_MARGIN = 4;
+            var maxT = 50 * (zoom - 1) + EDGE_MARGIN;
+            tx = Math.max(-maxT, Math.min(maxT, tx));
+            ty = Math.max(-maxT, Math.min(maxT, ty));
 
-            stage.style.transformOrigin = "50% 50%";
-            stage.style.transform =
+            layers.style.transformOrigin = "50% 50%";
+            layers.style.transform =
                 "translate(" + tx.toFixed(2) + "%, " + ty.toFixed(2) + "%) " + "scale(" + zoom.toFixed(3) + ")";
 
             // Counter-scale the icons so they keep their physical size
@@ -465,27 +479,27 @@
             cutout.setAttribute("d", id ? DISTRICT_PATHS[id] || "M 0 0 Z" : "M 0 0 Z");
 
             viewport.classList.toggle("is-detail", !!id);
+            if (container) container.classList.toggle("is-detail", !!id);
             hideTooltip();
             syncIconVisibility();
 
             if (id) {
-                // Show the popup in detail state
-                panel.hidden = false;
+                // Hide intro overlay, show the side-panel detail column
                 if (introEl) introEl.hidden = true;
+                panel.hidden = true;
+                if (sidePanel) sidePanel.hidden = false;
                 if (detailEl) detailEl.hidden = false;
                 renderDetail();
                 requestAnimationFrame(applyZoom);
             } else {
-                // No district selected
+                // No district selected — restore intro overlay, hide side panel
+                if (sidePanel) sidePanel.hidden = true;
+                if (detailEl) detailEl.hidden = true;
                 if (noIntroMode) {
-                    // District-page mode: hide the popup completely.
                     panel.hidden = true;
-                    if (detailEl) detailEl.hidden = true;
                 } else {
-                    // jcdc.html mode: show the intro state inside the popup
                     panel.hidden = false;
                     if (introEl) introEl.hidden = false;
-                    if (detailEl) detailEl.hidden = true;
                 }
                 applyZoom();
             }
@@ -617,6 +631,12 @@
         panel.addEventListener("click", function (e) {
             if (e.target.closest("[data-jcd-close]")) clearSelection();
         });
+
+        if (sidePanel) {
+            sidePanel.addEventListener("click", function (e) {
+                if (e.target.closest("[data-jcd-close]")) clearSelection();
+            });
+        }
 
         document.addEventListener("keydown", function (e) {
             if (e.key === "Escape" && activeDistrictId) clearSelection();
