@@ -21,6 +21,11 @@
         font-weight: 400;
         line-height: 143%;
         color: var(--text-500);
+
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        flex-wrap: wrap;
     }
 
     &__required {
