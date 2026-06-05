@@ -10,15 +10,15 @@
 //  * IIFE pattern (matches the rest of the codebase — no ES modules).
 //  */
 // (function () {
-//     'use strict';
+//     "use strict";
 
 //     function init() {
-//         const form = document.getElementById('contact-form');
+//         const form = document.getElementById("contact-form");
 //         if (!form) return;
 
-//         const formWrap = document.getElementById('contact-form-wrap');
-//         const successEl = document.getElementById('contact-success');
-//         const contactSection = form.closest('.contact-us');
+//         const formWrap = document.getElementById("contact-form-wrap");
+//         const successEl = document.getElementById("contact-success");
+//         const contactSection = form.closest(".contact-us");
 
 //         // ──────────────────────────────────────────
 //         // Validation helpers
@@ -27,39 +27,37 @@
 //         const PHONE_RE = /^[+]?[\d\s\-()]{7,20}$/;
 
 //         function getMessages() {
-//             const lang = (window.I18n && window.I18n.get && window.I18n.get()) || 'en';
-//             const ar = lang === 'ar';
+//             const lang = (window.I18n && window.I18n.get && window.I18n.get()) || "en";
+//             const ar = lang === "ar";
 //             return {
-//                 required: ar ? 'هذا الحقل مطلوب' : 'This field is required',
-//                 email: ar ? 'يرجى إدخال بريد إلكتروني صالح' : 'Please enter a valid email address',
-//                 phone: ar ? 'يرجى إدخال رقم هاتف صالح' : 'Please enter a valid phone number',
-//                 topic: ar ? 'يرجى اختيار موضوع' : 'Please choose a topic',
-//                 terms: ar
-//                     ? 'يجب الموافقة على الشروط والأحكام'
-//                     : 'You must accept the Terms and Conditions',
+//                 required: ar ? "هذا الحقل مطلوب" : "This field is required",
+//                 email: ar ? "يرجى إدخال بريد إلكتروني صالح" : "Please enter a valid email address",
+//                 phone: ar ? "يرجى إدخال رقم هاتف صالح" : "Please enter a valid phone number",
+//                 topic: ar ? "يرجى اختيار موضوع" : "Please choose a topic",
+//                 terms: ar ? "يجب الموافقة على الشروط والأحكام" : "You must accept the Terms and Conditions",
 //             };
 //         }
 
 //         function setError(wrap, msg) {
 //             if (!wrap) return;
-//             wrap.classList.add('has-error', 'is-invalid');
-//             const errEl = wrap.querySelector('.form-field__error, .form-group__error');
+//             wrap.classList.add("has-error", "is-invalid");
+//             const errEl = wrap.querySelector(".form-field__error, .form-group__error");
 //             if (errEl && msg) errEl.textContent = msg;
-//             const inputEl = wrap.querySelector('input, select, textarea');
-//             if (inputEl) inputEl.setAttribute('aria-invalid', 'true');
+//             const inputEl = wrap.querySelector("input, select, textarea");
+//             if (inputEl) inputEl.setAttribute("aria-invalid", "true");
 //         }
 
 //         function clearError(wrap) {
 //             if (!wrap) return;
-//             wrap.classList.remove('has-error', 'is-invalid');
-//             const inputEl = wrap.querySelector('input, select, textarea');
-//             if (inputEl) inputEl.removeAttribute('aria-invalid');
+//             wrap.classList.remove("has-error", "is-invalid");
+//             const inputEl = wrap.querySelector("input, select, textarea");
+//             if (inputEl) inputEl.removeAttribute("aria-invalid");
 //         }
 
 //         function validateField(field) {
-//             const wrap = field.closest('.form-field, .form-group, .contact-form__terms-row');
+//             const wrap = field.closest(".form-field, .form-group, .contact-form__terms-row");
 //             const msgs = getMessages();
-//             const value = field.type === 'checkbox' ? field.checked : (field.value || '').trim();
+//             const value = field.type === "checkbox" ? field.checked : (field.value || "").trim();
 
 //             // Skip disabled fields
 //             if (field.disabled) {
@@ -68,27 +66,27 @@
 //             }
 
 //             // Required check
-//             if (field.hasAttribute('required') || field.dataset.required === 'true') {
-//                 if (field.type === 'checkbox' && !value) {
-//                     setError(wrap, field.name === 'terms' ? msgs.terms : msgs.required);
+//             if (field.hasAttribute("required") || field.dataset.required === "true") {
+//                 if (field.type === "checkbox" && !value) {
+//                     setError(wrap, field.name === "terms" ? msgs.terms : msgs.required);
 //                     return false;
 //                 }
-//                 if (typeof value === 'string' && !value) {
+//                 if (typeof value === "string" && !value) {
 //                     setError(wrap, msgs.required);
 //                     return false;
 //                 }
 //             }
 
 //             // Type-specific
-//             if (field.type === 'email' && value && !EMAIL_RE.test(value)) {
+//             if (field.type === "email" && value && !EMAIL_RE.test(value)) {
 //                 setError(wrap, msgs.email);
 //                 return false;
 //             }
-//             if (field.type === 'tel' && value && !PHONE_RE.test(value)) {
+//             if (field.type === "tel" && value && !PHONE_RE.test(value)) {
 //                 setError(wrap, msgs.phone);
 //                 return false;
 //             }
-//             if (field.tagName === 'SELECT' && field.hasAttribute('required') && !value) {
+//             if (field.tagName === "SELECT" && field.hasAttribute("required") && !value) {
 //                 setError(wrap, msgs.topic);
 //                 return false;
 //             }
@@ -99,7 +97,7 @@
 
 //         function validateAll() {
 //             const fields = form.querySelectorAll(
-//                 'input[required], select[required], textarea[required], input[data-required="true"]'
+//                 'input[required], select[required], textarea[required], input[data-required="true"]',
 //             );
 //             let firstInvalid = null;
 //             let valid = true;
@@ -124,45 +122,45 @@
 //         // Live validation: clear error on input,
 //         // re-validate on blur.
 //         // ──────────────────────────────────────────
-//         form.querySelectorAll('input, select, textarea').forEach((f) => {
-//             f.addEventListener('input', () => {
-//                 const wrap = f.closest('.form-field, .form-group, .contact-form__terms-row');
+//         form.querySelectorAll("input, select, textarea").forEach((f) => {
+//             f.addEventListener("input", () => {
+//                 const wrap = f.closest(".form-field, .form-group, .contact-form__terms-row");
 //                 clearError(wrap);
 //             });
-//             f.addEventListener('change', () => {
-//                 if (f.type === 'checkbox' || f.tagName === 'SELECT') validateField(f);
+//             f.addEventListener("change", () => {
+//                 if (f.type === "checkbox" || f.tagName === "SELECT") validateField(f);
 //             });
-//             f.addEventListener('blur', () => validateField(f));
+//             f.addEventListener("blur", () => validateField(f));
 //         });
 
 //         // ──────────────────────────────────────────
 //         // Submit handler
 //         // ──────────────────────────────────────────
-//         form.addEventListener('submit', (e) => {
+//         form.addEventListener("submit", (e) => {
 //             e.preventDefault();
 //             if (!validateAll()) return;
 
 //             // Swap UI: hide form wrap, show success card
 //             if (formWrap) formWrap.hidden = true;
-//             if (contactSection) contactSection.classList.add('is-success');
+//             if (contactSection) contactSection.classList.add("is-success");
 //             if (successEl) {
 //                 successEl.hidden = false;
 //                 // Move focus for screen readers
-//                 successEl.setAttribute('tabindex', '-1');
+//                 successEl.setAttribute("tabindex", "-1");
 //                 try {
 //                     successEl.focus({ preventScroll: false });
 //                 } catch (_) {
 //                     successEl.focus();
 //                 }
 //                 // Keep the page structure visible after the state swap.
-//                 const banner = document.querySelector('.banner');
-//                 (banner || contactSection || successEl).scrollIntoView({ behavior: 'smooth', block: 'start' });
+//                 const banner = document.querySelector(".banner");
+//                 (banner || contactSection || successEl).scrollIntoView({ behavior: "smooth", block: "start" });
 //             }
 //         });
 //     }
 
-//     if (document.readyState === 'loading') {
-//         document.addEventListener('DOMContentLoaded', init);
+//     if (document.readyState === "loading") {
+//         document.addEventListener("DOMContentLoaded", init);
 //     } else {
 //         init();
 //     }
@@ -199,33 +197,30 @@
         // can't add the span markup directly to the template.
         // ──────────────────────────────────────────
         function injectRequiredMarkers() {
-            const requiredFields = form.querySelectorAll(
-                'input[required], textarea[required], select[required], input[data-required="true"]',
-            );
+            const requiredFields = form.querySelectorAll(`
+            input[aria-required="true"],
+            textarea[aria-required="true"],
+            select[aria-required="true"]
+        `);
 
             requiredFields.forEach((field) => {
-                // Skip checkboxes — the terms checkbox has its own label structure
+                // Skip checkboxes
                 if (field.type === "checkbox") return;
 
-                // Find the matching label (by `for` attribute first, then by wrapper)
-                let label = null;
-                if (field.id) {
-                    label = form.querySelector(`label[for="${field.id}"]`);
-                }
-                if (!label) {
-                    const wrap = field.closest(".form-field, .form-group");
-                    if (wrap) label = wrap.querySelector(".form-field__label, label");
-                }
+                const wrapper = field.closest(".form-field, .form-group");
+                if (!wrapper) return;
+
+                const label = wrapper.querySelector(".form-field__label");
                 if (!label) return;
 
-                // Skip if asterisk already exists (e.g. some labels already have it in HTML)
+                // Prevent duplicate asterisks
                 if (label.querySelector(".form-field__required")) return;
 
-                // Create and append the asterisk
                 const asterisk = document.createElement("span");
                 asterisk.className = "form-field__required";
                 asterisk.setAttribute("aria-hidden", "true");
                 asterisk.textContent = "*";
+
                 label.appendChild(asterisk);
             });
         }
