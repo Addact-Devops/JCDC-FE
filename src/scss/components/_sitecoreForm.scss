@@ -1,5 +1,4 @@
 .field-validation-error {
-    display: none;
     font-family: var(--font-body);
     font-size: 13px;
     font-weight: 400;
@@ -9,5 +8,5 @@
 }
 
 .contact-form__terms-row .field-validation-error span {
-    display: none;
+    display: none !important;
 }

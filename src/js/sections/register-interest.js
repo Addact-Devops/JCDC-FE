@@ -16,10 +16,53 @@
     // Module init — bail early if no form on page
     // ──────────────────────────────────────────────
     function init() {
-        const form = document.getElementById('register-form');
+        const form = document.getElementById("register-panel");
         if (!form) return;
 
-        const panel = document.getElementById('register-panel');
+         // form.querySelectorAll('input[data-val="true"], textarea[data-val="true"], select[data-val="true"]').forEach((field) => {
+           // const wrapper = field.closest(".form-field");
+           // const label = wrapper?.querySelector(".form-field__label");
+
+           // if (label) {
+             // const asterisk = document.createElement("span");
+             // asterisk.className = "form-field__required";
+             // asterisk.setAttribute("aria-hidden", "true");
+             // asterisk.style.color = "red";
+             // asterisk.textContent = "*";
+
+             // label.appendChild(asterisk);
+           // }
+         // });
+		 form
+  .querySelectorAll(
+   'input[data-val="true"], textarea[data-val="true"], select[data-val="true"]'
+  )
+  .forEach((field) => {
+   const wrapper = field.closest(".form-field");
+   const label = wrapper?.querySelector(".form-field__label");
+
+
+
+   if (
+     label &&
+     !label.querySelector(".form-field__required")
+   ) {
+     const asterisk = document.createElement("span");
+
+
+
+     asterisk.className = "form-field__required";
+     asterisk.setAttribute("aria-hidden", "true");
+     asterisk.style.color = "red";
+     asterisk.textContent = "*";
+
+
+
+     label.appendChild(asterisk);
+   }
+  });
+ 
+        // const panel = document.getElementById('register-panel');
         const successEl = document.getElementById('register-success');
         const conditionalSections = form.querySelectorAll('[data-conditional]');
 
@@ -41,7 +84,7 @@
                     field.disabled = !matches;
                     if (!matches) {
                         // Clear any error state on hidden fields
-                        const wrap = field.closest('.form-field, .form-group, .form-phone');
+                        const wrap = field.closest('.form-field, .form-phone');
                         if (wrap) wrap.classList.remove('has-error', 'is-invalid');
                     }
                 });
@@ -113,7 +156,7 @@
         }
 
         function getWrapper(input) {
-            return input.closest('.form-field, .form-group, .form-phone, .form-check');
+            return input.closest('.form-field');
         }
 
         function validateField(field, msgs) {
