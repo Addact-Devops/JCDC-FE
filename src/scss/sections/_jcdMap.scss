@@ -434,15 +434,16 @@
 
         // Title inside the detail panel is white and smaller
         .jcd-map__panel-title {
-            font-size: 28px;
-            color: #fff;
+            font-size: 40px;
+            line-height: 1.15;
             font-weight: 600;
-            line-height: 1.2;
+            letter-spacing: -0.01em;
+            color: #ddbf8c;
             max-width: none;
         }
 
         .jcd-map__detail-content {
-            padding: 28px 28px 32px;
+            padding: 56px 48px 56px;
         }
     }
 
@@ -473,8 +474,8 @@
         height: 2px;
         background: #d4b27c;
 
-        margin-top: 16px;
-        margin-bottom: 14px;
+        margin-top: 32px;
+        margin-bottom: 24px;
 
         display: block;
         flex-shrink: 0;
@@ -609,7 +610,7 @@
     }
 
     &__cta {
-        margin-top: auto;
+        margin-top: 24px;
         align-self: flex-start;
     }
 
