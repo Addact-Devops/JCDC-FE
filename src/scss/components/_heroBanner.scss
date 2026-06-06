@@ -3,222 +3,226 @@
 // ==========================================
 
 .banner {
-    position: relative;
+  position: relative;
 
+  width: 100%;
+  min-height: 720px;
+
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  isolation: isolate;
+
+  // ==========================================
+  // Container
+  // ==========================================
+
+  &__container {
     width: 100%;
-    min-height: 720px;
+    max-width: 1440px;
 
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
+    margin: 0 auto;
 
-    overflow: hidden;
+    padding: 0 100px;
 
+    position: relative;
+    z-index: 2;
+  }
+
+  // ==========================================
+  // Overlay
+  // ==========================================
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.5) 0%,
+      rgba(0, 0, 0, 0.7) 100%
+    );
+    opacity: 0.8;
+  }
+
+  // ==========================================
+  // Content
+  // ==========================================
+
+  &__content {
+    position: relative;
+    width: 836px;
+    max-width: 100%;
+    z-index: 2;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+  }
+
+  // ==========================================
+  // Breadcrumbs
+  // ==========================================
+
+  &__breadcrumbs {
+    position: relative;
+    z-index: 3;
     display: flex;
     align-items: center;
+    gap: 5px;
+    margin-bottom: 8px;
+    font-family: "Ubuntu", sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 150%;
+  }
+
+  &__breadcrumbs-link {
+    position: relative;
+    color: #ddbf8c;
+    z-index: 4;
+    text-decoration: none;
+
+    pointer-events: auto;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__breadcrumbs-separator,
+  &__breadcrumbs-current {
+    color: #efefef;
+  }
+
+  &__breadcrumbs-separator {
+    display: inline-block;
+
+    // Flip the chevron direction in RTL so it points logically (right→left)
+    [dir="rtl"] & {
+      transform: scaleX(1);
+    }
+  }
+
+  // ==========================================
+  // Logo mark (small diamond mark + wordmark above breadcrumb)
+  // Used on pages like attraction.html where Figma shows the mini
+  // Jeddah Central mark above the breadcrumb.
+  // ==========================================
+  &__logo-mark {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 8px;
+    color: #ffffff;
+
+    img,
+    svg {
+      display: block;
+      width: 56px;
+      height: auto;
+    }
+  }
+
+  &__logo-wordmark {
+    font-family: "Ubuntu", sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    color: #ffffff;
+    text-transform: uppercase;
+  }
+
+  // ==========================================
+  // Title
+  // ==========================================
+
+  &__title {
+    font-family: "Ubuntu", sans-serif;
+    width: 100%;
+    margin: 0 auto 32px auto;
+    font-size: 64px;
+    font-weight: 500;
+    line-height: 120%;
+    letter-spacing: 0;
+    text-align: center;
+    color: #efefef;
+  }
+
+  // ==========================================
+  // Description
+  // ==========================================
+  &__description {
+    margin: 0;
+
+    width: 100%;
+    max-width: 836px;
+
+    font-family: "Ubuntu", sans-serif;
+
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 140%;
+    letter-spacing: 0;
+
+    text-align: center;
+
+    color: #efefef;
+  }
+
+  // ==========================================
+  // Logo (used on Invest hero — Jeddah Central destination mark)
+  // ==========================================
+  &__logo {
+    width: 97px;
+    height: 108px;
+    margin-bottom: 32px;
+
+    img,
+    svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+  }
+
+  // ==========================================
+  // CTA wrapper (sits below description)
+  // ==========================================
+  &__cta-wrap {
+    margin-top: 32px;
+    display: flex;
     justify-content: center;
+  }
 
-    isolation: isolate;
+  // CTA button width override — slightly wider than default
+  &__cta {
+    width: 261px;
+    height: 48px;
+    padding: 16px;
+    gap: 16px;
+    border-width: 1px;
+  }
 
-    // ==========================================
-    // Container
-    // ==========================================
-
-    &__container {
-        width: 100%;
-        max-width: 1440px;
-
-        margin: 0 auto;
-
-        padding: 0 100px;
-
-        position: relative;
-        z-index: 2;
-    }
-
-    // ==========================================
-    // Overlay
-    // ==========================================
-
-    &__overlay {
-        position: absolute;
-        inset: 0;
-        z-index: 1;
-        pointer-events: none;
-
-        background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0.7) 100%);
-        opacity: 0.8;
-    }
-
-    // ==========================================
-    // Content
-    // ==========================================
-
-    &__content {
-        position: relative;
-        width: 836px;
-        max-width: 100%;
-        z-index: 2;
-        margin: 0 auto;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-        text-align: center;
-    }
-
-    // ==========================================
-    // Breadcrumbs
-    // ==========================================
-
-    &__breadcrumbs {
-        position: relative;
-        z-index: 3;
-        display: flex;
-        align-items: center;
-        gap: 5px;
-        margin-bottom: 8px;
-        font-family: "Ubuntu", sans-serif;
-        font-size: 18px;
-        font-weight: 400;
-        line-height: 150%;
-    }
-
-    &__breadcrumbs-link {
-        position: relative;
-        color: #ddbf8c;
-        z-index: 4;
-        text-decoration: none;
-
-        pointer-events: auto;
-        cursor: pointer;
-
-        &:hover {
-            text-decoration: underline;
-        }
-    }
-
-    &__breadcrumbs-separator,
-    &__breadcrumbs-current {
-        color: #efefef;
-    }
-
-    &__breadcrumbs-separator {
-        display: inline-block;
-
-        // Flip the chevron direction in RTL so it points logically (right→left)
-        [dir="rtl"] & {
-            transform: scaleX(1);
-        }
-    }
-
-    // ==========================================
-    // Logo mark (small diamond mark + wordmark above breadcrumb)
-    // Used on pages like attraction.html where Figma shows the mini
-    // Jeddah Central mark above the breadcrumb.
-    // ==========================================
-    &__logo-mark {
-        display: inline-flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 6px;
-        margin-bottom: 8px;
-        color: #ffffff;
-
-        img,
-        svg {
-            display: block;
-            width: 56px;
-            height: auto;
-        }
-    }
-
-    &__logo-wordmark {
-        font-family: "Ubuntu", sans-serif;
-        font-size: 11px;
-        font-weight: 500;
-        letter-spacing: 0.18em;
-        color: #ffffff;
-        text-transform: uppercase;
-    }
-
-    // ==========================================
-    // Title
-    // ==========================================
-
-    &__title {
-        font-family: "Ubuntu", sans-serif;
-        width: 100%;
-        margin: 0 auto 32px auto;
-        font-size: 64px;
-        font-weight: 500;
-        line-height: 120%;
-        letter-spacing: 0;
-        text-align: center;
-        color: #efefef;
-    }
-
-    // ==========================================
-    // Description
-    // ==========================================
-    &__description {
-        margin: 0;
-
-        width: 100%;
-        max-width: 836px;
-
-        font-family: "Ubuntu", sans-serif;
-
-        font-size: 24px;
-        font-weight: 400;
-        line-height: 140%;
-        letter-spacing: 0;
-
-        text-align: center;
-
-        color: #efefef;
-    }
-
-    // ==========================================
-    // Logo (used on Invest hero — Jeddah Central destination mark)
-    // ==========================================
-    &__logo {
-        width: 97px;
-        height: 108px;
-        margin-bottom: 32px;
-
-        img,
-        svg {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-    }
-
-    // ==========================================
-    // CTA wrapper (sits below description)
-    // ==========================================
-    &__cta-wrap {
-        margin-top: 32px;
-        display: flex;
-        justify-content: center;
-    }
-
-    // CTA button width override — slightly wider than default
-    &__cta {
-        width: 261px;
-        height: 48px;
-        padding: 16px;
-        gap: 16px;
-        border-width: 1px;
-    }
-
-    &__two-line-title {
-        max-width: 452px;
-    }
+  &__two-line-title {
+    max-width: 452px;
+  }
 }
 .legalBanner {
-    min-height: 522px;
+  min-height: 522px;
 }
 // ==========================================
 // Responsive
@@ -226,226 +230,222 @@
 
 // Tablet (≤ 1024)
 @media (max-width: 1024px) {
-    .banner {
-        min-height: 560px;
+  .banner {
+    min-height: 560px;
 
-        &__content {
-            width: 100%;
-            max-width: 680px;
-            padding: 0 24px;
-        }
-
-        &__title {
-            font-size: 48px;
-            margin: 0 auto 24px auto;
-            line-height: 1.2;
-        }
-
-        &__description {
-            width: 100%;
-            max-width: 100%;
-            font-size: 18px;
-            line-height: 1.5;
-        }
+    &__content {
+      width: 100%;
+      max-width: 680px;
+      padding: 0 24px;
     }
+
+    &__title {
+      font-size: 48px;
+      margin: 0 auto 24px auto;
+      line-height: 1.2;
+    }
+
+    &__description {
+      width: 100%;
+      max-width: 100%;
+      font-size: 18px;
+      line-height: 1.5;
+    }
+  }
 }
 
 // Mobile (≤ 768)
 @media (max-width: 768px) {
-    .banner {
-        min-height: 520px;
+  .banner {
+    min-height: 520px;
 
-        &__container {
-            padding: 0 24px;
-            align-items: flex-start; //  ADDED
-        }
-
-        &__content {
-            width: 100%;
-            padding: 0 16px;
-            margin: 200px 0px;
-            gap: 8px;
-            align-items: center; //  CHANGED — was center
-            text-align: center; //  ADDED
-
-            [dir="rtl"] & {
-                margin-right: 0;
-                margin-left: 0;
-                align-items: center;
-                text-align: center;
-            }
-        }
-
-        &__breadcrumbs {
-            font-size: 14px;
-            flex-wrap: wrap;
-            justify-content: center; //  CHANGED — was center
-            [dir="rtl"] & {
-                width: 100%;
-                display: flex;
-                flex-direction: row-reverse;
-                justify-content: center;
-            }
-        }
-
-        &__title {
-            font-size: 40px;
-            margin: 0 auto 32px auto;
-            text-align: center; //  ADDED
-            [dir="rtl"] & {
-                width: 100%;
-                text-align: center;
-            }
-        }
-
-        &__description {
-            font-size: 16px;
-            line-height: 150%;
-            text-align: center; //  ADDED
-            [dir="rtl"] & {
-                width: 100%;
-                text-align: center;
-            }
-        }
-
-        &__logo {
-            width: 64px;
-            height: auto;
-            margin-bottom: 32px;
-            [dir="rtl"] & {
-                width: 100%; // 👈 ADDED — full width
-                display: flex; // 👈 ADDED
-                justify-content: flex-start; // 👈 ADDED — pushes logo to right
-
-                img {
-                    width: 80px; // 👈 ADDED — keep image 80px not full width
-                    height: auto;
-                }
-            }
-        }
-
-        &__cta-wrap {
-            margin-top: 24px;
-            width: 100%;
-            justify-content: center; //  ADDED
-        }
-
-        &__cta {
-            min-width: 0;
-            width: 244px;
-            max-width: 100%;
-            height: 48px;
-            padding: 16px;
-            gap: 20px;
-            background: var(--secondary-50);
-            border-color: var(--secondary-50);
-            color: var(--secondary-500);
-            font-size: 16px;
-            line-height: 1;
-            white-space: nowrap;
-            text-align: center;
-
-            span {
-                flex: 0 0 auto;
-                min-width: 0;
-            }
-
-            svg {
-                display: none;
-            }
-        }
+    &__container {
+      padding: 0 24px;
+      align-items: flex-start; //  ADDED
     }
+
+    &__content {
+      width: 100%;
+      padding: 0 16px;
+      margin: 200px 0px;
+      gap: 8px;
+      align-items: center; //  CHANGED — was center
+      text-align: center; //  ADDED
+
+      [dir="rtl"] & {
+        margin-right: 0;
+        margin-left: 0;
+        align-items: center;
+        text-align: center;
+      }
+    }
+
+    &__breadcrumbs {
+      font-size: 14px;
+      flex-wrap: wrap;
+      justify-content: center; //  CHANGED — was center
+      [dir="rtl"] & {
+        width: 100%;
+        display: flex;
+        flex-direction: row-reverse;
+        justify-content: center;
+      }
+    }
+
+    &__title {
+      font-size: 40px;
+      margin: 0 auto 32px auto;
+      text-align: center; //  ADDED
+      [dir="rtl"] & {
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    &__description {
+      font-size: 16px;
+      line-height: 150%;
+      text-align: center; //  ADDED
+      [dir="rtl"] & {
+        width: 100%;
+        text-align: center;
+      }
+    }
+
+    &__logo {
+      width: 64px;
+      height: auto;
+      margin-bottom: 32px;
+      [dir="rtl"] & {
+        width: 100%; // 👈 ADDED — full width
+        display: flex; // 👈 ADDED
+        justify-content: center; // 👈 ADDED — pushes logo to right
+
+        img {
+          width: 80px; // 👈 ADDED — keep image 80px not full width
+          height: auto;
+        }
+      }
+    }
+
+    &__cta-wrap {
+      margin-top: 24px;
+      width: 100%;
+      justify-content: center; //  ADDED
+    }
+
+    &__cta {
+      min-width: 0;
+      width: 244px;
+      max-width: 100%;
+      height: 48px;
+      padding: 16px;
+      gap: 20px;
+      background: var(--secondary-50);
+      border-color: var(--secondary-50);
+      color: var(--secondary-500);
+      font-size: 16px;
+      line-height: 1;
+      white-space: nowrap;
+      text-align: center;
+
+      span {
+        flex: 0 0 auto;
+        min-width: 0;
+      }
+
+      svg {
+        display: none;
+      }
+    }
+  }
 }
 
 // Small mobile (≤ 425) — keeps the original .hero rules intact for backward compatibility
 @media screen and (max-width: 425px) {
-    .banner {
-        min-height: 689px;
+  .banner {
+    min-height: 689px;
 
-        &__content {
-            align-items: center; //  ADDED
-            text-align: left; //  ADDED
-            [dir="rtl"] & {
-                margin-right: 0;
-                margin-left: auto;
-                align-items: flex-end;
-                text-align: right;
-            }
-        }
-
-        &__logo {
-            [dir="rtl"] & {
-                width: 100%; // 👈 ADDED
-                display: flex; // 👈 ADDED
-                justify-content: flex-start; // 👈 ADDED
-
-                img {
-                    width: 64px; // 👈 ADDED — keep image 80px not full width
-                    height: auto;
-                }
-            }
-        }
-
-        &__breadcrumbs {
-            justify-content: flex-start; //  ADDED
-            [dir="rtl"] & {
-                width: 100%;
-                display: flex;
-                flex-direction: row-reverse;
-                justify-content: flex-end;
-            }
-        }
-
-        &__title {
-            font-size: 51px;
-            text-align: center; //  ADDED
-            [dir="rtl"] & {
-                width: 100%;
-                text-align: right;
-            }
-        }
-
-        &__description {
-            font-size: 22px;
-            text-align: center; //  ADDED
-            [dir="rtl"] & {
-                width: 100%;
-                text-align: right;
-            }
-        }
+    &__content {
+      align-items: center; //  ADDED
+      text-align: left; //  ADDED
+      [dir="rtl"] & {
+        margin-right: 0;
+        margin-left: auto;
+        align-items: flex-end;
+        text-align: right;
+      }
     }
 
-    .hero {
-        min-height: 600px;
+    &__logo {
+      [dir="rtl"] & {
+        width: 100%; // 👈 ADDED
+        display: flex; // 👈 ADDED
+        justify-content: center; // 👈 ADDED
 
-        padding: 80px 0;
-
-        &__container {
-            padding: 0 24px;
+        img {
+          width: 64px; // 👈 ADDED — keep image 80px not full width
+          height: auto;
         }
-
-        &__content {
-            width: 100%;
-        }
-
-        &__breadcrumbs {
-            font-size: 14px;
-
-            margin-bottom: 16px;
-
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        &__title {
-            font-size: 42px;
-
-            margin-bottom: 20px;
-        }
-
-        &__description {
-            font-size: 20px;
-            line-height: 160%;
-        }
+      }
     }
+
+    &__breadcrumbs {
+      [dir="rtl"] & {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+      }
+    }
+
+    &__title {
+      font-size: 51px;
+      text-align: center; //  ADDED
+      [dir="rtl"] & {
+        width: 100%;
+      }
+    }
+
+    &__description {
+      font-size: 22px;
+      text-align: center; //  ADDED
+      [dir="rtl"] & {
+        width: 100%;
+        text-align: right;
+      }
+    }
+  }
+
+  .hero {
+    min-height: 600px;
+
+    padding: 80px 0;
+
+    &__container {
+      padding: 0 24px;
+    }
+
+    &__content {
+      width: 100%;
+    }
+
+    &__breadcrumbs {
+      font-size: 14px;
+
+      margin-bottom: 16px;
+
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    &__title {
+      font-size: 42px;
+      margin-bottom: 20px;
+    }
+
+    &__description {
+      font-size: 20px;
+      line-height: 160%;
+    }
+  }
 }
