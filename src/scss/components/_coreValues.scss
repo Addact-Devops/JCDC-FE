@@ -3,398 +3,465 @@
 // ==========================================
 
 .core-values {
+  width: 100%;
+  min-height: 718px;
+
+  padding: 64px 0;
+
+  background: #ffffff;
+
+  // ==========================================
+  // Container
+  // ==========================================
+
+  &__container {
     width: 100%;
-    min-height: 718px;
+    max-width: 1440px;
 
-    padding: 64px 0;
+    margin: 0 auto;
 
-    background: #ffffff;
+    padding: 0 120px;
+  }
 
-    // ==========================================
-    // Container
-    // ==========================================
+  // ==========================================
+  // Header
+  // ==========================================
 
+  &__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 16px;
+
+    margin-bottom: 56px;
+  }
+
+  // ==========================================
+  // Title
+  // ==========================================
+
+  &__title {
+    margin: 0;
+
+    font-family: "Ubuntu", sans-serif;
+
+    font-size: 48px;
+    font-weight: 500;
+    line-height: 120%;
+
+    color: #0076a9;
+
+    text-align: center;
+  }
+  // ==========================================
+  // Grid
+  // ==========================================
+
+  &__grid {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    display: flex;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  &__bg-vectors {
+    position: absolute;
+    inset: 0; // top: 0; right: 0; bottom: 0; left: 0
+    z-index: 3; // Above card backgrounds, below card content
+
+    pointer-events: none; // Clicks pass through to cards
+    display: none;
+  }
+
+  &__bg-vector {
+    position: absolute;
+    top: 0;
+    height: 100%;
+
+    opacity: 0.08;
+    mix-blend-mode: screen; // Subtle overlay — adjust to match your design (0.08–0.18)
+
+    object-fit: contain;
+
+    // --- Left vector: anchored to the left side ---
+    &--left {
+      left: 0%;
+      transform: translateX(-20%); // nudge left to bleed off edge slightly
+      width: 35%;
+      opacity: 0.4;
+    }
+
+    // --- Middle vector: centered ---
+    &--middle {
+      left: 49%;
+      top: 0;
+      transform: translateX(-50%);
+      width: 50%;
+      opacity: 0.4;
+    }
+
+    // --- Right vector: anchored to the right side ---
+    &--right {
+      right: 0%;
+      transform: translateX(20%); // nudge right to bleed off edge slightly
+      width: 35%;
+      opacity: 0.4;
+    }
+  }
+
+  // ==========================================
+  // Card
+  // ==========================================
+
+  &__card {
+    position: relative;
+
+    flex: 1;
+    min-height: 454px;
+
+    padding: 77px 24px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+
+    color: #ffffff;
+    overflow: hidden;
+
+    > :not(.core-values__card-vector) {
+      position: relative;
+      z-index: 2;
+    }
+
+    &:first-child {
+      border-top-left-radius: 8px;
+      border-bottom-left-radius: 8px;
+    }
+
+    &:last-child {
+      border-top-right-radius: 8px;
+      border-bottom-right-radius: 8px;
+    }
+
+    &--1 {
+      background: #183784;
+    }
+
+    &--2 {
+      background: #214d91;
+    }
+
+    &--3 {
+      background: #2a649e;
+    }
+
+    &--4 {
+      background: #2e6ea4;
+    }
+
+    &--5 {
+      background: #327aab;
+    }
+  }
+
+  // ==========================================
+  // Icon
+  // ==========================================
+
+  &__icon {
+    width: 88px;
+    height: 88px;
+
+    margin-bottom: 40px;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  // ==========================================
+  // Card Title
+  // ==========================================
+
+  &__card-title {
+    margin: 0 0 24px;
+
+    font-family: "Ubuntu", sans-serif;
+
+    font-size: 25px;
+    font-weight: 500;
+    line-height: 120%;
+
+    color: #ffffff;
+  }
+
+  // ==========================================
+  // Card Description
+  // ==========================================
+
+  &__card-description {
+    margin: 0;
+
+    font-family: "Ubuntu", sans-serif;
+
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 150%;
+
+    color: #ffffff;
+  }
+  .core-values__bg-vectors-mobile {
+    display: none; //  hidden on desktop
+  }
+
+  &__card-vector {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    overflow: hidden;
+    opacity: 0.4;
+  }
+
+  &__card-vector-img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    opacity: 0.12;
+    mix-blend-mode: screen;
+
+    &--mobile {
+      display: none;
+    }
+  }
+
+  &__middle-shared-vector {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 20%;
+    width: 60%;
+    z-index: 1;
+    pointer-events: none;
+    overflow: hidden;
+    opacity: 0.4;
+  }
+
+  &__middle-shared-vector-img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    opacity: 0.12;
+    mix-blend-mode: screen;
+
+    &--mobile {
+      display: none;
+    }
+  }
+
+  // ==========================================
+  // Tablet & Medium Screens (1350px and below)
+  // ==========================================
+  @media (max-width: 1350px) {
     &__container {
-        width: 100%;
-        max-width: 1440px;
-
-        margin: 0 auto;
-
-        padding: 0 120px;
+      padding: 0 80px;
     }
-
-    // ==========================================
-    // Header
-    // ==========================================
-
-    &__header {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-        gap: 16px;
-
-        margin-bottom: 56px;
-    }
-
-    // ==========================================
-    // Title
-    // ==========================================
-
-    &__title {
-        margin: 0;
-
-        font-family: "Ubuntu", sans-serif;
-
-        font-size: 48px;
-        font-weight: 500;
-        line-height: 120%;
-
-        color: #0076a9;
-
-        text-align: center;
-    }
-    // ==========================================
-    // Grid
-    // ==========================================
-
-    &__grid {
-        position: relative;
-        width: 100%;
-        max-width: 1200px;
-        margin: 0 auto;
-
-        display: flex;
-        border-radius: 8px;
-        overflow: hidden;
-    }
-
-    &__bg-vectors {
-        position: absolute;
-        inset: 0; // top: 0; right: 0; bottom: 0; left: 0
-        z-index: 3; // Above card backgrounds, below card content
-
-        pointer-events: none; // Clicks pass through to cards
-    }
-
-    &__bg-vector {
-        position: absolute;
-        top: 0;
-        height: 100%;
-
-        opacity: 0.08;
-        mix-blend-mode: screen; // Subtle overlay — adjust to match your design (0.08–0.18)
-
-        object-fit: contain;
-
-        // --- Left vector: anchored to the left side ---
-        &--left {
-            left: 0%;
-            transform: translateX(-20%); // nudge left to bleed off edge slightly
-            width: 35%;
-        }
-
-        // --- Middle vector: centered ---
-        &--middle {
-            left: 49%;
-            top: 0;
-            transform: translateX(-50%);
-            width: 50%;
-        }
-
-        // --- Right vector: anchored to the right side ---
-        &--right {
-            right: 0%;
-            transform: translateX(20%); // nudge right to bleed off edge slightly
-            width: 35%;
-        }
-    }
-
-    // ==========================================
-    // Card
-    // ==========================================
-
-    &__card {
-        position: relative;
-        z-index: 2;
-
-        flex: 1;
-        min-height: 454px;
-
-        padding: 77px 24px;
-
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-        text-align: center;
-
-        color: #ffffff;
-
-        &:first-child {
-            border-top-left-radius: 8px;
-            border-bottom-left-radius: 8px;
-        }
-
-        &:last-child {
-            border-top-right-radius: 8px;
-            border-bottom-right-radius: 8px;
-        }
-
-        &--1 {
-            background: #183784;
-        }
-
-        &--2 {
-            background: #214d91;
-        }
-
-        &--3 {
-            background: #2a649e;
-        }
-
-        &--4 {
-            background: #2e6ea4;
-        }
-
-        &--5 {
-            background: #327aab;
-        }
-    }
-
-    // ==========================================
-    // Icon
-    // ==========================================
-
-    &__icon {
-        width: 88px;
-        height: 88px;
-
-        margin-bottom: 40px;
-
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-    }
-
-    // ==========================================
-    // Card Title
-    // ==========================================
-
-    &__card-title {
-        margin: 0 0 24px;
-
-        font-family: "Ubuntu", sans-serif;
-
-        font-size: 25px;
-        font-weight: 500;
-        line-height: 120%;
-
-        color: #ffffff;
-    }
-
-    // ==========================================
-    // Card Description
-    // ==========================================
 
     &__card-description {
-        margin: 0;
-
-        font-family: "Ubuntu", sans-serif;
-
-        font-size: 18px;
-        font-weight: 400;
-        line-height: 150%;
-
-        color: #ffffff;
+      font-size: 16px;
     }
+
+    &__card-title {
+      font-size: 22px;
+      margin-bottom: 16px;
+    }
+  }
+
+  // ==========================================
+  // Tablet & Medium Screens (1200px and below)
+  // ==========================================
+  @media (max-width: 1200px) {
+    &__container {
+      padding: 0 60px;
+    }
+  }
+
+  // ==========================================
+  // Smaller Tablets (1024px and below)
+  // ==========================================
+  @media (max-width: 1024px) {
+    &__container {
+      padding: 0 40px;
+    }
+
+    &__card {
+      padding: 60px 16px;
+    }
+
+    &__title {
+      font-size: 40px;
+    }
+
+    &__icon {
+      width: 72px;
+      height: 72px;
+      margin-bottom: 32px;
+    }
+
+    &__card-title {
+      font-size: 20px;
+      margin-bottom: 16px;
+    }
+
+    &__card-description {
+      font-size: 15px;
+    }
+  }
+
+  // ==========================================
+  // Targets tablets in portrait mode down to mobile phones
+  // ==========================================
+  @media (max-width: 991.98px) {
+    .core-values__bg-vectors {
+      display: none;
+    }
+
     .core-values__bg-vectors-mobile {
-        display: none; //  hidden on desktop
+      display: none;
     }
 
-    // ==========================================
-    // Tablet & Medium Screens (1350px and below)
-    // ==========================================
-    @media (max-width: 1350px) {
-        &__container {
-            padding: 0 80px;
-        }
+    &__card-vector-img {
+      &--desktop {
+        display: none;
+      }
 
-        &__card-description {
-            font-size: 16px;
-        }
-
-        &__card-title {
-            font-size: 22px;
-            margin-bottom: 16px;
-         }
-
+      &--mobile {
+        display: block;
+      }
     }
 
-    // ==========================================
-    // Tablet & Medium Screens (1200px and below)
-    // ==========================================
-    @media (max-width: 1200px) {
-        &__container {
-            padding: 0 60px;
-        }
+    &__card--1 {
+      .core-values__card-vector-img--mobile {
+        object-position: left center;
+        left: 0;
+        position: absolute;
+        width: 190px;
+      }
     }
 
-    // ==========================================
-    // Smaller Tablets (1024px and below)
-    // ==========================================
-    @media (max-width: 1024px) {
-        &__container {
-            padding: 0 40px;
-        }
-
-        &__card {
-            padding: 60px 16px;
-        }
-
-        &__title {
-            font-size: 40px;
-        }
-
-        &__icon {
-            width: 72px;
-            height: 72px;
-            margin-bottom: 32px;
-        }
-
-        &__card-title {
-            font-size: 20px;
-            margin-bottom: 16px;
-        }
-
-        &__card-description {
-            font-size: 15px;
-        }
+    &__card--5 {
+      .core-values__card-vector-img--mobile {
+        object-position: left center;
+        right: 0;
+        position: absolute;
+        width: 130px;
+      }
     }
 
-    // ==========================================
-    // Targets tablets in portrait mode down to mobile phones
-    // ==========================================
-    @media (max-width:  991.98px) {
-        .core-values__bg-vectors {
-            display: none;
-        }
-        //  show mobile vectors
-        .core-values__bg-vectors-mobile {
-            display: block;
-            position: absolute;
-            inset: 0;
-            z-index: 3;
-            pointer-events: none;
-        }
-
-        .core-values__bg-vector-mobile {
-            position: absolute;
-            opacity: 0.08;
-            mix-blend-mode: screen;
-            object-fit: contain;
-
-            // ── Left vector ──
-            &--left {
-                top: 0;
-                left: 0;
-                width: 180px; //  adjust to match Figma
-                height: auto;
-            }
-
-            // ── Middle vector ──
-            &--middle {
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                width: 100%; //  adjust to match Figma
-                height: auto;
-            }
-
-            // ── Right vector ──
-            &--right {
-                bottom: 0;
-                right: 0;
-                width: 180px; //  adjust to match Figma
-                height: auto;
-            }
-        }
-        & {
-            min-height: auto;
-            padding: 64px 0;
-        }
-
-        &__container {
-            padding: 0 16px;
-        }
-
-        &__header {
-            margin-bottom: 32px;
-        }
-
-        &__title {
-            font-size: 32px;
-        }
-
-        &__grid {
-            width: 100%;
-            height: auto;
-            flex-direction: column; // Cards stack vertically
-            border-radius: 8px;
-            overflow: visible;
-        }
-
-        &__card {
-            width: 100%;
-            height: auto;
-            min-height: auto;
-            padding: 32px 24px;
-            overflow: visible;
-
-            flex-direction: row; // Icon left, text right
-            align-items: center;
-            text-align: start;
-            gap: 20px; 
-
-            > div:not(.core-values__icon) {
-                flex: 1;
-                min-width: 0;
-            }
-
-            &:first-child {
-                border-top-left-radius: 8px;
-                border-top-right-radius: 8px;
-                border-bottom-left-radius: 0;
-            }
-
-            &:last-child {
-                border-bottom-left-radius: 8px;
-                border-bottom-right-radius: 8px;
-                border-top-right-radius: 0;
-            }
-        }
-
-        &__icon {
-            width: 88px;
-            height: 88px;
-            flex-shrink: 0;
-            margin-bottom: 0; 
-            margin-right: 0;
-        }
-
-        &__card-title {
-            font-size: 20px;
-            font-weight: 500;
-            margin-bottom: 8px;
-        }
-
-        &__card-description {
-            font-size: 14px;
-            font-weight: 400;
-            overflow: visible;
-            overflow-wrap: break-word;
-        }
+    &__middle-shared-vector {
+      left: 0;
+      width: 100%;
+      top: 20%;
+      bottom: 20%;
     }
+
+    &__middle-shared-vector-img {
+      &--desktop {
+        display: none;
+      }
+
+      &--mobile {
+        display: block;
+      }
+    }
+    & {
+      min-height: auto;
+      padding: 64px 0;
+    }
+
+    &__container {
+      padding: 0 16px;
+    }
+
+    &__header {
+      margin-bottom: 32px;
+    }
+
+    &__title {
+      font-size: 32px;
+    }
+
+    &__grid {
+      position: relative; // Ensure z-index stacking context
+      width: 100%;
+      height: auto;
+      flex-direction: column; // Cards stack vertically
+      border-radius: 8px;
+      overflow: hidden; // Contain vectors within grid
+    }
+
+    &__card {
+      position: relative; // Establish stacking context
+      width: 100%;
+      height: auto;
+      min-height: auto;
+      padding: 32px 24px;
+      overflow: hidden; // Prevent card content from overflowing
+
+      flex-direction: row; // Icon left, text right
+      align-items: center;
+      text-align: start;
+      gap: 20px;
+
+      > div:not(.core-values__icon) {
+        flex: 1;
+        min-width: 0;
+        overflow: hidden; // Ensure text wraps properly
+        word-wrap: break-word;
+      }
+
+      &:first-child {
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        border-bottom-left-radius: 0;
+      }
+
+      &:last-child {
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+        border-top-right-radius: 0;
+      }
+    }
+
+    &__icon {
+      width: 88px;
+      height: 88px;
+      flex-shrink: 0;
+      margin-bottom: 0;
+      margin-right: 0;
+    }
+
+    &__card-title {
+      font-size: 20px;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+
+    &__card-description {
+      font-size: 14px;
+      font-weight: 400;
+      word-wrap: break-word;
+    }
+  }
 }

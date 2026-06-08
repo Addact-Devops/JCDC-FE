@@ -1,0 +1,16 @@
+.field-validation-error {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.4;
+  color: #d92d20;
+  margin-top: 2px;
+}
+
+.contact-form__terms-row .field-validation-error span {
+  display: none !important;
+}
+
+.form-custom {
+  margin-right: 10px;
+}

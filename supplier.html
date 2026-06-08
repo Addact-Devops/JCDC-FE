@@ -11,10 +11,14 @@
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
-            href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&family=Cairo:wght@300;400;500;600;700&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&family=Cairo:wght@300;400;500;600;700&family=Readex+Pro:wght@160..700&display=swap"
             rel="stylesheet"
         />
         <link rel="stylesheet" href="dist/main.min.css" />
+        <link rel="icon" type="image/x-icon" href="./assets/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-16x16.png" />
+        <link rel="icon" type="image/x-icon" href="./assets/apple-favicon.png" />
     </head>
 
     <body>
@@ -80,15 +84,17 @@
 
                 <div class="navbar__actions">
                     <button class="icon-btn" aria-label="Search">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.5" />
-                            <path
-                                d="M16.5 16.5L21 21"
-                                stroke="currentColor"
-                                stroke-width="1.5"
-                                stroke-linecap="round"
-                            />
-                        </svg>
+                        <a href="search.html#search-input" class="icon-btn" aria-label="Search">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.5" />
+                                <path
+                                    d="M16.5 16.5L21 21"
+                                    stroke="currentColor"
+                                    stroke-width="1.5"
+                                    stroke-linecap="round"
+                                />
+                            </svg>
+                        </a>
                     </button>
                     <button class="lang-btn" id="lang-btn" aria-label="Switch language">
                         <span class="lang-btn__text" data-i18n="nav.lang">العربية</span>
@@ -109,7 +115,7 @@
         <!-- Mobile drawer -->
         <aside class="drawer" id="drawer" aria-hidden="true">
             <div class="drawer__head">
-                <a href="/" class="navbar__logo">
+                <a href="/" class="drawer__logo">
                     <img src="assets/coporate-PNG-01 1.svg" alt="JCDC" width="80" height="44" class="drawer__logo" />
                 </a>
                 <button class="drawer__close" id="drawer-close" aria-label="Close menu">
@@ -438,7 +444,7 @@
             <div class="hero__media">
                 <img src="assets/Supplier/Image.svg" alt="" loading="eager" />
             </div>
-            <div class="banner__overlay"></div>
+            <div class="banner__overlay supplierBanner_overlay"></div>
 
             <div class="container">
                 <div class="banner__content">
@@ -572,7 +578,7 @@
                     <ol class="registration-process__steps" role="list">
                         <li class="process-step">
                             <p class="process-step__number">
-                                <img src="./assets/Supplier/01.svg" alt="Step 1" />
+                                <img src="./assets/Supplier/01.svg" alt="Step 1" width="55px" height="58px" />
                             </p>
                             <h3 class="process-step__title" data-i18n="supplier.process.step1Title">
                                 Submit Supplier Self-Registration Request
@@ -585,7 +591,7 @@
 
                         <li class="process-step">
                             <p class="process-step__number">
-                                <img src="./assets/Supplier/02.svg" alt="Step 2" />
+                                <img src="./assets/Supplier/02.svg" alt="Step 2" width="55px" height="58px" />
                             </p>
                             <h3 class="process-step__title" data-i18n="supplier.process.step2Title">
                                 Complete Supplier Registration Questionnaire
@@ -598,7 +604,7 @@
 
                         <li class="process-step">
                             <p class="process-step__number">
-                                <img src="./assets/Supplier/03.svg" alt="Step 3" />
+                                <img src="./assets/Supplier/03.svg" alt="Step 3" width="55px" height="58px" />
                             </p>
                             <h3 class="process-step__title" data-i18n="supplier.process.step3Title">
                                 Evaluation and Approval
@@ -619,22 +625,8 @@
                             Please Note: Submission of an application does not guarantee qualification, engagement, or
                             contract award. All registrations are subject to review in line with company procedures.
                         </p>
-                        <a
-                            href="#"
-                            class="btn btn--outline-gold notice-card__cta"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
+                        <a href="#" class="btn btn--gold notice-card__cta" target="_blank" rel="noopener noreferrer">
                             <span data-i18n="supplier.process.noticeCta">Access Supplier Portal</span>
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                                <path
-                                    d="M5 12h14M13 6l6 6-6 6"
-                                    stroke="currentColor"
-                                    stroke-width="2"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                />
-                            </svg>
                         </a>
                     </aside>
                 </div>

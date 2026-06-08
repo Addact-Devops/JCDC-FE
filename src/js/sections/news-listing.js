@@ -138,7 +138,7 @@
     //         btn.setAttribute("aria-pressed", String(isActive));
     //     });
     // }
-    
+
     function syncChips(activeCats) {
       filtersWrap.querySelectorAll("[data-cat]").forEach((btn) => {
         const cat = btn.dataset.cat;
@@ -459,4 +459,67 @@
       });
     });
   })();
+})();
+
+(function () {
+  var p = new URLSearchParams(window.location.search);
+
+  if (
+    p.has("q") ||
+    p.has("category") ||
+    p.has("from") ||
+    p.has("to") ||
+    p.has("page")
+  ) {
+    var el = document.getElementById("news-listing-be");
+
+    if (el) {
+      el.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  }
+})();
+
+// Date range validation — both directions:
+// From picker: cannot be later than To   (max = activeTo)
+// To picker: cannot be earlier than From (min = activeFrom)
+(function () {
+  var fromInput = document.getElementById("nl-date-from");
+  var toInput = document.getElementById("nl-date-to");
+
+  if (!fromInput || !toInput) {
+    return;
+  }
+
+  // When From changes → update To's min; clear To if now invalid
+  fromInput.addEventListener("change", function () {
+    var fromVal = fromInput.value;
+
+    if (fromVal) {
+      toInput.min = fromVal;
+
+      if (toInput.value && toInput.value < fromVal) {
+        toInput.value = "";
+      }
+    } else {
+      toInput.removeAttribute("min");
+    }
+  });
+
+  // When To changes → update From's max; clear From if now invalid
+  toInput.addEventListener("change", function () {
+    var toVal = toInput.value;
+
+    if (toVal) {
+      fromInput.max = toVal;
+
+      if (fromInput.value && fromInput.value > toVal) {
+        fromInput.value = "";
+      }
+    } else {
+      fromInput.removeAttribute("max");
+    }
+  });
 })();

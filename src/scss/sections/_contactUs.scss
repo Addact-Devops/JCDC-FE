@@ -52,15 +52,15 @@
 
     // ==========================================
     // Right column — address card + get directions
-    // Sticks 320px from top so it visually aligns
-    // with the form's first field on desktop.
+    // Offset from top to align with form block on desktop.
     // ==========================================
     &__right {
         display: flex;
         flex-direction: column;
         gap: 24px;
-        margin-top: 320px;
-        max-width: 440px;
+        max-width: 486px;
+        width: 100%;
+        justify-self: end;
         [dir="rtl"] & {
             // RTL: keep same offset, content flows right-to-left
         }
@@ -68,7 +68,7 @@
 
     &.is-success {
         .contact-us__right {
-            margin-top: 0;
+            padding-top: 0;
         }
     }
 
@@ -182,7 +182,7 @@
         border-radius: 4px;
         font-size: 18px;
         font-weight: 700;
-        line-height: 1.5;
+        line-height: 0.8;
     }
 }
 
@@ -289,12 +289,12 @@
         }
 
         &__right {
-            margin-top: 280px;
+            padding-top: 88px;
         }
 
         &.is-success {
             .contact-us__right {
-                margin-top: 0;
+                padding-top: 0;
             }
         }
     }
@@ -316,7 +316,7 @@
         }
 
         &__right {
-            margin-top: 240px;
+            padding-top: 56px;
         }
 
         &__address-card {
@@ -353,7 +353,7 @@
         }
 
         &__right {
-            margin-top: 0; // ◆ no offset on mobile
+            padding-top: 0; // ◆ no offset on mobile
             gap: 24px;
         }
 
@@ -440,4 +440,8 @@
             font-size: 24px;
         }
     }
+}
+
+.color_blue {
+    color: #0076a9;
 }

@@ -14,6 +14,7 @@
 @use "components/visionMission";
 @use "components/heroBanner";
 @use "components/coreValues";
+@use "components/partnersMarquee";
 @use "components/form";
 @use "components/culture";
 @use "components/jcdc";
@@ -27,6 +28,7 @@
 @use "components/pagination";
 @use "components/destination";
 @use "components/cookie-pop";
+@use "components/sitecoreForm";
 
 // Page sections
 @use "sections/hero";

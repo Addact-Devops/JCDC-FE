@@ -8,10 +8,14 @@
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
-            href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&family=Cairo:wght@300;400;500;600;700&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&family=Cairo:wght@300;400;500;600;700&family=Readex+Pro:wght@160..700&display=swap"
             rel="stylesheet"
         />
         <link rel="stylesheet" href="dist/main.min.css" />
+        <link rel="icon" type="image/x-icon" href="./assets/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-16x16.png" />
+        <link rel="icon" type="image/x-icon" href="./assets/apple-favicon.png" />
     </head>
 
     <body>
@@ -77,15 +81,17 @@
 
                 <div class="navbar__actions">
                     <button class="icon-btn" aria-label="Search">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.5" />
-                            <path
-                                d="M16.5 16.5L21 21"
-                                stroke="currentColor"
-                                stroke-width="1.5"
-                                stroke-linecap="round"
-                            />
-                        </svg>
+                        <a href="search.html#search-input" class="icon-btn" aria-label="Search">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.5" />
+                                <path
+                                    d="M16.5 16.5L21 21"
+                                    stroke="currentColor"
+                                    stroke-width="1.5"
+                                    stroke-linecap="round"
+                                />
+                            </svg>
+                        </a>
                     </button>
                     <button class="lang-btn" id="lang-btn" aria-label="Switch language">
                         <span class="lang-btn__text" data-i18n="nav.lang">العربية</span>
@@ -106,7 +112,7 @@
         <!-- Mobile drawer -->
         <aside class="drawer" id="drawer" aria-hidden="true">
             <div class="drawer__head">
-                <a href="/" class="navbar__logo">
+                <a href="/" class="drawer__logo">
                     <img src="assets/coporate-PNG-01 1.svg" alt="JCDC" width="80" height="44" class="drawer__logo" />
                 </a>
                 <button class="drawer__close" id="drawer-close" aria-label="Close menu">
@@ -278,11 +284,11 @@
         <!-- ════════════════════════════════════════════
         HERO BANNER (reused — Search copy)
 ════════════════════════════════════════════ -->
-        <section class="banner" aria-labelledby="search-hero-title">
+        <section class="banner legalBanner" aria-labelledby="search-hero-title">
             <div class="hero__media">
                 <img src="assets/herobanner.svg" alt="" loading="eager" />
             </div>
-            <div class="banner__overlay"></div>
+            <div class="banner__overlay legalBanner_overlay"></div>
 
             <div class="container">
                 <div class="banner__content">
@@ -318,7 +324,7 @@
                             data-i18n-placeholder="search.placeholder"
                             placeholder="Search Query"
                         />
-                        <button type="submit" class="btn btn--outline-gold search-page__submit">
+                        <button type="submit" class="btn btn--gold search-page__submit">
                             <span data-i18n="search.submit">Search</span>
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
                                 <path

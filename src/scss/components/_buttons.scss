@@ -38,17 +38,23 @@
         overflow: hidden;
 
         svg {
-            transform: translateX(-4px); // resting position (slightly left)
-            transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            // transform: translateX(-4px); // resting position (slightly left)
+            // transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
         &:hover {
             background: var(--secondary-50);
             color: var(--secondary-500);
 
-            svg {
-                transform: translateX(4px); // slides right on hover
-            }
+            // svg {
+            //     [dir="ltr"] & {
+            //         // transform: translateX(4px);
+            //     }
+
+            //     [dir="rtl"] & {
+            //         transform: translateX(-4px) scaleX(-1);
+            //     }
+            // }
         }
     }
 
@@ -101,13 +107,13 @@
 
     // Filled gold
     &--gold {
-        background: var(--secondary-500);
         border-color: var(--secondary-500);
-        color: #fff;
+        color: var(--secondary-500);
 
         &:hover {
-            background: #b98a3d;
-            border-color: #b98a3d;
+            background: var(--secondary-500);
+            border-color: var(--secondary-500);
+            color: #e6f1f6;
         }
     }
 

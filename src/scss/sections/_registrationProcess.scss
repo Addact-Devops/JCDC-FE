@@ -155,10 +155,20 @@
 // ==========================================
 @media (max-width: 768px) {
     .registration-process {
-        padding: 48px 24px;
+        padding: 48px 28px;
 
         &__title {
-            font-size: 32px;
+            width: 100%;
+            max-width: 361px;
+            min-height: 38px;
+            align-self: center;
+            font-family: "Ubuntu", sans-serif;
+            font-size: clamp(28px, 8vw, 32px);
+            font-weight: 700;
+            line-height: 120%;
+            letter-spacing: 0;
+            text-align: center;
+            white-space: nowrap;
         }
 
         &__header {
@@ -176,6 +186,8 @@
     }
 
     .process-step {
+        padding: 0;
+
         &__number {
             font-size: 28px;
         }
@@ -199,7 +211,7 @@
 // ==========================================
 @media (max-width: 480px) {
     .registration-process {
-        padding: 40px 16px;
+        padding: 40px 28px;
 
         &__title {
             font-size: 28px;

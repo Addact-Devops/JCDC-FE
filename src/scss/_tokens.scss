@@ -2,43 +2,44 @@
 
 :root {
   // ── Brand Colours (from Figma vars) ────────────
-  --primary-500:    #0076A9;
-  --secondary-500:  #CC9F53;
-  --secondary-50:   #FAF5EE;
-  --text-50:        #EFEFEF;
-  --text-500:       #5B5F62;
-  --surface-white:  #FFFFFF;
-  --surface-grey:   #F3F3F3;
-  --surface-footer: #EFEFEF;
-  --divider-gold:   #CC9F53;
-  --black:          #000000;
+  --primary-500: #0076a9;
+  --secondary-500: #cc9f53;
+  --secondary-50: #faf5ee;
+  --text-50: #efefef;
+  --text-500: #5b5f62;
+  --surface-white: #ffffff;
+  --surface-grey: #f3f3f3;
+  --surface-footer: #efefef;
+  --divider-gold: #cc9f53;
+  --black: #000000;
 
   // ── Fonts (Ubuntu from Figma) ──────────────────
-  --font-en: 'Ubuntu', sans-serif;
-  --font-ar: 'Cairo', sans-serif;
+  --font-en: "Ubuntu", sans-serif;
+  --font-ar: "Cairo", sans-serif;
+  --font-readex: "Readex Pro";
   --font-body: var(--font-en);
 
   // ── Typography sizes (Figma) ───────────────────
-  --h1:     64px;
-  --h2:     48px;
-  --h3:     40px;
-  --h4:     32px;
+  --h1: 64px;
+  --h2: 48px;
+  --h3: 40px;
+  --h4: 32px;
   --xlarge: 24px;
-  --large:  18px;
+  --large: 18px;
   --medium: 16px;
-  --small:  14px;
+  --small: 14px;
 
   // ── Layout (Figma 1440px design) ───────────────
   --design-width: 1440px;
-  --nav-height:   96px;
-  --gutter:       120px;         // Figma 120px side padding
-  --content-max:  1200px;        // 1440 - 2×120
+  --nav-height: 96px;
+  --gutter: 120px; // Figma 120px side padding
+  --content-max: 1200px; // 1440 - 2×120
 
   // ── Transitions ────────────────────────────────
-  --ease:       cubic-bezier(.4,0,.2,1);
-  --ease-out:   cubic-bezier(0,0,.2,1);
-  --dur:        250ms;
-  --dur-slow:   400ms;
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --dur: 250ms;
+  --dur-slow: 400ms;
 }
 
 [dir="rtl"] {

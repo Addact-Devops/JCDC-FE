@@ -47,13 +47,11 @@
     .certs {
         animation: scrollAwards 20s linear infinite;
     }
-
-    /* Mirror direction in RTL */
-    [dir="rtl"] & .certs {
-        animation-direction: reverse;
-    }
 }
 
+[dir="rtl"] .awards--auto-scroll .certs {
+    animation-direction: reverse;
+}
 /* ════════════════════════════════════════════
    MODE 2 — MANUAL / DRAGGABLE (default)
    Applied when `.awards--auto-scroll` is absent
@@ -106,10 +104,10 @@
 
 @keyframes scrollAwards {
     0% {
-        transform: translateX(0);
+        transform: translateX(-50%);
     }
     100% {
-        transform: translateX(-50%);
+        transform: translateX(0);
     }
 }
 
@@ -138,7 +136,7 @@
             width: 154px;
             height: 154px;
             object-fit: contain;
-            filter: grayscale(1) opacity(0.6); //  grey by default
+            filter: grayscale(100%); //  grey by default
             transition: filter 0.4s ease;
         }
     }

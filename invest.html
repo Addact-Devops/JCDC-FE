@@ -11,10 +11,14 @@
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
-            href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&family=Cairo:wght@300;400;500;600;700&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&family=Cairo:wght@300;400;500;600;700&family=Readex+Pro:wght@160..700&display=swap"
             rel="stylesheet"
         />
         <link rel="stylesheet" href="dist/main.min.css" />
+        <link rel="icon" type="image/x-icon" href="./assets/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-16x16.png" />
+        <link rel="icon" type="image/x-icon" href="./assets/apple-favicon.png" />
     </head>
 
     <body>
@@ -80,15 +84,17 @@
 
                 <div class="navbar__actions">
                     <button class="icon-btn" aria-label="Search">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.5" />
-                            <path
-                                d="M16.5 16.5L21 21"
-                                stroke="currentColor"
-                                stroke-width="1.5"
-                                stroke-linecap="round"
-                            />
-                        </svg>
+                        <a href="search.html#search-input" class="icon-btn" aria-label="Search">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.5" />
+                                <path
+                                    d="M16.5 16.5L21 21"
+                                    stroke="currentColor"
+                                    stroke-width="1.5"
+                                    stroke-linecap="round"
+                                />
+                            </svg>
+                        </a>
                     </button>
                     <button class="lang-btn" id="lang-btn" aria-label="Switch language">
                         <span class="lang-btn__text" data-i18n="nav.lang">العربية</span>
@@ -109,7 +115,7 @@
         <!-- Mobile drawer -->
         <aside class="drawer" id="drawer" aria-hidden="true">
             <div class="drawer__head">
-                <a href="/" class="navbar__logo">
+                <a href="/" class="drawer__logo">
                     <img src="assets/coporate-PNG-01 1.svg" alt="JCDC" width="80" height="44" class="drawer__logo" />
                 </a>
                 <button class="drawer__close" id="drawer-close" aria-label="Close menu">
@@ -285,7 +291,7 @@
             <div class="hero__media">
                 <img src="assets/home/hero-banner/Hero.jpg" alt="" loading="eager" />
             </div>
-            <div class="banner__overlay"></div>
+            <div class="banner__overlay legalBanner_overlay"></div>
 
             <div class="container">
                 <div class="banner__content">
@@ -398,10 +404,10 @@
                                 height="48"
                             />
                         </div>
-                        <div>
-                            <h3 class="why-jeddah__card-title" data-i18n="invest.why.cards.primeTitle">
+                        <div class="why-jeddah__card-content">
+                            <h5 class="why-jeddah__card-title" data-i18n="invest.why.cards.primeTitle">
                                 Prime Location
-                            </h3>
+                            </h5>
                             <p class="why-jeddah__card-description" data-i18n="invest.why.cards.primeDesc">
                                 Centrally located on Jeddah's waterfront, with seamless access, landmark proximity, and
                                 strong footfall.
@@ -420,12 +426,14 @@
                                 height="48"
                             />
                         </div>
-                        <h3 class="why-jeddah__card-title" data-i18n="invest.why.cards.municipalityTitle">
-                            Internal Municipality
-                        </h3>
-                        <p class="why-jeddah__card-description" data-i18n="invest.why.cards.municipalityDesc">
-                            Internal Municipality services to have streamlined proceedings
-                        </p>
+                        <div class="why-jeddah__card-content">
+                            <h5 class="why-jeddah__card-title" data-i18n="invest.why.cards.municipalityTitle">
+                                Internal Municipality
+                            </h5>
+                            <p class="why-jeddah__card-description" data-i18n="invest.why.cards.municipalityDesc">
+                                Internal Municipality services to have streamlined proceedings
+                            </p>
+                        </div>
                     </article>
 
                     <article class="why-jeddah__card why-jeddah__card-border">
@@ -439,12 +447,14 @@
                                 height="48"
                             />
                         </div>
-                        <h3 class="why-jeddah__card-title" data-i18n="invest.why.cards.regaTitle">
-                            REGA Accreditation
-                        </h3>
-                        <p class="why-jeddah__card-description" data-i18n="invest.why.cards.regaDesc">
-                            One of the only destinations to have REGA approval
-                        </p>
+                        <div class="why-jeddah__card-content">
+                            <h5 class="why-jeddah__card-title" data-i18n="invest.why.cards.regaTitle">
+                                REGA Accreditation
+                            </h5>
+                            <p class="why-jeddah__card-description" data-i18n="invest.why.cards.regaDesc">
+                                One of the only destinations to have REGA approval
+                            </p>
+                        </div>
                     </article>
 
                     <article class="why-jeddah__card">
@@ -458,12 +468,14 @@
                                 height="48"
                             />
                         </div>
-                        <h3 class="why-jeddah__card-title" data-i18n="invest.why.cards.multiTitle">
-                            Multi-Asset Destination
-                        </h3>
-                        <p class="why-jeddah__card-description" data-i18n="invest.why.cards.multiDesc">
-                            Blending tourism, entertainment, culture, sports, residential, and hospitality offerings
-                        </p>
+                        <div class="why-jeddah__card-content">
+                            <h5 class="why-jeddah__card-title" data-i18n="invest.why.cards.multiTitle">
+                                Multi-Asset Destination
+                            </h5>
+                            <p class="why-jeddah__card-description" data-i18n="invest.why.cards.multiDesc">
+                                Blending tourism, entertainment, culture, sports, residential, and hospitality offerings
+                            </p>
+                        </div>
                     </article>
 
                     <article class="why-jeddah__card why-jeddah__card-border">
@@ -477,12 +489,14 @@
                                 height="48"
                             />
                         </div>
-                        <h3 class="why-jeddah__card-title" data-i18n="invest.why.cards.coolingTitle">
-                            District Cooling
-                        </h3>
-                        <p class="why-jeddah__card-description" data-i18n="invest.why.cards.coolingDesc">
-                            Efficient district cooling powering a sustainable, future-ready Jeddah Central
-                        </p>
+                        <div class="why-jeddah__card-content">
+                            <h5 class="why-jeddah__card-title" data-i18n="invest.why.cards.coolingTitle">
+                                District Cooling
+                            </h5>
+                            <p class="why-jeddah__card-description" data-i18n="invest.why.cards.coolingDesc">
+                                Efficient district cooling powering a sustainable, future-ready Jeddah Central
+                            </p>
+                        </div>
                     </article>
 
                     <article class="why-jeddah__card why-jeddah__card-border">
@@ -496,12 +510,14 @@
                                 height="48"
                             />
                         </div>
-                        <h3 class="why-jeddah__card-title" data-i18n="invest.why.cards.smartTitle">
-                            Smart city infrastructure
-                        </h3>
-                        <p class="why-jeddah__card-description" data-i18n="invest.why.cards.smartDesc">
-                            Integrated digital systems with the destination to increase the livability efficiency
-                        </p>
+                        <div class="why-jeddah__card-content">
+                            <h5 class="why-jeddah__card-title" data-i18n="invest.why.cards.smartTitle">
+                                Smart city infrastructure
+                            </h5>
+                            <p class="why-jeddah__card-description" data-i18n="invest.why.cards.smartDesc">
+                                Integrated digital systems with the destination to increase the livability efficiency
+                            </p>
+                        </div>
                     </article>
                 </div>
             </div>
@@ -1050,7 +1066,7 @@
                         <!-- Submit -->
                         <button
                             type="submit"
-                            class="btn btn--outline-gold register-form__submit"
+                            class="btn btn--gold register-form__submit"
                             data-i18n="invest.register.submit"
                         >
                             Register
@@ -1092,7 +1108,6 @@
                 </div>
             </div>
         </section>
-
         <!-- Cookie Popup -->
         <div class="cookie-popup" id="cookiePopup">
             <div class="cookie-popup__content">

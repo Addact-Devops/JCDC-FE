@@ -146,32 +146,82 @@
 // ==========================================
 @media (max-width: 768px) {
     .who-register {
-        padding: 48px 24px;
+        height: auto;
+        padding: 64px 16px;
 
         &__title {
             font-size: 32px;
+            width: 100%;
+            text-align: center;
+        }
+
+        &__container {
+            display: flex;
+            flex-direction: column;
+            gap: 48px;
+            height: 100%;
         }
 
         &__header {
-            margin-bottom: 32px;
+            align-items: center;
+            margin-bottom: 0;
+            text-align: center;
+        }
+
+        &__subtitle {
+            max-width: 320px;
+            font-size: 16px;
         }
 
         &__grid {
-            grid-template-columns: 1fr;
-            gap: 32px;
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+            width: 100%;
+            max-width: 361px;
+            height: auto;
+            margin: 0 auto;
         }
 
         &__card {
+            width: 100%;
+            max-width: none;
+            padding: 0;
+            align-items: flex-start;
+            text-align: start;
+            flex: 0 0 auto;
+
+            &::after {
+                content: "";
+                width: 80px;
+                height: 0;
+                margin-top: 16px;
+                border-top: 1px solid var(--secondary-500);
+            }
+
+            &:last-child::after {
+                display: none;
+            }
+
             &:nth-child(even) {
                 padding-inline-start: 0;
                 border-inline-start: none;
-                padding-block-start: 32px;
-                border-block-start: 1px solid var(--secondary-500);
+
+                &::before {
+                    display: none;
+                }
             }
         }
 
         &__card-title {
-            font-size: 20px;
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 120%;
+        }
+
+        &__card-description {
+            font-size: 16px;
+            line-height: 150%;
         }
     }
 }
@@ -181,10 +231,11 @@
 // ==========================================
 @media (max-width: 480px) {
     .who-register {
-        padding: 40px 16px;
+        height: auto;
+        padding: 64px 16px;
 
         &__title {
-            font-size: 28px;
+            font-size: 32px;
         }
     }
 }
