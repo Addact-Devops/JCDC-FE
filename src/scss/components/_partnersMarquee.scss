@@ -71,10 +71,6 @@
         object-fit: contain;
     }
 
-    [dir="rtl"] &__track {
-        animation-direction: reverse;
-    }
-
     @media (hover: hover) {
         &__viewport:hover &__track {
             animation-play-state: paused;
@@ -111,12 +107,19 @@
     }
 }
 
+/* ◆ FLAT RTL selector — must be OUTSIDE .partners-marquee nesting
+   so it matches when [dir="rtl"] is on <html> (ancestor of .partners-marquee). */
+[dir="rtl"] .partners-marquee__track {
+    animation-direction: reverse;
+}
+
+/* ◆ Keyframe — items slide LEFT → RIGHT (English default).
+   In RTL, animation-direction: reverse flips it to RIGHT → LEFT. */
 @keyframes partnersMarquee {
     0% {
-        transform: translateX(0);
-    }
-
-    100% {
         transform: translateX(-50%);
+    }
+    100% {
+        transform: translateX(0);
     }
 }
