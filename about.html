@@ -1,408 +1,269 @@
 <!doctype html>
 <html lang="en" dir="ltr" data-lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title data-i18n="meta.title">
-      JCDC — Jeddah Central Development Company
-    </title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&family=Cairo:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="dist/main.min.css" />
-    <link rel="icon" type="image/x-icon" href="./assets/favicon.ico" />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="./assets/favicon-32x32.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="./assets/favicon-16x16.png"
-    />
-    <link rel="icon" type="image/x-icon" href="./assets/apple-favicon.png" />
-  </head>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title data-i18n="meta.title">JCDC — Jeddah Central Development Company</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&family=Cairo:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="dist/main.min.css" />
+        <link rel="icon" type="image/x-icon" href="./assets/favicon.ico" />
+        <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-16x16.png" />
+        <link rel="icon" type="image/x-icon" href="./assets/apple-favicon.png" />
+    </head>
 
-  <body>
-    <!-- ════════════════════════════════════════════
+    <body>
+        <!-- ════════════════════════════════════════════
         HEADER (transparent over hero, white on scroll)
 ════════════════════════════════════════════ -->
-    <header class="navbar" id="navbar">
-      <div class="navbar__inner">
-        <button
-          class="hamburger"
-          id="hamburger"
-          aria-label="Open menu"
-          aria-expanded="false"
-        >
-          <span></span><span></span><span></span>
-        </button>
-        <a href="/" class="navbar__logo" aria-label="JCDC Home">
-          <img
-            class="navbar__logo--light"
-            src="assets/Frame 2.svg"
-            alt="JCDC"
-            width="104"
-            height="56"
-          />
-          <!-- Dark/colored logo — shown when scrolled -->
-          <img
-            class="navbar__logo--dark"
-            src="assets/coporate-PNG-01 1.svg"
-            alt="JCDC"
-            width="104"
-            height="56"
-          />
-        </a>
+        <header class="navbar" id="navbar">
+            <div class="navbar__inner">
+                <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+                    <span></span><span></span><span></span>
+                </button>
+                <a href="/" class="navbar__logo" aria-label="JCDC Home">
+                    <img class="navbar__logo--light" src="assets/Frame 2.svg" alt="JCDC" width="104" height="56" />
+                    <!-- Dark/colored logo — shown when scrolled -->
+                    <img
+                        class="navbar__logo--dark"
+                        src="assets/coporate-PNG-01 1.svg"
+                        alt="JCDC"
+                        width="104"
+                        height="56"
+                    />
+                </a>
 
-        <nav class="navbar__menu" aria-label="Main navigation">
-          <a href="about.html" class="nav-item" data-i18n="nav.about"
-            >About us</a
-          >
+                <nav class="navbar__menu" aria-label="Main navigation">
+                    <a href="about.html" class="nav-item" data-i18n="nav.about">About us</a>
 
-          <div class="nav-item nav-item--dropdown" data-dropdown>
-            <a href="jcdc.html" data-i18n="nav.jcd"
-              >Jeddah Central Destination</a
-            >
-            <button
-              class="nav-item__btn"
-              aria-haspopup="true"
-              aria-expanded="false"
-              data-dropdown-toggle
-            >
-              <svg
-                class="chevron"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                aria-hidden="true"
-              >
-                <path
-                  d="M7 10l5 5 5-5"
-                  stroke="currentColor"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-            </button>
-            <div class="dropdown">
-              <a href="jcdc.html#jcd-map" data-i18n="nav.dropdown.districts"
-                >Districts</a
-              >
-              <a
-                href="jcdc.html#landmark-slider"
-                data-i18n="nav.dropdown.landmarks"
-                >Landmarks</a
-              >
-              <a
-                href="jcdc.html#attractions"
-                data-i18n="nav.dropdown.attractions"
-                >Attractions</a
-              >
-              <a
-                href="jcdc.html#sustainability"
-                data-i18n="nav.dropdown.sustainability"
-                >Sustainability</a
-              >
+                    <div class="nav-item nav-item--dropdown" data-dropdown>
+                        <a href="jcdc.html" data-i18n="nav.jcd">Jeddah Central Destination</a>
+                        <button class="nav-item__btn" aria-haspopup="true" aria-expanded="false" data-dropdown-toggle>
+                            <svg
+                                class="chevron"
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                aria-hidden="true"
+                            >
+                                <path
+                                    d="M7 10l5 5 5-5"
+                                    stroke="currentColor"
+                                    stroke-width="1.5"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </svg>
+                        </button>
+                        <div class="dropdown">
+                            <a href="jcdc.html#jcd-map" data-i18n="nav.dropdown.districts">Districts</a>
+                            <a href="jcdc.html#landmark-slider" data-i18n="nav.dropdown.landmarks">Landmarks</a>
+                            <a href="jcdc.html#attractions" data-i18n="nav.dropdown.attractions">Attractions</a>
+                            <a href="jcdc.html#sustainability" data-i18n="nav.dropdown.sustainability"
+                                >Sustainability</a
+                            >
+                        </div>
+                    </div>
+
+                    <a href="invest.html" class="nav-item" data-i18n="nav.invest">Invest</a>
+                    <a href="news.html" class="nav-item" data-i18n="nav.news">News &amp; Events</a>
+                    <a href="career.html" class="nav-item" data-i18n="nav.careers">Careers</a>
+                    <a href="supplier.html" class="nav-item" data-i18n="nav.suppliers">Suppliers</a>
+                    <a href="contact.html" class="nav-item" data-i18n="nav.contact">Contact Us</a>
+                </nav>
+
+                <div class="navbar__actions">
+                    <button class="icon-btn" aria-label="Search">
+                        <a href="search.html#search-input" class="icon-btn" aria-label="Search">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                                <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.5" />
+                                <path
+                                    d="M16.5 16.5L21 21"
+                                    stroke="currentColor"
+                                    stroke-width="1.5"
+                                    stroke-linecap="round"
+                                />
+                            </svg>
+                        </a>
+                    </button>
+                    <button class="lang-btn" id="lang-btn" aria-label="Switch language">
+                        <span class="lang-btn__text" data-i18n="nav.lang">العربية</span>
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                            <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5" />
+                            <path
+                                d="M12 3c-2.5 2-4 5.5-4 9s1.5 7 4 9c2.5-2 4-5.5 4-9s-1.5-7-4-9z"
+                                stroke="currentColor"
+                                stroke-width="1.5"
+                            />
+                            <path d="M3 9h18M3 15h18" stroke="currentColor" stroke-width="1.5" />
+                        </svg>
+                    </button>
+                </div>
             </div>
-          </div>
+        </header>
 
-          <a href="invest.html" class="nav-item" data-i18n="nav.invest"
-            >Invest</a
-          >
-          <a href="news.html" class="nav-item" data-i18n="nav.news"
-            >News &amp; Events</a
-          >
-          <a href="career.html" class="nav-item" data-i18n="nav.careers"
-            >Careers</a
-          >
-          <a href="supplier.html" class="nav-item" data-i18n="nav.suppliers"
-            >Suppliers</a
-          >
-          <a href="contact.html" class="nav-item" data-i18n="nav.contact"
-            >Contact Us</a
-          >
-        </nav>
+        <!-- Mobile drawer -->
+        <aside class="drawer" id="drawer" aria-hidden="true">
+            <div class="drawer__head">
+                <a href="/" class="drawer__logo">
+                    <img src="assets/coporate-PNG-01 1.svg" alt="JCDC" width="80" height="44" class="drawer__logo" />
+                </a>
+                <button class="drawer__close" id="drawer-close" aria-label="Close menu">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                        <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                    </svg>
+                </button>
+            </div>
+            <div class="drawer__divider"></div>
+            <p class="drawer__label" data-i18n="mobile.menu">MENU</p>
 
-        <div class="navbar__actions">
-          <button class="icon-btn" aria-label="Search">
-            <a
-              href="search.html#search-input"
-              class="icon-btn"
-              aria-label="Search"
-            >
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                <circle
-                  cx="11"
-                  cy="11"
-                  r="7"
-                  stroke="currentColor"
-                  stroke-width="1.5"
-                />
-                <path
-                  d="M16.5 16.5L21 21"
-                  stroke="currentColor"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                />
-              </svg>
-            </a>
-          </button>
-          <button class="lang-btn" id="lang-btn" aria-label="Switch language">
-            <span class="lang-btn__text" data-i18n="nav.lang">العربية</span>
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              aria-hidden="true"
-            >
-              <circle
-                cx="12"
-                cy="12"
-                r="9"
-                stroke="currentColor"
-                stroke-width="1.5"
-              />
-              <path
-                d="M12 3c-2.5 2-4 5.5-4 9s1.5 7 4 9c2.5-2 4-5.5 4-9s-1.5-7-4-9z"
-                stroke="currentColor"
-                stroke-width="1.5"
-              />
-              <path
-                d="M3 9h18M3 15h18"
-                stroke="currentColor"
-                stroke-width="1.5"
-              />
-            </svg>
-          </button>
-        </div>
-      </div>
-    </header>
+            <ul class="drawer__nav">
+                <li>
+                    <a href="about.html">
+                        <button class="drawer__link" data-href="about.html">
+                            <span data-i18n="nav.about">About</span
+                            ><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="drawer__arrow">
+                                <path
+                                    d="M9 6l6 6-6 6"
+                                    stroke="currentColor"
+                                    stroke-width="1.8"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </svg>
+                        </button>
+                    </a>
+                </li>
 
-    <!-- Mobile drawer -->
-    <aside class="drawer" id="drawer" aria-hidden="true">
-      <div class="drawer__head">
-        <a href="/" class="navbar__logo">
-          <img
-            src="assets/coporate-PNG-01 1.svg"
-            alt="JCDC"
-            width="80"
-            height="44"
-            class="drawer__logo"
-          />
-        </a>
-        <button class="drawer__close" id="drawer-close" aria-label="Close menu">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <path
-              d="M6 6l12 12M18 6L6 18"
-              stroke="currentColor"
-              stroke-width="2"
-              stroke-linecap="round"
-            />
-          </svg>
-        </button>
-      </div>
-      <div class="drawer__divider"></div>
-      <p class="drawer__label" data-i18n="mobile.menu">MENU</p>
+                <li class="drawer__item drawer__item--has-sub">
+                    <button class="drawer__link drawer__link--expand" data-mobile-expand>
+                        <a href="jcdc.html">
+                            <span data-i18n="nav.jcd">Jeddah Central Destination</span>
+                        </a>
+                        <svg
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            class="drawer__arrow drawer__arrow--down"
+                        >
+                            <path
+                                d="M7 10l5 5 5-5"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            />
+                        </svg>
+                    </button>
 
-      <ul class="drawer__nav">
-        <li>
-          <a href="about.html">
-            <button class="drawer__link" data-href="about.html">
-              <span data-i18n="nav.about">About</span
-              ><svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                class="drawer__arrow"
-              >
-                <path
-                  d="M9 6l6 6-6 6"
-                  stroke="currentColor"
-                  stroke-width="1.8"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-            </button>
-          </a>
-        </li>
+                    <ul class="drawer__sub">
+                        <li>
+                            <a href="jcdc.html#jcd-map" data-i18n="nav.dropdown.districts">Districts</a>
+                        </li>
+                        <li>
+                            <a href="jcdc.html#landmark-slider" data-i18n="nav.dropdown.landmarks">Landmarks</a>
+                        </li>
+                        <li>
+                            <a href="jcdc.html#attractions" data-i18n="nav.dropdown.attractions">Attractions</a>
+                        </li>
+                        <li>
+                            <a href="jcdc.html#sustainability" data-i18n="nav.dropdown.sustainability"
+                                >Sustainability</a
+                            >
+                        </li>
+                    </ul>
+                </li>
 
-        <li class="drawer__item drawer__item--has-sub">
-          <button class="drawer__link drawer__link--expand" data-mobile-expand>
-            <a href="jcdc.html">
-              <span data-i18n="nav.jcd">Jeddah Central Destination</span>
-            </a>
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              class="drawer__arrow drawer__arrow--down"
-            >
-              <path
-                d="M7 10l5 5 5-5"
-                stroke="currentColor"
-                stroke-width="1.8"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
-          </button>
+                <li>
+                    <a href="invest.html">
+                        <button class="drawer__link">
+                            <span data-i18n="nav.invest">Invest</span
+                            ><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="drawer__arrow">
+                                <path
+                                    d="M9 6l6 6-6 6"
+                                    stroke="currentColor"
+                                    stroke-width="1.8"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </svg>
+                        </button>
+                    </a>
+                </li>
+                <li>
+                    <a href="news.html">
+                        <button class="drawer__link">
+                            <span data-i18n="nav.news">News &amp; Events</span
+                            ><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="drawer__arrow">
+                                <path
+                                    d="M9 6l6 6-6 6"
+                                    stroke="currentColor"
+                                    stroke-width="1.8"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </svg>
+                        </button>
+                    </a>
+                </li>
+                <li>
+                    <a href="career.html">
+                        <button class="drawer__link">
+                            <span data-i18n="nav.careers">Careers</span
+                            ><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="drawer__arrow">
+                                <path
+                                    d="M9 6l6 6-6 6"
+                                    stroke="currentColor"
+                                    stroke-width="1.8"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </svg>
+                        </button>
+                    </a>
+                </li>
+                <li>
+                    <a href="supplier.html">
+                        <button class="drawer__link">
+                            <span data-i18n="nav.suppliers">Suppliers</span
+                            ><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="drawer__arrow">
+                                <path
+                                    d="M9 6l6 6-6 6"
+                                    stroke="currentColor"
+                                    stroke-width="1.8"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </svg>
+                        </button>
+                    </a>
+                </li>
+                <li>
+                    <a href="contact.html">
+                        <button class="drawer__link">
+                            <span data-i18n="nav.contact">Contact Us</span
+                            ><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="drawer__arrow">
+                                <path
+                                    d="M9 6l6 6-6 6"
+                                    stroke="currentColor"
+                                    stroke-width="1.8"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </svg>
+                        </button>
+                    </a>
+                </li>
+            </ul>
 
-          <ul class="drawer__sub">
-            <li>
-              <a href="jcdc.html#jcd-map" data-i18n="nav.dropdown.districts"
-                >Districts</a
-              >
-            </li>
-            <li>
-              <a
-                href="jcdc.html#landmark-slider"
-                data-i18n="nav.dropdown.landmarks"
-                >Landmarks</a
-              >
-            </li>
-            <li>
-              <a
-                href="jcdc.html#attractions"
-                data-i18n="nav.dropdown.attractions"
-                >Attractions</a
-              >
-            </li>
-            <li>
-              <a
-                href="jcdc.html#sustainability"
-                data-i18n="nav.dropdown.sustainability"
-                >Sustainability</a
-              >
-            </li>
-          </ul>
-        </li>
-
-        <li>
-          <a href="invest.html">
-            <button class="drawer__link">
-              <span data-i18n="nav.invest">Invest</span
-              ><svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                class="drawer__arrow"
-              >
-                <path
-                  d="M9 6l6 6-6 6"
-                  stroke="currentColor"
-                  stroke-width="1.8"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-            </button>
-          </a>
-        </li>
-        <li>
-          <a href="news.html">
-            <button class="drawer__link">
-              <span data-i18n="nav.news">News &amp; Events</span
-              ><svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                class="drawer__arrow"
-              >
-                <path
-                  d="M9 6l6 6-6 6"
-                  stroke="currentColor"
-                  stroke-width="1.8"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-            </button>
-          </a>
-        </li>
-        <li>
-          <a href="career.html">
-            <button class="drawer__link">
-              <span data-i18n="nav.careers">Careers</span
-              ><svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                class="drawer__arrow"
-              >
-                <path
-                  d="M9 6l6 6-6 6"
-                  stroke="currentColor"
-                  stroke-width="1.8"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-            </button>
-          </a>
-        </li>
-        <li>
-          <a href="supplier.html">
-            <button class="drawer__link">
-              <span data-i18n="nav.suppliers">Suppliers</span
-              ><svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                class="drawer__arrow"
-              >
-                <path
-                  d="M9 6l6 6-6 6"
-                  stroke="currentColor"
-                  stroke-width="1.8"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-            </button>
-          </a>
-        </li>
-        <li>
-          <a href="contact.html">
-            <button class="drawer__link">
-              <span data-i18n="nav.contact">Contact Us</span
-              ><svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                class="drawer__arrow"
-              >
-                <path
-                  d="M9 6l6 6-6 6"
-                  stroke="currentColor"
-                  stroke-width="1.8"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                />
-              </svg>
-            </button>
-          </a>
-        </li>
-      </ul>
-
-      <!-- <div class="drawer__footer">
+            <!-- <div class="drawer__footer">
                 <button class="lang-btn lang-btn--drawer" id="lang-btn-drawer">
                     <span class="lang-btn__text" data-i18n="nav.lang">العربية</span>
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -416,1874 +277,1461 @@
                     </svg>
                 </button>
             </div> -->
-    </aside>
-    <div class="overlay" id="overlay"></div>
-    <!-- ════════════════════════════════════════════
+        </aside>
+        <div class="overlay" id="overlay"></div>
+        <!-- ════════════════════════════════════════════
         HERO BANNER (transparent over hero, white on scroll)
 ════════════════════════════════════════════ -->
-    <section class="banner">
-      <div class="hero__media">
-        <img src="assets/herobanner.svg" />
-      </div>
-      <div class="banner__overlay"></div>
+        <section class="banner">
+            <div class="hero__media">
+                <img src="assets/herobanner.svg" />
+            </div>
+            <div class="banner__overlay legalBanner_overlay"></div>
 
-      <div class="container">
-        <div class="banner__content">
-          <!-- Breadcrumbs -->
-          <div class="banner__breadcrumbs">
-            <a href="index.html" class="banner__breadcrumbs-link"> Home </a>
+            <div class="container">
+                <div class="banner__content">
+                    <!-- Breadcrumbs -->
+                    <div class="banner__breadcrumbs">
+                        <a href="index.html" class="banner__breadcrumbs-link"> Home </a>
 
-            <span class="banner__breadcrumbs-separator"> > </span>
+                        <span class="banner__breadcrumbs-separator"> > </span>
 
-            <span class="banner__breadcrumbs-current"> About Us </span>
-          </div>
+                        <span class="banner__breadcrumbs-current"> About Us </span>
+                    </div>
 
-          <div>
-            <!-- Title -->
-            <h1 class="banner__title">About Us</h1>
+                    <div>
+                        <!-- Title -->
+                        <h1 class="banner__title">About Us</h1>
 
-            <!-- Description -->
-            <p class="banner__description">
-              We develop world-class destinations where heritage meets
-              contemporary living, creating vibrant communities that celebrate
-              culture.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- ════════════════════════════════════════════
+                        <!-- Description -->
+                        <p class="banner__description">
+                            We develop world-class destinations where heritage meets contemporary living, creating
+                            vibrant communities that celebrate culture.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- ════════════════════════════════════════════
         OUR STORY section
 ════════════════════════════════════════════ -->
-    <section class="our-story our-story--hoverable">
-      <div class="our-story__content">
-        <div class="our-story__text">
-          <h2 class="our-story__title">Our Story</h2>
+        <section class="our-story our-story--hoverable">
+            <div class="our-story__content">
+                <div class="our-story__text">
+                    <h2 class="our-story__title">Our Story</h2>
 
-          <div class="our-story__description">
-            <p>
-              Jeddah Central Development Company (JCDC), a Public Investment
-              Fund (PIF) company was established in 2019 and is dedicated to
-              developing world-class destinations that shape Jeddah's urban
-              future.
-            </p>
+                    <div class="our-story__description">
+                        <p>
+                            Jeddah Central Development Company (JCDC), a Public Investment Fund (PIF) company was
+                            established in 2019 and is dedicated to developing world-class destinations that shape
+                            Jeddah's urban future.
+                        </p>
 
-            <p>
-              As the master developer of the 5.7-million-square-meter Jeddah
-              Central waterfront destination, JCDC leads every phase - from
-              planning and execution to governance and operations - ensuring
-              excellence in design, innovation, and sustainability.
-            </p>
+                        <p>
+                            As the master developer of the 5.7-million-square-meter Jeddah Central waterfront
+                            destination, JCDC leads every phase - from planning and execution to governance and
+                            operations - ensuring excellence in design, innovation, and sustainability.
+                        </p>
 
-            <p>
-              Guided by a strong governance framework and supported by 10+ ISO
-              certifications across quality, environment, health and safety,
-              business continuity, and information security, JCDC is redefining
-              waterfront living and celebrating Jeddah's cultural identity
-              through landmark developments that create lasting value for the
-              city and its people.
-            </p>
-          </div>
-        </div>
+                        <p>
+                            Guided by a strong governance framework and supported by 10+ ISO certifications across
+                            quality, environment, health and safety, business continuity, and information security, JCDC
+                            is redefining waterfront living and celebrating Jeddah's cultural identity through landmark
+                            developments that create lasting value for the city and its people.
+                        </p>
+                    </div>
+                </div>
 
-        <div class="our-story__image-wrapper">
-          <img
-            src="assets/our story.webp"
-            alt="Our Story"
-            class="our-story__image"
-          />
-        </div>
-      </div>
-    </section>
+                <div class="our-story__image-wrapper">
+                    <img src="assets/our story.webp" alt="Our Story" class="our-story__image" />
+                </div>
+            </div>
+        </section>
 
-    <!-- ════════════════════════════════════════════
+        <!-- ════════════════════════════════════════════
         VISION & MISSION section
 ════════════════════════════════════════════ -->
 
-    <section class="vision-mission">
-      <div class="vision-mission__container">
-        <!-- Mission -->
-        <div class="vision-mission__card">
-          <div class="vision-mission__bg vision-mission__bg--mission"></div>
+        <section class="vision-mission">
+            <div class="vision-mission__container">
+                <!-- Mission -->
+                <div class="vision-mission__card">
+                    <div class="vision-mission__bg vision-mission__bg--mission"></div>
 
-          <h2 class="vision-mission__title">Mission</h2>
+                    <h2 class="vision-mission__title">Mission</h2>
 
-          <p class="vision-mission__description">
-            To provide a gift to the Jeddah Community by creating an
-            unparalleled waterfront destination of real estate, leisure and
-            entertainment accessible to all residents and visitors.
-          </p>
-        </div>
-        <!-- Vision -->
-        <div class="vision-mission__card">
-          <div class="vision-mission__bg vision-mission__bg--vision"></div>
+                    <p class="vision-mission__description">
+                        To provide a gift to the Jeddah Community by creating an unparalleled waterfront destination of
+                        real estate, leisure and entertainment accessible to all residents and visitors.
+                    </p>
+                </div>
+                <!-- Vision -->
+                <div class="vision-mission__card">
+                    <div class="vision-mission__bg vision-mission__bg--vision"></div>
 
-          <h2 class="vision-mission__title">Vision</h2>
+                    <h2 class="vision-mission__title">Vision</h2>
 
-          <p class="vision-mission__description">
-            To open the world’s eyes and hearts to Saudi through celebrating its
-            heritage and contemporary culture.
-          </p>
-        </div>
-      </div>
-    </section>
+                    <p class="vision-mission__description">
+                        To open the world’s eyes and hearts to Saudi through celebrating its heritage and contemporary
+                        culture.
+                    </p>
+                </div>
+            </div>
+        </section>
 
-    <!-- ════════════════════════════════════════════
+        <!-- ════════════════════════════════════════════
         JCDC Core Values section
 ════════════════════════════════════════════ -->
-    <!-- Partners marquee section -->
-    <section class="partners-marquee" aria-label="Our Partners">
-      <div class="partners-marquee__container">
-        <div class="partners-marquee__header">
-          <h3 class="partners-marquee__title">Our Partners</h3>
+        <!-- Partners marquee section -->
+        <section class="partners-marquee" aria-label="Our Partners">
+            <div class="partners-marquee__container">
+                <div class="partners-marquee__header">
+                    <h3 class="partners-marquee__title">Our Partners</h3>
 
-          <div class="section-pattern" aria-hidden="true">
-            <img
-              src="./assets/pattern1.svg"
-              alt=""
-              width="22.46"
-              height="21.3"
-              style="position: absolute; left: 0px; top: 1.35px"
-            />
-            <img
-              src="./assets/pattern2.svg"
-              alt=""
-              width="25.29"
-              height="24"
-              style="position: absolute; left: 25.73px; top: 0px"
-            />
-            <img
-              src="./assets/pattern1.svg"
-              alt=""
-              width="22.46"
-              height="21.3"
-              style="position: absolute; left: 52px; top: 1.35px"
-            />
-            <img
-              src="./assets/pattern2.svg"
-              alt=""
-              width="25.29"
-              height="24"
-              style="position: absolute; left: 78px; top: 0px"
-            />
-          </div>
-        </div>
+                    <div class="section-pattern" aria-hidden="true">
+                        <img
+                            src="./assets/pattern1.svg"
+                            alt=""
+                            width="22.46"
+                            height="21.3"
+                            style="position: absolute; left: 0px; top: 1.35px"
+                        />
+                        <img
+                            src="./assets/pattern2.svg"
+                            alt=""
+                            width="25.29"
+                            height="24"
+                            style="position: absolute; left: 25.73px; top: 0px"
+                        />
+                        <img
+                            src="./assets/pattern1.svg"
+                            alt=""
+                            width="22.46"
+                            height="21.3"
+                            style="position: absolute; left: 52px; top: 1.35px"
+                        />
+                        <img
+                            src="./assets/pattern2.svg"
+                            alt=""
+                            width="25.29"
+                            height="24"
+                            style="position: absolute; left: 78px; top: 0px"
+                        />
+                    </div>
+                </div>
 
-        <div class="partners-marquee__viewport">
-          <div class="partners-marquee__track">
-            <div class="partners-marquee__item">
-              <img
-                src="./assets/coporate-PNG-01 1.svg"
-                alt="JCDC Corporate"
-                loading="eager"
-              />
-            </div>
-            <div class="partners-marquee__item">
-              <img
-                src="./assets/coporate-PNG-01 1.svg"
-                alt="JCDC Corporate"
-                loading="eager"
-              />
-            </div>
-            <div class="partners-marquee__item">
-              <img
-                src="./assets/coporate-PNG-01 1.svg"
-                alt="JCDC Corporate"
-                loading="eager"
-              />
-            </div>
-            <div class="partners-marquee__item">
-              <img
-                src="./assets/coporate-PNG-01 1.svg"
-                alt="JCDC Corporate"
-                loading="eager"
-              />
-            </div>
-            <div class="partners-marquee__item">
-              <img
-                src="./assets/coporate-PNG-01 1.svg"
-                alt="JCDC Corporate"
-                loading="eager"
-              />
-            </div>
-            <div class="partners-marquee__item">
-              <img
-                src="./assets/coporate-PNG-01 1.svg"
-                alt="JCDC Corporate"
-                loading="eager"
-              />
-            </div>
-            <div class="partners-marquee__item">
-              <img
-                src="./assets/coporate-PNG-01 1.svg"
-                alt="JCDC Corporate"
-                loading="eager"
-              />
-            </div>
+                <div class="partners-marquee__viewport">
+                    <div class="partners-marquee__track">
+                        <div class="partners-marquee__item">
+                            <img src="./assets/coporate-PNG-01 1.svg" alt="JCDC Corporate" loading="eager" />
+                        </div>
+                        <div class="partners-marquee__item">
+                            <img src="./assets/coporate-PNG-01 1.svg" alt="JCDC Corporate" loading="eager" />
+                        </div>
+                        <div class="partners-marquee__item">
+                            <img src="./assets/coporate-PNG-01 1.svg" alt="JCDC Corporate" loading="eager" />
+                        </div>
+                        <div class="partners-marquee__item">
+                            <img src="./assets/coporate-PNG-01 1.svg" alt="JCDC Corporate" loading="eager" />
+                        </div>
+                        <div class="partners-marquee__item">
+                            <img src="./assets/coporate-PNG-01 1.svg" alt="JCDC Corporate" loading="eager" />
+                        </div>
+                        <div class="partners-marquee__item">
+                            <img src="./assets/coporate-PNG-01 1.svg" alt="JCDC Corporate" loading="eager" />
+                        </div>
+                        <div class="partners-marquee__item">
+                            <img src="./assets/coporate-PNG-01 1.svg" alt="JCDC Corporate" loading="eager" />
+                        </div>
 
-            <div class="partners-marquee__item" aria-hidden="true">
-              <img
-                src="./assets/coporate-PNG-01 1.svg"
-                alt=""
-                loading="eager"
-              />
+                        <div class="partners-marquee__item" aria-hidden="true">
+                            <img src="./assets/coporate-PNG-01 1.svg" alt="" loading="eager" />
+                        </div>
+                        <div class="partners-marquee__item" aria-hidden="true">
+                            <img src="./assets/coporate-PNG-01 1.svg" alt="" loading="eager" />
+                        </div>
+                        <div class="partners-marquee__item" aria-hidden="true">
+                            <img src="./assets/coporate-PNG-01 1.svg" alt="" loading="eager" />
+                        </div>
+                        <div class="partners-marquee__item" aria-hidden="true">
+                            <img src="./assets/coporate-PNG-01 1.svg" alt="" loading="eager" />
+                        </div>
+                        <div class="partners-marquee__item" aria-hidden="true">
+                            <img src="./assets/coporate-PNG-01 1.svg" alt="" loading="eager" />
+                        </div>
+                        <div class="partners-marquee__item" aria-hidden="true">
+                            <img src="./assets/coporate-PNG-01 1.svg" alt="" loading="eager" />
+                        </div>
+                        <div class="partners-marquee__item" aria-hidden="true">
+                            <img src="./assets/coporate-PNG-01 1.svg" alt="" loading="eager" />
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="partners-marquee__item" aria-hidden="true">
-              <img
-                src="./assets/coporate-PNG-01 1.svg"
-                alt=""
-                loading="eager"
-              />
-            </div>
-            <div class="partners-marquee__item" aria-hidden="true">
-              <img
-                src="./assets/coporate-PNG-01 1.svg"
-                alt=""
-                loading="eager"
-              />
-            </div>
-            <div class="partners-marquee__item" aria-hidden="true">
-              <img
-                src="./assets/coporate-PNG-01 1.svg"
-                alt=""
-                loading="eager"
-              />
-            </div>
-            <div class="partners-marquee__item" aria-hidden="true">
-              <img
-                src="./assets/coporate-PNG-01 1.svg"
-                alt=""
-                loading="eager"
-              />
-            </div>
-            <div class="partners-marquee__item" aria-hidden="true">
-              <img
-                src="./assets/coporate-PNG-01 1.svg"
-                alt=""
-                loading="eager"
-              />
-            </div>
-            <div class="partners-marquee__item" aria-hidden="true">
-              <img
-                src="./assets/coporate-PNG-01 1.svg"
-                alt=""
-                loading="eager"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+        </section>
 
-    <section class="core-values">
-      <div class="core-values__container">
-        <!-- Heading -->
-        <div class="core-values__header">
-          <h3 class="core-values__title">JCDC Core Values</h3>
+        <section class="core-values">
+            <div class="core-values__container">
+                <!-- Heading -->
+                <div class="core-values__header">
+                    <h3 class="core-values__title">JCDC Core Values</h3>
 
-          <div class="section-pattern">
-            <img
-              src="./assets/pattern1.svg"
-              alt=""
-              width="22.46"
-              height="21.3"
-              style="position: absolute; left: 0px; top: 1.35px"
-            />
-            <img
-              src="./assets/pattern2.svg"
-              alt=""
-              width="25.29"
-              height="24"
-              style="position: absolute; left: 25.73px; top: 0px"
-            />
-            <img
-              src="./assets/pattern1.svg"
-              alt=""
-              width="22.46"
-              height="21.3"
-              style="position: absolute; left: 52px; top: 1.35px"
-            />
-            <img
-              src="./assets/pattern2.svg"
-              alt=""
-              width="25.29"
-              height="24"
-              style="position: absolute; left: 78px; top: 0px"
-            />
-          </div>
-        </div>
+                    <div class="section-pattern">
+                        <img
+                            src="./assets/pattern1.svg"
+                            alt=""
+                            width="22.46"
+                            height="21.3"
+                            style="position: absolute; left: 0px; top: 1.35px"
+                        />
+                        <img
+                            src="./assets/pattern2.svg"
+                            alt=""
+                            width="25.29"
+                            height="24"
+                            style="position: absolute; left: 25.73px; top: 0px"
+                        />
+                        <img
+                            src="./assets/pattern1.svg"
+                            alt=""
+                            width="22.46"
+                            height="21.3"
+                            style="position: absolute; left: 52px; top: 1.35px"
+                        />
+                        <img
+                            src="./assets/pattern2.svg"
+                            alt=""
+                            width="25.29"
+                            height="24"
+                            style="position: absolute; left: 78px; top: 0px"
+                        />
+                    </div>
+                </div>
 
-        <!-- Cards -->
-        <div class="core-values__grid">
-          <!-- Background Vectors -->
-          <div class="core-values__bg-vectors">
-            <img
-              class="core-values__bg-vector core-values__bg-vector--left"
-              src="assets/vectorLeft.svg"
-              alt=""
-              aria-hidden="true"
-            />
-            <img
-              class="core-values__bg-vector core-values__bg-vector--middle"
-              src="assets/vectorBetween.svg"
-              alt=""
-              aria-hidden="true"
-            />
-            <img
-              class="core-values__bg-vector core-values__bg-vector--right"
-              src="assets/vectorRight.svg"
-              alt=""
-              aria-hidden="true"
-            />
-          </div>
-          <!-- Background Mobile Vectors -->
-          <div class="core-values__bg-vectors-mobile">
-            <img
-              class="core-values__bg-vector-mobile core-values__bg-vector-mobile--left"
-              src="assets/vectorLeftMobile.svg"
-              alt=""
-              aria-hidden="true"
-            />
-            <img
-              class="core-values__bg-vector-mobile core-values__bg-vector-mobile--middle"
-              src="assets/vectorBetweenMobile.svg"
-              alt=""
-              aria-hidden="true"
-            />
-            <img
-              class="core-values__bg-vector-mobile core-values__bg-vector-mobile--right"
-              src="assets/vectorRightMobile.svg"
-              alt=""
-              aria-hidden="true"
-            />
-          </div>
+                <!-- Cards -->
+                <div class="core-values__grid">
+                    <!-- Background Vectors -->
+                    <div class="core-values__bg-vectors">
+                        <img
+                            class="core-values__bg-vector core-values__bg-vector--left"
+                            src="assets/vectorLeft.svg"
+                            alt=""
+                            aria-hidden="true"
+                        />
+                        <img
+                            class="core-values__bg-vector core-values__bg-vector--middle"
+                            src="assets/vectorBetween.svg"
+                            alt=""
+                            aria-hidden="true"
+                        />
+                        <img
+                            class="core-values__bg-vector core-values__bg-vector--right"
+                            src="assets/vectorRight.svg"
+                            alt=""
+                            aria-hidden="true"
+                        />
+                    </div>
+                    <!-- Background Mobile Vectors -->
+                    <div class="core-values__bg-vectors-mobile">
+                        <img
+                            class="core-values__bg-vector-mobile core-values__bg-vector-mobile--left"
+                            src="assets/vectorLeftMobile.svg"
+                            alt=""
+                            aria-hidden="true"
+                        />
+                        <img
+                            class="core-values__bg-vector-mobile core-values__bg-vector-mobile--middle"
+                            src="assets/vectorBetweenMobile.svg"
+                            alt=""
+                            aria-hidden="true"
+                        />
+                        <img
+                            class="core-values__bg-vector-mobile core-values__bg-vector-mobile--right"
+                            src="assets/vectorRightMobile.svg"
+                            alt=""
+                            aria-hidden="true"
+                        />
+                    </div>
 
-          <!-- Card 1 -->
-          <div class="core-values__card core-values__card--1">
-            <div class="core-values__icon">
-              <img src="assets/Authenticity.svg" alt="Authenticity" />
+                    <!-- Card 1 -->
+                    <div class="core-values__card core-values__card--1">
+                        <div class="core-values__icon">
+                            <img src="assets/Authenticity.svg" alt="Authenticity" />
+                        </div>
+                        <div>
+                            <h5 class="core-values__card-title">Authenticity</h5>
+
+                            <p class="core-values__card-description">
+                                We are true, genuine and unique; reflecting our commitment to heritage and corporate
+                                culture.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="core-values__card core-values__card--2">
+                        <div class="core-values__icon">
+                            <img src="assets/Customer Focused.svg" alt="Customer Focused" />
+                        </div>
+                        <div>
+                            <h5 class="core-values__card-title">Customer Focused</h5>
+
+                            <p class="core-values__card-description">
+                                We are committed to the community, from our people, customers, shareholders to society.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="core-values__card core-values__card--3">
+                        <div class="core-values__icon">
+                            <img src="assets/Passion for Excellence.svg" alt="Passion for Excellence" />
+                        </div>
+
+                        <div>
+                            <h5 class="core-values__card-title">Passion for Excellence</h5>
+
+                            <p class="core-values__card-description">
+                                We share the desire to be the best at what we do in a continuous manner.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="core-values__card core-values__card--4">
+                        <div class="core-values__icon">
+                            <img src="assets/Collaboration.svg" alt="Collaboration" />
+                        </div>
+                        <div>
+                            <h5 class="core-values__card-title">Collaboration</h5>
+
+                            <p class="core-values__card-description">
+                                We work as a collective team towards success, underpinned by our mutual respect for
+                                others.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Card 5 -->
+                    <div class="core-values__card core-values__card--5">
+                        <div class="core-values__icon">
+                            <img src="assets/Ownership.svg" alt="Ownership" />
+                        </div>
+
+                        <div>
+                            <h5 class="core-values__card-title">Ownership</h5>
+
+                            <p class="core-values__card-description">
+                                We are responsible towards our outcomes, in an exceptionally disciplined manner
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div>
-              <h5 class="core-values__card-title">Authenticity</h5>
+        </section>
 
-              <p class="core-values__card-description">
-                We are true, genuine and unique; reflecting our commitment to
-                heritage and corporate culture.
-              </p>
-            </div>
-          </div>
-
-          <!-- Card 2 -->
-          <div class="core-values__card core-values__card--2">
-            <div class="core-values__icon">
-              <img src="assets/Customer Focused.svg" alt="Customer Focused" />
-            </div>
-            <div>
-              <h5 class="core-values__card-title">Customer Focused</h5>
-
-              <p class="core-values__card-description">
-                We are committed to the community, from our people, customers,
-                shareholders to society.
-              </p>
-            </div>
-          </div>
-
-          <!-- Card 3 -->
-          <div class="core-values__card core-values__card--3">
-            <div class="core-values__icon">
-              <img
-                src="assets/Passion for Excellence.svg"
-                alt="Passion for Excellence"
-              />
-            </div>
-
-            <div>
-              <h5 class="core-values__card-title">Passion for Excellence</h5>
-
-              <p class="core-values__card-description">
-                We share the desire to be the best at what we do in a continuous
-                manner.
-              </p>
-            </div>
-          </div>
-
-          <!-- Card 4 -->
-          <div class="core-values__card core-values__card--4">
-            <div class="core-values__icon">
-              <img src="assets/Collaboration.svg" alt="Collaboration" />
-            </div>
-            <div>
-              <h5 class="core-values__card-title">Collaboration</h5>
-
-              <p class="core-values__card-description">
-                We work as a collective team towards success, underpinned by our
-                mutual respect for others.
-              </p>
-            </div>
-          </div>
-
-          <!-- Card 5 -->
-          <div class="core-values__card core-values__card--5">
-            <div class="core-values__icon">
-              <img src="assets/Ownership.svg" alt="Ownership" />
-            </div>
-
-            <div>
-              <h5 class="core-values__card-title">Ownership</h5>
-
-              <p class="core-values__card-description">
-                We are responsible towards our outcomes, in an exceptionally
-                disciplined manner
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ════════════════════════════════════════════
+        <!-- ════════════════════════════════════════════
         Culture in Motion section
 ════════════════════════════════════════════ -->
-    <section class="culture">
-      <div class="culture__container">
-        <div class="culture__header">
-          <h2 class="culture__title">Culture in Motion</h2>
-          <div class="section-pattern" aria-hidden="true">
-            <img
-              src="./assets/pattern1.svg"
-              alt=""
-              width="22.46"
-              height="21.3"
-              style="position: absolute; left: 0px; top: 1.35px"
-            />
-            <img
-              src="./assets/pattern2.svg"
-              alt=""
-              width="25.29"
-              height="24"
-              style="position: absolute; left: 25.73px; top: 0px"
-            />
-            <img
-              src="./assets/pattern1.svg"
-              alt=""
-              width="22.46"
-              height="21.3"
-              style="position: absolute; left: 52px; top: 1.35px"
-            />
-            <img
-              src="./assets/pattern2.svg"
-              alt=""
-              width="25.29"
-              height="24"
-              style="position: absolute; left: 78px; top: 0px"
-            />
-          </div>
-        </div>
+        <section class="culture">
+            <div class="culture__container">
+                <div class="culture__header">
+                    <h2 class="culture__title">Culture in Motion</h2>
+                    <div class="section-pattern" aria-hidden="true">
+                        <img
+                            src="./assets/pattern1.svg"
+                            alt=""
+                            width="22.46"
+                            height="21.3"
+                            style="position: absolute; left: 0px; top: 1.35px"
+                        />
+                        <img
+                            src="./assets/pattern2.svg"
+                            alt=""
+                            width="25.29"
+                            height="24"
+                            style="position: absolute; left: 25.73px; top: 0px"
+                        />
+                        <img
+                            src="./assets/pattern1.svg"
+                            alt=""
+                            width="22.46"
+                            height="21.3"
+                            style="position: absolute; left: 52px; top: 1.35px"
+                        />
+                        <img
+                            src="./assets/pattern2.svg"
+                            alt=""
+                            width="25.29"
+                            height="24"
+                            style="position: absolute; left: 78px; top: 0px"
+                        />
+                    </div>
+                </div>
 
-        <div class="culture__grid">
-          <article class="culture__card">
-            <img
-              src="./assets/Image1st.svg"
-              alt="Learning from the Past"
-              class="culture__card-img"
-            />
-            <div class="culture__card-overlay"></div>
-            <div class="culture__card-content">
-              <h3 class="culture__card-title" data-i18n="culture.past.title">
-                Learning from the Past
-              </h3>
-              <p class="culture__card-desc" data-i18n="culture.past.desc">
-                Jeddah's heritage and architectural legacy continue to guide how
-                we build for the future. We draw from the city's authentic
-                character to create developments that preserve cultural identity
-                while driving progress.
-              </p>
+                <div class="culture__grid">
+                    <article class="culture__card">
+                        <img src="./assets/Image1st.svg" alt="Learning from the Past" class="culture__card-img" />
+                        <div class="culture__card-overlay"></div>
+                        <div class="culture__card-content">
+                            <h3 class="culture__card-title" data-i18n="culture.past.title">Learning from the Past</h3>
+                            <p class="culture__card-desc" data-i18n="culture.past.desc">
+                                Jeddah's heritage and architectural legacy continue to guide how we build for the
+                                future. We draw from the city's authentic character to create developments that preserve
+                                cultural identity while driving progress.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="culture__card">
+                        <img src="./assets/Image2nd.svg" alt="Appreciating the Present" class="culture__card-img" />
+                        <div class="culture__card-overlay"></div>
+                        <div class="culture__card-content">
+                            <h3 class="culture__card-title" data-i18n="culture.present.title">
+                                Appreciating the Present
+                            </h3>
+                            <p class="culture__card-desc" data-i18n="culture.present.desc">
+                                Jeddah's cultural diversity continues to shape spaces that balance authenticity with
+                                innovation, where modern design and collaboration reflect the evolution of a dynamic,
+                                forward-moving city.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="culture__card">
+                        <img src="./assets/Image3rd.svg" alt="Inspiring the Future" class="culture__card-img" />
+                        <div class="culture__card-overlay"></div>
+                        <div class="culture__card-content">
+                            <h3 class="culture__card-title" data-i18n="culture.future.title">Inspiring the Future</h3>
+                            <p class="culture__card-desc" data-i18n="culture.future.desc">
+                                We envision destinations where heritage and modernity coexist seamlessly to create
+                                future-ready environments that inspire innovation, connection, and a lasting sense of
+                                place.
+                            </p>
+                        </div>
+                    </article>
+                </div>
             </div>
-          </article>
+        </section>
 
-          <article class="culture__card">
-            <img
-              src="./assets/Image2nd.svg"
-              alt="Appreciating the Present"
-              class="culture__card-img"
-            />
-            <div class="culture__card-overlay"></div>
-            <div class="culture__card-content">
-              <h3 class="culture__card-title" data-i18n="culture.present.title">
-                Appreciating the Present
-              </h3>
-              <p class="culture__card-desc" data-i18n="culture.present.desc">
-                Jeddah's cultural diversity continues to shape spaces that
-                balance authenticity with innovation, where modern design and
-                collaboration reflect the evolution of a dynamic, forward-moving
-                city.
-              </p>
-            </div>
-          </article>
-
-          <article class="culture__card">
-            <img
-              src="./assets/Image3rd.svg"
-              alt="Inspiring the Future"
-              class="culture__card-img"
-            />
-            <div class="culture__card-overlay"></div>
-            <div class="culture__card-content">
-              <h3 class="culture__card-title" data-i18n="culture.future.title">
-                Inspiring the Future
-              </h3>
-              <p class="culture__card-desc" data-i18n="culture.future.desc">
-                We envision destinations where heritage and modernity coexist
-                seamlessly to create future-ready environments that inspire
-                innovation, connection, and a lasting sense of place.
-              </p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ════════════════════════════════════════════
+        <!-- ════════════════════════════════════════════
         LEADERSHIP — Board of Directors / Executive Management
         Two tabs; Executive cards open a modal with full bio.
         All markup is STATIC; JS only toggles classes.
         Localized strings use data-i18n / data-i18n-alt attributes so the
         existing i18n engine swaps text on EN ↔ AR switch.
 ════════════════════════════════════════════ -->
-    <section
-      class="leadership"
-      id="leadership"
-      aria-labelledby="leadership-heading"
-    >
-      <div class="leadership__container">
-        <h2 id="leadership-heading" class="visually-hidden">Leadership</h2>
+        <section class="leadership" id="leadership" aria-labelledby="leadership-heading">
+            <div class="leadership__container">
+                <h2 id="leadership-heading" class="visually-hidden">Leadership</h2>
 
-        <!-- Tab switcher -->
-        <div class="leadership__tabs-wrap">
-          <div class="leadership__tabs" role="tablist" aria-label="Leadership">
-            <button
-              class="leadership__tab leadership__tab--active"
-              type="button"
-              role="tab"
-              id="leadership-tab-board"
-              aria-controls="leadership-panel-board"
-              aria-selected="true"
-              data-leader-tab="board"
-              data-i18n="leadership.tabs.board"
-            >
-              Board of Directors
-            </button>
-            <button
-              class="leadership__tab"
-              type="button"
-              role="tab"
-              id="leadership-tab-executive"
-              aria-controls="leadership-panel-executive"
-              aria-selected="false"
-              tabindex="-1"
-              data-leader-tab="executive"
-              data-i18n="leadership.tabs.executive"
-            >
-              Executive Management
-            </button>
-          </div>
-        </div>
+                <!-- Tab switcher -->
+                <div class="leadership__tabs-wrap">
+                    <div class="leadership__tabs" role="tablist" aria-label="Leadership">
+                        <button
+                            class="leadership__tab leadership__tab--active"
+                            type="button"
+                            role="tab"
+                            id="leadership-tab-board"
+                            aria-controls="leadership-panel-board"
+                            aria-selected="true"
+                            data-leader-tab="board"
+                            data-i18n="leadership.tabs.board"
+                        >
+                            Board of Directors
+                        </button>
+                        <button
+                            class="leadership__tab"
+                            type="button"
+                            role="tab"
+                            id="leadership-tab-executive"
+                            aria-controls="leadership-panel-executive"
+                            aria-selected="false"
+                            tabindex="-1"
+                            data-leader-tab="executive"
+                            data-i18n="leadership.tabs.executive"
+                        >
+                            Executive Management
+                        </button>
+                    </div>
+                </div>
 
-        <!-- ═══ Board of Directors panel ═══ -->
-        <div
-          class="leadership__panel leadership__panel--active"
-          id="leadership-panel-board"
-          role="tabpanel"
-          aria-labelledby="leadership-tab-board"
-          data-leader-panel="board"
-        >
-          <!-- Chairman card (full-width) -->
-          <div class="leadership__chairman">
-            <div class="leadership__chairman-photo">
-              <img
-                src="assets/DirectorChairmen.png"
-                alt="His Royal Highness Prince Mohammed bin Salman bin Abdulaziz Al-Saud"
-                data-i18n-alt="leadership.chairman.name"
-                loading="lazy"
-                width="280"
-                height="280"
-              />
+                <!-- ═══ Board of Directors panel ═══ -->
+                <div
+                    class="leadership__panel leadership__panel--active"
+                    id="leadership-panel-board"
+                    role="tabpanel"
+                    aria-labelledby="leadership-tab-board"
+                    data-leader-panel="board"
+                >
+                    <!-- Chairman card (full-width) -->
+                    <div class="leadership__chairman">
+                        <div class="leadership__chairman-photo">
+                            <img
+                                src="assets/DirectorChairmen.png"
+                                alt="His Royal Highness Prince Mohammed bin Salman bin Abdulaziz Al-Saud"
+                                data-i18n-alt="leadership.chairman.name"
+                                loading="lazy"
+                                width="280"
+                                height="280"
+                            />
+                        </div>
+                        <div class="leadership__chairman-body">
+                            <p class="leadership__chairman-role" data-i18n="leadership.chairman.role">Chairman</p>
+                            <h5 class="leadership__chairman-name" data-i18n="leadership.chairman.name">
+                                His Royal Highness Prince Mohammed bin Salman bin Abdulaziz Al-Saud
+                            </h5>
+                            <p class="leadership__chairman-description" data-i18n="leadership.chairman.description">
+                                Crown Prince / Prime Minister / Chairman of the Council of Economic and Development
+                                Affairs / Chairman of the Public Investment Fund / Chairman of Jeddah Central
+                                Development Company
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Directors grid -->
+                    <div class="leadership__grid">
+                        <article class="leader-card leader-card--slow">
+                            <div class="leader-card__photo">
+                                <img
+                                    src="assets/Rectangle 1st.svg"
+                                    alt="His Royal Highness Prince Saud bin Mishaal bin Abdulaziz Al-Saud"
+                                    data-i18n-alt="leadership.directors.0.name"
+                                    loading="lazy"
+                                    width="320"
+                                    height="320"
+                                />
+                            </div>
+                            <p class="leader-card__role" data-i18n="leadership.directors.0.role">Board Member</p>
+                            <h3 class="leader-card__name" data-i18n="leadership.directors.0.name">
+                                His Royal Highness Prince Saud bin Mishaal bin Abdulaziz Al-Saud
+                            </h3>
+                            <p class="leader-card__description" data-i18n="leadership.directors.0.description">
+                                Deputy Governor of Makkah Region
+                            </p>
+                        </article>
+                        <article class="leader-card leader-card--slow">
+                            <div class="leader-card__photo">
+                                <img
+                                    src="assets/Rectangle 2nd.svg"
+                                    alt="H.E. Ahmed Aqil Al-Khateeb"
+                                    data-i18n-alt="leadership.directors.1.name"
+                                    loading="lazy"
+                                    width="320"
+                                    height="320"
+                                />
+                            </div>
+                            <p class="leader-card__role" data-i18n="leadership.directors.1.role">
+                                Board Member & Secretary General
+                            </p>
+                            <h3 class="leader-card__name" data-i18n="leadership.directors.1.name">
+                                H.E. Ahmed Aqil Al-Khateeb
+                            </h3>
+                            <p class="leader-card__description" data-i18n="leadership.directors.1.description">
+                                Minister of Tourism
+                            </p>
+                        </article>
+                        <article class="leader-card leader-card--slow">
+                            <div class="leader-card__photo">
+                                <img
+                                    src="assets/Rectangle 3rd.svg"
+                                    alt="H.E. Ibrahim Muhammad AlSultan"
+                                    data-i18n-alt="leadership.directors.2.name"
+                                    loading="lazy"
+                                    width="320"
+                                    height="320"
+                                />
+                            </div>
+                            <p class="leader-card__role" data-i18n="leadership.directors.2.role">Board Member</p>
+                            <h3 class="leader-card__name" data-i18n="leadership.directors.2.name">
+                                H.E. Ibrahim Muhammad AlSultan
+                            </h3>
+                            <p class="leader-card__description" data-i18n="leadership.directors.2.description">
+                                Minister of State and Member of the Council of Ministers
+                            </p>
+                        </article>
+                        <article class="leader-card leader-card--slow">
+                            <div class="leader-card__photo">
+                                <img
+                                    src="assets/Rectangle 4th.svg"
+                                    alt="H.E. Dr. Majid Abdullah Al-Kasabi"
+                                    data-i18n-alt="leadership.directors.3.name"
+                                    loading="lazy"
+                                    width="320"
+                                    height="320"
+                                />
+                            </div>
+                            <p class="leader-card__role" data-i18n="leadership.directors.3.role">Board Member</p>
+                            <h3 class="leader-card__name" data-i18n="leadership.directors.3.name">
+                                H.E. Dr. Majid Abdullah Al-Kasabi
+                            </h3>
+                            <p class="leader-card__description" data-i18n="leadership.directors.3.description">
+                                Minister of Commerce
+                            </p>
+                        </article>
+                        <article class="leader-card leader-card--slow">
+                            <div class="leader-card__photo">
+                                <img
+                                    src="assets/Rectangle 5th.svg"
+                                    alt="H.E. Saleh Ali Al-Turki"
+                                    data-i18n-alt="leadership.directors.4.name"
+                                    loading="lazy"
+                                    width="320"
+                                    height="320"
+                                />
+                            </div>
+                            <p class="leader-card__role" data-i18n="leadership.directors.4.role">Board Member</p>
+                            <h3 class="leader-card__name" data-i18n="leadership.directors.4.name">
+                                H.E. Saleh Ali Al-Turki
+                            </h3>
+                            <p class="leader-card__description" data-i18n="leadership.directors.4.description">
+                                Mayor of Jeddah Municipality
+                            </p>
+                        </article>
+                        <article class="leader-card leader-card--slow">
+                            <div class="leader-card__photo">
+                                <img
+                                    src="assets/Rectangle 6th.svg"
+                                    alt="Mr. Sabty Bin Sulaiman Al Sabty"
+                                    data-i18n-alt="leadership.directors.5.name"
+                                    loading="lazy"
+                                    width="320"
+                                    height="320"
+                                />
+                            </div>
+                            <p class="leader-card__role" data-i18n="leadership.directors.5.role">Board Member</p>
+                            <h3 class="leader-card__name" data-i18n="leadership.directors.5.name">
+                                Mr. Sabty Bin Sulaiman Al Sabty
+                            </h3>
+                            <p class="leader-card__description" data-i18n="leadership.directors.5.description">
+                                ZATCA Board Member
+                            </p>
+                        </article>
+                        <article class="leader-card leader-card--slow">
+                            <div class="leader-card__photo">
+                                <img
+                                    src="assets/Rectangle 7th.svg"
+                                    alt="Read Ibrahim Al Mudaiheem"
+                                    data-i18n-alt="leadership.directors.6.name"
+                                    loading="lazy"
+                                    width="320"
+                                    height="320"
+                                />
+                            </div>
+                            <p class="leader-card__role" data-i18n="leadership.directors.6.role">Board Member</p>
+                            <h3 class="leader-card__name" data-i18n="leadership.directors.6.name">
+                                Read Ibrahim Al Mudaiheem
+                            </h3>
+                            <p class="leader-card__description" data-i18n="leadership.directors.6.description">
+                                JedCo Chairman
+                            </p>
+                        </article>
+                        <article class="leader-card leader-card--slow">
+                            <div class="leader-card__photo">
+                                <img
+                                    src="assets/Rectangle 8th.svg"
+                                    alt="Aiman Mohammed AlMudaifer"
+                                    data-i18n-alt="leadership.directors.7.name"
+                                    loading="lazy"
+                                    width="320"
+                                    height="320"
+                                />
+                            </div>
+                            <p class="leader-card__role" data-i18n="leadership.directors.7.role">Board Member</p>
+                            <h3 class="leader-card__name" data-i18n="leadership.directors.7.name">
+                                Aiman Mohammed AlMudaifer
+                            </h3>
+                            <p class="leader-card__description" data-i18n="leadership.directors.7.description">
+                                PIF Representative
+                            </p>
+                        </article>
+                        <article class="leader-card leader-card--slow">
+                            <div class="leader-card__photo">
+                                <img
+                                    src="assets/Rectangle 9th.svg"
+                                    alt="Mr. Naif Al Hamdan"
+                                    data-i18n-alt="leadership.directors.8.name"
+                                    loading="lazy"
+                                    width="320"
+                                    height="320"
+                                />
+                            </div>
+                            <p class="leader-card__role" data-i18n="leadership.directors.8.role">Board Member</p>
+                            <h3 class="leader-card__name" data-i18n="leadership.directors.8.name">
+                                Mr. Naif Al Hamdan
+                            </h3>
+                            <p class="leader-card__description" data-i18n="leadership.directors.8.description">
+                                PIF Representative
+                            </p>
+                        </article>
+                    </div>
+                </div>
+
+                <!-- ═══ Executive Management panel ═══ -->
+                <div
+                    class="leadership__panel"
+                    id="leadership-panel-executive"
+                    role="tabpanel"
+                    aria-labelledby="leadership-tab-executive"
+                    data-leader-panel="executive"
+                    hidden
+                >
+                    <div class="leadership__grid">
+                        <button
+                            type="button"
+                            class="leader-card leader-card--executive"
+                            data-leader-exec="0"
+                            aria-haspopup="dialog"
+                            aria-controls="leader-modal"
+                        >
+                            <span class="leader-card__photo">
+                                <img
+                                    src="assets/Executive 1st.svg"
+                                    alt="Ahmed A. Al Sulaim"
+                                    data-i18n-alt="leadership.executives.0.name"
+                                    loading="lazy"
+                                    width="320"
+                                    height="320"
+                                />
+                            </span>
+                            <span class="leader-card__role" data-i18n="leadership.executives.0.role"
+                                >Chief Executive Officer</span
+                            >
+                            <span class="leader-card__name" data-i18n="leadership.executives.0.name"
+                                >Ahmed A. Al Sulaim</span
+                            >
+                        </button>
+                        <button
+                            type="button"
+                            class="leader-card leader-card--executive"
+                            data-leader-exec="1"
+                            aria-haspopup="dialog"
+                            aria-controls="leader-modal"
+                        >
+                            <span class="leader-card__photo">
+                                <img
+                                    src="assets/Executive 2nd.svg"
+                                    alt="Ahmed O. AlAredhi"
+                                    data-i18n-alt="leadership.executives.1.name"
+                                    loading="lazy"
+                                    width="320"
+                                    height="320"
+                                />
+                            </span>
+                            <span class="leader-card__role" data-i18n="leadership.executives.1.role"
+                                >Chief Customer Experience Officer</span
+                            >
+                            <span class="leader-card__name" data-i18n="leadership.executives.1.name"
+                                >Ahmed O. AlAredhi</span
+                            >
+                        </button>
+                        <button
+                            type="button"
+                            class="leader-card leader-card--executive"
+                            data-leader-exec="2"
+                            aria-haspopup="dialog"
+                            aria-controls="leader-modal"
+                        >
+                            <span class="leader-card__photo">
+                                <img
+                                    src="assets/executive 3rd.svg"
+                                    alt="Mardi Al Mansour"
+                                    data-i18n-alt="leadership.executives.2.name"
+                                    loading="lazy"
+                                    width="320"
+                                    height="320"
+                                />
+                            </span>
+                            <span class="leader-card__role" data-i18n="leadership.executives.2.role"
+                                >Chief Delivery Officer</span
+                            >
+                            <span class="leader-card__name" data-i18n="leadership.executives.2.name"
+                                >Mardi Al Mansour</span
+                            >
+                        </button>
+                        <button
+                            type="button"
+                            class="leader-card leader-card--executive"
+                            data-leader-exec="3"
+                            aria-haspopup="dialog"
+                            aria-controls="leader-modal"
+                        >
+                            <span class="leader-card__photo">
+                                <img
+                                    src="assets/Executive 4th.svg"
+                                    alt="Wissam Fasih Al-Din"
+                                    data-i18n-alt="leadership.executives.3.name"
+                                    loading="lazy"
+                                    width="320"
+                                    height="320"
+                                />
+                            </span>
+                            <span class="leader-card__role" data-i18n="leadership.executives.3.role"
+                                >Chief Financial Officer</span
+                            >
+                            <span class="leader-card__name" data-i18n="leadership.executives.3.name"
+                                >Wissam Fasih Al-Din</span
+                            >
+                        </button>
+                        <button
+                            type="button"
+                            class="leader-card leader-card--executive"
+                            data-leader-exec="4"
+                            aria-haspopup="dialog"
+                            aria-controls="leader-modal"
+                        >
+                            <span class="leader-card__photo">
+                                <img
+                                    src="assets/Executive 5th.svg"
+                                    alt="Omar Al Senayen"
+                                    data-i18n-alt="leadership.executives.4.name"
+                                    loading="lazy"
+                                    width="320"
+                                    height="320"
+                                />
+                            </span>
+                            <span class="leader-card__role" data-i18n="leadership.executives.4.role"
+                                >Chief of Staff</span
+                            >
+                            <span class="leader-card__name" data-i18n="leadership.executives.4.name"
+                                >Omar Al Senayen</span
+                            >
+                        </button>
+                        <button
+                            type="button"
+                            class="leader-card leader-card--executive"
+                            data-leader-exec="5"
+                            aria-haspopup="dialog"
+                            aria-controls="leader-modal"
+                        >
+                            <span class="leader-card__photo">
+                                <img
+                                    src="assets/Executive 6th.svg"
+                                    alt="Amer Albahiti"
+                                    data-i18n-alt="leadership.executives.5.name"
+                                    loading="lazy"
+                                    width="320"
+                                    height="320"
+                                />
+                            </span>
+                            <span class="leader-card__role" data-i18n="leadership.executives.5.role"
+                                >Chief Support Functions Officer</span
+                            >
+                            <span class="leader-card__name" data-i18n="leadership.executives.5.name"
+                                >Amer Albahiti</span
+                            >
+                        </button>
+
+                        <button
+                            type="button"
+                            class="leader-card leader-card--executive"
+                            data-leader-exec="7"
+                            aria-haspopup="dialog"
+                            aria-controls="leader-modal"
+                        >
+                            <span class="leader-card__photo">
+                                <img
+                                    src="assets/Executive 7th.svg"
+                                    alt="Somaiya Attiya"
+                                    loading="lazy"
+                                    width="320"
+                                    height="320"
+                                />
+                            </span>
+                            <span class="leader-card__role" data-i18n="leadership.executives.7.role"
+                                >Chief Human Capital Officer</span
+                            >
+                            <span class="leader-card__name" data-i18n="leadership.executives.7.name"
+                                >Somaiya Attiya</span
+                            >
+                        </button>
+                    </div>
+                </div>
             </div>
-            <div class="leadership__chairman-body">
-              <p
-                class="leadership__chairman-role"
-                data-i18n="leadership.chairman.role"
-              >
-                Chairman
-              </p>
-              <h5
-                class="leadership__chairman-name"
-                data-i18n="leadership.chairman.name"
-              >
-                His Royal Highness Prince Mohammed bin Salman bin Abdulaziz
-                Al-Saud
-              </h5>
-              <p
-                class="leadership__chairman-description"
-                data-i18n="leadership.chairman.description"
-              >
-                Crown Prince / Prime Minister / Chairman of the Council of
-                Economic and Development Affairs / Chairman of the Public
-                Investment Fund / Chairman of Jeddah Central Development Company
-              </p>
-            </div>
-          </div>
+        </section>
 
-          <!-- Directors grid -->
-          <div class="leadership__grid">
-            <article class="leader-card leader-card--slow">
-              <div class="leader-card__photo">
-                <img
-                  src="assets/Rectangle 1st.svg"
-                  alt="His Royal Highness Prince Saud bin Mishaal bin Abdulaziz Al-Saud"
-                  data-i18n-alt="leadership.directors.0.name"
-                  loading="lazy"
-                  width="320"
-                  height="320"
-                />
-              </div>
-              <p
-                class="leader-card__role"
-                data-i18n="leadership.directors.0.role"
-              >
-                Board Member
-              </p>
-              <h3
-                class="leader-card__name"
-                data-i18n="leadership.directors.0.name"
-              >
-                His Royal Highness Prince Saud bin Mishaal bin Abdulaziz Al-Saud
-              </h3>
-              <p
-                class="leader-card__description"
-                data-i18n="leadership.directors.0.description"
-              >
-                Deputy Governor of Makkah Region
-              </p>
-            </article>
-            <article class="leader-card leader-card--slow">
-              <div class="leader-card__photo">
-                <img
-                  src="assets/Rectangle 2nd.svg"
-                  alt="H.E. Ahmed Aqil Al-Khateeb"
-                  data-i18n-alt="leadership.directors.1.name"
-                  loading="lazy"
-                  width="320"
-                  height="320"
-                />
-              </div>
-              <p
-                class="leader-card__role"
-                data-i18n="leadership.directors.1.role"
-              >
-                Board Member & Secretary General
-              </p>
-              <h3
-                class="leader-card__name"
-                data-i18n="leadership.directors.1.name"
-              >
-                H.E. Ahmed Aqil Al-Khateeb
-              </h3>
-              <p
-                class="leader-card__description"
-                data-i18n="leadership.directors.1.description"
-              >
-                Minister of Tourism
-              </p>
-            </article>
-            <article class="leader-card leader-card--slow">
-              <div class="leader-card__photo">
-                <img
-                  src="assets/Rectangle 3rd.svg"
-                  alt="H.E. Ibrahim Muhammad AlSultan"
-                  data-i18n-alt="leadership.directors.2.name"
-                  loading="lazy"
-                  width="320"
-                  height="320"
-                />
-              </div>
-              <p
-                class="leader-card__role"
-                data-i18n="leadership.directors.2.role"
-              >
-                Board Member
-              </p>
-              <h3
-                class="leader-card__name"
-                data-i18n="leadership.directors.2.name"
-              >
-                H.E. Ibrahim Muhammad AlSultan
-              </h3>
-              <p
-                class="leader-card__description"
-                data-i18n="leadership.directors.2.description"
-              >
-                Minister of State and Member of the Council of Ministers
-              </p>
-            </article>
-            <article class="leader-card leader-card--slow">
-              <div class="leader-card__photo">
-                <img
-                  src="assets/Rectangle 4th.svg"
-                  alt="H.E. Dr. Majid Abdullah Al-Kasabi"
-                  data-i18n-alt="leadership.directors.3.name"
-                  loading="lazy"
-                  width="320"
-                  height="320"
-                />
-              </div>
-              <p
-                class="leader-card__role"
-                data-i18n="leadership.directors.3.role"
-              >
-                Board Member
-              </p>
-              <h3
-                class="leader-card__name"
-                data-i18n="leadership.directors.3.name"
-              >
-                H.E. Dr. Majid Abdullah Al-Kasabi
-              </h3>
-              <p
-                class="leader-card__description"
-                data-i18n="leadership.directors.3.description"
-              >
-                Minister of Commerce
-              </p>
-            </article>
-            <article class="leader-card leader-card--slow">
-              <div class="leader-card__photo">
-                <img
-                  src="assets/Rectangle 5th.svg"
-                  alt="H.E. Saleh Ali Al-Turki"
-                  data-i18n-alt="leadership.directors.4.name"
-                  loading="lazy"
-                  width="320"
-                  height="320"
-                />
-              </div>
-              <p
-                class="leader-card__role"
-                data-i18n="leadership.directors.4.role"
-              >
-                Board Member
-              </p>
-              <h3
-                class="leader-card__name"
-                data-i18n="leadership.directors.4.name"
-              >
-                H.E. Saleh Ali Al-Turki
-              </h3>
-              <p
-                class="leader-card__description"
-                data-i18n="leadership.directors.4.description"
-              >
-                Mayor of Jeddah Municipality
-              </p>
-            </article>
-            <article class="leader-card leader-card--slow">
-              <div class="leader-card__photo">
-                <img
-                  src="assets/Rectangle 6th.svg"
-                  alt="Mr. Sabty Bin Sulaiman Al Sabty"
-                  data-i18n-alt="leadership.directors.5.name"
-                  loading="lazy"
-                  width="320"
-                  height="320"
-                />
-              </div>
-              <p
-                class="leader-card__role"
-                data-i18n="leadership.directors.5.role"
-              >
-                Board Member
-              </p>
-              <h3
-                class="leader-card__name"
-                data-i18n="leadership.directors.5.name"
-              >
-                Mr. Sabty Bin Sulaiman Al Sabty
-              </h3>
-              <p
-                class="leader-card__description"
-                data-i18n="leadership.directors.5.description"
-              >
-                ZATCA Board Member
-              </p>
-            </article>
-            <article class="leader-card leader-card--slow">
-              <div class="leader-card__photo">
-                <img
-                  src="assets/Rectangle 7th.svg"
-                  alt="Read Ibrahim Al Mudaiheem"
-                  data-i18n-alt="leadership.directors.6.name"
-                  loading="lazy"
-                  width="320"
-                  height="320"
-                />
-              </div>
-              <p
-                class="leader-card__role"
-                data-i18n="leadership.directors.6.role"
-              >
-                Board Member
-              </p>
-              <h3
-                class="leader-card__name"
-                data-i18n="leadership.directors.6.name"
-              >
-                Read Ibrahim Al Mudaiheem
-              </h3>
-              <p
-                class="leader-card__description"
-                data-i18n="leadership.directors.6.description"
-              >
-                JedCo Chairman
-              </p>
-            </article>
-            <article class="leader-card leader-card--slow">
-              <div class="leader-card__photo">
-                <img
-                  src="assets/Rectangle 8th.svg"
-                  alt="Aiman Mohammed AlMudaifer"
-                  data-i18n-alt="leadership.directors.7.name"
-                  loading="lazy"
-                  width="320"
-                  height="320"
-                />
-              </div>
-              <p
-                class="leader-card__role"
-                data-i18n="leadership.directors.7.role"
-              >
-                Board Member
-              </p>
-              <h3
-                class="leader-card__name"
-                data-i18n="leadership.directors.7.name"
-              >
-                Aiman Mohammed AlMudaifer
-              </h3>
-              <p
-                class="leader-card__description"
-                data-i18n="leadership.directors.7.description"
-              >
-                PIF Representative
-              </p>
-            </article>
-            <article class="leader-card leader-card--slow">
-              <div class="leader-card__photo">
-                <img
-                  src="assets/Rectangle 9th.svg"
-                  alt="Mr. Naif Al Hamdan"
-                  data-i18n-alt="leadership.directors.8.name"
-                  loading="lazy"
-                  width="320"
-                  height="320"
-                />
-              </div>
-              <p
-                class="leader-card__role"
-                data-i18n="leadership.directors.8.role"
-              >
-                Board Member
-              </p>
-              <h3
-                class="leader-card__name"
-                data-i18n="leadership.directors.8.name"
-              >
-                Mr. Naif Al Hamdan
-              </h3>
-              <p
-                class="leader-card__description"
-                data-i18n="leadership.directors.8.description"
-              >
-                PIF Representative
-              </p>
-            </article>
-          </div>
-        </div>
-
-        <!-- ═══ Executive Management panel ═══ -->
-        <div
-          class="leadership__panel"
-          id="leadership-panel-executive"
-          role="tabpanel"
-          aria-labelledby="leadership-tab-executive"
-          data-leader-panel="executive"
-          hidden
-        >
-          <div class="leadership__grid">
-            <button
-              type="button"
-              class="leader-card leader-card--executive"
-              data-leader-exec="0"
-              aria-haspopup="dialog"
-              aria-controls="leader-modal"
-            >
-              <span class="leader-card__photo">
-                <img
-                  src="assets/Executive 1st.svg"
-                  alt="Ahmed A. Al Sulaim"
-                  data-i18n-alt="leadership.executives.0.name"
-                  loading="lazy"
-                  width="320"
-                  height="320"
-                />
-              </span>
-              <span
-                class="leader-card__role"
-                data-i18n="leadership.executives.0.role"
-                >Chief Executive Officer</span
-              >
-              <span
-                class="leader-card__name"
-                data-i18n="leadership.executives.0.name"
-                >Ahmed A. Al Sulaim</span
-              >
-            </button>
-            <button
-              type="button"
-              class="leader-card leader-card--executive"
-              data-leader-exec="1"
-              aria-haspopup="dialog"
-              aria-controls="leader-modal"
-            >
-              <span class="leader-card__photo">
-                <img
-                  src="assets/Executive 2nd.svg"
-                  alt="Ahmed O. AlAredhi"
-                  data-i18n-alt="leadership.executives.1.name"
-                  loading="lazy"
-                  width="320"
-                  height="320"
-                />
-              </span>
-              <span
-                class="leader-card__role"
-                data-i18n="leadership.executives.1.role"
-                >Chief Customer Experience Officer</span
-              >
-              <span
-                class="leader-card__name"
-                data-i18n="leadership.executives.1.name"
-                >Ahmed O. AlAredhi</span
-              >
-            </button>
-            <button
-              type="button"
-              class="leader-card leader-card--executive"
-              data-leader-exec="2"
-              aria-haspopup="dialog"
-              aria-controls="leader-modal"
-            >
-              <span class="leader-card__photo">
-                <img
-                  src="assets/executive 3rd.svg"
-                  alt="Mardi Al Mansour"
-                  data-i18n-alt="leadership.executives.2.name"
-                  loading="lazy"
-                  width="320"
-                  height="320"
-                />
-              </span>
-              <span
-                class="leader-card__role"
-                data-i18n="leadership.executives.2.role"
-                >Chief Delivery Officer</span
-              >
-              <span
-                class="leader-card__name"
-                data-i18n="leadership.executives.2.name"
-                >Mardi Al Mansour</span
-              >
-            </button>
-            <button
-              type="button"
-              class="leader-card leader-card--executive"
-              data-leader-exec="3"
-              aria-haspopup="dialog"
-              aria-controls="leader-modal"
-            >
-              <span class="leader-card__photo">
-                <img
-                  src="assets/Executive 4th.svg"
-                  alt="Wissam Fasih Al-Din"
-                  data-i18n-alt="leadership.executives.3.name"
-                  loading="lazy"
-                  width="320"
-                  height="320"
-                />
-              </span>
-              <span
-                class="leader-card__role"
-                data-i18n="leadership.executives.3.role"
-                >Chief Financial Officer</span
-              >
-              <span
-                class="leader-card__name"
-                data-i18n="leadership.executives.3.name"
-                >Wissam Fasih Al-Din</span
-              >
-            </button>
-            <button
-              type="button"
-              class="leader-card leader-card--executive"
-              data-leader-exec="4"
-              aria-haspopup="dialog"
-              aria-controls="leader-modal"
-            >
-              <span class="leader-card__photo">
-                <img
-                  src="assets/Executive 5th.svg"
-                  alt="Omar Al Senayen"
-                  data-i18n-alt="leadership.executives.4.name"
-                  loading="lazy"
-                  width="320"
-                  height="320"
-                />
-              </span>
-              <span
-                class="leader-card__role"
-                data-i18n="leadership.executives.4.role"
-                >Chief of Staff</span
-              >
-              <span
-                class="leader-card__name"
-                data-i18n="leadership.executives.4.name"
-                >Omar Al Senayen</span
-              >
-            </button>
-            <button
-              type="button"
-              class="leader-card leader-card--executive"
-              data-leader-exec="5"
-              aria-haspopup="dialog"
-              aria-controls="leader-modal"
-            >
-              <span class="leader-card__photo">
-                <img
-                  src="assets/Executive 6th.svg"
-                  alt="Amer Albahiti"
-                  data-i18n-alt="leadership.executives.5.name"
-                  loading="lazy"
-                  width="320"
-                  height="320"
-                />
-              </span>
-              <span
-                class="leader-card__role"
-                data-i18n="leadership.executives.5.role"
-                >Chief Support Functions Officer</span
-              >
-              <span
-                class="leader-card__name"
-                data-i18n="leadership.executives.5.name"
-                >Amer Albahiti</span
-              >
-            </button>
-
-            <button
-              type="button"
-              class="leader-card leader-card--executive"
-              data-leader-exec="7"
-              aria-haspopup="dialog"
-              aria-controls="leader-modal"
-            >
-              <span class="leader-card__photo">
-                <img
-                  src="assets/Executive 7th.svg"
-                  alt="Somaiya Attiya"
-                  loading="lazy"
-                  width="320"
-                  height="320"
-                />
-              </span>
-              <span
-                class="leader-card__role"
-                data-i18n="leadership.executives.7.role"
-                >Chief Human Capital Officer</span
-              >
-              <span
-                class="leader-card__name"
-                data-i18n="leadership.executives.7.name"
-                >Somaiya Attiya</span
-              >
-            </button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══ Executive bio modal ═══
+        <!-- ═══ Executive bio modal ═══
              Single modal element with one pre-rendered content block per
              executive. JS toggles which content block is active (no HTML
              injection). The dialog frame / close button are shared. -->
-    <div
-      class="leader-modal"
-      id="leader-modal"
-      role="dialog"
-      aria-modal="true"
-      aria-hidden="true"
-      aria-labelledby="leader-modal-name"
-    >
-      <div class="leader-modal__dialog">
         <div
-          class="leader-modal__content leader-modal__content--active"
-          data-leader-modal-content="0"
+            class="leader-modal"
+            id="leader-modal"
+            role="dialog"
+            aria-modal="true"
+            aria-hidden="true"
+            aria-labelledby="leader-modal-name"
         >
-          <div class="leader-modal__photo">
-            <img
-              src="assets/Modal 3rd.svg"
-              alt="Ahmed A. Al Sulaim"
-              data-i18n-alt="leadership.executives.0.name"
-              loading="lazy"
-            />
-          </div>
-          <div class="leader-modal__body">
-            <button
-              class="leader-modal__close"
-              type="button"
-              aria-label="Close"
-              data-leader-modal-close
-            >
-              <img
-                src="assets/about/Directors section/cancel-01.svg"
-                alt=""
-                aria-hidden="true"
-              />
-            </button>
-            <div class="leader-modal__text">
-              <p
-                class="leader-modal__role"
-                data-i18n="leadership.executives.0.role"
-              >
-                Chief Executive Officer
-              </p>
-              <h3
-                class="leader-modal__name"
-                id="leader-modal-name-0"
-                data-i18n="leadership.executives.0.name"
-              >
-                Ahmed A. Al Sulaim
-              </h3>
-              <p
-                class="leader-modal__description"
-                data-i18n="leadership.executives.0.description"
-              >
-                Eng. Ahmed has over 30 years of leadership experience in
-                strategic project delivery and national transformation programs.
-                He holds a degree in Computer Engineering and an executive
-                certification from Harvard University, and has held executive
-                roles at ARAMCO and the Public Investment Fund. As Chief
-                Executive Officer of JCDC, he sets the company's strategic
-                direction, driving its vision to create world-class destinations
-                that deliver lasting economic, cultural, and social impact.
-              </p>
+            <div class="leader-modal__dialog">
+                <div class="leader-modal__content leader-modal__content--active" data-leader-modal-content="0">
+                    <div class="leader-modal__photo">
+                        <img
+                            src="assets/Modal 3rd.svg"
+                            alt="Ahmed A. Al Sulaim"
+                            data-i18n-alt="leadership.executives.0.name"
+                            loading="lazy"
+                        />
+                    </div>
+                    <div class="leader-modal__body">
+                        <button class="leader-modal__close" type="button" aria-label="Close" data-leader-modal-close>
+                            <img src="assets/about/Directors section/cancel-01.svg" alt="" aria-hidden="true" />
+                        </button>
+                        <div class="leader-modal__text">
+                            <p class="leader-modal__role" data-i18n="leadership.executives.0.role">
+                                Chief Executive Officer
+                            </p>
+                            <h3
+                                class="leader-modal__name"
+                                id="leader-modal-name-0"
+                                data-i18n="leadership.executives.0.name"
+                            >
+                                Ahmed A. Al Sulaim
+                            </h3>
+                            <p class="leader-modal__description" data-i18n="leadership.executives.0.description">
+                                Eng. Ahmed has over 30 years of leadership experience in strategic project delivery and
+                                national transformation programs. He holds a degree in Computer Engineering and an
+                                executive certification from Harvard University, and has held executive roles at ARAMCO
+                                and the Public Investment Fund. As Chief Executive Officer of JCDC, he sets the
+                                company's strategic direction, driving its vision to create world-class destinations
+                                that deliver lasting economic, cultural, and social impact.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="leader-modal__content" data-leader-modal-content="1">
+                    <div class="leader-modal__photo">
+                        <img
+                            src="assets/Modal 6th.svg"
+                            alt="Ahmed O. AlAredhi"
+                            data-i18n-alt="leadership.executives.1.name"
+                            loading="lazy"
+                        />
+                    </div>
+                    <div class="leader-modal__body">
+                        <button class="leader-modal__close" type="button" aria-label="Close" data-leader-modal-close>
+                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path
+                                    d="M6 6l12 12M18 6L6 18"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                />
+                            </svg>
+                        </button>
+
+                        <div class="leader-modal__text">
+                            <p class="leader-modal__role" data-i18n="leadership.executives.1.role">
+                                Chief Customer Experience Officer
+                            </p>
+                            <h3
+                                class="leader-modal__name"
+                                id="leader-modal-name-1"
+                                data-i18n="leadership.executives.1.name"
+                            >
+                                Ahmed O. AlAredhi
+                            </h3>
+                            <p class="leader-modal__description" data-i18n="leadership.executives.1.description">
+                                Eng. Ahmed has over 26 years of experience in strategic operations and urban planning.
+                                He was previously the CEO of Makkah Region Development Authority and has held senior
+                                leadership roles in complex development projects. At JCDC, he leads the creation of
+                                guest-centric operational models that reflect the cultural and social fabric of Jeddah
+                                Central Destination, ensuring operational excellence.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="leader-modal__content" data-leader-modal-content="2">
+                    <div class="leader-modal__photo">
+                        <img
+                            src="assets/Modal 1st.svg"
+                            alt="Mardi Al Mansour"
+                            data-i18n-alt="leadership.executives.2.name"
+                            loading="lazy"
+                        />
+                    </div>
+                    <div class="leader-modal__body">
+                        <button class="leader-modal__close" type="button" aria-label="Close" data-leader-modal-close>
+                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path
+                                    d="M6 6l12 12M18 6L6 18"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                />
+                            </svg>
+                        </button>
+
+                        <div class="leader-modal__text">
+                            <p class="leader-modal__role" data-i18n="leadership.executives.2.role">
+                                Chief Delivery Officer
+                            </p>
+                            <h3
+                                class="leader-modal__name"
+                                id="leader-modal-name-2"
+                                data-i18n="leadership.executives.2.name"
+                            >
+                                Mardi Al Mansour
+                            </h3>
+                            <p class="leader-modal__description" data-i18n="leadership.executives.2.description">
+                                Eng. Mardi has over 30 years of experience leading and delivering major development
+                                projects across the Kingdom. He has held senior roles at ARAMCO, specializing in
+                                integrated planning and risk management. At JCDC, he leads the delivery of the Jeddah
+                                Central destination and its key landmarks, ensuring the highest standards of quality,
+                                efficiency, and sustainability.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="leader-modal__content" data-leader-modal-content="3">
+                    <div class="leader-modal__photo">
+                        <img
+                            src="assets/Modal 5th.svg"
+                            alt="Wissam Fasih Al-Din"
+                            data-i18n-alt="leadership.executives.3.name"
+                            loading="lazy"
+                        />
+                    </div>
+                    <div class="leader-modal__body">
+                        <button class="leader-modal__close" type="button" aria-label="Close" data-leader-modal-close>
+                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path
+                                    d="M6 6l12 12M18 6L6 18"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                />
+                            </svg>
+                        </button>
+
+                        <div class="leader-modal__text">
+                            <p class="leader-modal__role" data-i18n="leadership.executives.3.role">
+                                Chief Financial Officer
+                            </p>
+                            <h3
+                                class="leader-modal__name"
+                                id="leader-modal-name-3"
+                                data-i18n="leadership.executives.3.name"
+                            >
+                                Wissam Fasih Al-Din
+                            </h3>
+                            <p class="leader-modal__description" data-i18n="leadership.executives.3.description">
+                                Wissam has over 20 years of experience in the banking sector. He holds a master's degree
+                                in Business Administration and has held prominent financial leadership roles, including
+                                Chief Financial Officer at AlAhli Capital. He has also participated in international
+                                executive leadership programs. At JCDC, he leads the company's financial strategy to
+                                ensure its sustainability and long-term growth.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="leader-modal__content" data-leader-modal-content="4">
+                    <div class="leader-modal__photo">
+                        <img
+                            src="assets/Modal 2nd.svg"
+                            alt="Omar Al Senayen"
+                            data-i18n-alt="leadership.executives.4.name"
+                            loading="lazy"
+                        />
+                    </div>
+                    <div class="leader-modal__body">
+                        <button class="leader-modal__close" type="button" aria-label="Close" data-leader-modal-close>
+                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path
+                                    d="M6 6l12 12M18 6L6 18"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                />
+                            </svg>
+                        </button>
+                        <div class="leader-modal__text">
+                            <p class="leader-modal__role" data-i18n="leadership.executives.4.role">Chief of Staff</p>
+                            <h3
+                                class="leader-modal__name"
+                                id="leader-modal-name-4"
+                                data-i18n="leadership.executives.4.name"
+                            >
+                                Omar Al Senayen
+                            </h3>
+                            <p class="leader-modal__description" data-i18n="leadership.executives.4.description">
+                                Omar has over 30 years of experience in strategy development, corporate governance, and
+                                human resources. He holds a bachelor's degree in Information Systems and has held
+                                executive roles at ARAMCO and the Public Investment Fund. At JCDC, he leads the
+                                company's strategy, enterprise performance, and governance matrix to ensure
+                                institutional resilience and forward-looking execution.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="leader-modal__content" data-leader-modal-content="5">
+                    <div class="leader-modal__photo">
+                        <img
+                            src="assets/Modal 4th.svg"
+                            alt="Amer Albahiti"
+                            data-i18n-alt="leadership.executives.5.name"
+                            loading="lazy"
+                        />
+                    </div>
+                    <div class="leader-modal__body">
+                        <button class="leader-modal__close" type="button" aria-label="Close" data-leader-modal-close>
+                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path
+                                    d="M6 6l12 12M18 6L6 18"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                />
+                            </svg>
+                        </button>
+                        <div class="leader-modal__text">
+                            <p class="leader-modal__role" data-i18n="leadership.executives.5.role">
+                                Chief Support Functions Officer
+                            </p>
+                            <h3
+                                class="leader-modal__name"
+                                id="leader-modal-name-5"
+                                data-i18n="leadership.executives.5.name"
+                            >
+                                Amer Albahiti
+                            </h3>
+                            <p class="leader-modal__description" data-i18n="leadership.executives.5.description">
+                                Amer has over 20 years of experience in human capital management and organizational
+                                transformation. He holds a bachelor's degree in Marketing and has held senior roles at
+                                leading companies such as Tasnee and Unilever across local and international markets. At
+                                JCDC, he leads the company's support functions, enabling a high-performing
+                                organizational infrastructure that drives efficiency and long-term operational
+                                excellence.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="leader-modal__content" data-leader-modal-content="7">
+                    <div class="leader-modal__photo">
+                        <img src="assets/Modal 7th.svg" alt="Somaiya Attiya" loading="lazy" />
+                    </div>
+                    <div class="leader-modal__body">
+                        <button class="leader-modal__close" type="button" aria-label="Close" data-leader-modal-close>
+                            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <path
+                                    d="M6 6l12 12M18 6L6 18"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                />
+                            </svg>
+                        </button>
+                        <div class="leader-modal__text">
+                            <p class="leader-modal__role" data-i18n="leadership.executives.7.role">
+                                Chief Human Capital Officer
+                            </p>
+                            <h3
+                                class="leader-modal__name"
+                                id="leader-modal-name-5"
+                                data-i18n="leadership.executives.7.name"
+                            >
+                                Somaiya Attiya
+                            </h3>
+                            <p class="leader-modal__description" data-i18n="leadership.executives.7.description">
+                                Somaiya is a human capital leader with extensive experience in organizational
+                                transformation and strategic talent development. She has held leadership roles at Saudi
+                                National Bank, where she has led major people initiatives supporting business growth and
+                                transformation. At JCDC, she leads the company’s human capital strategy, fostering a
+                                high-performing culture and building the organizational capabilities required to deliver
+                                JCDC’s long-term vision and ambitions.
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
 
-        <div class="leader-modal__content" data-leader-modal-content="1">
-          <div class="leader-modal__photo">
-            <img
-              src="assets/Modal 6th.svg"
-              alt="Ahmed O. AlAredhi"
-              data-i18n-alt="leadership.executives.1.name"
-              loading="lazy"
-            />
-          </div>
-          <div class="leader-modal__body">
-            <button
-              class="leader-modal__close"
-              type="button"
-              aria-label="Close"
-              data-leader-modal-close
-            >
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path
-                  d="M6 6l12 12M18 6L6 18"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                />
-              </svg>
-            </button>
-
-            <div class="leader-modal__text">
-              <p
-                class="leader-modal__role"
-                data-i18n="leadership.executives.1.role"
-              >
-                Chief Customer Experience Officer
-              </p>
-              <h3
-                class="leader-modal__name"
-                id="leader-modal-name-1"
-                data-i18n="leadership.executives.1.name"
-              >
-                Ahmed O. AlAredhi
-              </h3>
-              <p
-                class="leader-modal__description"
-                data-i18n="leadership.executives.1.description"
-              >
-                Eng. Ahmed has over 26 years of experience in strategic
-                operations and urban planning. He was previously the CEO of
-                Makkah Region Development Authority and has held senior
-                leadership roles in complex development projects. At JCDC, he
-                leads the creation of guest-centric operational models that
-                reflect the cultural and social fabric of Jeddah Central
-                Destination, ensuring operational excellence.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="leader-modal__content" data-leader-modal-content="2">
-          <div class="leader-modal__photo">
-            <img
-              src="assets/Modal 1st.svg"
-              alt="Mardi Al Mansour"
-              data-i18n-alt="leadership.executives.2.name"
-              loading="lazy"
-            />
-          </div>
-          <div class="leader-modal__body">
-            <button
-              class="leader-modal__close"
-              type="button"
-              aria-label="Close"
-              data-leader-modal-close
-            >
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path
-                  d="M6 6l12 12M18 6L6 18"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                />
-              </svg>
-            </button>
-
-            <div class="leader-modal__text">
-              <p
-                class="leader-modal__role"
-                data-i18n="leadership.executives.2.role"
-              >
-                Chief Delivery Officer
-              </p>
-              <h3
-                class="leader-modal__name"
-                id="leader-modal-name-2"
-                data-i18n="leadership.executives.2.name"
-              >
-                Mardi Al Mansour
-              </h3>
-              <p
-                class="leader-modal__description"
-                data-i18n="leadership.executives.2.description"
-              >
-                Eng. Mardi has over 30 years of experience leading and
-                delivering major development projects across the Kingdom. He has
-                held senior roles at ARAMCO, specializing in integrated planning
-                and risk management. At JCDC, he leads the delivery of the
-                Jeddah Central destination and its key landmarks, ensuring the
-                highest standards of quality, efficiency, and sustainability.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="leader-modal__content" data-leader-modal-content="3">
-          <div class="leader-modal__photo">
-            <img
-              src="assets/Modal 5th.svg"
-              alt="Wissam Fasih Al-Din"
-              data-i18n-alt="leadership.executives.3.name"
-              loading="lazy"
-            />
-          </div>
-          <div class="leader-modal__body">
-            <button
-              class="leader-modal__close"
-              type="button"
-              aria-label="Close"
-              data-leader-modal-close
-            >
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path
-                  d="M6 6l12 12M18 6L6 18"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                />
-              </svg>
-            </button>
-
-            <div class="leader-modal__text">
-              <p
-                class="leader-modal__role"
-                data-i18n="leadership.executives.3.role"
-              >
-                Chief Financial Officer
-              </p>
-              <h3
-                class="leader-modal__name"
-                id="leader-modal-name-3"
-                data-i18n="leadership.executives.3.name"
-              >
-                Wissam Fasih Al-Din
-              </h3>
-              <p
-                class="leader-modal__description"
-                data-i18n="leadership.executives.3.description"
-              >
-                Wissam has over 20 years of experience in the banking sector. He
-                holds a master's degree in Business Administration and has held
-                prominent financial leadership roles, including Chief Financial
-                Officer at AlAhli Capital. He has also participated in
-                international executive leadership programs. At JCDC, he leads
-                the company's financial strategy to ensure its sustainability
-                and long-term growth.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="leader-modal__content" data-leader-modal-content="4">
-          <div class="leader-modal__photo">
-            <img
-              src="assets/Modal 2nd.svg"
-              alt="Omar Al Senayen"
-              data-i18n-alt="leadership.executives.4.name"
-              loading="lazy"
-            />
-          </div>
-          <div class="leader-modal__body">
-            <button
-              class="leader-modal__close"
-              type="button"
-              aria-label="Close"
-              data-leader-modal-close
-            >
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path
-                  d="M6 6l12 12M18 6L6 18"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                />
-              </svg>
-            </button>
-            <div class="leader-modal__text">
-              <p
-                class="leader-modal__role"
-                data-i18n="leadership.executives.4.role"
-              >
-                Chief of Staff
-              </p>
-              <h3
-                class="leader-modal__name"
-                id="leader-modal-name-4"
-                data-i18n="leadership.executives.4.name"
-              >
-                Omar Al Senayen
-              </h3>
-              <p
-                class="leader-modal__description"
-                data-i18n="leadership.executives.4.description"
-              >
-                Omar has over 30 years of experience in strategy development,
-                corporate governance, and human resources. He holds a bachelor's
-                degree in Information Systems and has held executive roles at
-                ARAMCO and the Public Investment Fund. At JCDC, he leads the
-                company's strategy, enterprise performance, and governance
-                matrix to ensure institutional resilience and forward-looking
-                execution.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="leader-modal__content" data-leader-modal-content="5">
-          <div class="leader-modal__photo">
-            <img
-              src="assets/Modal 4th.svg"
-              alt="Amer Albahiti"
-              data-i18n-alt="leadership.executives.5.name"
-              loading="lazy"
-            />
-          </div>
-          <div class="leader-modal__body">
-            <button
-              class="leader-modal__close"
-              type="button"
-              aria-label="Close"
-              data-leader-modal-close
-            >
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path
-                  d="M6 6l12 12M18 6L6 18"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                />
-              </svg>
-            </button>
-            <div class="leader-modal__text">
-              <p
-                class="leader-modal__role"
-                data-i18n="leadership.executives.5.role"
-              >
-                Chief Support Functions Officer
-              </p>
-              <h3
-                class="leader-modal__name"
-                id="leader-modal-name-5"
-                data-i18n="leadership.executives.5.name"
-              >
-                Amer Albahiti
-              </h3>
-              <p
-                class="leader-modal__description"
-                data-i18n="leadership.executives.5.description"
-              >
-                Amer has over 20 years of experience in human capital management
-                and organizational transformation. He holds a bachelor's degree
-                in Marketing and has held senior roles at leading companies such
-                as Tasnee and Unilever across local and international markets.
-                At JCDC, he leads the company's support functions, enabling a
-                high-performing organizational infrastructure that drives
-                efficiency and long-term operational excellence.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="leader-modal__content" data-leader-modal-content="7">
-          <div class="leader-modal__photo">
-            <img
-              src="assets/Modal 7th.svg"
-              alt="Somaiya Attiya"
-              loading="lazy"
-            />
-          </div>
-          <div class="leader-modal__body">
-            <button
-              class="leader-modal__close"
-              type="button"
-              aria-label="Close"
-              data-leader-modal-close
-            >
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                <path
-                  d="M6 6l12 12M18 6L6 18"
-                  stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                />
-              </svg>
-            </button>
-            <div class="leader-modal__text">
-              <p
-                class="leader-modal__role"
-                data-i18n="leadership.executives.7.role"
-              >
-                Chief Human Capital Officer
-              </p>
-              <h3
-                class="leader-modal__name"
-                id="leader-modal-name-5"
-                data-i18n="leadership.executives.7.name"
-              >
-                Somaiya Attiya
-              </h3>
-              <p
-                class="leader-modal__description"
-                data-i18n="leadership.executives.7.description"
-              >
-                Somaiya is a human capital leader with extensive experience in
-                organizational transformation and strategic talent development.
-                She has held leadership roles at Saudi National Bank, where she
-                has led major people initiatives supporting business growth and
-                transformation. At JCDC, she leads the company’s human capital
-                strategy, fostering a high-performing culture and building the
-                organizational capabilities required to deliver JCDC’s long-term
-                vision and ambitions.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- ════════════════════════════════════════════
+        <!-- ════════════════════════════════════════════
         AWARDS & CERTIFICATIONS (copied from homepage)
 ════════════════════════════════════════════ -->
-    <section class="awards">
-      <header class="section-title">
-        <h2 data-i18n="awards.title">Awards &amp; Certifications</h2>
-        <div class="section-pattern">
-          <img
-            src="./assets/pattern1.svg"
-            alt=""
-            width="22.46"
-            height="21.3"
-            style="position: absolute; left: 0px; top: 1.35px"
-          />
-          <img
-            src="./assets/pattern2.svg"
-            alt=""
-            width="25.29"
-            height="24"
-            style="position: absolute; left: 25.73px; top: 0px"
-          />
-          <img
-            src="./assets/pattern1.svg"
-            alt=""
-            width="22.46"
-            height="21.3"
-            style="position: absolute; left: 52px; top: 1.35px"
-          />
-          <img
-            src="./assets/pattern2.svg"
-            alt=""
-            width="25.29"
-            height="24"
-            style="position: absolute; left: 78px; top: 0px"
-          />
+        <section class="awards">
+            <header class="section-title">
+                <h2 data-i18n="awards.title">Awards &amp; Certifications</h2>
+                <div class="section-pattern">
+                    <img
+                        src="./assets/pattern1.svg"
+                        alt=""
+                        width="22.46"
+                        height="21.3"
+                        style="position: absolute; left: 0px; top: 1.35px"
+                    />
+                    <img
+                        src="./assets/pattern2.svg"
+                        alt=""
+                        width="25.29"
+                        height="24"
+                        style="position: absolute; left: 25.73px; top: 0px"
+                    />
+                    <img
+                        src="./assets/pattern1.svg"
+                        alt=""
+                        width="22.46"
+                        height="21.3"
+                        style="position: absolute; left: 52px; top: 1.35px"
+                    />
+                    <img
+                        src="./assets/pattern2.svg"
+                        alt=""
+                        width="25.29"
+                        height="24"
+                        style="position: absolute; left: 78px; top: 0px"
+                    />
+                </div>
+            </header>
+            <div class="awards__slider">
+                <div class="certs">
+                    <div class="cert-item">
+                        <div class="cert-item__logo">
+                            <img src="./assets/efqm-logo-2024 1.svg" alt="EFQM" loading="eager" />
+                        </div>
+                        <p class="cert-item__title">Recognized as A 4-star organization using the EFQM Model</p>
+                    </div>
+                    <div class="cert-item">
+                        <div class="cert-item__logo">
+                            <img src="./assets/usgcb.svg" alt="LEED Gold USGBC" loading="eager" />
+                        </div>
+                        <p class="cert-item__title">LEED Gold Pre-Certificate</p>
+                    </div>
+                    <div class="cert-item">
+                        <div class="cert-item__logo">
+                            <img src="./assets/iso.svg" alt="ISO 9001:2015" loading="eager" />
+                        </div>
+                        <p class="cert-item__title">Quality Management Systems</p>
+                    </div>
+                    <div class="cert-item">
+                        <div class="cert-item__logo">
+                            <img src="./assets/iso.svg" alt="ISO 14001:2015" loading="eager" />
+                        </div>
+                        <p class="cert-item__title">Environmental Management Systems</p>
+                    </div>
+                    <div class="cert-item">
+                        <div class="cert-item__logo">
+                            <img src="./assets/iso.svg" alt="ISO 14001:2015" loading="eager" />
+                        </div>
+                        <p class="cert-item__title">Environmental Management Systems</p>
+                    </div>
+                    <div class="cert-item">
+                        <div class="cert-item__logo">
+                            <img src="./assets/iso.svg" alt="ISO 14001:2015" loading="eager" />
+                        </div>
+                        <p class="cert-item__title">Environmental Management Systems</p>
+                    </div>
+                    <div class="cert-item">
+                        <div class="cert-item__logo">
+                            <img src="./assets/efqm-logo-2024 1.svg" alt="EFQM" loading="eager" />
+                        </div>
+                        <p class="cert-item__title">Recognized as A 4-star organization using the EFQM Model</p>
+                    </div>
+                    <div class="cert-item">
+                        <div class="cert-item__logo">
+                            <img src="./assets/usgcb.svg" alt="LEED Gold USGBC" loading="eager" />
+                        </div>
+                        <p class="cert-item__title">LEED Gold Pre-Certificate</p>
+                    </div>
+
+                    <!-- Duplicates for seamless marquee loop (hidden from a11y tree) -->
+                    <div class="cert-item" aria-hidden="true">
+                        <div class="cert-item__logo">
+                            <img src="./assets/efqm-logo-2024 1.svg" alt="" loading="eager" />
+                        </div>
+                        <p class="cert-item__title">Recognized as A 4-star organization using the EFQM Model</p>
+                    </div>
+                    <div class="cert-item" aria-hidden="true">
+                        <div class="cert-item__logo">
+                            <img src="./assets/usgcb.svg" alt="" loading="eager" />
+                        </div>
+                        <p class="cert-item__title">LEED Gold Pre-Certificate</p>
+                    </div>
+                    <div class="cert-item" aria-hidden="true">
+                        <div class="cert-item__logo">
+                            <img src="./assets/iso.svg" alt="" loading="eager" />
+                        </div>
+                        <p class="cert-item__title">Quality Management Systems</p>
+                    </div>
+                    <div class="cert-item" aria-hidden="true">
+                        <div class="cert-item__logo">
+                            <img src="./assets/iso.svg" alt="" loading="eager" />
+                        </div>
+                        <p class="cert-item__title">Environmental Management Systems</p>
+                    </div>
+                    <div class="cert-item" aria-hidden="true">
+                        <div class="cert-item__logo">
+                            <img src="./assets/iso.svg" alt="" loading="eager" />
+                        </div>
+                        <p class="cert-item__title">Environmental Management Systems</p>
+                    </div>
+                    <div class="cert-item" aria-hidden="true">
+                        <div class="cert-item__logo">
+                            <img src="./assets/iso.svg" alt="" loading="eager" />
+                        </div>
+                        <p class="cert-item__title">Environmental Management Systems</p>
+                    </div>
+                    <div class="cert-item" aria-hidden="true">
+                        <div class="cert-item__logo">
+                            <img src="./assets/efqm-logo-2024 1.svg" alt="" loading="eager" />
+                        </div>
+                        <p class="cert-item__title">Recognized as A 4-star organization using the EFQM Model</p>
+                    </div>
+                    <div class="cert-item" aria-hidden="true">
+                        <div class="cert-item__logo">
+                            <img src="./assets/usgcb.svg" alt="" loading="eager" />
+                        </div>
+                        <p class="cert-item__title">LEED Gold Pre-Certificate</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cookie Popup -->
+        <div class="cookie-popup" id="cookiePopup">
+            <div class="cookie-popup__content">
+                <div class="cookie-popup__left">
+                    <h3>BEFORE YOU ENTER OUR WEBSITE</h3>
+
+                    <p>
+                        We use cookies to optimize your experience, remember your preferences, analyze site performance,
+                        and provide relevant content. By selecting “Accept All Cookies”, you consent to our use of
+                        <a href="#">cookies</a>.
+                    </p>
+                </div>
+            </div>
+            <div class="cookie-popup__buttons">
+                <button id="acceptCookies" class="cookie-btn cookie-btn--primary">
+                    ACCEPT ALL
+                    <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path
+                                d="M20 12H4"
+                                stroke="#EFEFEF"
+                                stroke-width="1.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            />
+                            <path
+                                d="M15.0001 17C15.0001 17 20 13.3176 20 12C20 10.6824 15 7 15 7"
+                                stroke="#EFEFEF"
+                                stroke-width="1.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            />
+                        </svg>
+                    </span>
+                </button>
+
+                <button id="rejectCookies" class="cookie-btn cookie-btn--outline">
+                    Reject All
+                    <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path
+                                d="M20 12H4"
+                                stroke="currentColor"
+                                stroke-width="1.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            />
+                            <path
+                                d="M15.0001 17C15.0001 17 20 13.3176 20 12C20 10.6824 15 7 15 7"
+                                stroke="currentColor"
+                                stroke-width="1.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            />
+                        </svg>
+                    </span>
+                </button>
+            </div>
         </div>
-      </header>
-      <div class="awards__slider">
-        <div class="certs">
-          <div class="cert-item">
-            <div class="cert-item__logo">
-              <img
-                src="./assets/efqm-logo-2024 1.svg"
-                alt="EFQM"
-                loading="eager"
-              />
-            </div>
-            <p class="cert-item__title">
-              Recognized as A 4-star organization using the EFQM Model
-            </p>
-          </div>
-          <div class="cert-item">
-            <div class="cert-item__logo">
-              <img
-                src="./assets/usgcb.svg"
-                alt="LEED Gold USGBC"
-                loading="eager"
-              />
-            </div>
-            <p class="cert-item__title">LEED Gold Pre-Certificate</p>
-          </div>
-          <div class="cert-item">
-            <div class="cert-item__logo">
-              <img src="./assets/iso.svg" alt="ISO 9001:2015" loading="eager" />
-            </div>
-            <p class="cert-item__title">Quality Management Systems</p>
-          </div>
-          <div class="cert-item">
-            <div class="cert-item__logo">
-              <img
-                src="./assets/iso.svg"
-                alt="ISO 14001:2015"
-                loading="eager"
-              />
-            </div>
-            <p class="cert-item__title">Environmental Management Systems</p>
-          </div>
-          <div class="cert-item">
-            <div class="cert-item__logo">
-              <img
-                src="./assets/iso.svg"
-                alt="ISO 14001:2015"
-                loading="eager"
-              />
-            </div>
-            <p class="cert-item__title">Environmental Management Systems</p>
-          </div>
-          <div class="cert-item">
-            <div class="cert-item__logo">
-              <img
-                src="./assets/iso.svg"
-                alt="ISO 14001:2015"
-                loading="eager"
-              />
-            </div>
-            <p class="cert-item__title">Environmental Management Systems</p>
-          </div>
-          <div class="cert-item">
-            <div class="cert-item__logo">
-              <img
-                src="./assets/efqm-logo-2024 1.svg"
-                alt="EFQM"
-                loading="eager"
-              />
-            </div>
-            <p class="cert-item__title">
-              Recognized as A 4-star organization using the EFQM Model
-            </p>
-          </div>
-          <div class="cert-item">
-            <div class="cert-item__logo">
-              <img
-                src="./assets/usgcb.svg"
-                alt="LEED Gold USGBC"
-                loading="eager"
-              />
-            </div>
-            <p class="cert-item__title">LEED Gold Pre-Certificate</p>
-          </div>
-
-          <!-- Duplicates for seamless marquee loop (hidden from a11y tree) -->
-          <div class="cert-item" aria-hidden="true">
-            <div class="cert-item__logo">
-              <img src="./assets/efqm-logo-2024 1.svg" alt="" loading="eager" />
-            </div>
-            <p class="cert-item__title">
-              Recognized as A 4-star organization using the EFQM Model
-            </p>
-          </div>
-          <div class="cert-item" aria-hidden="true">
-            <div class="cert-item__logo">
-              <img src="./assets/usgcb.svg" alt="" loading="eager" />
-            </div>
-            <p class="cert-item__title">LEED Gold Pre-Certificate</p>
-          </div>
-          <div class="cert-item" aria-hidden="true">
-            <div class="cert-item__logo">
-              <img src="./assets/iso.svg" alt="" loading="eager" />
-            </div>
-            <p class="cert-item__title">Quality Management Systems</p>
-          </div>
-          <div class="cert-item" aria-hidden="true">
-            <div class="cert-item__logo">
-              <img src="./assets/iso.svg" alt="" loading="eager" />
-            </div>
-            <p class="cert-item__title">Environmental Management Systems</p>
-          </div>
-          <div class="cert-item" aria-hidden="true">
-            <div class="cert-item__logo">
-              <img src="./assets/iso.svg" alt="" loading="eager" />
-            </div>
-            <p class="cert-item__title">Environmental Management Systems</p>
-          </div>
-          <div class="cert-item" aria-hidden="true">
-            <div class="cert-item__logo">
-              <img src="./assets/iso.svg" alt="" loading="eager" />
-            </div>
-            <p class="cert-item__title">Environmental Management Systems</p>
-          </div>
-          <div class="cert-item" aria-hidden="true">
-            <div class="cert-item__logo">
-              <img src="./assets/efqm-logo-2024 1.svg" alt="" loading="eager" />
-            </div>
-            <p class="cert-item__title">
-              Recognized as A 4-star organization using the EFQM Model
-            </p>
-          </div>
-          <div class="cert-item" aria-hidden="true">
-            <div class="cert-item__logo">
-              <img src="./assets/usgcb.svg" alt="" loading="eager" />
-            </div>
-            <p class="cert-item__title">LEED Gold Pre-Certificate</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Cookie Popup -->
-    <div class="cookie-popup" id="cookiePopup">
-      <div class="cookie-popup__content">
-        <div class="cookie-popup__left">
-          <h3>BEFORE YOU ENTER OUR WEBSITE</h3>
-
-          <p>
-            We use cookies to optimize your experience, remember your
-            preferences, analyze site performance, and provide relevant content.
-            By selecting “Accept All Cookies”, you consent to our use of
-            <a href="#">cookies</a>.
-          </p>
-        </div>
-      </div>
-      <div class="cookie-popup__buttons">
-        <button id="acceptCookies" class="cookie-btn cookie-btn--primary">
-          ACCEPT ALL
-          <span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-            >
-              <path
-                d="M20 12H4"
-                stroke="#EFEFEF"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-              <path
-                d="M15.0001 17C15.0001 17 20 13.3176 20 12C20 10.6824 15 7 15 7"
-                stroke="#EFEFEF"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
-          </span>
-        </button>
-
-        <button id="rejectCookies" class="cookie-btn cookie-btn--outline">
-          Reject All
-          <span>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-            >
-              <path
-                d="M20 12H4"
-                stroke="currentColor"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-              <path
-                d="M15.0001 17C15.0001 17 20 13.3176 20 12C20 10.6824 15 7 15 7"
-                stroke="currentColor"
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              />
-            </svg>
-          </span>
-        </button>
-      </div>
-    </div>
-    <!-- end Cookie Popup -->
-    <!-- ════════════════════════════════════════════
+        <!-- end Cookie Popup -->
+        <!-- ════════════════════════════════════════════
         FOOTER
 ════════════════════════════════════════════ -->
-    <footer class="footer">
-      <div class="footer__top">
-        <a href="/" class="footer__logo-wrap">
-          <img
-            src="assets/coporate-PNG-01 1.svg"
-            alt="JCDC"
-            width="132"
-            height="72"
-            class="footer__logo"
-          />
-        </a>
-        <div class="footer__right">
-          <div class="footer__social">
-            <a href="#" aria-label="Instagram" class="social-link">
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="1.8"
-              >
-                <rect x="3" y="3" width="18" height="18" rx="5" />
-                <circle cx="12" cy="12" r="4" />
-                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" />
-              </svg>
-            </a>
-            <a href="#" aria-label="X (Twitter)" class="social-link">
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-              >
-                <path
-                  d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
-                />
-              </svg>
-            </a>
-            <a href="#" aria-label="LinkedIn" class="social-link">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-              >
-                <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
-                  d="M4.5 3.24219C3.67157 3.24219 3 3.91376 3 4.74219V19.7422C3 20.5706 3.67157 21.2422 4.5 21.2422H19.5C20.3284 21.2422 21 20.5706 21 19.7422V4.74219C21 3.91376 20.3284 3.24219 19.5 3.24219H4.5ZM8.52076 7.24491C8.52639 8.20116 7.81061 8.79038 6.96123 8.78616C6.16107 8.78194 5.46357 8.14491 5.46779 7.24632C5.47201 6.40116 6.13998 5.72194 7.00764 5.74163C7.88795 5.76132 8.52639 6.40679 8.52076 7.24491ZM12.2797 10.0039H9.75971H9.7583V18.5638H12.4217V18.3641C12.4217 17.9842 12.4214 17.6042 12.4211 17.2241C12.4203 16.2103 12.4194 15.1954 12.4246 14.1819C12.426 13.9358 12.4372 13.6799 12.5005 13.445C12.7381 12.5675 13.5271 12.0008 14.4074 12.1401C14.9727 12.2286 15.3467 12.5563 15.5042 13.0893C15.6013 13.4225 15.6449 13.7811 15.6491 14.1285C15.6605 15.1761 15.6589 16.2237 15.6573 17.2714C15.6567 17.6412 15.6561 18.0112 15.6561 18.381V18.5624H18.328V18.3571C18.328 17.9051 18.3278 17.4532 18.3275 17.0013C18.327 15.8718 18.3264 14.7423 18.3294 13.6124C18.3308 13.1019 18.276 12.5985 18.1508 12.1049C17.9638 11.3708 17.5771 10.7633 16.9485 10.3246C16.5027 10.0124 16.0133 9.81129 15.4663 9.78879C15.404 9.7862 15.3412 9.78281 15.2781 9.7794C14.9984 9.76428 14.7141 9.74892 14.4467 9.80285C13.6817 9.95613 13.0096 10.3063 12.5019 10.9236C12.4429 10.9944 12.3852 11.0663 12.2991 11.1736L12.2797 11.1979V10.0039ZM5.68164 18.5666H8.33242V10.0095H5.68164V18.5666Z"
-                  fill="#0076A9"
-                />
-              </svg>
-            </a>
-            <a href="#" aria-label="YouTube" class="social-link">
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-              >
-                <path
-                  d="M23.5 6.21a3.02 3.02 0 0 0-2.12-2.14C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.38.57A3.02 3.02 0 0 0 .5 6.21 31.48 31.48 0 0 0 0 12a31.48 31.48 0 0 0 .5 5.79 3.02 3.02 0 0 0 2.12 2.14C4.5 20.5 12 20.5 12 20.5s7.5 0 9.38-.57a3.02 3.02 0 0 0 2.12-2.14A31.48 31.48 0 0 0 24 12a31.48 31.48 0 0 0-.5-5.79zM9.6 15.6V8.4l6.24 3.6-6.24 3.6z"
-                />
-              </svg>
-            </a>
-          </div>
-          <nav class="footer__nav" aria-label="Footer navigation">
-            <a href="about.html" data-i18n="footer.aboutUs">ABOUT US</a>
-            <a href="jcdc.html" data-i18n="footer.jcd"
-              >JEDDAH CENTRAL DESTINATION</a
-            >
-            <a href="invest.html" data-i18n="footer.invest">INVEST</a>
-            <a href="news.html" data-i18n="footer.newsEvents"
-              >NEWS &amp; EVENTS</a
-            >
-            <a href="career.html" data-i18n="footer.careers">CAREERS</a>
-            <a href="supplier.html" data-i18n="footer.suppliers">SUPPLIERS</a>
-            <a href="contact.html" data-i18n="footer.contact">CONTACT US</a>
-          </nav>
-        </div>
-      </div>
-      <div class="footer__divider"></div>
-      <div class="footer__bottom">
-        <a href="https://www.pif.gov.sa/en/" class="footer__pif-wrap">
-          <img
-            src="./assets/footer/Layer_1.png"
-            alt="A PIF Company"
-            class="footer__pif"
-        /></a>
-        <div class="footer__legal">
-          <a href="privacyPolicy.html" data-i18n="footer.privacy"
-            >Privacy Policy</a
-          >
-          <a href="terms&condition.html" data-i18n="footer.terms"
-            >Terms &amp; Conditions</a
-          >
-          <a href="cookiesPolicy.html" data-i18n="footer.cookies"
-            >Cookies Policy</a
-          >
-          <span class="footer__copy" data-i18n="footer.copy"
-            >© 2026 JCDC. ALL RIGHTS RESERVED</span
-          >
-        </div>
-      </div>
-    </footer>
-  </body>
-  <!-- Bundled & minified JS (built from src/js by `npm run build`) -->
-  <script src="dist/main.min.js" defer></script>
+        <footer class="footer">
+            <div class="footer__top">
+                <a href="/" class="footer__logo-wrap">
+                    <img src="assets/coporate-PNG-01 1.svg" alt="JCDC" width="132" height="72" class="footer__logo" />
+                </a>
+                <div class="footer__right">
+                    <div class="footer__social">
+                        <a href="#" aria-label="Instagram" class="social-link">
+                            <svg
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="1.8"
+                            >
+                                <rect x="3" y="3" width="18" height="18" rx="5" />
+                                <circle cx="12" cy="12" r="4" />
+                                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" />
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="X (Twitter)" class="social-link">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+                                />
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="LinkedIn" class="social-link">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="24"
+                                height="24"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                            >
+                                <path
+                                    fill-rule="evenodd"
+                                    clip-rule="evenodd"
+                                    d="M4.5 3.24219C3.67157 3.24219 3 3.91376 3 4.74219V19.7422C3 20.5706 3.67157 21.2422 4.5 21.2422H19.5C20.3284 21.2422 21 20.5706 21 19.7422V4.74219C21 3.91376 20.3284 3.24219 19.5 3.24219H4.5ZM8.52076 7.24491C8.52639 8.20116 7.81061 8.79038 6.96123 8.78616C6.16107 8.78194 5.46357 8.14491 5.46779 7.24632C5.47201 6.40116 6.13998 5.72194 7.00764 5.74163C7.88795 5.76132 8.52639 6.40679 8.52076 7.24491ZM12.2797 10.0039H9.75971H9.7583V18.5638H12.4217V18.3641C12.4217 17.9842 12.4214 17.6042 12.4211 17.2241C12.4203 16.2103 12.4194 15.1954 12.4246 14.1819C12.426 13.9358 12.4372 13.6799 12.5005 13.445C12.7381 12.5675 13.5271 12.0008 14.4074 12.1401C14.9727 12.2286 15.3467 12.5563 15.5042 13.0893C15.6013 13.4225 15.6449 13.7811 15.6491 14.1285C15.6605 15.1761 15.6589 16.2237 15.6573 17.2714C15.6567 17.6412 15.6561 18.0112 15.6561 18.381V18.5624H18.328V18.3571C18.328 17.9051 18.3278 17.4532 18.3275 17.0013C18.327 15.8718 18.3264 14.7423 18.3294 13.6124C18.3308 13.1019 18.276 12.5985 18.1508 12.1049C17.9638 11.3708 17.5771 10.7633 16.9485 10.3246C16.5027 10.0124 16.0133 9.81129 15.4663 9.78879C15.404 9.7862 15.3412 9.78281 15.2781 9.7794C14.9984 9.76428 14.7141 9.74892 14.4467 9.80285C13.6817 9.95613 13.0096 10.3063 12.5019 10.9236C12.4429 10.9944 12.3852 11.0663 12.2991 11.1736L12.2797 11.1979V10.0039ZM5.68164 18.5666H8.33242V10.0095H5.68164V18.5666Z"
+                                    fill="#0076A9"
+                                />
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="YouTube" class="social-link">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path
+                                    d="M23.5 6.21a3.02 3.02 0 0 0-2.12-2.14C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.38.57A3.02 3.02 0 0 0 .5 6.21 31.48 31.48 0 0 0 0 12a31.48 31.48 0 0 0 .5 5.79 3.02 3.02 0 0 0 2.12 2.14C4.5 20.5 12 20.5 12 20.5s7.5 0 9.38-.57a3.02 3.02 0 0 0 2.12-2.14A31.48 31.48 0 0 0 24 12a31.48 31.48 0 0 0-.5-5.79zM9.6 15.6V8.4l6.24 3.6-6.24 3.6z"
+                                />
+                            </svg>
+                        </a>
+                    </div>
+                    <nav class="footer__nav" aria-label="Footer navigation">
+                        <a href="about.html" data-i18n="footer.aboutUs">ABOUT US</a>
+                        <a href="jcdc.html" data-i18n="footer.jcd">JEDDAH CENTRAL DESTINATION</a>
+                        <a href="invest.html" data-i18n="footer.invest">INVEST</a>
+                        <a href="news.html" data-i18n="footer.newsEvents">NEWS &amp; EVENTS</a>
+                        <a href="career.html" data-i18n="footer.careers">CAREERS</a>
+                        <a href="supplier.html" data-i18n="footer.suppliers">SUPPLIERS</a>
+                        <a href="contact.html" data-i18n="footer.contact">CONTACT US</a>
+                    </nav>
+                </div>
+            </div>
+            <div class="footer__divider"></div>
+            <div class="footer__bottom">
+                <a href="https://www.pif.gov.sa/en/" class="footer__pif-wrap">
+                    <img src="./assets/footer/Layer_1.png" alt="A PIF Company" class="footer__pif"
+                /></a>
+                <div class="footer__legal">
+                    <a href="privacyPolicy.html" data-i18n="footer.privacy">Privacy Policy</a>
+                    <a href="terms&condition.html" data-i18n="footer.terms">Terms &amp; Conditions</a>
+                    <a href="cookiesPolicy.html" data-i18n="footer.cookies">Cookies Policy</a>
+                    <span class="footer__copy" data-i18n="footer.copy">© 2026 JCDC. ALL RIGHTS RESERVED</span>
+                </div>
+            </div>
+        </footer>
+    </body>
+    <!-- Bundled & minified JS (built from src/js by `npm run build`) -->
+    <script src="dist/main.min.js" defer></script>
 </html>
