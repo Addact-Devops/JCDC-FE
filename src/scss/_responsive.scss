@@ -56,16 +56,15 @@
   }
 
   .navbar {
+    &__inner {
+      justify-content: flex-start;
+    }
+
     &__logo {
       width: 80px;
       height: 44px;
       margin-inline: 0;
       margin-inline-end: auto;
-
-      [dir="rtl"] & {
-        margin-inline-end: 0;
-        margin-inline-start: auto;
-      }
     }
 
     &__actions {
@@ -166,20 +165,12 @@
     &__inner {
       gap: 24px; //  CHANGED — fixed gap between items
       padding-top: 0;
-
-      [dir="rtl"] & {
-        flex-direction: row-reverse;
-      }
+      justify-content: flex-start;
     }
 
     &__logo {
       margin-inline: 0; //  ADDED — remove auto centering
-      margin-inline-end: auto; //  ADDED — pushes actions to right
-
-      [dir="rtl"] & {
-        margin-inline-end: 0;
-        margin-inline-start: auto;
-      }
+      margin-inline-end: auto; //  ADDED — keeps logo near hamburger and pushes actions opposite side
     }
 
     &__actions {
@@ -315,13 +306,14 @@
 
     &__inner {
       gap: 24px; //  ADDED
+      justify-content: flex-start;
     }
 
     &__logo {
       width: 72px;
       height: 40px;
       margin-inline: 0; //  ADDED
-      margin-inline-end: auto; //  ADDED — logo next to hamburger, actions on right
+      margin-inline-end: auto; //  ADDED — logo next to hamburger, actions on opposite side
     }
   }
 
