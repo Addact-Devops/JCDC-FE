@@ -272,6 +272,15 @@
   }
 }
 
+[dir="rtl"] .dropdown {
+  inset-inline-start: auto;
+  inset-inline-end: -18px;
+
+  a {
+    text-align: right;
+  }
+}
+
 // ── Icon button (search) ───────────────────────────────
 .icon-btn {
   width: 24px;
