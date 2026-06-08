@@ -31,7 +31,7 @@
     overflow: hidden;
     // Pure black — what shows through any gap between adjacent district
     // paths (the requested "black gap" treatment).
-    background: #000;
+    // background: #000;
     // Account for the project's fixed navbar (96 px tall + a little
     // breathing room) on anchor jumps and `scrollIntoView` so the
     // close X and the panel top are not hidden behind the header.
@@ -46,26 +46,35 @@
     &__container {
         position: relative;
         z-index: 1;
-        display: grid;
-        grid-template-columns: minmax(0, 1045px) minmax(380px, 1fr);
-        align-items: stretch;
         width: 100%;
         margin: 0;
         padding: 0;
-        max-height: 770px;
+
+        // JS adds .is-detail when a district is selected
+        &.is-detail {
+            display: grid;
+            grid-template-columns: 1fr 567px;
+            grid-template-rows: 770px;
+            align-items: stretch;
+        }
     }
 
-    // ── Map viewport (left column) ────────────────────────────────
-    //  Width tracks the column; height is derived from the SVG aspect
-    //  ratio. This is critical: because the viewport and the SVG share
-    //  the same 1049×773 aspect, the SVG inside fills the box with no
-    //  letterboxing — so attraction-icon coordinates (stored as
-    //  percentages of the viewport) land exactly on the same point as
-    //  the underlying district paths.
+    // Viewport overrides when grid detail layout is active
+    &__container.is-detail &__viewport {
+        aspect-ratio: unset;
+        width: 100%;
+        max-width: none;
+        margin: 0;
+        height: 770px;
+        max-height: none;
+    }
+
     &__viewport {
         position: relative;
         width: 100%;
-        aspect-ratio: 1049 / 773;
+        max-width: 1440px;
+        margin: 0 auto;
+        aspect-ratio: 1049 / 784;
         max-height: 770px;
         overflow: hidden;
         user-select: none;
@@ -76,10 +85,26 @@
         position: relative;
         width: 100%;
         height: 100%;
+        // Matches the dark edge of the stage background so the tiny sliver
+        // exposed when a district zooms near the SVG boundary is seamless.
+        background: #080808;
     }
 
-    // Stage — scales / translates on detail mode (zoom into district)
+    // Stage — static background only; never transforms
     &__stage {
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+            url('../../../assets/map-bg-img.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    // Layers — the three map visuals (mask img + SVG + icons) that zoom/translate
+    // together on district selection. Keeping the transform here means the stage
+    // background is always full-bleed and can never be exposed at the edges.
+    &__layers {
         position: absolute;
         inset: 0;
         transform-origin: 50% 50%;
@@ -87,15 +112,22 @@
         will-change: transform;
     }
 
-    // Background images (both share the 1049 × 773 viewBox)
+    // Background images (both share the 1049 × 784 viewBox)
     &__bg {
         position: absolute;
         inset: 0;
         width: 100%;
         height: 100%;
-        object-fit: cover; // fill the viewport; aspect already matches
-        object-position: center;
         pointer-events: none;
+    }
+
+    &__bg--mask {
+        z-index: 1;
+        max-width: 1440px;
+        object-fit: contain;
+        left:-118px;
+        // left: 50%;
+        // transform: translateX(-50%);
     }
 
     &__bg--overlay {
@@ -108,6 +140,7 @@
         position: absolute;
         inset: 0;
         width: 100%;
+        left:-118px;
         height: 100%;
         z-index: 2;
     }
@@ -126,9 +159,9 @@
     //   stroke #000          →  Black gaps between districts.
     // ══════════════════════════════════════════════════════════════
     .jcd-map__district {
-        fill: rgba(204, 162, 88, 0);
+        // fill: rgba(204, 162, 88, 0);
         stroke: #000;
-        stroke-width: 2;
+        stroke-width: 0;
         stroke-linejoin: round;
         cursor: pointer;
         pointer-events: all;
@@ -140,9 +173,9 @@
         &.is-hover,
         &:focus,
         &:focus-visible {
-            fill: rgba(204, 162, 88, 0.88);
-            stroke: rgba(204, 162, 88, 1);
-            outline: none;
+           fill: rgba(204, 159, 83, 1);
+           opacity: 0.8;
+           outline: none;
         }
     }
 
@@ -152,7 +185,7 @@
     //  bright while everything else darkens. Strong opacity (0.85)
     //  matches the Figma's near-black inactive-district treatment.
     &__dim {
-        fill: #000;
+        // fill: #000;
         opacity: 0;
         pointer-events: none;
         transition: opacity 0.45s var(--ease);
@@ -355,48 +388,71 @@
     }
 
     // ══════════════════════════════════════════════════════════════
-    //  Side panel (right column)
-    //  Solid dark background ALWAYS (intro or detail). The grid
-    //  layout means it has its own column — never overlapping the
-    //  map.
+    //  Panel — absolute overlay, bottom-right of the map viewport
     // ══════════════════════════════════════════════════════════════
     &__panel {
-        position: relative;
-        z-index: 2;
-
-        background: #1e2733;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        z-index: 10;
+        width: clamp(260px, 32%, 380px);
         color: #fff;
-
         display: flex;
         flex-direction: column;
         overflow-y: auto;
 
-        // Slim scrollbar when content is taller than the panel
         &::-webkit-scrollbar {
-            width: 6px;
+            width: 4px;
         }
         &::-webkit-scrollbar-thumb {
             background: rgba(255, 255, 255, 0.2);
-            border-radius: 3px;
+            border-radius: 2px;
         }
 
-        // Hidden state for [data-no-intro] sub-pages when nothing's
-        // selected (e.g. after the user closes the popup on a
-        // district page). On jcdc.html this attribute is never set
-        // so the panel stays mounted in the intro state.
         &[hidden] {
             display: none;
+        }
+    }
+
+    // ── Detail side-panel (grid column, shown on district select) ─
+    &__side-panel {
+        position: relative;
+        z-index: 2;
+        background: #2b2f36;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        overflow-y: auto;
+        height: 100%;
+
+        &::-webkit-scrollbar { width: 4px; }
+        &::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 2px;
+        }
+
+        &[hidden] { display: none; }
+
+        // Title inside the detail panel is white and smaller
+        .jcd-map__panel-title {
+            font-size: 40px;
+            line-height: 1.15;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            color: #ddbf8c;
+            max-width: none;
+        }
+
+        .jcd-map__detail-content {
+            padding: 56px 48px 56px;
         }
     }
 
     // ── Intro state — centred copy ────────────────────────────────
     //  Used on jcdc.html before any district has been clicked.
     &__intro {
-        margin: auto 0; // vertical centre inside the flex panel
-        padding: 0 60px;
+        padding: 32px 28px;
         width: 100%;
-        max-width: 560px;
-        align-self: center; // horizontal centre
 
         &[hidden] {
             display: none;
@@ -406,21 +462,17 @@
     // Shared text styling
     &__panel-title {
         margin: 0;
-
         font-family: var(--font-body);
-        font-size: 48px;
-        line-height: 1.08;
-        font-weight: 500;
-        letter-spacing: -0.02em;
-
-        color: #d4b27c;
-
-        max-width: 495px;
+        font-size: 40px;
+        line-height: 1.15;
+        font-weight: 600;
+        letter-spacing: -0.01em;
+        color: #DDBF8C;
     }
 
     &__panel-divider {
-        width: 72px;
-        height: 1px;
+        width: 48px;
+        height: 2px;
         background: #d4b27c;
 
         margin-top: 32px;
@@ -433,22 +485,20 @@
     &__panel-desc {
         margin: 0;
 
-        max-width: 336px;
-
         font-family: var(--font-body);
-        font-size: 20px;
-        line-height: 1.5;
+        font-size: 18px;
+        line-height: 1.6;
         font-weight: 400;
 
-        color: rgba(255, 255, 255, 0.92);
+        color: #EFEFEF;
     }
 
     &__panel-hint {
         font-family: var(--font-body);
-        font-size: 15px;
+        font-size: 18px;
         font-weight: 700;
-        color: #fff;
-        margin: 16px 0 0;
+        color: #EFEFEF;
+        margin: 14px 0 0;
     }
 
     &__panel-subtitle {
@@ -561,7 +611,7 @@
     }
 
     &__cta {
-        margin-top: auto;
+        margin-top: 24px;
         align-self: flex-start;
     }
 
@@ -611,20 +661,65 @@
 }
 
 // ──────────────────────────────────────────────────────────────────────
-//  Tablet portrait / small laptop (≤ 991 px) — stack vertically
+//  Tablet portrait / small laptop (≤ 991 px)
+//  Viewport is a fixed-height scroll box — users pan the full-res map
+//  horizontally and vertically, and scroll down inside the box to reach
+//  the intro panel below the map.
 // ──────────────────────────────────────────────────────────────────────
 @media (max-width: 991px) {
-    .jcd-map__container {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto auto;
+    // Both idle and detail mode: single column, map on top, panel below
+    .jcd-map__container,
+    .jcd-map__container.is-detail {
+        display: block;
+        grid-template-columns: unset;
+        grid-template-rows: unset;
         max-height: none;
     }
-    .jcd-map__viewport {
+
+    // Viewport: fixed-height scroll window in both modes
+    .jcd-map__viewport,
+    .jcd-map__container.is-detail .jcd-map__viewport {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        height: 56vh;
         max-height: 560px;
+        aspect-ratio: unset;
+        overflow: auto;
+        -webkit-overflow-scrolling: touch;
+        overscroll-behavior: contain;
+        scrollbar-width: thin;
     }
+
+    // Lock scrolling when a district is active — zoom transform handles the view
+    .jcd-map__viewport.is-detail {
+        overflow: hidden;
+    }
+
+    // Scroll: full-res map at 760px wide, height derived from aspect-ratio
+    .jcd-map__scroll {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1049 / 784;
+    }
+
+    // Reset the desktop -118px left offset so the full map is reachable from scroll position 0
+    .jcd-map__bg--mask,
+    .jcd-map__svg {
+        left: 0;
+    }
+
+    // Panel flows after the map inside the scroll box — reached by scrolling down
     .jcd-map__panel {
-        min-height: 360px;
+        position: relative;
+        bottom: auto;
+        right: auto;
+        width: 100%;
+        min-height: 0;
+        background: #0d0d0d;
     }
+
     .jcd-map__intro {
         padding: 48px 40px;
         margin: 0 auto;
@@ -636,31 +731,85 @@
         width: calc(100% + 80px);
         margin-inline: -40px;
     }
+
+    // Side-panel stacks below the map in detail mode
+    .jcd-map__side-panel {
+        display: block;
+        height: auto;
+        min-height: 0;
+        width: 100%;
+        &[hidden] { display: none; }
+
+        .jcd-map__panel-title {
+            font-size: 28px;
+        }
+        .jcd-map__detail-content {
+            padding: 36px 32px 40px;
+        }
+        .jcd-map__detail-img-wrap {
+            height: 220px;
+        }
+        .jcd-map__cta {
+            margin-top: 20px;
+        }
+    }
 }
 
 // ──────────────────────────────────────────────────────────────────────
-//  Mobile (≤ 767 px) — panel becomes a bottom sheet, labels always
-//  visible (no hover state available).
+//  Mobile (≤ 767 px) — viewport scrolls both axes; full-res map is
+//  panned with touch/drag, intro panel reached by scrolling down.
+//  Labels always visible (no hover on touch).
 // ──────────────────────────────────────────────────────────────────────
 @media (max-width: 767px) {
     .jcd-map {
         overflow-x: clip;
     }
 
-    .jcd-map__viewport {
-        aspect-ratio: auto;
+    // Both idle and detail: single column, map on top, panel/side-panel below
+    .jcd-map__container,
+    .jcd-map__container.is-detail {
+        display: block;
+        grid-template-columns: unset;
+        grid-template-rows: unset;
+        max-height: none;
+    }
+
+    // Viewport: fixed-height scroll window in both modes
+    .jcd-map__viewport,
+    .jcd-map__container.is-detail .jcd-map__viewport {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        aspect-ratio: unset;
         height: 60vh;
         max-height: 480px;
-        overflow-x: auto;
-        overflow-y: hidden;
+        overflow: auto;
         -webkit-overflow-scrolling: touch;
-        overscroll-behavior-x: contain;
+        overscroll-behavior: contain;
         scrollbar-width: thin;
     }
 
+    // Scroll: full-res map at 760px wide, height from aspect-ratio
     .jcd-map__scroll {
         width: 760px;
-        height: 100%;
+        height: auto;
+        aspect-ratio: 1049 / 784;
+    }
+
+    // Reset the desktop -118px left offset so the full map is reachable from scroll position 0
+    .jcd-map__bg--mask,
+    .jcd-map__svg {
+        left: 0;
+    }
+
+    // Panel flows after the map inside the scroll box
+    .jcd-map__panel {
+        position: relative;
+        bottom: auto;
+        right: auto;
+        width: 760px;
+        background: #0d0d0d;
     }
 
     .jcd-map__viewport:not(.is-detail) .jcd-map__label {
@@ -709,6 +858,37 @@
     .jcd-map__tooltip {
         font-size: 11px;
         padding: 6px 10px;
+    }
+
+    // Side-panel stacks below the map in detail mode
+    .jcd-map__side-panel {
+        display: block;
+        height: auto;
+        min-height: 0;
+        width: 100%;
+        &[hidden] { display: none; }
+
+        .jcd-map__panel-title {
+            font-size: 22px;
+        }
+        .jcd-map__detail-content {
+            padding: 24px 20px 28px;
+        }
+        .jcd-map__detail-img-wrap {
+            height: 180px;
+            min-height: 180px;
+        }
+        .jcd-map__panel-desc {
+            font-size: 14px;
+        }
+        .jcd-map__panel-divider {
+            margin-top: 20px;
+            margin-bottom: 16px;
+        }
+        .jcd-map__cta {
+            margin-top: 16px;
+            min-height: 50px;            
+        }
     }
 }
 
