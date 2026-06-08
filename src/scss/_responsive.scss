@@ -11,538 +11,541 @@
 //  state left over from a prior viewport.
 // ═══════════════════════════════════════════════════
 @media (min-width: 1200px) {
-    .drawer,
-    .overlay {
-        display: none !important;
-    }
+  .drawer,
+  .overlay {
+    display: none !important;
+  }
 }
 
 // ═══════════════════════════════════════════════════
 //  LARGE DESKTOP (1200-1439) — scale gutter proportionally
 // ═══════════════════════════════════════════════════
 @media (max-width: 1439px) and (min-width: 1200px) {
-    // .hero__content {
-    //     inset-inline-start: clamp(48px, 8.33vw, 120px);
-    //     inset-inline-end: clamp(48px, 8.33vw, 120px);
-    // }
-    .about {
-        padding-inline: clamp(48px, 8.33vw, 120px);
-    }
-    .jcd-slider {
-        padding-inline: clamp(48px, 8.33vw, 120px);
-    }
-    .news {
-        padding-inline: clamp(48px, 8.33vw, 120px);
-    }
-    // .footer {
-    //     padding-inline: clamp(48px, 8.33vw, 120px);
-    // }
+  // .hero__content {
+  //     inset-inline-start: clamp(48px, 8.33vw, 120px);
+  //     inset-inline-end: clamp(48px, 8.33vw, 120px);
+  // }
+  .about {
+    padding-inline: clamp(48px, 8.33vw, 120px);
+  }
+  .jcd-slider {
+    padding-inline: clamp(48px, 8.33vw, 120px);
+  }
+  .news {
+    padding-inline: clamp(48px, 8.33vw, 120px);
+  }
+  // .footer {
+  //     padding-inline: clamp(48px, 8.33vw, 120px);
+  // }
 }
 
 // ═══════════════════════════════════════════════════
 //  TABLET / SMALL DESKTOP (1024-1199)
 // ═══════════════════════════════════════════════════
 @media (max-width: 1199px) {
-    :root {
-        --gutter: 48px;
+  :root {
+    --gutter: 48px;
+  }
+
+  .navbar__menu {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .navbar {
+    &__logo {
+      width: 80px;
+      height: 44px;
+      margin-inline: 0;
+      margin-inline-end: auto;
+
+      [dir="rtl"] & {
+        margin-inline-end: 0;
+        margin-inline-start: auto;
+      }
     }
 
-    .navbar__menu {
-        display: none;
+    &__actions {
+      [dir="rtl"] & {
+        flex-direction: row-reverse;
+      }
     }
+  }
 
-    .hamburger {
-        display: flex;
+  .hero {
+    height: 600px;
+
+    &__content {
+      top: 50%; // ◆ NEW
+      left: 50%;
+      transform: translate(-50%, -50%); // ◆ added Y axis
+      width: 100%;
+      max-width: 1200px;
     }
-
-    .navbar {
-        &__logo {
-            width: 80px;
-            height: 44px;
-            margin-inline: 0;
-            margin-inline-end: auto;
-
-            [dir="rtl"] & {
-                margin-inline-end: 0;
-                margin-inline-start: auto;
-            }
-        }
-
-        &__actions {
-            [dir="rtl"] & {
-                flex-direction: row-reverse;
-            }
-        }
+    &__content-inner {
+      max-width: 640px;
     }
-
-    .hero {
-        height: 600px;
-
-        &__content {
-            top: 50%; // ◆ NEW
-            left: 50%;
-            transform: translate(-50%, -50%); // ◆ added Y axis
-            width: 100%;
-            max-width: 1200px;
-        }
-        &__content-inner {
-            max-width: 640px;
-        }
-        &__title {
-            font-size: 52px;
-            line-height: 1.2;
-            margin-bottom: 32px;
-        }
-        &__subtitle {
-            font-size: 20px;
-            line-height: 1.5;
-            max-width: 600px;
-        }
+    &__title {
+      font-size: 52px;
+      line-height: 1.2;
+      margin-bottom: 32px;
     }
-
-    .about {
-        padding: 56px 48px;
-
-        &__inner {
-            gap: 48px;
-        }
-        &__text {
-            flex: 0 0 440px;
-        }
-        &__image {
-            flex: 0 0 440px;
-            width: 440px;
-            height: 440px;
-        }
-        &__title {
-            font-size: 40px;
-        }
+    &__subtitle {
+      font-size: 20px;
+      line-height: 1.5;
+      max-width: 600px;
     }
+  }
 
-    .jcd-slider {
-        padding: 56px 48px;
+  .about {
+    padding: 56px 48px;
 
-        &__card {
-            height: 560px;
-        }
-        &__title {
-            font-size: 40px;
-            white-space: normal;
-        }
+    &__inner {
+      gap: 48px;
     }
-
-    .news {
-        padding: 56px 48px;
+    &__text {
+      flex: 0 0 440px;
     }
-    // .footer {
-    //     padding: 24px 48px;
-    // }
+    &__image {
+      flex: 0 0 440px;
+      width: 440px;
+      height: 440px;
+    }
+    &__title {
+      font-size: 40px;
+    }
+  }
+
+  .jcd-slider {
+    padding: 56px 48px;
+
+    &__card {
+      height: 560px;
+    }
+    &__title {
+      font-size: 40px;
+      white-space: normal;
+    }
+  }
+
+  .news {
+    padding: 56px 48px;
+  }
+  // .footer {
+  //     padding: 24px 48px;
+  // }
 }
 
 // ═══════════════════════════════════════════════════
 //  TABLET (768-1023)
 // ═══════════════════════════════════════════════════
 @media (max-width: 1023px) {
-    :root {
-        --gutter: 32px;
-        --nav-height: 72px;
+  :root {
+    --gutter: 32px;
+    --nav-height: 72px;
+  }
+
+  // Hide desktop nav
+  .navbar__menu {
+    display: none;
+  }
+  .hamburger {
+    display: flex;
+  }
+
+  .navbar {
+    padding: 12px 24px;
+
+    // &.is-solid {
+    //     padding-block-start: 20px; // 👈 normal padding when solid
+    // }
+
+    &__inner {
+      gap: 24px; //  CHANGED — fixed gap between items
+      padding-top: 0;
+
+      [dir="rtl"] & {
+        flex-direction: row-reverse;
+      }
     }
 
-    // Hide desktop nav
-    .navbar__menu {
-        display: none;
-    }
-    .hamburger {
-        display: flex;
-    }
+    &__logo {
+      margin-inline: 0; //  ADDED — remove auto centering
+      margin-inline-end: auto; //  ADDED — pushes actions to right
 
-    .navbar {
-        padding: 12px 24px;
-
-        // &.is-solid {
-        //     padding-block-start: 20px; // 👈 normal padding when solid
-        // }
-
-        &__inner {
-            gap: 24px; //  CHANGED — fixed gap between items
-            padding-top: 0;
-
-            [dir="rtl"] & {
-                flex-direction: row-reverse;
-            }
-        }
-
-        &__logo {
-            margin-inline: 0; //  ADDED — remove auto centering
-            margin-inline-end: auto; //  ADDED — pushes actions to right
-
-            [dir="rtl"] & {
-                margin-inline-end: 0;
-                margin-inline-start: auto;
-            }
-        }
-
-        &__actions {
-            [dir="rtl"] & {
-                flex-direction: row-reverse;
-            }
-        }
+      [dir="rtl"] & {
+        margin-inline-end: 0;
+        margin-inline-start: auto;
+      }
     }
 
-    .hero {
-        height: 560px;
+    &__actions {
+      [dir="rtl"] & {
+        flex-direction: row-reverse;
+      }
+    }
+  }
 
-        &__content {
-            // top: 120px;
-            left: 50%;
-            transform: translateX(-50%);
+  .hero {
+    height: 560px;
 
-            width: 100%;
-            max-width: 1200px;
+    &__content {
+      // top: 120px;
+      left: 50%;
+      transform: translateX(-50%);
 
-            padding-inline: 32px;
-        }
+      width: 100%;
+      max-width: 1200px;
 
-        &__content-inner {
-            max-width: 600px;
-        }
-        &__title {
-            font-size: 44px;
-            line-height: 1.2;
-            margin-bottom: 24px;
-        }
-        &__subtitle {
-            font-size: 18px;
-            line-height: 1.5;
-            max-width: 560px;
-        }
+      padding-inline: 32px;
     }
 
-    .about {
-        padding: 48px 32px;
+    &__content-inner {
+      max-width: 600px;
+    }
+    &__title {
+      font-size: 44px;
+      line-height: 1.2;
+      margin-bottom: 24px;
+    }
+    &__subtitle {
+      font-size: 18px;
+      line-height: 1.5;
+      max-width: 560px;
+    }
+  }
 
-        &__inner {
-            flex-direction: column;
-            gap: 40px;
-        }
-        &__text {
-            flex: 1 1 auto;
-            width: 100%;
-            max-width: 600px;
-        }
-        &__image {
-            flex: 1 1 auto;
-            width: 100%;
-            max-width: 600px;
-            height: auto;
-            aspect-ratio: 1/1;
-        }
-        &__title {
-            font-size: 36px;
-        }
+  .about {
+    padding: 48px 32px;
 
-        [dir="rtl"] &__image {
-            order: 0;
-        }
+    &__inner {
+      flex-direction: column;
+      gap: 40px;
+    }
+    &__text {
+      flex: 1 1 auto;
+      width: 100%;
+      max-width: 600px;
+    }
+    &__image {
+      flex: 1 1 auto;
+      width: 100%;
+      max-width: 600px;
+      height: auto;
+      aspect-ratio: 1/1;
+    }
+    &__title {
+      font-size: 36px;
     }
 
-    .jcd-slider {
-        padding: 48px 32px;
-
-        &__card {
-            height: auto;
-            min-height: 480px;
-        }
-        &__content {
-            inset-block-start: auto;
-            inset-block-end: 0;
-            inset-inline-start: 0;
-            inset-inline-end: 0;
-            transform: none;
-            padding: 40px 32px;
-            max-width: none;
-
-            [dir="rtl"] & {
-                inset-inline-start: 0;
-                inset-inline-end: 0;
-            }
-        }
-        &__title {
-            font-size: 36px;
-            white-space: normal;
-        }
-        &__body {
-            font-size: 16px;
-        }
+    [dir="rtl"] &__image {
+      order: 0;
     }
+  }
 
-    .jcd-slider__overlay {
-        background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.75) 100%);
+  .jcd-slider {
+    padding: 48px 32px;
+
+    &__card {
+      height: auto;
+      min-height: 480px;
     }
+    &__content {
+      inset-block-start: auto;
+      inset-block-end: 0;
+      inset-inline-start: 0;
+      inset-inline-end: 0;
+      transform: none;
+      padding: 40px 32px;
+      max-width: none;
 
-    .news {
-        padding: 48px 32px;
-
-        &__grid {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 24px;
-        }
+      [dir="rtl"] & {
+        inset-inline-start: 0;
+        inset-inline-end: 0;
+      }
     }
-
-    .section-title h2 {
-        font-size: 32px;
+    &__title {
+      font-size: 36px;
+      white-space: normal;
     }
+    &__body {
+      font-size: 16px;
+    }
+  }
+
+  .jcd-slider__overlay {
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.75) 100%
+    );
+  }
+
+  .news {
+    padding: 48px 32px;
+
+    &__grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+  }
+
+  .section-title h2 {
+    font-size: 32px;
+  }
 }
 
 // ═══════════════════════════════════════════════════
 //  MOBILE (≤767px) — matches Figma mobile design
 // ═══════════════════════════════════════════════════
 @media (max-width: 767px) {
-    :root {
-        --nav-height: 64px;
+  :root {
+    --nav-height: 64px;
+  }
+
+  body {
+    font-size: 14px;
+  }
+
+  .navbar {
+    padding: 12px 16px;
+
+    &__inner {
+      gap: 24px; //  ADDED
     }
 
-    body {
-        font-size: 14px;
+    &__logo {
+      width: 72px;
+      height: 40px;
+      margin-inline: 0; //  ADDED
+      margin-inline-end: auto; //  ADDED — logo next to hamburger, actions on right
+    }
+  }
+
+  .hero {
+    height: 664px;
+
+    &__content {
+      // ◆ Use top + padding for anchoring (per Figma's exact spacing)
+      top: 231px; // ◆ exact Figma top spacing
+      left: 0;
+      right: 0;
+      bottom: auto;
+      transform: none; // ◆ kill the translate from desktop
+
+      width: 100%;
+      max-width: 100%;
+      padding-inline: 16px; // ◆ exact Figma horizontal padding
+      padding-bottom: 64px; // ◆ exact Figma bottom spacing
     }
 
-    .navbar {
-        padding: 12px 16px;
-
-        &__inner {
-            gap: 24px; //  ADDED
-        }
-
-        &__logo {
-            width: 72px;
-            height: 40px;
-            margin-inline: 0; //  ADDED
-            margin-inline-end: auto; //  ADDED — logo next to hamburger, actions on right
-        }
+    &__content-inner {
+      max-width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 24px; // ◆ exact Figma gap between title and subtitle
     }
 
-    .hero {
-        height: 664px;
-
-        &__content {
-            // ◆ Use top + padding for anchoring (per Figma's exact spacing)
-            top: 231px; // ◆ exact Figma top spacing
-            left: 0;
-            right: 0;
-            bottom: auto;
-            transform: none; // ◆ kill the translate from desktop
-
-            width: 100%;
-            max-width: 100%;
-            padding-inline: 16px; // ◆ exact Figma horizontal padding
-            padding-bottom: 64px; // ◆ exact Figma bottom spacing
-        }
-
-        &__content-inner {
-            max-width: 100%;
-            display: flex;
-            flex-direction: column;
-            gap: 24px; // ◆ exact Figma gap between title and subtitle
-        }
-
-        &__title {
-            font-size: 50px;
-            line-height: 1.2;
-            margin-bottom: 0; // ◆ was 24px — gap on parent handles spacing now
-        }
-
-        &__subtitle {
-            font-size: 22px;
-            line-height: 1.5;
-            margin: 0; // ◆ clean reset
-        }
+    &__title {
+      font-size: 50px;
+      line-height: 1.2;
+      margin-bottom: 0; // ◆ was 24px — gap on parent handles spacing now
     }
 
-    .about {
-        padding: 40px 20px;
+    &__subtitle {
+      font-size: 22px;
+      line-height: 1.5;
+      margin: 0; // ◆ clean reset
+    }
+  }
 
-        &__pattern {
-            width: 400px;
-            height: 400px;
-            inset-block-start: -20px;
-            opacity: 0.6;
-        }
-        &__inner {
-            gap: 24px;
-        }
-        &__text {
-            gap: 16px;
-        }
-        &__title {
-            font-size: 28px;
-        }
-        &__body {
-            font-size: 14px;
-            line-height: 1.6;
-        }
-        &__image {
-            border-radius: 6px;
-        }
+  .about {
+    padding: 40px 20px;
+
+    &__pattern {
+      width: 400px;
+      height: 400px;
+      inset-block-start: -20px;
+      opacity: 0.6;
+    }
+    &__inner {
+      gap: 24px;
+    }
+    &__text {
+      gap: 16px;
+    }
+    &__title {
+      font-size: 28px;
+    }
+    &__body {
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    &__image {
+      border-radius: 6px;
+    }
+  }
+
+  .jcd-slider {
+    padding: 64px 16px;
+    background: #faf5ee;
+
+    &__card {
+      min-height: 585px;
+      border-radius: 6px;
+    }
+    &__content {
+      inset-block-start: 40%;
+      inset-inline-start: 0; // ◆ Figma exact %
+      inset-inline-end: 12.64%; // ◆ Figma exact %
+      transform: translateY(-67%);
+      padding: 69px 20px;
+      gap: 16px;
+    }
+    &__title {
+      font-size: 44px;
+    }
+    &__body {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+  }
+
+  .btn {
+    width: auto;
+
+    padding: 16px;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 20px;
+    background: #cc9f53; // #CC9F53 gold
+    border-color: #cc9f53;
+    color: #efefef;
+    white-space: normal; // allow text wrap
+    text-align: start;
+
+    span {
+      flex: 1;
+      min-width: 0;
+      white-space: normal;
+      line-height: 1.4;
+      text-align: left;
+
+      max-width: 220px;
     }
 
-    .jcd-slider {
-        padding: 64px 16px;
-        background: #faf5ee;
+    svg {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
 
-        &__card {
-            min-height: 585px;
-            border-radius: 6px;
-        }
-        &__content {
-            inset-block-start: 40%;
-            inset-inline-start: 0; // ◆ Figma exact %
-            inset-inline-end: 12.64%; // ◆ Figma exact %
-            transform: translateY(-67%);
-            padding: 69px 20px;
-            gap: 16px;
-        }
-        &__title {
-            font-size: 44px;
-        }
-        &__body {
-            font-size: 16px;
-            line-height: 1.6;
-        }
+      transition: transform var(--dur) var(--ease);
+
+      path {
+        stroke: currentColor;
+      }
     }
 
-    .btn {
-        width: auto;
-        min-height: 80px;
+    &--gold {
+      background: var(--secondary-500);
+      border-color: var(--secondary-500);
+      color: #fff;
+      min-height: 48px;
 
-        padding: 16px;
-
-        display: inline-flex;
-        align-items: center;
-        justify-content: space-between;
-
-        gap: 20px;
-        background: #faf5ee; // #faf5ee cream
-        border-color: #cc9f53;
-        color: #cc9f53; // #cc9f53 gold
-        white-space: normal; // allow text wrap
-        text-align: start;
-
-        span {
-            flex: 1;
-            min-width: 0;
-            white-space: normal;
-            line-height: 1.4;
-            text-align: left;
-
-            max-width: 220px;
-        }
-
-        svg {
-            flex-shrink: 0;
-            width: 24px;
-            height: 24px;
-
-            transition: transform var(--dur) var(--ease);
-
-            path {
-                stroke: currentColor;
-            }
-        }
-
-        &--gold {
-            background: var(--secondary-500);
-            border-color: var(--secondary-500);
-            color: #fff;
-            min-height: 48px;
-
-            &:hover {
-                background: #b98a3d;
-                border-color: #b98a3d;
-            }
-        }
+      &:hover {
+        background: #b98a3d;
+        border-color: #b98a3d;
+      }
     }
-    .jcd-slider .btn--outline-cream {
-        color: #cc9f53;
+  }
+  .jcd-slider .btn--outline-cream {
+    color: #cc9f53;
 
-        svg path {
-            stroke: #cc9f53;
-        }
+    svg path {
+      stroke: #cc9f53;
     }
-    .banner .banner__cta {
-        width: 244px;
-        max-width: 100%;
-        min-height: 0;
-        height: 48px;
-        padding: 16px;
-        gap: 20px;
-        border-radius: 4px;
-        justify-content: start;
-        background: var(--secondary-50);
-        border-color: var(--secondary-50);
-        color: var(--secondary-500);
-        font-size: 16px;
-        line-height: 1;
-        white-space: nowrap;
-        text-align: center;
+  }
+  .banner .banner__cta {
+    width: 244px;
+    max-width: 100%;
+    min-height: 0;
+    height: 48px;
+    padding: 16px;
+    gap: 20px;
+    border-radius: 4px;
+    justify-content: start;
+    background: var(--secondary-50);
+    border-color: var(--secondary-50);
+    color: var(--secondary-500);
+    font-size: 16px;
+    line-height: 1;
+    white-space: nowrap;
+    text-align: center;
 
-        span {
-            flex: 0 0 auto;
-            min-width: 0;
-        }
-
-        svg {
-            display: none;
-        }
+    span {
+      flex: 0 0 auto;
+      min-width: 0;
     }
 
-    .news {
-        padding: 64px 16px;
-        gap: 32px;
+    svg {
+      display: none;
+    }
+  }
 
-        &__grid {
-            grid-template-columns: 1fr;
-            gap: 32px;
-        }
-    }
+  .news {
+    padding: 64px 16px;
+    gap: 32px;
 
-    .news-card {
-        &__image {
-            width: 100%;
-            border-radius: 6px;
-        }
-        &__title {
-            font-size: 16px;
-        }
-        &__cta {
-            font-size: 16px;
-        }
+    &__grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
     }
+  }
 
-    .section-title h2 {
-        font-size: 24px;
+  .news-card {
+    &__image {
+      width: 100%;
+      border-radius: 6px;
     }
+    &__title {
+      font-size: 16px;
+    }
+    &__cta {
+      font-size: 16px;
+    }
+  }
 
-    // Dots sizing
-    .hero__dot {
-        width: 6px;
-        height: 6px;
-    }
-    .hero__dot--active {
-        width: 18px;
-    }
+  .section-title h2 {
+    font-size: 24px;
+  }
+
+  // Dots sizing
+  .hero__dot {
+    width: 6px;
+    height: 6px;
+  }
+  .hero__dot--active {
+    width: 18px;
+  }
 }
 
 // ═══════════════════════════════════════════════════
 //  VERY SMALL MOBILE (≤425px)
 // ═══════════════════════════════════════════════════
 @media (max-width: 425px) {
-    .about__title {
-        font-size: 24px;
-    }
-    .jcd-slider__title {
-        font-size: 44px;
-    }
-    .section-title h2 {
-        font-size: 22px;
-    }
+  .about__title {
+    font-size: 24px;
+  }
+  .jcd-slider__title {
+    font-size: 44px;
+  }
+  .section-title h2 {
+    font-size: 22px;
+  }
 }
