@@ -379,253 +379,222 @@
             padding-bottom: 64px; // ◆ exact Figma bottom spacing
         }
 
-        .navbar {
-            padding: 12px 16px;
-
-            &__inner {
-                gap: 24px; //  ADDED
-            }
-
-            &__logo {
-                width: 72px;
-                height: 40px;
-                margin-inline: 0; //  ADDED
-                margin-inline-end: auto; //  ADDED — logo next to hamburger, actions on right
-            }
-        }
-
-        .hero {
-            height: 664px;
-
-            &__content {
-                // ◆ Use top + padding for anchoring (per Figma's exact spacing)
-                top: 231px; // ◆ exact Figma top spacing
-                left: 0;
-                right: 0;
-                bottom: auto;
-                transform: none; // ◆ kill the translate from desktop
-
-                width: 100%;
-                max-width: 100%;
-                padding-inline: 16px; // ◆ exact Figma horizontal padding
-                padding-bottom: 64px; // ◆ exact Figma bottom spacing
-            }
-
-            &__content-inner {
-                max-width: 100%;
-                display: flex;
-                flex-direction: column;
-                gap: 24px; // ◆ exact Figma gap between title and subtitle
-            }
-
-            &__title {
-                font-size: 50px;
-                line-height: 1.2;
-                margin-bottom: 0; // ◆ was 24px — gap on parent handles spacing now
-            }
-
-            &__subtitle {
-                font-size: 22px;
-                line-height: 1.5;
-                margin: 0; // ◆ clean reset
-            }
-        }
-
-        .about {
-            padding: 40px 20px;
-
-            &__pattern {
-                width: 400px;
-                height: 400px;
-                inset-block-start: -20px;
-                opacity: 0.6;
-            }
-            &__inner {
-                gap: 24px;
-            }
-            &__text {
-                gap: 16px;
-            }
-            &__title {
-                font-size: 28px;
-            }
-            &__body {
-                font-size: 14px;
-                line-height: 1.6;
-            }
-            &__image {
-                border-radius: 6px;
-            }
-        }
-
-        .jcd-slider {
-            padding: 64px 16px;
-            background: #faf5ee;
-
-            &__card {
-                min-height: 585px;
-                border-radius: 6px;
-            }
-            &__content {
-                inset-block-start: 40%;
-                inset-inline-start: 0; // ◆ Figma exact %
-                inset-inline-end: 12.64%; // ◆ Figma exact %
-                transform: translateY(-67%);
-                padding: 69px 20px;
-                gap: 16px;
-            }
-            &__title {
-                font-size: 44px;
-            }
-            &__body {
-                font-size: 16px;
-                line-height: 1.6;
-            }
-        }
-
-        .btn {
-            width: auto;
-            min-height: 80px;
-
-            padding: 16px;
-
-            display: inline-flex;
-            align-items: center;
-            justify-content: space-between;
-
-            gap: 20px;
-            background: #faf5ee; // #faf5ee cream
-            border-color: #cc9f53;
-            color: #cc9f53; // #cc9f53 gold
-            white-space: normal; // allow text wrap
-            text-align: start;
-
-            span {
-                flex: 1;
-                min-width: 0;
-                white-space: normal;
-                line-height: 1.4;
-                text-align: left;
-
-                max-width: 220px;
-            }
-
-            svg {
-                flex-shrink: 0;
-                width: 24px;
-                height: 24px;
-
-                transition: transform var(--dur) var(--ease);
-
-                path {
-                    stroke: currentColor;
-                }
-            }
-
-            &--gold {
-                background: var(--secondary-500);
-                border-color: var(--secondary-500);
-                color: #efefef;
-                min-height: 48px;
-
-                &:hover {
-                    background: #b98a3d;
-                    border-color: #b98a3d;
-                }
-            }
-        }
-        .jcd-slider .btn--outline-cream {
-            color: #cc9f53;
-
-            svg path {
-                stroke: #cc9f53;
-            }
-        }
-        .search-page .btn--gold {
-            max-width: 56px;
-        }
-
-        .next-step .btn--outline-cream {
-            flex-shrink: 0;
-            background: transparent;
-            border: 1px solid var(--surface-white);
-            color: var(--surface-white);
-            min-height: 48px !important;
-            gap: 16px;
-
-            transition:
-                background var(--dur) var(--ease),
-                border-color var(--dur) var(--ease),
-                color var(--dur) var(--ease),
-                transform var(--dur) var(--ease);
-
-            svg {
-                transition: transform var(--dur) var(--ease);
-            }
-        }
-
-        .banner .banner__cta {
-            width: 244px;
+        &__content-inner {
             max-width: 100%;
-            min-height: 0;
-            height: 48px;
-            padding: 16px;
-            gap: 20px;
-            border-radius: 4px;
-            justify-content: start;
-            background: var(--secondary-50);
-            border-color: var(--secondary-50);
-            color: var(--secondary-500);
+            display: flex;
+            flex-direction: column;
+            gap: 24px; // ◆ exact Figma gap between title and subtitle
+        }
+
+        &__title {
+            font-size: 50px;
+            line-height: 1.2;
+            margin-bottom: 0; // ◆ was 24px — gap on parent handles spacing now
+        }
+
+        &__subtitle {
+            font-size: 22px;
+            line-height: 1.5;
+            margin: 0; // ◆ clean reset
+        }
+    }
+
+    .about {
+        padding: 40px 20px;
+
+        &__pattern {
+            width: 400px;
+            height: 400px;
+            inset-block-start: -20px;
+            opacity: 0.6;
+        }
+        &__inner {
+            gap: 24px;
+        }
+        &__text {
+            gap: 16px;
+        }
+        &__title {
+            font-size: 28px;
+        }
+        &__body {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+        &__image {
+            border-radius: 6px;
+        }
+    }
+
+    .jcd-slider {
+        padding: 64px 16px;
+        background: #faf5ee;
+
+        &__card {
+            min-height: 585px;
+            border-radius: 6px;
+        }
+        &__content {
+            inset-block-start: 40%;
+            inset-inline-start: 0; // ◆ Figma exact %
+            inset-inline-end: 12.64%; // ◆ Figma exact %
+            transform: translateY(-67%);
+            padding: 69px 20px;
+            gap: 16px;
+        }
+        &__title {
+            font-size: 44px;
+        }
+        &__body {
             font-size: 16px;
-            line-height: 1;
-            white-space: nowrap;
-            text-align: center;
+            line-height: 1.6;
+        }
+    }
 
-            span {
-                flex: 0 0 auto;
-                min-width: 0;
-            }
+    .btn {
+        width: auto;
+        min-height: 80px;
 
-            svg {
-                display: none;
+        padding: 16px;
+
+        display: inline-flex;
+        align-items: center;
+        justify-content: space-between;
+
+        gap: 20px;
+        background: #faf5ee; // #faf5ee cream
+        border-color: #cc9f53;
+        color: #cc9f53; // #cc9f53 gold
+        white-space: normal; // allow text wrap
+        text-align: start;
+
+        span {
+            flex: 1;
+            min-width: 0;
+            white-space: normal;
+            line-height: 1.4;
+            text-align: left;
+
+            max-width: 220px;
+        }
+
+        svg {
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+
+            transition: transform var(--dur) var(--ease);
+
+            path {
+                stroke: currentColor;
             }
         }
 
-        .news {
-            padding: 64px 16px;
+        &--gold {
+            background: var(--secondary-500);
+            border-color: var(--secondary-500);
+            color: #efefef;
+            min-height: 48px;
+
+            &:hover {
+                background: #b98a3d;
+                border-color: #b98a3d;
+            }
+        }
+    }
+
+    .jcd-slider .btn--outline-cream {
+        color: #cc9f53;
+
+        svg path {
+            stroke: #cc9f53;
+        }
+    }
+
+    .search-page .btn--gold {
+        max-width: 56px;
+    }
+
+    .next-step .btn--outline-cream {
+        flex-shrink: 0;
+        background: transparent;
+        border: 1px solid var(--surface-white);
+        color: var(--surface-white);
+        min-height: 48px !important;
+        gap: 16px;
+
+        transition:
+            background var(--dur) var(--ease),
+            border-color var(--dur) var(--ease),
+            color var(--dur) var(--ease),
+            transform var(--dur) var(--ease);
+
+        svg {
+            transition: transform var(--dur) var(--ease);
+        }
+    }
+
+    .banner .banner__cta {
+        width: 244px;
+        max-width: 100%;
+        min-height: 0;
+        height: 48px;
+        padding: 16px;
+        gap: 20px;
+        border-radius: 4px;
+        justify-content: start;
+        background: var(--secondary-50);
+        border-color: var(--secondary-50);
+        color: var(--secondary-500);
+        font-size: 16px;
+        line-height: 1;
+        white-space: nowrap;
+        text-align: center;
+
+        span {
+            flex: 0 0 auto;
+            min-width: 0;
+        }
+
+        svg {
+            display: none;
+        }
+    }
+
+    .news {
+        padding: 64px 16px;
+        gap: 32px;
+
+        &__grid {
+            grid-template-columns: 1fr;
             gap: 32px;
+        }
+    }
 
-            &__grid {
-                grid-template-columns: 1fr;
-                gap: 32px;
-            }
+    .news-card {
+        &__image {
+            width: 100%;
+            border-radius: 6px;
         }
+        &__title {
+            font-size: 16px;
+        }
+        &__cta {
+            font-size: 16px;
+        }
+    }
 
-        .news-card {
-            &__image {
-                width: 100%;
-                border-radius: 6px;
-            }
-            &__title {
-                font-size: 16px;
-            }
-            &__cta {
-                font-size: 16px;
-            }
-        }
+    .section-title h3 {
+        font-size: 32px;
+    }
 
-        .section-title h2 {
-            font-size: 24px;
-        }
-
-        // Dots sizing
-        .hero__dot {
-            width: 6px;
-            height: 6px;
-        }
-        .hero__dot--active {
-            width: 18px;
-        }
+    // Dots sizing
+    .hero__dot {
+        width: 6px;
+        height: 6px;
+    }
+    .hero__dot--active {
+        width: 18px;
     }
 }
 
@@ -639,7 +608,7 @@
     .jcd-slider__title {
         font-size: 44px;
     }
-    .section-title h2 {
-        font-size: 22px;
+    .section-title h3 {
+        font-size: 32px;
     }
 }
