@@ -778,49 +778,166 @@
     <!-- ════════════════════════════════════════════
         REGISTRATION PROCESS
 ════════════════════════════════════════════ -->
-    <section
-      class="registration-process"
-      aria-labelledby="registration-process-title"
-    >
-      <div class="registration-process__container">
-        <div class="registration-process__header">
-          <h3
-            class="registration-process__title"
-            id="registration-process-title"
-            data-i18n="supplier.process.title"
-          >
-            Registration Process
-          </h3>
-          <div class="section-pattern" aria-hidden="true">
-            <img
-              src="./assets/pattern1.svg"
-              alt=""
-              width="22.46"
-              height="21.3"
-              style="position: absolute; left: 0px; top: 1.35px"
-            />
-            <img
-              src="./assets/pattern2.svg"
-              alt=""
-              width="25.29"
-              height="24"
-              style="position: absolute; left: 25.73px; top: 0px"
-            />
-            <img
-              src="./assets/pattern1.svg"
-              alt=""
-              width="22.46"
-              height="21.3"
-              style="position: absolute; left: 52px; top: 1.35px"
-            />
-            <img
-              src="./assets/pattern2.svg"
-              alt=""
-              width="25.29"
-              height="24"
-              style="position: absolute; left: 78px; top: 0px"
-            />
-          </div>
+        <section class="registration-process" aria-labelledby="registration-process-title">
+            <div class="registration-process__container">
+                <div class="registration-process__header">
+                    <h3
+                        class="registration-process__title"
+                        id="registration-process-title"
+                        data-i18n="supplier.process.title"
+                    >
+                        Registration Process
+                    </h3>
+                    <div class="section-pattern" aria-hidden="true">
+                        <img
+                            src="./assets/pattern1.svg"
+                            alt=""
+                            width="22.46"
+                            height="21.3"
+                            style="position: absolute; left: 0px; top: 1.35px"
+                        />
+                        <img
+                            src="./assets/pattern2.svg"
+                            alt=""
+                            width="25.29"
+                            height="24"
+                            style="position: absolute; left: 25.73px; top: 0px"
+                        />
+                        <img
+                            src="./assets/pattern1.svg"
+                            alt=""
+                            width="22.46"
+                            height="21.3"
+                            style="position: absolute; left: 52px; top: 1.35px"
+                        />
+                        <img
+                            src="./assets/pattern2.svg"
+                            alt=""
+                            width="25.29"
+                            height="24"
+                            style="position: absolute; left: 78px; top: 0px"
+                        />
+                    </div>
+                </div>
+
+                <div class="registration-process__grid">
+                    <!-- Steps -->
+                    <ol class="registration-process__steps" role="list">
+                        <li class="process-step">
+                            <p class="process-step__number">
+                                <img src="./assets/Supplier/01.svg" alt="Step 1" width="55px" height="58px" />
+                            </p>
+                            <h3 class="process-step__title" data-i18n="supplier.process.step1Title">
+                                Submit Supplier Self-Registration Request
+                            </h3>
+                            <p class="process-step__description" data-i18n="supplier.process.step1Desc">
+                                Complete and submit the Supplier Self-Registration Request Form through the link below
+                                for initial review.
+                            </p>
+                        </li>
+
+                        <li class="process-step">
+                            <p class="process-step__number">
+                                <img src="./assets/Supplier/02.svg" alt="Step 2" width="55px" height="58px" />
+                            </p>
+                            <h3 class="process-step__title" data-i18n="supplier.process.step2Title">
+                                Complete Supplier Registration Questionnaire
+                            </h3>
+                            <p class="process-step__description" data-i18n="supplier.process.step2Desc">
+                                Upon preliminary approval, you will receive an SAP Ariba notification to complete the
+                                Supplier Registration Questionnaire and upload the required documents.
+                            </p>
+                        </li>
+
+                        <li class="process-step">
+                            <p class="process-step__number">
+                                <img src="./assets/Supplier/03.svg" alt="Step 3" width="55px" height="58px" />
+                            </p>
+                            <h3 class="process-step__title" data-i18n="supplier.process.step3Title">
+                                Evaluation and Approval
+                            </h3>
+                            <p class="process-step__description" data-i18n="supplier.process.step3Desc">
+                                Once submitted, your application will be evaluated in accordance with our procurement
+                                policies and business requirements.
+                            </p>
+                        </li>
+                    </ol>
+
+                    <!-- Important Notice card -->
+                    <aside class="notice-card" aria-labelledby="notice-title">
+                        <h4 class="notice-card__title" id="notice-title" data-i18n="supplier.process.noticeTitle">
+                            Important Notice
+                        </h4>
+                        <p class="notice-card__text" data-i18n="supplier.process.noticeText">
+                            Please Note: Submission of an application does not guarantee qualification, engagement, or
+                            contract award. All registrations are subject to review in line with company procedures.
+                        </p>
+                        <a href="#" class="btn btn--gold notice-card__cta" target="_blank" rel="noopener noreferrer">
+                            <span data-i18n="supplier.process.noticeCta">Access Supplier Portal</span>
+                        </a>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cookie Popup -->
+        <div class="cookie-popup" id="cookiePopup">
+            <div class="cookie-popup__content">
+                <div class="cookie-popup__left">
+                    <h3>BEFORE YOU ENTER OUR WEBSITE</h3>
+
+                    <p>
+                        We use cookies to optimize your experience, remember your preferences, analyze site performance,
+                        and provide relevant content. By selecting “Accept All Cookies”, you consent to our use of
+                        <a href="#">cookies</a>.
+                    </p>
+                </div>
+            </div>
+            <div class="cookie-popup__buttons">
+                <button id="acceptCookies" class="cookie-btn cookie-btn--primary">
+                    ACCEPT ALL
+                    <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path
+                                d="M20 12H4"
+                                stroke="#EFEFEF"
+                                stroke-width="1.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            />
+                            <path
+                                d="M15.0001 17C15.0001 17 20 13.3176 20 12C20 10.6824 15 7 15 7"
+                                stroke="#EFEFEF"
+                                stroke-width="1.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            />
+                        </svg>
+                    </span>
+                </button>
+
+                <button id="rejectCookies" class="cookie-btn cookie-btn--outline">
+                    Reject All
+                    <span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+                            <path
+                                d="M20 12H4"
+                                stroke="#CC9F53"
+                                stroke-width="1.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            />
+                            <path
+                                d="M15.0001 17C15.0001 17 20 13.3176 20 12C20 10.6824 15 7 15 7"
+                                stroke="#CC9F53"
+                                stroke-width="1.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            />
+                        </svg>
+                    </span>
+                </button>
+            </div>
         </div>
 
         <div class="registration-process__grid">
