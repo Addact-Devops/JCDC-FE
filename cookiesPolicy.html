@@ -1,253 +1,399 @@
 <!doctype html>
 <html lang="en" dir="ltr" data-lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title data-i18n="meta.title">JCDC — Jeddah Central Development Company</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&family=Cairo:wght@300;400;500;600;700&display=swap"
-            rel="stylesheet"
-        />
-        <link rel="stylesheet" href="dist/main.min.css" />
-        <link rel="icon" type="image/x-icon" href="./assets/favicon.ico" />
-        <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-16x16.png" />
-        <link rel="icon" type="image/x-icon" href="./assets/apple-favicon.png" />
-    </head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title data-i18n="meta.title">
+      JCDC — Jeddah Central Development Company
+    </title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&family=Cairo:wght@300;400;500;600;700&family=Readex+Pro:wght@160..700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="dist/main.min.css" />
+    <link rel="icon" type="image/x-icon" href="./assets/favicon.ico" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="./assets/favicon-16x16.png"
+    />
+    <link rel="icon" type="image/x-icon" href="./assets/apple-favicon.png" />
+  </head>
 </html>
 
 <body>
-    <!-- ════════════════════════════════════════════
+  <!-- ════════════════════════════════════════════
         HEADER (transparent over hero, white on scroll)
 ════════════════════════════════════════════ -->
-    <header class="navbar" id="navbar">
-        <div class="navbar__inner">
-            <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
-                <span></span><span></span><span></span>
-            </button>
-            <a href="/" class="navbar__logo" aria-label="JCDC Home">
-                <img class="navbar__logo--light" src="assets/Frame 2.svg" alt="JCDC" width="104" height="56" />
-                <!-- Dark/colored logo — shown when scrolled -->
-                <img class="navbar__logo--dark" src="assets/coporate-PNG-01 1.svg" alt="JCDC" width="104" height="56" />
-            </a>
+  <header class="navbar" id="navbar">
+    <div class="navbar__inner">
+      <button
+        class="hamburger"
+        id="hamburger"
+        aria-label="Open menu"
+        aria-expanded="false"
+      >
+        <span></span><span></span><span></span>
+      </button>
+      <a href="/" class="navbar__logo" aria-label="JCDC Home">
+        <img
+          class="navbar__logo--light"
+          src="assets/Frame 2.svg"
+          alt="JCDC"
+          width="104"
+          height="56"
+        />
+        <!-- Dark/colored logo — shown when scrolled -->
+        <img
+          class="navbar__logo--dark"
+          src="assets/coporate-PNG-01 1.svg"
+          alt="JCDC"
+          width="104"
+          height="56"
+        />
+      </a>
 
-            <nav class="navbar__menu" aria-label="Main navigation">
-                <a href="about.html" class="nav-item" data-i18n="nav.about">About us</a>
+      <nav class="navbar__menu" aria-label="Main navigation">
+        <a href="about.html" class="nav-item" data-i18n="nav.about">About us</a>
 
-                <div class="nav-item nav-item--dropdown" data-dropdown>
-                    <a href="jcdc.html" data-i18n="nav.jcd">Jeddah Central Destination</a>
-                    <button class="nav-item__btn" aria-haspopup="true" aria-expanded="false" data-dropdown-toggle>
-                        <svg class="chevron" width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                            <path
-                                d="M7 10l5 5 5-5"
-                                stroke="currentColor"
-                                stroke-width="1.5"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                            />
-                        </svg>
-                    </button>
-                    <div class="dropdown">
-                        <a href="jcdc.html#jcd-map" data-i18n="nav.dropdown.districts">Districts</a>
-                        <a href="jcdc.html#landmark-slider" data-i18n="nav.dropdown.landmarks">Landmarks</a>
-                        <a href="jcdc.html#attractions" data-i18n="nav.dropdown.attractions">Attractions</a>
-                        <a href="jcdc.html#sustainability" data-i18n="nav.dropdown.sustainability">Sustainability</a>
-                    </div>
-                </div>
-
-                <a href="invest.html" class="nav-item" data-i18n="nav.invest">Invest</a>
-                <a href="news.html" class="nav-item" data-i18n="nav.news">News &amp; Events</a>
-                <a href="career.html" class="nav-item" data-i18n="nav.careers">Careers</a>
-                <a href="supplier.html" class="nav-item" data-i18n="nav.suppliers">Suppliers</a>
-                <a href="contact.html" class="nav-item" data-i18n="nav.contact">Contact Us</a>
-            </nav>
-
-            <div class="navbar__actions">
-                <button class="icon-btn" aria-label="Search">
-                    <a href="search.html#search-input" class="icon-btn" aria-label="Search">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.5" />
-                            <path
-                                d="M16.5 16.5L21 21"
-                                stroke="currentColor"
-                                stroke-width="1.5"
-                                stroke-linecap="round"
-                            />
-                        </svg>
-                    </a>
-                </button>
-                <button class="lang-btn" id="lang-btn" aria-label="Switch language">
-                    <span class="lang-btn__text" data-i18n="nav.lang">العربية</span>
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                        <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5" />
-                        <path
-                            d="M12 3c-2.5 2-4 5.5-4 9s1.5 7 4 9c2.5-2 4-5.5 4-9s-1.5-7-4-9z"
-                            stroke="currentColor"
-                            stroke-width="1.5"
-                        />
-                        <path d="M3 9h18M3 15h18" stroke="currentColor" stroke-width="1.5" />
-                    </svg>
-                </button>
-            </div>
+        <div class="nav-item nav-item--dropdown" data-dropdown>
+          <a href="jcdc.html" data-i18n="nav.jcd">Jeddah Central Destination</a>
+          <button
+            class="nav-item__btn"
+            aria-haspopup="true"
+            aria-expanded="false"
+            data-dropdown-toggle
+          >
+            <svg
+              class="chevron"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              aria-hidden="true"
+            >
+              <path
+                d="M7 10l5 5 5-5"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+          <div class="dropdown">
+            <a href="jcdc.html#jcd-map" data-i18n="nav.dropdown.districts"
+              >Districts</a
+            >
+            <a
+              href="jcdc.html#landmark-slider"
+              data-i18n="nav.dropdown.landmarks"
+              >Landmarks</a
+            >
+            <a href="jcdc.html#attractions" data-i18n="nav.dropdown.attractions"
+              >Attractions</a
+            >
+            <a
+              href="jcdc.html#sustainability"
+              data-i18n="nav.dropdown.sustainability"
+              >Sustainability</a
+            >
+          </div>
         </div>
-    </header>
 
-    <!-- Mobile drawer -->
-    <aside class="drawer" id="drawer" aria-hidden="true">
-        <div class="drawer__head">
-            <a href="/" class="drawer__logo">
-                <img src="assets/coporate-PNG-01 1.svg" alt="JCDC" width="80" height="44" class="drawer__logo" />
-            </a>
-            <button class="drawer__close" id="drawer-close" aria-label="Close menu">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-                </svg>
-            </button>
-        </div>
-        <div class="drawer__divider"></div>
-        <p class="drawer__label" data-i18n="mobile.menu">MENU</p>
+        <a href="invest.html" class="nav-item" data-i18n="nav.invest">Invest</a>
+        <a href="news.html" class="nav-item" data-i18n="nav.news"
+          >News &amp; Events</a
+        >
+        <a href="career.html" class="nav-item" data-i18n="nav.careers"
+          >Careers</a
+        >
+        <a href="supplier.html" class="nav-item" data-i18n="nav.suppliers"
+          >Suppliers</a
+        >
+        <a href="contact.html" class="nav-item" data-i18n="nav.contact"
+          >Contact Us</a
+        >
+      </nav>
 
-        <ul class="drawer__nav">
-            <li>
-                <a href="about.html">
-                    <button class="drawer__link" data-href="about.html">
-                        <span data-i18n="nav.about">About</span
-                        ><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="drawer__arrow">
-                            <path
-                                d="M9 6l6 6-6 6"
-                                stroke="currentColor"
-                                stroke-width="1.8"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                            />
-                        </svg>
-                    </button>
-                </a>
-            </li>
+      <div class="navbar__actions">
+        <button class="icon-btn" aria-label="Search">
+          <a
+            href="search.html#search-input"
+            class="icon-btn"
+            aria-label="Search"
+          >
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <circle
+                cx="11"
+                cy="11"
+                r="7"
+                stroke="currentColor"
+                stroke-width="1.5"
+              />
+              <path
+                d="M16.5 16.5L21 21"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+              />
+            </svg>
+          </a>
+        </button>
+        <button class="lang-btn" id="lang-btn" aria-label="Switch language">
+          <span class="lang-btn__text" data-i18n="nav.lang">العربية</span>
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            aria-hidden="true"
+          >
+            <circle
+              cx="12"
+              cy="12"
+              r="9"
+              stroke="currentColor"
+              stroke-width="1.5"
+            />
+            <path
+              d="M12 3c-2.5 2-4 5.5-4 9s1.5 7 4 9c2.5-2 4-5.5 4-9s-1.5-7-4-9z"
+              stroke="currentColor"
+              stroke-width="1.5"
+            />
+            <path
+              d="M3 9h18M3 15h18"
+              stroke="currentColor"
+              stroke-width="1.5"
+            />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
 
-            <li class="drawer__item drawer__item--has-sub">
-                <button class="drawer__link drawer__link--expand" data-mobile-expand>
-                    <a href="jcdc.html">
-                        <span data-i18n="nav.jcd">Jeddah Central Destination</span>
-                    </a>
-                    <svg
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        class="drawer__arrow drawer__arrow--down"
-                    >
-                        <path
-                            d="M7 10l5 5 5-5"
-                            stroke="currentColor"
-                            stroke-width="1.8"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        />
-                    </svg>
-                </button>
+  <!-- Mobile drawer -->
+  <aside class="drawer" id="drawer" aria-hidden="true">
+    <div class="drawer__head">
+      <a href="/" class="drawer__logo">
+        <img
+          src="assets/coporate-PNG-01 1.svg"
+          alt="JCDC"
+          width="80"
+          height="44"
+          class="drawer__logo"
+        />
+      </a>
+      <button class="drawer__close" id="drawer-close" aria-label="Close menu">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+          <path
+            d="M6 6l12 12M18 6L6 18"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+          />
+        </svg>
+      </button>
+    </div>
+    <div class="drawer__divider"></div>
+    <p class="drawer__label" data-i18n="mobile.menu">MENU</p>
 
-                <ul class="drawer__sub">
-                    <li>
-                        <a href="jcdc.html#jcd-map" data-i18n="nav.dropdown.districts">Districts</a>
-                    </li>
-                    <li>
-                        <a href="jcdc.html#landmark-slider" data-i18n="nav.dropdown.landmarks">Landmarks</a>
-                    </li>
-                    <li>
-                        <a href="jcdc.html#attractions" data-i18n="nav.dropdown.attractions">Attractions</a>
-                    </li>
-                    <li>
-                        <a href="jcdc.html#sustainability" data-i18n="nav.dropdown.sustainability">Sustainability</a>
-                    </li>
-                </ul>
-            </li>
+    <ul class="drawer__nav">
+      <li>
+        <a href="about.html">
+          <button class="drawer__link" data-href="about.html">
+            <span data-i18n="nav.about">About</span
+            ><svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              class="drawer__arrow"
+            >
+              <path
+                d="M9 6l6 6-6 6"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+        </a>
+      </li>
 
-            <li>
-                <a href="invest.html">
-                    <button class="drawer__link">
-                        <span data-i18n="nav.invest">Invest</span
-                        ><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="drawer__arrow">
-                            <path
-                                d="M9 6l6 6-6 6"
-                                stroke="currentColor"
-                                stroke-width="1.8"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                            />
-                        </svg>
-                    </button>
-                </a>
-            </li>
-            <li>
-                <a href="news.html">
-                    <button class="drawer__link">
-                        <span data-i18n="nav.news">News &amp; Events</span
-                        ><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="drawer__arrow">
-                            <path
-                                d="M9 6l6 6-6 6"
-                                stroke="currentColor"
-                                stroke-width="1.8"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                            />
-                        </svg>
-                    </button>
-                </a>
-            </li>
-            <li>
-                <a href="career.html">
-                    <button class="drawer__link">
-                        <span data-i18n="nav.careers">Careers</span
-                        ><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="drawer__arrow">
-                            <path
-                                d="M9 6l6 6-6 6"
-                                stroke="currentColor"
-                                stroke-width="1.8"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                            />
-                        </svg>
-                    </button>
-                </a>
-            </li>
-            <li>
-                <a href="supplier.html">
-                    <button class="drawer__link">
-                        <span data-i18n="nav.suppliers">Suppliers</span
-                        ><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="drawer__arrow">
-                            <path
-                                d="M9 6l6 6-6 6"
-                                stroke="currentColor"
-                                stroke-width="1.8"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                            />
-                        </svg>
-                    </button>
-                </a>
-            </li>
-            <li>
-                <a href="contact.html">
-                    <button class="drawer__link">
-                        <span data-i18n="nav.contact">Contact Us</span
-                        ><svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="drawer__arrow">
-                            <path
-                                d="M9 6l6 6-6 6"
-                                stroke="currentColor"
-                                stroke-width="1.8"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                            />
-                        </svg>
-                    </button>
-                </a>
-            </li>
+      <li class="drawer__item drawer__item--has-sub">
+        <button class="drawer__link drawer__link--expand" data-mobile-expand>
+          <a href="jcdc.html">
+            <span data-i18n="nav.jcd">Jeddah Central Destination</span>
+          </a>
+          <svg
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            class="drawer__arrow drawer__arrow--down"
+          >
+            <path
+              d="M7 10l5 5 5-5"
+              stroke="currentColor"
+              stroke-width="1.8"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
+
+        <ul class="drawer__sub">
+          <li>
+            <a href="jcdc.html#jcd-map" data-i18n="nav.dropdown.districts"
+              >Districts</a
+            >
+          </li>
+          <li>
+            <a
+              href="jcdc.html#landmark-slider"
+              data-i18n="nav.dropdown.landmarks"
+              >Landmarks</a
+            >
+          </li>
+          <li>
+            <a href="jcdc.html#attractions" data-i18n="nav.dropdown.attractions"
+              >Attractions</a
+            >
+          </li>
+          <li>
+            <a
+              href="jcdc.html#sustainability"
+              data-i18n="nav.dropdown.sustainability"
+              >Sustainability</a
+            >
+          </li>
         </ul>
+      </li>
 
-        <!-- <div class="drawer__footer">
+      <li>
+        <a href="invest.html">
+          <button class="drawer__link">
+            <span data-i18n="nav.invest">Invest</span
+            ><svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              class="drawer__arrow"
+            >
+              <path
+                d="M9 6l6 6-6 6"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+        </a>
+      </li>
+      <li>
+        <a href="news.html">
+          <button class="drawer__link">
+            <span data-i18n="nav.news">News &amp; Events</span
+            ><svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              class="drawer__arrow"
+            >
+              <path
+                d="M9 6l6 6-6 6"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+        </a>
+      </li>
+      <li>
+        <a href="career.html">
+          <button class="drawer__link">
+            <span data-i18n="nav.careers">Careers</span
+            ><svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              class="drawer__arrow"
+            >
+              <path
+                d="M9 6l6 6-6 6"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+        </a>
+      </li>
+      <li>
+        <a href="supplier.html">
+          <button class="drawer__link">
+            <span data-i18n="nav.suppliers">Suppliers</span
+            ><svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              class="drawer__arrow"
+            >
+              <path
+                d="M9 6l6 6-6 6"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+        </a>
+      </li>
+      <li>
+        <a href="contact.html">
+          <button class="drawer__link">
+            <span data-i18n="nav.contact">Contact Us</span
+            ><svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              class="drawer__arrow"
+            >
+              <path
+                d="M9 6l6 6-6 6"
+                stroke="currentColor"
+                stroke-width="1.8"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
+        </a>
+      </li>
+    </ul>
+
+    <!-- <div class="drawer__footer">
                 <button class="lang-btn lang-btn--drawer" id="lang-btn-drawer">
                     <span class="lang-btn__text" data-i18n="nav.lang">العربية</span>
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -261,239 +407,293 @@
                     </svg>
                 </button>
             </div> -->
-    </aside>
-    <div class="overlay" id="overlay"></div>
+  </aside>
+  <div class="overlay" id="overlay"></div>
 
-    <!-- ════════════════════════════════════════════
+  <!-- ════════════════════════════════════════════
         HERO BANNER
 ════════════════════════════════════════════ -->
-    <section class="banner legalBanner">
-        <div class="hero__media">
-            <img src="assets/TNC/Herobanner.svg" />
-        </div>
-        <div class="banner__overlay legalBanner_overlay"></div>
-
-        <div class="container">
-            <div class="banner__content">
-                <!-- Breadcrumbs -->
-                <div class="banner__breadcrumbs">
-                    <a href="index.html" class="banner__breadcrumbs-link"> Home </a>
-
-                    <span class="banner__breadcrumbs-separator"> > </span>
-
-                    <span class="banner__breadcrumbs-current"> Cookies Policy </span>
-                </div>
-
-                <div>
-                    <!-- Title -->
-                    <h1 class="banner__title">Cookies Policy</h1>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section class="clauses">
-        <div class="clauses__section">
-            <h4 class="clauses__title">We Use Cookies</h4>
-
-            <p class="clauses__description">
-                JCDC values your privacy and is committed to protecting your personal data in compliance with the Saudi
-                Personal Data Protection Law (PDPL) and other relevant laws. This privacy notice informs you about how
-                we collect, use, protect, retain, and disclose your personal data.
-            </p>
-        </div>
-
-        <div class="clauses__section">
-            <h4 class="clauses__title">What are Cookies?</h4>
-
-            <p class="clauses__description">
-                Cookies are small text files placed on your device to store data that can be recalled by a web server in
-                the domain that placed the cookie. We use cookies to remember your preferences and settings, provide a
-                personalized experience, and analyze how our website is used.
-            </p>
-        </div>
-
-        <div class="clauses__section">
-            <h4 class="clauses__title">Types of Cookies We Use</h4>
-
-            <div class="clauses__description">
-                <p>Essential Cookies: Necessary for the website to function and cannot be switched off.</p>
-
-                <p>
-                    Performance Cookies: Allow us to count visits and traffic sources, helping us measure and improve
-                    the performance of our site.
-                </p>
-
-                <p>Functional Cookies: Enable the website to provide enhanced functionality and personalization.</p>
-
-                <p>Advertising Cookies: Used to make advertising messages more relevant to you.</p>
-            </div>
-        </div>
-
-        <div class="clauses__section">
-            <h4 class="clauses__title">Your Choices</h4>
-
-            <p class="clauses__description">
-                You have the right to accept or decline cookies. Most web browsers automatically accept cookies, but you
-                can usually modify your browser setting to decline cookies if you prefer. However, if you choose to
-                decline cookies, certain features of our website may not function as intended. You can also manage or
-                withdraw your cookie consent at any time by adjusting your preferences through the cookie settings on
-                our website or in your browser.
-            </p>
-        </div>
-
-        <div class="clauses__section">
-            <h4 class="clauses__title">Consent</h4>
-
-            <p class="clauses__description">
-                By continuing to browse JCDC website, you consent to the use of cookies on your device for enhancing
-                your site experience and for analytical purposes.
-            </p>
-        </div>
-
-        <div class="clauses__section">
-            <h4 class="clauses__title">Contact Us</h4>
-
-            <p class="clauses__description">
-                If you have any questions about our use of cookies, please contact us at
-                <a href="mailto:privacy@jcd.com.sa">privacy@jcd.com.sa</a>
-            </p>
-        </div>
-    </section>
-
-    <!-- Cookie Popup -->
-    <div class="cookie-popup" id="cookiePopup">
-        <div class="cookie-popup__content">
-            <div class="cookie-popup__left">
-                <h3>BEFORE YOU ENTER OUR WEBSITE</h3>
-
-                <p>
-                    We use cookies to optimize your experience, remember your preferences, analyze site performance, and
-                    provide relevant content. By selecting “Accept All Cookies”, you consent to our use of
-                    <a href="#">cookies</a>.
-                </p>
-            </div>
-        </div>
-        <div class="cookie-popup__buttons">
-            <button id="acceptCookies" class="cookie-btn cookie-btn--primary">
-                ACCEPT ALL
-                <span>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                        <path
-                            d="M20 12H4"
-                            stroke="#EFEFEF"
-                            stroke-width="1.5"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        />
-                        <path
-                            d="M15.0001 17C15.0001 17 20 13.3176 20 12C20 10.6824 15 7 15 7"
-                            stroke="#EFEFEF"
-                            stroke-width="1.5"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        />
-                    </svg>
-                </span>
-            </button>
-
-            <button id="rejectCookies" class="cookie-btn cookie-btn--outline">
-                Reject All
-                <span>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                        <path
-                            d="M20 12H4"
-                            stroke="#CC9F53"
-                            stroke-width="1.5"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        />
-                        <path
-                            d="M15.0001 17C15.0001 17 20 13.3176 20 12C20 10.6824 15 7 15 7"
-                            stroke="#CC9F53"
-                            stroke-width="1.5"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        />
-                    </svg>
-                </span>
-            </button>
-        </div>
+  <section class="banner legalBanner">
+    <div class="hero__media">
+      <img src="assets/TNC/Herobanner.svg" />
     </div>
-    <!-- end Cookie Popup -->
-    <!-- ════════════════════════════════════════════
+    <div class="banner__overlay legalBanner_overlay"></div>
+
+    <div class="container">
+      <div class="banner__content">
+        <!-- Breadcrumbs -->
+        <div class="banner__breadcrumbs">
+          <a href="index.html" class="banner__breadcrumbs-link"> Home </a>
+
+          <span class="banner__breadcrumbs-separator"> > </span>
+
+          <span class="banner__breadcrumbs-current"> Cookies Policy </span>
+        </div>
+
+        <div>
+          <!-- Title -->
+          <h1 class="banner__title">Cookies Policy</h1>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="clauses">
+    <div class="clauses__section">
+      <h4 class="clauses__title">We Use Cookies</h4>
+
+      <p class="clauses__description">
+        JCDC values your privacy and is committed to protecting your personal
+        data in compliance with the Saudi Personal Data Protection Law (PDPL)
+        and other relevant laws. This privacy notice informs you about how we
+        collect, use, protect, retain, and disclose your personal data.
+      </p>
+    </div>
+
+    <div class="clauses__section">
+      <h4 class="clauses__title">What are Cookies?</h4>
+
+      <p class="clauses__description">
+        Cookies are small text files placed on your device to store data that
+        can be recalled by a web server in the domain that placed the cookie. We
+        use cookies to remember your preferences and settings, provide a
+        personalized experience, and analyze how our website is used.
+      </p>
+    </div>
+
+    <div class="clauses__section">
+      <h4 class="clauses__title">Types of Cookies We Use</h4>
+
+      <div class="clauses__description">
+        <p>
+          Essential Cookies: Necessary for the website to function and cannot be
+          switched off.
+        </p>
+
+        <p>
+          Performance Cookies: Allow us to count visits and traffic sources,
+          helping us measure and improve the performance of our site.
+        </p>
+
+        <p>
+          Functional Cookies: Enable the website to provide enhanced
+          functionality and personalization.
+        </p>
+
+        <p>
+          Advertising Cookies: Used to make advertising messages more relevant
+          to you.
+        </p>
+      </div>
+    </div>
+
+    <div class="clauses__section">
+      <h4 class="clauses__title">Your Choices</h4>
+
+      <p class="clauses__description">
+        You have the right to accept or decline cookies. Most web browsers
+        automatically accept cookies, but you can usually modify your browser
+        setting to decline cookies if you prefer. However, if you choose to
+        decline cookies, certain features of our website may not function as
+        intended. You can also manage or withdraw your cookie consent at any
+        time by adjusting your preferences through the cookie settings on our
+        website or in your browser.
+      </p>
+    </div>
+
+    <div class="clauses__section">
+      <h4 class="clauses__title">Consent</h4>
+
+      <p class="clauses__description">
+        By continuing to browse JCDC website, you consent to the use of cookies
+        on your device for enhancing your site experience and for analytical
+        purposes.
+      </p>
+    </div>
+
+    <div class="clauses__section">
+      <h4 class="clauses__title">Contact Us</h4>
+
+      <p class="clauses__description">
+        If you have any questions about our use of cookies, please contact us at
+        <a href="mailto:privacy@jcd.com.sa">privacy@jcd.com.sa</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- Cookie Popup -->
+  <div class="cookie-popup" id="cookiePopup">
+    <div class="cookie-popup__content">
+      <div class="cookie-popup__left">
+        <h3>BEFORE YOU ENTER OUR WEBSITE</h3>
+
+        <p>
+          We use cookies to optimize your experience, remember your preferences,
+          analyze site performance, and provide relevant content. By selecting
+          “Accept All Cookies”, you consent to our use of
+          <a href="#">cookies</a>.
+        </p>
+      </div>
+    </div>
+    <div class="cookie-popup__buttons">
+      <button id="acceptCookies" class="cookie-btn cookie-btn--primary">
+        ACCEPT ALL
+        <span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+          >
+            <path
+              d="M20 12H4"
+              stroke="#EFEFEF"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M15.0001 17C15.0001 17 20 13.3176 20 12C20 10.6824 15 7 15 7"
+              stroke="#EFEFEF"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </span>
+      </button>
+
+      <button id="rejectCookies" class="cookie-btn cookie-btn--outline">
+        Reject All
+        <span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+          >
+            <path
+              d="M20 12H4"
+              stroke="#CC9F53"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <path
+              d="M15.0001 17C15.0001 17 20 13.3176 20 12C20 10.6824 15 7 15 7"
+              stroke="#CC9F53"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </span>
+      </button>
+    </div>
+  </div>
+  <!-- end Cookie Popup -->
+  <!-- ════════════════════════════════════════════
      FOOTER
 ════════════════════════════════════════════ -->
-    <footer class="footer">
-        <div class="footer__top">
-            <a href="/" class="footer__logo-wrap">
-                <img src="assets/coporate-PNG-01 1.svg" alt="JCDC" width="132" height="72" class="footer__logo" />
-            </a>
-            <div class="footer__right">
-                <div class="footer__social">
-                    <a href="#" aria-label="Instagram" class="social-link">
-                        <svg
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="1.8"
-                        >
-                            <rect x="3" y="3" width="18" height="18" rx="5" />
-                            <circle cx="12" cy="12" r="4" />
-                            <circle cx="17.5" cy="6.5" r="1" fill="currentColor" />
-                        </svg>
-                    </a>
-                    <a href="#" aria-label="X (Twitter)" class="social-link">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                            <path
-                                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
-                            />
-                        </svg>
-                    </a>
-                    <a href="#" aria-label="LinkedIn" class="social-link">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <path
-                                fill-rule="evenodd"
-                                clip-rule="evenodd"
-                                d="M4.5 3.24219C3.67157 3.24219 3 3.91376 3 4.74219V19.7422C3 20.5706 3.67157 21.2422 4.5 21.2422H19.5C20.3284 21.2422 21 20.5706 21 19.7422V4.74219C21 3.91376 20.3284 3.24219 19.5 3.24219H4.5ZM8.52076 7.24491C8.52639 8.20116 7.81061 8.79038 6.96123 8.78616C6.16107 8.78194 5.46357 8.14491 5.46779 7.24632C5.47201 6.40116 6.13998 5.72194 7.00764 5.74163C7.88795 5.76132 8.52639 6.40679 8.52076 7.24491ZM12.2797 10.0039H9.75971H9.7583V18.5638H12.4217V18.3641C12.4217 17.9842 12.4214 17.6042 12.4211 17.2241C12.4203 16.2103 12.4194 15.1954 12.4246 14.1819C12.426 13.9358 12.4372 13.6799 12.5005 13.445C12.7381 12.5675 13.5271 12.0008 14.4074 12.1401C14.9727 12.2286 15.3467 12.5563 15.5042 13.0893C15.6013 13.4225 15.6449 13.7811 15.6491 14.1285C15.6605 15.1761 15.6589 16.2237 15.6573 17.2714C15.6567 17.6412 15.6561 18.0112 15.6561 18.381V18.5624H18.328V18.3571C18.328 17.9051 18.3278 17.4532 18.3275 17.0013C18.327 15.8718 18.3264 14.7423 18.3294 13.6124C18.3308 13.1019 18.276 12.5985 18.1508 12.1049C17.9638 11.3708 17.5771 10.7633 16.9485 10.3246C16.5027 10.0124 16.0133 9.81129 15.4663 9.78879C15.404 9.7862 15.3412 9.78281 15.2781 9.7794C14.9984 9.76428 14.7141 9.74892 14.4467 9.80285C13.6817 9.95613 13.0096 10.3063 12.5019 10.9236C12.4429 10.9944 12.3852 11.0663 12.2991 11.1736L12.2797 11.1979V10.0039ZM5.68164 18.5666H8.33242V10.0095H5.68164V18.5666Z"
-                                fill="#0076A9"
-                            />
-                        </svg>
-                    </a>
-                    <a href="#" aria-label="YouTube" class="social-link">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                            <path
-                                d="M23.5 6.21a3.02 3.02 0 0 0-2.12-2.14C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.38.57A3.02 3.02 0 0 0 .5 6.21 31.48 31.48 0 0 0 0 12a31.48 31.48 0 0 0 .5 5.79 3.02 3.02 0 0 0 2.12 2.14C4.5 20.5 12 20.5 12 20.5s7.5 0 9.38-.57a3.02 3.02 0 0 0 2.12-2.14A31.48 31.48 0 0 0 24 12a31.48 31.48 0 0 0-.5-5.79zM9.6 15.6V8.4l6.24 3.6-6.24 3.6z"
-                            />
-                        </svg>
-                    </a>
-                </div>
-                <nav class="footer__nav" aria-label="Footer navigation">
-                    <a href="about.html" data-i18n="footer.aboutUs">ABOUT US</a>
-                    <a href="jcdc.html" data-i18n="footer.jcd">JEDDAH CENTRAL DESTINATION</a>
-                    <a href="invest.html" data-i18n="footer.invest">INVEST</a>
-                    <a href="news.html" data-i18n="footer.newsEvents">NEWS &amp; EVENTS</a>
-                    <a href="career.html" data-i18n="footer.careers">CAREERS</a>
-                    <a href="supplier.html" data-i18n="footer.suppliers">SUPPLIERS</a>
-                    <a href="contact.html" data-i18n="footer.contact">CONTACT US</a>
-                </nav>
-            </div>
+  <footer class="footer">
+    <div class="footer__top">
+      <a href="/" class="footer__logo-wrap">
+        <img
+          src="assets/coporate-PNG-01 1.svg"
+          alt="JCDC"
+          width="132"
+          height="72"
+          class="footer__logo"
+        />
+      </a>
+      <div class="footer__right">
+        <div class="footer__social">
+          <a href="#" aria-label="Instagram" class="social-link">
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+            >
+              <rect x="3" y="3" width="18" height="18" rx="5" />
+              <circle cx="12" cy="12" r="4" />
+              <circle cx="17.5" cy="6.5" r="1" fill="currentColor" />
+            </svg>
+          </a>
+          <a href="#" aria-label="X (Twitter)" class="social-link">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+              />
+            </svg>
+          </a>
+          <a href="#" aria-label="LinkedIn" class="social-link">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M4.5 3.24219C3.67157 3.24219 3 3.91376 3 4.74219V19.7422C3 20.5706 3.67157 21.2422 4.5 21.2422H19.5C20.3284 21.2422 21 20.5706 21 19.7422V4.74219C21 3.91376 20.3284 3.24219 19.5 3.24219H4.5ZM8.52076 7.24491C8.52639 8.20116 7.81061 8.79038 6.96123 8.78616C6.16107 8.78194 5.46357 8.14491 5.46779 7.24632C5.47201 6.40116 6.13998 5.72194 7.00764 5.74163C7.88795 5.76132 8.52639 6.40679 8.52076 7.24491ZM12.2797 10.0039H9.75971H9.7583V18.5638H12.4217V18.3641C12.4217 17.9842 12.4214 17.6042 12.4211 17.2241C12.4203 16.2103 12.4194 15.1954 12.4246 14.1819C12.426 13.9358 12.4372 13.6799 12.5005 13.445C12.7381 12.5675 13.5271 12.0008 14.4074 12.1401C14.9727 12.2286 15.3467 12.5563 15.5042 13.0893C15.6013 13.4225 15.6449 13.7811 15.6491 14.1285C15.6605 15.1761 15.6589 16.2237 15.6573 17.2714C15.6567 17.6412 15.6561 18.0112 15.6561 18.381V18.5624H18.328V18.3571C18.328 17.9051 18.3278 17.4532 18.3275 17.0013C18.327 15.8718 18.3264 14.7423 18.3294 13.6124C18.3308 13.1019 18.276 12.5985 18.1508 12.1049C17.9638 11.3708 17.5771 10.7633 16.9485 10.3246C16.5027 10.0124 16.0133 9.81129 15.4663 9.78879C15.404 9.7862 15.3412 9.78281 15.2781 9.7794C14.9984 9.76428 14.7141 9.74892 14.4467 9.80285C13.6817 9.95613 13.0096 10.3063 12.5019 10.9236C12.4429 10.9944 12.3852 11.0663 12.2991 11.1736L12.2797 11.1979V10.0039ZM5.68164 18.5666H8.33242V10.0095H5.68164V18.5666Z"
+                fill="#0076A9"
+              />
+            </svg>
+          </a>
+          <a href="#" aria-label="YouTube" class="social-link">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+              <path
+                d="M23.5 6.21a3.02 3.02 0 0 0-2.12-2.14C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.38.57A3.02 3.02 0 0 0 .5 6.21 31.48 31.48 0 0 0 0 12a31.48 31.48 0 0 0 .5 5.79 3.02 3.02 0 0 0 2.12 2.14C4.5 20.5 12 20.5 12 20.5s7.5 0 9.38-.57a3.02 3.02 0 0 0 2.12-2.14A31.48 31.48 0 0 0 24 12a31.48 31.48 0 0 0-.5-5.79zM9.6 15.6V8.4l6.24 3.6-6.24 3.6z"
+              />
+            </svg>
+          </a>
         </div>
-        <div class="footer__divider"></div>
-        <div class="footer__bottom">
-            <a href="https://www.pif.gov.sa/en/" class="footer__pif-wrap">
-                <img src="./assets/footer/Layer_1.png" alt="A PIF Company" class="footer__pif"
-            /></a>
-            <div class="footer__legal">
-                <a href="privacyPolicy.html" data-i18n="footer.privacy">Privacy Policy</a>
-                <a href="terms&condition.html" data-i18n="footer.terms">Terms &amp; Conditions</a>
-                <a href="cookiesPolicy.html" data-i18n="footer.cookies">Cookies Policy</a>
-                <span class="footer__copy" data-i18n="footer.copy">© 2026 JCDC. ALL RIGHTS RESERVED</span>
-            </div>
-        </div>
-    </footer>
-    <!-- Bundled & minified JS (built from src/js by `npm run build`) -->
-    <script src="dist/main.min.js" defer></script>
+        <nav class="footer__nav" aria-label="Footer navigation">
+          <a href="about.html" data-i18n="footer.aboutUs">ABOUT US</a>
+          <a href="jcdc.html" data-i18n="footer.jcd"
+            >JEDDAH CENTRAL DESTINATION</a
+          >
+          <a href="invest.html" data-i18n="footer.invest">INVEST</a>
+          <a href="news.html" data-i18n="footer.newsEvents"
+            >NEWS &amp; EVENTS</a
+          >
+          <a href="career.html" data-i18n="footer.careers">CAREERS</a>
+          <a href="supplier.html" data-i18n="footer.suppliers">SUPPLIERS</a>
+          <a href="contact.html" data-i18n="footer.contact">CONTACT US</a>
+        </nav>
+      </div>
+    </div>
+    <div class="footer__divider"></div>
+    <div class="footer__bottom">
+      <a href="https://www.pif.gov.sa/en/" class="footer__pif-wrap">
+        <img
+          src="./assets/footer/Layer_1.png"
+          alt="A PIF Company"
+          class="footer__pif"
+      /></a>
+      <div class="footer__legal">
+        <a href="privacyPolicy.html" data-i18n="footer.privacy"
+          >Privacy Policy</a
+        >
+        <a href="terms&condition.html" data-i18n="footer.terms"
+          >Terms &amp; Conditions</a
+        >
+        <a href="cookiesPolicy.html" data-i18n="footer.cookies"
+          >Cookies Policy</a
+        >
+        <span class="footer__copy" data-i18n="footer.copy"
+          >© 2026 JCDC. ALL RIGHTS RESERVED</span
+        >
+      </div>
+    </div>
+  </footer>
+  <!-- Bundled & minified JS (built from src/js by `npm run build`) -->
+  <script src="dist/main.min.js" defer></script>
 </body>
