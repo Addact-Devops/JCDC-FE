@@ -51,6 +51,10 @@
         line-height: 100%;
         letter-spacing: -2px;
         color: var(--primary-500);
+
+        [dir="rtl"] & {
+            font-family: var(--font-en) !important;
+        }
     }
 
     // ==========================================
@@ -92,6 +96,7 @@
     // CTA — outlined gold pill with arrow
     &__cta {
         min-width: 220px;
+        background: transparent;
     }
 }
 
