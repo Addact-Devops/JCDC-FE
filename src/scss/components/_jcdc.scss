@@ -104,7 +104,15 @@
         display: block;
     }
 }
+[dir="rtl"] .jcdc {
+    &::before {
+        left: auto;
+        right: 0;
 
+        transform: scaleX(-1);
+        transform-origin: center;
+    }
+}
 // ==========================================
 // Tablet
 // ==========================================
