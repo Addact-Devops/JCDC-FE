@@ -25,622 +25,626 @@
 // ==========================================================================
 
 .jcd-map {
-    scroll-margin-top: 96px;
+  scroll-margin-top: 96px;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  // Pure black — what shows through any gap between adjacent district
+  // paths (the requested "black gap" treatment).
+  // background: #000;
+  // Account for the project's fixed navbar (96 px tall + a little
+  // breathing room) on anchor jumps and `scrollIntoView` so the
+  // close X and the panel top are not hidden behind the header.
+  scroll-margin-top: 100px;
+
+  // ── 2-column grid (map | panel) ───────────────────────────────
+  //  • Map column: capped at 1045 px so its derived height (aspect
+  //    1049/773) never exceeds 770 px.
+  //  • Panel column: at least 380 px so the title and CTA breathe.
+  //  Grid `align-items` is `stretch` by default, so the panel column
+  //  matches whatever height the map column produces.
+  &__container {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+
+    // JS adds .is-detail when a district is selected
+    &.is-detail {
+      display: grid;
+      grid-template-columns: 1fr 567px;
+      grid-template-rows: 770px;
+      align-items: stretch;
+    }
+  }
+
+  // Viewport overrides when grid detail layout is active
+  &__container.is-detail &__viewport {
+    aspect-ratio: unset;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    height: 770px;
+    max-height: none;
+  }
+
+  &__viewport {
     position: relative;
     width: 100%;
+    max-width: 1440px;
+    margin: 0 auto;
+    aspect-ratio: 1049 / 784;
+    max-height: 770px;
     overflow: hidden;
-    // Pure black — what shows through any gap between adjacent district
-    // paths (the requested "black gap" treatment).
-    // background: #000;
-    // Account for the project's fixed navbar (96 px tall + a little
-    // breathing room) on anchor jumps and `scrollIntoView` so the
-    // close X and the panel top are not hidden behind the header.
-    scroll-margin-top: 100px;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
 
-    // ── 2-column grid (map | panel) ───────────────────────────────
-    //  • Map column: capped at 1045 px so its derived height (aspect
-    //    1049/773) never exceeds 770 px.
-    //  • Panel column: at least 380 px so the title and CTA breathe.
-    //  Grid `align-items` is `stretch` by default, so the panel column
-    //  matches whatever height the map column produces.
-    &__container {
-        position: relative;
-        z-index: 1;
-        width: 100%;
-        margin: 0;
-        padding: 0;
+  &__scroll {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    // Matches the dark edge of the stage background so the tiny sliver
+    // exposed when a district zooms near the SVG boundary is seamless.
+    background: #080808;
+  }
 
-        // JS adds .is-detail when a district is selected
-        &.is-detail {
-            display: grid;
-            grid-template-columns: 1fr 567px;
-            grid-template-rows: 770px;
-            align-items: stretch;
-        }
+  // Stage — static background only; never transforms
+  &__stage {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
+      url("../../../assets/map-bg-img.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  // Layers — the three map visuals (mask img + SVG + icons) that zoom/translate
+  // together on district selection. Keeping the transform here means the stage
+  // background is always full-bleed and can never be exposed at the edges.
+  &__layers {
+    position: absolute;
+    inset: 0;
+    transform-origin: 50% 50%;
+    transition: transform 0.55s cubic-bezier(0.65, 0, 0.35, 1);
+    will-change: transform;
+  }
+
+  // Background images (both share the 1049 × 784 viewBox)
+  &__bg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+  }
+
+  &__bg--mask {
+    z-index: 1;
+    max-width: 1440px;
+    object-fit: contain;
+    left: -118px;
+    // left: 50%;
+    // transform: translateX(-50%);
+  }
+
+  &__bg--overlay {
+    z-index: 1;
+    transition: opacity 0.45s var(--ease);
+  }
+
+  // SVG overlay: dim-mask + 6 district paths + labels
+  &__svg {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    left: -118px;
+    height: 100%;
+    z-index: 2;
+  }
+
+  // ══════════════════════════════════════════════════════════════
+  //  District polygons
+  //  --------------------------------------------------------------
+  //   pointer-events: all  →  Critical fix. With a transparent fill
+  //                           (rgba(_,0)), the default
+  //                           `pointer-events: visiblePainted` only
+  //                           registers hits on the 1.5 px stroke,
+  //                           which is why hover felt unreliable on
+  //                           the interior of each shape. `all`
+  //                           makes the entire fill area hit-test
+  //                           regardless of paint.
+  //   stroke #000          →  Black gaps between districts.
+  // ══════════════════════════════════════════════════════════════
+  .jcd-map__district {
+    // fill: rgba(204, 162, 88, 0);
+    stroke: #000;
+    stroke-width: 0;
+    stroke-linejoin: round;
+    cursor: pointer;
+    pointer-events: all;
+    transition:
+      fill 0.25s var(--ease),
+      stroke 0.25s var(--ease);
+
+    &:hover,
+    &.is-hover,
+    &:focus,
+    &:focus-visible {
+      fill: rgba(204, 159, 83, 1);
+      opacity: 0.8;
+      outline: none;
+    }
+  }
+
+  // ── Dim layer (spotlight on the active district) ──────────────
+  //  Faded in only when the viewport carries .is-detail. The SVG
+  //  <mask> punches out the active district's path so it stays
+  //  bright while everything else darkens. Strong opacity (0.85)
+  //  matches the Figma's near-black inactive-district treatment.
+  &__dim {
+    // fill: #000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.45s var(--ease);
+  }
+
+  // Reserved (JS no-op) — kept in DOM for backwards compat.
+  &__hover-fill {
+    pointer-events: none;
+    opacity: 0;
+  }
+
+  // ── District name labels (centroids, JS-positioned) ───────────
+  //  Hidden by default; `.is-visible` is toggled by JS to show the
+  //  matching label on hover/focus. Sibling combinators can't span
+  //  the <g> wrappers around paths vs. labels, so a class is the
+  //  simplest reliable mechanism.
+  &__label {
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 600;
+    fill: #fff;
+    text-anchor: middle;
+    dominant-baseline: middle;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s var(--ease);
+    letter-spacing: 0.2px;
+    // Subtle dark halo so white text stays readable over both
+    // satellite imagery and the gold hover fill.
+    paint-order: stroke fill;
+    stroke: rgba(0, 0, 0, 0.85);
+    stroke-width: 3px;
+    stroke-linejoin: round;
+
+    tspan {
+      text-anchor: middle;
+    }
+  }
+
+  // ── Attraction-icon tooltip ────────────────────────────────────
+  &__tooltip {
+    position: absolute;
+    z-index: 6;
+    background: #fff;
+    color: #1a1a1a;
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 500;
+    line-height: 1.2;
+    padding: 8px 12px;
+    border-radius: 4px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+    pointer-events: none;
+    white-space: nowrap;
+    transform: translate(-50%, calc(-100% - 12px));
+    opacity: 0;
+    transition: opacity 0.18s var(--ease);
+
+    &.is-visible {
+      opacity: 1;
     }
 
-    // Viewport overrides when grid detail layout is active
-    &__container.is-detail &__viewport {
-        aspect-ratio: unset;
-        width: 100%;
-        max-width: none;
-        margin: 0;
-        height: 770px;
-        max-height: none;
+    &::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 100%;
+      width: 0;
+      height: 0;
+      transform: translateX(-50%);
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+      border-top: 6px solid #fff;
+    }
+  }
+
+  // ── Attraction icon hotspots ──────────────────────────────────
+  &__icons {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    pointer-events: none; // children re-enable
+  }
+
+  &__icon {
+    position: absolute;
+    // Counter-scale to compensate for stage zoom (inline CSS var)
+    transform: translate(-50%, -50%) scale(var(--icon-counter-scale, 1));
+    width: 44px;
+    height: 44px;
+    border: none;
+    border-radius: 50%;
+    background: var(--primary-500);
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: auto;
+    box-shadow:
+      0 2px 8px rgba(0, 0, 0, 0.35),
+      0 0 0 2px rgba(255, 255, 255, 0.08);
+    opacity: 0;
+    transition:
+      opacity 0.4s var(--ease),
+      background 0.2s var(--ease),
+      transform 0.25s var(--ease);
+
+    // CRITICAL: the `display: flex` above overrides the user-
+    // agent default for `[hidden]`, so non-active icons keep
+    // showing in detail mode. This rule restores the expected
+    // behaviour for hidden icons (and for icons whose centre
+    // falls outside the active district — see syncIconVisibility
+    // in sections/jcd-map.js).
+    &[hidden] {
+      display: none !important;
     }
 
-    &__viewport {
-        position: relative;
-        width: 100%;
-        max-width: 1440px;
-        margin: 0 auto;
-        aspect-ratio: 1049 / 784;
-        max-height: 770px;
-        overflow: hidden;
-        user-select: none;
-        -webkit-tap-highlight-color: transparent;
+    svg {
+      width: 20px;
+      height: 20px;
     }
 
-    &__scroll {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        // Matches the dark edge of the stage background so the tiny sliver
-        // exposed when a district zooms near the SVG boundary is seamless.
-        background: #080808;
+    &:hover,
+    &:focus-visible {
+      background: #005c83;
+      outline: none;
+      transform: translate(-50%, -50%)
+        scale(calc(var(--icon-counter-scale, 1) * 1.12));
     }
 
-    // Stage — static background only; never transforms
-    &__stage {
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url("../../../assets/map-bg-img.png");
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
+    &.is-active {
+      background: var(--secondary-500);
+      transform: translate(-50%, -50%)
+        scale(calc(var(--icon-counter-scale, 1) * 1.12));
+    }
+  }
+
+  // ══════════════════════════════════════════════════════════════
+  //  Detail-mode toggles
+  //  --------------------------------------------------------------
+  //  .is-detail is added to .__viewport when a district is
+  //  selected (click or `data-default-district` auto-select on a
+  //  sub-page). Restores the spotlight: dim everything else, zoom
+  //  the stage, fade in the icons. Note that the active district
+  //  itself gets NO border (per brief) — fill AND stroke are both
+  //  forced off, so the only boundary visible is the natural
+  //  transition between the dim mask (outside) and the bright
+  //  satellite (inside).
+  // ══════════════════════════════════════════════════════════════
+  &__viewport.is-detail {
+    // Hide Map2 overlay → cleaner satellite render
+    .jcd-map__bg--overlay {
+      opacity: 0;
     }
 
-    // Layers — the three map visuals (mask img + SVG + icons) that zoom/translate
-    // together on district selection. Keeping the transform here means the stage
-    // background is always full-bleed and can never be exposed at the edges.
-    &__layers {
-        position: absolute;
-        inset: 0;
-        transform-origin: 50% 50%;
-        transition: transform 0.55s cubic-bezier(0.65, 0, 0.35, 1);
-        will-change: transform;
+    // No hover labels in detail mode (district name lives in panel)
+    .jcd-map__label {
+      opacity: 0 !important;
     }
 
-    // Background images (both share the 1049 × 784 viewBox)
-    &__bg {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        pointer-events: none;
+    // Strong dim: 0.92 so inactive districts read as near-black,
+    // matching the Figma's heavy contrast between active and dim.
+    .jcd-map__dim {
+      opacity: 0.92;
     }
 
-    &__bg--mask {
-        z-index: 1;
-        max-width: 1440px;
-        object-fit: contain;
-        left: -118px;
-        // left: 50%;
-        // transform: translateX(-50%);
+    // Defensive: kill the legacy gold hover-fill path in case
+    // older JS is still around to update its `d`. The path stays
+    // in the DOM but is hard-hidden so nothing it does can paint
+    // a cream/gold border around the active district.
+    .jcd-map__hover-fill {
+      display: none !important;
+      opacity: 0 !important;
+      visibility: hidden !important;
     }
 
-    &__bg--overlay {
-        z-index: 1;
-        transition: opacity 0.45s var(--ease);
+    // Lock pointer events out on inactive districts so the user
+    // can't fight the active selection while reading the panel.
+    .jcd-map__district:not(.is-active) {
+      pointer-events: none;
     }
 
-    // SVG overlay: dim-mask + 6 district paths + labels
-    &__svg {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        left: -118px;
-        height: 100%;
-        z-index: 2;
+    // Active district: NO fill AND NO stroke. The previous build
+    // kept a 1.5 px black stroke which, combined with the dim
+    // mask's edge anti-aliasing, occasionally read as a visible
+    // light/cream ring (the user's "white border" complaint).
+    // Removing the stroke leaves the dim/no-dim transition as
+    // the sole boundary, which is what the Figma shows.
+    .jcd-map__district.is-active {
+      fill: transparent !important;
+      stroke: none !important;
+      stroke-width: 0 !important;
+      cursor: default;
+      pointer-events: auto;
+      outline: none;
     }
 
-    // ══════════════════════════════════════════════════════════════
-    //  District polygons
-    //  --------------------------------------------------------------
-    //   pointer-events: all  →  Critical fix. With a transparent fill
-    //                           (rgba(_,0)), the default
-    //                           `pointer-events: visiblePainted` only
-    //                           registers hits on the 1.5 px stroke,
-    //                           which is why hover felt unreliable on
-    //                           the interior of each shape. `all`
-    //                           makes the entire fill area hit-test
-    //                           regardless of paint.
-    //   stroke #000          →  Black gaps between districts.
-    // ══════════════════════════════════════════════════════════════
-    .jcd-map__district {
-        // fill: rgba(204, 162, 88, 0);
-        stroke: #000;
-        stroke-width: 0;
-        stroke-linejoin: round;
-        cursor: pointer;
-        pointer-events: all;
-        transition:
-            fill 0.25s var(--ease),
-            stroke 0.25s var(--ease);
+    .jcd-map__icon {
+      opacity: 1;
+    }
+  }
 
-        &:hover,
-        &.is-hover,
-        &:focus,
-        &:focus-visible {
-            fill: rgba(204, 159, 83, 1);
-            opacity: 0.8;
-            outline: none;
-        }
+  // ══════════════════════════════════════════════════════════════
+  //  Panel — absolute overlay, bottom-right of the map viewport
+  // ══════════════════════════════════════════════════════════════
+  &__panel {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 10;
+    width: clamp(260px, 32%, 380px);
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+      width: 4px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 2px;
     }
 
-    // ── Dim layer (spotlight on the active district) ──────────────
-    //  Faded in only when the viewport carries .is-detail. The SVG
-    //  <mask> punches out the active district's path so it stays
-    //  bright while everything else darkens. Strong opacity (0.85)
-    //  matches the Figma's near-black inactive-district treatment.
-    &__dim {
-        // fill: #000;
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.45s var(--ease);
+    &[hidden] {
+      display: none;
+    }
+  }
+
+  // ── Detail side-panel (grid column, shown on district select) ─
+  &__side-panel {
+    position: relative;
+    z-index: 2;
+    background: #2b2f36;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+    height: 100%;
+
+    &::-webkit-scrollbar {
+      width: 4px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 2px;
     }
 
-    // Reserved (JS no-op) — kept in DOM for backwards compat.
-    &__hover-fill {
-        pointer-events: none;
-        opacity: 0;
+    &[hidden] {
+      display: none;
     }
 
-    // ── District name labels (centroids, JS-positioned) ───────────
-    //  Hidden by default; `.is-visible` is toggled by JS to show the
-    //  matching label on hover/focus. Sibling combinators can't span
-    //  the <g> wrappers around paths vs. labels, so a class is the
-    //  simplest reliable mechanism.
-    &__label {
-        font-family: var(--font-body);
-        font-size: 16px;
-        font-weight: 600;
-        fill: #fff;
-        text-anchor: middle;
-        dominant-baseline: middle;
-        pointer-events: none;
-        opacity: 0;
-        transition: opacity 0.2s var(--ease);
-        letter-spacing: 0.2px;
-        // Subtle dark halo so white text stays readable over both
-        // satellite imagery and the gold hover fill.
-        paint-order: stroke fill;
-        stroke: rgba(0, 0, 0, 0.85);
-        stroke-width: 3px;
-        stroke-linejoin: round;
-
-        tspan {
-            text-anchor: middle;
-        }
+    // Title inside the detail panel is white and smaller
+    .jcd-map__panel-title {
+      font-size: 40px;
+      line-height: 1.15;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: #ddbf8c;
+      max-width: none;
     }
 
-    // ── Attraction-icon tooltip ────────────────────────────────────
-    &__tooltip {
-        position: absolute;
-        z-index: 6;
-        background: #fff;
-        color: #1a1a1a;
-        font-family: var(--font-body);
-        font-size: 13px;
-        font-weight: 500;
-        line-height: 1.2;
-        padding: 8px 12px;
-        border-radius: 4px;
-        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
-        pointer-events: none;
-        white-space: nowrap;
-        transform: translate(-50%, calc(-100% - 12px));
-        opacity: 0;
-        transition: opacity 0.18s var(--ease);
+    .jcd-map__detail-content {
+      padding: 56px 48px 56px;
+    }
+  }
 
-        &.is-visible {
-            opacity: 1;
-        }
+  // ── Intro state — centred copy ────────────────────────────────
+  //  Used on jcdc.html before any district has been clicked.
+  &__intro {
+    padding: 32px 28px;
+    margin: 0 0 32px 0;
+    width: 100%;
 
-        &::after {
-            content: "";
-            position: absolute;
-            left: 50%;
-            top: 100%;
-            width: 0;
-            height: 0;
-            transform: translateX(-50%);
-            border-left: 6px solid transparent;
-            border-right: 6px solid transparent;
-            border-top: 6px solid #fff;
-        }
+    &[hidden] {
+      display: none;
+    }
+  }
+
+  // Shared text styling
+  &__panel-title {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: 40px;
+    line-height: 1.15;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: #ddbf8c;
+  }
+
+  &__panel-divider {
+    width: 48px;
+    height: 2px;
+    background: #d4b27c;
+
+    margin-top: 32px;
+    margin-bottom: 24px;
+
+    display: block;
+    flex-shrink: 0;
+  }
+
+  &__divider {
+    width: 48px;
+    height: 2px;
+    background: #d4b27c;
+
+    margin-top: 16px;
+    margin-bottom: 24px;
+
+    display: block;
+    flex-shrink: 0;
+  }
+
+  &__panel-desc {
+    margin: 0;
+
+    font-family: var(--font-body);
+    font-size: 18px;
+    line-height: 1.6;
+    font-weight: 400;
+
+    color: #efefef;
+  }
+
+  &__panel-hint {
+    font-family: var(--font-body);
+    font-size: 18px;
+    font-weight: 700;
+    color: #efefef;
+    margin: 24px 0 0;
+  }
+
+  &__panel-subtitle {
+    font-family: var(--font-body);
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--secondary-500);
+    margin-top: 16px;
+  }
+
+  // ── Detail state ──────────────────────────────────────────────
+  //  The latest jcdc.html structure is FLAT — close button, image
+  //  wrap, title, divider, description, and CTA are all immediate
+  //  children of .jcd-map__detail (no inner .jcd-map__detail-body
+  //  wrapper). So we put the side padding on the detail container
+  //  itself and zero it out for the image wrap so the image can
+  //  remain flush with the panel edges.
+  &__detail {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: #2b2f36;
+    min-height: 100%;
+    padding: 0;
+    overflow: hidden;
+
+    &[hidden] {
+      display: none;
+    }
+  }
+
+  // ── Image wrap — flush with panel edges (top, left, right) ────
+  //  The detail container has 60px horizontal padding, so we use
+  //  negative margins to push the image back out to the panel's
+  //  full width. Negative top margin (-50px) accounts for the
+  //  default flex gap from `flex-direction: column`.
+  &__detail-img-wrap {
+    position: relative;
+    width: 100%;
+    height: 280px;
+    min-height: 280px;
+    overflow: hidden;
+    flex-shrink: 0;
+    margin: 0;
+  }
+
+  // CONTENT WRAPPER
+  &__detail-content {
+    display: flex;
+    flex-direction: column;
+    padding: 48px;
+    flex: 1;
+  }
+
+  &__detail-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  // Close button — top-inline-start of the panel. Position is
+  // relative to .jcd-map__detail (which is position: relative).
+  // The ring + heavier background ensure visibility against any
+  // image colour the panel happens to display.
+  &__close {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    z-index: 10;
+
+    width: 44px;
+    height: 44px;
+
+    border-radius: 999px;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+
+    background: rgba(34, 34, 34, 0.7);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: #fff;
+    cursor: pointer;
+
+    transition:
+      background 0.2s ease,
+      transform 0.2s ease;
+
+    svg {
+      width: 16px;
+      height: 16px;
     }
 
-    // ── Attraction icon hotspots ──────────────────────────────────
-    &__icons {
-        position: absolute;
-        inset: 0;
-        z-index: 3;
-        pointer-events: none; // children re-enable
+    &:hover,
+    &:focus-visible {
+      background: rgba(0, 0, 0, 0.9);
+      transform: scale(1.05);
+      outline: none;
     }
+  }
 
-    &__icon {
-        position: absolute;
-        // Counter-scale to compensate for stage zoom (inline CSS var)
-        transform: translate(-50%, -50%) scale(var(--icon-counter-scale, 1));
-        width: 44px;
-        height: 44px;
-        border: none;
-        border-radius: 50%;
-        background: var(--primary-500);
-        color: #fff;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        pointer-events: auto;
-        box-shadow:
-            0 2px 8px rgba(0, 0, 0, 0.35),
-            0 0 0 2px rgba(255, 255, 255, 0.08);
-        opacity: 0;
-        transition:
-            opacity 0.4s var(--ease),
-            background 0.2s var(--ease),
-            transform 0.25s var(--ease);
+  // Optional inner wrapper — supported for backwards compat with
+  // any markup that DOES still wrap text in .jcd-map__detail-body.
+  // The wrapper resets the parent padding to avoid doubling it.
+  &__detail-body {
+    padding: 0;
+    flex: 1;
+  }
 
-        // CRITICAL: the `display: flex` above overrides the user-
-        // agent default for `[hidden]`, so non-active icons keep
-        // showing in detail mode. This rule restores the expected
-        // behaviour for hidden icons (and for icons whose centre
-        // falls outside the active district — see syncIconVisibility
-        // in sections/jcd-map.js).
-        &[hidden] {
-            display: none !important;
-        }
+  &__cta {
+    margin-top: 24px;
+    align-self: flex-start;
+  }
 
-        svg {
-            width: 20px;
-            height: 20px;
-        }
-
-        &:hover,
-        &:focus-visible {
-            background: #005c83;
-            outline: none;
-            transform: translate(-50%, -50%) scale(calc(var(--icon-counter-scale, 1) * 1.12));
-        }
-
-        &.is-active {
-            background: var(--secondary-500);
-            transform: translate(-50%, -50%) scale(calc(var(--icon-counter-scale, 1) * 1.12));
-        }
+  @keyframes jcdMapFadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
     }
-
-    // ══════════════════════════════════════════════════════════════
-    //  Detail-mode toggles
-    //  --------------------------------------------------------------
-    //  .is-detail is added to .__viewport when a district is
-    //  selected (click or `data-default-district` auto-select on a
-    //  sub-page). Restores the spotlight: dim everything else, zoom
-    //  the stage, fade in the icons. Note that the active district
-    //  itself gets NO border (per brief) — fill AND stroke are both
-    //  forced off, so the only boundary visible is the natural
-    //  transition between the dim mask (outside) and the bright
-    //  satellite (inside).
-    // ══════════════════════════════════════════════════════════════
-    &__viewport.is-detail {
-        // Hide Map2 overlay → cleaner satellite render
-        .jcd-map__bg--overlay {
-            opacity: 0;
-        }
-
-        // No hover labels in detail mode (district name lives in panel)
-        .jcd-map__label {
-            opacity: 0 !important;
-        }
-
-        // Strong dim: 0.92 so inactive districts read as near-black,
-        // matching the Figma's heavy contrast between active and dim.
-        .jcd-map__dim {
-            opacity: 0.92;
-        }
-
-        // Defensive: kill the legacy gold hover-fill path in case
-        // older JS is still around to update its `d`. The path stays
-        // in the DOM but is hard-hidden so nothing it does can paint
-        // a cream/gold border around the active district.
-        .jcd-map__hover-fill {
-            display: none !important;
-            opacity: 0 !important;
-            visibility: hidden !important;
-        }
-
-        // Lock pointer events out on inactive districts so the user
-        // can't fight the active selection while reading the panel.
-        .jcd-map__district:not(.is-active) {
-            pointer-events: none;
-        }
-
-        // Active district: NO fill AND NO stroke. The previous build
-        // kept a 1.5 px black stroke which, combined with the dim
-        // mask's edge anti-aliasing, occasionally read as a visible
-        // light/cream ring (the user's "white border" complaint).
-        // Removing the stroke leaves the dim/no-dim transition as
-        // the sole boundary, which is what the Figma shows.
-        .jcd-map__district.is-active {
-            fill: transparent !important;
-            stroke: none !important;
-            stroke-width: 0 !important;
-            cursor: default;
-            pointer-events: auto;
-            outline: none;
-        }
-
-        .jcd-map__icon {
-            opacity: 1;
-        }
+    to {
+      opacity: 1;
+      transform: translateY(0);
     }
-
-    // ══════════════════════════════════════════════════════════════
-    //  Panel — absolute overlay, bottom-right of the map viewport
-    // ══════════════════════════════════════════════════════════════
-    &__panel {
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        z-index: 10;
-        width: clamp(260px, 32%, 380px);
-        color: #fff;
-        display: flex;
-        flex-direction: column;
-        overflow-y: auto;
-
-        &::-webkit-scrollbar {
-            width: 4px;
-        }
-        &::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 2px;
-        }
-
-        &[hidden] {
-            display: none;
-        }
-    }
-
-    // ── Detail side-panel (grid column, shown on district select) ─
-    &__side-panel {
-        position: relative;
-        z-index: 2;
-        background: #2b2f36;
-        color: #fff;
-        display: flex;
-        flex-direction: column;
-        overflow-y: auto;
-        height: 100%;
-
-        &::-webkit-scrollbar {
-            width: 4px;
-        }
-        &::-webkit-scrollbar-thumb {
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 2px;
-        }
-
-        &[hidden] {
-            display: none;
-        }
-
-        // Title inside the detail panel is white and smaller
-        .jcd-map__panel-title {
-            font-size: 40px;
-            line-height: 1.15;
-            font-weight: 600;
-            letter-spacing: -0.01em;
-            color: #ddbf8c;
-            max-width: none;
-        }
-
-        .jcd-map__detail-content {
-            padding: 56px 48px 56px;
-        }
-    }
-
-    // ── Intro state — centred copy ────────────────────────────────
-    //  Used on jcdc.html before any district has been clicked.
-    &__intro {
-        padding: 32px 28px;
-        margin: 0 0 32px 0;
-        width: 100%;
-
-        &[hidden] {
-            display: none;
-        }
-    }
-
-    // Shared text styling
-    &__panel-title {
-        margin: 0;
-        font-family: var(--font-body);
-        font-size: 40px;
-        line-height: 1.15;
-        font-weight: 600;
-        letter-spacing: -0.01em;
-        color: #ddbf8c;
-    }
-
-    &__panel-divider {
-        width: 48px;
-        height: 2px;
-        background: #d4b27c;
-
-        margin-top: 32px;
-        margin-bottom: 24px;
-
-        display: block;
-        flex-shrink: 0;
-    }
-
-    &__divider {
-        width: 48px;
-        height: 2px;
-        background: #d4b27c;
-
-        margin-top: 16px;
-        margin-bottom: 24px;
-
-        display: block;
-        flex-shrink: 0;
-    }
-
-    &__panel-desc {
-        margin: 0;
-
-        font-family: var(--font-body);
-        font-size: 18px;
-        line-height: 1.6;
-        font-weight: 400;
-
-        color: #efefef;
-    }
-
-    &__panel-hint {
-        font-family: var(--font-body);
-        font-size: 18px;
-        font-weight: 700;
-        color: #efefef;
-        margin: 24px 0 0;
-    }
-
-    &__panel-subtitle {
-        font-family: var(--font-body);
-        font-size: 18px;
-        font-weight: 500;
-        color: var(--secondary-500);
-        margin-top: 16px;
-    }
-
-    // ── Detail state ──────────────────────────────────────────────
-    //  The latest jcdc.html structure is FLAT — close button, image
-    //  wrap, title, divider, description, and CTA are all immediate
-    //  children of .jcd-map__detail (no inner .jcd-map__detail-body
-    //  wrapper). So we put the side padding on the detail container
-    //  itself and zero it out for the image wrap so the image can
-    //  remain flush with the panel edges.
-    &__detail {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        background: #2b2f36;
-        min-height: 100%;
-        padding: 0;
-        overflow: hidden;
-
-        &[hidden] {
-            display: none;
-        }
-    }
-
-    // ── Image wrap — flush with panel edges (top, left, right) ────
-    //  The detail container has 60px horizontal padding, so we use
-    //  negative margins to push the image back out to the panel's
-    //  full width. Negative top margin (-50px) accounts for the
-    //  default flex gap from `flex-direction: column`.
-    &__detail-img-wrap {
-        position: relative;
-        width: 100%;
-        height: 280px;
-        min-height: 280px;
-        overflow: hidden;
-        flex-shrink: 0;
-        margin: 0;
-    }
-
-    // CONTENT WRAPPER
-    &__detail-content {
-        display: flex;
-        flex-direction: column;
-        padding: 48px;
-        flex: 1;
-    }
-
-    &__detail-img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-    }
-
-    // Close button — top-inline-start of the panel. Position is
-    // relative to .jcd-map__detail (which is position: relative).
-    // The ring + heavier background ensure visibility against any
-    // image colour the panel happens to display.
-    &__close {
-        position: absolute;
-        top: 16px;
-        left: 16px;
-        z-index: 10;
-
-        width: 44px;
-        height: 44px;
-
-        border-radius: 999px;
-        border: 1px solid rgba(255, 255, 255, 0.7);
-
-        background: rgba(34, 34, 34, 0.7);
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        color: #fff;
-        cursor: pointer;
-
-        transition:
-            background 0.2s ease,
-            transform 0.2s ease;
-
-        svg {
-            width: 16px;
-            height: 16px;
-        }
-
-        &:hover,
-        &:focus-visible {
-            background: rgba(0, 0, 0, 0.9);
-            transform: scale(1.05);
-            outline: none;
-        }
-    }
-
-    // Optional inner wrapper — supported for backwards compat with
-    // any markup that DOES still wrap text in .jcd-map__detail-body.
-    // The wrapper resets the parent padding to avoid doubling it.
-    &__detail-body {
-        padding: 0;
-        flex: 1;
-    }
-
-    &__cta {
-        margin-top: 24px;
-        align-self: flex-start;
-    }
-
-    @keyframes jcdMapFadeIn {
-        from {
-            opacity: 0;
-            transform: translateY(8px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
+  }
 }
 
 // ──────────────────────────────────────────────────────────────────────
@@ -648,32 +652,32 @@
 //  setHoverDistrict in sections/jcd-map.js).
 // ──────────────────────────────────────────────────────────────────────
 .jcd-map__viewport:not(.is-detail) .jcd-map__label.is-visible {
-    opacity: 1;
+  opacity: 1;
 }
 
 // ──────────────────────────────────────────────────────────────────────
 //  Tablet (≤ 1199 px) — same 2-column layout, tighter panel padding
 // ──────────────────────────────────────────────────────────────────────
 @media (max-width: 1199px) {
-    .jcd-map__container {
-        grid-template-columns: minmax(0, 1fr) minmax(360px, 480px);
-    }
-    .jcd-map__intro {
-        padding: 0 40px;
-    }
-    .jcd-map__detail {
-        padding: 0 40px 36px;
-    }
-    .jcd-map__detail-img-wrap {
-        width: calc(100% + 80px);
-        margin-inline: -40px;
-    }
-    .jcd-map__panel-title {
-        font-size: 32px;
-    }
-    .jcd-map__label {
-        font-size: 14px;
-    }
+  .jcd-map__container {
+    grid-template-columns: minmax(0, 1fr) minmax(360px, 480px);
+  }
+  .jcd-map__intro {
+    padding: 0 40px;
+  }
+  .jcd-map__detail {
+    padding: 0 40px 36px;
+  }
+  .jcd-map__detail-img-wrap {
+    width: calc(100% + 80px);
+    margin-inline: -40px;
+  }
+  .jcd-map__panel-title {
+    font-size: 32px;
+  }
+  .jcd-map__label {
+    font-size: 14px;
+  }
 }
 
 // ──────────────────────────────────────────────────────────────────────
@@ -683,94 +687,98 @@
 //  the intro panel below the map.
 // ──────────────────────────────────────────────────────────────────────
 @media (max-width: 991px) {
-    // Both idle and detail mode: single column, map on top, panel below
-    .jcd-map__container,
-    .jcd-map__container.is-detail {
-        display: block;
-        grid-template-columns: unset;
-        grid-template-rows: unset;
-        max-height: none;
+  // Both idle and detail mode: single column, map on top, panel below
+  .jcd-map__container,
+  .jcd-map__container.is-detail {
+    display: block;
+    grid-template-columns: unset;
+    grid-template-rows: unset;
+    max-height: none;
+  }
+
+  // Viewport: fixed-height scroll window in both modes
+  .jcd-map__viewport,
+  .jcd-map__container.is-detail .jcd-map__viewport {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    height: 56vh;
+    max-height: 560px;
+    aspect-ratio: unset;
+    overflow: auto;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    background: #080808;
+  }
+
+  // In detail mode the zoom transform frames the district — disable all scroll so
+  // the gap below __scroll (shorter than the viewport at narrow widths when panel
+  // is hidden) is never visible and the page background cannot bleed through.
+  .jcd-map__viewport.is-detail {
+    overflow: hidden;
+  }
+
+  // Scroll: full-res map at 760px wide, height derived from aspect-ratio
+  .jcd-map__scroll {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1049 / 784;
+  }
+
+  // Reset the desktop -118px left offset so the full map is reachable from scroll position 0
+  .jcd-map__bg--mask,
+  .jcd-map__svg {
+    left: 0;
+  }
+
+  // Panel flows after the map inside the scroll box — reached by scrolling down
+  .jcd-map__panel {
+    position: relative;
+    bottom: auto;
+    right: auto;
+    width: 100%;
+    min-height: 0;
+    background: #0d0d0d;
+  }
+
+  .jcd-map__intro {
+    padding: 48px 40px;
+    margin: 0 auto;
+  }
+  .jcd-map__detail {
+    padding: 0 40px 32px;
+  }
+  .jcd-map__detail-img-wrap {
+    width: calc(100% + 80px);
+    margin-inline: -40px;
+  }
+
+  // Side-panel stacks below the map in detail mode
+  .jcd-map__side-panel {
+    display: block;
+    height: auto;
+    min-height: 0;
+    width: 100%;
+    &[hidden] {
+      display: none;
     }
 
-    // Viewport: fixed-height scroll window in both modes
-    .jcd-map__viewport,
-    .jcd-map__container.is-detail .jcd-map__viewport {
-        display: block;
-        width: 100%;
-        max-width: 100%;
-        margin: 0;
-        height: 56vh;
-        max-height: 560px;
-        aspect-ratio: unset;
-        overflow: auto;
-        -webkit-overflow-scrolling: touch;
-        overscroll-behavior: contain;
-        scrollbar-width: thin;
+    .jcd-map__panel-title {
+      font-size: 28px;
     }
-
-    // Lock scrolling when a district is active — zoom transform handles the view
-    .jcd-map__viewport.is-detail {
-        overflow: hidden;
-    }
-
-    // Scroll: full-res map at 760px wide, height derived from aspect-ratio
-    .jcd-map__scroll {
-        width: 100%;
-        height: auto;
-        aspect-ratio: 1049 / 784;
-    }
-
-    // Reset the desktop -118px left offset so the full map is reachable from scroll position 0
-    .jcd-map__bg--mask,
-    .jcd-map__svg {
-        left: 0;
-    }
-
-    // Panel flows after the map inside the scroll box — reached by scrolling down
-    .jcd-map__panel {
-        position: relative;
-        bottom: auto;
-        right: auto;
-        width: 100%;
-        min-height: 0;
-        background: #0d0d0d;
-    }
-
-    .jcd-map__intro {
-        padding: 48px 40px;
-        margin: 0 auto;
-    }
-    .jcd-map__detail {
-        padding: 0 40px 32px;
+    .jcd-map__detail-content {
+      padding: 36px 32px 40px;
     }
     .jcd-map__detail-img-wrap {
-        width: calc(100% + 80px);
-        margin-inline: -40px;
+      height: 220px;
     }
-
-    // Side-panel stacks below the map in detail mode
-    .jcd-map__side-panel {
-        display: block;
-        height: auto;
-        min-height: 0;
-        width: 100%;
-        &[hidden] {
-            display: none;
-        }
-
-        .jcd-map__panel-title {
-            font-size: 28px;
-        }
-        .jcd-map__detail-content {
-            padding: 36px 32px 40px;
-        }
-        .jcd-map__detail-img-wrap {
-            height: 220px;
-        }
-        .jcd-map__cta {
-            margin-top: 20px;
-        }
+    .jcd-map__cta {
+      margin-top: 20px;
     }
+  }
 }
 
 // ──────────────────────────────────────────────────────────────────────
@@ -779,144 +787,150 @@
 //  Labels always visible (no hover on touch).
 // ──────────────────────────────────────────────────────────────────────
 @media (max-width: 767px) {
-    .jcd-map {
-        overflow-x: clip;
+  .jcd-map {
+    overflow-x: clip;
+  }
+
+  // Both idle and detail: single column, map on top, panel/side-panel below
+  .jcd-map__container,
+  .jcd-map__container.is-detail {
+    display: block;
+    grid-template-columns: unset;
+    grid-template-rows: unset;
+    max-height: none;
+  }
+
+  // Viewport: fixed-height scroll window in both modes
+  .jcd-map__viewport,
+  .jcd-map__container.is-detail .jcd-map__viewport {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    aspect-ratio: unset;
+    height: 60vh;
+    max-height: 480px;
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    background: #080808;
+  }
+
+  // In detail mode lock all scroll — same reason as ≤991px block
+  .jcd-map__viewport.is-detail {
+    overflow: hidden;
+  }
+
+  // Scroll: full-res map at 760px wide, height from aspect-ratio
+  .jcd-map__scroll {
+    width: 760px;
+    height: auto;
+    aspect-ratio: 1049 / 784;
+  }
+
+  // Reset the desktop -118px left offset so the full map is reachable from scroll position 0
+  .jcd-map__bg--mask,
+  .jcd-map__svg {
+    left: 0;
+  }
+
+  // Panel flows after the map inside the scroll box
+  .jcd-map__panel {
+    position: relative;
+    bottom: auto;
+    right: auto;
+    width: 760px;
+    background: #0d0d0d;
+  }
+
+  .jcd-map__viewport:not(.is-detail) .jcd-map__label {
+    opacity: 1;
+  }
+  .jcd-map__label {
+    font-size: 13px;
+  }
+
+  .jcd-map__intro {
+    padding: 28px 24px;
+    max-width: none;
+  }
+  .jcd-map__detail {
+    padding: 0 24px 28px;
+  }
+  .jcd-map__detail-img-wrap {
+    width: calc(100% + 48px);
+    margin-inline: -24px;
+  }
+  .jcd-map__panel-title {
+    font-size: 22px;
+    margin-bottom: 16px;
+  }
+  .jcd-map__panel-desc {
+    font-size: 14px;
+    margin-bottom: 16px;
+  }
+
+  .jcd-map__icon {
+    width: 36px;
+    height: 36px;
+    svg {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  .jcd-map__close {
+    top: 12px;
+    inset-inline-start: 12px;
+    width: 36px;
+    height: 36px;
+  }
+
+  .jcd-map__tooltip {
+    font-size: 11px;
+    padding: 6px 10px;
+  }
+
+  // Side-panel stacks below the map in detail mode
+  .jcd-map__side-panel {
+    display: block;
+    height: auto;
+    min-height: 0;
+    width: 100%;
+    &[hidden] {
+      display: none;
     }
 
-    // Both idle and detail: single column, map on top, panel/side-panel below
-    .jcd-map__container,
-    .jcd-map__container.is-detail {
-        display: block;
-        grid-template-columns: unset;
-        grid-template-rows: unset;
-        max-height: none;
+    .jcd-map__panel-title {
+      font-size: 22px;
     }
-
-    // Viewport: fixed-height scroll window in both modes
-    .jcd-map__viewport,
-    .jcd-map__container.is-detail .jcd-map__viewport {
-        display: block;
-        width: 100%;
-        max-width: 100%;
-        margin: 0;
-        aspect-ratio: unset;
-        height: 60vh;
-        max-height: 480px;
-        overflow: auto;
-        -webkit-overflow-scrolling: touch;
-        overscroll-behavior: contain;
-        scrollbar-width: thin;
-    }
-
-    // Scroll: full-res map at 760px wide, height from aspect-ratio
-    .jcd-map__scroll {
-        width: 760px;
-        height: auto;
-        aspect-ratio: 1049 / 784;
-    }
-
-    // Reset the desktop -118px left offset so the full map is reachable from scroll position 0
-    .jcd-map__bg--mask,
-    .jcd-map__svg {
-        left: 0;
-    }
-
-    // Panel flows after the map inside the scroll box
-    .jcd-map__panel {
-        position: relative;
-        bottom: auto;
-        right: auto;
-        width: 760px;
-        background: #0d0d0d;
-    }
-
-    .jcd-map__viewport:not(.is-detail) .jcd-map__label {
-        opacity: 1;
-    }
-    .jcd-map__label {
-        font-size: 13px;
-    }
-
-    .jcd-map__intro {
-        padding: 28px 24px;
-        max-width: none;
-    }
-    .jcd-map__detail {
-        padding: 0 24px 28px;
+    .jcd-map__detail-content {
+      padding: 24px 20px 28px;
     }
     .jcd-map__detail-img-wrap {
-        width: calc(100% + 48px);
-        margin-inline: -24px;
-    }
-    .jcd-map__panel-title {
-        font-size: 22px;
-        margin-bottom: 16px;
+      height: 180px;
+      min-height: 180px;
     }
     .jcd-map__panel-desc {
-        font-size: 14px;
-        margin-bottom: 16px;
+      font-size: 14px;
     }
-
-    .jcd-map__icon {
-        width: 36px;
-        height: 36px;
-        svg {
-            width: 16px;
-            height: 16px;
-        }
+    .jcd-map__panel-divider {
+      margin-top: 20px;
+      margin-bottom: 16px;
     }
-
-    .jcd-map__close {
-        top: 12px;
-        inset-inline-start: 12px;
-        width: 36px;
-        height: 36px;
+    .jcd-map__cta {
+      margin-top: 16px;
+      min-height: 50px;
     }
-
-    .jcd-map__tooltip {
-        font-size: 11px;
-        padding: 6px 10px;
-    }
-
-    // Side-panel stacks below the map in detail mode
-    .jcd-map__side-panel {
-        display: block;
-        height: auto;
-        min-height: 0;
-        width: 100%;
-        &[hidden] {
-            display: none;
-        }
-
-        .jcd-map__panel-title {
-            font-size: 22px;
-        }
-        .jcd-map__detail-content {
-            padding: 24px 20px 28px;
-        }
-        .jcd-map__detail-img-wrap {
-            height: 180px;
-            min-height: 180px;
-        }
-        .jcd-map__panel-desc {
-            font-size: 14px;
-        }
-        .jcd-map__panel-divider {
-            margin-top: 20px;
-            margin-bottom: 16px;
-        }
-        .jcd-map__cta {
-            margin-top: 16px;
-            min-height: 50px;
-        }
-    }
+  }
 }
 
 @media (max-width: 425px) {
-    .jcd-map__panel-title {
-        font-size: 20px;
-    }
-    .jcd-map__label {
-        font-size: 11px;
-    }
+  .jcd-map__panel-title {
+    font-size: 20px;
+  }
+  .jcd-map__label {
+    font-size: 11px;
+  }
 }
