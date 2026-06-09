@@ -150,7 +150,7 @@ $text-color: rgba(91, 95, 98, 1);
             min-height: auto;
             &__content {
                 padding: 64px 16px;
-                gap: 22px;
+                gap: 32px;
             }
 
             &__image-wrapper {
@@ -159,7 +159,8 @@ $text-color: rgba(91, 95, 98, 1);
             }
 
             &__title {
-                font-size: 40px;
+                font-size: 44px;
+                font-weight: 500;
             }
         }
     }
@@ -223,9 +224,9 @@ $text-color: rgba(91, 95, 98, 1);
             width: 250px;
             height: 800px;
 
-            top: auto;
+            top: 40px;
             bottom: 0;
-            left: -40px;
+            left: 0px;
 
             background-size: contain;
             background-position: bottom left;
@@ -253,5 +254,15 @@ $text-color: rgba(91, 95, 98, 1);
             max-width: 100%;
             height: 341px;
         }
+    }
+}
+
+[dir="rtl"] .invest-central {
+    &::before {
+        left: auto;
+        right: 0;
+
+        transform: scaleX(-1);
+        transform-origin: center;
     }
 }

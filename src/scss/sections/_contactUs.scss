@@ -6,185 +6,185 @@
 // ==========================================
 
 .contact-us {
-  width: 100%;
-  background: #f9f9f9;
-  padding: 64px 120px;
-
-  // ==========================================
-  // Container
-  // ==========================================
-  &__container {
     width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-  }
+    background: #f9f9f9;
+    padding: 64px 120px;
 
-  // ==========================================
-  // Two-column layout (50 / 50)
-  // ==========================================
-  &__grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 80px;
-    align-items: center;
-  }
-
-  // ==========================================
-  // Left column — form / success
-  // ==========================================
-  &__left {
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-    min-width: 0;
-  }
-
-  &__heading {
-    margin: 0;
-    margin-bottom: 24px;
-
-    font-family: var(--font-body);
-    font-size: 40px;
-    font-weight: 500;
-    line-height: 120%;
-    color: var(--primary-500);
-  }
-
-  // ==========================================
-  // Right column — address card + get directions
-  // Offset from top to align with form block on desktop.
-  // ==========================================
-  &__right {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    max-width: 486px;
-    width: 100%;
-    justify-self: end;
-    [dir="rtl"] & {
-      // RTL: keep same offset, content flows right-to-left
-    }
-  }
-
-  &.is-success {
-    .contact-us__right {
-      padding-top: 0;
-    }
-  }
-
-  // ==========================================
-  // Address card
-  // ==========================================
-  &__address-card {
-    background: #f3f3f3;
-    border-radius: 8px;
-    padding: 24px;
-
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-
-  &__address-title {
-    margin: 0;
-    font-family: var(--font-body);
-    font-size: 24px;
-    font-weight: 500;
-    line-height: 120%;
-    color: var(--primary-500);
-  }
-
-  &__address-text {
-    margin: 0;
-    font-family: var(--font-body);
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 150%;
-    color: var(--text-500);
-    font-style: normal;
-  }
-
-  // ==========================================
-  // Get Directions link
-  // ==========================================
-  &__directions {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    align-self: flex-start;
-    font-family: var(--font-body);
-    font-size: 18px;
-    font-weight: 700;
-    line-height: 150%;
-    color: var(--secondary-500);
-    text-decoration: none;
-    transition: gap var(--dur) var(--ease);
-
-    svg {
-      flex-shrink: 0;
-      transition: transform var(--dur) var(--ease);
-
-      [dir="rtl"] & {
-        transform: scaleX(-1);
-      }
+    // ==========================================
+    // Container
+    // ==========================================
+    &__container {
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
     }
 
-    &:hover {
-      gap: 12px;
+    // ==========================================
+    // Two-column layout (50 / 50)
+    // ==========================================
+    &__grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 80px;
+        align-items: center;
+    }
 
-      svg {
-        transform: translate(2px, -2px);
+    // ==========================================
+    // Left column — form / success
+    // ==========================================
+    &__left {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+        min-width: 0;
+    }
 
+    &__heading {
+        margin: 0;
+        margin-bottom: 24px;
+
+        font-family: var(--font-body);
+        font-size: 40px;
+        font-weight: 500;
+        line-height: 120%;
+        color: var(--primary-500);
+    }
+
+    // ==========================================
+    // Right column — address card + get directions
+    // Offset from top to align with form block on desktop.
+    // ==========================================
+    &__right {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+        max-width: 486px;
+        width: 100%;
+        justify-self: end;
         [dir="rtl"] & {
-          transform: translate(-2px, -2px) scaleX(-1);
+            // RTL: keep same offset, content flows right-to-left
         }
-      }
     }
-  }
+
+    &.is-success {
+        .contact-us__right {
+            padding-top: 0;
+        }
+    }
+
+    // ==========================================
+    // Address card
+    // ==========================================
+    &__address-card {
+        background: #f3f3f3;
+        border-radius: 8px;
+        padding: 24px;
+
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    &__address-title {
+        margin: 0;
+        font-family: var(--font-body);
+        font-size: 24px;
+        font-weight: 500;
+        line-height: 120%;
+        color: var(--primary-500);
+    }
+
+    &__address-text {
+        margin: 0;
+        font-family: var(--font-body);
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 150%;
+        color: var(--text-500);
+        font-style: normal;
+    }
+
+    // ==========================================
+    // Get Directions link
+    // ==========================================
+    &__directions {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        align-self: flex-start;
+        font-family: var(--font-body);
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 150%;
+        color: var(--secondary-500);
+        text-decoration: none;
+        transition: gap var(--dur) var(--ease);
+
+        svg {
+            flex-shrink: 0;
+            transition: transform var(--dur) var(--ease);
+
+            [dir="rtl"] & {
+                transform: scaleX(-1);
+            }
+        }
+
+        &:hover {
+            gap: 12px;
+
+            svg {
+                transform: translate(2px, -2px);
+
+                [dir="rtl"] & {
+                    transform: translate(-2px, -2px) scaleX(-1);
+                }
+            }
+        }
+    }
 }
 
 // ==========================================
 // Contact form (BEM block — sits inside .contact-us__left)
 // ==========================================
 .contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  width: 100%;
-
-  &__row {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-direction: column;
     gap: 20px;
-  }
+    width: 100%;
 
-  &__terms-row {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-
-  &__submit-row {
-    display: flex;
-    justify-content: flex-end; // ◆ was center — align to right per Figma
-    margin-top: 4px;
-
-    [dir="rtl"] & {
-      justify-content: flex-start; // ◆ flip for RTL
+    &__row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
     }
-  }
 
-  &__submit {
-    min-width: 0; // ◆ was 160px — let button hug content
+    &__terms-row {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
 
-    // Match Figma exactly
-    height: 48px;
-    padding: 16px;
-    border-radius: 4px;
-    font-size: 18px;
-    font-weight: 700;
-    line-height: 0.8;
-  }
+    &__submit-row {
+        display: flex;
+        justify-content: flex-end; // ◆ was center — align to right per Figma
+        margin-top: 4px;
+
+        [dir="rtl"] & {
+            justify-content: flex-start; // ◆ flip for RTL
+        }
+    }
+
+    &__submit {
+        min-width: 0; // ◆ was 160px — let button hug content
+        background: transparent;
+        // Match Figma exactly
+        height: 48px;
+        padding: 16px;
+        border-radius: 4px;
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 0.8;
+    }
 }
 
 // ==========================================
@@ -193,141 +193,141 @@
 // Layout: small icon + title + paragraph + back link.
 // ==========================================
 .contact-success {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 24px;
-  max-width: 403px;
-  padding: 32px 24px;
-  outline: none;
-
-  // Respect the HTML `hidden` attribute even though we set display:flex
-  &[hidden] {
-    display: none;
-  }
-
-  &__icon {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: var(--primary-500);
-    color: var(--surface-white);
-
     display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 8px;
-  }
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+    max-width: 403px;
+    padding: 32px 24px;
+    outline: none;
 
-  &__title {
-    margin: 0;
-    font-family: var(--font-body);
-    font-size: 32px;
-    font-weight: 700;
-    line-height: 120%;
-    color: var(--primary-500);
-  }
-
-  &__text {
-    margin: 0;
-    max-width: 520px;
-    font-family: var(--font-body);
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 150%;
-    color: var(--text-500);
-  }
-
-  &__link {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    margin-top: 8px;
-    font-family: var(--font-body);
-    font-size: 18px;
-    font-weight: 700;
-    line-height: 150%;
-    color: var(--secondary-500);
-    text-decoration: none;
-    transition: gap var(--dur) var(--ease);
-
-    svg {
-      flex-shrink: 0;
-      transition: transform var(--dur) var(--ease);
-
-      [dir="rtl"] & {
-        transform: scaleX(-1);
-      }
+    // Respect the HTML `hidden` attribute even though we set display:flex
+    &[hidden] {
+        display: none;
     }
 
-    &:hover {
-      gap: 12px;
+    &__icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: var(--primary-500);
+        color: var(--surface-white);
 
-      svg {
-        transform: translate(2px, -2px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 8px;
+    }
 
-        [dir="rtl"] & {
-          transform: translate(-2px, -2px) scaleX(-1);
+    &__title {
+        margin: 0;
+        font-family: var(--font-body);
+        font-size: 32px;
+        font-weight: 700;
+        line-height: 120%;
+        color: var(--primary-500);
+    }
+
+    &__text {
+        margin: 0;
+        max-width: 520px;
+        font-family: var(--font-body);
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 150%;
+        color: var(--text-500);
+    }
+
+    &__link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 8px;
+        font-family: var(--font-body);
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 150%;
+        color: var(--secondary-500);
+        text-decoration: none;
+        transition: gap var(--dur) var(--ease);
+
+        svg {
+            flex-shrink: 0;
+            transition: transform var(--dur) var(--ease);
+
+            [dir="rtl"] & {
+                transform: scaleX(-1);
+            }
         }
-      }
+
+        &:hover {
+            gap: 12px;
+
+            svg {
+                transform: translate(2px, -2px);
+
+                [dir="rtl"] & {
+                    transform: translate(-2px, -2px) scaleX(-1);
+                }
+            }
+        }
     }
-  }
 }
 
 // ==========================================
 // Large Desktop / Smaller Desktop (1024-1199)
 // ==========================================
 @media (max-width: 1199px) {
-  .contact-us {
-    padding: 64px 48px;
+    .contact-us {
+        padding: 64px 48px;
 
-    &__grid {
-      gap: 48px;
-    }
+        &__grid {
+            gap: 48px;
+        }
 
-    &__heading {
-      font-size: 36px;
-    }
+        &__heading {
+            font-size: 36px;
+        }
 
-    &__right {
-      padding-top: 88px;
-    }
+        &__right {
+            padding-top: 88px;
+        }
 
-    &.is-success {
-      .contact-us__right {
-        padding-top: 0;
-      }
+        &.is-success {
+            .contact-us__right {
+                padding-top: 0;
+            }
+        }
     }
-  }
 }
 
 // ==========================================
 // Tablet (768-1023)
 // ==========================================
 @media (max-width: 1023px) {
-  .contact-us {
-    padding: 64px 32px;
+    .contact-us {
+        padding: 64px 32px;
 
-    &__grid {
-      gap: 40px;
-    }
+        &__grid {
+            gap: 40px;
+        }
 
-    &__heading {
-      font-size: 32px;
-    }
+        &__heading {
+            font-size: 32px;
+        }
 
-    &__right {
-      padding-top: 56px;
-    }
+        &__right {
+            padding-top: 56px;
+        }
 
-    &__address-card {
-      padding: 24px;
-    }
+        &__address-card {
+            padding: 24px;
+        }
 
-    &__address-title {
-      font-size: 20px;
+        &__address-title {
+            font-size: 20px;
+        }
     }
-  }
 }
 
 // ==========================================
@@ -335,77 +335,77 @@
 // Stack vertically: heading → form → submit → address card → directions
 // ==========================================
 @media (max-width: 767px) {
-  .contact-us {
-    padding: 64px 16px; // ◆ Figma exact
+    .contact-us {
+        padding: 64px 16px; // ◆ Figma exact
 
-    &__grid {
-      grid-template-columns: 1fr; // ◆ single column
-      gap: 32px; // ◆ spacing between form and address
+        &__grid {
+            grid-template-columns: 1fr; // ◆ single column
+            gap: 32px; // ◆ spacing between form and address
+        }
+
+        &__left {
+            gap: 24px; // ◆ Figma — between heading and form
+        }
+
+        &__heading {
+            font-size: 32px; // ◆ H3 per Figma
+            margin-bottom: 0; // ◆ gap on parent handles spacing
+            line-height: 1.2;
+        }
+
+        &__right {
+            padding-top: 0; // ◆ no offset on mobile
+            gap: 24px;
+        }
+
+        &__address-card {
+            padding: 24px;
+            gap: 8px;
+        }
+
+        &__address-title {
+            font-size: 20px; // ◆ H5 per Figma
+        }
+
+        &__address-text {
+            font-size: 14px; // ◆ Regular per Figma
+        }
     }
 
-    &__left {
-      gap: 24px; // ◆ Figma — between heading and form
+    .contact-form {
+        gap: 20px;
+
+        // ◆ First/Last name STAY side-by-side on mobile per Figma
+        // (Don't collapse to single column unless screen is very narrow)
+        &__row {
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        .btn {
+            width: 86px !important;
+            background: var(--secondary-500);
+            color: #e6f1f6;
+            min-height: 0px;
+        }
+
+        &__submit-row {
+            justify-content: flex-end; // ◆ Figma — submit aligned to right
+            margin-top: 4px;
+        }
+
+        // ◆ Mobile submit per Figma — filled gold (not outlined)
+        &__submit {
+            min-width: 0;
+            height: 48px;
+            padding: 16px;
+            font-size: 16px;
+            font-weight: 700;
+        }
     }
 
-    &__heading {
-      font-size: 32px; // ◆ H3 per Figma
-      margin-bottom: 0; // ◆ gap on parent handles spacing
-      line-height: 1.2;
+    .contact-success__title {
+        font-size: 24px;
     }
-
-    &__right {
-      padding-top: 0; // ◆ no offset on mobile
-      gap: 24px;
-    }
-
-    &__address-card {
-      padding: 24px;
-      gap: 8px;
-    }
-
-    &__address-title {
-      font-size: 20px; // ◆ H5 per Figma
-    }
-
-    &__address-text {
-      font-size: 14px; // ◆ Regular per Figma
-    }
-  }
-
-  .contact-form {
-    gap: 20px;
-
-    // ◆ First/Last name STAY side-by-side on mobile per Figma
-    // (Don't collapse to single column unless screen is very narrow)
-    &__row {
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-    }
-    .btn {
-      width: 86px !important;
-      background: var(--secondary-500);
-      color: #e6f1f6;
-      min-height: 0px;
-    }
-
-    &__submit-row {
-      justify-content: flex-end; // ◆ Figma — submit aligned to right
-      margin-top: 4px;
-    }
-
-    // ◆ Mobile submit per Figma — filled gold (not outlined)
-    &__submit {
-      min-width: 0;
-      height: 48px;
-      padding: 16px;
-      font-size: 16px;
-      font-weight: 700;
-    }
-  }
-
-  .contact-success__title {
-    font-size: 24px;
-  }
 }
 
 // ==========================================
@@ -413,36 +413,36 @@
 // Now collapse first/last name row to single column
 // ==========================================
 @media (max-width: 480px) {
-  .contact-us {
-    padding: 64px 16px;
+    .contact-us {
+        padding: 64px 16px;
 
-    &__heading {
-      font-size: 32px;
-      margin-bottom: 24px;
+        &__heading {
+            font-size: 32px;
+            margin-bottom: 24px;
+        }
     }
-  }
 
-  .contact-form {
-    &__row {
-      grid-template-rows: 1fr; // ◆ stack on very small screens
-      gap: 20px;
+    .contact-form {
+        &__row {
+            grid-template-rows: 1fr; // ◆ stack on very small screens
+            gap: 20px;
+        }
     }
-  }
 }
 
 // ==========================================
 // Extra Small Mobile (≤ 390) — Galaxy S8 etc
 // ==========================================
 @media (max-width: 390px) {
-  .contact-us {
-    padding: 40px 16px;
+    .contact-us {
+        padding: 40px 16px;
 
-    &__heading {
-      font-size: 24px;
+        &__heading {
+            font-size: 24px;
+        }
     }
-  }
 }
 
 .color_blue {
-  color: #0076a9;
+    color: #0076a9;
 }
