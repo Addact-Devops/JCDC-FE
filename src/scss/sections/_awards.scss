@@ -177,6 +177,9 @@
 }
 
 @media (max-width: 767px) {
+    .awards {
+        padding: 64px 16px;
+    }
     .cert-item {
         width: 200px;
         height: auto; // ◆ was 200px — let content drive height
@@ -208,56 +211,57 @@
 }
 
 @media (max-width: 425px) {
-    .awards {
+    // ◆ GRID MODIFIER ONLY — scoped to .awards--grid-mobile
+    // Without this modifier, mobile keeps the default scroll behavior from the 767px breakpoint
+    .awards--grid-mobile {
         padding: 64px 0;
 
-        &__slider {
-            overflow: hidden; //  remove scroll
+        .awards__slider {
+            overflow: hidden;
             cursor: default;
-            mask-image: none; //  remove fade edges
+            mask-image: none;
             -webkit-mask-image: none;
             padding: 0 16px;
         }
-    }
 
-    .certs {
-        display: grid; //  grid instead of flex
-        grid-template-columns: repeat(2, 1fr); //  2 columns
-        gap: 24px 16px;
-        width: 100%;
-        animation: none !important; //  no scroll animation
+        .certs {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px 16px;
+            width: 100%;
+            animation: none !important;
 
-        //  hide duplicates
-        .cert-item[aria-hidden="true"] {
-            display: none;
-        }
-    }
-
-    .cert-item {
-        width: 100%;
-        height: auto;
-        gap: 16px;
-        min-height: 180px;
-        cursor: default;
-
-        &__logo img {
-            height: 80px;
-            filter: grayscale(0) opacity(1);
-            transition: none;
+            .cert-item[aria-hidden="true"] {
+                display: none;
+            }
         }
 
-        &__title {
-            opacity: 1;
-            position: static;
-            transform: none;
-            font-size: 11px;
-            padding: 0 8px;
-            margin-top: 8px;
-        }
+        .cert-item {
+            width: 100%;
+            height: auto;
+            gap: 16px;
+            min-height: 180px;
+            cursor: default;
 
-        &:hover {
-            .cert-item__logo {
-                transform: translateY(0);
+            &__logo img {
+                height: 80px;
+                filter: grayscale(0) opacity(1);
+                transition: none;
+            }
+
+            &__title {
+                opacity: 1;
+                position: static;
+                transform: none;
+                font-size: 11px;
+                padding: 0 8px;
+                margin-top: 8px;
+            }
+
+            &:hover {
+                .cert-item__logo {
+                    transform: translateY(0);
+                }
             }
         }
     }
