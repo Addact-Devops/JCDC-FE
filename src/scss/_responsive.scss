@@ -69,7 +69,7 @@
 
         &__actions {
             [dir="rtl"] & {
-                flex-direction: row-reverse;
+                flex-direction: row;
             }
         }
     }
@@ -167,7 +167,7 @@
 
         &__actions {
             [dir="rtl"] & {
-                flex-direction: row-reverse;
+                flex-direction: row;
             }
         }
     }
