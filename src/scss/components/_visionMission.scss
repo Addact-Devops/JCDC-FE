@@ -206,7 +206,7 @@ $bg-color: #ffffff;
             right: 0;
         }
     }
-// ==========================================
+    // ==========================================
     // Responsive stacked layout (<= 992px)
     // ==========================================
     @media screen and (max-width: 992px) {
@@ -293,13 +293,13 @@ $bg-color: #ffffff;
         &__bg--vision {
             top: -10px;
             left: -10px;
-            background-image: url("../../../assets/vision.svg");
+            background-image: url("../../../assets/about/Mission/Vector-responsive.svg");
         }
 
         &__bg--mission {
             top: -10px;
             left: -10px;
-            background-image: url("../../../assets/vision.svg");
+            background-image: url("../../../assets/about/Mission/Vector-responsive.svg");
         }
     }
 
@@ -334,7 +334,8 @@ $bg-color: #ffffff;
         }
 
         &__title {
-            font-size: 28px;
+            font-size: 44px;
+            margin: 0 0 10px;
             [dir="rtl"] & {
                 direction: rtl; //  text reads RTL
                 text-align: right; //  text aligns right
@@ -366,13 +367,13 @@ $bg-color: #ffffff;
             top: -10px;
             left: -10px;
 
-            background-image: url("../../../assets/vision.svg");
+            background-image: url("../../../assets/about/Mission/Vector-responsive.svg");
         }
 
         &__bg--mission {
             top: -10px;
             left: -10px;
-            background-image: url("../../../assets/vision.svg");
+            background-image: url("../../../assets/about/Mission/Vector-responsive.svg");
         }
     }
 }
