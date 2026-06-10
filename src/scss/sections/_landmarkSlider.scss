@@ -386,9 +386,59 @@
 }
 
 // ==========================================
-// Tablet (≤ 1024)
+// Medium Desktop (1025–1199) — bridge between full desktop and tablet
+// Keeps card overlap + brings nav arrows inside the viewport
 // ==========================================
-@media (max-width: 1024px) {
+// ◆ CHANGED — was (min-width: 1025px) → (min-width: 1024px)
+@media (max-width: 1260px) {
+    .landmark-slider {
+        padding: 64px 0;
+
+        &__title {
+            font-size: 36px;
+        }
+
+        &__viewport {
+            --slide-width: 90vw;
+            --slide-gap: 24px;
+            padding-block-end: 0; // no padding — card overlaps
+        }
+
+        &__slide {
+            flex: 0 0 calc(100vw - 80px);
+            width: calc(100vw - 80px);
+            height: 560px;
+        }
+
+        &__card {
+            position: absolute;
+            bottom: 65px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 150px);
+            max-width: 1088px;
+            padding: 32px;
+        }
+
+        &__nav {
+            transform: translateY(-50%);
+            top: 50%;
+
+            &--prev {
+                inset-inline-start: 16px;
+                inset-inline-end: auto;
+            }
+
+            &--next {
+                inset-inline-end: 16px;
+                inset-inline-start: auto;
+            }
+        }
+    }
+}
+
+// ◆ CHANGED — was (max-width: 1024px) → (max-width: 1023px)
+@media (max-width: 1023px) {
     .landmark-slider {
         padding: 56px 0 64px;
 
@@ -403,9 +453,13 @@
         }
 
         &__card {
-            bottom: 24px;
-            max-width: calc(100vw - 48px);
-            padding: 20px 24px;
+            position: absolute;
+            bottom: 153px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: calc(100% - 150px);
+            max-width: 1088px;
+            padding: 32px;
         }
 
         &__card-title {
