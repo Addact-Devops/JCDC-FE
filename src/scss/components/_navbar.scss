@@ -313,7 +313,7 @@
 
     &__text {
         padding: 8px;
-        font-family: var(--font-ar); // Arabic text "العربية" in English state
+        font-family: var(--font-cairo); // Arabic text "العربية" in English state
         [dir="rtl"] & {
             font-family: var(--font-en);
         }
