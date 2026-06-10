@@ -179,12 +179,12 @@
 @media (max-width: 767px) {
     .awards {
         padding: 64px 16px;
+        gap: 32px;
     }
     .cert-item {
-        width: 200px;
+        width: 210px;
         height: auto; // ◆ was 200px — let content drive height
-        min-height: 200px; // ◆ NEW — keep a sensible minimum
-        padding: 16px 0; // ◆ NEW — breathing room above/below
+        min-height: 229px; // ◆ NEW — keep a sensible minimum
         overflow: visible; // ◆ NEW — override the base overflow:hidden
         cursor: default;
 
@@ -197,8 +197,8 @@
             opacity: 1;
             position: static;
             transform: none;
-            padding: 0 12px;
-            margin-top: 12px;
+            padding: 0px;
+            margin-top: 16px;
             font-size: 12px;
         }
 
