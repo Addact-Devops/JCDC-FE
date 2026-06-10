@@ -218,3 +218,10 @@
         }
     }
 }
+
+@media (max-width: 767px) {
+    .btn-text {
+        // no gap change on mobile
+        color: #d6b275;
+    }
+}

@@ -517,6 +517,11 @@
         }
         &__cta {
             font-size: 16px;
+            color: #d6b275;
+
+            svg {
+                color: var(--secondary-500);
+            }
         }
     }
 
