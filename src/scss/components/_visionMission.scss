@@ -51,7 +51,7 @@ $bg-color: #ffffff;
         width: 590px;
         height: 556px;
 
-        background: #f2f1f0;
+        background: #f3f3f3;
 
         border-radius: 8px;
 
@@ -60,7 +60,7 @@ $bg-color: #ffffff;
         display: flex;
         flex-direction: column;
 
-        padding: 311px 64px 123px 64px;
+        padding: 301px 81px 113px 54px;
 
         &:has(.vision-mission__bg--vision) {
             order: 1;
@@ -115,13 +115,13 @@ $bg-color: #ffffff;
 
     &__title {
         font-family: "Ubuntu", sans-serif;
-        font-size: 40px;
+        font-size: 48px;
         font-weight: 700;
         line-height: 120%;
 
         color: $primary-color;
 
-        margin: 0 0 16px;
+        margin: 0 0 10px;
         [dir="rtl"] & {
             direction: rtl; //  text reads RTL
             text-align: right; //  text aligns right

@@ -73,11 +73,14 @@
         color: #b4b5b7;
         letter-spacing: 0.1em;
         margin-bottom: 16px;
+        font-family: "Readex Pro";
+        padding: 0px 15px;
     }
 
     &__nav {
         display: flex;
         flex-direction: column;
+        padding: 0px 15px;
     }
 
     &__link {
