@@ -110,7 +110,7 @@
         flex-wrap: wrap;
 
         [dir="rtl"] & {
-            min-width: 850px;
+            min-width: 0px;
         }
 
         a {
@@ -195,8 +195,8 @@
         }
 
         &__legal {
-            gap: 8px 10px;
-            justify-content: flex-end;
+            gap: 8px 11px;
+            justify-content: start;
         }
     }
 }

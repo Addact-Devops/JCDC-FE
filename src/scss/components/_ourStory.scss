@@ -176,9 +176,9 @@ $text-color: rgba(91, 95, 98, 1);
             width: 250px;
             height: 800px;
 
-            top: auto;
+            top: 173px;
             bottom: 0;
-            left: -40px;
+            left: -9px;
 
             background-size: contain;
             background-position: bottom left;
@@ -208,7 +208,7 @@ $text-color: rgba(91, 95, 98, 1);
         }
 
         &__title {
-            font-size: 36px;
+            font-size: 44px;
         }
 
         &__description {
@@ -237,4 +237,40 @@ $text-color: rgba(91, 95, 98, 1);
         transform: scaleX(-1);
         transform-origin: center;
     }
+}
+
+.mobile-vector-bg {
+    position: relative;
+    overflow: hidden;
+
+    &::before {
+        content: "";
+        position: absolute;
+        pointer-events: none;
+
+        background-image: url("../../../assets/vector1.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: bottom left;
+
+        opacity: 0.2;
+    }
+}
+
+@media (max-width: 425px) {
+    .mobile-vector-bg::before {
+        width: 250px;
+        height: 800px;
+
+        top: -12px;
+        bottom: 0;
+        left: 0px;
+    }
+}
+
+[dir="rtl"] .mobile-vector-bg::before {
+    left: auto;
+    right: -40px;
+
+    transform: scaleX(-1);
 }

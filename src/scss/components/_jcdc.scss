@@ -104,6 +104,39 @@
         display: block;
     }
 }
+[dir="rtl"] .jcdc {
+    &::before {
+        left: auto;
+        right: 0;
+
+        transform: scaleX(-1);
+        transform-origin: center;
+    }
+}
+
+@media (max-width: 1199px) {
+    .jcdc {
+        &__content {
+            padding: 64px 48px;
+            gap: 48px;
+        }
+
+        &__left {
+            flex: 0 0 320px;
+        }
+
+        &__title {
+            max-width: 320px;
+            font-size: 32px;
+        }
+
+        &__image {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+        }
+    }
+}
 
 // ==========================================
 // Tablet

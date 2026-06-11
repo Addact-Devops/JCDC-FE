@@ -63,7 +63,7 @@
     // ==========================================
 
     &__card {
-        height: 320px;
+        min-height: 320px;
 
         padding: 40px 24px;
 
@@ -155,6 +155,34 @@
     }
 }
 
+@media (max-width: 1199px) and (min-width: 1025px) {
+    .sustainability-design {
+        padding: 56px 48px;
+
+        &__title {
+            font-size: 42px;
+        }
+
+        &__grid {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px; // ◆ slightly tighter
+        }
+
+        &__card {
+            padding: 32px 20px;
+            gap: 40px; // ◆ tighter gap to give content room
+            min-height: 280px;
+        }
+
+        &__card-title {
+            font-size: 20px;
+        }
+
+        &__card-description {
+            font-size: 15px;
+        }
+    }
+}
 // ==========================================
 // Tablet
 // ==========================================

@@ -1,7 +1,7 @@
 // ==========================================
 // Why Jeddah Central?
-// 6-card grid (3 cols × 2 rows) with gold left accent line
-// Figma: 1440px design, 120px gutter
+// 6-card grid (3 cols × 2 rows) with gold divider lines between columns
+// Figma: 1440px design, responsive
 // ==========================================
 
 .why-jeddah {
@@ -45,7 +45,7 @@
         margin: 0;
         max-width: 720px;
         font-family: var(--font-body);
-        font-size: 16px;
+        font-size: 18px;
         font-weight: 400;
         line-height: 150%;
         color: var(--text-500);
@@ -54,65 +54,45 @@
 
     // ==========================================
     // Grid (3 × 2)
+    // Row gap: 56px, Column gap: 40px
     // ==========================================
     &__grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        padding: 56px;
-        gap: 56px 20px;
+        gap: 56px 40px;
         width: 100%;
+        padding: 56px;
     }
 
     // ==========================================
-    // Card — gold left accent line, no card bg
+    // Card — flexible layout with divider support
     // ==========================================
     &__card {
         display: flex;
         flex-direction: column;
-        gap: 16px;
-
-        // Logical border so it flips automatically in RTL
-
-        padding-inline-start: 20px;
-
-        transition: transform var(--dur) var(--ease);
-
-        &:hover {
-            transform: translateX(2px);
-
-            [dir="rtl"] & {
-                transform: translateX(-2px);
-            }
-        }
-    }
-    &__card-border {
+        gap: 40px;
+        width: 100%;
+        max-width: 336px;
         position: relative;
 
+        // Divider line between columns (on cards in column 2 and 3)
         &::before {
             content: "";
-
             position: absolute;
-
             top: 50%;
-
-            inset-inline-start: 0;
-
+            inset-inline-start: calc(-1 * (40px / 2 + 1px / 2));
             transform: translateY(-50%);
-
             width: 1px;
             height: 80px;
-
             background: var(--secondary-500);
+            opacity: 0; // Hidden by default
         }
-    }
 
-    [dir="rtl"] {
-        .why-jeddah {
-            &__card-border::before {
-                inset-inline-start: auto;
-
-                inset-inline-end: 0;
-            }
+        // Cards in columns 2 and 3 show the divider
+        // 3n+2 = 2,5,... (column 2) and 3n = 3,6,... (column 3)
+        &:nth-child(3n + 2)::before,
+        &:nth-child(3n)::before {
+            opacity: 1;
         }
     }
 
@@ -120,7 +100,6 @@
         width: 72px;
         height: 72px;
         flex-shrink: 0;
-        margin-bottom: 16px;
 
         img,
         svg {
@@ -130,10 +109,17 @@
         }
     }
 
+    &__card-content {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        width: 265.33px;
+    }
+
     &__card-title {
         margin: 0;
         font-family: var(--font-body);
-        font-size: 20px;
+        font-size: 24px;
         font-weight: 500;
         line-height: 120%;
         color: var(--primary-500);
@@ -142,7 +128,7 @@
     &__card-description {
         margin: 0;
         font-family: var(--font-body);
-        font-size: 16px;
+        font-size: 18px;
         font-weight: 400;
         line-height: 150%;
         color: var(--text-500);
@@ -150,15 +136,12 @@
 }
 
 // ==========================================
-// Tablet (≤ 1024)
+// Tablet (≤ 1199)
+// 2 columns, dividers between columns
 // ==========================================
-@media (max-width: 1024px) {
+@media (max-width: 1199px) {
     .why-jeddah {
-        padding: 64px 48px;
-
-        &__container {
-            padding: 0;
-        }
+        padding: 56px 48px;
 
         &__title {
             font-size: 36px;
@@ -170,21 +153,41 @@
 
         &__grid {
             grid-template-columns: repeat(2, 1fr);
-            gap: 40px 24px;
+            gap: 40px 32px;
+            padding: 40px;
+        }
+
+        &__card {
+            max-width: 100%;
+
+            // Divider between columns
+            &::before {
+                inset-inline-start: calc(-1 * (32px / 2 + 1px / 2));
+            }
+
+            // Hide dividers on column 1, show on column 2
+            &:nth-child(2n + 1)::before {
+                opacity: 0;
+            }
+
+            &:nth-child(2n)::before {
+                opacity: 1;
+            }
+        }
+
+        &__card-content {
+            width: 265.33px;
         }
     }
 }
 
 // ==========================================
 // Mobile (≤ 768)
+// 1 column, no dividers
 // ==========================================
 @media (max-width: 768px) {
     .why-jeddah {
-        padding: 48px 0;
-
-        &__container {
-            padding: 0 24px;
-        }
+        padding: 48px 24px;
 
         &__title {
             font-size: 28px;
@@ -201,59 +204,42 @@
 
         &__grid {
             grid-template-columns: 1fr;
-            gap: 24px;
-            width: 100%;
-            max-width: 361px;
-            margin: 0 auto;
+            gap: 48px !important;
             padding: 0;
         }
 
         &__card {
-            position: relative;
-            width: 100%;
-            align-items: flex-start;
-            gap: 0;
-            padding-inline-start: 0;
-            text-align: start;
+            max-width: 100%;
+            gap: 40px;
 
-            &:hover {
-                transform: none;
+            // Hide vertical dividers
+            &::before {
+                display: none;
             }
-        }
 
-        &__card::before,
-        &__card-border::before {
-            display: none;
-        }
-
-        &__card::after {
-            display: none;
-        }
-
-        &__icon {
-            position: relative;
-            width: 44px;
-            height: 44px;
-            margin-bottom: 40px;
-
-            &::after {
+            // Add horizontal divider line between cards (except last card)
+            &:not(:last-child)::after {
                 content: "";
                 position: absolute;
-                inset-inline-start: 0;
                 bottom: -24px;
+                inset-inline-start: 0;
+                inset-inline-end: auto;
                 width: 80px;
-                height: 0;
-                border-top: 1px solid var(--secondary-500);
+                height: 1px;
+                background: var(--secondary-500);
             }
+        }
+
+        &__card-content {
+            width: 265.33px;
         }
 
         &__card-title {
-            margin-bottom: 16px;
-            font-size: 18px;
+            font-size: 20px;
         }
 
         &__card-description {
-            font-size: 15px;
+            font-size: 16px;
         }
     }
 }
@@ -263,14 +249,14 @@
 // ==========================================
 @media (max-width: 480px) {
     .why-jeddah {
-        padding: 40px 0;
-
-        &__container {
-            padding: 0 16px;
-        }
+        padding: 64px 16px;
 
         &__title {
             font-size: 26px;
+        }
+
+        &__grid {
+            gap: 48px;
         }
     }
 }

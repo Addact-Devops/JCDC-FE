@@ -1,5 +1,3 @@
-// components/_navbar.scss
-
 .navbar {
     position: fixed;
     inset-block-start: 0;
@@ -24,11 +22,11 @@
         box-shadow: 0 1px 8px rgba(0, 0, 0, 0.05);
         .navbar__logo--light {
             opacity: 0;
-            display: none;
+            visibility: hidden;
         }
         .navbar__logo--dark {
             opacity: 1;
-            display: block;
+            visibility: visible;
         }
     }
 
@@ -48,21 +46,27 @@
         height: 56px;
         width: 104px;
         display: block;
+        position: relative;
 
         img {
+            position: absolute;
+            inset: 0;
             width: 100%;
             height: 100%;
             object-fit: contain;
             transition: opacity var(--dur) var(--ease);
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            transform: translateZ(0);
             // Logo inherits color from navbar (white → blue)
         }
         &--light {
             opacity: 1;
-            display: block;
+            visibility: visible;
         }
         &--dark {
             opacity: 0;
-            display: none;
+            visibility: hidden;
         }
     }
 
@@ -146,15 +150,15 @@
     font-size: var(--small);
     font-weight: 400;
     line-height: 1.43;
-    color: inherit;
     white-space: nowrap;
     position: relative;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
 
     // add this
     a,
     button {
         color: inherit;
-        transition: color var(--dur) var(--ease);
     }
 
     &::after {
@@ -163,10 +167,9 @@
         inset-block-end: 2px;
         inset-inline-start: 1px;
         inset-inline-end: 5px;
-        height: 1px;
+        height: 2px;
         background: var(--primary-500);
         transform: scaleX(0);
-        transform: scaleY(0);
         transform-origin: var(--origin, left);
         transition: transform var(--dur) var(--ease);
     }
@@ -266,6 +269,15 @@
     }
 }
 
+[dir="rtl"] .dropdown {
+    inset-inline-start: auto;
+    inset-inline-end: -18px;
+
+    a {
+        text-align: right;
+    }
+}
+
 // ── Icon button (search) ───────────────────────────────
 .icon-btn {
     width: 24px;
@@ -301,7 +313,7 @@
 
     &__text {
         padding: 8px;
-        font-family: var(--font-ar); // Arabic text "العربية" in English state
+        font-family: var(--font-cairo); // Arabic text "العربية" in English state
         [dir="rtl"] & {
             font-family: var(--font-en);
         }

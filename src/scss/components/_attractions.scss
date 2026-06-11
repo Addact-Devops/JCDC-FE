@@ -3,286 +3,290 @@
 // ==========================================
 
 .attractions {
-    width: 100%;
-    scroll-margin-top: 96px;
-    background: var(--surface-white);
+  width: 100%;
+  scroll-margin-top: 96px;
+  background: var(--surface-white);
 
-    padding: 100px 120px;
+  padding: 100px 120px;
+
+  display: flex;
+  justify-content: center;
+
+  &__container {
+    width: 100%;
+    max-width: 1440px;
+  }
+
+  // ==========================================
+  // Header
+  // ==========================================
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 8px;
+
+    text-align: center;
+
+    margin-bottom: 56px;
+  }
+
+  &__title {
+    margin: 0;
+
+    font-family: var(--font-body);
+
+    font-size: 40px;
+    font-weight: 500;
+    line-height: 120%;
+
+    color: var(--primary-500);
+  }
+
+  &__desc {
+    margin: 0;
+
+    max-width: 620px;
+
+    font-family: var(--font-body);
+
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 150%;
+
+    color: var(--text-500);
+  }
+
+  // ==========================================
+  // Grid
+  // ==========================================
+
+  &__grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 20px;
+
+    width: 100%;
+  }
+
+  // ==========================================
+  // Card
+  // ==========================================
+
+  &__card {
+    position: relative;
+
+    height: 500px;
+
+    border-radius: 8px;
+
+    overflow: hidden;
+
+    cursor: pointer;
+
+    isolation: isolate;
+
+    &:hover .attractions__card-img {
+      transform: scale(1.04);
+    }
+  }
+
+  &__card:hover {
+    .attractions__card-img {
+      transform: scale(1.04);
+    }
+
+    .attractions__content {
+      transform: translateY(-35px); //  moves content upward
+    }
+
+    .attractions__card-desc {
+      opacity: 1;
+
+      transform: translateY(0);
+    }
+  }
+
+  &__card-img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    transition: transform 0.6s ease;
+  }
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.7) 100%
+    );
+
+    z-index: 1;
+  }
+
+  &__content {
+    position: absolute;
+    inset-inline: 0;
+    bottom: 32px;
+    z-index: 2;
+    padding: 0 32px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+
+    transform: translateY(81px); // ◆ default — content sits lower
+    transition: transform 0.45s ease;
+  }
+
+  &__card-title {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 120%;
+    color: #ddbf8c;
+    transition: transform 0.45s ease;
+  }
+
+  &__card-desc {
+    margin: 0;
+    max-width: 320px;
+
+    // ◆ NEW — fixed height so all descriptions reserve the same space
+    height: 81px; // 3 lines × 27px (18 × 1.5)
+    overflow: hidden; // hide overflow if text is longer
+
+    font-family: var(--font-body);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 150%;
+    color: #efefef;
+
+    opacity: 0;
+    transform: translateY(16px);
+
+    transition:
+      opacity 0.35s ease,
+      transform 0.35s ease;
+  }
+
+  // ==========================================
+  // Bottom CTA
+  // ==========================================
+
+  &__bottom {
+    margin-top: 56px;
 
     display: flex;
     justify-content: center;
+  }
 
-    &__container {
-        width: 100%;
-        max-width: 1440px;
-    }
+  // ==========================================
+  // Tablet
+  // ==========================================
 
-    // ==========================================
-    // Header
-    // ==========================================
-
-    &__header {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-        gap: 8px;
-
-        text-align: center;
-
-        margin-bottom: 56px;
-    }
+  @media (max-width: 1024px) {
+    padding: 56px 48px;
 
     &__title {
-        margin: 0;
-
-        font-family: var(--font-body);
-
-        font-size: 40px;
-        font-weight: 500;
-        line-height: 120%;
-
-        color: var(--primary-500);
+      font-size: 36px;
     }
-
-    &__desc {
-        margin: 0;
-
-        max-width: 620px;
-
-        font-family: var(--font-body);
-
-        font-size: 16px;
-        font-weight: 400;
-        line-height: 150%;
-
-        color: var(--text-500);
-    }
-
-    // ==========================================
-    // Grid
-    // ==========================================
 
     &__grid {
-        display: grid;
-
-        grid-template-columns: repeat(3, 1fr);
-
-        gap: 20px;
-
-        width: 100%;
+      gap: 16px;
     }
-
-    // ==========================================
-    // Card
-    // ==========================================
 
     &__card {
-        position: relative;
-
-        height: 500px;
-
-        border-radius: 8px;
-
-        overflow: hidden;
-
-        cursor: pointer;
-
-        isolation: isolate;
-
-        &:hover .attractions__card-img {
-            transform: scale(1.04);
-        }
-    }
-
-    &__card:hover {
-        .attractions__card-img {
-            transform: scale(1.04);
-        }
-
-        .attractions__content {
-            transform: translateY(-35px); //  moves content upward
-        }
-
-        .attractions__card-desc {
-            opacity: 1;
-
-            transform: translateY(0);
-        }
-    }
-
-    &__card-img {
-        width: 100%;
-        height: 100%;
-
-        object-fit: cover;
-
-        transition: transform 0.6s ease;
-    }
-
-    &__overlay {
-        position: absolute;
-        inset: 0;
-
-        background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 100%);
-
-        z-index: 1;
-    }
-
-    &__content {
-        position: absolute;
-        inset-inline: 0;
-        bottom: 32px;
-        z-index: 2;
-        padding: 0 32px;
-
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 16px;
-
-        transform: translateY(81px); // ◆ default — content sits lower
-        transition: transform 0.45s ease;
+      height: 420px;
     }
 
     &__card-title {
-        margin: 0;
-        font-family: var(--font-body);
-        font-size: 32px;
-        font-weight: 500;
-        line-height: 120%;
-        color: #ddbf8c;
-        transition: transform 0.45s ease;
+      font-size: 28px;
+    }
+  }
+
+  // ==========================================
+  // Mobile
+  // ==========================================
+
+  @media (max-width: 768px) {
+    padding: 64px 24px;
+    &__content {
+      transform: none !important;
+      margin-bottom: 46px;
+    }
+    &__header {
+      margin-bottom: 32px;
+    }
+
+    &__title {
+      font-size: 28px;
+      font-weight: 700;
     }
 
     &__card-desc {
-        margin: 0;
-        max-width: 320px;
-
-        // ◆ NEW — fixed height so all descriptions reserve the same space
-        height: 81px; // 3 lines × 27px (18 × 1.5)
-        overflow: hidden; // hide overflow if text is longer
-
-        font-family: var(--font-body);
-        font-size: 18px;
-        font-weight: 400;
-        line-height: 150%;
-        color: #efefef;
-
-        opacity: 0;
-        transform: translateY(16px);
-
-        transition:
-            opacity 0.35s ease,
-            transform 0.35s ease;
+      opacity: 1;
+      transform: none;
+      font-size: 14px;
     }
-
-    // ==========================================
-    // Bottom CTA
-    // ==========================================
-
     &__bottom {
-        margin-top: 56px;
-
-        display: flex;
-        justify-content: center;
+      margin-top: 32px;
     }
 
-    // ==========================================
-    // Tablet
-    // ==========================================
-
-    @media (max-width: 1024px) {
-        padding: 56px 48px;
-
-        &__title {
-            font-size: 36px;
-        }
-
-        &__grid {
-            gap: 16px;
-        }
-
-        &__card {
-            height: 420px;
-        }
-
-        &__card-title {
-            font-size: 28px;
-        }
+    &__desc {
+      font-size: 16px;
     }
 
-    // ==========================================
-    // Mobile
-    // ==========================================
+    &__grid {
+      grid-template-columns: 1fr;
 
-    @media (max-width: 768px) {
-        padding: 64px 24px;
-        &__content {
-            transform: none !important;
-            margin-bottom: 46px;
-        }
-        &__header {
-            margin-bottom: 32px;
-        }
-
-        &__title {
-            font-size: 28px;
-            font-weight: 700;
-        }
-
-        &__card-desc {
-            opacity: 1;
-            transform: none;
-            font-size: 14px;
-        }
-        &__bottom {
-            margin-top: 32px;
-        }
-
-        &__desc {
-            font-size: 16px;
-        }
-
-        &__grid {
-            grid-template-columns: 1fr;
-
-            gap: 16px;
-        }
-
-        &__card {
-            min-height: 500px;
-        }
-
-        &__card-title {
-            font-size: 28px;
-        }
-        &__card-desc {
-            font-size: 15px;
-        }
+      gap: 16px;
     }
 
-    // ==========================================
-    // Small Mobile
-    // ==========================================
-
-    @media (max-width: 480px) {
-        padding: 64px 16px;
-
-        &__title {
-            font-size: 33px;
-            font-weight: 700;
-        }
-
-        &__card {
-            min-height: 500px;
-        }
-
-        &__card-title {
-            font-size: 28px;
-        }
-        &__card-desc {
-            font-size: 15px;
-        }
+    &__card {
+      min-height: 500px;
     }
+
+    &__card-title {
+      font-size: 28px;
+    }
+    &__card-desc {
+      font-size: 15px;
+    }
+  }
+
+  // ==========================================
+  // Small Mobile
+  // ==========================================
+
+  @media (max-width: 480px) {
+    padding: 64px 16px;
+
+    &__title {
+      font-size: 33px;
+      font-weight: 700;
+    }
+
+    &__card {
+      min-height: 500px;
+    }
+
+    &__card-title {
+      font-size: 28px;
+    }
+    &__card-desc {
+      font-size: 15px;
+    }
+  }
 }

@@ -56,21 +56,20 @@
     }
 
     .navbar {
+        &__inner {
+            justify-content: flex-start;
+        }
+
         &__logo {
             width: 80px;
             height: 44px;
             margin-inline: 0;
             margin-inline-end: auto;
-
-            [dir="rtl"] & {
-                margin-inline-end: 0;
-                margin-inline-start: auto;
-            }
         }
 
         &__actions {
             [dir="rtl"] & {
-                flex-direction: row-reverse;
+                flex-direction: row;
             }
         }
     }
@@ -79,9 +78,9 @@
         height: 600px;
 
         &__content {
-            top: 50%; // ◆ NEW
+            top: 50%;
             left: 50%;
-            transform: translate(-50%, -50%); // ◆ added Y axis
+            transform: translate(-50%, -50%);
             width: 100%;
             max-width: 1200px;
         }
@@ -134,9 +133,6 @@
     .news {
         padding: 56px 48px;
     }
-    // .footer {
-    //     padding: 24px 48px;
-    // }
 }
 
 // ═══════════════════════════════════════════════════
@@ -148,7 +144,6 @@
         --nav-height: 72px;
     }
 
-    // Hide desktop nav
     .navbar__menu {
         display: none;
     }
@@ -159,32 +154,20 @@
     .navbar {
         padding: 12px 24px;
 
-        // &.is-solid {
-        //     padding-block-start: 20px; // 👈 normal padding when solid
-        // }
-
         &__inner {
-            gap: 24px; //  CHANGED — fixed gap between items
+            gap: 24px;
             padding-top: 0;
-
-            [dir="rtl"] & {
-                flex-direction: row-reverse;
-            }
+            justify-content: flex-start;
         }
 
         &__logo {
-            margin-inline: 0; //  ADDED — remove auto centering
-            margin-inline-end: auto; //  ADDED — pushes actions to right
-
-            [dir="rtl"] & {
-                margin-inline-end: 0;
-                margin-inline-start: auto;
-            }
+            margin-inline: 0;
+            margin-inline-end: auto;
         }
 
         &__actions {
             [dir="rtl"] & {
-                flex-direction: row-reverse;
+                flex-direction: row;
             }
         }
     }
@@ -193,13 +176,10 @@
         height: 560px;
 
         &__content {
-            // top: 120px;
             left: 50%;
             transform: translateX(-50%);
-
             width: 100%;
             max-width: 1200px;
-
             padding-inline: 32px;
         }
 
@@ -261,11 +241,6 @@
             transform: none;
             padding: 40px 32px;
             max-width: none;
-
-            [dir="rtl"] & {
-                inset-inline-start: 0;
-                inset-inline-end: 0;
-            }
         }
         &__title {
             font-size: 36px;
@@ -289,7 +264,8 @@
         }
     }
 
-    .section-title h2 {
+    .section-title h2,
+    .section-title h3 {
         font-size: 32px;
     }
 }
@@ -311,13 +287,14 @@
 
         &__inner {
             gap: 24px; //  ADDED
+            justify-content: flex-start;
         }
 
         &__logo {
             width: 72px;
             height: 40px;
             margin-inline: 0; //  ADDED
-            margin-inline-end: auto; //  ADDED — logo next to hamburger, actions on right
+            margin-inline-end: auto; //  ADDED — logo next to hamburger, actions on opposite side
         }
     }
 
@@ -396,9 +373,9 @@
         &__content {
             inset-block-start: 40%;
             inset-inline-start: 0; // ◆ Figma exact %
-            inset-inline-end: 12.64%; // ◆ Figma exact %
+            // inset-inline-end: 12.64%; // ◆ Figma exact %
             transform: translateY(-67%);
-            padding: 69px 20px;
+            padding: 80px 20px;
             gap: 16px;
         }
         &__title {
@@ -452,7 +429,7 @@
         &--gold {
             background: var(--secondary-500);
             border-color: var(--secondary-500);
-            color: #fff;
+            color: #efefef;
             min-height: 48px;
 
             &:hover {
@@ -461,6 +438,7 @@
             }
         }
     }
+
     .jcd-slider .btn--outline-cream {
         color: #cc9f53;
 
@@ -468,6 +446,30 @@
             stroke: #cc9f53;
         }
     }
+
+    .search-page .btn--gold {
+        max-width: 56px;
+    }
+
+    .next-step .btn--outline-cream {
+        flex-shrink: 0;
+        background: transparent;
+        border: 1px solid var(--surface-white);
+        color: var(--surface-white);
+        min-height: 48px !important;
+        gap: 16px;
+
+        transition:
+            background var(--dur) var(--ease),
+            border-color var(--dur) var(--ease),
+            color var(--dur) var(--ease),
+            transform var(--dur) var(--ease);
+
+        svg {
+            transition: transform var(--dur) var(--ease);
+        }
+    }
+
     .banner .banner__cta {
         width: 244px;
         max-width: 100%;
@@ -515,11 +517,16 @@
         }
         &__cta {
             font-size: 16px;
+            color: #d6b275;
+
+            svg {
+                color: var(--secondary-500);
+            }
         }
     }
 
-    .section-title h2 {
-        font-size: 24px;
+    .section-title h3 {
+        font-size: 32px;
     }
 
     // Dots sizing
@@ -542,7 +549,7 @@
     .jcd-slider__title {
         font-size: 44px;
     }
-    .section-title h2 {
-        font-size: 22px;
+    .section-title h3 {
+        font-size: 32px;
     }
 }

@@ -8,254 +8,226 @@
  *   - Filters them by chips / search / date range / page
  *   - Toggles `hidden` rather than re-rendering
  *   - Re-formats <time> elements on language change
+ *   - Toggles chevron rotation on date picker open/close
  *
  * URL params: q, from, to, cat (comma list or "all"), page.
  */
 (function () {
-  "use strict";
+    "use strict";
 
-  const PAGE_SIZE = 6;
+    const PAGE_SIZE = 6;
 
-  function init() {
-    const root = document.getElementById("news-listing");
-    if (!root) return;
+    function init() {
+        const root = document.getElementById("news-listing");
+        if (!root) return;
 
-    const grid = root.querySelector("#news-listing-grid");
-    const empty = root.querySelector("#news-listing-empty");
-    const searchForm = root.querySelector("#nl-search-form");
-    const searchInput = root.querySelector("#nl-search");
-    const fromInput = root.querySelector("#nl-date-from");
-    const toInput = root.querySelector("#nl-date-to");
-    const filtersWrap = root.querySelector("#news-listing-filters");
-    const paginationEl = root.querySelector("#news-listing-pagination");
+        const grid = root.querySelector("#news-listing-grid");
+        const empty = root.querySelector("#news-listing-empty");
+        const searchForm = root.querySelector("#nl-search-form");
+        const searchInput = root.querySelector("#nl-search");
+        const fromInput = root.querySelector("#nl-date-from");
+        const toInput = root.querySelector("#nl-date-to");
+        const filtersWrap = root.querySelector("#news-listing-filters");
+        const paginationEl = root.querySelector("#news-listing-pagination");
 
-    // All cards present in the DOM. Read once — they don't get added/removed.
-    const cards = Array.from(grid.querySelectorAll(".news-list-card"));
+        // All cards present in the DOM. Read once — they don't get added/removed.
+        const cards = Array.from(grid.querySelectorAll(".news-list-card"));
 
-    // ──────────────────────────────────────
-    // URL state
-    // ──────────────────────────────────────
-    function getParams() {
-      const sp = new URLSearchParams(window.location.search);
-      const q = (sp.get("q") || "").trim();
-      const from = sp.get("from") || "";
-      const to = sp.get("to") || "";
-      const catRaw = (sp.get("cat") || "").trim();
-      const cats = catRaw
-        ? new Set(catRaw.split(",").filter(Boolean))
-        : new Set();
-      const pageRaw = parseInt(sp.get("page") || "1", 10);
-      const page = isNaN(pageRaw) || pageRaw < 1 ? 1 : pageRaw;
-      return { q, from, to, cats, page };
-    }
-
-    function setParams({ q, from, to, cats, page }, push = true) {
-      const sp = new URLSearchParams();
-      if (q) sp.set("q", q);
-      if (from) sp.set("from", from);
-      if (to) sp.set("to", to);
-      const catList = [...cats];
-      if (catList.length > 0) sp.set("cat", catList.join(","));
-      if (page && page > 1) sp.set("page", String(page));
-      const qs = sp.toString();
-      const url = window.location.pathname + (qs ? "?" + qs : "");
-      window.history[push ? "pushState" : "replaceState"](null, "", url);
-    }
-
-    // ──────────────────────────────────────
-    // Filtering
-    // ──────────────────────────────────────
-    function filterCards(params) {
-      const { q, from, to, cats } = params;
-      const qLower = q.toLowerCase();
-      // Empty set = no chip active; "all" set = explicit All News pill.
-      // Both mean "show everything".
-      const noCategoryFilter = cats.size === 0 || cats.has("all");
-
-      return cards.filter((card) => {
-        const cat = card.dataset.category;
-        const date = card.dataset.date;
-
-        if (!noCategoryFilter && !cats.has(cat)) return false;
-        if (from && date < from) return false;
-        if (to && date > to) return false;
-
-        if (qLower) {
-          // Search the actual rendered text — works for whichever
-          // language is currently active.
-          const titleEl = card.querySelector(".news-list-card__title");
-          const excerptEl = card.querySelector(".news-list-card__excerpt");
-          const title = (titleEl?.textContent || "").toLowerCase();
-          const excerpt = (excerptEl?.textContent || "").toLowerCase();
-          if (!title.includes(qLower) && !excerpt.includes(qLower)) {
-            return false;
-          }
+        // ──────────────────────────────────────
+        // URL state
+        // ──────────────────────────────────────
+        function getParams() {
+            const sp = new URLSearchParams(window.location.search);
+            const q = (sp.get("q") || "").trim();
+            const from = sp.get("from") || "";
+            const to = sp.get("to") || "";
+            const catRaw = (sp.get("cat") || "").trim();
+            const cats = catRaw ? new Set(catRaw.split(",").filter(Boolean)) : new Set();
+            const pageRaw = parseInt(sp.get("page") || "1", 10);
+            const page = isNaN(pageRaw) || pageRaw < 1 ? 1 : pageRaw;
+            return { q, from, to, cats, page };
         }
-        return true;
-      });
-    }
 
-    // ──────────────────────────────────────
-    // Date formatting (locale-aware)
-    // ──────────────────────────────────────
-    function formatDate(iso, lang) {
-      try {
-        const d = new Date(iso + "T00:00:00");
+        function setParams({ q, from, to, cats, page }, push = true) {
+            const sp = new URLSearchParams();
+            if (q) sp.set("q", q);
+            if (from) sp.set("from", from);
+            if (to) sp.set("to", to);
+            const catList = [...cats];
+            if (catList.length > 0) sp.set("cat", catList.join(","));
+            if (page && page > 1) sp.set("page", String(page));
+            const qs = sp.toString();
+            const url = window.location.pathname + (qs ? "?" + qs : "");
+            window.history[push ? "pushState" : "replaceState"](null, "", url);
+        }
 
-        return d.toLocaleDateString(lang === "ar" ? "ar-SA" : "en-US", {
-          year: "numeric",
-          month: "long",
-          day: "2-digit",
+        // ──────────────────────────────────────
+        // Filtering
+        // ──────────────────────────────────────
+        function filterCards(params) {
+            const { q, from, to, cats } = params;
+            const qLower = q.toLowerCase();
+            const noCategoryFilter = cats.size === 0 || cats.has("all");
+
+            return cards.filter((card) => {
+                const cat = card.dataset.category;
+                const date = card.dataset.date;
+
+                if (!noCategoryFilter && !cats.has(cat)) return false;
+                if (from && date < from) return false;
+                if (to && date > to) return false;
+
+                if (qLower) {
+                    const titleEl = card.querySelector(".news-list-card__title");
+                    const excerptEl = card.querySelector(".news-list-card__excerpt");
+                    const title = (titleEl?.textContent || "").toLowerCase();
+                    const excerpt = (excerptEl?.textContent || "").toLowerCase();
+                    if (!title.includes(qLower) && !excerpt.includes(qLower)) {
+                        return false;
+                    }
+                }
+                return true;
+            });
+        }
+
+        // ──────────────────────────────────────
+        // Date formatting (locale-aware)
+        // ──────────────────────────────────────
+        function formatDate(iso, lang) {
+            try {
+                const d = new Date(iso + "T00:00:00");
+                return d.toLocaleDateString(lang === "ar" ? "ar-SA" : "en-US", {
+                    year: "numeric",
+                    month: "long",
+                    day: "2-digit",
+                });
+            } catch (_) {
+                return iso;
+            }
+        }
+
+        function refreshDateLabels(lang) {
+            cards.forEach((card) => {
+                const t = card.querySelector(".news-list-card__date");
+                if (!t) return;
+                const iso = t.getAttribute("datetime");
+                if (iso) {
+                    t.textContent = formatDate(iso, lang);
+                }
+            });
+        }
+
+        // ──────────────────────────────────────
+        // Filter chips state
+        // ──────────────────────────────────────
+        function syncChips(activeCats) {
+            filtersWrap.querySelectorAll("[data-cat]").forEach((btn) => {
+                const cat = btn.dataset.cat;
+                const isActive = activeCats.has(cat);
+
+                if (isActive) {
+                    btn.classList.add("filter-chip--active");
+                } else {
+                    btn.classList.remove("filter-chip--active");
+                }
+
+                btn.setAttribute("aria-pressed", String(isActive));
+            });
+        }
+
+        filtersWrap.querySelectorAll("[data-cat]").forEach((btn) => {
+            btn.addEventListener("click", (e) => {
+                if (e.target.closest(".filter-chip__icon")) return;
+
+                const cat = btn.dataset.cat;
+                const params = getParams();
+
+                if (cat === "all") {
+                    params.cats = new Set(["all"]);
+                } else {
+                    params.cats.delete("all");
+                    params.cats.add(cat);
+                }
+
+                params.page = 1;
+                setParams(params);
+                update();
+            });
+
+            const icon = btn.querySelector(".filter-chip__icon");
+
+            if (icon) {
+                icon.addEventListener("click", (e) => {
+                    e.stopPropagation();
+
+                    const cat = btn.dataset.cat;
+                    const params = getParams();
+
+                    params.cats.delete(cat);
+
+                    params.page = 1;
+                    setParams(params);
+                    update();
+                });
+            }
         });
-      } catch (_) {
-        return iso;
-      }
-    }
 
-    function refreshDateLabels(lang) {
-      cards.forEach((card) => {
-        const t = card.querySelector(".news-list-card__date");
+        // ──────────────────────────────────────
+        // Pagination
+        // ──────────────────────────────────────
+        function renderPagination(current, total) {
+            if (total <= 1) {
+                paginationEl.innerHTML = "";
+                paginationEl.hidden = true;
+                return;
+            }
+            paginationEl.hidden = false;
 
-        if (!t) return;
+            const parts = [];
+            parts.push(navBtn("prev", current > 1 ? current - 1 : null));
 
-        const iso = t.getAttribute("datetime");
+            const visible = new Set([1, total, current, current - 1, current + 1]);
+            if (current === 1) visible.add(2);
+            if (current === total) visible.add(total - 1);
+            const ordered = [...visible].filter((n) => n >= 1 && n <= total).sort((a, b) => a - b);
 
-        if (iso) {
-          t.textContent = formatDate(iso, lang);
-        }
-      });
-    }
-
-    // ──────────────────────────────────────
-    // Filter chips state
-    // ──────────────────────────────────────
-    // function syncChips(activeCats) {
-    //     filtersWrap.querySelectorAll("[data-cat]").forEach((btn) => {
-    //         const cat = btn.dataset.cat;
-    //         // If nothing is selected at all, treat "All News" as visually active.
-    //         const isActive = activeCats.size === 0 ? cat === "all" : activeCats.has(cat);
-    //         btn.classList.toggle("filter-chip--active", isActive);
-    //         btn.setAttribute("aria-pressed", String(isActive));
-    //     });
-    // }
-    
-    function syncChips(activeCats) {
-      filtersWrap.querySelectorAll("[data-cat]").forEach((btn) => {
-        const cat = btn.dataset.cat;
-
-        const isActive = activeCats.has(cat);
-
-        if (isActive) {
-          btn.classList.add("filter-chip--active");
-        } else {
-          btn.classList.remove("filter-chip--active");
-        }
-
-        btn.setAttribute("aria-pressed", String(isActive));
-      });
-    }
-
-    filtersWrap.querySelectorAll("[data-cat]").forEach((btn) => {
-      btn.addEventListener("click", (e) => {
-        // Ignore svg click
-        if (e.target.closest(".filter-chip__icon")) return;
-
-        const cat = btn.dataset.cat;
-        const params = getParams();
-
-        if (cat === "all") {
-          // Activate only all tab
-          params.cats = new Set(["all"]);
-        } else {
-          // Remove all tab when selecting other tabs
-          params.cats.delete("all");
-
-          // Add selected tab
-          params.cats.add(cat);
-        }
-
-        params.page = 1;
-        setParams(params);
-        update();
-      });
-
-      const icon = btn.querySelector(".filter-chip__icon");
-
-      if (icon) {
-        icon.addEventListener("click", (e) => {
-          e.stopPropagation();
-
-          const cat = btn.dataset.cat;
-          const params = getParams();
-
-          // Remove clicked category
-          params.cats.delete(cat);
-
-          params.page = 1;
-          setParams(params);
-          update();
-        });
-      }
-    });
-
-    // ──────────────────────────────────────
-    // Pagination
-    // ──────────────────────────────────────
-    function renderPagination(current, total) {
-      if (total <= 1) {
-        paginationEl.innerHTML = "";
-        paginationEl.hidden = true;
-        return;
-      }
-      paginationEl.hidden = false;
-
-      const parts = [];
-      parts.push(navBtn("prev", current > 1 ? current - 1 : null));
-
-      const visible = new Set([1, total, current, current - 1, current + 1]);
-      if (current === 1) visible.add(2);
-      if (current === total) visible.add(total - 1);
-      const ordered = [...visible]
-        .filter((n) => n >= 1 && n <= total)
-        .sort((a, b) => a - b);
-
-      let prev = 0;
-      ordered.forEach((n) => {
-        if (n - prev > 1) {
-          parts.push(
-            `<li class="pagination__item"><span class="pagination__btn pagination__btn--ellipsis" aria-hidden="true">…</span></li>`,
-          );
-        }
-        parts.push(`<li class="pagination__item">
+            let prev = 0;
+            ordered.forEach((n) => {
+                if (n - prev > 1) {
+                    parts.push(
+                        `<li class="pagination__item"><span class="pagination__btn pagination__btn--ellipsis" aria-hidden="true">…</span></li>`,
+                    );
+                }
+                parts.push(`<li class="pagination__item">
                     <button type="button" class="pagination__btn${n === current ? " pagination__btn--active" : ""}" data-page="${n}"${n === current ? ' aria-current="page"' : ""}>${n}</button>
                 </li>`);
-        prev = n;
-      });
+                prev = n;
+            });
 
-      parts.push(navBtn("next", current < total ? current + 1 : null));
-      paginationEl.innerHTML = parts.join("");
+            parts.push(navBtn("next", current < total ? current + 1 : null));
+            paginationEl.innerHTML = parts.join("");
 
-      paginationEl.querySelectorAll("[data-page]").forEach((btn) => {
-        btn.addEventListener("click", () => {
-          const target = parseInt(btn.dataset.page, 10);
-          if (isNaN(target)) return;
-          const params = getParams();
-          params.page = target;
-          setParams(params);
-          update();
-          window.scrollTo({ top: root.offsetTop - 80, behavior: "smooth" });
-        });
-      });
-    }
+            paginationEl.querySelectorAll("[data-page]").forEach((btn) => {
+                btn.addEventListener("click", () => {
+                    const target = parseInt(btn.dataset.page, 10);
+                    if (isNaN(target)) return;
+                    const params = getParams();
+                    params.page = target;
+                    setParams(params);
+                    update();
+                    window.scrollTo({ top: root.offsetTop - 80, behavior: "smooth" });
+                });
+            });
+        }
 
-    function navBtn(kind, target) {
-      const isPrev = kind === "prev";
-      const disabled = target === null;
-      const aria = isPrev ? "Previous page" : "Next page";
-      const arrow = isPrev
-        ? '<path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>'
-        : '<path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>';
-      return `<li class="pagination__item">
+        function navBtn(kind, target) {
+            const isPrev = kind === "prev";
+            const disabled = target === null;
+            const aria = isPrev ? "Previous page" : "Next page";
+            const arrow = isPrev
+                ? '<path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>'
+                : '<path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>';
+            return `<li class="pagination__item">
                 <button type="button" class="pagination__btn pagination__btn--nav"
                         data-page="${target ?? ""}"
                         aria-label="${aria}"
@@ -263,200 +235,288 @@
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">${arrow}</svg>
                 </button>
             </li>`;
-    }
+        }
 
-    // ──────────────────────────────────────
-    // Date pill (placeholder ↔ formatted value)
-    // ──────────────────────────────────────
-    function paintDate(wrap, input, lang) {
-      const text = wrap.querySelector(".news-listing__date-text");
-      const t = window.__I18N_CACHE__ || {};
-      const placeholder =
-        (t.newsListing && t.newsListing.chooseDate) || "Choose Date";
+        // ──────────────────────────────────────
+        // Date pill (placeholder ↔ formatted value)
+        // ──────────────────────────────────────
+        function paintDate(wrap, input, lang) {
+            const text = wrap.querySelector(".news-listing__date-text");
+            const t = window.__I18N_CACHE__ || {};
+            const placeholder = (t.newsListing && t.newsListing.chooseDate) || "Choose Date";
 
-      if (input.value) {
-        wrap.classList.add("has-value");
-        text.textContent = formatDate(input.value, lang);
-      } else {
-        wrap.classList.remove("has-value");
-        text.textContent = placeholder;
-      }
-    }
+            if (input.value) {
+                wrap.classList.add("has-value");
+                text.textContent = formatDate(input.value, lang);
+            } else {
+                wrap.classList.remove("has-value");
+                text.textContent = placeholder;
+            }
+        }
 
-    [
-      ["#nl-date-from-wrap", fromInput],
-      ["#nl-date-to-wrap", toInput],
-    ].forEach(([sel, inp]) => {
-      const wrap = root.querySelector(sel);
-      if (!wrap) return;
-      wrap.addEventListener("click", (e) => {
-        if (e.target === inp) return;
-        if (typeof inp.showPicker === "function") {
-          try {
-            inp.showPicker();
-          } catch (_) {
-            inp.focus();
-          }
+        // ──────────────────────────────────────
+        // ◆ NEW — Date picker open/close + chevron rotation
+        // Adds `is-open` class to wrap while calendar picker is showing,
+        // so the SCSS rule `.news-listing__date.is-open .chevron` rotates
+        // the chevron 180° (pointing up). Removes it when picker closes.
+        // ──────────────────────────────────────
+        [
+            ["#nl-date-from-wrap", fromInput],
+            ["#nl-date-to-wrap", toInput],
+        ].forEach(([sel, inp]) => {
+            const wrap = root.querySelector(sel);
+            if (!wrap || !inp) return;
+
+            // Click anywhere on the pill opens the picker
+            wrap.addEventListener("click", (e) => {
+                if (e.target === inp) return;
+
+                // Mark as open BEFORE opening the picker so the chevron rotates
+                wrap.classList.add("is-open");
+
+                if (typeof inp.showPicker === "function") {
+                    try {
+                        inp.showPicker();
+                    } catch (_) {
+                        inp.focus();
+                    }
+                } else {
+                    inp.focus();
+                }
+            });
+
+            // Focus event — picker is opening
+            inp.addEventListener("focus", () => {
+                wrap.classList.add("is-open");
+            });
+
+            // Blur — picker closed
+            inp.addEventListener("blur", () => {
+                wrap.classList.remove("is-open");
+            });
+
+            // Date selected — picker definitely closed
+            inp.addEventListener("change", () => {
+                wrap.classList.remove("is-open");
+            });
+        });
+
+        // ──────────────────────────────────────
+        // Main update — filter + paginate the existing cards
+        // ──────────────────────────────────────
+        function update() {
+            const params = getParams();
+            const lang = (window.I18n && window.I18n.get && window.I18n.get()) || "en";
+
+            searchInput.value = params.q;
+            fromInput.value = params.from;
+            toInput.value = params.to;
+
+            // Sync calendar limits
+            if (params.from) {
+                toInput.min = params.from;
+            } else {
+                toInput.removeAttribute("min");
+            }
+
+            if (params.to) {
+                fromInput.max = params.to;
+            } else {
+                fromInput.removeAttribute("max");
+            }
+
+            const fromWrap = root.querySelector("#nl-date-from-wrap");
+            const toWrap = root.querySelector("#nl-date-to-wrap");
+
+            if (fromWrap) paintDate(fromWrap, fromInput, lang);
+            if (toWrap) paintDate(toWrap, toInput, lang);
+
+            const matched = filterCards(params);
+            const totalPages = Math.max(1, Math.ceil(matched.length / PAGE_SIZE));
+            const page = Math.min(params.page, totalPages);
+            const start = (page - 1) * PAGE_SIZE;
+            const pageSet = new Set(matched.slice(start, start + PAGE_SIZE));
+
+            cards.forEach((card) => {
+                card.hidden = !pageSet.has(card);
+            });
+
+            if (matched.length === 0) {
+                grid.hidden = true;
+                empty.hidden = false;
+            } else {
+                grid.hidden = false;
+                empty.hidden = true;
+            }
+
+            syncChips(params.cats);
+            renderPagination(page, totalPages);
+        }
+
+        // ──────────────────────────────────────
+        // Wiring
+        // ──────────────────────────────────────
+        searchForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const params = getParams();
+            params.q = searchInput.value.trim();
+            params.page = 1;
+            setParams(params);
+            update();
+        });
+
+        [fromInput, toInput].forEach((el) => {
+            el.addEventListener("change", () => {
+                if (fromInput.value) {
+                    toInput.min = fromInput.value;
+                } else {
+                    toInput.removeAttribute("min");
+                }
+
+                if (toInput.value) {
+                    fromInput.max = toInput.value;
+                } else {
+                    fromInput.removeAttribute("max");
+                }
+
+                if (fromInput.value && toInput.value && toInput.value < fromInput.value) {
+                    toInput.value = fromInput.value;
+                }
+
+                const params = getParams();
+
+                params.from = fromInput.value;
+                params.to = toInput.value;
+                params.page = 1;
+
+                setParams(params);
+                update();
+            });
+        });
+
+        window.addEventListener("popstate", update);
+
+        if (window.I18n && window.I18n.onLangChange) {
+            window.I18n.onLangChange((lang, t) => {
+                window.__I18N_CACHE__ = t;
+                refreshDateLabels(lang);
+                update();
+            });
         } else {
-          inp.focus();
-        }
-      });
-    });
-
-    // ──────────────────────────────────────
-    // Main update — filter + paginate the existing cards
-    // ──────────────────────────────────────
-    function update() {
-      const params = getParams();
-      const lang =
-        (window.I18n && window.I18n.get && window.I18n.get()) || "en";
-
-      searchInput.value = params.q;
-      fromInput.value = params.from;
-      toInput.value = params.to;
-
-      // Sync calendar limits
-      if (params.from) {
-        toInput.min = params.from;
-      } else {
-        toInput.removeAttribute("min");
-      }
-
-      if (params.to) {
-        fromInput.max = params.to;
-      } else {
-        fromInput.removeAttribute("max");
-      }
-
-      const fromWrap = root.querySelector("#nl-date-from-wrap");
-      const toWrap = root.querySelector("#nl-date-to-wrap");
-
-      if (fromWrap) paintDate(fromWrap, fromInput, lang);
-      if (toWrap) paintDate(toWrap, toInput, lang);
-
-      const matched = filterCards(params);
-      const totalPages = Math.max(1, Math.ceil(matched.length / PAGE_SIZE));
-      const page = Math.min(params.page, totalPages);
-      const start = (page - 1) * PAGE_SIZE;
-      const pageSet = new Set(matched.slice(start, start + PAGE_SIZE));
-
-      // Toggle visibility — no re-rendering
-      cards.forEach((card) => {
-        card.hidden = !pageSet.has(card);
-      });
-      // Empty state
-      if (matched.length === 0) {
-        grid.hidden = true;
-        empty.hidden = false;
-      } else {
-        grid.hidden = false;
-        empty.hidden = true;
-      }
-
-      syncChips(params.cats);
-      renderPagination(page, totalPages);
-    }
-
-    // ──────────────────────────────────────
-    // Wiring
-    // ──────────────────────────────────────
-    searchForm.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const params = getParams();
-      params.q = searchInput.value.trim();
-      params.page = 1;
-      setParams(params);
-      update();
-    });
-
-    [fromInput, toInput].forEach((el) => {
-      el.addEventListener("change", () => {
-        // Prevent invalid ranges in calendar picker
-        if (fromInput.value) {
-          toInput.min = fromInput.value;
-        } else {
-          toInput.removeAttribute("min");
+            refreshDateLabels("en");
         }
 
-        if (toInput.value) {
-          fromInput.max = toInput.value;
-        } else {
-          fromInput.removeAttribute("max");
-        }
-
-        // Extra safety validation
-        if (
-          fromInput.value &&
-          toInput.value &&
-          toInput.value < fromInput.value
-        ) {
-          toInput.value = fromInput.value;
-        }
-
-        const params = getParams();
-
-        params.from = fromInput.value;
-        params.to = toInput.value;
-        params.page = 1;
-
-        setParams(params);
         update();
-      });
-    });
+    }
 
-    window.addEventListener("popstate", update);
-
-    // Re-run when language changes so dates and the chip "All News" default
-    // get redrawn against the freshly-translated text.
-    if (window.I18n && window.I18n.onLangChange) {
-      window.I18n.onLangChange((lang, t) => {
-        window.__I18N_CACHE__ = t;
-        refreshDateLabels(lang);
-        update();
-      });
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", init);
     } else {
-      refreshDateLabels("en");
+        init();
     }
 
-    // First paint
-    update();
-  }
+    // ──────────────────────────────────────
+    // BE form variant (separate section)
+    // ──────────────────────────────────────
+    (() => {
+        const section = document.getElementById("news-listing-be");
+        if (!section) return;
 
-  if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", init);
-  } else {
-    init();
-  }
-  (() => {
-    const section = document.getElementById("news-listing-be");
-    if (!section) return;
+        const form = section.querySelector("#nl-be-form");
 
-    const form = section.querySelector("#nl-be-form");
+        ["nl-date-from-wrap", "nl-date-to-wrap"].forEach((wrapId) => {
+            const wrap = section.querySelector(`#${wrapId}`);
+            if (!wrap) return;
 
-    ["nl-date-from-wrap", "nl-date-to-wrap"].forEach((wrapId) => {
-      const wrap = section.querySelector(`#${wrapId}`);
-      if (!wrap) return;
+            const input = wrap.querySelector(".news-listing__date-input");
+            if (!input) return;
 
-      const input = wrap.querySelector(".news-listing__date-input");
-      if (!input) return;
+            // ◆ Chevron rotation for BE form too
+            wrap.addEventListener("click", (e) => {
+                if (e.target === input) return;
 
-      wrap.addEventListener("click", (e) => {
-        if (e.target === input) return;
+                wrap.classList.add("is-open");
 
-        if (typeof input.showPicker === "function") {
-          try {
-            input.showPicker();
-          } catch {
-            input.focus();
-          }
-        } else {
-          input.focus();
+                if (typeof input.showPicker === "function") {
+                    try {
+                        input.showPicker();
+                    } catch {
+                        input.focus();
+                    }
+                } else {
+                    input.focus();
+                }
+            });
+
+            input.addEventListener("focus", () => {
+                wrap.classList.add("is-open");
+            });
+
+            input.addEventListener("blur", () => {
+                wrap.classList.remove("is-open");
+            });
+
+            input.addEventListener("change", () => {
+                wrap.classList.remove("is-open");
+                form?.submit();
+            });
+        });
+    })();
+})();
+
+(function () {
+    var p = new URLSearchParams(window.location.search);
+
+    if (p.has("q") || p.has("category") || p.has("from") || p.has("to") || p.has("page")) {
+        var el = document.getElementById("news-listing-be");
+
+        if (el) {
+            el.scrollIntoView({
+                behavior: "smooth",
+                block: "start",
+            });
         }
-      });
+    }
+})();
 
-      input.addEventListener("change", () => {
-        form?.submit();
-      });
+// Date range validation — both directions:
+// From picker: cannot be later than To   (max = activeTo)
+// To picker: cannot be earlier than From (min = activeFrom)
+(function () {
+    var fromInput = document.getElementById("nl-date-from");
+    var toInput = document.getElementById("nl-date-to");
+
+    if (!fromInput || !toInput) {
+        return;
+    }
+
+    // When From changes → update To's min; clear To if now invalid
+    fromInput.addEventListener("change", function () {
+        var fromVal = fromInput.value;
+
+        if (fromVal) {
+            toInput.min = fromVal;
+
+            if (toInput.value && toInput.value < fromVal) {
+                toInput.value = "";
+            }
+        } else {
+            toInput.removeAttribute("min");
+        }
     });
-  })();
+
+    // When To changes → update From's max; clear From if now invalid
+    toInput.addEventListener("change", function () {
+        var toVal = toInput.value;
+
+        if (toVal) {
+            fromInput.max = toVal;
+
+            if (fromInput.value && fromInput.value > toVal) {
+                fromInput.value = "";
+            }
+        } else {
+            fromInput.removeAttribute("max");
+        }
+    });
 })();
