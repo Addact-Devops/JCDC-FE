@@ -76,7 +76,7 @@
 
         text-align: center;
 
-        margin-bottom: 56px;
+        margin-bottom: 46px;
     }
 
     &__stat {
@@ -92,10 +92,9 @@
     &__stat-label {
         font-family: var(--font-body);
 
-        font-size: 12px;
-        font-weight: 500;
-        line-height: 120%;
-
+        font-size: 16px;
+        font-weight: 700;
+        line-height: 150%;
         color: var(--text-500);
     }
 
@@ -105,8 +104,8 @@
         font-family: var(--font-body);
 
         font-size: 24px;
-        font-weight: 500;
-        line-height: 130%;
+        font-weight: 400;
+        line-height: 140%;
 
         color: var(--primary-500);
     }
