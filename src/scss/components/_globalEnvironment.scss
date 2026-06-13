@@ -62,14 +62,11 @@
 
     &__grid {
         display: grid;
-
-        grid-template-columns: repeat(3, 1fr);
-
+        grid-template-columns: repeat(3, minmax(0, 1fr));
         align-items: center;
-
-        gap: 80px;
-
-        width: 100%;
+        justify-items: center;
+        column-gap: 40px;
+        row-gap: 32px;
     }
 
     // ==========================================
@@ -78,8 +75,9 @@
 
     &__item {
         position: relative;
-
-        height: 220px;
+        width: 285px;
+        max-width: 100%;
+        min-height: 310px;
 
         display: flex;
         flex-direction: column;
@@ -113,13 +111,12 @@
         transition: transform 0.4s ease;
 
         img {
-            width: auto;
-            height: 120px;
+            width: 154px;
+            height: 154px;
 
             object-fit: contain;
 
-            filter: grayscale(1) opacity(0.6);
-
+            filter: grayscale(100%); //  grey by default
             transition: filter 0.4s ease;
         }
     }
@@ -169,69 +166,80 @@
     }
 }
 
+@media (max-width: 900px) {
+    .global-standards {
+        &__grid {
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        &__logo img {
+            width: 154px;
+            height: 154px;
+        }
+    }
+}
+
 // ==========================================
 // Mobile
 // ==========================================
 
 @media (max-width: 768px) {
     .global-standards {
-        padding: 64px 24px;
+        padding: 64px 16px;
 
-        &__header {
-            margin-bottom: 32px;
-        }
-
-        &__title {
-            font-size: 32px;
-        }
-
-        &__desc {
-            font-size: 16px;
+        &__container {
+            overflow: hidden;
         }
 
         &__grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr); //  CHANGED — was 1fr
-            gap: 24px 16px; //  CHANGED — match awards
-            width: 100%;
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+
+            width: max-content;
+
+            overflow-x: auto;
+            overflow-y: hidden;
+
+            cursor: grab;
+            scroll-behavior: smooth;
+            -webkit-overflow-scrolling: touch;
+
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
+
+            &.is-dragging {
+                cursor: grabbing;
+            }
         }
 
         &__item {
-            width: 100%;
-            height: auto;
-            min-height: 180px; //  ADDED — match awards cert-item
+            flex: 0 0 210px; // important
+            width: 210px;
+            min-height: 229px;
+            overflow: visible;
             cursor: default;
-            gap: 16px; //  ADDED
         }
 
-        &__logo {
-            transform: none !important;
-
-            img {
-                height: 80px; // CHANGED — was 96px, match awards
-                filter: grayscale(0) opacity(1); // full color
-                transition: none; //  no transition on mobile
-            }
+        &__logo img {
+            width: 154px;
+            height: 154px;
+            filter: grayscale(0) opacity(1);
+            transition: none;
         }
 
         &__label {
             position: static;
             opacity: 1;
             transform: none;
-            margin-top: 8px; //  CHANGED — was 16px, match awards
-            font-size: 11px; //  CHANGED — was 14px, match awards
-            padding: 0 8px; //  ADDED — match awards
-            text-align: center;
-        }
-        &__item:hover {
-            .global-standards__logo {
-                transform: none !important;
-            }
-
-            .global-standards__label {
-                opacity: 1;
-                transform: none;
-            }
+            margin-top: 16px;
+            font-size: 12px;
+            padding: 0;
         }
     }
 }

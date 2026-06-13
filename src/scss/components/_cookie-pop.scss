@@ -6,7 +6,7 @@
     bottom: 0;
     width: 100%;
     max-width: none;
-    background: #f3f3f3;
+    background: #faf5ee;
     border: 0;
     border-radius: 0;
     padding: 40px;
@@ -27,7 +27,7 @@
     }
 
     @media (max-width: 480px) {
-        padding: 20px 16px;
+        padding: 40px 16px;
     }
 
     &__content {
@@ -59,16 +59,16 @@
             max-width: 100%;
         }
 
-        h3 {
+        h4 {
             margin: 0 0 24px;
             font-size: 32px;
             line-height: 1.2;
-            color: #006e9c;
+            color: #0076a9;
             font-weight: 500;
             text-transform: uppercase;
 
             @media (max-width: 480px) {
-                font-size: 24px;
+                font-size: 30px;
             }
         }
 
@@ -76,12 +76,12 @@
             margin: 0;
             font-size: 18px;
             font-weight: 400;
-            line-height: 1.35;
+            line-height: 150%;
             color: #5b5f62;
             max-width: 100%;
 
             @media (max-width: 480px) {
-                font-size: 14px;
+                font-size: 16px;
             }
 
             a {
@@ -93,7 +93,7 @@
 
     &__buttons {
         display: flex;
-        gap: 16px;
+        gap: 24px;
         flex-wrap: wrap;
         margin-top: 0;
         justify-content: flex-end;
@@ -113,8 +113,9 @@
 
         @media (max-width: 767px) {
             width: 100%;
-            flex-direction: column;
-            gap: 12px;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            gap: 16px;
             margin-top: 8px;
         }
     }
@@ -123,7 +124,7 @@
 .cookie-btn {
     min-width: 164px;
     height: 50px;
-    padding: 16px 24px;
+    padding: 16px;
     border-radius: 4px;
     font-size: 18px;
     line-height: 1;
@@ -133,7 +134,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 14px;
+    gap: 20px;
     white-space: nowrap;
 
     @media (max-width: 1199px) {
@@ -151,12 +152,12 @@
     }
 
     @media (max-width: 767px) {
-        width: 100%;
-        min-width: 100%;
+        width: auto;
+        min-width: 0;
         height: 48px;
-        padding: 14px 18px;
+        padding: 16px;
         font-size: 18px;
-        gap: 12px;
+        gap: 20px;
     }
 
     @media (max-width: 480px) {
@@ -165,8 +166,8 @@
     }
 
     &--primary {
-        background: #c9973f;
-        color: #fff;
+        background: #cc9f53;
+        color: #efefef;
         border: none;
 
         &:hover {
@@ -176,12 +177,12 @@
 
     &--outline {
         background: transparent;
-        border: 1px solid #c9973f;
-        color: #c9973f;
+        border: 1px solid #cc9f53;
+        color: #cc9f53;
 
         &:hover {
-            background: #c9973f;
-            color: #fff;
+            background: #cc9f53;
+            color: #efefef;
         }
     }
 }

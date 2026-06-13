@@ -309,6 +309,26 @@
     }
 }
 
+.chevron {
+    transition:
+        transform var(--dur) var(--ease),
+        color var(--dur) var(--ease);
+    flex-shrink: 0;
+
+    path {
+        transition: stroke var(--dur) var(--ease);
+    }
+
+    [dir="rtl"] & {
+        transform: scaleX(-1);
+    }
+}
+.news-listing__date.is-open .chevron {
+    transform: rotate(180deg);
+}
+[dir="rtl"] .news-listing__date.is-open .chevron {
+    transform: scaleX(-1) rotate(180deg);
+}
 // ==========================================
 // Medium screens (1025-1199)
 // Smooth transition between desktop and tablet

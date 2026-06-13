@@ -114,6 +114,10 @@
             background: var(--secondary-500);
             border-color: var(--secondary-500);
             color: #e6f1f6;
+
+            svg {
+                color: #e6f1f6;
+            }
         }
     }
 
@@ -212,5 +216,12 @@
         [dir="rtl"] & {
             transform: translate(-2px, -2px) scaleX(-1);
         }
+    }
+}
+
+@media (max-width: 767px) {
+    .btn-text {
+        // no gap change on mobile
+        color: #d6b275;
     }
 }

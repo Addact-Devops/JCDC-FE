@@ -660,34 +660,34 @@
                 "name": "Beach, Leisure & Lifestyle District",
                 "description": "A dynamic shoreline escape blending leisure, hospitality, and open access to the Red Sea.",
                 "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=85",
-                "href": "#",
+                "href": "beach.html",
                 "attractions": [
                     {
                         "id": "opera",
                         "name": "Opera House",
-                        "description": "A cultural landmark elevating Jeddah's standing as the capital of performing arts across the region.",
+                        "description": "Designed with a retractable floor and three flexible theaters, the Opera House is a multipurpose cultural venue hosting performances, exhibitions, and creative collaborations — blending tradition with innovation.",
                         "image": "https://images.unsplash.com/photo-1518998053901-5348d3961a04?w=1200&q=85",
                         "x": 32,
                         "y": 35,
-                        "href": "#"
+                        "href": "opera.html"
                     },
                     {
                         "id": "publicBeach",
                         "name": "Public Beach",
-                        "description": "A 2.1 km stretch of accessible coastline for families, tourists, and residents.",
+                        "description": "A 2.1 km open and inclusive public beach featuring accessible design, shaded walkways, family areas, cafés, and year-round water-based recreation.",
                         "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=85",
                         "x": 58,
                         "y": 50,
-                        "href": "#"
+                        "href": "beach.html"
                     },
                     {
                         "id": "entertainment",
                         "name": "Entertainment Pier",
-                        "description": "Jeddah's main marine gateway for regional and international cruise travel.",
+                        "description": "A vibrant hub extending into the Red Sea, offering F&B outlets, event zones, and panoramic views.",
                         "image": "https://images.unsplash.com/photo-1583492936424-067be2bbcfc1?w=1200&q=85",
                         "x": 78,
                         "y": 40,
-                        "href": "#"
+                        "href": "attraction.html"
                     }
                 ]
             },
@@ -696,34 +696,15 @@
                 "name": "Wellness District",
                 "description": "A walkable haven for innovation, healing, and holistic wellbeing.",
                 "image": "https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1200&q=85",
-                "href": "#",
-                "attractions": [
-                    {
-                        "id": "wellnessHub",
-                        "name": "Wellness Hub",
-                        "description": "A holistic wellbeing campus combining clinics, spas, and biophilic public space.",
-                        "image": "https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1200&q=85",
-                        "x": 48,
-                        "y": 30,
-                        "href": "#"
-                    },
-                    {
-                        "id": "innovationLab",
-                        "name": "Innovation Lab",
-                        "description": "A research-led centre dedicated to advancing healthcare and life-science.",
-                        "image": "https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=1200&q=85",
-                        "x": 56,
-                        "y": 35,
-                        "href": "#"
-                    }
-                ]
+                "href": "wellness.html",
+                "attractions": []
             },
             {
                 "id": "central",
                 "name": "Central District",
                 "description": "The vibrant and cultural heart of Jeddah Central.",
                 "image": "https://images.unsplash.com/photo-1518684079-3c830dcef090?w=1200&q=85",
-                "href": "#",
+                "href": "centralDistrict.html",
                 "attractions": [
                     {
                         "id": "civicSquare",
@@ -732,7 +713,7 @@
                         "image": "https://images.unsplash.com/photo-1518684079-3c830dcef090?w=1200&q=85",
                         "x": 32,
                         "y": 47,
-                        "href": "#"
+                        "href": "centralDistrict.html"
                     },
                     {
                         "id": "retailHub",
@@ -741,7 +722,7 @@
                         "image": "https://images.unsplash.com/photo-1481437156560-3205f6a55735?w=1200&q=85",
                         "x": 42,
                         "y": 60,
-                        "href": "#"
+                        "href": "centralDistrict.html"
                     }
                 ]
             },
@@ -750,7 +731,7 @@
                 "name": "Culture & Creativity District",
                 "description": "Where industrial heritage meets creative expression, shaping the future of arts and culture.",
                 "image": "https://images.unsplash.com/photo-1565024144419-c8e2afb22a98?w=1200&q=85",
-                "href": "#",
+                "href": "culture.html",
                 "attractions": [
                     {
                         "id": "museum",
@@ -759,7 +740,7 @@
                         "image": "https://images.unsplash.com/photo-1565024144419-c8e2afb22a98?w=1200&q=85",
                         "x": 16,
                         "y": 50,
-                        "href": "#"
+                        "href": "museum.html"
                     },
                     {
                         "id": "creativeYard",
@@ -777,7 +758,7 @@
                 "name": "Sport Park District",
                 "description": "A year-round destination for play, wellness, and world-class sporting experiences.",
                 "image": "https://images.unsplash.com/photo-1577223625816-7546f13df25d?w=1200&q=85",
-                "href": "#",
+                "href": "sportPark.html",
                 "attractions": [
                     {
                         "id": "stadium",
@@ -786,7 +767,7 @@
                         "image": "https://images.unsplash.com/photo-1577223625816-7546f13df25d?w=1200&q=85",
                         "x": 50,
                         "y": 75,
-                        "href": "#"
+                        "href": "stadium.html"
                     },
                     {
                         "id": "sportPark",
@@ -795,7 +776,7 @@
                         "image": "https://images.unsplash.com/photo-1517649763962-0c623066013b?w=1200&q=85",
                         "x": 60,
                         "y": 78,
-                        "href": "#"
+                        "href": "sportPark.html"
                     }
                 ]
             },
@@ -804,7 +785,7 @@
                 "name": "Marina District",
                 "description": "Jeddah's global gateway to the sea — where waterfront living meets marine discovery.",
                 "image": "https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?w=1200&q=85",
-                "href": "#",
+                "href": "marina.html",
                 "attractions": [
                     {
                         "id": "luxuryCruise",

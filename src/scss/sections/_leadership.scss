@@ -756,6 +756,9 @@
             grid-template-columns: 1fr;
             gap: 16px;
         }
+        &__chairman-role {
+            text-align: center; // ◆ center role text on mobile
+        }
     }
 
     .leader-card {
