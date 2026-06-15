@@ -90,7 +90,7 @@
             height: 100%;
             object-fit: cover;
             display: block;
-
+            background: linear-gradient(180deg, hsla(0, 0%, 0%, 0) 0%, hsla(0, 0%, 0%, 1) 100%);
             user-select: none;
             -webkit-user-drag: none;
             pointer-events: none;
@@ -111,7 +111,7 @@
     &__slide-content {
         position: absolute;
         bottom: 1px;
-        inset-inline-start: 32px;
+        inset-inline-start: 0px;
         inset-inline-end: 32px;
         margin-bottom: 33px;
         margin-left: 51px;
@@ -135,7 +135,7 @@
         position: absolute;
         inset: 0;
         z-index: 2;
-        background: linear-gradient(180deg, rgba(0, 0, 0, 0) 40%, rgba(0, 0, 0, 0.65) 100%);
+        background: linear-gradient(180deg, hsla(0, 0%, 0%, 0) 0%, hsla(0, 0%, 0%, 1) 100%);
         pointer-events: none;
         border-radius: inherit;
     }
@@ -143,10 +143,12 @@
     &__slide-title {
         margin: 0;
         font-family: var(--font-body);
-        font-size: 36px;
-        font-weight: 700;
+        font-size: 32px;
+        font-weight: 500;
+        min-height: 38px;
+        max-width: 455px;
         line-height: 1.3;
-        color: var(--secondary-500); // 👈 gold color from Figma
+        color: #ddbf8c; // 👈 gold color from Figma
     }
 
     &__slide-desc {
@@ -156,7 +158,7 @@
         font-size: 18px;
         font-weight: 400;
         line-height: 1.5;
-        color: #ffffff;
+        color: #efefef;
     }
 
     // ==========================================
@@ -357,6 +359,14 @@
     //  (default rule offsets them by -60px to dodge the card)
     .landmark-slider__nav {
         transform: translateY(-50%);
+
+        &--prev {
+            inset-inline-start: calc(50% - 600px + -18px);
+        }
+
+        &--next {
+            inset-inline-end: calc(50% - 600px + -18px);
+        }
     }
 
     //  Defensive: if a stray .landmark-slider__card sneaks in, hide it
@@ -368,15 +378,6 @@
 
         @media (max-width: 480px) {
             display: flex; // 👈 show on mobile
-        }
-    }
-
-    @media (max-width: 1024px) {
-        .landmark-slider__viewport {
-            padding-block-end: 0;
-        }
-        .landmark-slider__nav {
-            transform: translateY(-20%);
         }
     }
 
@@ -433,6 +434,20 @@
             }
         }
     }
+    .landmark-slider--no-card {
+        .landmark-slider__nav {
+            top: 40%;
+            transform: translateY(-50%);
+
+            &--prev {
+                inset-inline-start: calc(50% - ((100vw - 160px) / 2) + -18px);
+            }
+
+            &--next {
+                inset-inline-end: calc(50% - ((100vw - 160px) / 2) + -18px);
+            }
+        }
+    }
 }
 
 // ◆ CHANGED — was (max-width: 1024px) → (max-width: 1023px)
@@ -474,6 +489,20 @@
 
             &--next {
                 inset-inline-end: max(34px, calc(50% - 500px - 50px));
+            }
+        }
+    }
+    .landmark-slider--no-card {
+        .landmark-slider__nav {
+            top: 40%;
+            transform: translateY(-50%);
+
+            &--prev {
+                inset-inline-start: max(60px, calc(50% - 500px - 50px));
+            }
+
+            &--next {
+                inset-inline-end: max(60px, calc(50% - 500px - 50px));
             }
         }
     }
@@ -721,7 +750,68 @@
         }
     }
 
+    .landmark-slider--no-card {
+        .landmark-slider__viewport {
+            --slide-width: 283px;
+            --slide-gap: 12px;
+        }
+
+        .landmark-slider__slide {
+            flex: 0 0 283px;
+            width: 283px;
+            height: 333px;
+            min-width: 283px;
+        }
+
+        .landmark-slider__track {
+            transform: translateX(0px) !important;
+            gap: 16px;
+        }
+
+        .landmark-slider__slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
     .landmark-slider__slide.is-active .landmark-slider__slide-content {
         opacity: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .landmark-slider--no-card {
+        .landmark-slider__nav {
+            position: absolute;
+            top: 16px;
+            transform: none;
+            width: 56px;
+            height: 56px;
+            border-radius: 11.2px;
+            background: var(--primary-500);
+            color: #efefef;
+            border-color: var(--primary-500);
+        }
+
+        .landmark-slider__nav--prev {
+            inset-inline-start: calc(50% - 64px);
+            inset-inline-end: auto;
+        }
+
+        .landmark-slider__nav--next {
+            inset-inline-end: calc(50% - 64px);
+            inset-inline-start: auto;
+        }
+
+        .landmark-slider__nav.landmark-slider__nav--hidden {
+            opacity: 1 !important;
+            visibility: visible !important;
+            pointer-events: none;
+
+            background: var(--surface-white);
+            border: 1.4px solid #b0d5e4;
+            color: #b0d5e4;
+        }
     }
 }
