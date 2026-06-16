@@ -149,12 +149,14 @@
                     return;
                 }
                 if (!bbox || !isFinite(bbox.width) || bbox.width === 0) return;
-                var cx = labelEl.dataset.manualX !== undefined
-                    ? parseFloat(labelEl.dataset.manualX)
-                    : bbox.x + bbox.width / 2 + (parseFloat(labelEl.dataset.offsetX) || 0);
-                var cy = labelEl.dataset.manualY !== undefined
-                    ? parseFloat(labelEl.dataset.manualY)
-                    : bbox.y + bbox.height / 2 + (parseFloat(labelEl.dataset.offsetY) || 0);
+                var cx =
+                    labelEl.dataset.manualX !== undefined
+                        ? parseFloat(labelEl.dataset.manualX)
+                        : bbox.x + bbox.width / 2 + (parseFloat(labelEl.dataset.offsetX) || 0);
+                var cy =
+                    labelEl.dataset.manualY !== undefined
+                        ? parseFloat(labelEl.dataset.manualY)
+                        : bbox.y + bbox.height / 2 + (parseFloat(labelEl.dataset.offsetY) || 0);
                 labelEl.setAttribute("x", cx);
                 labelEl.setAttribute("y", cy);
                 // Cache the original text once so subsequent calls don't read
@@ -693,4 +695,137 @@
         boot();
     }
     document.addEventListener("partials:loaded", boot);
+})();
+
+(function () {
+    "use strict";
+
+    function findPanel(panelId, districtId) {
+        var sel = districtId
+            ? '.jcd-map__sc-panel[data-sc-panel="' + panelId + '"][data-sc-district="' + districtId + '"]'
+            : '.jcd-map__sc-panel[data-sc-panel="' + panelId + '"]:not([data-sc-district])';
+
+        return document.querySelector(sel);
+    }
+
+    function showPanel(panelId, districtId) {
+        var panels = document.querySelectorAll(".jcd-map__sc-panel");
+
+        for (var i = 0; i < panels.length; i++) {
+            panels[i].hidden = true;
+        }
+
+        var panel = findPanel(panelId, districtId);
+
+        if (panel) {
+            panel.hidden = false;
+        }
+    }
+
+    document.addEventListener("click", function (e) {
+        if (e.target.closest && e.target.closest("[data-jcd-close]")) {
+            return;
+        }
+
+        var btn = e.target.closest && e.target.closest(".jcd-map__icon[data-attraction]");
+
+        if (btn) {
+            showPanel(btn.getAttribute("data-attraction"), btn.getAttribute("data-district"));
+            return;
+        }
+
+        var path = e.target.closest && e.target.closest(".jcd-map__district[data-district]");
+
+        if (path) {
+            showPanel(path.getAttribute("data-district"));
+        }
+    });
+
+    // Read Experience Editor flag from global variable
+    var isExperienceEditor = window.jcdMapConfig && window.jcdMapConfig.isExperienceEditor;
+
+    if (!isExperienceEditor) {
+        // Auto-select district
+        window.addEventListener("load", function () {
+            var section = document.getElementById("jcd-map");
+
+            if (!section) {
+                return;
+            }
+
+            var classes = section.className.split(" ");
+
+            for (var i = 0; i < classes.length; i++) {
+                if (classes[i].indexOf("jcd-map--") === 0) {
+                    var districtKey = classes[i].replace("jcd-map--", "");
+
+                    var districtPath = document.querySelector(
+                        '#jcd-map-districts [data-district="' + districtKey + '"]',
+                    );
+
+                    if (districtPath) {
+                        districtPath.dispatchEvent(
+                            new MouseEvent("click", {
+                                bubbles: true,
+                                cancelable: true,
+                            }),
+                        );
+                    }
+
+                    break;
+                }
+            }
+        });
+
+        // Restore intro panel when close button clicked
+        (function () {
+            var section = document.getElementById("jcd-map");
+
+            if (!section) {
+                return;
+            }
+
+            var hasVariant = false;
+            var cl = section.className.split(" ");
+
+            for (var i = 0; i < cl.length; i++) {
+                if (cl[i].indexOf("jcd-map--") === 0) {
+                    hasVariant = true;
+                    break;
+                }
+            }
+
+            if (!hasVariant) {
+                return;
+            }
+
+            var mapPanel = document.getElementById("jcd-map-panel");
+
+            if (!mapPanel) {
+                return;
+            }
+
+            mapPanel.addEventListener("click", function (e) {
+                if (!(e.target.closest && e.target.closest("[data-jcd-close]"))) {
+                    return;
+                }
+
+                setTimeout(function () {
+                    var introEl = mapPanel.querySelector('[data-panel-state="intro"]');
+
+                    var detailEl = mapPanel.querySelector('[data-panel-state="detail"]');
+
+                    mapPanel.hidden = false;
+
+                    if (introEl) {
+                        introEl.hidden = false;
+                    }
+
+                    if (detailEl) {
+                        detailEl.hidden = true;
+                    }
+                }, 0);
+            });
+        })();
+    }
 })();

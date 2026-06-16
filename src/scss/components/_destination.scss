@@ -37,6 +37,10 @@
         opacity: 0.35;
 
         pointer-events: none;
+
+        transition:
+            transform 0.25s ease-out,
+            opacity 0.25s ease-out;
     }
 
     // ==========================================
@@ -187,6 +191,17 @@
         object-fit: cover;
 
         border-radius: 8px;
+        transition: transform 0.25s ease-out;
+    }
+
+    &:hover {
+        .destination-highlight__image {
+            transform: scale(1.02);
+        }
+
+        &::before {
+            transform: translateY(-60px);
+        }
     }
 }
 
