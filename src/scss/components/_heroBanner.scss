@@ -92,10 +92,6 @@
 
         pointer-events: auto;
         cursor: pointer;
-
-        &:hover {
-            text-decoration: underline;
-        }
     }
 
     &__breadcrumbs-separator,

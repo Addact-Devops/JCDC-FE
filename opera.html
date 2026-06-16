@@ -86,7 +86,7 @@
     </header>
 
     <!-- Mobile drawer -->
-  <aside class="drawer" id="drawer" aria-hidden="true">
+        <aside class="drawer" id="drawer" aria-hidden="true">
             <div class="drawer__head">
                 <a href="/" class="drawer__logo">
                     <img src="assets/coporate-PNG-01 1.svg" alt="JCDC" width="80" height="44" class="drawer__logo" />
@@ -438,7 +438,7 @@
     <section class="landmark-slider landmark-slider--no-card" id="landmark-slider" aria-roledescription="carousel"
         aria-label="Major Landmarks">
         <header class="landmark-slider__header">
-            <h2 class="landmark-slider__title" data-i18n="landmarkSlider.title">Key Highlights of the Museum</h2>
+            <h3 class="landmark-slider__title" data-i18n="landmarkSlider.title">Key Highlights of the Museum</h3>
             <div class="section-pattern" aria-hidden="true">
                 <img src="./assets/pattern1.svg" alt="" width="22.46" height="21.3"
                     style="position: absolute; left: 0; top: 1.35px" />
@@ -507,25 +507,35 @@
 
             <button type="button" class="landmark-slider__nav landmark-slider__nav--prev" data-landmark-prev
                 aria-label="Previous slide">
-               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <path d="M15 18C15 18 9 13.5811 9 12C9 10.4188 15 6 15 6" stroke="currentColor" stroke-width="1.5"
-                        stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
+                    <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M12.6016 25.2004C12.6016 25.2004 21.0016 19.0139 21.0016 16.8004C21.0016 14.5867 12.6016 8.40039 12.6016 8.40039"
+                            stroke="currentColor"
+                            stroke-width="2.1"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        />
+                    </svg>
             </button>
 
             <button type="button" class="landmark-slider__nav landmark-slider__nav--next" data-landmark-next
                 aria-label="Next slide">
-               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                    <path d="M9.00006 6C9.00006 6 15 10.4189 15 12C15 13.5812 9.00001 18 9.00001 18"
-                        stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
+                    <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M12.6016 25.2004C12.6016 25.2004 21.0016 19.0139 21.0016 16.8004C21.0016 14.5867 12.6016 8.40039 12.6016 8.40039"
+                            stroke="currentColor"
+                            stroke-width="2.1"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                        />
+                    </svg>
             </button>
 
             <!-- Static info card — does NOT translate with the track.
-                     It contains N pre-rendered content variants, only one
-                     of which has the .--active class at a time. The wrapper
-                     fades on slide change via the .is-fading class. -->
-                      <!-- Dots — sit BELOW the viewport (STATIC) -->
+                    It contains N pre-rendered content variants, only one
+                    of which has the .--active class at a time. The wrapper
+                    fades on slide change via the .is-fading class. -->
+                    <!-- Dots — sit BELOW the viewport (STATIC) -->
         <ul class="landmark-slider__dots" id="landmark-slider-dots" role="tablist" aria-label="Slide navigation">
             <li>
                 <button type="button" class="landmark-slider__dot landmark-slider__dot--active" data-landmark-dot="0"

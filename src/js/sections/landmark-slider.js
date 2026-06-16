@@ -106,9 +106,17 @@
             if (!slideWidth) return;
 
             const direction = isRTL() ? -1 : 1;
-            const centerPos = (viewportWidth - slideWidth) / 2;
-            const slideOffset = current * step;
-            const tx = direction * (centerPos - slideOffset);
+            const isNoCardMobile = root.classList.contains("landmark-slider--no-card") && window.innerWidth <= 480;
+
+            let tx;
+
+            if (isNoCardMobile) {
+                tx = direction * -(current * step);
+            } else {
+                const centerPos = (viewportWidth - slideWidth) / 2;
+                const slideOffset = current * step;
+                tx = direction * (centerPos - slideOffset);
+            }
 
             if (!animate) trackEl.style.transition = "none";
             trackEl.style.transform = `translateX(${tx}px)`;
