@@ -216,14 +216,15 @@
 // ==========================================
 .attraction-thumb {
     flex: 0 0 auto;
-    width: 130px;
+    width: 122px;
+    height:163px;
     border: 0;
     background: transparent;
     padding: 0;
     cursor: pointer;
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 9px;
     scroll-snap-align: start;
     text-align: center;
 
@@ -236,11 +237,12 @@
     &__image {
         height: 114px;
         width: 100%;
+        max-width: 122px;
         aspect-ratio: 1 / 1;
         border-radius: 6px;
         overflow: hidden;
         background: #f3f3f3;
-        opacity: 0.55; // dimmed at rest
+        opacity: 0.7; // dimmed at rest
         border: 2px solid transparent; // prevent layout shifting
         transition:
             opacity var(--dur) var(--ease),
@@ -259,11 +261,13 @@
     &__label {
         margin: 0;
         font-family: var(--font-body);
-        font-size: 13px;
+        font-size: 14px;
         font-weight: 500;
         line-height: 1.35;
-        color: var(--text-500); // inactive label is muted grey
+        color: var(--primary-500); 
         transition: color var(--dur) var(--ease);
+        opacity: 0.7; // dimmed at rest
+
     }
 
     // Hover — full opacity, slight lift, blue label and border
@@ -277,6 +281,7 @@
 
     &:hover &__label,
     &:focus-visible &__label {
+        opacity: 1;
         color: var(--primary-500);
     }
 
@@ -290,6 +295,7 @@
     &--active &__label {
         color: var(--primary-500);
         font-weight: 700;
+        opacity: 1;
     }
 }
 
