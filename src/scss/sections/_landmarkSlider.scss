@@ -311,6 +311,9 @@
       ); // 👈 half slide width + half button
       svg {
         transform: scaleX(-1);
+        [dir="rtl"] & {
+          transform: scaleX(1);
+        }
       }
     }
 
@@ -389,6 +392,9 @@
       inset-inline-start: calc(50% - 600px + -24px);
       svg {
         transform: scaleX(-1);
+        [dir="rtl"] & {
+          transform: scaleX(1);
+        }
       }
     }
 
