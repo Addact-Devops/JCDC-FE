@@ -1,322 +1,424 @@
 <!doctype html>
 <html lang="en" dir="ltr" data-lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta
-            name="description"
-            content="Contact JCDC — Have a question or inquiry? Reach out to our team for business, media, or general information."
-        />
-        <title data-i18n="contact.metaTitle">JCDC — Contact Us</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&family=Cairo:wght@300;400;500;600;700&family=Readex+Pro:wght@160..700&display=swap"
-            rel="stylesheet"
-        />
-        <link rel="stylesheet" href="dist/main.min.css" />
-        <link rel="icon" type="image/x-icon" href="./assets/favicon.ico" />
-        <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32x32.png" />
-        <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-16x16.png" />
-        <link rel="icon" type="image/x-icon" href="./assets/apple-favicon.png" />
-    </head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Contact JCDC — Have a question or inquiry? Reach out to our team for business, media, or general information."
+    />
+    <title data-i18n="contact.metaTitle">JCDC — Contact Us</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&family=Cairo:wght@300;400;500;600;700&family=Readex+Pro:wght@160..700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="dist/main.min.css" />
+    <link rel="icon" type="image/x-icon" href="./assets/favicon.ico" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="./assets/favicon-16x16.png"
+    />
+    <link rel="icon" type="image/x-icon" href="./assets/apple-favicon.png" />
+  </head>
 
-    <body>
-        <!-- ════════════════════════════════════════════
+  <body>
+    <!-- ════════════════════════════════════════════
      HEADER (transparent over hero, white on scroll)
 ════════════════════════════════════════════ -->
-        <header class="navbar" id="navbar">
-            <div class="navbar__inner">
-                <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
-                    <span></span><span></span><span></span>
-                </button>
-                <a href="/" class="navbar__logo" aria-label="JCDC Home">
-                    <img class="navbar__logo--light" src="assets/Frame 2.svg" alt="JCDC" width="104" height="56" />
-                    <!-- Dark/colored logo — shown when scrolled -->
-                    <img
-                        class="navbar__logo--dark"
-                        src="assets/coporate-PNG-01 1.svg"
-                        alt="JCDC"
-                        width="104"
-                        height="56"
-                    />
-                </a>
+    <header class="navbar" id="navbar">
+      <div class="navbar__inner">
+        <button
+          class="hamburger"
+          id="hamburger"
+          aria-label="Open menu"
+          aria-expanded="false"
+        >
+          <span></span><span></span><span></span>
+        </button>
+        <a href="/" class="navbar__logo" aria-label="JCDC Home">
+          <img
+            class="navbar__logo--light"
+            src="assets/Frame 2.svg"
+            alt="JCDC"
+            width="104"
+            height="56"
+          />
+          <!-- Dark/colored logo — shown when scrolled -->
+          <img
+            class="navbar__logo--dark"
+            src="assets/coporate-PNG-01 1.svg"
+            alt="JCDC"
+            width="104"
+            height="56"
+          />
+        </a>
 
-                <nav class="navbar__menu" aria-label="Main navigation">
-                    <a href="about.html" class="nav-item" data-i18n="nav.about">About us</a>
+        <nav class="navbar__menu" aria-label="Main navigation">
+          <a href="about.html" class="nav-item" data-i18n="nav.about"
+            >About us</a
+          >
 
-                    <div class="nav-item nav-item--dropdown" data-dropdown>
-                        <a href="jcdc.html" data-i18n="nav.jcd">Jeddah Central Destination</a>
-                        <button class="nav-item__btn" aria-haspopup="true" aria-expanded="false" data-dropdown-toggle>
-                            <svg
-                                class="chevron"
-                                width="24"
-                                height="24"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                aria-hidden="true"
-                            >
-                                <path
-                                    d="M7 10l5 5 5-5"
-                                    stroke="currentColor"
-                                    stroke-width="1.5"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                />
-                            </svg>
-                        </button>
-                        <div class="dropdown">
-                            <a href="jcdc.html#jcd-map" data-i18n="nav.dropdown.districts">Districts</a>
-                            <a href="jcdc.html#landmark-slider" data-i18n="nav.dropdown.landmarks">Landmarks</a>
-                            <a href="jcdc.html#attractions" data-i18n="nav.dropdown.attractions">Attractions</a>
-                            <a href="jcdc.html#sustainability" data-i18n="nav.dropdown.sustainability"
-                                >Sustainability</a
-                            >
-                        </div>
-                    </div>
-
-                    <a href="invest.html" class="nav-item" data-i18n="nav.invest">Invest</a>
-                    <a href="news.html" class="nav-item" data-i18n="nav.news">News &amp; Events</a>
-                    <a href="career.html" class="nav-item" data-i18n="nav.careers">Careers</a>
-                    <a href="supplier.html" class="nav-item" data-i18n="nav.suppliers">Suppliers</a>
-                    <a href="contact.html" class="nav-item" data-i18n="nav.contact">Contact Us</a>
-                </nav>
-
-                <div class="navbar__actions">
-                    <button class="icon-btn" aria-label="Search">
-                        <a href="search.html#search-input" class="icon-btn" aria-label="Search">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.5" />
-                                <path
-                                    d="M16.5 16.5L21 21"
-                                    stroke="currentColor"
-                                    stroke-width="1.5"
-                                    stroke-linecap="round"
-                                />
-                            </svg>
-                        </a>
-                    </button>
-                    <button class="lang-btn" id="lang-btn" aria-label="Switch language">
-                        <span class="lang-btn__text" data-i18n="nav.lang">العربية</span>
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                            <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5" />
-                            <path
-                                d="M12 3c-2.5 2-4 5.5-4 9s1.5 7 4 9c2.5-2 4-5.5 4-9s-1.5-7-4-9z"
-                                stroke="currentColor"
-                                stroke-width="1.5"
-                            />
-                            <path d="M3 9h18M3 15h18" stroke="currentColor" stroke-width="1.5" />
-                        </svg>
-                    </button>
-                </div>
+          <div class="nav-item nav-item--dropdown" data-dropdown>
+            <a href="jcdc.html" data-i18n="nav.jcd"
+              >Jeddah Central Destination</a
+            >
+            <button
+              class="nav-item__btn"
+              aria-haspopup="true"
+              aria-expanded="false"
+              data-dropdown-toggle
+            >
+              <svg
+                class="chevron"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                aria-hidden="true"
+              >
+                <path
+                  d="M7 10l5 5 5-5"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </button>
+            <div class="dropdown">
+              <a href="jcdc.html#jcd-map" data-i18n="nav.dropdown.districts"
+                >Districts</a
+              >
+              <a
+                href="jcdc.html#landmark-slider"
+                data-i18n="nav.dropdown.landmarks"
+                >Landmarks</a
+              >
+              <a
+                href="jcdc.html#attractions"
+                data-i18n="nav.dropdown.attractions"
+                >Attractions</a
+              >
+              <a
+                href="jcdc.html#sustainability"
+                data-i18n="nav.dropdown.sustainability"
+                >Sustainability</a
+              >
             </div>
-        </header>
+          </div>
 
-        <!-- Mobile drawer -->
-        <aside class="drawer" id="drawer" aria-hidden="true">
-            <div class="drawer__head">
-                <a href="/" class="drawer__logo">
-                    <img src="assets/coporate-PNG-01 1.svg" alt="JCDC" width="80" height="44" class="drawer__logo" />
-                </a>
-                <button class="drawer__close" id="drawer-close" aria-label="Close menu">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="27" height="27" viewBox="0 0 27 27" fill="none">
-                        <path
-                            d="M20.1399 20.1431L6.85547 6.85742M6.85689 20.1431L20.1412 6.85742"
-                            stroke="#0076A9"
-                            stroke-width="1.5"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                        />
-                    </svg>
-                </button>
-            </div>
-            <div class="drawer__divider"></div>
-            <p class="drawer__label" data-i18n="mobile.menu">MENU</p>
+          <a href="invest.html" class="nav-item" data-i18n="nav.invest"
+            >Invest</a
+          >
+          <a href="news.html" class="nav-item" data-i18n="nav.news"
+            >News &amp; Events</a
+          >
+          <a href="career.html" class="nav-item" data-i18n="nav.careers"
+            >Careers</a
+          >
+          <a href="supplier.html" class="nav-item" data-i18n="nav.suppliers"
+            >Suppliers</a
+          >
+          <a href="contact.html" class="nav-item" data-i18n="nav.contact"
+            >Contact Us</a
+          >
+        </nav>
 
-            <ul class="drawer__nav">
-                <li>
-                    <a href="about.html">
-                        <button class="drawer__link" data-href="about.html">
-                            <span data-i18n="nav.about">About</span
-                            ><svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="24"
-                                height="24"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                class="drawer__arrow"
-                            >
-                                <path
-                                    d="M9.00006 6C9.00006 6 15 10.4189 15 12C15 13.5812 9.00001 18 9.00001 18"
-                                    stroke="currentColor"
-                                    stroke-width="1.5"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                ></path>
-                            </svg>
-                        </button>
-                    </a>
-                </li>
+        <div class="navbar__actions">
+          <button class="icon-btn" aria-label="Search">
+            <a
+              href="search.html#search-input"
+              class="icon-btn"
+              aria-label="Search"
+            >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <circle
+                  cx="11"
+                  cy="11"
+                  r="7"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                />
+                <path
+                  d="M16.5 16.5L21 21"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </a>
+          </button>
+          <button class="lang-btn" id="lang-btn" aria-label="Switch language">
+            <span class="lang-btn__text" data-i18n="nav.lang">العربية</span>
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              aria-hidden="true"
+            >
+              <circle
+                cx="12"
+                cy="12"
+                r="9"
+                stroke="currentColor"
+                stroke-width="1.5"
+              />
+              <path
+                d="M12 3c-2.5 2-4 5.5-4 9s1.5 7 4 9c2.5-2 4-5.5 4-9s-1.5-7-4-9z"
+                stroke="currentColor"
+                stroke-width="1.5"
+              />
+              <path
+                d="M3 9h18M3 15h18"
+                stroke="currentColor"
+                stroke-width="1.5"
+              />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
 
-                <li class="drawer__item drawer__item--has-sub">
-                    <button class="drawer__link drawer__link--expand" data-mobile-expand>
-                        <a href="jcdc.html">
-                            <span data-i18n="nav.jcd">Jeddah Central Destination</span>
-                        </a>
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="24"
-                            height="24"
-                            viewBox="0 0 24 24"
-                            fill="none"
-                            class="drawer__arrow drawer__arrow--down"
-                        >
-                            <path
-                                d="M18 9.00005C18 9.00005 13.5811 15 12 15C10.4188 15 6 9 6 9"
-                                stroke="#0076A9"
-                                stroke-width="1.5"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                            />
-                        </svg>
-                    </button>
+    <!-- Mobile drawer -->
+    <aside class="drawer" id="drawer" aria-hidden="true">
+      <div class="drawer__head">
+        <a href="/" class="drawer__logo">
+          <img
+            src="assets/coporate-PNG-01 1.svg"
+            alt="JCDC"
+            width="80"
+            height="44"
+            class="drawer__logo"
+          />
+        </a>
+        <button class="drawer__close" id="drawer-close" aria-label="Close menu">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="27"
+            height="27"
+            viewBox="0 0 27 27"
+            fill="none"
+          >
+            <path
+              d="M20.1399 20.1431L6.85547 6.85742M6.85689 20.1431L20.1412 6.85742"
+              stroke="#0076A9"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
+      </div>
+      <div class="drawer__divider"></div>
+      <p class="drawer__label" data-i18n="mobile.menu">MENU</p>
 
-                    <ul class="drawer__sub">
-                        <li>
-                            <a href="jcdc.html#jcd-map" data-i18n="nav.dropdown.districts">Districts</a>
-                        </li>
-                        <li>
-                            <a href="jcdc.html#landmark-slider" data-i18n="nav.dropdown.landmarks">Landmarks</a>
-                        </li>
-                        <li>
-                            <a href="jcdc.html#attractions" data-i18n="nav.dropdown.attractions">Attractions</a>
-                        </li>
-                        <li>
-                            <a href="jcdc.html#sustainability" data-i18n="nav.dropdown.sustainability"
-                                >Sustainability</a
-                            >
-                        </li>
-                    </ul>
-                </li>
+      <ul class="drawer__nav">
+        <li>
+          <a href="about.html">
+            <button class="drawer__link" data-href="about.html">
+              <span data-i18n="nav.about">About</span
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                class="drawer__arrow"
+              >
+                <path
+                  d="M9.00006 6C9.00006 6 15 10.4189 15 12C15 13.5812 9.00001 18 9.00001 18"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+              </svg>
+            </button>
+          </a>
+        </li>
 
-                <li>
-                    <a href="invest.html">
-                        <button class="drawer__link">
-                            <span data-i18n="nav.invest">Invest</span
-                            ><svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="24"
-                                height="24"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                class="drawer__arrow"
-                            >
-                                <path
-                                    d="M9.00006 6C9.00006 6 15 10.4189 15 12C15 13.5812 9.00001 18 9.00001 18"
-                                    stroke="currentColor"
-                                    stroke-width="1.5"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                ></path>
-                            </svg>
-                        </button>
-                    </a>
-                </li>
-                <li>
-                    <a href="news.html">
-                        <button class="drawer__link">
-                            <span data-i18n="nav.news">News &amp; Events</span
-                            ><svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="24"
-                                height="24"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                class="drawer__arrow"
-                            >
-                                <path
-                                    d="M9.00006 6C9.00006 6 15 10.4189 15 12C15 13.5812 9.00001 18 9.00001 18"
-                                    stroke="currentColor"
-                                    stroke-width="1.5"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                ></path>
-                            </svg>
-                        </button>
-                    </a>
-                </li>
-                <li>
-                    <a href="career.html">
-                        <button class="drawer__link">
-                            <span data-i18n="nav.careers">Careers</span
-                            ><svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="24"
-                                height="24"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                class="drawer__arrow"
-                            >
-                                <path
-                                    d="M9.00006 6C9.00006 6 15 10.4189 15 12C15 13.5812 9.00001 18 9.00001 18"
-                                    stroke="currentColor"
-                                    stroke-width="1.5"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                ></path>
-                            </svg>
-                        </button>
-                    </a>
-                </li>
-                <li>
-                    <a href="supplier.html">
-                        <button class="drawer__link">
-                            <span data-i18n="nav.suppliers">Suppliers</span
-                            ><svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="24"
-                                height="24"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                class="drawer__arrow"
-                            >
-                                <path
-                                    d="M9.00006 6C9.00006 6 15 10.4189 15 12C15 13.5812 9.00001 18 9.00001 18"
-                                    stroke="currentColor"
-                                    stroke-width="1.5"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                ></path>
-                            </svg>
-                        </button>
-                    </a>
-                </li>
-                <li>
-                    <a href="contact.html">
-                        <button class="drawer__link">
-                            <span data-i18n="nav.contact">Contact Us</span
-                            ><svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="24"
-                                height="24"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                class="drawer__arrow"
-                            >
-                                <path
-                                    d="M9.00006 6C9.00006 6 15 10.4189 15 12C15 13.5812 9.00001 18 9.00001 18"
-                                    stroke="currentColor"
-                                    stroke-width="1.5"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                ></path>
-                            </svg>
-                        </button>
-                    </a>
-                </li>
-            </ul>
+        <li class="drawer__item drawer__item--has-sub">
+          <button class="drawer__link drawer__link--expand" data-mobile-expand>
+            <a href="jcdc.html">
+              <span data-i18n="nav.jcd">Jeddah Central Destination</span>
+            </a>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              class="drawer__arrow drawer__arrow--down"
+            >
+              <path
+                d="M18 9.00005C18 9.00005 13.5811 15 12 15C10.4188 15 6 9 6 9"
+                stroke="#0076A9"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </button>
 
-            <!-- <div class="drawer__footer">
+          <ul class="drawer__sub">
+            <li>
+              <a href="jcdc.html#jcd-map" data-i18n="nav.dropdown.districts"
+                >Districts</a
+              >
+            </li>
+            <li>
+              <a
+                href="jcdc.html#landmark-slider"
+                data-i18n="nav.dropdown.landmarks"
+                >Landmarks</a
+              >
+            </li>
+            <li>
+              <a
+                href="jcdc.html#attractions"
+                data-i18n="nav.dropdown.attractions"
+                >Attractions</a
+              >
+            </li>
+            <li>
+              <a
+                href="jcdc.html#sustainability"
+                data-i18n="nav.dropdown.sustainability"
+                >Sustainability</a
+              >
+            </li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="invest.html">
+            <button class="drawer__link">
+              <span data-i18n="nav.invest">Invest</span
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                class="drawer__arrow"
+              >
+                <path
+                  d="M9.00006 6C9.00006 6 15 10.4189 15 12C15 13.5812 9.00001 18 9.00001 18"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+              </svg>
+            </button>
+          </a>
+        </li>
+        <li>
+          <a href="news.html">
+            <button class="drawer__link">
+              <span data-i18n="nav.news">News &amp; Events</span
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                class="drawer__arrow"
+              >
+                <path
+                  d="M9.00006 6C9.00006 6 15 10.4189 15 12C15 13.5812 9.00001 18 9.00001 18"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+              </svg>
+            </button>
+          </a>
+        </li>
+        <li>
+          <a href="career.html">
+            <button class="drawer__link">
+              <span data-i18n="nav.careers">Careers</span
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                class="drawer__arrow"
+              >
+                <path
+                  d="M9.00006 6C9.00006 6 15 10.4189 15 12C15 13.5812 9.00001 18 9.00001 18"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+              </svg>
+            </button>
+          </a>
+        </li>
+        <li>
+          <a href="supplier.html">
+            <button class="drawer__link">
+              <span data-i18n="nav.suppliers">Suppliers</span
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                class="drawer__arrow"
+              >
+                <path
+                  d="M9.00006 6C9.00006 6 15 10.4189 15 12C15 13.5812 9.00001 18 9.00001 18"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+              </svg>
+            </button>
+          </a>
+        </li>
+        <li>
+          <a href="contact.html">
+            <button class="drawer__link">
+              <span data-i18n="nav.contact">Contact Us</span
+              ><svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                class="drawer__arrow"
+              >
+                <path
+                  d="M9.00006 6C9.00006 6 15 10.4189 15 12C15 13.5812 9.00001 18 9.00001 18"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+              </svg>
+            </button>
+          </a>
+        </li>
+      </ul>
+
+      <!-- <div class="drawer__footer">
                 <button class="lang-btn lang-btn--drawer" id="lang-btn-drawer">
                     <span class="lang-btn__text" data-i18n="nav.lang">العربية</span>
                     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -330,422 +432,853 @@
                     </svg>
                 </button>
             </div> -->
-        </aside>
-        <div class="overlay" id="overlay"></div>
+    </aside>
+    <div class="overlay" id="overlay"></div>
 
-        <!-- ════════════════════════════════════════════
+    <!-- ════════════════════════════════════════════
         HERO BANNER (reused — Contact Us copy)
 ════════════════════════════════════════════ -->
-        <section class="banner" aria-labelledby="contact-hero-title">
-            <div class="hero__media">
-                <img src="assets/Contact us/Hero banner.svg" alt="" loading="eager" />
-            </div>
-            <div class="banner__overlay legalBanner_overlay"></div>
+    <section class="banner" aria-labelledby="contact-hero-title">
+      <div class="hero__media">
+        <img src="assets/Contact us/Hero banner.svg" alt="" loading="eager" />
+      </div>
+      <div class="banner__overlay legalBanner_overlay"></div>
 
-            <div class="container">
-                <div class="banner__content">
-                    <nav class="banner__breadcrumbs" aria-label="Breadcrumb">
-                        <a href="index.html" class="banner__breadcrumbs-link" data-i18n="contact.breadcrumb.home"
-                            >Home</a
-                        >
-                        <span class="banner__breadcrumbs-separator">
-                            <svg
-                                width="12"
-                                height="27"
-                                viewBox="0 0 12 27"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path
-                                    d="M2.79384 11.99L3.26184 10.604L11.0378 13.898V15.338L3.26184 18.632L2.79384 17.246L9.18384 14.618L2.79384 11.99Z"
-                                    fill="#EFEFEF"
-                                />
-                            </svg>
-                        </span>
-                        <span class="banner__breadcrumbs-current" data-i18n="contact.breadcrumb.current"
-                            >Contact Us</span
-                        >
-                    </nav>
+      <div class="container">
+        <div class="banner__content">
+          <nav class="banner__breadcrumbs" aria-label="Breadcrumb">
+            <a
+              href="index.html"
+              class="banner__breadcrumbs-link"
+              data-i18n="contact.breadcrumb.home"
+              >Home</a
+            >
+            <span class="banner__breadcrumbs-separator">
+              <svg
+                width="12"
+                height="27"
+                viewBox="0 0 12 27"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M2.79384 11.99L3.26184 10.604L11.0378 13.898V15.338L3.26184 18.632L2.79384 17.246L9.18384 14.618L2.79384 11.99Z"
+                  fill="#EFEFEF"
+                />
+              </svg>
+            </span>
+            <span
+              class="banner__breadcrumbs-current"
+              data-i18n="contact.breadcrumb.current"
+              >Contact Us</span
+            >
+          </nav>
 
-                    <div>
-                        <h1 class="banner__title" id="contact-hero-title" data-i18n="contact.hero.title">Contact Us</h1>
-                        <p class="banner__description" data-i18n="contact.hero.description">
-                            Have a question or inquiry? Whether it's about business opportunities, media relations, or
-                            general information, we're ready to assist.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
+          <div>
+            <h1
+              class="banner__title"
+              id="contact-hero-title"
+              data-i18n="contact.hero.title"
+            >
+              Contact Us
+            </h1>
+            <p class="banner__description" data-i18n="contact.hero.description">
+              Have a question or inquiry? Whether it's about business
+              opportunities, media relations, or general information, we're
+              ready to assist.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        <!-- ════════════════════════════════════════════
+    <!-- ════════════════════════════════════════════
         CONTACT US (form + address — 50/50 grid)
 ════════════════════════════════════════════ -->
-        <section class="contact-us" aria-labelledby="contact-form-heading">
-            <div class="contact-us__container">
-                <div class="contact-us__grid">
-                    <!-- ───────── LEFT: Form / Success ───────── -->
-                    <div class="contact-us__left">
-                        <!-- Form wrapper (hidden after submit) -->
-                        <div id="contact-form-wrap">
-                            <h3 class="contact-us__heading" id="contact-form-heading" data-i18n="contact.form.heading">
-                                Please fill out the form below and the relevant team will reach out to assist you.
-                            </h3>
+    <section class="contact-us" aria-labelledby="contact-form-heading">
+      <div class="contact-us__container">
+        <div class="contact-us__grid">
+          <!-- ───────── LEFT: Form / Success ───────── -->
+          <div class="contact-us__left">
+            <!-- Form wrapper (hidden after submit) -->
+            <div id="contact-form-wrap">
+              <h3
+                class="contact-us__heading"
+                id="contact-form-heading"
+                data-i18n="contact.form.heading"
+              >
+                Please fill out the form below and the relevant team will reach
+                out to assist you.
+              </h3>
 
-                            <form class="contact-form" id="contact-form" novalidate>
-                                <!-- First / Last name row -->
-                                <div class="contact-form__row">
-                                    <div class="form-field">
-                                        <label class="form-field__label" for="cu-first">
-                                            <span data-i18n="contact.form.firstName">First Name</span>
-                                            <span class="form-field__required" aria-hidden="true">*</span>
-                                        </label>
-                                        <input
-                                            class="form-field__input"
-                                            type="text"
-                                            id="cu-first"
-                                            name="firstName"
-                                            required
-                                            autocomplete="given-name"
-                                        />
-                                        <span class="form-field__error" role="alert"></span>
-                                    </div>
+              <div id="contact-form-wrapper">
+                <iframe
+                  id="emarsysFormFrame"
+                  title="Emarsys Form"
+                  style="
+                    width: 100%;
+                    border: 0;
+                    background: transparent;
+                    height: 100vh;
+                  "
+                  referrerpolicy="no-referrer"
+                  srcdoc='
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+  /* Transparent so page background shows */
+  html,body { margin:0; padding:0; background:transparent; overflow:hidden }
+  body{ font-family: "Ubuntu", sans-serif; padding:0; color:#111; }
 
-                                    <div class="form-field">
-                                        <label class="form-field__label" for="cu-last">
-                                            <span data-i18n="contact.form.lastName">Last Name</span>
-                                            <span class="form-field__required" aria-hidden="true">*</span>
-                                        </label>
-                                        <input
-                                            class="form-field__input"
-                                            type="text"
-                                            id="cu-last"
-                                            name="lastName"
-                                            required
-                                            autocomplete="family-name"
-                                        />
-                                        <span class="form-field__error" role="alert"></span>
-                                    </div>
-                                </div>
+  /* Text-like inputs ONLY (exclude checkbox, radio, submit) */
+  input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]),
+  select, textarea{
+    width:100%; padding:14px 16px; box-sizing:border-box;
+        font-size: 16px;
+    font-weight: 400;
+    line-height: 150%;
+    color:#5b5f62;
+    border:1px solid #cfcfcf; border-radius:4px; background:rgba(255,255,255,0.85); outline:none;
+  }
+  input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]):focus,
+  select:focus, textarea:focus{ border-color:#b6b6b6; }
+  ::placeholder{ color:#8e8e8e; }
 
-                                <!-- Email -->
-                                <div class="form-field">
-                                    <label class="form-field__label" for="cu-email">
-                                        <span data-i18n="contact.form.email">Email</span>
-                                        <span class="form-field__required" aria-hidden="true">*</span>
-                                    </label>
-                                    <input
-                                        class="form-field__input"
-                                        type="email"
-                                        id="cu-email"
-                                        name="email"
-                                        required
-                                        autocomplete="email"
-                                    />
-                                    <span class="form-field__error" role="alert"></span>
-                                </div>
+  input[type="checkbox"], input[type="radio"]{ width:auto; }
 
-                                <!-- Phone -->
-                                <div class="form-field">
-                                    <label class="form-field__label" for="cu-phone">
-                                        <span data-i18n="contact.form.phone">Phone Number</span>
-                                        <span class="form-field__required" aria-hidden="true">*</span>
-                                    </label>
-                                    <input
-                                        class="form-field__input"
-                                        type="tel"
-                                        id="cu-phone"
-                                        name="phone"
-                                        required
-                                        autocomplete="tel"
-                                    />
-                                    <span class="form-field__error" role="alert"></span>
-                                </div>
+  /* Make the Message Box bigger than other fields */
+  textarea#inp_8778{
+    min-height: 170px;        /* bigger than the default */
+    line-height: 1.4;
+    resize: vertical;         /* allow user to expand if needed */
+  }
 
-                                <!-- Topic -->
-                                <div class="form-field">
-                                    <label class="form-field__label" for="cu-topic" data-i18n="contact.form.topic">
-                                        Choose a Topic
-                                    </label>
-                                    <select class="form-field__input form-field__select" id="cu-topic" name="topic">
-                                        <option value="" data-i18n="contact.form.selectTopic">Select Topic</option>
-                                        <option value="business" data-i18n="contact.form.topics.business">
-                                            Business Opportunities
-                                        </option>
-                                        <option value="media" data-i18n="contact.form.topics.media">
-                                            Media Relations
-                                        </option>
-                                        <option value="general" data-i18n="contact.form.topics.general">
-                                            General Information
-                                        </option>
-                                        <option value="careers" data-i18n="contact.form.topics.careers">Careers</option>
-                                        <option value="suppliers" data-i18n="contact.form.topics.suppliers">
-                                            Suppliers
-                                        </option>
-                                    </select>
-                                    <span class="form-field__error" role="alert"></span>
-                                </div>
+  /* Navy submit button */
+  .btn{ min-width: 0;
+    background: rgba(0, 0, 0, 0);
+    height: 48px;
+    padding: 16px;
+    border-radius: 4px;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: .8;
+border-color: #cc9f53;
+    color:#cc9f53;border-style:solid}
+  .btn:hover{ background:  #cc9f53;
+    color: #ffffff;border-style:solid }
 
-                                <!-- Message -->
-                                <div class="form-field">
-                                    <label class="form-field__label" for="cu-message">
-                                        <span data-i18n="contact.form.message">Message</span>
-                                        <span class="form-field__required" aria-hidden="true">*</span>
-                                    </label>
-                                    <textarea
-                                        class="form-field__input form-field__textarea"
-                                        id="cu-message"
-                                        name="message"
-                                        rows="6"
-                                        required
-                                    ></textarea>
-                                    <span class="form-field__error" role="alert"></span>
-                                </div>
+  /* Rows with checkbox + label */
+  .optin{
+    display:flex; align-items:flex-start; gap:10px;
+    margin:8px 0; font-weight:400; color:#1a1a1a;
+  }
+  .optin input{ margin-top:4px; }
 
-                                <!-- T&C -->
-                                <div class="contact-form__terms-row">
-                                    <label class="form-check">
-                                        <input
-                                            class="form-check__input"
-                                            type="checkbox"
-                                            name="terms"
-                                            data-required="true"
-                                        />
-                                        <span class="form-check__box" aria-hidden="true"></span>
-                                        <span class="form-check__label">
-                                            <span data-i18n="contact.form.terms">I accept the</span>
-                                            <a href="#" data-i18n="contact.form.termsLink">Terms and Conditions</a>
-                                        </span>
-                                    </label>
-                                    <span
-                                        class="form-field__error"
-                                        role="alert"
-                                        style="margin-inline-start: 28px"
-                                    ></span>
-                                </div>
+  /* Success modal (soft beige + dark overlay) */
+  .modal{ position:fixed; inset:0; display:none; }
+  .modal.show{ display:block; }
+  .modal .backdrop{ position:absolute; inset:0; background:rgba(0,0,0,.55); }
+  .modal .panel{
+    position:relative; margin:8vh auto 0; max-width:520px;
+    background:#F1E4D6; border:1px solid #E5D5C5; border-radius:10px;
+    padding:28px; text-align:center; color:#2c2c2c;
+    box-shadow:0 10px 30px rgba(0,0,0,.18);
+  }
+  .modal .icon{ margin-bottom:12px; }
+  .modal .icon svg{ width:56px; height:56px; stroke:#111; stroke-width:2.5; fill:none; }
+  .modal h2{ margin:10px 0 6px; font-size:26px; font-weight:700; }
+  .modal p{ margin:0 0 16px; font-size:16px; }
+  .modal .pill{
+    display:inline-flex; align-items:center; gap:10px;
+    padding:12px 20px; border-radius:28px; border:0; cursor:pointer;
+    background:#E7ECF1; color:#02243D; font-weight:600;
+  }
+  a{ color:#02243D; }
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    }
+  .contact-form__row{
+        display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  .form-field__label {
+    font-family: "Ubuntu", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 143%;
+    color: #5b5f62;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    flex-wrap: wrap;
+}
+.form-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 0;
+    border: none;
+    padding: 0;
+    min-width: 0;
+    margin-bottom: 10px;
+}
 
-                                <!-- Submit -->
-                                <div class="contact-form__submit-row">
-                                    <button
-                                        type="submit"
-                                        class="btn btn--outline-gold contact-form__submit"
-                                        data-i18n="contact.form.submit"
-                                    >
-                                        Submit
-                                    </button>
-                                </div>
-                            </form>
-                        </div>
+.contact-form__submit-row {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 4px;
+}
+.form-field__select {
+    appearance: none;
+    background-image: url("../../../assets/icons/Drop\ Down.svg");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 40px;
+    cursor: pointer;
+}
 
-                        <!-- Success state -->
-                        <div class="contact-success" id="contact-success" hidden tabindex="-1">
-                            <div class="contact-success__icon" aria-hidden="true">
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
-                                    <path
-                                        d="M5 13l4 4L19 7"
-                                        stroke="currentColor"
-                                        stroke-width="2.4"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                    />
-                                </svg>
-                            </div>
-                            <h2 class="contact-success__title" data-i18n="contact.success.title">Message Received</h2>
-                            <p class="contact-success__text" data-i18n="contact.success.text">
-                                Thank you for reaching out. Our team has received your message and will get back to you
-                                soon.
-                            </p>
-                            <a href="index.html" class="btn-text">
-                                <span>Go Back To Homepage</span>
-                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="btn-text__arrow">
-                                    <path
-                                        d="M7 17L17 7M9 7h8v8"
-                                        stroke="currentColor"
-                                        stroke-width="1.5"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"
-                                    />
-                                </svg>
-                            </a>
-                        </div>
-                    </div>
+.error-message {
+  color: #d32f2f;
+  font-size: 12px;
+  margin-top: 4px;
+  display: none;
+}
 
-                    <!-- ───────── RIGHT: Address card + directions ───────── -->
-                    <aside class="contact-us__right" aria-label="Office address">
-                        <div class="contact-us__address-card">
-                            <h5 class="contact-us__address-title" data-i18n="contact.address.title">
-                                JCDC Head Office
-                            </h5>
-                            <address class="contact-us__address-text">
-                                <span data-i18n="contact.address.line1">Jeddah Central Development Company</span><br />
-                                <span data-i18n="contact.address.line2">7051 Prince Sultan - As Salamah Dist.</span
-                                ><br />
-                                <span data-i18n="contact.address.line3">Unit No 9959</span><br />
-                                <span data-i18n="contact.address.line4">Jeddah 23525 - 2661</span><br />
-                                <span data-i18n="contact.address.line5">Kingdom of Saudi Arabia</span>
-                            </address>
-                        </div>
+.error-message.show {
+  display: block;
+}
 
-                        <a
-                            href="https://maps.google.com/?q=Jeddah+Central+Development+Company"
-                            class="btn-text"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            <span data-i18n="contact.address.directions">Get Directions</span>
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" class="btn-text__arrow">
-                                <path
-                                    d="M7 17L17 7M9 7h8v8"
-                                    stroke="currentColor"
-                                    stroke-width="1.5"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                />
-                            </svg>
-                        </a>
-                    </aside>
-                </div>
+.input-error {
+  border-color: #d32f2f !important;
+}
+
+
+</style>
+</head>
+<body>
+<!-- Hidden sink so we can show a local popup while still submitting to Emarsys -->
+<iframe name="emarsysSink" id="emarsysSink" style="display:none"></iframe>
+
+<form id="ProfileForm" name="ProfileForm"
+      action="https://links.jcd.com.sa/u/register.php"
+      method="get" autocomplete="off"
+      target="emarsysSink" class="contact-form">
+
+  <!-- Hidden params (unchanged) -->
+  <input type="hidden" name="CID" value="788202873">
+  <input type="hidden" name="SID" value="">
+  <input type="hidden" name="UID" value="">
+  <input type="hidden" name="f"  value="739">
+  <input type="hidden" name="p"  value="2">
+  <input type="hidden" name="a"  value="ccs">
+  <input type="hidden" name="el" value="">
+  <input type="hidden" name="llid" value="">
+  <input type="hidden" name="c"  value="">
+  <input type="hidden" name="counted" value="">
+  <input type="hidden" name="RID" value="21">
+  <input type="hidden" name="mailnow" value="">
+
+  <div class="contact-form__row"> 
+      <div class="field">
+            <div class="form-field has-error is-invalid">
+                <label for="inp_1" class="sr-only form-field__label">First Name *</label>
+                <input id="inp_1" type="text" name="inp_1" maxlength="60" value="">
+                <span id="inp_1_error" class="error-message">
+  First Name is required.
+</span>
             </div>
-        </section>
+     </div>
 
-        <!-- Cookie Popup -->
-        <div class="cookie-popup" id="cookiePopup">
-            <div class="cookie-popup__content">
-                <div class="cookie-popup__left">
-                    <h3>BEFORE YOU ENTER OUR WEBSITE</h3>
 
-                    <p>
-                        We use cookies to optimize your experience, remember your preferences, analyze site performance,
-                        and provide relevant content. By selecting “Accept All Cookies”, you consent to our use of
-                        <a href="#">cookies</a>.
-                    </p>
-                </div>
-            </div>
-            <div class="cookie-popup__buttons">
-                <button id="acceptCookies" class="cookie-btn cookie-btn--primary">
-                    ACCEPT ALL
-                    <span>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <path
-                                d="M20 12H4"
-                                stroke="#EFEFEF"
-                                stroke-width="1.5"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                            />
-                            <path
-                                d="M15.0001 17C15.0001 17 20 13.3176 20 12C20 10.6824 15 7 15 7"
-                                stroke="#EFEFEF"
-                                stroke-width="1.5"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                            />
-                        </svg>
-                    </span>
-                </button>
-
-                <button id="rejectCookies" class="cookie-btn cookie-btn--outline">
-                    Reject All
-                    <span>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-                            <path
-                                d="M20 12H4"
-                                stroke="#CC9F53"
-                                stroke-width="1.5"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                            />
-                            <path
-                                d="M15.0001 17C15.0001 17 20 13.3176 20 12C20 10.6824 15 7 15 7"
-                                stroke="#CC9F53"
-                                stroke-width="1.5"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                            />
-                        </svg>
-                    </span>
-                </button>
-            </div>
+    <div class="field">
+        <div class="form-field has-error is-invalid">
+            <label for="inp_2" class="sr-only form-field__label">Last Name *</label>
+            <input id="inp_2" type="text" name="inp_2" maxlength="60"  value="">
+            <span id="inp_2_error" class="error-message">
+  Last Name is required.
+</span>
         </div>
+    </div>
+  </div>
 
-        <footer class="footer">
-            <div class="footer__top">
-                <a href="/" class="footer__logo-wrap">
-                    <img src="assets/coporate-PNG-01 1.svg" alt="JCDC" width="132" height="72" class="footer__logo" />
-                </a>
-                <div class="footer__right">
-                    <div class="footer__social">
-                        <a href="#" aria-label="Instagram" class="social-link">
-                            <svg
-                                width="24"
-                                height="24"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="1.8"
-                            >
-                                <rect x="3" y="3" width="18" height="18" rx="5" />
-                                <circle cx="12" cy="12" r="4" />
-                                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" />
-                            </svg>
-                        </a>
-                        <a href="#" aria-label="X (Twitter)" class="social-link">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                <path
-                                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
-                                />
-                            </svg>
-                        </a>
-                        <a href="#" aria-label="LinkedIn" class="social-link">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="24"
-                                height="24"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                            >
-                                <path
-                                    fill-rule="evenodd"
-                                    clip-rule="evenodd"
-                                    d="M4.5 3.24219C3.67157 3.24219 3 3.91376 3 4.74219V19.7422C3 20.5706 3.67157 21.2422 4.5 21.2422H19.5C20.3284 21.2422 21 20.5706 21 19.7422V4.74219C21 3.91376 20.3284 3.24219 19.5 3.24219H4.5ZM8.52076 7.24491C8.52639 8.20116 7.81061 8.79038 6.96123 8.78616C6.16107 8.78194 5.46357 8.14491 5.46779 7.24632C5.47201 6.40116 6.13998 5.72194 7.00764 5.74163C7.88795 5.76132 8.52639 6.40679 8.52076 7.24491ZM12.2797 10.0039H9.75971H9.7583V18.5638H12.4217V18.3641C12.4217 17.9842 12.4214 17.6042 12.4211 17.2241C12.4203 16.2103 12.4194 15.1954 12.4246 14.1819C12.426 13.9358 12.4372 13.6799 12.5005 13.445C12.7381 12.5675 13.5271 12.0008 14.4074 12.1401C14.9727 12.2286 15.3467 12.5563 15.5042 13.0893C15.6013 13.4225 15.6449 13.7811 15.6491 14.1285C15.6605 15.1761 15.6589 16.2237 15.6573 17.2714C15.6567 17.6412 15.6561 18.0112 15.6561 18.381V18.5624H18.328V18.3571C18.328 17.9051 18.3278 17.4532 18.3275 17.0013C18.327 15.8718 18.3264 14.7423 18.3294 13.6124C18.3308 13.1019 18.276 12.5985 18.1508 12.1049C17.9638 11.3708 17.5771 10.7633 16.9485 10.3246C16.5027 10.0124 16.0133 9.81129 15.4663 9.78879C15.404 9.7862 15.3412 9.78281 15.2781 9.7794C14.9984 9.76428 14.7141 9.74892 14.4467 9.80285C13.6817 9.95613 13.0096 10.3063 12.5019 10.9236C12.4429 10.9944 12.3852 11.0663 12.2991 11.1736L12.2797 11.1979V10.0039ZM5.68164 18.5666H8.33242V10.0095H5.68164V18.5666Z"
-                                    fill="#0076A9"
-                                />
-                            </svg>
-                        </a>
-                        <a href="#" aria-label="YouTube" class="social-link">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                                <path
-                                    d="M23.5 6.21a3.02 3.02 0 0 0-2.12-2.14C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.38.57A3.02 3.02 0 0 0 .5 6.21 31.48 31.48 0 0 0 0 12a31.48 31.48 0 0 0 .5 5.79 3.02 3.02 0 0 0 2.12 2.14C4.5 20.5 12 20.5 12 20.5s7.5 0 9.38-.57a3.02 3.02 0 0 0 2.12-2.14A31.48 31.48 0 0 0 24 12a31.48 31.48 0 0 0-.5-5.79zM9.6 15.6V8.4l6.24 3.6-6.24 3.6z"
-                                />
-                            </svg>
-                        </a>
-                    </div>
-                    <nav class="footer__nav" aria-label="Footer navigation">
-                        <a href="about.html" data-i18n="footer.aboutUs">ABOUT US</a>
-                        <a href="jcdc.html" data-i18n="footer.jcd">JEDDAH CENTRAL DESTINATION</a>
-                        <a href="invest.html" data-i18n="footer.invest">INVEST</a>
-                        <a href="news.html" data-i18n="footer.newsEvents">NEWS &amp; EVENTS</a>
-                        <a href="career.html" data-i18n="footer.careers">CAREERS</a>
-                        <a href="supplier.html" data-i18n="footer.suppliers">SUPPLIERS</a>
-                        <a href="contact.html" data-i18n="footer.contact">CONTACT US</a>
-                    </nav>
-                </div>
-            </div>
-            <div class="footer__divider"></div>
-            <div class="footer__bottom">
-                <a href="https://www.pif.gov.sa/en/" class="footer__pif-wrap">
-                    <img src="./assets/footer/Layer_1.png" alt="A PIF Company" class="footer__pif"
-                /></a>
-                <div class="footer__legal">
-                    <a href="privacyPolicy.html" data-i18n="footer.privacy">Privacy Policy</a>
-                    <a href="terms&condition.html" data-i18n="footer.terms">Terms &amp; Conditions</a>
-                    <a href="cookiesPolicy.html" data-i18n="footer.cookies">Cookies Policy</a>
-                    <span class="footer__copy" data-i18n="footer.copy">© 2026 JCDC. ALL RIGHTS RESERVED</span>
-                </div>
-            </div>
-        </footer>
+  <div class="field">
+    <div class="form-field has-error is-invalid">
+        <label for="inp_3" class="sr-only form-field__label">Email *</label>
+        <input id="inp_3" type="email" name="inp_3" maxlength="255"  value="">
+        <span id="inp_3_error" class="error-message">
+  Email is required.
+</span>
+    </div>
+  </div>
 
-        <!-- Bundled & minified JS (built from src/js by `npm run build`) -->
-        <script src="dist/main.min.js" defer></script>
-    </body>
+  <div class="field">
+    <div class="form-field has-error is-invalid">
+        <label for="inp_37" class="sr-only form-field__label">Phone Number *</label>
+        <input id="inp_37" type="tel" name="inp_37" maxlength="60" value="">
+        <span id="inp_37_error" class="error-message">
+  Phone Number is required.
+</span>
+    </div>
+  </div>
+
+  <div class="field">
+    <div class="form-field has-error is-invalid">
+        <label for="inp_8618" class="sr-only form-field__label">Choose a Topic</label>
+        <select id="inp_8618" name="inp_8618" class="form-field__select">
+        <option value=""  selected >Select Topic</option>
+        <option value="1">Business Opportunities</option>
+        <option value="2">Media Relations</option>
+        <option value="3">General Information</option>
+        <option value="4">Careers</option>
+        <option value="5">Suppliers</option>
+        </select>
+        <span id="inp_8618_error" class="error-message">
+Please select an item in the list
+</span>
+    </div>
+  </div>
+
+  <div class="field">
+     <div class="form-field has-error is-invalid">
+        <label for="inp_8778" class="sr-only form-field__label">Message *</label>
+        <!-- bigger Message Box -->
+        <textarea id="inp_8778" name="inp_8778" maxlength="255"></textarea>
+        <span id="inp_8778_error" class="error-message">
+  Message is required.
+</span>
+     </div>
+  </div>
+
+
+
+  <!-- Opt-in (sent to Emarsys) -->
+
+  <!-- Privacy & Cookies (REQUIRED, but NOT submitted to Emarsys) -->
+  <div class="optin" style="position:relative;">
+    <input type="checkbox" id="privacy" >
+    <label for="privacy" style="margin:0; font-weight:400;">
+      I accept the
+      <a rel="noopener noreferrer" href="/en/terms-and-condition" target="_blank">Terms and Conditions</a>
+    </label>
+    <div id="privacy_error" class="error-message" style="position:absolute;top:25px;">
+  Check box for the terms and condition is required.
+</div>
+  </div>
+
+  <div class="contact-form__submit-row">
+  <input class="btn" aria-label="Submit" type="submit" name="submit1" value="Submit">
+  </div>
+</form>
+
+
+<script src="https://unpkg.com/libphonenumber-js@1.11.10/bundle/libphonenumber-js.min.js"></script>
+
+<script>
+  function req(v,l){ if(!v || v.trim()===""){ alert(l+" is required."); return false; } return true; }
+function showError(id) {
+  document.getElementById(id + "_error").classList.add("show");
+  document.getElementById(id).classList.add("input-error");
+}
+
+function hideError(id) {
+  document.getElementById(id + "_error").classList.remove("show");
+  document.getElementById(id).classList.remove("input-error");
+}
+function validateField(id) {
+  var field = document.getElementById(id);
+
+  if (!field.value.trim()) {
+    showError(id);
+    return false;
+  }
+
+  hideError(id);
+  return true;
+}
+
+function validateEmail() {
+  var email = document.getElementById("inp_3");
+  var error = document.getElementById("inp_3_error");
+  var value = email.value.trim();
+
+  if (!value) {
+    error.textContent = "Email is required.";
+    showError("inp_3");
+    return false;
+  }
+
+  var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (!emailRegex.test(value)) {
+    error.textContent = "Please enter a valid email address.";
+    showError("inp_3");
+    return false;
+  }
+
+  hideError("inp_3");
+  return true;
+}
+function validatePhone() {
+  var phone = document.getElementById("inp_37");
+  var error = document.getElementById("inp_37_error");
+  var value = phone.value.trim();
+
+  if (!value) {
+    error.textContent = "Phone Number is required.";
+    showError("inp_37");
+    return false;
+  }
+
+  try {
+    var parsed = libphonenumber.parsePhoneNumber(value);
+
+    if (!parsed || !parsed.isValid()) {
+      error.textContent = "Please enter a valid phone number.";
+      showError("inp_37");
+      return false;
+    }
+  } catch (e) {
+    error.textContent = "Please enter a valid phone number.";
+    showError("inp_37");
+    return false;
+  }
+
+  hideError("inp_37");
+  return true;
+}
+
+function validateTopic() {
+  var topic = document.getElementById("inp_8618");
+  var error = document.getElementById("inp_8618_error");
+
+  if (!topic.value) {
+    error.classList.add("show");
+    topic.classList.add("input-error");
+    return false;
+  }
+
+  error.classList.remove("show");
+  topic.classList.remove("input-error");
+  return true;
+}
+
+function validatePrivacy() {
+  var privacy = document.getElementById("privacy");
+  var error = document.getElementById("privacy_error");
+
+  if (!privacy.checked) {
+    error.classList.add("show");
+    return false;
+  }
+
+  error.classList.remove("show");
+  return true;
+}
+  function CheckInputs(){
+     var valid = true;
+
+  if (!validateField("inp_1")) valid = false;
+  if (!validateField("inp_2")) valid = false;
+  if (!validateEmail()) valid = false;
+ if (!validatePhone()) valid = false;
+  if (!validateField("inp_8778")) valid = false;
+  if (!validatePrivacy()) valid = false;
+  if (!validateTopic()) valid = false;
+
+  return valid;
+  }
+
+  (function(){
+    var form = document.getElementById("ProfileForm");
+["inp_1", "inp_2", "inp_8778"].forEach(function (id) {
+      document.getElementById(id)
+        .addEventListener("input", function () {
+          validateField(id);
+        });
+    });
+
+    document
+  .getElementById("inp_8618")
+  .addEventListener("change", validateTopic);
+
+    document
+  .getElementById("inp_37")
+  .addEventListener("input", validatePhone);
+
+    document
+  .getElementById("inp_3")
+  .addEventListener("input", validateEmail);
+
+    document
+    .getElementById("privacy")
+    .addEventListener("change", validatePrivacy);
+
+    form.addEventListener("submit", function(e){
+      e.preventDefault();
+
+      if (!form.checkValidity()) { form.reportValidity(); return; }
+      if (!CheckInputs()) return;
+
+      // Collect current values
+      var fd = new FormData(form);
+
+      // Ghost form to Emarsys
+      var ghost = document.createElement("form");
+      ghost.action = form.action;
+      ghost.method = form.method;
+      ghost.target = "emarsysSink";
+      ghost.style.display = "none";
+
+      for (const [k,v] of fd.entries()){
+        var inp = document.createElement("input");
+        inp.type = "hidden";
+        inp.name = k;
+        inp.value = v;
+        ghost.appendChild(inp);
+      }
+      document.body.appendChild(ghost);
+      ghost.submit();
+      document.body.removeChild(ghost);
+
+      // Clear visible form
+      form.reset();
+      var sel = document.getElementById("inp_8618");
+      if (sel) sel.selectedIndex = 0;
+      var opt = document.getElementById("optin");
+      if (opt && opt.defaultChecked) opt.checked = true;
+
+   sessionStorage.setItem("contactFormSubmitted","true");
+
+window.parent.postMessage(
+  { type: "CONTACT_FORM_SUBMITTED" },
+  "*"
+);
+    });
+
+  })();
+</script>
+
+</body>
+</html>
+'
+                >
+                </iframe>
+              </div>
+            </div>
+
+            <!-- Success state -->
+            <div
+              class="contact-success"
+              id="contact-success"
+              hidden
+              tabindex="-1"
+            >
+              <div class="contact-success__icon" aria-hidden="true">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path
+                    d="M5 13l4 4L19 7"
+                    stroke="currentColor"
+                    stroke-width="2.4"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+              <h2
+                class="contact-success__title"
+                data-i18n="contact.success.title"
+              >
+                Message Received
+              </h2>
+              <p class="contact-success__text" data-i18n="contact.success.text">
+                Thank you for reaching out. Our team has received your message
+                and will get back to you soon.
+              </p>
+              <a href="index.html" class="btn-text">
+                <span>Go Back To Homepage</span>
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  class="btn-text__arrow"
+                >
+                  <path
+                    d="M7 17L17 7M9 7h8v8"
+                    stroke="currentColor"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- ───────── RIGHT: Address card + directions ───────── -->
+          <aside class="contact-us__right" aria-label="Office address">
+            <div class="contact-us__address-card">
+              <h5
+                class="contact-us__address-title"
+                data-i18n="contact.address.title"
+              >
+                JCDC Head Office
+              </h5>
+              <address class="contact-us__address-text">
+                <span data-i18n="contact.address.line1"
+                  >Jeddah Central Development Company</span
+                ><br />
+                <span data-i18n="contact.address.line2"
+                  >7051 Prince Sultan - As Salamah Dist.</span
+                ><br />
+                <span data-i18n="contact.address.line3">Unit No 9959</span
+                ><br />
+                <span data-i18n="contact.address.line4"
+                  >Jeddah 23525 - 2661</span
+                ><br />
+                <span data-i18n="contact.address.line5"
+                  >Kingdom of Saudi Arabia</span
+                >
+              </address>
+            </div>
+
+            <a
+              href="https://maps.google.com/?q=Jeddah+Central+Development+Company"
+              class="btn-text"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span data-i18n="contact.address.directions">Get Directions</span>
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                class="btn-text__arrow"
+              >
+                <path
+                  d="M7 17L17 7M9 7h8v8"
+                  stroke="currentColor"
+                  stroke-width="1.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </a>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cookie Popup -->
+    <div class="cookie-popup" id="cookiePopup">
+      <div class="cookie-popup__content">
+        <div class="cookie-popup__left">
+          <h3>BEFORE YOU ENTER OUR WEBSITE</h3>
+
+          <p>
+            We use cookies to optimize your experience, remember your
+            preferences, analyze site performance, and provide relevant content.
+            By selecting “Accept All Cookies”, you consent to our use of
+            <a href="#">cookies</a>.
+          </p>
+        </div>
+      </div>
+      <div class="cookie-popup__buttons">
+        <button id="acceptCookies" class="cookie-btn cookie-btn--primary">
+          ACCEPT ALL
+          <span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+            >
+              <path
+                d="M20 12H4"
+                stroke="#EFEFEF"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M15.0001 17C15.0001 17 20 13.3176 20 12C20 10.6824 15 7 15 7"
+                stroke="#EFEFEF"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </span>
+        </button>
+
+        <button id="rejectCookies" class="cookie-btn cookie-btn--outline">
+          Reject All
+          <span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+            >
+              <path
+                d="M20 12H4"
+                stroke="#CC9F53"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M15.0001 17C15.0001 17 20 13.3176 20 12C20 10.6824 15 7 15 7"
+                stroke="#CC9F53"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </span>
+        </button>
+      </div>
+    </div>
+
+    <footer class="footer">
+      <div class="footer__top">
+        <a href="/" class="footer__logo-wrap">
+          <img
+            src="assets/coporate-PNG-01 1.svg"
+            alt="JCDC"
+            width="132"
+            height="72"
+            class="footer__logo"
+          />
+        </a>
+        <div class="footer__right">
+          <div class="footer__social">
+            <a href="#" aria-label="Instagram" class="social-link">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="1.8"
+              >
+                <rect x="3" y="3" width="18" height="18" rx="5" />
+                <circle cx="12" cy="12" r="4" />
+                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" />
+              </svg>
+            </a>
+            <a href="#" aria-label="X (Twitter)" class="social-link">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+                />
+              </svg>
+            </a>
+            <a href="#" aria-label="LinkedIn" class="social-link">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+              >
+                <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M4.5 3.24219C3.67157 3.24219 3 3.91376 3 4.74219V19.7422C3 20.5706 3.67157 21.2422 4.5 21.2422H19.5C20.3284 21.2422 21 20.5706 21 19.7422V4.74219C21 3.91376 20.3284 3.24219 19.5 3.24219H4.5ZM8.52076 7.24491C8.52639 8.20116 7.81061 8.79038 6.96123 8.78616C6.16107 8.78194 5.46357 8.14491 5.46779 7.24632C5.47201 6.40116 6.13998 5.72194 7.00764 5.74163C7.88795 5.76132 8.52639 6.40679 8.52076 7.24491ZM12.2797 10.0039H9.75971H9.7583V18.5638H12.4217V18.3641C12.4217 17.9842 12.4214 17.6042 12.4211 17.2241C12.4203 16.2103 12.4194 15.1954 12.4246 14.1819C12.426 13.9358 12.4372 13.6799 12.5005 13.445C12.7381 12.5675 13.5271 12.0008 14.4074 12.1401C14.9727 12.2286 15.3467 12.5563 15.5042 13.0893C15.6013 13.4225 15.6449 13.7811 15.6491 14.1285C15.6605 15.1761 15.6589 16.2237 15.6573 17.2714C15.6567 17.6412 15.6561 18.0112 15.6561 18.381V18.5624H18.328V18.3571C18.328 17.9051 18.3278 17.4532 18.3275 17.0013C18.327 15.8718 18.3264 14.7423 18.3294 13.6124C18.3308 13.1019 18.276 12.5985 18.1508 12.1049C17.9638 11.3708 17.5771 10.7633 16.9485 10.3246C16.5027 10.0124 16.0133 9.81129 15.4663 9.78879C15.404 9.7862 15.3412 9.78281 15.2781 9.7794C14.9984 9.76428 14.7141 9.74892 14.4467 9.80285C13.6817 9.95613 13.0096 10.3063 12.5019 10.9236C12.4429 10.9944 12.3852 11.0663 12.2991 11.1736L12.2797 11.1979V10.0039ZM5.68164 18.5666H8.33242V10.0095H5.68164V18.5666Z"
+                  fill="#0076A9"
+                />
+              </svg>
+            </a>
+            <a href="#" aria-label="YouTube" class="social-link">
+              <svg
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+              >
+                <path
+                  d="M23.5 6.21a3.02 3.02 0 0 0-2.12-2.14C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.38.57A3.02 3.02 0 0 0 .5 6.21 31.48 31.48 0 0 0 0 12a31.48 31.48 0 0 0 .5 5.79 3.02 3.02 0 0 0 2.12 2.14C4.5 20.5 12 20.5 12 20.5s7.5 0 9.38-.57a3.02 3.02 0 0 0 2.12-2.14A31.48 31.48 0 0 0 24 12a31.48 31.48 0 0 0-.5-5.79zM9.6 15.6V8.4l6.24 3.6-6.24 3.6z"
+                />
+              </svg>
+            </a>
+          </div>
+          <nav class="footer__nav" aria-label="Footer navigation">
+            <a href="about.html" data-i18n="footer.aboutUs">ABOUT US</a>
+            <a href="jcdc.html" data-i18n="footer.jcd"
+              >JEDDAH CENTRAL DESTINATION</a
+            >
+            <a href="invest.html" data-i18n="footer.invest">INVEST</a>
+            <a href="news.html" data-i18n="footer.newsEvents"
+              >NEWS &amp; EVENTS</a
+            >
+            <a href="career.html" data-i18n="footer.careers">CAREERS</a>
+            <a href="supplier.html" data-i18n="footer.suppliers">SUPPLIERS</a>
+            <a href="contact.html" data-i18n="footer.contact">CONTACT US</a>
+          </nav>
+        </div>
+      </div>
+      <div class="footer__divider"></div>
+      <div class="footer__bottom">
+        <a href="https://www.pif.gov.sa/en/" class="footer__pif-wrap">
+          <img
+            src="./assets/footer/Layer_1.png"
+            alt="A PIF Company"
+            class="footer__pif"
+        /></a>
+        <div class="footer__legal">
+          <a href="privacyPolicy.html" data-i18n="footer.privacy"
+            >Privacy Policy</a
+          >
+          <a href="terms&condition.html" data-i18n="footer.terms"
+            >Terms &amp; Conditions</a
+          >
+          <a href="cookiesPolicy.html" data-i18n="footer.cookies"
+            >Cookies Policy</a
+          >
+          <span class="footer__copy" data-i18n="footer.copy"
+            >© 2026 JCDC. ALL RIGHTS RESERVED</span
+          >
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bundled & minified JS (built from src/js by `npm run build`) -->
+    <script src="dist/main.min.js" defer></script>
+    <script>
+      const formWrapper = document.getElementById("contact-form-wrapper");
+      const success = document.getElementById("contact-success");
+      const formHeading = document.getElementById("contact-form-heading");
+      function showSuccessState() {
+        formWrapper.hidden = true;
+        success.hidden = false;
+        formHeading.hidden = true;
+        success.focus();
+      }
+
+      if (sessionStorage.getItem("contactFormSubmitted") === "true") {
+        showSuccessState();
+        sessionStorage.removeItem("contactFormSubmitted");
+      }
+      window.addEventListener("message", function (event) {
+        if (event.data && event.data.type === "CONTACT_FORM_SUBMITTED") {
+          showSuccessState();
+        }
+      });
+    </script>
+  </body>
 </html>
