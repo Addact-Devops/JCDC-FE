@@ -3,202 +3,202 @@
 // ==========================================
 
 .sustainability-design {
+  width: 100%;
+  scroll-margin-top: 96px;
+  background: var(--surface-white);
+
+  padding: 64px 120px;
+
+  &__container {
     width: 100%;
-    scroll-margin-top: 96px;
-    background: var(--surface-white);
+    max-width: 1440px;
 
-    padding: 64px 120px;
+    margin: 0 auto;
+  }
 
-    &__container {
-        width: 100%;
-        max-width: 1440px;
+  // ==========================================
+  // Header
+  // ==========================================
 
-        margin: 0 auto;
+  &__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 8px;
+
+    margin-bottom: 56px;
+
+    text-align: center;
+  }
+
+  &__title {
+    margin: 0;
+
+    font-family: var(--font-body);
+
+    font-size: 48px;
+    font-weight: 500;
+    line-height: 120%;
+
+    color: var(--primary-500);
+  }
+
+  // ==========================================
+  // Grid
+  // ==========================================
+
+  &__grid {
+    display: grid;
+
+    grid-template-columns: repeat(3, 1fr);
+
+    gap: 20px;
+
+    width: 100%;
+  }
+
+  // ==========================================
+  // Card
+  // ==========================================
+
+  &__card {
+    min-height: 320px;
+
+    padding: 40px 24px;
+
+    border-radius: 8px;
+
+    background: #f3f3f3;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 66px;
+
+    transition:
+      transform var(--dur) var(--ease),
+      box-shadow var(--dur) var(--ease);
+
+    // &:hover {
+    //     transform: translateY(-4px);
+
+    //     box-shadow: 0 12px 30px rgba(0, 118, 169, 0.08);
+    // }
+  }
+
+  &__icon {
+    width: 72px;
+    height: 72px;
+
+    flex-shrink: 0;
+
+    img,
+    svg {
+      width: 100%;
+      height: 100%;
+
+      object-fit: contain;
     }
+  }
 
-    // ==========================================
-    // Header
-    // ==========================================
+  &__content {
+    display: flex;
+    flex-direction: column;
 
-    &__header {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+    gap: 8px;
+  }
 
-        gap: 8px;
+  &__card-title {
+    margin: 0;
 
-        margin-bottom: 56px;
+    font-family: var(--font-body);
 
-        text-align: center;
-    }
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 120%;
 
-    &__title {
-        margin: 0;
+    color: var(--primary-500);
+  }
 
-        font-family: var(--font-body);
+  &__card-description {
+    margin: 0;
 
-        font-size: 48px;
-        font-weight: 500;
-        line-height: 120%;
+    font-family: var(--font-body);
 
-        color: var(--primary-500);
-    }
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 150%;
 
-    // ==========================================
-    // Grid
-    // ==========================================
+    color: var(--text-500);
+  }
 
-    &__grid {
-        display: grid;
+  // ==========================================
+  // CTA
+  // ==========================================
 
-        grid-template-columns: repeat(3, 1fr);
+  &__cta {
+    margin-top: 56px;
 
-        gap: 20px;
+    display: flex;
+    justify-content: center;
+  }
 
-        width: 100%;
-    }
+  // ==========================================
+  // RTL
+  // ==========================================
 
-    // ==========================================
-    // Card
-    // ==========================================
-
+  [dir="rtl"] & {
     &__card {
-        min-height: 320px;
-
-        padding: 40px 24px;
-
-        border-radius: 8px;
-
-        background: #f3f3f3;
-
-        display: flex;
-        flex-direction: column;
-
-        gap: 66px;
-
-        transition:
-            transform var(--dur) var(--ease),
-            box-shadow var(--dur) var(--ease);
-
-        // &:hover {
-        //     transform: translateY(-4px);
-
-        //     box-shadow: 0 12px 30px rgba(0, 118, 169, 0.08);
-        // }
+      text-align: right;
     }
-
-    &__icon {
-        width: 72px;
-        height: 72px;
-
-        flex-shrink: 0;
-
-        img,
-        svg {
-            width: 100%;
-            height: 100%;
-
-            object-fit: contain;
-        }
-    }
-
-    &__content {
-        display: flex;
-        flex-direction: column;
-
-        gap: 8px;
-    }
-
-    &__card-title {
-        margin: 0;
-
-        font-family: var(--font-body);
-
-        font-size: 24px;
-        font-weight: 500;
-        line-height: 120%;
-
-        color: var(--primary-500);
-    }
-
-    &__card-description {
-        margin: 0;
-
-        font-family: var(--font-body);
-
-        font-size: 16px;
-        font-weight: 400;
-        line-height: 150%;
-
-        color: var(--text-500);
-    }
-
-    // ==========================================
-    // CTA
-    // ==========================================
-
-    &__cta {
-        margin-top: 56px;
-
-        display: flex;
-        justify-content: center;
-    }
-
-    // ==========================================
-    // RTL
-    // ==========================================
-
-    [dir="rtl"] & {
-        &__card {
-            text-align: right;
-        }
-    }
+  }
 }
 
 @media (max-width: 1199px) and (min-width: 1025px) {
-    .sustainability-design {
-        padding: 56px 48px;
+  .sustainability-design {
+    padding: 56px 48px;
 
-        &__title {
-            font-size: 42px;
-        }
-
-        &__grid {
-            grid-template-columns: repeat(3, 1fr);
-            gap: 16px; // ◆ slightly tighter
-        }
-
-        &__card {
-            padding: 32px 20px;
-            gap: 40px; // ◆ tighter gap to give content room
-            min-height: 280px;
-        }
-
-        &__card-title {
-            font-size: 20px;
-        }
-
-        &__card-description {
-            font-size: 15px;
-        }
+    &__title {
+      font-size: 42px;
     }
+
+    &__grid {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px; // ◆ slightly tighter
+    }
+
+    &__card {
+      padding: 32px 20px;
+      gap: 40px; // ◆ tighter gap to give content room
+      min-height: 280px;
+    }
+
+    &__card-title {
+      font-size: 20px;
+    }
+
+    &__card-description {
+      font-size: 15px;
+    }
+  }
 }
 // ==========================================
 // Tablet
 // ==========================================
 
 @media (max-width: 1024px) {
-    .sustainability-design {
-        padding: 56px 48px;
+  .sustainability-design {
+    padding: 56px 48px;
 
-        &__title {
-            font-size: 40px;
-        }
-
-        &__grid {
-            grid-template-columns: repeat(2, 1fr);
-        }
+    &__title {
+      font-size: 40px;
     }
+
+    &__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
 }
 
 // ==========================================
@@ -206,47 +206,47 @@
 // ==========================================
 
 @media (max-width: 768px) {
-    .sustainability-design {
-        padding: 64px 24px;
+  .sustainability-design {
+    padding: 64px 24px;
 
-        &__header {
-            margin-bottom: 32px;
-        }
-
-        &__title {
-            font-size: 32px;
-        }
-
-        &__grid {
-            grid-template-columns: 1fr;
-            gap: 24px;
-        }
-
-        &__card {
-            min-height: auto;
-
-            padding: 40px 24px;
-
-            gap: 66px;
-        }
-
-        &__icon {
-            width: 72px;
-            height: 72px;
-        }
-
-        &__card-title {
-            font-size: 20px;
-        }
-
-        &__card-description {
-            font-size: 15px;
-        }
-
-        &__cta {
-            margin-top: 32px;
-        }
+    &__header {
+      margin-bottom: 32px;
     }
+
+    &__title {
+      font-size: 32px;
+    }
+
+    &__grid {
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+
+    &__card {
+      min-height: auto;
+
+      padding: 40px 24px;
+
+      gap: 66px;
+    }
+
+    &__icon {
+      width: 72px;
+      height: 72px;
+    }
+
+    &__card-title {
+      font-size: 20px;
+    }
+
+    &__card-description {
+      font-size: 15px;
+    }
+
+    &__cta {
+      margin-top: 32px;
+    }
+  }
 }
 
 // ==========================================
@@ -254,15 +254,15 @@
 // ==========================================
 
 @media (max-width: 480px) {
-    .sustainability-design {
-        padding: 64px 16px;
+  .sustainability-design {
+    padding: 64px 16px;
 
-        &__title {
-            font-size: 28px;
-        }
-
-        &__card {
-            padding: 40px 24px;
-        }
+    &__title {
+      font-size: 32px;
     }
+
+    &__card {
+      padding: 40px 24px;
+    }
+  }
 }
