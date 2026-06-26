@@ -186,11 +186,20 @@
                 (parseFloat(labelEl.dataset.offsetY) || 0);
           labelEl.setAttribute("x", cx);
           labelEl.setAttribute("y", cy);
-          // Cache the original text once so subsequent calls don't read
-          // the corrupted tspan concatenation (tspans have no space
-          // between them in textContent).
+          // If tspans already exist (applyTranslations ran before this RAF),
+          // join their text with spaces — textContent concatenates without separators.
           if (!labelEl.dataset.labelText) {
-            labelEl.dataset.labelText = labelEl.textContent.trim();
+            var existingTspans = labelEl.querySelectorAll("tspan");
+            if (existingTspans.length > 0) {
+              var tparts = [];
+              existingTspans.forEach(function (t) {
+                var txt = t.textContent.trim();
+                if (txt) tparts.push(txt);
+              });
+              labelEl.dataset.labelText = tparts.join(" ");
+            } else {
+              labelEl.dataset.labelText = labelEl.textContent.trim();
+            }
           }
           var current = labelEl.dataset.labelText;
           if (current) setMultilineLabel(labelEl, current);
@@ -216,10 +225,8 @@
         var svgX = parseFloat(btn.dataset.svgx);
         var svgY = parseFloat(btn.dataset.svgy);
         if (isNaN(svgX) || isNaN(svgY)) return;
-        var leftPx =
-          svgBCR.left - hostBCR.left + (svgX / 1049) * svgBCR.width;
-        var topPx =
-          svgBCR.top - hostBCR.top + (svgY / 784) * svgBCR.height;
+        var leftPx = svgBCR.left - hostBCR.left + (svgX / 1049) * svgBCR.width;
+        var topPx = svgBCR.top - hostBCR.top + (svgY / 784) * svgBCR.height;
         btn.style.left = ((leftPx / hostBCR.width) * 100).toFixed(2) + "%";
         btn.style.top = ((topPx / hostBCR.height) * 100).toFixed(2) + "%";
       });
@@ -240,7 +247,10 @@
           labelsLayer &&
           labelsLayer.querySelector('[data-label="' + d.id + '"]');
         if (pathEl) pathEl.setAttribute("aria-label", d.name || "");
-        if (labelEl) setMultilineLabel(labelEl, d.name || "");
+        if (labelEl) {
+          if (d.name) labelEl.dataset.labelText = d.name.trim();
+          setMultilineLabel(labelEl, d.name || "");
+        }
 
         (d.attractions || []).forEach(function (a) {
           var btn = iconsHost.querySelector(
@@ -273,7 +283,7 @@
 
       var lines = wrapDistrictName(name);
       var x = textEl.getAttribute("x") || 0;
-      var lineHeight = 18;
+      var lineHeight = 22;
 
       lines.forEach(function (line, i) {
         var tspan = document.createElementNS(
@@ -304,9 +314,19 @@
         if (tail.length > 18) {
           var tokens = tail.split(/\s+/);
           var last = tokens.pop();
-          return [head, tokens.join(" "), last];
+          var mid = tokens.join(" ");
+          if (mid.length > 10) {
+            var midTokens = mid.split(/\s+/);
+            var midLast = midTokens.pop();
+            return [head, midTokens.join(" "), midLast, last];
+          }
+          return [head, mid, last];
         }
         return [head, tail];
+      }
+      var ampIdx = trimmed.indexOf(" & ");
+      if (ampIdx !== -1) {
+        return [trimmed.slice(0, ampIdx + 2), trimmed.slice(ampIdx + 3)];
       }
       var idx = trimmed.lastIndexOf(" ");
       if (idx === -1) return [trimmed];
@@ -542,6 +562,9 @@
       viewport.classList.toggle("is-detail", !!id);
       if (container) container.classList.toggle("is-detail", !!id);
       hideTooltip();
+      // Reposition icons synchronously (forces layout flush) so they
+      // land at the correct DETAIL/IDLE coordinates before becoming visible.
+      repositionIcons();
       syncIconVisibility();
 
       if (id) {
@@ -552,10 +575,7 @@
         if (sidePanel) sidePanel.hidden = false;
         if (detailEl) detailEl.hidden = false;
         renderDetail();
-        requestAnimationFrame(function () {
-          repositionIcons();
-          applyZoom();
-        });
+        requestAnimationFrame(applyZoom);
       } else {
         // No district selected — restore intro overlay, hide side panel
         if (sidePanel) sidePanel.hidden = true;

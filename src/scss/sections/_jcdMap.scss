@@ -52,6 +52,8 @@
 
     // JS adds .is-detail when a district is selected
     &.is-detail {
+      max-width: 1440px;
+      margin: 0 auto;
       display: grid;
       grid-template-columns: 1fr 567px;
       grid-template-rows: 770px;
@@ -205,25 +207,25 @@
   //  simplest reliable mechanism.
   &__label {
     font-family: var(--font-body);
-    font-size: 16px;
+    font-size: 20px;
     font-weight: 600;
     fill: #fff;
-    text-anchor: middle;
+    line-height: 120%;
     dominant-baseline: middle;
     pointer-events: none;
     opacity: 0;
     transition: opacity 0.2s var(--ease);
-    letter-spacing: 0.2px;
+    // letter-spacing: 0.2px;
     // Subtle dark halo so white text stays readable over both
     // satellite imagery and the gold hover fill.
     paint-order: stroke fill;
-    stroke: rgba(0, 0, 0, 0.85);
-    stroke-width: 3px;
-    stroke-linejoin: round;
+    // stroke: rgba(0, 0, 0, 0.85);
+    // stroke-width: 3px;
+    // stroke-linejoin: round;
 
-    tspan {
-      text-anchor: middle;
-    }
+    // tspan {
+    //   text-anchor: middle;
+    // }
   }
 
   // ── Attraction-icon tooltip ────────────────────────────────────
@@ -658,6 +660,13 @@
 // Mobile intro block: hidden on desktop, visible only on ≤ 991px
 .jcd-map__intro--mobile {
   display: none;
+}
+
+@media (max-width: 1300px) {
+  .jcd-map__panel-desc {
+    font-size: 16px;
+    margin-bottom: 16px;
+  }
 }
 
 @media (max-width: 991px) {
