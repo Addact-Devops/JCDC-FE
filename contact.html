@@ -511,7 +511,7 @@
                 out to assist you.
               </h3>
 
-              <div>
+              <div id="contact-form-wrapper">
                 <iframe
                   id="emarsysFormFrame"
                   title="Emarsys Form"
@@ -519,7 +519,7 @@
                     width: 100%;
                     border: 0;
                     background: transparent;
-                    height: 753px;
+                    height: 100vh;
                   "
                   referrerpolicy="no-referrer"
                   srcdoc='
@@ -530,16 +530,20 @@
 <style>
   /* Transparent so page background shows */
   html,body { margin:0; padding:0; background:transparent; overflow:hidden }
-  body{ font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; padding:0; color:#111; }
+  body{ font-family: "Ubuntu", sans-serif; padding:0; color:#111; }
 
   /* Text-like inputs ONLY (exclude checkbox, radio, submit) */
   input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]),
   select, textarea{
     width:100%; padding:14px 16px; box-sizing:border-box;
-    border:1px solid #cfcfcf; border-radius:8px; background:rgba(255,255,255,0.85); outline:none;
+        font-size: 16px;
+    font-weight: 400;
+    line-height: 150%;
+    color:#5b5f62;
+    border:1px solid #cfcfcf; border-radius:4px; background:rgba(255,255,255,0.85); outline:none;
   }
   input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]):focus,
-  select:focus, textarea:focus{ border-color:#b6b6b6; box-shadow:0 0 0 3px rgba(0,0,0,0.06); }
+  select:focus, textarea:focus{ border-color:#b6b6b6; }
   ::placeholder{ color:#8e8e8e; }
 
   input[type="checkbox"], input[type="radio"]{ width:auto; }
@@ -638,10 +642,26 @@ border-color: #cc9f53;
     padding-right: 40px;
     cursor: pointer;
 }
+
+.error-message {
+  color: #d32f2f;
+  font-size: 12px;
+  margin-top: 4px;
+  display: none;
+}
+
+.error-message.show {
+  display: block;
+}
+
+.input-error {
+  border-color: #d32f2f !important;
+}
+
+
 </style>
 </head>
 <body>
-
 <!-- Hidden sink so we can show a local popup while still submitting to Emarsys -->
 <iframe name="emarsysSink" id="emarsysSink" style="display:none"></iframe>
 
@@ -667,53 +687,71 @@ border-color: #cc9f53;
   <div class="contact-form__row"> 
       <div class="field">
             <div class="form-field has-error is-invalid">
-                <label for="inp_1" class="sr-only form-field__label">First Name</label>
+                <label for="inp_1" class="sr-only form-field__label">First Name *</label>
                 <input id="inp_1" type="text" name="inp_1" maxlength="60" value="">
+                <span id="inp_1_error" class="error-message">
+  First Name is required.
+</span>
             </div>
      </div>
 
 
     <div class="field">
         <div class="form-field has-error is-invalid">
-            <label for="inp_2" class="sr-only form-field__label">Last Name</label>
+            <label for="inp_2" class="sr-only form-field__label">Last Name *</label>
             <input id="inp_2" type="text" name="inp_2" maxlength="60"  value="">
+            <span id="inp_2_error" class="error-message">
+  Last Name is required.
+</span>
         </div>
     </div>
   </div>
 
   <div class="field">
     <div class="form-field has-error is-invalid">
-        <label for="inp_3" class="sr-only form-field__label">Email</label>
+        <label for="inp_3" class="sr-only form-field__label">Email *</label>
         <input id="inp_3" type="email" name="inp_3" maxlength="255"  value="">
+        <span id="inp_3_error" class="error-message">
+  Email is required.
+</span>
     </div>
   </div>
 
   <div class="field">
     <div class="form-field has-error is-invalid">
-        <label for="inp_37" class="sr-only form-field__label">Mobile</label>
+        <label for="inp_37" class="sr-only form-field__label">Phone Number *</label>
         <input id="inp_37" type="tel" name="inp_37" maxlength="60" value="">
+        <span id="inp_37_error" class="error-message">
+  Phone Number is required.
+</span>
     </div>
   </div>
 
   <div class="field">
     <div class="form-field has-error is-invalid">
-        <label for="inp_8618" class="sr-only form-field__label">Inquiry topic</label>
-        <select id="inp_8618" name="inp_8618" required class="form-field__select">
-        <option value="" disabled selected hidden>Please select</option>
-        <option value="1">General Information</option>
-        <option value="2">Business Opportunities</option>
-        <option value="3">Media Relations</option>
+        <label for="inp_8618" class="sr-only form-field__label">Choose a Topic</label>
+        <select id="inp_8618" name="inp_8618" class="form-field__select">
+        <option value=""  selected >Select Topic</option>
+        <option value="1">Business Opportunities</option>
+        <option value="2">Media Relations</option>
+        <option value="3">General Information</option>
         <option value="4">Careers</option>
         <option value="5">Suppliers</option>
         </select>
+        <span id="inp_8618_error" class="error-message">
+Please select an item in the list
+</span>
     </div>
   </div>
 
   <div class="field">
      <div class="form-field has-error is-invalid">
-        <label for="inp_8778" class="sr-only form-field__label">Message</label>
+        <label for="inp_8778" class="sr-only form-field__label">Message *</label>
         <!-- bigger Message Box -->
-        <textarea id="inp_8778" name="inp_8778" maxlength="255" placeholder="Message"></textarea>
+        <textarea id="inp_8778" name="inp_8778" maxlength="255"></textarea>
+        <span id="inp_8778_error" class="error-message">
+  Message is required.
+</span>
      </div>
   </div>
 
@@ -722,13 +760,15 @@ border-color: #cc9f53;
   <!-- Opt-in (sent to Emarsys) -->
 
   <!-- Privacy & Cookies (REQUIRED, but NOT submitted to Emarsys) -->
-  <div class="optin">
-    <input type="checkbox" id="privacy" required>
+  <div class="optin" style="position:relative;">
+    <input type="checkbox" id="privacy" >
     <label for="privacy" style="margin:0; font-weight:400;">
-      I agree to share my information as per the
-      <a rel="noopener noreferrer" href="/en/privacy-notice" target="_blank">Privacy and Cookies</a>
-      Notices.
+      I accept the
+      <a rel="noopener noreferrer" href="/en/terms-and-condition" target="_blank">Terms and Conditions</a>
     </label>
+    <div id="privacy_error" class="error-message" style="position:absolute;top:25px;">
+  Check box for the terms and condition is required.
+</div>
   </div>
 
   <div class="contact-form__submit-row">
@@ -736,46 +776,148 @@ border-color: #cc9f53;
   </div>
 </form>
 
-<!-- Success popup -->
-<div id="thanksModal" class="modal" aria-hidden="true">
-  <div class="backdrop"></div>
-  <div class="panel" role="dialog" aria-modal="true" aria-labelledby="tTitle">
-    <div class="icon">
-      <svg viewBox="0 0 24 24">
-        <circle cx="12" cy="12" r="9"></circle>
-        <path d="M8 12l2.5 2.5L16 9"></path>
-      </svg>
-    </div>
-    <h2 id="tTitle">Thank you</h2>
-    <p>We received your information.</p>
-    <button type="button" class="pill" id="closeModal">
-      <span>Return to site</span>
-      <span aria-hidden="true">→</span>
-    </button>
-  </div>
-</div>
+
+<script src="https://unpkg.com/libphonenumber-js@1.11.10/bundle/libphonenumber-js.min.js"></script>
 
 <script>
   function req(v,l){ if(!v || v.trim()===""){ alert(l+" is required."); return false; } return true; }
+function showError(id) {
+  document.getElementById(id + "_error").classList.add("show");
+  document.getElementById(id).classList.add("input-error");
+}
 
-  function CheckInputs(){
-    if(!req(document.ProfileForm.inp_1.value,"First Name")) return false;
-    if(!req(document.ProfileForm.inp_2.value,"Last Name")) return false;
-    if(!req(document.ProfileForm.inp_3.value,"Email")) return false;
-    if(document.getElementById("inp_8618").value === "") { alert("Please select an Inquiry topic."); return false; }
-    if(!req(document.ProfileForm.inp_8778.value,"Message")) return false;
+function hideError(id) {
+  document.getElementById(id + "_error").classList.remove("show");
+  document.getElementById(id).classList.remove("input-error");
+}
+function validateField(id) {
+  var field = document.getElementById(id);
 
-    var privacy = document.getElementById("privacy");
-    if(!privacy.checked){
-      alert("Please agree to the Privacy and Cookies Notices.");
-      privacy.focus();
+  if (!field.value.trim()) {
+    showError(id);
+    return false;
+  }
+
+  hideError(id);
+  return true;
+}
+
+function validateEmail() {
+  var email = document.getElementById("inp_3");
+  var error = document.getElementById("inp_3_error");
+  var value = email.value.trim();
+
+  if (!value) {
+    error.textContent = "Email is required.";
+    showError("inp_3");
+    return false;
+  }
+
+  var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  if (!emailRegex.test(value)) {
+    error.textContent = "Please enter a valid email address.";
+    showError("inp_3");
+    return false;
+  }
+
+  hideError("inp_3");
+  return true;
+}
+function validatePhone() {
+  var phone = document.getElementById("inp_37");
+  var error = document.getElementById("inp_37_error");
+  var value = phone.value.trim();
+
+  if (!value) {
+    error.textContent = "Phone Number is required.";
+    showError("inp_37");
+    return false;
+  }
+
+  try {
+    var parsed = libphonenumber.parsePhoneNumber(value);
+
+    if (!parsed || !parsed.isValid()) {
+      error.textContent = "Please enter a valid phone number.";
+      showError("inp_37");
       return false;
     }
-    return true;
+  } catch (e) {
+    error.textContent = "Please enter a valid phone number.";
+    showError("inp_37");
+    return false;
+  }
+
+  hideError("inp_37");
+  return true;
+}
+
+function validateTopic() {
+  var topic = document.getElementById("inp_8618");
+  var error = document.getElementById("inp_8618_error");
+
+  if (!topic.value) {
+    error.classList.add("show");
+    topic.classList.add("input-error");
+    return false;
+  }
+
+  error.classList.remove("show");
+  topic.classList.remove("input-error");
+  return true;
+}
+
+function validatePrivacy() {
+  var privacy = document.getElementById("privacy");
+  var error = document.getElementById("privacy_error");
+
+  if (!privacy.checked) {
+    error.classList.add("show");
+    return false;
+  }
+
+  error.classList.remove("show");
+  return true;
+}
+  function CheckInputs(){
+     var valid = true;
+
+  if (!validateField("inp_1")) valid = false;
+  if (!validateField("inp_2")) valid = false;
+  if (!validateEmail()) valid = false;
+ if (!validatePhone()) valid = false;
+  if (!validateField("inp_8778")) valid = false;
+  if (!validatePrivacy()) valid = false;
+  if (!validateTopic()) valid = false;
+
+  return valid;
   }
 
   (function(){
     var form = document.getElementById("ProfileForm");
+["inp_1", "inp_2", "inp_8778"].forEach(function (id) {
+      document.getElementById(id)
+        .addEventListener("input", function () {
+          validateField(id);
+        });
+    });
+
+    document
+  .getElementById("inp_8618")
+  .addEventListener("change", validateTopic);
+
+    document
+  .getElementById("inp_37")
+  .addEventListener("input", validatePhone);
+
+    document
+  .getElementById("inp_3")
+  .addEventListener("input", validateEmail);
+
+    document
+    .getElementById("privacy")
+    .addEventListener("change", validatePrivacy);
 
     form.addEventListener("submit", function(e){
       e.preventDefault();
@@ -811,13 +953,14 @@ border-color: #cc9f53;
       var opt = document.getElementById("optin");
       if (opt && opt.defaultChecked) opt.checked = true;
 
-      // Show success modal
-      document.getElementById("thanksModal").classList.add("show");
+   sessionStorage.setItem("contactFormSubmitted","true");
+
+window.parent.postMessage(
+  { type: "CONTACT_FORM_SUBMITTED" },
+  "*"
+);
     });
 
-    document.getElementById("closeModal").addEventListener("click", function(){
-      document.getElementById("thanksModal").classList.remove("show");
-    });
   })();
 </script>
 
@@ -1116,5 +1259,26 @@ border-color: #cc9f53;
 
     <!-- Bundled & minified JS (built from src/js by `npm run build`) -->
     <script src="dist/main.min.js" defer></script>
+    <script>
+      const formWrapper = document.getElementById("contact-form-wrapper");
+      const success = document.getElementById("contact-success");
+      const formHeading = document.getElementById("contact-form-heading");
+      function showSuccessState() {
+        formWrapper.hidden = true;
+        success.hidden = false;
+        formHeading.hidden = true;
+        success.focus();
+      }
+
+      if (sessionStorage.getItem("contactFormSubmitted") === "true") {
+        showSuccessState();
+        sessionStorage.removeItem("contactFormSubmitted");
+      }
+      window.addEventListener("message", function (event) {
+        if (event.data && event.data.type === "CONTACT_FORM_SUBMITTED") {
+          showSuccessState();
+        }
+      });
+    </script>
   </body>
 </html>
