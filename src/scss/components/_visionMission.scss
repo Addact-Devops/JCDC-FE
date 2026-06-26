@@ -11,369 +11,367 @@ $bg-color: #ffffff;
 // ==========================================
 
 .vision-mission {
-    position: relative;
-    background: $bg-color;
+  position: relative;
+  background: $bg-color;
 
+  width: 100%;
+  min-height: 684px;
+
+  padding: 64px 0;
+
+  display: flex;
+  justify-content: center;
+
+  margin: 0 auto;
+
+  // ==========================================
+  // Container
+  // ==========================================
+
+  &__container {
     width: 100%;
-    min-height: 684px;
-
-    padding: 64px 0;
-
-    display: flex;
-    justify-content: center;
+    max-width: 1440px;
 
     margin: 0 auto;
 
-    // ==========================================
-    // Container
-    // ==========================================
+    display: flex;
+    gap: 30px;
 
-    &__container {
-        width: 100%;
-        max-width: 1440px;
+    justify-content: center;
+    direction: ltr;
+  }
 
-        margin: 0 auto;
+  // ==========================================
+  // Card
+  // ==========================================
 
-        display: flex;
-        gap: 30px;
+  &__card {
+    position: relative;
 
-        justify-content: center;
-        direction: ltr;
+    width: 590px;
+    height: 556px;
+
+    background: #f3f3f3;
+
+    border-radius: 8px;
+
+    overflow: hidden;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 301px 81px 113px 54px;
+
+    &:has(.vision-mission__bg--vision) {
+      order: 1;
     }
 
-    // ==========================================
-    // Card
-    // ==========================================
+    &:has(.vision-mission__bg--mission) {
+      order: 2;
+    }
+  }
+
+  // ==========================================
+  // Background Pattern
+  // ==========================================
+
+  &__bg {
+    position: absolute;
+
+    width: 307px;
+    height: 306px;
+
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    opacity: 0.25;
+    pointer-events: none;
+    direction: ltr;
+  }
+
+  // Vision (left pattern)
+
+  &__bg--vision {
+    top: -10px;
+    left: -10px;
+
+    background-image: url("../../../assets/vision.svg");
+  }
+
+  // Mission (right pattern)
+
+  &__bg--mission {
+    top: -10px;
+    // left: 289px;
+    left: auto;
+    right: 0;
+
+    background-image: url("../../../assets/mission.svg");
+  }
+
+  // ==========================================
+  // Title
+  // ==========================================
+
+  &__title {
+    font-family: "Ubuntu", sans-serif;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 120%;
+
+    color: $primary-color;
+
+    margin: 0 0 10px;
+    [dir="rtl"] & {
+      direction: rtl; //  text reads RTL
+      text-align: right; //  text aligns right
+    }
+  }
+
+  // ==========================================
+  // Description
+  // ==========================================
+
+  &__description {
+    font-family: "Ubuntu", sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 150%;
+
+    color: $text-color;
+
+    max-width: 435px;
+
+    margin: 0;
+    [dir="rtl"] & {
+      direction: rtl; //  text reads RTL
+      text-align: right; //  text aligns right
+    }
+  }
+
+  // ==========================================
+  // Responsive (≤ 1300px)
+  // ==========================================
+  @media screen and (max-width: 1300px) {
+    &__container {
+      padding: 0 80px;
+    }
+  }
+
+  // ==========================================
+  // Responsive (≤ 1200px)
+  // ==========================================
+  @media screen and (max-width: 1200px) {
+    &__container {
+      padding: 0 60px;
+    }
 
     &__card {
-        position: relative;
+      width: 100%;
+      max-width: 500px;
+    }
+  }
 
-        width: 590px;
-        height: 556px;
-
-        background: #f3f3f3;
-
-        border-radius: 8px;
-
-        overflow: hidden;
-
-        display: flex;
-        flex-direction: column;
-
-        padding: 301px 81px 113px 54px;
-
-        &:has(.vision-mission__bg--vision) {
-            order: 1;
-        }
-
-        &:has(.vision-mission__bg--mission) {
-            order: 2;
-        }
+  // ==========================================
+  // Responsive (≤ 1024px)
+  // ==========================================
+  @media screen and (max-width: 1024px) {
+    &__container {
+      padding: 0 40px;
+      gap: 24px;
     }
 
-    // ==========================================
-    // Background Pattern
-    // ==========================================
-
-    &__bg {
-        position: absolute;
-
-        width: 307px;
-        height: 306px;
-
-        background-repeat: no-repeat;
-        background-size: contain;
-
-        opacity: 0.25;
-        pointer-events: none;
-        direction: ltr;
+    &__card {
+      width: 100%;
+      height: auto;
+      padding: 250px 40px 80px 40px;
     }
-
-    // Vision (left pattern)
-
-    &__bg--vision {
-        top: -10px;
-        left: -10px;
-
-        background-image: url("../../../assets/vision.svg");
-    }
-
-    // Mission (right pattern)
-
-    &__bg--mission {
-        top: -10px;
-        // left: 289px;
-        left: auto;
-        right: 0;
-
-        background-image: url("../../../assets/mission.svg");
-    }
-
-    // ==========================================
-    // Title
-    // ==========================================
 
     &__title {
-        font-family: "Ubuntu", sans-serif;
-        font-size: 48px;
-        font-weight: 700;
-        line-height: 120%;
-
-        color: $primary-color;
-
-        margin: 0 0 10px;
-        [dir="rtl"] & {
-            direction: rtl; //  text reads RTL
-            text-align: right; //  text aligns right
-        }
+      font-size: 36px;
     }
-
-    // ==========================================
-    // Description
-    // ==========================================
 
     &__description {
-        font-family: "Ubuntu", sans-serif;
-        font-size: 18px;
-        font-weight: 400;
-        line-height: 150%;
-
-        color: $text-color;
-
-        max-width: 435px;
-
-        margin: 0;
-        [dir="rtl"] & {
-            direction: rtl; //  text reads RTL
-            text-align: right; //  text aligns right
-        }
+      font-size: 16px;
+      line-height: 140%;
     }
 
-    // ==========================================
-    // Responsive (≤ 1300px)
-    // ==========================================
-    @media screen and (max-width: 1300px) {
-        &__container {
-            padding: 0 80px;
-        }
+    &__bg {
+      width: 250px;
+      height: 250px;
+    }
+    &__bg--mission {
+      top: -10px;
+      left: auto;
+      right: 0;
+    }
+  }
+  // ==========================================
+  // Responsive stacked layout (<= 992px)
+  // ==========================================
+  @media screen and (max-width: 992px) {
+    &__container {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 24px;
     }
 
-    // ==========================================
-    // Responsive (≤ 1200px)
-    // ==========================================
-    @media screen and (max-width: 1200px) {
-        &__container {
-            padding: 0 60px;
-        }
-
-        &__card {
-            width: 100%;
-            max-width: 500px;
-        }
+    &__card {
+      max-width: none;
+      padding-top: 280px;
     }
 
-    // ==========================================
-    // Responsive (≤ 1024px)
-    // ==========================================
-    @media screen and (max-width: 1024px) {
-        &__container {
-            padding: 0 40px;
-            gap: 24px;
-        }
-
-        &__card {
-            width: 100%;
-            height: auto;
-            padding: 250px 40px 80px 40px;
-        }
-
-        &__title {
-            font-size: 36px;
-        }
-
-        &__description {
-            font-size: 16px;
-            line-height: 140%;
-        }
-
-        &__bg {
-            width: 250px;
-            height: 250px;
-        }
-        &__bg--mission {
-            top: -10px;
-            left: auto;
-            right: 0;
-        }
-    }
-    // ==========================================
-    // Responsive stacked layout (<= 992px)
-    // ==========================================
-    @media screen and (max-width: 992px) {
-        &__container {
-            flex-direction: column;
-            align-items: stretch;
-            gap: 24px;
-        }
-
-        &__card {
-            max-width: none;
-            padding-top: 280px;
-        }
-
-        &__card:has(.vision-mission__bg--mission) {
-            order: 1;
-        }
-
-        &__card:has(.vision-mission__bg--vision) {
-            order: 2;
-        }
-
-        &__bg--mission {
-            top: -10px;
-            left: -10px;
-            right: auto;
-            background-image: url("../../../assets/vision.svg");
-        }
+    &__card:has(.vision-mission__bg--mission) {
+      order: 1;
     }
 
-    // ==========================================
-    // Responsive (≤ 768px)
-    // ==========================================
-    @media screen and (max-width: 768px) {
-        &__container {
-            padding: 0 24px;
-            flex-direction: column;
-            align-items: center;
-            gap: 24px;
-        }
-
-        &__card {
-            width: 100%;
-            height: auto;
-            padding: 250px 24px 60px 24px;
-            align-items: flex-start;
-            text-align: start;
-            border-radius: 8px;
-            overflow: hidden;
-            min-height: 380px;
-
-            [dir="rtl"] & {
-                align-items: flex-end !important;
-                text-align: right;
-            }
-        }
-
-        &__title {
-            font-size: 32px;
-
-            [dir="rtl"] & {
-                direction: rtl;
-                text-align: right;
-            }
-        }
-
-        &__description {
-            font-size: 16px;
-            line-height: 26px;
-            max-width: 100%;
-
-            [dir="rtl"] & {
-                direction: rtl;
-                text-align: right;
-            }
-        }
-
-        &__bg {
-            width: 220px;
-            height: 220px;
-            opacity: 0.25;
-        }
-
-        &__bg--vision {
-            top: -10px;
-            left: -10px;
-            background-image: url("../../../assets/about/Mission/Vector-responsive.svg");
-        }
-
-        &__bg--mission {
-            top: -10px;
-            left: -10px;
-            background-image: url("../../../assets/about/Mission/Vector-responsive.svg");
-        }
+    &__card:has(.vision-mission__bg--vision) {
+      order: 2;
     }
 
-    // ==========================================
-    // Responsive (≤ 425px)
-    // ==========================================
-
-    @media screen and (max-width: 425px) {
-        &__container {
-            padding: 0px 16px;
-            flex-direction: column;
-            align-items: center;
-            gap: 24px;
-            align-items: stretch;
-        }
-
-        &__card {
-            width: 100%;
-            height: 449px; // ◆ was height: auto + min-height: 449px
-            padding: 280px 16px 24px 16px;
-            align-items: flex-start;
-            text-align: start;
-            gap: 10px;
-            border-radius: 8px;
-            overflow: hidden;
-
-            flex: 0 0 449px;
-            [dir="rtl"] & {
-                align-items: flex-end !important;
-                text-align: right;
-            }
-        }
-
-        &__title {
-            font-size: 44px;
-            margin: 0 0 10px;
-            [dir="rtl"] & {
-                direction: rtl; //  text reads RTL
-                text-align: right; //  text aligns right
-            }
-        }
-
-        &__description {
-            font-size: 16px;
-            line-height: 26px;
-            max-width: 100%;
-
-            display: -webkit-box;
-            -webkit-line-clamp: 4; // ◆ cap at 4 lines
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-            [dir="rtl"] & {
-                direction: rtl; //  text reads RTL
-                text-align: right; //  text aligns right
-            }
-        }
-
-        &__bg {
-            width: 250px;
-            height: 250px;
-            opacity: 0.25;
-        }
-
-        &__bg--vision {
-            top: -10px;
-            left: -10px;
-
-            background-image: url("../../../assets/about/Mission/Vector-responsive.svg");
-        }
-
-        &__bg--mission {
-            top: -10px;
-            left: -10px;
-            background-image: url("../../../assets/about/Mission/Vector-responsive.svg");
-        }
+    &__bg--mission {
+      top: -10px;
+      left: -10px;
+      right: auto;
+      background-image: url("../../../assets/vision.svg");
     }
+  }
+
+  // ==========================================
+  // Responsive (≤ 768px)
+  // ==========================================
+  @media screen and (max-width: 768px) {
+    &__container {
+      padding: 0 24px;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+    }
+
+    &__card {
+      width: 100%;
+      height: auto;
+      padding: 250px 24px 60px 24px;
+      align-items: flex-start;
+      text-align: start;
+      border-radius: 8px;
+      overflow: hidden;
+      min-height: 380px;
+
+      [dir="rtl"] & {
+        align-items: flex-end !important;
+        text-align: right;
+      }
+    }
+
+    &__title {
+      font-size: 32px;
+
+      [dir="rtl"] & {
+        direction: rtl;
+        text-align: right;
+      }
+    }
+
+    &__description {
+      font-size: 16px;
+      line-height: 26px;
+      max-width: 100%;
+
+      [dir="rtl"] & {
+        direction: rtl;
+        text-align: right;
+      }
+    }
+
+    &__bg {
+      width: 220px;
+      height: 220px;
+      opacity: 0.25;
+    }
+
+    &__bg--vision {
+      top: -10px;
+      left: -10px;
+      background-image: url("../../../assets/about/Mission/Vector-responsive.svg");
+    }
+
+    &__bg--mission {
+      top: -10px;
+      left: -10px;
+      background-image: url("../../../assets/about/Mission/Vector-responsive.svg");
+    }
+  }
+
+  // ==========================================
+  // Responsive (≤ 425px)
+  // ==========================================
+
+  @media screen and (max-width: 425px) {
+    &__container {
+      padding: 0px 16px;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    &__card {
+      width: 100%;
+      height: 449px; // ◆ was height: auto + min-height: 449px
+      padding: 235px 16px 24px 16px;
+      justify-content: end;
+      align-items: flex-start;
+      text-align: start;
+      gap: 10px;
+      border-radius: 8px;
+      overflow: hidden;
+
+      flex: 0 0 449px;
+      [dir="rtl"] & {
+        align-items: flex-end !important;
+        text-align: right;
+      }
+    }
+
+    &__title {
+      font-size: 44px;
+      margin: 0px;
+      [dir="rtl"] & {
+        direction: rtl; //  text reads RTL
+        text-align: right; //  text aligns right
+      }
+    }
+
+    &__description {
+      font-size: 16px;
+      line-height: 26px;
+      max-width: 100%;
+
+      display: -webkit-box;
+      [dir="rtl"] & {
+        direction: rtl; //  text reads RTL
+        text-align: right; //  text aligns right
+      }
+    }
+
+    &__bg {
+      width: 169px;
+      height: 221px;
+      opacity: 0.25;
+    }
+
+    &__bg--vision {
+      top: -10px;
+      left: -10px;
+
+      background-image: url("../../../assets/about/Mission/Vector-responsive.svg");
+    }
+
+    &__bg--mission {
+      top: -10px;
+      left: -10px;
+      background-image: url("../../../assets/about/Mission/Vector-responsive.svg");
+    }
+  }
 }

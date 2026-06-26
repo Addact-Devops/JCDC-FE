@@ -12,347 +12,365 @@
 // ==========================================
 
 .landmark-slider {
-    scroll-margin-top: 96px;
+  scroll-margin-top: 96px;
+  width: 100%;
+  background: var(--surface-white);
+  padding: 64px 0;
+
+  // ==========================================
+  // Header (title + xoxo pattern)
+  // ==========================================
+  &__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 56px;
+    text-align: center;
+  }
+
+  &__title {
+    margin: 0;
+    max-width: 700px;
+    font-family: var(--font-body);
+    font-size: 40px;
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--primary-500);
+  }
+
+  // ==========================================
+  // Viewport
+  // ==========================================
+  &__viewport {
+    --slide-width: 80vw;
+    --slide-gap: 32px;
+
+    position: relative;
     width: 100%;
+    overflow: hidden;
+    // padding-block-end: 120px;
+  }
+
+  &__track {
+    display: flex;
+    gap: var(--slide-gap);
+    transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform;
+  }
+
+  &__slide {
+    flex: 0 0 1200px;
+
+    width: 1200px;
+    height: 656px;
+
+    min-width: 0;
+    position: relative;
+
+    border-radius: 12px;
+    overflow: hidden;
+
+    background: #f3f3f3;
+
+    transition:
+      transform 0.45s var(--ease),
+      opacity 0.45s var(--ease),
+      margin 0.45s var(--ease);
+
+    // SIDE SLIDES
+    transform: scaleY(0.82);
+    margin-top: 48px;
+    margin-bottom: 48px;
+    transform-origin: top;
+    opacity: 0.7;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      background: linear-gradient(
+        180deg,
+        hsla(0, 0%, 0%, 0) 0%,
+        hsla(0, 0%, 0%, 1) 100%
+      );
+      user-select: none;
+      -webkit-user-drag: none;
+      pointer-events: none;
+    }
+
+    // ACTIVE MAIN SLIDE
+    &.is-active {
+      transform: scaleY(1);
+      margin-top: 0;
+      margin-bottom: 0;
+
+      opacity: 1;
+      z-index: 2;
+    }
+  }
+
+  // 👈 ADDED — overlay content on slide image
+  &__slide-content {
+    position: absolute;
+    bottom: 1px;
+    inset-inline-start: 0px;
+    inset-inline-end: 32px;
+    margin-bottom: 33px;
+    margin-left: 51px;
+    z-index: 3;
+    max-width: 516px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    opacity: 0; // 👈 hidden on non-active slides
+    transition: opacity 0.4s var(--ease);
+
+    [dir="rtl"] & {
+      margin-right: 51px;
+      margin-left: 0px;
+    }
+  }
+
+  // 👈 show content only on active slide
+  &__slide.is-active &__slide-content {
+    opacity: 1;
+  }
+
+  // 👈 gradient overlay — darkens bottom of image for text readability
+  &__slide::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background: linear-gradient(
+      180deg,
+      hsla(0, 0%, 0%, 0) 0%,
+      hsla(0, 0%, 0%, 1) 100%
+    );
+    pointer-events: none;
+    border-radius: inherit;
+  }
+
+  &__slide-title {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: 32px;
+    font-weight: 500;
+    min-height: 38px;
+    max-width: 455px;
+    line-height: 1.3;
+    color: #ddbf8c; // 👈 gold color from Figma
+  }
+
+  &__slide-span {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.2;
+    color: #ddbf8c;
+  }
+
+  &__slide-desc {
+    margin: 0;
+    min-height: 81px;
+    font-family: var(--font-body);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #efefef;
+  }
+
+  // ==========================================
+  // Static info card (desktop)
+  // ==========================================
+  &__card {
+    position: absolute;
+    bottom: 73px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1088px;
+    max-width: calc(100% - 80px);
+    // min-height: 188px;
+    z-index: 4;
+    background: #f3f3f3;
+    border-radius: 6px;
+    padding: 40px;
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    flex: 1;
+    flex-shrink: 0;
+  }
+
+  &__card-inner {
+    position: relative;
+    width: 100%;
+    opacity: 1;
+    transition: opacity 0.25s var(--ease);
+
+    &.is-fading {
+      opacity: 0;
+    }
+  }
+
+  &__card-variant {
+    display: none;
+    align-items: flex-end;
+    gap: 24px;
+    width: 100%;
+
+    &--active {
+      display: flex;
+    }
+  }
+
+  &__card-text {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__card-title {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.3;
+    color: var(--primary-500);
+  }
+
+  &__card-description {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--text-500);
+  }
+
+  &__card-cta {
+    flex-shrink: 0;
+  }
+
+  // ==========================================
+  // Prev / Next arrows (desktop — on image sides)
+  // ==========================================
+  &__nav {
+    position: absolute;
+    top: 40%;
+    transform: translateY(-50%);
+    width: 56px;
+    height: 56px;
+    border-radius: 8px;
     background: var(--surface-white);
-    padding: 64px 0;
+    border: 1.4px solid #b0d5e4;
+    color: var(--primary-500);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 5;
+    transition:
+      background var(--dur) var(--ease),
+      color var(--dur) var(--ease),
+      border-color var(--dur) var(--ease);
 
-    // ==========================================
-    // Header (title + xoxo pattern)
-    // ==========================================
-    &__header {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 8px;
-        margin-bottom: 56px;
-        text-align: center;
+    &:hover:not(:disabled) {
+      background: var(--primary-500);
+      color: var(--surface-white);
+      border-color: var(--primary-500);
     }
 
-    &__title {
-        margin: 0;
-        max-width: 700px;
-        font-family: var(--font-body);
-        font-size: 40px;
-        font-weight: 500;
-        line-height: 1.2;
-        color: var(--primary-500);
+    &:focus-visible {
+      outline: 2px solid var(--primary-500);
+      outline-offset: 3px;
     }
 
-    // ==========================================
-    // Viewport
-    // ==========================================
-    &__viewport {
-        --slide-width: 80vw;
-        --slide-gap: 32px;
-
-        position: relative;
-        width: 100%;
-        overflow: hidden;
-        // padding-block-end: 120px;
+    &:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
     }
 
-    &__track {
-        display: flex;
-        gap: var(--slide-gap);
-        transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        will-change: transform;
+    svg {
+      flex-shrink: 2;
+
+      [dir="rtl"] & {
+        transform: scaleX(-1);
+      }
     }
 
-    &__slide {
-        flex: 0 0 1200px;
-
-        width: 1200px;
-        height: 656px;
-
-        min-width: 0;
-        position: relative;
-
-        border-radius: 12px;
-        overflow: hidden;
-
-        background: #f3f3f3;
-
-        transition:
-            transform 0.45s var(--ease),
-            opacity 0.45s var(--ease),
-            margin 0.45s var(--ease);
-
-        // SIDE SLIDES
-        transform: scaleY(0.82);
-        margin-top: 48px;
-        margin-bottom: 48px;
-        transform-origin: top;
-        opacity: 0.7;
-
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            background: linear-gradient(180deg, hsla(0, 0%, 0%, 0) 0%, hsla(0, 0%, 0%, 1) 100%);
-            user-select: none;
-            -webkit-user-drag: none;
-            pointer-events: none;
+    &--prev {
+      inset-inline-start: calc(
+        50% - 600px - 64px
+      ); // 👈 half slide width + half button
+      svg {
+        transform: scaleX(-1);
+        [dir="rtl"] & {
+          transform: scaleX(1);
         }
-
-        // ACTIVE MAIN SLIDE
-        &.is-active {
-            transform: scaleY(1);
-            margin-top: 0;
-            margin-bottom: 0;
-
-            opacity: 1;
-            z-index: 2;
-        }
+      }
     }
 
-    // 👈 ADDED — overlay content on slide image
-    &__slide-content {
-        position: absolute;
-        bottom: 1px;
-        inset-inline-start: 0px;
-        inset-inline-end: 32px;
-        margin-bottom: 33px;
-        margin-left: 51px;
-        z-index: 3;
-        max-width: 516px;
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-        opacity: 0; // 👈 hidden on non-active slides
-        transition: opacity 0.4s var(--ease);
+    &--next {
+      inset-inline-end: calc(50% - 600px - 64px); // 👈 same on right side
+    }
+  }
+
+  .landmark-slider__nav.landmark-slider__nav--hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  // ==========================================
+  // Dots
+  // ==========================================
+  &__dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    list-style: none;
+    padding: 0;
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    right: 50%;
+  }
+
+  &__dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #0076a9;
+    opacity: 0.5;
+    padding: 0;
+    cursor: pointer;
+    transition:
+      background var(--dur) var(--ease),
+      transform var(--dur) var(--ease);
+
+    &:hover:not(&--active) {
+      background: #0076a9;
+      opacity: 1;
     }
 
-    // 👈 show content only on active slide
-    &__slide.is-active &__slide-content {
-        opacity: 1;
+    &:focus-visible {
+      outline: 2px solid var(--primary-500);
+      outline-offset: 3px;
     }
 
-    // 👈 gradient overlay — darkens bottom of image for text readability
-    &__slide::after {
-        content: "";
-        position: absolute;
-        inset: 0;
-        z-index: 2;
-        background: linear-gradient(180deg, hsla(0, 0%, 0%, 0) 0%, hsla(0, 0%, 0%, 1) 100%);
-        pointer-events: none;
-        border-radius: inherit;
+    &--active {
+      background: #0076a9;
+      cursor: default;
+      opacity: 1;
     }
-
-    &__slide-title {
-        margin: 0;
-        font-family: var(--font-body);
-        font-size: 32px;
-        font-weight: 500;
-        min-height: 38px;
-        max-width: 455px;
-        line-height: 1.3;
-        color: #ddbf8c; // 👈 gold color from Figma
-    }
-
-    &__slide-span {
-        margin: 0;
-        font-family: var(--font-body);
-        font-size: 24px;
-        font-weight: 500;
-        line-height: 1.2;
-        color: #ddbf8c;
-    }
-
-    &__slide-desc {
-        margin: 0;
-        min-height: 81px;
-        font-family: var(--font-body);
-        font-size: 18px;
-        font-weight: 400;
-        line-height: 1.5;
-        color: #efefef;
-    }
-
-    // ==========================================
-    // Static info card (desktop)
-    // ==========================================
-    &__card {
-        position: absolute;
-        bottom: 73px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 1088px;
-        max-width: calc(100% - 80px);
-        // min-height: 188px;
-        z-index: 4;
-        background: #f3f3f3;
-        border-radius: 6px;
-        padding: 40px;
-        justify-content: space-between;
-        display: flex;
-        align-items: center;
-        gap: 40px;
-        flex: 1;
-        flex-shrink: 0;
-    }
-
-    &__card-inner {
-        position: relative;
-        width: 100%;
-        opacity: 1;
-        transition: opacity 0.25s var(--ease);
-
-        &.is-fading {
-            opacity: 0;
-        }
-    }
-
-    &__card-variant {
-        display: none;
-        align-items: flex-end;
-        gap: 24px;
-        width: 100%;
-
-        &--active {
-            display: flex;
-        }
-    }
-
-    &__card-text {
-        flex: 1;
-        min-width: 0;
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-    }
-
-    &__card-title {
-        margin: 0;
-        font-family: var(--font-body);
-        font-size: 24px;
-        font-weight: 700;
-        line-height: 1.3;
-        color: var(--primary-500);
-    }
-
-    &__card-description {
-        margin: 0;
-        font-family: var(--font-body);
-        font-size: 18px;
-        font-weight: 400;
-        line-height: 1.6;
-        color: var(--text-500);
-    }
-
-    &__card-cta {
-        flex-shrink: 0;
-    }
-
-    // ==========================================
-    // Prev / Next arrows (desktop — on image sides)
-    // ==========================================
-    &__nav {
-        position: absolute;
-        top: 40%;
-        transform: translateY(-50%);
-        width: 56px;
-        height: 56px;
-        border-radius: 8px;
-        background: var(--surface-white);
-        border: 1.4px solid #b0d5e4;
-        color: var(--primary-500);
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 5;
-        transition:
-            background var(--dur) var(--ease),
-            color var(--dur) var(--ease),
-            border-color var(--dur) var(--ease);
-
-        &:hover:not(:disabled) {
-            background: var(--primary-500);
-            color: var(--surface-white);
-            border-color: var(--primary-500);
-        }
-
-        &:focus-visible {
-            outline: 2px solid var(--primary-500);
-            outline-offset: 3px;
-        }
-
-        &:disabled {
-            opacity: 0.45;
-            cursor: not-allowed;
-        }
-
-        svg {
-            flex-shrink: 2;
-
-            [dir="rtl"] & {
-                transform: scaleX(-1);
-            }
-        }
-
-        &--prev {
-            inset-inline-start: calc(50% - 600px - 64px); // 👈 half slide width + half button
-            svg {
-                transform: scaleX(-1);
-            }
-        }
-
-        &--next {
-            inset-inline-end: calc(50% - 600px - 64px); // 👈 same on right side
-        }
-    }
-
-    .landmark-slider__nav.landmark-slider__nav--hidden {
-        opacity: 0;
-        visibility: hidden;
-        pointer-events: none;
-    }
-
-    // ==========================================
-    // Dots
-    // ==========================================
-    &__dots {
-        display: flex;
-        justify-content: center;
-        gap: 10px;
-        list-style: none;
-        padding: 0;
-        position: absolute;
-        bottom: 30px;
-        left: 50%;
-        right: 50%;
-    }
-
-    &__dot {
-        width: 10px;
-        height: 10px;
-        border-radius: 50%;
-        background: #0076a9;
-        opacity: 0.5;
-        padding: 0;
-        cursor: pointer;
-        transition:
-            background var(--dur) var(--ease),
-            transform var(--dur) var(--ease);
-
-        &:hover:not(&--active) {
-            background: #0076a9;
-            opacity: 1;
-        }
-
-        &:focus-visible {
-            outline: 2px solid var(--primary-500);
-            outline-offset: 3px;
-        }
-
-        &--active {
-            background: #0076a9;
-            cursor: default;
-            opacity: 1;
-        }
-    }
+  }
 }
 
 // ==========================================
@@ -361,42 +379,45 @@
 // Apply `.landmark-slider--no-card` on the .landmark-slider root.
 // ==========================================
 .landmark-slider--no-card {
-    .landmark-slider__viewport {
-        padding-block-end: 0; //  reclaim card-overhang space (was 120px)
-    }
+  .landmark-slider__viewport {
+    padding-block-end: 0; //  reclaim card-overhang space (was 120px)
+  }
 
-    //  Nav arrows go back to vertical center of the image
-    //  (default rule offsets them by -60px to dodge the card)
-    .landmark-slider__nav {
-        transform: translateY(-50%);
+  //  Nav arrows go back to vertical center of the image
+  //  (default rule offsets them by -60px to dodge the card)
+  .landmark-slider__nav {
+    transform: translateY(-50%);
 
-        &--prev {
-            inset-inline-start: calc(50% - 600px + -24px);
-            svg {
-                transform: scaleX(-1);
-            }
+    &--prev {
+      inset-inline-start: calc(50% - 600px + -24px);
+      svg {
+        transform: scaleX(-1);
+        [dir="rtl"] & {
+          transform: scaleX(1);
         }
-
-        &--next {
-            inset-inline-end: calc(50% - 600px + -24px);
-        }
+      }
     }
 
-    //  Defensive: if a stray .landmark-slider__card sneaks in, hide it
-    .landmark-slider__card {
-        display: none;
+    &--next {
+      inset-inline-end: calc(50% - 600px + -24px);
     }
-    .landmark-slider__dots {
-        display: none;
+  }
 
-        @media (max-width: 480px) {
-            display: flex; // 👈 show on mobile
-        }
+  //  Defensive: if a stray .landmark-slider__card sneaks in, hide it
+  .landmark-slider__card {
+    display: none;
+  }
+  .landmark-slider__dots {
+    display: none;
+
+    @media (max-width: 480px) {
+      display: flex; // 👈 show on mobile
     }
+  }
 
-    //  Mobile already places nav at top: 8px and card overlays the
-    //  image, so no further mobile overrides are needed — just make
-    //  sure the absent card doesn't leave a gap. Nothing to do.
+  //  Mobile already places nav at top: 8px and card overlays the
+  //  image, so no further mobile overrides are needed — just make
+  //  sure the absent card doesn't leave a gap. Nothing to do.
 }
 
 // ==========================================
@@ -405,132 +426,132 @@
 // ==========================================
 // ◆ CHANGED — was (min-width: 1025px) → (min-width: 1024px)
 @media (max-width: 1260px) {
-    .landmark-slider {
-        padding: 64px 0;
+  .landmark-slider {
+    padding: 64px 0;
 
-        &__title {
-            font-size: 36px;
-        }
-
-        &__viewport {
-            --slide-width: 90vw;
-            --slide-gap: 24px;
-            padding-block-end: 0; // no padding — card overlaps
-        }
-
-        &__slide {
-            flex: 0 0 min(1200px, calc(100vw - 160px));
-            width: min(1200px, calc(100vw - 160px));
-            height: 560px;
-        }
-
-        &__card {
-            position: absolute;
-            bottom: 65px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: calc(100% - 210px);
-            max-width: 1088px;
-            padding: 32px;
-        }
-
-        &__nav {
-            top: 40%;
-            transform: translateY(-50%);
-
-            &--prev {
-                inset-inline-start: max(20px, calc(50% - 600px - 50px));
-                svg {
-                    transform: scaleX(-1);
-                }
-            }
-
-            &--next {
-                inset-inline-end: max(20px, calc(50% - 600px - 50px));
-            }
-        }
+    &__title {
+      font-size: 36px;
     }
-    .landmark-slider--no-card {
-        .landmark-slider__nav {
-            top: 40%;
-            transform: translateY(-50%);
 
-            &--prev {
-                inset-inline-start: calc(50% - ((100vw - 160px) / 2) + -22px);
-                svg {
-                    transform: scaleX(-1);
-                }
-            }
-
-            &--next {
-                inset-inline-end: calc(50% - ((100vw - 160px) / 2) + -22px);
-            }
-        }
+    &__viewport {
+      --slide-width: 90vw;
+      --slide-gap: 24px;
+      padding-block-end: 0; // no padding — card overlaps
     }
+
+    &__slide {
+      flex: 0 0 min(1200px, calc(100vw - 160px));
+      width: min(1200px, calc(100vw - 160px));
+      height: 560px;
+    }
+
+    &__card {
+      position: absolute;
+      bottom: 65px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: calc(100% - 210px);
+      max-width: 1088px;
+      padding: 32px;
+    }
+
+    &__nav {
+      top: 40%;
+      transform: translateY(-50%);
+
+      &--prev {
+        inset-inline-start: max(20px, calc(50% - 600px - 50px));
+        svg {
+          transform: scaleX(-1);
+        }
+      }
+
+      &--next {
+        inset-inline-end: max(20px, calc(50% - 600px - 50px));
+      }
+    }
+  }
+  .landmark-slider--no-card {
+    .landmark-slider__nav {
+      top: 40%;
+      transform: translateY(-50%);
+
+      &--prev {
+        inset-inline-start: calc(50% - ((100vw - 160px) / 2) + -22px);
+        svg {
+          transform: scaleX(-1);
+        }
+      }
+
+      &--next {
+        inset-inline-end: calc(50% - ((100vw - 160px) / 2) + -22px);
+      }
+    }
+  }
 }
 
 // ◆ CHANGED — was (max-width: 1024px) → (max-width: 1023px)
 @media (max-width: 1023px) {
-    .landmark-slider {
-        padding: 56px 0 64px;
+  .landmark-slider {
+    padding: 56px 0 64px;
 
-        &__title {
-            font-size: 30px;
-        }
-
-        &__viewport {
-            --slide-width: 84vw;
-            --slide-gap: 24px;
-            padding-block-end: 100px;
-        }
-
-        &__card {
-            position: absolute;
-            bottom: 153px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: calc(100% - 222px);
-            max-width: 1088px;
-            padding: 32px;
-        }
-
-        &__card-title {
-            font-size: 20px;
-        }
-
-        &__nav {
-            top: 40%;
-            transform: translateY(-50%);
-
-            &--prev {
-                inset-inline-start: max(20px, calc(50% - 500px - 50px));
-                svg {
-                    transform: scaleX(-1);
-                }
-            }
-
-            &--next {
-                inset-inline-end: max(20px, calc(50% - 500px - 50px));
-            }
-        }
+    &__title {
+      font-size: 30px;
     }
-    .landmark-slider--no-card {
-        .landmark-slider__nav {
-            top: 40%;
-            transform: translateY(-50%);
 
-            &--prev {
-                inset-inline-start: max(60px, calc(50% - 500px - 50px));
-                svg {
-                    transform: scaleX(-1);
-                }
-            }
-
-            &--next {
-                inset-inline-end: max(60px, calc(50% - 500px - 50px));
-            }
-        }
+    &__viewport {
+      --slide-width: 84vw;
+      --slide-gap: 24px;
+      padding-block-end: 100px;
     }
+
+    &__card {
+      position: absolute;
+      bottom: 153px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: calc(100% - 222px);
+      max-width: 1088px;
+      padding: 32px;
+    }
+
+    &__card-title {
+      font-size: 20px;
+    }
+
+    &__nav {
+      top: 40%;
+      transform: translateY(-50%);
+
+      &--prev {
+        inset-inline-start: max(20px, calc(50% - 500px - 50px));
+        svg {
+          transform: scaleX(-1);
+        }
+      }
+
+      &--next {
+        inset-inline-end: max(20px, calc(50% - 500px - 50px));
+      }
+    }
+  }
+  .landmark-slider--no-card {
+    .landmark-slider__nav {
+      top: 40%;
+      transform: translateY(-50%);
+
+      &--prev {
+        inset-inline-start: max(60px, calc(50% - 500px - 50px));
+        svg {
+          transform: scaleX(-1);
+        }
+      }
+
+      &--next {
+        inset-inline-end: max(60px, calc(50% - 500px - 50px));
+      }
+    }
+  }
 }
 
 // ==========================================
@@ -542,302 +563,302 @@
 //   5. Dots below the viewport
 // ==========================================
 @media (max-width: 768px) {
-    .landmark-slider {
-        padding: 64px 16px;
+  .landmark-slider {
+    padding: 64px 16px;
 
-        &__header {
-            margin-bottom: 0px;
-            gap: 8px;
-            padding: 0;
-        }
-
-        &__title {
-            max-width: 280px;
-            font-size: 32px;
-            font-weight: 700;
-            line-height: 1.2;
-            text-align: center;
-        }
-
-        &__viewport {
-            --slide-width: calc(100vw - 32px);
-            --slide-gap: 12px;
-            position: relative;
-            overflow: hidden;
-            padding: 120px 0 0;
-        }
-
-        &__nav {
-            position: absolute;
-            top: 32px;
-            transform: none;
-            width: 56px;
-            height: 56px;
-            border-radius: 8px;
-            margin: 0;
-            background: var(--primary-500);
-            color: #efefef;
-            border-color: var(--primary-500);
-
-            &--prev {
-                inset-inline-start: calc(50% - 64px);
-                inset-inline-end: auto;
-
-                svg {
-                    transform: scaleX(-1);
-                }
-            }
-
-            &--next {
-                inset-inline-end: calc(50% - 64px);
-                inset-inline-start: auto;
-            }
-
-            &:disabled {
-                background: var(--surface-white);
-                border: 1.4px solid #b0d5e4;
-                color: #b0d5e4;
-                opacity: 1;
-            }
-        }
-
-        &__nav#{&}__nav--hidden {
-            opacity: 1 !important; // ◆ override desktop hide
-            visibility: visible !important;
-            pointer-events: none; // ◆ keep non-clickable (acts like disabled)
-
-            // ◆ Disabled visual style — white bg, light blue icon
-            background: var(--surface-white);
-            border: 1.4px solid #b0d5e4;
-            color: #b0d5e4;
-        }
-
-        &__track {
-            gap: 12px;
-        }
-
-        &__slide {
-            flex: 0 0 calc(100vw - 32px);
-            width: calc(100vw - 32px);
-            height: 333px;
-            aspect-ratio: unset;
-            border-radius: 8px;
-            transform: none;
-            margin: 0;
-            opacity: 1;
-
-            img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-            }
-
-            &.is-active {
-                opacity: 1;
-            }
-
-            &:not(.is-active) {
-                transform: none;
-                margin: 0;
-            }
-        }
-
-        &__slide::after {
-            display: none;
-        }
-
-        &__slide-content {
-            bottom: 31px; // 👈 from Figma
-            inset-inline-start: 24px;
-            inset-inline-end: auto;
-            width: 252px;
-            margin: 0;
-            gap: 16px;
-        }
-
-        &__slide-title {
-            font-size: 22px;
-            max-width: unset;
-            font-weight: 700;
-            line-height: 130%;
-            color: #ddbf8c;
-        }
-
-        &__slide-desc {
-            font-size: 18px;
-            line-height: 150%;
-            min-height: unset; // 👈 remove min-height
-            color: #ffffff;
-        }
-
-        &__dots {
-            position: static;
-            margin: 32px 0 0;
-            gap: 8px;
-            align-items: center;
-        }
-
-        &__dot {
-            width: 10px;
-            height: 10px;
-        }
-
-        &__card {
-            position: relative;
-            bottom: auto;
-            left: auto;
-            transform: none;
-            width: 337px;
-            max-width: 100%;
-            margin: -100px auto 0;
-            padding: 24px;
-            border-radius: 8px;
-            background: rgba(243, 243, 243, 0.98);
-            box-shadow: none;
-            backdrop-filter: blur(10px);
-            display: block;
-        }
-
-        &__card-variant {
-            align-items: flex-start;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        &__card-text {
-            gap: 16px;
-        }
-
-        &__card-title {
-            font-size: 30px;
-            font-weight: 500;
-            line-height: 1.2;
-        }
-
-        &__card-description {
-            font-size: 18px;
-            line-height: 1.5;
-            color: #414346;
-        }
-
-        &__card-cta {
-            margin-top: 2px;
-            gap: 20px;
-        }
+    &__header {
+      margin-bottom: 0px;
+      gap: 8px;
+      padding: 0;
     }
 
-    // 👈 full class name — shows content on active slide
-    .landmark-slider__slide.is-active .landmark-slider__slide-content {
+    &__title {
+      max-width: 280px;
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 1.2;
+      text-align: center;
+    }
+
+    &__viewport {
+      --slide-width: calc(100vw - 32px);
+      --slide-gap: 12px;
+      position: relative;
+      overflow: hidden;
+      padding: 120px 0 0;
+    }
+
+    &__nav {
+      position: absolute;
+      top: 32px;
+      transform: none;
+      width: 56px;
+      height: 56px;
+      border-radius: 8px;
+      margin: 0;
+      background: var(--primary-500);
+      color: #efefef;
+      border-color: var(--primary-500);
+
+      &--prev {
+        inset-inline-start: calc(50% - 64px);
+        inset-inline-end: auto;
+
+        svg {
+          transform: scaleX(-1);
+        }
+      }
+
+      &--next {
+        inset-inline-end: calc(50% - 64px);
+        inset-inline-start: auto;
+      }
+
+      &:disabled {
+        background: var(--surface-white);
+        border: 1.4px solid #b0d5e4;
+        color: #b0d5e4;
         opacity: 1;
+      }
     }
+
+    &__nav#{&}__nav--hidden {
+      opacity: 1 !important; // ◆ override desktop hide
+      visibility: visible !important;
+      pointer-events: none; // ◆ keep non-clickable (acts like disabled)
+
+      // ◆ Disabled visual style — white bg, light blue icon
+      background: var(--surface-white);
+      border: 1.4px solid #b0d5e4;
+      color: #b0d5e4;
+    }
+
+    &__track {
+      gap: 12px;
+    }
+
+    &__slide {
+      flex: 0 0 calc(100vw - 32px);
+      width: calc(100vw - 32px);
+      height: 333px;
+      aspect-ratio: unset;
+      border-radius: 8px;
+      transform: none;
+      margin: 0;
+      opacity: 1;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      &.is-active {
+        opacity: 1;
+      }
+
+      &:not(.is-active) {
+        transform: none;
+        margin: 0;
+      }
+    }
+
+    &__slide::after {
+      display: none;
+    }
+
+    &__slide-content {
+      bottom: 31px; // 👈 from Figma
+      inset-inline-start: 24px;
+      inset-inline-end: auto;
+      width: 252px;
+      margin: 0;
+      gap: 16px;
+    }
+
+    &__slide-title {
+      font-size: 22px;
+      max-width: unset;
+      font-weight: 700;
+      line-height: 130%;
+      color: #ddbf8c;
+    }
+
+    &__slide-desc {
+      font-size: 18px;
+      line-height: 150%;
+      min-height: unset; // 👈 remove min-height
+      color: #ffffff;
+    }
+
+    &__dots {
+      position: static;
+      margin: 32px 0 0;
+      gap: 8px;
+      align-items: center;
+    }
+
+    &__dot {
+      width: 10px;
+      height: 10px;
+    }
+
+    &__card {
+      position: relative;
+      bottom: auto;
+      left: auto;
+      transform: none;
+      width: 337px;
+      max-width: 100%;
+      margin: -100px auto 0;
+      padding: 24px;
+      border-radius: 8px;
+      background: rgba(243, 243, 243, 0.98);
+      box-shadow: none;
+      backdrop-filter: blur(10px);
+      display: block;
+    }
+
+    &__card-variant {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    &__card-text {
+      gap: 16px;
+    }
+
+    &__card-title {
+      font-size: 30px;
+      font-weight: 500;
+      line-height: 1.2;
+    }
+
+    &__card-description {
+      font-size: 18px;
+      line-height: 1.5;
+      color: #414346;
+    }
+
+    &__card-cta {
+      margin-top: 2px;
+      gap: 20px;
+    }
+  }
+
+  // 👈 full class name — shows content on active slide
+  .landmark-slider__slide.is-active .landmark-slider__slide-content {
+    opacity: 1;
+  }
 }
 
 @media (max-width: 480px) {
-    .landmark-slider {
-        &__slide {
-            flex: 0 0 calc(100vw - 32px);
-            width: calc(100vw - 32px);
-            height: 333px;
-        }
-
-        &__viewport {
-            --slide-width: calc(100vw - 32px);
-        }
-
-        &__slide-content {
-            bottom: 31px;
-            inset-inline-start: 24px;
-            inset-inline-end: auto;
-            width: 252px; // 👈 from Figma
-        }
-
-        &__slide-title {
-            font-size: 30px;
-            font-weight: 500;
-        }
-
-        &__slide-desc {
-            font-size: 16px;
-        }
-
-        &__card {
-            width: 337px;
-            max-width: 100%;
-        }
-
-        &__card-title {
-            font-size: 30px;
-        }
-
-        &__card-description {
-            font-size: 16px;
-        }
+  .landmark-slider {
+    &__slide {
+      flex: 0 0 calc(100vw - 32px);
+      width: calc(100vw - 32px);
+      height: 333px;
     }
 
-    .landmark-slider--no-card {
-        .landmark-slider__viewport {
-            --slide-width: 283px;
-            --slide-gap: 12px;
-        }
-
-        .landmark-slider__slide {
-            flex: 0 0 283px;
-            width: 283px;
-            height: 333px;
-            min-width: 283px;
-        }
-
-        .landmark-slider__track {
-            gap: 16px;
-        }
-
-        .landmark-slider__slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+    &__viewport {
+      --slide-width: calc(100vw - 32px);
     }
 
-    .landmark-slider__slide.is-active .landmark-slider__slide-content {
-        opacity: 1;
+    &__slide-content {
+      bottom: 31px;
+      inset-inline-start: 24px;
+      inset-inline-end: auto;
+      width: 252px; // 👈 from Figma
     }
+
+    &__slide-title {
+      font-size: 30px;
+      font-weight: 500;
+    }
+
+    &__slide-desc {
+      font-size: 16px;
+    }
+
+    &__card {
+      width: 337px;
+      max-width: 100%;
+    }
+
+    &__card-title {
+      font-size: 30px;
+    }
+
+    &__card-description {
+      font-size: 16px;
+    }
+  }
+
+  .landmark-slider--no-card {
+    .landmark-slider__viewport {
+      --slide-width: 283px;
+      --slide-gap: 12px;
+    }
+
+    .landmark-slider__slide {
+      flex: 0 0 283px;
+      width: 283px;
+      height: 333px;
+      min-width: 283px;
+    }
+
+    .landmark-slider__track {
+      gap: 16px;
+    }
+
+    .landmark-slider__slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .landmark-slider__slide.is-active .landmark-slider__slide-content {
+    opacity: 1;
+  }
 }
 
 @media (max-width: 768px) {
-    .landmark-slider--no-card {
-        .landmark-slider__nav {
-            position: absolute;
-            top: 32px;
-            transform: none;
-            width: 56px;
-            height: 56px;
-            border-radius: 11.2px;
-            background: var(--primary-500);
-            color: #efefef;
-            border-color: var(--primary-500);
-        }
-
-        .landmark-slider__nav--prev {
-            inset-inline-start: calc(50% - 64px);
-            inset-inline-end: auto;
-            svg {
-                transform: scaleX(-1);
-            }
-        }
-
-        .landmark-slider__nav--next {
-            inset-inline-end: calc(50% - 64px);
-            inset-inline-start: auto;
-        }
-
-        .landmark-slider__nav.landmark-slider__nav--hidden {
-            opacity: 1 !important;
-            visibility: visible !important;
-            pointer-events: none;
-
-            background: var(--surface-white);
-            border: 1.4px solid #b0d5e4;
-            color: #b0d5e4;
-        }
+  .landmark-slider--no-card {
+    .landmark-slider__nav {
+      position: absolute;
+      top: 32px;
+      transform: none;
+      width: 56px;
+      height: 56px;
+      border-radius: 11.2px;
+      background: var(--primary-500);
+      color: #efefef;
+      border-color: var(--primary-500);
     }
+
+    .landmark-slider__nav--prev {
+      inset-inline-start: calc(50% - 64px);
+      inset-inline-end: auto;
+      svg {
+        transform: scaleX(-1);
+      }
+    }
+
+    .landmark-slider__nav--next {
+      inset-inline-end: calc(50% - 64px);
+      inset-inline-start: auto;
+    }
+
+    .landmark-slider__nav.landmark-slider__nav--hidden {
+      opacity: 1 !important;
+      visibility: visible !important;
+      pointer-events: none;
+
+      background: var(--surface-white);
+      border: 1.4px solid #b0d5e4;
+      color: #b0d5e4;
+    }
+  }
 }
