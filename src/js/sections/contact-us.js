@@ -375,249 +375,280 @@
 // })();
 
 function init() {
-    // Get wrapper first because Sitecore generates dynamic form IDs
-    const formWrap = document.getElementById("contact-form-wrap");
-    if (!formWrap) return;
+  // Get wrapper first because Sitecore generates dynamic form IDs
+  const formWrap = document.getElementById("contact-form-wrap");
+  if (!formWrap) return;
 
-    const form = formWrap.querySelector("form");
-    if (!form) return;
+  const form = formWrap.querySelector("form");
+  if (!form) return;
 
-    // const successEl = document.getElementById("contact-success");
-    // const contactSection = form.closest(".contact-us");
+  // const successEl = document.getElementById("contact-success");
+  // const contactSection = form.closest(".contact-us");
 
-    // ──────────────────────────────────────────
-    // Inject visual asterisk for required fields
-    // ──────────────────────────────────────────
-    function injectRequiredMarkers() {
-        const requiredFields = form.querySelectorAll(
-            'input[data-val="true"], textarea[data-val="true"], select[data-val="true"]',
-        );
+  // ──────────────────────────────────────────
+  // Inject visual asterisk for required fields
+  // ──────────────────────────────────────────
+  function injectRequiredMarkers() {
+    const requiredFields = form.querySelectorAll(
+      'input[data-val="true"], textarea[data-val="true"], select[data-val="true"]',
+    );
 
-        requiredFields.forEach((field) => {
-            // if (field.type === "checkbox") return;
+    requiredFields.forEach((field) => {
+      // if (field.type === "checkbox") return;
 
-            const wrapper = field.closest(".form-field");
-            // if (!wrapper) return;
+      const wrapper = field.closest(".form-field");
+      // if (!wrapper) return;
 
-            const label = wrapper.querySelector(".form-field__label");
-            // if (!label) return;
+      const label = wrapper.querySelector(".form-field__label");
+      // if (!label) return;
 
-            // if (label.querySelector(".form-field__required")) return;
+      // if (label.querySelector(".form-field__required")) return;
 
-            const asterisk = document.createElement("span");
-            asterisk.className = "form-field__required";
-            asterisk.setAttribute("aria-hidden", "true");
-            asterisk.style.color = "red";
-            asterisk.textContent = "*";
+      const asterisk = document.createElement("span");
+      asterisk.className = "form-field__required";
+      asterisk.setAttribute("aria-hidden", "true");
+      asterisk.style.color = "red";
+      asterisk.textContent = "*";
 
-            label.appendChild(asterisk);
-        });
+      label.appendChild(asterisk);
+    });
+  }
+
+  injectRequiredMarkers();
+
+  // ──────────────────────────────────────────
+  // Validation helpers
+  // ──────────────────────────────────────────
+  const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  const PHONE_RE = /^[+]?[\d\s\-()]{7,20}$/;
+
+  function getMessages() {
+    const lang = (window.I18n && window.I18n.get && window.I18n.get()) || "en";
+
+    const ar = lang === "ar";
+
+    return {
+      required: ar ? "هذا الحقل مطلوب" : "This field is required",
+      email: ar
+        ? "يرجى إدخال بريد إلكتروني صالح"
+        : "Please enter a valid email address",
+      phone: ar
+        ? "يرجى إدخال رقم هاتف صالح"
+        : "Please enter a valid phone number",
+      topic: ar ? "يرجى اختيار موضوع" : "Please choose a topic",
+      terms: ar
+        ? "يجب الموافقة على الشروط والأحكام"
+        : "You must accept the Terms and Conditions",
+    };
+  }
+
+  function setError(wrap, msg) {
+    if (!wrap) return;
+
+    wrap.classList.add("has-error", "is-invalid");
+
+    const errEl = wrap.querySelector(".form-field__error, .form-group__error");
+
+    if (errEl && msg) {
+      errEl.textContent = msg;
     }
 
-    injectRequiredMarkers();
+    const inputEl = wrap.querySelector("input, select, textarea");
 
-    // ──────────────────────────────────────────
-    // Validation helpers
-    // ──────────────────────────────────────────
-    const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    const PHONE_RE = /^[+]?[\d\s\-()]{7,20}$/;
+    if (inputEl) {
+      inputEl.setAttribute("aria-invalid", "true");
+    }
+  }
 
-    function getMessages() {
-        const lang = (window.I18n && window.I18n.get && window.I18n.get()) || "en";
+  function clearError(wrap) {
+    if (!wrap) return;
 
-        const ar = lang === "ar";
+    wrap.classList.remove("has-error", "is-invalid");
 
-        return {
-            required: ar ? "هذا الحقل مطلوب" : "This field is required",
-            email: ar ? "يرجى إدخال بريد إلكتروني صالح" : "Please enter a valid email address",
-            phone: ar ? "يرجى إدخال رقم هاتف صالح" : "Please enter a valid phone number",
-            topic: ar ? "يرجى اختيار موضوع" : "Please choose a topic",
-            terms: ar ? "يجب الموافقة على الشروط والأحكام" : "You must accept the Terms and Conditions",
-        };
+    const inputEl = wrap.querySelector("input, select, textarea");
+
+    if (inputEl) {
+      inputEl.removeAttribute("aria-invalid");
+    }
+  }
+
+  function validateField(field) {
+    // const wrap = field.closest(
+    //     ".form-field, .form-group, .contact-form__terms-row"
+    // );
+    const wrap = field.closest(".form-field, .contact-form__terms-row");
+
+    const msgs = getMessages();
+
+    const value =
+      field.type === "checkbox" ? field.checked : (field.value || "").trim();
+
+    if (field.disabled) {
+      clearError(wrap);
+      return true;
     }
 
-    function setError(wrap, msg) {
-        if (!wrap) return;
+    // Required validation
+    if (
+      field.hasAttribute("required") ||
+      field.dataset.required === "true" ||
+      field.getAttribute("aria-required") === "true"
+    ) {
+      if (field.type === "checkbox" && !value) {
+        setError(wrap, field.name === "terms" ? msgs.terms : msgs.required);
+        return false;
+      }
 
-        wrap.classList.add("has-error", "is-invalid");
-
-        const errEl = wrap.querySelector(".form-field__error, .form-group__error");
-
-        if (errEl && msg) {
-            errEl.textContent = msg;
-        }
-
-        const inputEl = wrap.querySelector("input, select, textarea");
-
-        if (inputEl) {
-            inputEl.setAttribute("aria-invalid", "true");
-        }
+      if (typeof value === "string" && !value.length) {
+        setError(wrap, msgs.required);
+        return false;
+      }
     }
 
-    function clearError(wrap) {
-        if (!wrap) return;
-
-        wrap.classList.remove("has-error", "is-invalid");
-
-        const inputEl = wrap.querySelector("input, select, textarea");
-
-        if (inputEl) {
-            inputEl.removeAttribute("aria-invalid");
-        }
+    // Email validation
+    if (field.type === "email" && value && !EMAIL_RE.test(value)) {
+      setError(wrap, msgs.email);
+      return false;
     }
 
-    function validateField(field) {
-        // const wrap = field.closest(
-        //     ".form-field, .form-group, .contact-form__terms-row"
-        // );
-        const wrap = field.closest(".form-field, .contact-form__terms-row");
-
-        const msgs = getMessages();
-
-        const value = field.type === "checkbox" ? field.checked : (field.value || "").trim();
-
-        if (field.disabled) {
-            clearError(wrap);
-            return true;
-        }
-
-        // Required validation
-        if (
-            field.hasAttribute("required") ||
-            field.dataset.required === "true" ||
-            field.getAttribute("aria-required") === "true"
-        ) {
-            if (field.type === "checkbox" && !value) {
-                setError(wrap, field.name === "terms" ? msgs.terms : msgs.required);
-                return false;
-            }
-
-            if (typeof value === "string" && !value.length) {
-                setError(wrap, msgs.required);
-                return false;
-            }
-        }
-
-        // Email validation
-        if (field.type === "email" && value && !EMAIL_RE.test(value)) {
-            setError(wrap, msgs.email);
-            return false;
-        }
-
-        // Phone validation
-        if (field.type === "tel" && value && !PHONE_RE.test(value)) {
-            setError(wrap, msgs.phone);
-            return false;
-        }
-
-        // Select validation
-        if (field.tagName === "SELECT" && field.hasAttribute("required") && !value) {
-            setError(wrap, msgs.topic);
-            return false;
-        }
-
-        clearError(wrap);
-        return true;
+    // Phone validation
+    if (field.type === "tel" && value && !PHONE_RE.test(value)) {
+      setError(wrap, msgs.phone);
+      return false;
     }
 
-    function validateAll() {
-        const fields = form.querySelectorAll(`
+    // Select validation
+    if (
+      field.tagName === "SELECT" &&
+      field.hasAttribute("required") &&
+      !value
+    ) {
+      setError(wrap, msgs.topic);
+      return false;
+    }
+
+    clearError(wrap);
+    return true;
+  }
+
+  function validateAll() {
+    const fields = form.querySelectorAll(`
             input[aria-required="true"],
             select[aria-required="true"],
             textarea[aria-required="true"]
         `);
 
-        let firstInvalid = null;
-        let valid = true;
+    let firstInvalid = null;
+    let valid = true;
 
-        fields.forEach((field) => {
-            const isValid = validateField(field);
+    fields.forEach((field) => {
+      const isValid = validateField(field);
 
-            if (!isValid) {
-                valid = false;
+      if (!isValid) {
+        valid = false;
 
-                if (!firstInvalid) {
-                    firstInvalid = field;
-                }
-            }
-        });
-
-        if (firstInvalid) {
-            try {
-                firstInvalid.focus({
-                    preventScroll: false,
-                });
-            } catch (e) {
-                firstInvalid.focus();
-            }
+        if (!firstInvalid) {
+          firstInvalid = field;
         }
+      }
+    });
 
-        return valid;
+    if (firstInvalid) {
+      try {
+        firstInvalid.focus({
+          preventScroll: false,
+        });
+      } catch (e) {
+        firstInvalid.focus();
+      }
     }
 
-    // ──────────────────────────────────────────
-    // Live validation
-    // ──────────────────────────────────────────
-    form.querySelectorAll("input, select, textarea").forEach((field) => {
-        field.addEventListener("input", () => {
-            const wrap = field.closest(".form-field, .contact-form__terms-row");
+    return valid;
+  }
 
-            clearError(wrap);
-        });
+  // ──────────────────────────────────────────
+  // Live validation
+  // ──────────────────────────────────────────
+  form.querySelectorAll("input, select, textarea").forEach((field) => {
+    field.addEventListener("input", () => {
+      const wrap = field.closest(".form-field, .contact-form__terms-row");
 
-        field.addEventListener("change", () => {
-            if (field.type === "checkbox" || field.tagName === "SELECT") {
-                validateField(field);
-            }
-        });
-
-        field.addEventListener("blur", () => {
-            validateField(field);
-        });
+      clearError(wrap);
     });
 
-    // ──────────────────────────────────────────
-    // Submit handler
-    // ──────────────────────────────────────────
-    form.addEventListener("submit", function (e) {
-        e.preventDefault();
-
-        if (!validateAll()) {
-            return;
-        }
-
-        // Allow Sitecore form to submit normally
-        // Remove e.preventDefault() above if you want
-        // Sitecore submit actions to execute.
-
-        if (formWrap) {
-            formWrap.hidden = true;
-        }
-
-        if (contactSection) {
-            contactSection.classList.add("is-success");
-        }
-
-        if (successEl) {
-            successEl.hidden = false;
-            successEl.setAttribute("tabindex", "-1");
-
-            try {
-                successEl.focus({
-                    preventScroll: false,
-                });
-            } catch (e) {
-                successEl.focus();
-            }
-
-            const banner = document.querySelector(".banner");
-
-            (banner || contactSection || successEl).scrollIntoView({
-                behavior: "smooth",
-                block: "start",
-            });
-        }
+    field.addEventListener("change", () => {
+      if (field.type === "checkbox" || field.tagName === "SELECT") {
+        validateField(field);
+      }
     });
+
+    field.addEventListener("blur", () => {
+      validateField(field);
+    });
+  });
+
+  // ──────────────────────────────────────────
+  // Submit handler
+  // ──────────────────────────────────────────
+  form.addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    if (!validateAll()) {
+      return;
+    }
+
+    // Allow Sitecore form to submit normally
+    // Remove e.preventDefault() above if you want
+    // Sitecore submit actions to execute.
+
+    if (formWrap) {
+      formWrap.hidden = true;
+    }
+
+    if (contactSection) {
+      contactSection.classList.add("is-success");
+    }
+
+    if (successEl) {
+      successEl.hidden = false;
+      successEl.setAttribute("tabindex", "-1");
+
+      try {
+        successEl.focus({
+          preventScroll: false,
+        });
+      } catch (e) {
+        successEl.focus();
+      }
+
+      const banner = document.querySelector(".banner");
+
+      (banner || contactSection || successEl).scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      });
+    }
+  });
+
+  const formWrapper = document.getElementById("contact-form-wrapper");
+  const success = document.getElementById("contact-success");
+  const formHeading = document.getElementById("contact-form-heading");
+  function showSuccessState() {
+    formWrapper.hidden = true;
+    success.hidden = false;
+    formHeading.hidden = true;
+    success.focus();
+  }
+
+  if (sessionStorage.getItem("contactFormSubmitted") === "true") {
+    showSuccessState();
+    sessionStorage.removeItem("contactFormSubmitted");
+  }
+  window.addEventListener("message", function (event) {
+    if (event.data && event.data.type === "CONTACT_FORM_SUBMITTED") {
+      showSuccessState();
+    }
+  });
 }
 
 // Initialize
