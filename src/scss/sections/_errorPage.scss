@@ -7,165 +7,171 @@
 // ==========================================
 
 .error-page {
+  width: 100%;
+  background: var(--secondary-50); // #FAF5EE cream
+  padding: 120px 120px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  min-height: calc(100vh - 96px - 220px); // viewport minus nav and footer
+
+  // Standalone variant: page has no hero banner, so the fixed
+  // 96px navbar overlaps content. Push our top padding to clear it.
+  &--standalone {
+    padding-block-start: calc(120px + var(--nav-height));
+    min-height: calc(100vh - 220px);
+  }
+
+  // ==========================================
+  // Container — centred, single column
+  // ==========================================
+  &__container {
     width: 100%;
-    background: var(--secondary-50); // #FAF5EE cream
-    padding: 120px 120px;
+    max-width: 1200px;
+    margin: 0 auto;
 
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    text-align: center;
+    gap: 40px;
+  }
 
-    min-height: calc(100vh - 96px - 220px); // viewport minus nav and footer
+  // ==========================================
+  // Code (huge "403" / "404" number)
+  // ==========================================
+  &__code {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: 200px;
+    font-weight: 500;
+    line-height: 120%;
+    letter-spacing: -2px;
+    color: var(--primary-500);
 
-    // Standalone variant: page has no hero banner, so the fixed
-    // 96px navbar overlaps content. Push our top padding to clear it.
-    &--standalone {
-        padding-block-start: calc(120px + var(--nav-height));
-        min-height: calc(100vh - 220px);
+    [dir="rtl"] & {
+      font-family: var(--font-en) !important;
     }
+  }
 
-    // ==========================================
-    // Container — centred, single column
-    // ==========================================
-    &__container {
-        width: 100%;
-        max-width: 1200px;
-        margin: 0 auto;
+  // ==========================================
+  // Body block (title + description)
+  // ==========================================
+  &__body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
 
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        gap: 40px;
-    }
+  &__title {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: 40px;
+    font-weight: 500;
+    line-height: 120%;
+    color: var(--primary-500);
+  }
 
-    // ==========================================
-    // Code (huge "403" / "404" number)
-    // ==========================================
-    &__code {
-        margin: 0;
-        font-family: var(--font-body);
-        font-size: 200px;
-        font-weight: 500;
-        line-height: 120%;
-        letter-spacing: -2px;
-        color: var(--primary-500);
+  &__description {
+    margin: 0;
+    max-width: 640px;
+    font-family: var(--font-body);
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 150%;
+    color: var(--text-500);
+  }
 
-        [dir="rtl"] & {
-            font-family: var(--font-en) !important;
-        }
-    }
+  // ==========================================
+  // CTA wrapper
+  // ==========================================
+  &__cta-wrap {
+    margin-top: 8px;
+  }
 
-    // ==========================================
-    // Body block (title + description)
-    // ==========================================
-    &__body {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 16px;
-    }
-
-    &__title {
-        margin: 0;
-        font-family: var(--font-body);
-        font-size: 40px;
-        font-weight: 500;
-        line-height: 120%;
-        color: var(--primary-500);
-    }
-
-    &__description {
-        margin: 0;
-        max-width: 640px;
-        font-family: var(--font-body);
-        font-size: 18px;
-        font-weight: 400;
-        line-height: 150%;
-        color: var(--text-500);
-    }
-
-    // ==========================================
-    // CTA wrapper
-    // ==========================================
-    &__cta-wrap {
-        margin-top: 8px;
-    }
-
-    // CTA — outlined gold pill with arrow
-    &__cta {
-        min-width: 220px;
-        background: transparent;
-    }
+  // CTA — outlined gold pill with arrow
+  &__cta {
+    min-width: 220px;
+    background: transparent;
+  }
 }
 
 // ==========================================
 // Tablet (≤ 1024)
 // ==========================================
 @media (max-width: 1024px) {
-    .error-page {
-        padding: 80px 48px;
-        min-height: calc(100vh - 80px - 200px);
+  .error-page {
+    padding: 80px 48px;
+    min-height: calc(100vh - 80px - 200px);
 
-        &__container {
-            gap: 24px;
-        }
-
-        &__code {
-            font-size: 180px;
-        }
-
-        &__title {
-            font-size: 32px;
-        }
+    &__container {
+      gap: 24px;
     }
+
+    &__code {
+      font-size: 180px;
+    }
+
+    &__title {
+      font-size: 32px;
+    }
+  }
 }
 
 // ==========================================
 // Mobile (≤ 768)
 // ==========================================
 @media (max-width: 768px) {
-    .error-page {
-        padding: 64px 24px;
+  .error-page {
+    padding: 64px 24px;
 
-        &__container {
-            gap: 20px;
-        }
-
-        &__code {
-            font-size: 120px;
-            letter-spacing: -1px;
-        }
-
-        &__title {
-            font-size: 28px;
-        }
-
-        &__description {
-            font-size: 15px;
-        }
-
-        &__cta {
-            width: 100%;
-            max-width: 320px;
-        }
+    &__container {
+      gap: 20px;
     }
+
+    &__code {
+      font-size: 120px;
+      letter-spacing: -1px;
+    }
+
+    &__title {
+      font-size: 28px;
+    }
+
+    &__description {
+      font-size: 15px;
+    }
+
+    &__cta {
+      width: 100%;
+      max-width: 320px;
+    }
+  }
 }
 
 // ==========================================
 // Small Mobile (≤ 480)
 // ==========================================
 @media (max-width: 480px) {
-    .error-page {
-        padding: 48px 16px;
+  .error-page {
+    padding: 80px 16px;
 
-        &__code {
-            font-size: 96px;
-        }
-
-        &__title {
-            font-size: 24px;
-        }
+    &__code {
+      font-size: 96px;
     }
+
+    &__title {
+      font-size: 24px;
+    }
+
+    span {
+      [dir="rtl"] & {
+        text-align: start !important;
+      }
+    }
+  }
 }
