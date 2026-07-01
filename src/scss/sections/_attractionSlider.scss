@@ -273,9 +273,9 @@
   &:hover &__image,
   &:focus-visible &__image {
     opacity: 1;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
-    border-color: var(--primary-500); // Primary blue border (#0076A9)
+    // transform: translateY(-2px);
+    // box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    // border-color: var(--primary-500); // Primary blue border (#0076A9)
   }
 
   &:hover &__label,
