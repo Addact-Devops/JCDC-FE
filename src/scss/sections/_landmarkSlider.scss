@@ -426,7 +426,7 @@
 // ◆ CHANGED — was (min-width: 1025px) → (min-width: 1024px)
 @media (max-width: 1260px) {
   .landmark-slider {
-    padding: 64px 0;
+    padding: 64px 0px 32px 0px;
 
     &__title {
       font-size: 36px;
@@ -492,7 +492,7 @@
 // ◆ CHANGED — was (max-width: 1024px) → (max-width: 1023px)
 @media (max-width: 1023px) {
   .landmark-slider {
-    padding: 56px 0 64px;
+    padding: 56px 0 32px;
 
     &__title {
       font-size: 30px;
