@@ -38,9 +38,9 @@
   scroll-margin-top: 100px;
 
   // ── 2-column grid (map | panel) ───────────────────────────────
-  //  • Map column: capped at 1045 px so its derived height (aspect
-  //    1049/773) never exceeds 770 px.
-  //  • Panel column: at least 380 px so the title and CTA breathe.
+  //  • Map column: fixed 879px — the active district is zoomed to
+  //    fill this exact width via JS (see applyZoom in jcd-map.js).
+  //  • Panel column: fixed 561px, showing the selected district's detail.
   //  Grid `align-items` is `stretch` by default, so the panel column
   //  matches whatever height the map column produces.
   &__container {
@@ -55,7 +55,7 @@
       max-width: 1440px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 1fr 567px;
+      grid-template-columns: 879px 561px;
       grid-template-rows: 770px;
       align-items: stretch;
     }
@@ -76,8 +76,8 @@
     width: 100%;
     max-width: 1440px;
     margin: 0 auto;
-    aspect-ratio: 1049 / 784;
-    max-height: 770px;
+    aspect-ratio: 1440 / 784;
+    max-height: 784px;
     overflow: hidden;
     user-select: none;
     -webkit-tap-highlight-color: transparent;
@@ -92,30 +92,42 @@
     background: #080808;
   }
 
-  // Stage — static background only; never transforms
+  // Stage — ALWAYS rendered at its native 1440x784 design size (never
+  // 100%/inset:0 of a variable-size box), and carries ONE JS-computed
+  // transform (see applyZoom in jcd-map.js) that both fits it to the
+  // current viewport/detail-column box AND zooms into the active
+  // district. Doing the "fit" and the "zoom" as a single transform is
+  // deliberate: object-fit/preserveAspectRatio bake in a fixed, centred
+  // crop at layout time that a later ancestor transform can only rigidly
+  // scale/move — it can't reveal a different region — which made
+  // off-centre districts (e.g. Culture, hugging the map's west edge)
+  // render mostly empty. All three map visuals (background image here,
+  // plus the mask img + SVG + icons nested inside __layers) live inside
+  // this element, so the single shared transform keeps them moving
+  // together as one unit with no possibility of drifting out of sync.
   &__stage {
     position: absolute;
-    inset: 0;
-    background:
-      linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)),
-      url("../../../assets/map-bg-img.png");
+    top: 0;
+    left: 0;
+    width: 1440px;
+    height: 784px;
+    background: url("../../../assets/map-bg-image.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-  }
-
-  // Layers — the three map visuals (mask img + SVG + icons) that zoom/translate
-  // together on district selection. Keeping the transform here means the stage
-  // background is always full-bleed and can never be exposed at the edges.
-  &__layers {
-    position: absolute;
-    inset: 0;
-    transform-origin: 50% 50%;
+    transform-origin: 0 0;
     transition: transform 0.55s cubic-bezier(0.65, 0, 0.35, 1);
     will-change: transform;
   }
 
-  // Background images (both share the 1049 × 784 viewBox)
+  // Layers — plain stacking wrapper for the mask img + SVG + icons; it
+  // inherits the zoom transform from __stage, its parent.
+  &__layers {
+    position: absolute;
+    inset: 0;
+  }
+
+  // Background images (both share the 1440 × 784 viewBox)
   &__bg {
     position: absolute;
     inset: 0;
@@ -126,11 +138,6 @@
 
   &__bg--mask {
     z-index: 1;
-    max-width: 1440px;
-    object-fit: contain;
-    left: -118px;
-    // left: 50%;
-    // transform: translateX(-50%);
   }
 
   &__bg--overlay {
@@ -143,7 +150,6 @@
     position: absolute;
     inset: 0;
     width: 100%;
-    left: -118px;
     height: 100%;
     z-index: 2;
   }
@@ -751,7 +757,7 @@
   .jcd-map__scroll {
     width: 100%;
     height: auto;
-    aspect-ratio: 1049 / 784;
+    aspect-ratio: 1440 / 784;
   }
 
   // Reset the desktop -118px left offset so the full map is reachable from scroll position 0
@@ -849,7 +855,7 @@
   .jcd-map__scroll {
     height: 100%;
     width: auto;
-    aspect-ratio: 1049 / 784;
+    aspect-ratio: 1440 / 784;
     min-width: 100%;
   }
 
