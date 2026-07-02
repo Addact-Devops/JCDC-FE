@@ -76,8 +76,8 @@
     width: 100%;
     max-width: 1440px;
     margin: 0 auto;
-    aspect-ratio: 1440 / 784;
-    max-height: 784px;
+    aspect-ratio: 1440 / 773;
+    max-height: 773px;
     overflow: hidden;
     user-select: none;
     -webkit-tap-highlight-color: transparent;
@@ -92,25 +92,30 @@
     background: #080808;
   }
 
-  // Stage — ALWAYS rendered at its native 1440x784 design size (never
-  // 100%/inset:0 of a variable-size box), and carries ONE JS-computed
-  // transform (see applyZoom in jcd-map.js) that both fits it to the
-  // current viewport/detail-column box AND zooms into the active
-  // district. Doing the "fit" and the "zoom" as a single transform is
-  // deliberate: object-fit/preserveAspectRatio bake in a fixed, centred
-  // crop at layout time that a later ancestor transform can only rigidly
-  // scale/move — it can't reveal a different region — which made
-  // off-centre districts (e.g. Culture, hugging the map's west edge)
-  // render mostly empty. All three map visuals (background image here,
-  // plus the mask img + SVG + icons nested inside __layers) live inside
-  // this element, so the single shared transform keeps them moving
-  // together as one unit with no possibility of drifting out of sync.
+  // Stage — by default just fills the viewport (100%/inset:0), exactly
+  // like before: pure CSS, correct on first paint with zero dependency
+  // on JS having run yet.
+  //
+  // Once a district is active (.is-detail below), it switches to its
+  // native 1440x773 design size instead, and JS applies ONE computed
+  // transform (see applyZoom in jcd-map.js) that zooms into that
+  // district. This only needs to happen in detail mode — which is only
+  // ever entered via a user click, i.e. JS is already running by
+  // definition — so there's no flash-of-unfit-map risk the way there
+  // would be if this applied on cold page load too.
+  //
+  // Native size + one transform (rather than object-fit/preserveAspect-
+  // Ratio) is deliberate: those bake in a fixed, centred crop at layout
+  // time that a later ancestor transform can only rigidly scale/move —
+  // it can't reveal a different region — which made off-centre
+  // districts (e.g. Culture, hugging the map's west edge) render mostly
+  // empty. All three map visuals (background image here, plus the mask
+  // img + SVG + icons nested inside __layers) live inside this element,
+  // so the single shared transform keeps them moving together as one
+  // unit with no possibility of drifting out of sync.
   &__stage {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 1440px;
-    height: 784px;
+    inset: 0;
     background: url("../../../assets/map-bg-image.png");
     background-size: cover;
     background-position: center;
@@ -120,6 +125,14 @@
     will-change: transform;
   }
 
+  &__viewport.is-detail &__stage {
+    inset: auto;
+    top: 0;
+    left: 0;
+    width: 1440px;
+    height: 773px;
+  }
+
   // Layers — plain stacking wrapper for the mask img + SVG + icons; it
   // inherits the zoom transform from __stage, its parent.
   &__layers {
@@ -127,7 +140,9 @@
     inset: 0;
   }
 
-  // Background images (both share the 1440 × 784 viewBox)
+  // Background images (mask img + SVG viewBox both 1440 × 773, matching
+  // the source images' native size exactly — no object-fit/preserveAspect-
+  // Ratio cropping or stretching needed since there's no aspect mismatch)
   &__bg {
     position: absolute;
     inset: 0;
@@ -152,6 +167,7 @@
     width: 100%;
     height: 100%;
     z-index: 2;
+    top: 2px;
   }
 
   // ══════════════════════════════════════════════════════════════
@@ -739,7 +755,7 @@
     width: 100%;
     max-width: 100%;
     margin: 0;
-    height: 56vh;
+    height: 100%;
     max-height: 560px;
     aspect-ratio: unset;
     overflow: auto;
@@ -757,7 +773,7 @@
   .jcd-map__scroll {
     width: 100%;
     height: auto;
-    aspect-ratio: 1440 / 784;
+    aspect-ratio: 1440 / 773;
   }
 
   // Reset the desktop -118px left offset so the full map is reachable from scroll position 0
@@ -855,7 +871,7 @@
   .jcd-map__scroll {
     height: 100%;
     width: auto;
-    aspect-ratio: 1440 / 784;
+    aspect-ratio: 1440 / 773;
     min-width: 100%;
   }
 

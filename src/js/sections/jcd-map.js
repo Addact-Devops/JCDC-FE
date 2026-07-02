@@ -207,39 +207,6 @@
     }
 
     // ───────────────────────────────────────────────────────
-    //  Reposition attraction icons to their correct SVG-space
-    //  coordinates. Each icon carries data-svgx / data-svgy
-    //  (SVG viewBox coords for the 1440x784 design canvas). The
-    //  SVG/mask/stage all render with "cover" (xMidYMid slice /
-    //  object-fit:cover) semantics, so whenever the box aspect
-    //  ratio doesn't match 1440/784 (e.g. the 879px-wide detail
-    //  column), the content is scaled by a single uniform factor
-    //  and centre-cropped rather than stretched per-axis. We
-    //  replicate that exact mapping here — via the SVG's actual
-    //  BCR, so this stays correct across screen widths and both
-    //  the pre-selection and 879/561 detail layouts — instead of
-    //  assuming a naive independent x/y scale.
-    // ───────────────────────────────────────────────────────
-    function repositionIcons() {
-      if (!svg || !iconsHost) return;
-      var svgBCR = svg.getBoundingClientRect();
-      var hostBCR = iconsHost.getBoundingClientRect();
-      if (!hostBCR.width || !hostBCR.height) return;
-      var coverScale = Math.max(svgBCR.width / 1440, svgBCR.height / 784);
-      var offsetX = (svgBCR.width - 1440 * coverScale) / 2;
-      var offsetY = (svgBCR.height - 784 * coverScale) / 2;
-      iconsHost.querySelectorAll(".jcd-map__icon").forEach(function (btn) {
-        var svgX = parseFloat(btn.dataset.svgx);
-        var svgY = parseFloat(btn.dataset.svgy);
-        if (isNaN(svgX) || isNaN(svgY)) return;
-        var leftPx = svgBCR.left - hostBCR.left + offsetX + svgX * coverScale;
-        var topPx = svgBCR.top - hostBCR.top + offsetY + svgY * coverScale;
-        btn.style.left = ((leftPx / hostBCR.width) * 100).toFixed(2) + "%";
-        btn.style.top = ((topPx / hostBCR.height) * 100).toFixed(2) + "%";
-      });
-    }
-
-    // ───────────────────────────────────────────────────────
     //  i18n — copy translated strings into the existing nodes
     // ───────────────────────────────────────────────────────
     function applyTranslations(t) {
@@ -425,19 +392,20 @@
     }
 
     // ───────────────────────────────────────────────────────
-    //  Fit + zoom the stage inside the viewport, in ONE transform.
+    //  Zoom the stage into the active district.
     //  --------------------------------------------------------
-    //  WHY ONE TRANSFORM — __stage (background image, plus the mask
-    //  img + SVG + icons nested inside __layers) is always rendered
-    //  at its native 1440x784 design size (see __stage in
-    //  _jcdMap.scss), never 100%/inset:0 of a variable-size box.
-    //  Both the "fit the whole map into the current box" step AND
-    //  the "zoom into the active district" step are computed here,
-    //  together, as a single translate+scale.
+    //  Only relevant in detail mode. Overview is pure CSS (__stage
+    //  is 100%/inset:0 of the viewport there — see _jcdMap.scss) and
+    //  needs no JS at all, so it's correct on first paint with zero
+    //  dependency on JS having run yet. Once a district is active,
+    //  __stage switches (via .is-detail in CSS) to its native
+    //  1440x773 design size (matching the mask/stage images' native
+    //  pixel size exactly), and this function applies ONE computed
+    //  transform that zooms into that district.
     //
-    //  This matters because object-fit/preserveAspectRatio (the
-    //  previous approach) bake in a fixed, centred crop at layout
-    //  time based on the element's OWN box size — a transform
+    //  WHY NATIVE SIZE + ONE TRANSFORM (rather than object-fit /
+    //  preserveAspectRatio) — those bake in a fixed, centred crop at
+    //  layout time based on the element's OWN box size; a transform
     //  applied afterwards on an ancestor can only rigidly scale and
     //  move that already-cropped result, it can NOT reveal a
     //  different region of the source. That made off-centre
@@ -445,8 +413,11 @@
     //  mostly empty: the crop the browser had already committed to
     //  simply didn't contain most of the shape, and no amount of
     //  extra scale/translate could bring it back. Computing
-    //  everything here, against the real 1440x784 coordinates,
-    //  avoids that trap entirely.
+    //  everything here, against the real 1440x773 coordinates,
+    //  avoids that trap entirely. All three map visuals (background
+    //  image, mask img, SVG + icons) live inside __stage, so this
+    //  single transform keeps them moving together as one unit with
+    //  no possibility of drifting out of sync.
     //
     //  CENTRING — Uses the bounding-box centre. That matches how
     //  the Figma reference frames each district: the bbox of the
@@ -469,17 +440,12 @@
     //  gives tx/ty directly, with no per-axis % ambiguity.
     // ───────────────────────────────────────────────────────
     var VB_W = 1440;
-    var VB_H = 784;
+    var VB_H = 773;
     var TARGET_FILL_PCT = 96;
     var MIN_ZOOM = 1;
     var MAX_ZOOM = 8;
 
     function applyZoom() {
-      var box = scrollWrap || viewport;
-      var boxW = box.offsetWidth;
-      var boxH = box.offsetHeight;
-      if (!boxW || !boxH) return;
-
       var pathEl = activeDistrictId
         ? districtsLayer.querySelector(
             '[data-district="' + activeDistrictId + '"]',
@@ -496,26 +462,29 @@
         if (bbox && (!isFinite(bbox.width) || bbox.width === 0)) bbox = null;
       }
 
-      var scale, cx, cy;
-      if (bbox) {
-        cx = bbox.x + bbox.width / 2;
-        cy = bbox.y + bbox.height / 2;
-        var fitX = ((TARGET_FILL_PCT / 100) * boxW) / bbox.width;
-        var fitY = ((TARGET_FILL_PCT / 100) * boxH) / bbox.height;
-        scale = Math.max(MIN_ZOOM, Math.min(Math.min(fitX, fitY), MAX_ZOOM));
-      } else {
-        // Overview — fit the whole 1440x784 canvas inside the box,
-        // never cropping it.
-        cx = VB_W / 2;
-        cy = VB_H / 2;
-        scale = Math.min(boxW / VB_W, boxH / VB_H);
+      if (!bbox) {
+        // No district active — overview is handled entirely by CSS.
+        stage.style.transform = "";
+        iconsHost.style.setProperty("--icon-counter-scale", "1");
+        return;
       }
+
+      var box = scrollWrap || viewport;
+      var boxW = box.offsetWidth;
+      var boxH = box.offsetHeight;
+      if (!boxW || !boxH) return;
+
+      var cx = bbox.x + bbox.width / 2;
+      var cy = bbox.y + bbox.height / 2;
+      var fitX = ((TARGET_FILL_PCT / 100) * boxW) / bbox.width;
+      var fitY = ((TARGET_FILL_PCT / 100) * boxH) / bbox.height;
+      var scale = Math.max(MIN_ZOOM, Math.min(Math.min(fitX, fitY), MAX_ZOOM));
 
       var tx = boxW / 2 - cx * scale;
       var ty = boxH / 2 - cy * scale;
 
       // Clamp so we never pan far enough to expose empty space beyond
-      // the canvas's actual [0,1440]x[0,784] edges — needed for
+      // the canvas's actual [0,1440]x[0,773] edges — needed for
       // districts that hug the boundary (Sport at y=0, Culture at
       // x=0) — with a small margin so they still get a hair of
       // breathing room instead of a hard crop line.
@@ -536,9 +505,8 @@
         ")";
 
       // Counter-scale the icons so they keep their physical size
-      // regardless of the current map scale (overview or zoomed).
+      // despite the district zoom.
       iconsHost.style.setProperty("--icon-counter-scale", String(1 / scale));
-      repositionIcons();
     }
 
     function setHoverDistrict(id) {
@@ -593,9 +561,6 @@
       viewport.classList.toggle("is-detail", !!id);
       if (container) container.classList.toggle("is-detail", !!id);
       hideTooltip();
-      // Reposition icons synchronously (forces layout flush) so they
-      // land at the correct DETAIL/IDLE coordinates before becoming visible.
-      repositionIcons();
       syncIconVisibility();
 
       if (id) {
@@ -772,20 +737,14 @@
       if (rzTimer) cancelAnimationFrame(rzTimer);
       rzTimer = requestAnimationFrame(function () {
         repositionLabels();
-        repositionIcons();
-        applyZoom();
+        if (activeDistrictId) applyZoom();
       });
     });
 
     // ───────────────────────────────────────────────────────
-    //  Position labels once the SVG has laid out. __stage now
-    //  renders at a fixed native size (see _jcdMap.scss), so it
-    //  always needs an explicit fit transform — including on first
-    //  paint, with no district selected yet.
+    //  Position labels once the SVG has laid out
     // ───────────────────────────────────────────────────────
     requestAnimationFrame(repositionLabels);
-    requestAnimationFrame(repositionIcons);
-    requestAnimationFrame(applyZoom);
 
     // ───────────────────────────────────────────────────────
     //  i18n bind
