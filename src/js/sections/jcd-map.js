@@ -207,32 +207,6 @@
     }
 
     // ───────────────────────────────────────────────────────
-    //  Reposition attraction icons to their correct SVG-space
-    //  coordinates. Each icon carries data-svgx / data-svgy
-    //  (pre-computed SVG viewBox coords for the 1440 px design
-    //  viewport). We convert those to a left/top % relative to
-    //  the icons host by reading the SVG's actual BCR — this
-    //  accounts for the desktop left:-118px CSS offset that is
-    //  absent on mobile, so icons land on the same map feature
-    //  regardless of screen width.
-    // ───────────────────────────────────────────────────────
-    function repositionIcons() {
-      if (!svg || !iconsHost) return;
-      var svgBCR = svg.getBoundingClientRect();
-      var hostBCR = iconsHost.getBoundingClientRect();
-      if (!hostBCR.width || !hostBCR.height) return;
-      iconsHost.querySelectorAll(".jcd-map__icon").forEach(function (btn) {
-        var svgX = parseFloat(btn.dataset.svgx);
-        var svgY = parseFloat(btn.dataset.svgy);
-        if (isNaN(svgX) || isNaN(svgY)) return;
-        var leftPx = svgBCR.left - hostBCR.left + (svgX / 1049) * svgBCR.width;
-        var topPx = svgBCR.top - hostBCR.top + (svgY / 784) * svgBCR.height;
-        btn.style.left = ((leftPx / hostBCR.width) * 100).toFixed(2) + "%";
-        btn.style.top = ((topPx / hostBCR.height) * 100).toFixed(2) + "%";
-      });
-    }
-
-    // ───────────────────────────────────────────────────────
     //  i18n — copy translated strings into the existing nodes
     // ───────────────────────────────────────────────────────
     function applyTranslations(t) {
@@ -418,32 +392,58 @@
     }
 
     // ───────────────────────────────────────────────────────
-    //  Zoom + centre the active district inside the viewport.
+    //  Zoom the stage into the active district.
     //  --------------------------------------------------------
-    //  CENTRING — Uses the bounding-box centre. That matches
-    //  how the Figma reference frames each district: the bbox
-    //  of the visible shape sits centred in the map viewport.
-    //  (An earlier draft used the area-weighted centroid, which
-    //  for crescent-shaped districts like Beach shifted the
-    //  bbox off-screen because the area mass is in the
-    //  northern lobe — not what we want here.)
+    //  Only relevant in detail mode. Overview is pure CSS (__stage
+    //  is 100%/inset:0 of the viewport there — see _jcdMap.scss) and
+    //  needs no JS at all, so it's correct on first paint with zero
+    //  dependency on JS having run yet. Once a district is active,
+    //  __stage switches (via .is-detail in CSS) to its native
+    //  1440x773 design size (matching the mask/stage images' native
+    //  pixel size exactly), and this function applies ONE computed
+    //  transform that zooms into that district.
     //
-    //  ZOOM — Adaptive per district:
-    //  Each district gets a zoom that makes it fill ~88% of the
-    //  viewport along its binding axis (width OR height —
-    //  whichever is tighter), so nothing gets cut off. Clamped
-    //  to [1.3, 2.4] so neither tiny (Wellness) nor huge
-    //  (Beach) districts look out of scale.
+    //  WHY NATIVE SIZE + ONE TRANSFORM (rather than object-fit /
+    //  preserveAspectRatio) — those bake in a fixed, centred crop at
+    //  layout time based on the element's OWN box size; a transform
+    //  applied afterwards on an ancestor can only rigidly scale and
+    //  move that already-cropped result, it can NOT reveal a
+    //  different region of the source. That made off-centre
+    //  districts (Culture, hugging the map's west edge) render
+    //  mostly empty: the crop the browser had already committed to
+    //  simply didn't contain most of the shape, and no amount of
+    //  extra scale/translate could bring it back. Computing
+    //  everything here, against the real 1440x773 coordinates,
+    //  avoids that trap entirely. All three map visuals (background
+    //  image, mask img, SVG + icons) live inside __stage, so this
+    //  single transform keeps them moving together as one unit with
+    //  no possibility of drifting out of sync.
     //
-    //  TRANSLATE — Centres the bbox at viewport (50%, 50%):
-    //  With transform-origin at (50%, 50%) and
-    //  `transform: translate(tx) scale(s)`, a point P resolves
-    //  to: P' = s·(P − 50) + 50 + t
-    //  Setting P' = 50 for P = centre gives t = (50 − P)·s.
+    //  CENTRING — Uses the bounding-box centre. That matches how
+    //  the Figma reference frames each district: the bbox of the
+    //  visible shape sits centred in the map viewport. (An earlier
+    //  draft used the area-weighted centroid, which for
+    //  crescent-shaped districts like Beach shifted the bbox
+    //  off-screen because the area mass is in the northern lobe —
+    //  not what we want here.)
+    //
+    //  ZOOM — Adaptive per district: fills TARGET_FILL_PCT of the
+    //  box along its tighter axis (width OR height), so the active
+    //  district occupies the full available space of the left
+    //  section without spilling out of it. Clamped to
+    //  [MIN_ZOOM, MAX_ZOOM] so tiny districts (Wellness) don't
+    //  blow up into an illegibly blurry close-up.
+    //
+    //  TRANSLATE — Computed in PIXELS with transform-origin at
+    //  (0, 0): a canvas point (px, py) lands at screen position
+    //  (tx + px*scale, ty + py*scale). Solving for the box centre
+    //  gives tx/ty directly, with no per-axis % ambiguity.
     // ───────────────────────────────────────────────────────
-    var TARGET_FILL_PCT = 65;
-    var MIN_ZOOM = 1.1;
-    var MAX_ZOOM = 2.2;
+    var VB_W = 1440;
+    var VB_H = 773;
+    var TARGET_FILL_PCT = 96;
+    var MIN_ZOOM = 1;
+    var MAX_ZOOM = 8;
 
     function applyZoom() {
       var pathEl = activeDistrictId
@@ -452,62 +452,61 @@
           )
         : null;
 
-      if (!pathEl) {
-        // Reset to identity transform (back to overview).
-        layers.style.transform = "";
-        layers.style.transformOrigin = "";
+      var bbox = null;
+      if (pathEl) {
+        try {
+          bbox = pathEl.getBBox();
+        } catch (e) {
+          bbox = null;
+        }
+        if (bbox && (!isFinite(bbox.width) || bbox.width === 0)) bbox = null;
+      }
+
+      if (!bbox) {
+        // No district active — overview is handled entirely by CSS.
+        stage.style.transform = "";
         iconsHost.style.setProperty("--icon-counter-scale", "1");
         return;
       }
 
-      var bbox;
-      try {
-        bbox = pathEl.getBBox();
-      } catch (e) {
-        return;
-      }
-      if (!bbox || !isFinite(bbox.width) || bbox.width === 0) return;
+      var box = scrollWrap || viewport;
+      var boxW = box.offsetWidth;
+      var boxH = box.offsetHeight;
+      if (!boxW || !boxH) return;
 
-      // BBox centre + size as % of stage (== SVG viewBox 1049×773)
-      var cxPct = ((bbox.x + bbox.width / 2) / 1049) * 100;
-      var cyPct = ((bbox.y + bbox.height / 2) / 773) * 100;
-      var wPct = (bbox.width / 1049) * 100;
-      var hPct = (bbox.height / 773) * 100;
+      var cx = bbox.x + bbox.width / 2;
+      var cy = bbox.y + bbox.height / 2;
+      var fitX = ((TARGET_FILL_PCT / 100) * boxW) / bbox.width;
+      var fitY = ((TARGET_FILL_PCT / 100) * boxH) / bbox.height;
+      var scale = Math.max(MIN_ZOOM, Math.min(Math.min(fitX, fitY), MAX_ZOOM));
 
-      // Adaptive zoom — fill TARGET_FILL_PCT on the tighter axis
-      var fitX = TARGET_FILL_PCT / wPct;
-      var fitY = TARGET_FILL_PCT / hPct;
-      var zoom = Math.min(fitX, fitY);
-      zoom = Math.max(MIN_ZOOM, Math.min(zoom, MAX_ZOOM));
+      var tx = boxW / 2 - cx * scale;
+      var ty = boxH / 2 - cy * scale;
 
-      // Translate so the bbox centre lands at (50%, 50%) of the viewport.
-      // Clamp so the stage never shifts far enough to expose the
-      // viewport background (max safe shift = 50% * (zoom - 1)).
-      var tx = (50 - cxPct) * zoom;
-      var ty = (50 - cyPct) * zoom;
-      // Allow a few extra percent of translation beyond the hard
-      // edge so districts whose paths touch the SVG boundary (e.g.
-      // Sport at y=0, Culture at x=0) get a small breathing margin.
-      // The stage background (dark gradient) covers the tiny exposed
-      // strip — it will never be white.
-      var EDGE_MARGIN = 4;
-      var maxT = 50 * (zoom - 1) + EDGE_MARGIN;
-      tx = Math.max(-maxT, Math.min(maxT, tx));
-      ty = Math.max(-maxT, Math.min(maxT, ty));
+      // Clamp so we never pan far enough to expose empty space beyond
+      // the canvas's actual [0,1440]x[0,773] edges — needed for
+      // districts that hug the boundary (Sport at y=0, Culture at
+      // x=0) — with a small margin so they still get a hair of
+      // breathing room instead of a hard crop line.
+      var EDGE_MARGIN = 0.04 * Math.min(boxW, boxH);
+      var minTx = boxW - VB_W * scale - EDGE_MARGIN;
+      var minTy = boxH - VB_H * scale - EDGE_MARGIN;
+      tx = Math.max(minTx, Math.min(EDGE_MARGIN, tx));
+      ty = Math.max(minTy, Math.min(EDGE_MARGIN, ty));
 
-      layers.style.transformOrigin = "50% 50%";
-      layers.style.transform =
+      stage.style.transform =
         "translate(" +
         tx.toFixed(2) +
-        "%, " +
+        "px, " +
         ty.toFixed(2) +
-        "%) " +
+        "px) " +
         "scale(" +
-        zoom.toFixed(3) +
+        scale.toFixed(4) +
         ")";
 
       // Counter-scale the icons so they keep their physical size
-      iconsHost.style.setProperty("--icon-counter-scale", String(1 / zoom));
+      // despite the district zoom.
+      iconsHost.style.setProperty("--icon-counter-scale", String(1 / scale));
     }
 
     function setHoverDistrict(id) {
@@ -562,9 +561,6 @@
       viewport.classList.toggle("is-detail", !!id);
       if (container) container.classList.toggle("is-detail", !!id);
       hideTooltip();
-      // Reposition icons synchronously (forces layout flush) so they
-      // land at the correct DETAIL/IDLE coordinates before becoming visible.
-      repositionIcons();
       syncIconVisibility();
 
       if (id) {
@@ -741,7 +737,6 @@
       if (rzTimer) cancelAnimationFrame(rzTimer);
       rzTimer = requestAnimationFrame(function () {
         repositionLabels();
-        repositionIcons();
         if (activeDistrictId) applyZoom();
       });
     });
@@ -750,7 +745,6 @@
     //  Position labels once the SVG has laid out
     // ───────────────────────────────────────────────────────
     requestAnimationFrame(repositionLabels);
-    requestAnimationFrame(repositionIcons);
 
     // ───────────────────────────────────────────────────────
     //  i18n bind
