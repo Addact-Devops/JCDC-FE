@@ -38,9 +38,16 @@
   scroll-margin-top: 100px;
 
   // ── 2-column grid (map | panel) ───────────────────────────────
-  //  • Map column: fixed 879px — the active district is zoomed to
-  //    fill this exact width via JS (see applyZoom in jcd-map.js).
-  //  • Panel column: fixed 561px, showing the selected district's detail.
+  //  • Map column: flexible (1fr) — fills whatever space the panel
+  //    column doesn't take. JS reads the column's actual rendered
+  //    width at zoom-time (see applyZoom in jcd-map.js), so it isn't
+  //    tied to a hardcoded pixel value and adapts to this automatically.
+  //  • Panel column: 561px at the 1440px max-width (giving the map
+  //    879px, matching the original design), shrinking down to a
+  //    360px floor so it never gets crushed — and crucially, never a
+  //    fixed px width, so the grid's total never exceeds the
+  //    container and the panel can't be clipped on screens narrower
+  //    than 1440px.
   //  Grid `align-items` is `stretch` by default, so the panel column
   //  matches whatever height the map column produces.
   &__container {
@@ -55,7 +62,7 @@
       max-width: 1440px;
       margin: 0 auto;
       display: grid;
-      grid-template-columns: 879px 561px;
+      grid-template-columns: minmax(0, 1fr) minmax(360px, 561px);
       grid-template-rows: 770px;
       align-items: stretch;
     }
@@ -329,11 +336,6 @@
       display: none !important;
     }
 
-    svg {
-      width: 20px;
-      height: 20px;
-    }
-
     &:hover,
     &:focus-visible {
       background: #005c83;
@@ -407,6 +409,7 @@
       cursor: default;
       pointer-events: auto;
       outline: none;
+      opacity: 1;
     }
 
     .jcd-map__icon {
@@ -711,7 +714,7 @@
 //  Tablet (≤ 1199 px) — same 2-column layout, tighter panel padding
 // ──────────────────────────────────────────────────────────────────────
 @media (max-width: 1199px) {
-  .jcd-map__container {
+  .jcd-map__container.is-detail {
     grid-template-columns: minmax(0, 1fr) minmax(360px, 480px);
   }
   .jcd-map__intro {
