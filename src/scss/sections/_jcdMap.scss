@@ -66,6 +66,18 @@
       grid-template-rows: 770px;
       align-items: stretch;
     }
+
+    // RTL — `direction` is inherited from <html dir="rtl">, and CSS
+    // Grid mirrors column order whenever its own direction is rtl
+    // (column 1 renders on the physical right instead of the left).
+    // That would flip this 2-column grid to map-right/panel-left.
+    // Lock the grid itself to ltr so the physical layout always
+    // matches the EN version (map left, side-panel right); direction
+    // is handed back to rtl on the two children below so their text
+    // still reads correctly.
+    [dir="rtl"] &.is-detail {
+      direction: ltr;
+    }
   }
 
   // Viewport overrides when grid detail layout is active
@@ -88,6 +100,10 @@
     overflow: hidden;
     user-select: none;
     -webkit-tap-highlight-color: transparent;
+
+    [dir="rtl"] & {
+      direction: rtl;
+    }
   }
 
   &__scroll {
@@ -455,6 +471,10 @@
     overflow-y: auto;
     height: 100%;
 
+    [dir="rtl"] & {
+      direction: rtl;
+    }
+
     &::-webkit-scrollbar {
       width: 4px;
     }
@@ -646,6 +666,9 @@
       background: rgba(0, 0, 0, 0.9);
       transform: scale(1.05);
       outline: none;
+    }
+    [dir="rtl"] & {
+      right: 16px;
     }
   }
 
