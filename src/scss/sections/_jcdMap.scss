@@ -268,9 +268,16 @@
     // stroke-width: 3px;
     // stroke-linejoin: round;
 
-    // tspan {
-    //   text-anchor: middle;
-    // }
+    // `text-anchor` defaults to "start", which is direction-aware: it
+    // anchors the LEFT edge of the text to x for English but the
+    // RIGHT edge for Arabic (RTL) — so the same x makes Arabic grow
+    // leftward while English grows rightward, landing the two
+    // languages on opposite sides of x instead of the same spot.
+    // "middle" centres the text on x regardless of script direction;
+    // tspans inherit it automatically. The x values on each label
+    // element have been recentred to match (see jcdc.html /
+    // sub-pages) so English renders pixel-identical to before.
+    text-anchor: middle;
   }
 
   // ── Attraction-icon tooltip ────────────────────────────────────
