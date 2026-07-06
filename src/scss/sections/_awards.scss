@@ -7,271 +7,275 @@
    ════════════════════════════════════════════ */
 
 .awards {
-    background: var(--surface-white);
-    padding-top: 64px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 24px;
-    overflow: hidden;
+  background: var(--surface-white);
+  padding-top: 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+  overflow: hidden;
 
-    &__slider {
-        width: 100%;
-        direction: ltr;
-        padding: 0 120px; // ◆ NEW — 120px gutters left and right
-        box-sizing: border-box; // ◆ NEW — padding included in width
-    }
+  &__slider {
+    width: 100%;
+    direction: ltr;
+    padding: 0 120px; // ◆ NEW — 120px gutters left and right
+    box-sizing: border-box; // ◆ NEW — padding included in width
+  }
 }
 
 /* ── Track (shared between both modes) ── */
 .certs {
-    display: flex;
-    align-items: flex-start;
-    gap: 20px;
-    width: max-content;
-    direction: ltr;
-    /* no animation here on purpose — only the auto-scroll modifier adds it */
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  width: max-content;
+  direction: ltr;
+  /* no animation here on purpose — only the auto-scroll modifier adds it */
 }
 
 .certs-3 {
-    justify-content: space-between;
-    width: 100%;
+  justify-content: space-between;
+  width: 100%;
 }
 
 /* ════════════════════════════════════════════
    MODE 1 — AUTO-SCROLL (.awards--auto-scroll)
    ════════════════════════════════════════════ */
 .awards--auto-scroll {
-    .awards__slider {
-        overflow: hidden;
-        cursor: default;
-    }
+  .awards__slider {
+    overflow: hidden;
+    cursor: default;
+  }
 
-    .certs {
-        animation: scrollAwards 20s linear infinite;
-    }
+  .certs {
+    animation: scrollAwards 20s linear infinite;
+  }
 }
 
 [dir="rtl"] .awards--auto-scroll .certs {
-    animation-direction: reverse;
+  animation-direction: reverse;
 }
 /* ════════════════════════════════════════════
    MODE 2 — MANUAL / DRAGGABLE (default)
    Applied when `.awards--auto-scroll` is absent
    ════════════════════════════════════════════ */
 .awards:not(.awards--auto-scroll) {
-    .awards__slider {
-        overflow-x: auto;
-        overflow-y: hidden;
-        cursor: grab;
-        scroll-behavior: smooth;
-        -webkit-overflow-scrolling: touch;
+  .awards__slider {
+    overflow-x: auto;
+    overflow-y: hidden;
+    cursor: grab;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
 
-        /* Hide scrollbar visually, keep functionality */
-        scrollbar-width: none; /* Firefox */
-        -ms-overflow-style: none; /* IE / old Edge */
-        &::-webkit-scrollbar {
-            display: none; /* Chrome / Safari */
-        }
-
-        /* Active drag state — set by JS */
-        &.is-dragging {
-            cursor: grabbing;
-            scroll-behavior: auto; /* disable smooth while dragging */
-            user-select: none;
-            -webkit-user-select: none;
-
-            img {
-                -webkit-user-drag: none;
-                user-drag: none;
-                pointer-events: none; /* prevent native image drag ghost */
-            }
-        }
-
-        /* Keyboard focus ring for accessibility */
-        &:focus-visible {
-            outline: 2px solid var(--brand-primary, #0a66c2);
-            outline-offset: 4px;
-        }
+    /* Hide scrollbar visually, keep functionality */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE / old Edge */
+    &::-webkit-scrollbar {
+      display: none; /* Chrome / Safari */
     }
 
-    .certs {
-        animation: none;
+    /* Active drag state — set by JS */
+    &.is-dragging {
+      cursor: grabbing;
+      scroll-behavior: auto; /* disable smooth while dragging */
+      user-select: none;
+      -webkit-user-select: none;
 
-        /* Hide duplicates used for the infinite auto-scroll loop */
-        .cert-item[aria-hidden="true"] {
-            display: none;
-        }
+      img {
+        -webkit-user-drag: none;
+        user-drag: none;
+        pointer-events: none; /* prevent native image drag ghost */
+      }
     }
+
+    /* Keyboard focus ring for accessibility */
+    &:focus-visible {
+      outline: 2px solid var(--brand-primary, #0a66c2);
+      outline-offset: 4px;
+    }
+  }
+
+  .certs {
+    animation: none;
+
+    /* Hide duplicates used for the infinite auto-scroll loop */
+    .cert-item[aria-hidden="true"] {
+      display: none;
+    }
+  }
 }
 
 @keyframes scrollAwards {
-    0% {
-        transform: translateX(-50%);
-    }
-    100% {
-        transform: translateX(0);
-    }
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
 
 .cert-item {
-    width: 285px; // from Figma
-    height: 310px; // from Figma
+  width: 285px; // from Figma
+  height: 310px; // from Figma
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+
+  // ── Logo ──
+  &__logo {
     display: flex;
-    flex-direction: column;
     align-items: center;
     justify-content: center;
-    overflow: hidden;
-    position: relative;
-    cursor: pointer;
+    transform: translateY(0);
+    transition:
+      transform 0.4s ease,
+      filter 0.4s ease;
 
-    // ── Logo ──
-    &__logo {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transform: translateY(0);
-        transition:
-            transform 0.4s ease,
-            filter 0.4s ease;
-
-        img {
-            width: 154px;
-            height: 154px;
-            object-fit: contain;
-            filter: grayscale(100%); //  grey by default
-            transition: filter 0.4s ease;
-        }
+    img {
+      width: 154px;
+      height: 154px;
+      object-fit: contain;
+      filter: grayscale(100%); //  grey by default
+      transition: filter 0.4s ease;
     }
+  }
 
-    // ── Title — hidden below, slides up on hover ──
-    &__title {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        padding: 0 20px;
-        margin: 0;
-        font-size: 14px;
-        font-weight: 400;
-        color: #5b5f62;
-        text-align: center;
-        line-height: 1.5;
-        opacity: 0;
-        transform: translateY(-50px); //  starts below
-        transition: 0.4s ease;
+  // ── Title — hidden below, slides up on hover ──
+  &__title {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0 20px;
+    margin: 0;
+    font-size: 14px;
+    font-weight: 400;
+    color: #5b5f62;
+    text-align: center;
+    line-height: 1.5;
+    opacity: 0;
+    transform: translateY(-50px); //  starts below
+    transition: 0.4s ease;
+  }
+
+  &__title--sitecore-ee {
+    opacity: 1;
+  }
+
+  // ── Hover ──
+  &__logo:hover {
+    // ◆ was: &:hover (whole card)
+    transform: translateY(-20px);
+
+    img {
+      filter: grayscale(0) opacity(1);
     }
+  }
 
-    // ── Hover ──
-    &__logo:hover {
-        // ◆ was: &:hover (whole card)
-        transform: translateY(-20px);
-
-        img {
-            filter: grayscale(0) opacity(1);
-        }
-    }
-
-    // ◆ When the logo is hovered, also show the title
-    &__logo:hover ~ &__title {
-        // ◆ sibling selector
-        opacity: 1;
-    }
+  // ◆ When the logo is hovered, also show the title
+  &__logo:hover ~ &__title {
+    // ◆ sibling selector
+    opacity: 1;
+  }
 }
 
 @media (max-width: 767px) {
-    .awards {
-        padding: 64px 16px;
-        gap: 32px;
-    }
-    .awards__slider {
-        padding: 0px;
-    }
-    .cert-item {
-        width: 210px;
-        height: auto; // ◆ was 200px — let content drive height
-        min-height: 229px; // ◆ NEW — keep a sensible minimum
-        overflow: visible; // ◆ NEW — override the base overflow:hidden
-        cursor: default;
-        gap: 16px;
+  .awards {
+    padding: 64px 16px;
+    gap: 32px;
+  }
+  .awards__slider {
+    padding: 0px;
+  }
+  .cert-item {
+    width: 210px;
+    height: auto; // ◆ was 200px — let content drive height
+    min-height: 229px; // ◆ NEW — keep a sensible minimum
+    overflow: visible; // ◆ NEW — override the base overflow:hidden
+    cursor: default;
+    gap: 16px;
 
-        &__logo img {
-            filter: grayscale(0) opacity(1);
-            transition: none;
-        }
-
-        &__title {
-            opacity: 1;
-            position: static;
-            transform: none;
-            padding: 0px;
-            font-size: 12px;
-        }
-
-        &:hover {
-            .cert-item__logo {
-                transform: translateY(0);
-            }
-        }
+    &__logo img {
+      filter: grayscale(0) opacity(1);
+      transition: none;
     }
-    .certs-3 {
-        width: max-content;
+
+    &__title {
+      opacity: 1;
+      position: static;
+      transform: none;
+      padding: 0px;
+      font-size: 12px;
     }
+
+    &:hover {
+      .cert-item__logo {
+        transform: translateY(0);
+      }
+    }
+  }
+  .certs-3 {
+    width: max-content;
+  }
 }
 
 @media (max-width: 425px) {
-    // ◆ GRID MODIFIER ONLY — scoped to .awards--grid-mobile
-    // Without this modifier, mobile keeps the default scroll behavior from the 767px breakpoint
-    .awards--grid-mobile {
-        padding: 64px 0;
+  // ◆ GRID MODIFIER ONLY — scoped to .awards--grid-mobile
+  // Without this modifier, mobile keeps the default scroll behavior from the 767px breakpoint
+  .awards--grid-mobile {
+    padding: 64px 0;
 
-        .awards__slider {
-            overflow: hidden;
-            cursor: default;
-            mask-image: none;
-            -webkit-mask-image: none;
-            padding: 0 16px;
-        }
-
-        .certs {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 24px 16px;
-            width: 100%;
-            animation: none !important;
-
-            .cert-item[aria-hidden="true"] {
-                display: none;
-            }
-        }
-
-        .cert-item {
-            width: 100%;
-            height: auto;
-            gap: 16px;
-            min-height: 180px;
-            cursor: default;
-
-            &__logo img {
-                height: 80px;
-                filter: grayscale(0) opacity(1);
-                transition: none;
-            }
-
-            &__title {
-                opacity: 1;
-                position: static;
-                transform: none;
-                font-size: 11px;
-                padding: 0 8px;
-                margin-top: 8px;
-            }
-
-            &:hover {
-                .cert-item__logo {
-                    transform: translateY(0);
-                }
-            }
-        }
+    .awards__slider {
+      overflow: hidden;
+      cursor: default;
+      mask-image: none;
+      -webkit-mask-image: none;
+      padding: 0 16px;
     }
+
+    .certs {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px 16px;
+      width: 100%;
+      animation: none !important;
+
+      .cert-item[aria-hidden="true"] {
+        display: none;
+      }
+    }
+
+    .cert-item {
+      width: 100%;
+      height: auto;
+      gap: 16px;
+      min-height: 180px;
+      cursor: default;
+
+      &__logo img {
+        height: 80px;
+        filter: grayscale(0) opacity(1);
+        transition: none;
+      }
+
+      &__title {
+        opacity: 1;
+        position: static;
+        transform: none;
+        font-size: 11px;
+        padding: 0 8px;
+        margin-top: 8px;
+      }
+
+      &:hover {
+        .cert-item__logo {
+          transform: translateY(0);
+        }
+      }
+    }
+  }
 }
