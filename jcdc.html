@@ -1605,6 +1605,10 @@
           <div
             class="landmark-slider__slide is-active"
             data-landmark-slide="0"
+            data-card-title-key="landmarkSlider.items.0.title"
+            data-card-title="Stadium"
+            data-card-desc="Blending local architecture with cutting-edge technology to create a world-class sports, entertainment & cultural hub"
+            data-card-href="#"
             aria-roledescription="slide"
             aria-label="1 of 4"
           >
@@ -1619,6 +1623,10 @@
           <div
             class="landmark-slider__slide"
             data-landmark-slide="1"
+            data-card-title-key="landmarkSlider.items.1.title"
+            data-card-title="Opera House"
+            data-card-desc="An immersive marine experience combining conservation, education, and public engagement."
+            data-card-href="#"
             aria-roledescription="slide"
             aria-label="2 of 4"
           >
@@ -1633,6 +1641,10 @@
           <div
             class="landmark-slider__slide"
             data-landmark-slide="2"
+            data-card-title-key="landmarkSlider.items.2.title"
+            data-card-title="Oceanarium"
+            data-card-desc="A national venue for world-class performances and cultural dialogue."
+            data-card-href="#"
             aria-roledescription="slide"
             aria-label="3 of 4"
           >
@@ -1647,6 +1659,10 @@
           <div
             class="landmark-slider__slide"
             data-landmark-slide="3"
+            data-card-title-key="landmarkSlider.items.3.title"
+            data-card-title="Museum"
+            data-card-desc="A former desalination plant reimagined as a center for industrial heritage, science, and creativity."
+            data-card-href="#"
             aria-roledescription="slide"
             aria-label="4 of 4"
           >
@@ -1706,175 +1722,50 @@
           </svg>
         </button>
 
-        <!-- Static info card — does NOT translate with the track.
-                     It contains N pre-rendered content variants, only one
-                     of which has the .--active class at a time. The wrapper
-                     fades on slide change via the .is-fading class. -->
-        <div class="landmark-slider__card" aria-live="polite">
-          <div
-            class="landmark-slider__card-inner"
-            id="landmark-slider-card-inner"
-          >
-            <div
-              class="landmark-slider__card-variant landmark-slider__card-variant--active"
-              data-landmark-card="0"
-            >
-              <div class="landmark-slider__card-text">
-                <h3
-                  class="landmark-slider__card-title"
-                  data-i18n="landmarkSlider.items.0.title"
-                >
-                  Stadium
-                </h3>
-                <p class="landmark-slider__card-description">
-                  Blending local architecture with cutting-edge technology to
-                  create a world-class sports, entertainment & cultural hub
-                </p>
-              </div>
-              <a class="btn btn--gold landmark-slider__card-cta" href="#">
-                <span data-i18n="landmarkSlider.cta">Explore</span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                >
-                  <path
-                    d="M20 12H4"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                  <path
-                    d="M15.0001 17C15.0001 17 20 13.3176 20 12C20 10.6824 15 7 15 7"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </a>
-            </div>
-            <div class="landmark-slider__card-variant" data-landmark-card="1">
-              <div class="landmark-slider__card-text">
-                <h3
-                  class="landmark-slider__card-title"
-                  data-i18n="landmarkSlider.items.1.title"
-                >
-                  Opera House
-                </h3>
-                <p class="landmark-slider__card-description">
-                  An immersive marine experience combining conservation,
-                  education, and public engagement.
-                </p>
-              </div>
-              <a class="btn btn--gold landmark-slider__card-cta" href="#">
-                <span data-i18n="landmarkSlider.cta">Explore</span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                >
-                  <path
-                    d="M20 12H4"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                  <path
-                    d="M15.0001 17C15.0001 17 20 13.3176 20 12C20 10.6824 15 7 15 7"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </a>
-            </div>
-            <div class="landmark-slider__card-variant" data-landmark-card="2">
-              <div class="landmark-slider__card-text">
-                <h3
-                  class="landmark-slider__card-title"
-                  data-i18n="landmarkSlider.items.2.title"
-                >
-                  Oceanarium
-                </h3>
-                <p class="landmark-slider__card-description">
-                  A national venue for world-class performances and cultural
-                  dialogue.
-                </p>
-              </div>
-              <a class="btn btn--gold landmark-slider__card-cta" href="#">
-                <span data-i18n="landmarkSlider.cta">Explore</span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                >
-                  <path
-                    d="M20 12H4"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                  <path
-                    d="M15.0001 17C15.0001 17 20 13.3176 20 12C20 10.6824 15 7 15 7"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </a>
-            </div>
-            <div class="landmark-slider__card-variant" data-landmark-card="3">
-              <div class="landmark-slider__card-text">
-                <h3
-                  class="landmark-slider__card-title"
-                  data-i18n="landmarkSlider.items.3.title"
-                >
-                  Museum
-                </h3>
-                <p class="landmark-slider__card-description">
-                  A former desalination plant reimagined as a center for
-                  industrial heritage, science, and creativity.
-                </p>
-              </div>
-              <a class="btn btn--gold landmark-slider__card-cta" href="#">
-                <span data-i18n="landmarkSlider.cta">Explore</span>
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                >
-                  <path
-                    d="M20 12H4"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                  <path
-                    d="M15.0001 17C15.0001 17 20 13.3176 20 12C20 10.6824 15 7 15 7"
-                    stroke="currentColor"
-                    stroke-width="1.5"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  />
-                </svg>
-              </a>
-            </div>
+        <div
+          class="landmark-slider__card"
+          id="landmark-slider-card"
+          aria-live="polite"
+        >
+          <div class="landmark-slider__card-text">
+            <h3
+              class="landmark-slider__card-title"
+              id="landmark-slider-card-title"
+            ></h3>
+            <p
+              class="landmark-slider__card-description"
+              id="landmark-slider-card-description"
+            ></p>
           </div>
+          <a
+            class="btn btn--gold landmark-slider__card-cta"
+            id="landmark-slider-card-cta"
+            href="#"
+          >
+            <span data-i18n="landmarkSlider.cta">Explore</span>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+            >
+              <path
+                d="M20 12H4"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+              <path
+                d="M15.0001 17C15.0001 17 20 13.3176 20 12C20 10.6824 15 7 15 7"
+                stroke="currentColor"
+                stroke-width="1.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </svg>
+          </a>
         </div>
         <!-- Dots — sit BELOW the viewport (STATIC) -->
         <ul

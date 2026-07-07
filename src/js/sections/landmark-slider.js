@@ -17,8 +17,10 @@
  *   - Compute and apply the track translateX so the active slide is
  *     centered in the viewport (RTL-aware).
  *   - Toggle .is-active on slides and dots.
- *   - When present, fade-swap which `.landmark-slider__card-variant`
- *     has the `.landmark-slider__card-variant--active` class.
+ *   - When present, fade/swap the `.landmark-slider__card` copy —
+ *     ported 1:1 from landmark-slider-3.html's `.content-card`: the
+ *     card fades out, its title/description/CTA are swapped at the
+ *     transition midpoint, then it fades back in (see renderCard()).
  *   - Wire up arrows, dots, keyboard arrow keys, pointer drag, autoplay.
  */
 (function () {
@@ -27,7 +29,7 @@
     const AUTOPLAY_MS = 5000;
     const RESUME_AFTER_MS = 8000;
     const SWIPE_THRESHOLD = 60;
-    const FADE_MS = 250; // keep in sync with .is-fading transition in SCSS
+    const FADE_MS = 300; // half of the 600ms --smart-duration card transition in SCSS
 
     function init() {
         //  ▼ CHANGE #1 — find every slider on the page, not just one by id
@@ -45,9 +47,9 @@
         const dotsEl = root.querySelector(".landmark-slider__dots");
         const prevBtn = root.querySelector("[data-landmark-prev]");
         const nextBtn = root.querySelector("[data-landmark-next]");
-        const cardInner = root.querySelector(".landmark-slider__card-inner");
+        const cardEl = root.querySelector(".landmark-slider__card");
 
-        //  ▼ CHANGE #3 — cardInner is no longer required to bail out.
+        //  ▼ CHANGE #3 — cardEl is no longer required to bail out.
         if (!viewport || !trackEl) return;
 
         const slides = Array.from(trackEl.querySelectorAll(".landmark-slider__slide"));
@@ -55,8 +57,20 @@
 
         //  ▼ CHANGE #4 — card is optional. Guard the queries and remember
         //  the result so we can skip card-touching code paths cleanly.
-        const cardVariants = cardInner ? Array.from(cardInner.querySelectorAll("[data-landmark-card]")) : [];
-        const hasCard = Boolean(cardInner && cardVariants.length);
+        const cardTitleEl = cardEl ? cardEl.querySelector(".landmark-slider__card-title") : null;
+        const cardDescEl = cardEl ? cardEl.querySelector(".landmark-slider__card-description") : null;
+        const cardCtaEl = cardEl ? cardEl.querySelector(".landmark-slider__card-cta") : null;
+        const hasCard = Boolean(cardEl && cardTitleEl && cardDescEl);
+
+        //  ▼ CHANGE #5 — per-slide card copy, ported from the reference
+        //  slider's `slides` array but sourced from data-card-* on each
+        //  static slide element so translators still edit plain HTML.
+        const cardData = slides.map((el) => ({
+            titleKey: el.dataset.cardTitleKey || null,
+            title: el.dataset.cardTitle || "",
+            desc: el.dataset.cardDesc || "",
+            href: el.dataset.cardHref || "#",
+        }));
 
         if (!slides.length) return;
 
@@ -129,21 +143,25 @@
 
         // ──────────────────────────────────────
         // Card content swap — no-op when this slider has no card.
+        // Ported 1:1 from landmark-slider-3.html's render(): fade the
+        // card out, swap its copy at the transition midpoint, fade
+        // back in — synced to the 600ms smart-ease curve in SCSS.
         // ──────────────────────────────────────
-        function setActiveCardVariant(index) {
+        function renderCard(index) {
             if (!hasCard) return; //  ▼ CHANGE #4 (cont.)
-            cardVariants.forEach((el, i) => {
-                el.classList.toggle("landmark-slider__card-variant--active", i === index);
-            });
-        }
-
-        function fadeSwapCard(index) {
-            if (!hasCard) return; //  ▼ CHANGE #4 (cont.)
-            cardInner.classList.add("is-fading");
+            cardEl.classList.remove("is-visible");
             setTimeout(() => {
-                setActiveCardVariant(index);
-                void cardInner.offsetWidth; // reflow so transition restarts cleanly
-                cardInner.classList.remove("is-fading");
+                const data = cardData[index];
+                if (!data) return;
+                if (data.titleKey) cardTitleEl.setAttribute("data-i18n", data.titleKey);
+                // Prefer the loaded translation over the HTML-authored
+                // (English) default, so a saved Arabic session doesn't
+                // flash English text while the language JSON loads.
+                const translated = data.titleKey && window.I18n ? window.I18n.t(data.titleKey) : null;
+                cardTitleEl.textContent = translated && translated !== data.titleKey ? translated : data.title;
+                cardDescEl.textContent = data.desc;
+                if (cardCtaEl) cardCtaEl.setAttribute("href", data.href);
+                cardEl.classList.add("is-visible");
             }, FADE_MS);
         }
 
@@ -158,7 +176,7 @@
 
             current = index;
             applyTransform(true);
-            fadeSwapCard(current); //  safely no-ops on the card-less variant
+            renderCard(current); //  safely no-ops on the card-less variant
 
             if (opts && opts.userInitiated) pauseFor(RESUME_AFTER_MS);
         }
@@ -168,7 +186,7 @@
                 // Autoplay wrap: jump without animation
                 current = 0;
                 applyTransform(false);
-                fadeSwapCard(0);
+                renderCard(0);
             } else {
                 goTo(current + 1);
             }
@@ -300,6 +318,8 @@
                 setTimeout(() => applyTransform(false), 60);
             });
         }
+
+        renderCard(current); // initial fade-in, mirrors the reference's render() on load
 
         if (window.I18n && window.I18n.onLangChange) {
             window.I18n.onLangChange(() => {

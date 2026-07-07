@@ -1,57 +1,59 @@
 // _tokens.scss — Exact Figma design tokens
 
 :root {
-    // ── Brand Colours (from Figma vars) ────────────
-    --primary-500: #0076a9;
-    --secondary-500: #cc9f53;
-    --secondary-50: #faf5ee;
-    --text-50: #efefef;
-    --text-500: #5b5f62;
-    --surface-white: #ffffff;
-    --surface-grey: #f3f3f3;
-    --surface-footer: #efefef;
-    --divider-gold: #cc9f53;
-    --black: #000000;
+  // ── Brand Colours (from Figma vars) ────────────
+  --primary-500: #0076a9;
+  --secondary-500: #cc9f53;
+  --secondary-50: #faf5ee;
+  --text-50: #efefef;
+  --text-500: #5b5f62;
+  --surface-white: #ffffff;
+  --surface-grey: #f3f3f3;
+  --surface-footer: #efefef;
+  --divider-gold: #cc9f53;
+  --black: #000000;
 
-    // ── Fonts (Ubuntu from Figma) ──────────────────
-    --font-en: "Ubuntu", sans-serif;
-    --font-ar: "Readex Pro", sans-serif;
-    --font-cairo: "Cairo", sans-serif;
-    --font-readex: "Readex Pro";
-    --font-body: var(--font-en);
+  // ── Fonts (Ubuntu from Figma) ──────────────────
+  --font-en: "Ubuntu", sans-serif;
+  --font-ar: "Readex Pro", sans-serif;
+  --font-cairo: "Cairo", sans-serif;
+  --font-readex: "Readex Pro";
+  --font-body: var(--font-en);
 
-    // ── Typography sizes (Figma) ───────────────────
-    --h1: 64px;
-    --h2: 48px;
-    --h3: 40px;
-    --h4: 32px;
-    --xlarge: 24px;
-    --large: 18px;
-    --medium: 16px;
-    --small: 14px;
+  // ── Typography sizes (Figma) ───────────────────
+  --h1: 64px;
+  --h2: 48px;
+  --h3: 40px;
+  --h4: 32px;
+  --xlarge: 24px;
+  --large: 18px;
+  --medium: 16px;
+  --small: 14px;
 
-    // ── Layout (Figma 1440px design) ───────────────
-    --design-width: 1440px;
-    --nav-height: 96px;
-    --gutter: 120px; // Figma 120px side padding
-    --content-max: 1200px; // 1440 - 2×120
+  // ── Layout (Figma 1440px design) ───────────────
+  --design-width: 1440px;
+  --nav-height: 96px;
+  --gutter: 120px; // Figma 120px side padding
+  --content-max: 1200px; // 1440 - 2×120
 
-    // ── Transitions ────────────────────────────────
-    --ease: cubic-bezier(0.4, 0, 0.2, 1);
-    --ease-out: cubic-bezier(0, 0, 0.2, 1);
-    --dur: 250ms;
-    --dur-slow: 400ms;
+  // ── Transitions ────────────────────────────────
+  --ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --smart-duration: 600ms;
+  --smart-ease: cubic-bezier(0.645, 0.045, 0.355, 1);
+  --dur: 250ms;
+  --dur-slow: 400ms;
 }
 
 [dir="rtl"] {
-    --font-body: var(--font-ar);
+  --font-body: var(--font-ar);
 }
 
 // ── Viewport scaling ────────────────────────────
 // Design is 1440px. Below 1440 down to 1024 we scale CSS px proportionally
 // using a `--vw-scale` factor. Use `svw` unit trick via clamp() in components.
 @media (max-width: 1440px) {
-    :root {
-        // scale factor goes from 1.0 at 1440 to 0.71 at 1024 (1024/1440)
-    }
+  :root {
+    // scale factor goes from 1.0 at 1440 to 0.71 at 1024 (1024/1440)
+  }
 }
