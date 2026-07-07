@@ -199,31 +199,17 @@
     padding: 40px;
     justify-content: space-between;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     gap: 40px;
     flex: 1;
     flex-shrink: 0;
-  }
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--smart-duration) var(--smart-ease);
 
-  &__card-inner {
-    position: relative;
-    width: 100%;
-    opacity: 1;
-    transition: opacity 0.25s var(--ease);
-
-    &.is-fading {
-      opacity: 0;
-    }
-  }
-
-  &__card-variant {
-    display: none;
-    align-items: flex-end;
-    gap: 24px;
-    width: 100%;
-
-    &--active {
-      display: flex;
+    &.is-visible {
+      opacity: 1;
+      pointer-events: auto;
     }
   }
 
@@ -238,7 +224,7 @@
   &__card-title {
     margin: 0;
     font-family: var(--font-body);
-    font-size: 24px;
+    font-size: 32px;
     font-weight: 700;
     line-height: 1.3;
     color: var(--primary-500);
@@ -424,7 +410,7 @@
 // Keeps card overlap + brings nav arrows inside the viewport
 // ==========================================
 // ◆ CHANGED — was (min-width: 1025px) → (min-width: 1024px)
-@media (max-width: 1260px) {
+@media (max-width: 1281px) {
   .landmark-slider {
     padding: 64px 0px 32px 0px;
 
@@ -715,12 +701,9 @@
       background: rgba(243, 243, 243, 0.98);
       box-shadow: none;
       backdrop-filter: blur(10px);
-      display: block;
-    }
-
-    &__card-variant {
-      align-items: flex-start;
+      display: flex;
       flex-direction: column;
+      align-items: flex-start;
       gap: 16px;
     }
 
