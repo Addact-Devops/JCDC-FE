@@ -76,7 +76,8 @@
   }
 
   &__tab--sitecore-ee {
-    height: auto;
+    display: flex;
+    align-items: center;
   }
 
   // ==========================================
