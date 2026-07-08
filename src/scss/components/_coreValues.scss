@@ -53,6 +53,10 @@
     color: #0076a9;
 
     text-align: center;
+
+    [dir="rtl"] & {
+      font-family: var(--font-ar);
+    }
   }
   // ==========================================
   // Grid
@@ -202,6 +206,10 @@
     line-height: 120%;
 
     color: #ffffff;
+
+    [dir="rtl"] & {
+      font-family: var(--font-ar);
+    }
   }
 
   // ==========================================
@@ -218,6 +226,10 @@
     line-height: 150%;
 
     color: #ffffff;
+
+    [dir="rtl"] & {
+      font-family: var(--font-ar);
+    }
   }
   .core-values__bg-vectors-mobile {
     display: none; //  hidden on desktop

@@ -125,6 +125,7 @@ $bg-color: #ffffff;
     [dir="rtl"] & {
       direction: rtl; //  text reads RTL
       text-align: right; //  text aligns right
+      font-family: var(--font-ar);
     }
   }
 
@@ -146,6 +147,7 @@ $bg-color: #ffffff;
     [dir="rtl"] & {
       direction: rtl; //  text reads RTL
       text-align: right; //  text aligns right
+      font-family: var(--font-ar);
     }
   }
 
