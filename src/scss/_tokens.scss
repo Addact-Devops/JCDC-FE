@@ -46,7 +46,7 @@
 }
 
 [dir="rtl"] {
-  --font-body: var(--font-ar);
+  --font-body: var(--font-ar) !important;
 }
 
 // ── Viewport scaling ────────────────────────────
