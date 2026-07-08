@@ -78,6 +78,10 @@ $text-color: rgba(91, 95, 98, 1);
     font-weight: 500;
     line-height: 120%;
     color: $primary-color;
+
+    [dir="rtl"] & {
+      font-family: var(--font-ar);
+    }
   }
 
   &__description {
@@ -90,6 +94,10 @@ $text-color: rgba(91, 95, 98, 1);
     line-height: 160%;
 
     color: $text-color;
+
+    [dir="rtl"] & {
+      font-family: var(--font-ar);
+    }
 
     p {
       margin: 0;

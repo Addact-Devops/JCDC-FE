@@ -169,6 +169,10 @@
       letter-spacing: 0;
       text-align: center;
       white-space: nowrap;
+
+      [dir="rtl"] & {
+        font-family: var(--font-ar);
+      }
     }
 
     &__header {
