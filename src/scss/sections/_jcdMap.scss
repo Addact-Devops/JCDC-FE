@@ -426,13 +426,17 @@
     // Removing the stroke leaves the dim/no-dim transition as
     // the sole boundary, which is what the Figma shows.
     .jcd-map__district.is-active {
-      fill: transparent !important;
+      fill: rgba(204, 159, 83, 1);
       stroke: none !important;
       stroke-width: 0 !important;
       cursor: default;
       pointer-events: auto;
       outline: none;
-      opacity: 1;
+      opacity: 0.25;
+    }
+
+    .jcd-map__district.not-active {
+      opacity: 0.75;
     }
 
     .jcd-map__icon {
@@ -512,7 +516,7 @@
   // ── Intro state — centred copy ────────────────────────────────
   //  Used on jcdc.html before any district has been clicked.
   &__intro {
-    padding: 32px 28px;
+    padding: 32px 14.5px;
     margin: 0 0 32px 0;
     width: 100%;
 
@@ -526,8 +530,8 @@
     margin: 0;
     font-family: var(--font-body);
     font-size: 40px;
-    line-height: 1.15;
-    font-weight: 600;
+    line-height: 1.2;
+    font-weight: 500;
     letter-spacing: -0.01em;
     color: #ddbf8c;
   }

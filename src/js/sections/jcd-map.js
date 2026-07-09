@@ -383,6 +383,7 @@
           btn.hidden = true;
           btn.tabIndex = -1;
           btn.classList.remove("is-active");
+          btn.classList.remove("not-active");
           return;
         }
 
@@ -549,7 +550,9 @@
       districtsLayer
         .querySelectorAll(".jcd-map__district")
         .forEach(function (p) {
-          p.classList.toggle("is-active", p.dataset.district === id);
+          var isActive = !!id && p.dataset.district === id;
+          p.classList.toggle("is-active", isActive);
+          p.classList.toggle("not-active", !!id && !isActive);
           p.classList.remove("is-hover");
         });
 
