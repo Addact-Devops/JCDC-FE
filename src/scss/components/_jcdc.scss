@@ -50,7 +50,7 @@
     align-items: center;
     justify-content: space-between;
 
-    gap: 123px;
+    gap: 50px;
 
     position: relative;
     z-index: 2;
@@ -63,7 +63,7 @@
   // ==========================================
 
   &__left {
-    flex: 0 0 387px;
+    flex: 0 0 449px;
 
     display: flex;
     align-items: center;
@@ -73,13 +73,13 @@
     margin: 0;
 
     font-family: "Ubuntu", sans-serif;
-    font-size: 35px;
+    font-size: 40px;
     font-weight: 500;
     line-height: 120%;
 
     color: #0076a9;
 
-    max-width: 387px;
+    max-width: 449px;
     [dir="rtl"] & {
       font-family: var(--font-ar);
     }
@@ -152,7 +152,7 @@
     &__content {
       padding: 64px 48px;
 
-      gap: 64px;
+      gap: 40px;
     }
 
     &__title {
