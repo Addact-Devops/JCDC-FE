@@ -824,6 +824,31 @@ function validateEmail() {
   hideError("inp_3");
   return true;
 }
+
+function validateName(id, fieldName) {
+  var field = document.getElementById(id);
+  var error = document.getElementById(id + "_error");
+  var value = field.value.trim();
+
+  if (!value) {
+    error.textContent = fieldName + " is required.";
+    showError(id);
+    return false;
+  }
+
+  // Allows only letters and spaces
+  var nameRegex = /^[A-Za-z\s]+$/;
+
+  if (!nameRegex.test(value)) {
+    error.textContent = fieldName + " should contain only alphabets.";
+    showError(id);
+    return false;
+  }
+
+  hideError(id);
+  return true;
+}
+
 function validatePhone() {
   var phone = document.getElementById("inp_37");
   var error = document.getElementById("inp_37_error");
@@ -882,7 +907,8 @@ function validatePrivacy() {
 }
   function CheckInputs(){
      var valid = true;
-
+  if (!validateName("inp_1", "First Name")) valid = false;
+  if (!validateName("inp_2", "Last Name")) valid = false;
   if (!validateField("inp_1")) valid = false;
   if (!validateField("inp_2")) valid = false;
   if (!validateEmail()) valid = false;
@@ -918,6 +944,17 @@ function validatePrivacy() {
     document
     .getElementById("privacy")
     .addEventListener("change", validatePrivacy);
+    document
+      .getElementById("inp_1")
+      .addEventListener("input", function () {
+        validateName("inp_1", "First Name");
+      });
+
+document
+  .getElementById("inp_2")
+  .addEventListener("input", function () {
+    validateName("inp_2", "Last Name");
+  });
 
     form.addEventListener("submit", function(e){
       e.preventDefault();
