@@ -759,6 +759,15 @@
             "x": 14,
             "y": 60,
             "href": "museum.html"
+          },
+          {
+            "id": "promenade",
+            "name": "Promenade",
+            "description": "Located on the grounds of a former desalination plant, the Museum preserves Jeddah’s industrial legacy through immersive exhibits and interactive storytelling.",
+            "image": "https://images.unsplash.com/photo-1499781350541-7783f6c6a0c8?w=1200&q=85",
+            "x": 14,
+            "y": 60,
+            "href": "museum.html"
           }
         ]
       },
