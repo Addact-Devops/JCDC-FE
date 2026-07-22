@@ -71,6 +71,41 @@ $text-color: rgba(91, 95, 98, 1);
     gap: 32px;
   }
 
+  // ==========================================
+  // Fading entrance (scroll reveal)
+  // Triggered by `.in-view`, added via IntersectionObserver in about.js
+  // ==========================================
+
+  &__text,
+  &__image-wrapper {
+    opacity: 0;
+    transform: translateY(32px);
+    transition:
+      opacity 0.9s var(--ease),
+      transform 0.9s var(--ease);
+    transition-delay: 0.1s;
+  }
+
+  // Starts only once the text's own fade (0.1s delay + 0.9s duration) has finished.
+  &__image-wrapper {
+    transition-delay: 1s;
+  }
+
+  &.in-view &__text,
+  &.in-view &__image-wrapper {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &__text,
+    &__image-wrapper {
+      transition: none;
+      opacity: 1;
+      transform: none;
+    }
+  }
+
   &__title {
     margin: 0;
     font-family: "Ubuntu", sans-serif;

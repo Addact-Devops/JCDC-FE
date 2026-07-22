@@ -30,6 +30,29 @@
     flex-direction: column;
     gap: 16px;
 
+    // ==========================================
+    // Fading entrance (slide in from the right)
+    // Triggered by `.news__grid.in-view`, added via IntersectionObserver
+    // in news.js. Per-card transition-delay is set inline by news.js so
+    // cards animate in one by one instead of all at once.
+    // ==========================================
+    opacity: 0;
+    transform: translateX(60px);
+    transition:
+        opacity 0.8s var(--ease),
+        transform 0.8s var(--ease);
+
+    .news__grid.in-view & {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        transition: none;
+        opacity: 1;
+        transform: none;
+    }
+
     &__image {
         width: 100%;
         aspect-ratio: 387 / 240;
