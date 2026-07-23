@@ -1,41 +1,6 @@
-/**
- * sections/jcd-map.js
- *
- * Interactive 6-district map for jcdc.html AND each district sub-page.
- *
- * HTML-driven configuration (set on the .jcd-map root element):
- *   • data-default-district="beach"  →  auto-select that district on
- *                                       first render (used by the
- *                                       district sub-pages so the
- *                                       popup opens to that district).
- *   • data-no-intro                  →  the popup never shows the
- *                                       informational intro state.
- *                                       When the user clicks "close",
- *                                       the popup hides completely and
- *                                       the map returns to the normal
- *                                       hover/click behaviour.
- *
- * Behaviour summary
- *  • Hover  → only the district name label fades in inside the shape
- *             (no fill / no dim — handled in SCSS).
- *  • Click  → district enters .is-active, popup swaps to detail state.
- *  • Close  → if data-no-intro: popup hidden, district deselected,
- *             map back to idle. Otherwise: popup swaps to intro state.
- *  • Esc    → same as close.
- *
- * Partial-loader awareness
- *  • The script self-initialises on DOMContentLoaded AND on a custom
- *    `partials:loaded` event (fired by components/partial.js after
- *    HTML fragments have been injected). A guard flag prevents double
- *    initialisation when both fire on the same page.
- *
- * IIFE pattern — matches existing codebase convention.
- */
 (function () {
   "use strict";
 
-  // Guard against double-init when partials:loaded fires on a page
-  // that already had the map in static HTML (e.g. jcdc.html).
   var inited = false;
 
   function deepGet(o, k) {
@@ -44,16 +9,12 @@
     }, o);
   }
 
-  // ────────────────────────────────────────────────────────────────
-  //  Initialisation
-  // ────────────────────────────────────────────────────────────────
   function init() {
     var root = document.getElementById("jcd-map");
     if (!root) return false;
     if (inited) return true;
     inited = true;
 
-    // ─── Static element references ──────────────────────────────
     var container = root.querySelector(".jcd-map__container");
     var viewport = root.querySelector("#jcd-map-viewport");
     var scrollWrap = viewport && viewport.querySelector(".jcd-map__scroll");
@@ -83,18 +44,6 @@
       return false;
     }
 
-    // Page-level config from the HTML root.
-    //
-    // Two equally valid ways to pre-select a district:
-    //   1) class="jcd-map jcd-map--<id>"   (preferred — class only)
-    //   2) data-default-district="<id>"    (data attribute)
-    //
-    // The class form is what the Sitecore templates use — one line
-    // change per page, no extra attributes. The data-attribute form
-    // is retained for backwards compatibility with the partial-loader
-    // workflow.
-    //
-    // Valid <id> values: beach | wellness | central | culture | sport | marina
     var DISTRICT_IDS = [
       "beach",
       "wellness",
@@ -118,14 +67,10 @@
       readDefaultDistrictFromClass(root) ||
       null;
 
-    // `data-no-intro` OR the presence of any `jcd-map--<id>` class
-    // implies no-intro mode (the page boots straight into the
-    // matching district's detail view).
     var noIntroMode =
       root.hasAttribute("data-no-intro") ||
       readDefaultDistrictFromClass(root) !== null;
 
-    // Detail-panel field hooks
     var detailTitleEl = detailEl.querySelector("[data-detail-title]");
     var detailSubtitleEl = detailEl.querySelector("[data-detail-subtitle]");
     var detailDescEl = detailEl.querySelector("[data-detail-desc]");
@@ -133,30 +78,21 @@
     var detailCtaEl = detailEl.querySelector("[data-detail-cta]");
     var detailCtaLabelEl = detailEl.querySelector("[data-detail-cta-label]");
 
-    // Cache each district's path `d` from the static HTML.
     var DISTRICT_PATHS = {};
     districtsLayer.querySelectorAll(".jcd-map__district").forEach(function (p) {
       DISTRICT_PATHS[p.dataset.district] = p.getAttribute("d");
     });
 
-    // Mutable state
     var translations = null;
     var activeDistrictId = null;
     var activeAttractionId = null;
     var didAutoSelect = false;
 
-    // Initial panel state for no-intro pages: hidden until a
-    // district is selected (or auto-selected just below).
     if (noIntroMode) {
       panel.hidden = true;
       if (introEl) introEl.hidden = true;
     }
 
-    // ───────────────────────────────────────────────────────
-    //  Reposition labels to the visual centre of each path so
-    //  the name renders INSIDE the shape, not at hand-tuned
-    //  coords that may drift outside after path edits.
-    // ───────────────────────────────────────────────────────
     function repositionLabels() {
       if (!labelsLayer) return;
       districtsLayer
@@ -186,8 +122,7 @@
                 (parseFloat(labelEl.dataset.offsetY) || 0);
           labelEl.setAttribute("x", cx);
           labelEl.setAttribute("y", cy);
-          // If tspans already exist (applyTranslations ran before this RAF),
-          // join their text with spaces — textContent concatenates without separators.
+
           if (!labelEl.dataset.labelText) {
             var existingTspans = labelEl.querySelectorAll("tspan");
             if (existingTspans.length > 0) {
@@ -206,9 +141,6 @@
         });
     }
 
-    // ───────────────────────────────────────────────────────
-    //  i18n — copy translated strings into the existing nodes
-    // ───────────────────────────────────────────────────────
     function applyTranslations(t) {
       translations = deepGet(t, "jcdMap") || {};
       var districts = translations.districts || [];
@@ -238,20 +170,14 @@
         });
       });
 
-      // Re-paint detail panel if we're already in detail mode
       if (activeDistrictId) renderDetail();
 
-      // Auto-select on first translation load
       if (!didAutoSelect && defaultDistrict) {
         didAutoSelect = true;
         selectDistrict(defaultDistrict);
       }
     }
 
-    // ───────────────────────────────────────────────────────
-    //  setMultilineLabel — wrap a long district name across
-    //  multiple tspans centred on the label's current x.
-    // ───────────────────────────────────────────────────────
     function setMultilineLabel(textEl, name) {
       while (textEl.firstChild) textEl.removeChild(textEl.firstChild);
 
@@ -315,9 +241,6 @@
       );
     }
 
-    // ───────────────────────────────────────────────────────
-    //  renderDetail — update existing detail panel nodes
-    // ───────────────────────────────────────────────────────
     function renderDetail() {
       var d = findDistrict(activeDistrictId);
       if (!d) return;
@@ -367,15 +290,6 @@
       if (detailCtaLabelEl) detailCtaLabelEl.textContent = ctaLabel;
     }
 
-    // ───────────────────────────────────────────────────────
-    //  Show / hide attraction icons for the active district.
-    //  Critical: we ALSO check whether each icon's centre point
-    //  is inside the district's SVG path via `isPointInFill`.
-    //  This prevents icons whose i18n coordinates land outside
-    //  the district's territory from appearing — exactly the
-    //  "icons should not go outside state territory" behaviour
-    //  requested in the latest brief.
-    // ───────────────────────────────────────────────────────
     function syncIconVisibility() {
       iconsHost.querySelectorAll(".jcd-map__icon").forEach(function (btn) {
         var matchesDistrict = btn.dataset.district === activeDistrictId;
@@ -392,54 +306,6 @@
       });
     }
 
-    // ───────────────────────────────────────────────────────
-    //  Zoom the stage into the active district.
-    //  --------------------------------------------------------
-    //  Only relevant in detail mode. Overview is pure CSS (__stage
-    //  is 100%/inset:0 of the viewport there — see _jcdMap.scss) and
-    //  needs no JS at all, so it's correct on first paint with zero
-    //  dependency on JS having run yet. Once a district is active,
-    //  __stage switches (via .is-detail in CSS) to its native
-    //  1440x773 design size (matching the mask/stage images' native
-    //  pixel size exactly), and this function applies ONE computed
-    //  transform that zooms into that district.
-    //
-    //  WHY NATIVE SIZE + ONE TRANSFORM (rather than object-fit /
-    //  preserveAspectRatio) — those bake in a fixed, centred crop at
-    //  layout time based on the element's OWN box size; a transform
-    //  applied afterwards on an ancestor can only rigidly scale and
-    //  move that already-cropped result, it can NOT reveal a
-    //  different region of the source. That made off-centre
-    //  districts (Culture, hugging the map's west edge) render
-    //  mostly empty: the crop the browser had already committed to
-    //  simply didn't contain most of the shape, and no amount of
-    //  extra scale/translate could bring it back. Computing
-    //  everything here, against the real 1440x773 coordinates,
-    //  avoids that trap entirely. All three map visuals (background
-    //  image, mask img, SVG + icons) live inside __stage, so this
-    //  single transform keeps them moving together as one unit with
-    //  no possibility of drifting out of sync.
-    //
-    //  CENTRING — Uses the bounding-box centre. That matches how
-    //  the Figma reference frames each district: the bbox of the
-    //  visible shape sits centred in the map viewport. (An earlier
-    //  draft used the area-weighted centroid, which for
-    //  crescent-shaped districts like Beach shifted the bbox
-    //  off-screen because the area mass is in the northern lobe —
-    //  not what we want here.)
-    //
-    //  ZOOM — Adaptive per district: fills TARGET_FILL_PCT of the
-    //  box along its tighter axis (width OR height), so the active
-    //  district occupies the full available space of the left
-    //  section without spilling out of it. Clamped to
-    //  [MIN_ZOOM, MAX_ZOOM] so tiny districts (Wellness) don't
-    //  blow up into an illegibly blurry close-up.
-    //
-    //  TRANSLATE — Computed in PIXELS with transform-origin at
-    //  (0, 0): a canvas point (px, py) lands at screen position
-    //  (tx + px*scale, ty + py*scale). Solving for the box centre
-    //  gives tx/ty directly, with no per-axis % ambiguity.
-    // ───────────────────────────────────────────────────────
     var VB_W = 1440;
     var VB_H = 773;
     var TARGET_FILL_PCT = 96;
@@ -464,7 +330,6 @@
       }
 
       if (!bbox) {
-        // No district active — overview is handled entirely by CSS.
         stage.style.transform = "";
         iconsHost.style.setProperty("--icon-counter-scale", "1");
         return;
@@ -484,11 +349,6 @@
       var tx = boxW / 2 - cx * scale;
       var ty = boxH / 2 - cy * scale;
 
-      // Clamp so we never pan far enough to expose empty space beyond
-      // the canvas's actual [0,1440]x[0,773] edges — needed for
-      // districts that hug the boundary (Sport at y=0, Culture at
-      // x=0) — with a small margin so they still get a hair of
-      // breathing room instead of a hard crop line.
       var EDGE_MARGIN = 0.04 * Math.min(boxW, boxH);
       var minTx = boxW - VB_W * scale - EDGE_MARGIN;
       var minTy = boxH - VB_H * scale - EDGE_MARGIN;
@@ -505,8 +365,6 @@
         scale.toFixed(4) +
         ")";
 
-      // Counter-scale the icons so they keep their physical size
-      // despite the district zoom.
       iconsHost.style.setProperty("--icon-counter-scale", String(1 / scale));
     }
 
@@ -516,9 +374,7 @@
         .forEach(function (p) {
           p.classList.toggle("is-hover", p.dataset.district === id);
         });
-      // Mirror onto the labels so the matching label fades in.
-      // Sibling combinators won't work across <g> boundaries, so
-      // this is the simplest reliable approach.
+
       if (labelsLayer) {
         labelsLayer.querySelectorAll(".jcd-map__label").forEach(function (l) {
           l.classList.toggle("is-visible", l.dataset.label === id);
@@ -540,9 +396,6 @@
       }
     }
 
-    // ───────────────────────────────────────────────────────
-    //  Selection control
-    // ───────────────────────────────────────────────────────
     function selectDistrict(id) {
       activeDistrictId = id;
       activeAttractionId = null;
@@ -567,7 +420,6 @@
       syncIconVisibility();
 
       if (id) {
-        // Hide intro overlay, show the side-panel detail column
         if (introEl) introEl.hidden = true;
         if (mobileIntroEl) mobileIntroEl.hidden = true;
         panel.hidden = true;
@@ -576,7 +428,6 @@
         renderDetail();
         requestAnimationFrame(applyZoom);
       } else {
-        // No district selected — restore intro overlay, hide side panel
         if (sidePanel) sidePanel.hidden = true;
         if (detailEl) detailEl.hidden = true;
         if (mobileIntroEl) mobileIntroEl.hidden = false;
@@ -618,7 +469,6 @@
       selectDistrict(null);
     }
 
-    // Frame used for tooltip absolute positioning
     var tooltipFrame = scrollWrap || viewport;
 
     function showTooltipAt(x, y, text) {
@@ -642,9 +492,6 @@
       tooltip.hidden = true;
     }
 
-    // ───────────────────────────────────────────────────────
-    //  Wiring (event delegation throughout)
-    // ───────────────────────────────────────────────────────
     districtsLayer.addEventListener("click", function (e) {
       var path = e.target.closest("[data-district]");
       if (!path) return;
@@ -744,14 +591,8 @@
       });
     });
 
-    // ───────────────────────────────────────────────────────
-    //  Position labels once the SVG has laid out
-    // ───────────────────────────────────────────────────────
     requestAnimationFrame(repositionLabels);
 
-    // ───────────────────────────────────────────────────────
-    //  i18n bind
-    // ───────────────────────────────────────────────────────
     function bind() {
       window.I18n.onLangChange(function (_lang, t) {
         applyTranslations(t);
@@ -771,12 +612,7 @@
     return true;
   }
 
-  // ────────────────────────────────────────────────────────────────
-  //  Boot — DOMContentLoaded + partial-loader event
-  // ────────────────────────────────────────────────────────────────
   function boot() {
-    // Map may not exist yet on district pages — that's OK, we'll
-    // try again once partials:loaded fires.
     init();
   }
 
@@ -843,12 +679,10 @@
     }
   });
 
-  // Read Experience Editor flag from global variable
   var isExperienceEditor =
     window.jcdMapConfig && window.jcdMapConfig.isExperienceEditor;
 
   if (!isExperienceEditor) {
-    // Auto-select district
     window.addEventListener("load", function () {
       var section = document.getElementById("jcd-map");
 
@@ -880,7 +714,6 @@
       }
     });
 
-    // Restore intro panel when close button clicked
     (function () {
       var section = document.getElementById("jcd-map");
 

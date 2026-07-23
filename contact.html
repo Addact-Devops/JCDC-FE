@@ -32,9 +32,6 @@
   </head>
 
   <body>
-    <!-- ════════════════════════════════════════════
-     HEADER (transparent over hero, white on scroll)
-════════════════════════════════════════════ -->
     <header class="navbar" id="navbar">
       <div class="navbar__inner">
         <button
@@ -53,7 +50,6 @@
             width="104"
             height="56"
           />
-          <!-- Dark/colored logo — shown when scrolled -->
           <img
             class="navbar__logo--dark"
             src="assets/coporate-PNG-01 1.svg"
@@ -190,7 +186,6 @@
       </div>
     </header>
 
-    <!-- Mobile drawer -->
     <aside class="drawer" id="drawer" aria-hidden="true">
       <div class="drawer__head">
         <a href="/" class="drawer__logo">
@@ -417,27 +412,9 @@
           </a>
         </li>
       </ul>
-
-      <!-- <div class="drawer__footer">
-                <button class="lang-btn lang-btn--drawer" id="lang-btn-drawer">
-                    <span class="lang-btn__text" data-i18n="nav.lang">العربية</span>
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                        <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5" />
-                        <path
-                            d="M12 3c-2.5 2-4 5.5-4 9s1.5 7 4 9c2.5-2 4-5.5 4-9s-1.5-7-4-9z"
-                            stroke="currentColor"
-                            stroke-width="1.5"
-                        />
-                        <path d="M3 9h18M3 15h18" stroke="currentColor" stroke-width="1.5" />
-                    </svg>
-                </button>
-            </div> -->
     </aside>
     <div class="overlay" id="overlay"></div>
 
-    <!-- ════════════════════════════════════════════
-        HERO BANNER (reused — Contact Us copy)
-════════════════════════════════════════════ -->
     <section class="banner" aria-labelledby="contact-hero-title">
       <div class="hero__media">
         <img src="assets/Contact us/Hero banner.svg" alt="" loading="eager" />
@@ -492,15 +469,10 @@
       </div>
     </section>
 
-    <!-- ════════════════════════════════════════════
-        CONTACT US (form + address — 50/50 grid)
-════════════════════════════════════════════ -->
     <section class="contact-us" aria-labelledby="contact-form-heading">
       <div class="contact-us__container">
         <div class="contact-us__grid">
-          <!-- ───────── LEFT: Form / Success ───────── -->
           <div class="contact-us__left">
-            <!-- Form wrapper (hidden after submit) -->
             <div id="contact-form-wrap">
               <h3
                 class="contact-us__heading"
@@ -670,7 +642,6 @@ border-color: #cc9f53;
       method="get" autocomplete="off"
       target="emarsysSink" class="contact-form">
 
-  <!-- Hidden params (unchanged) -->
   <input type="hidden" name="CID" value="788202873">
   <input type="hidden" name="SID" value="">
   <input type="hidden" name="UID" value="">
@@ -747,7 +718,6 @@ Please select an item in the list
   <div class="field">
      <div class="form-field has-error is-invalid">
         <label for="inp_8778" class="sr-only form-field__label">Message *</label>
-        <!-- bigger Message Box -->
         <textarea id="inp_8778" name="inp_8778" maxlength="255"></textarea>
         <span id="inp_8778_error" class="error-message">
   Message is required.
@@ -757,9 +727,7 @@ Please select an item in the list
 
 
 
-  <!-- Opt-in (sent to Emarsys) -->
 
-  <!-- Privacy & Cookies (REQUIRED, but NOT submitted to Emarsys) -->
   <div class="optin" style="position:relative;">
     <input type="checkbox" id="privacy" >
     <label for="privacy" style="margin:0; font-weight:400;">
@@ -1009,7 +977,6 @@ window.parent.postMessage(
               </div>
             </div>
 
-            <!-- Success state -->
             <div
               class="contact-success"
               id="contact-success"
@@ -1058,7 +1025,6 @@ window.parent.postMessage(
             </div>
           </div>
 
-          <!-- ───────── RIGHT: Address card + directions ───────── -->
           <aside class="contact-us__right" aria-label="Office address">
             <div class="contact-us__address-card">
               <h5
@@ -1113,7 +1079,6 @@ window.parent.postMessage(
       </div>
     </section>
 
-    <!-- Cookie Popup -->
     <div class="cookie-popup" id="cookiePopup">
       <div class="cookie-popup__content">
         <div class="cookie-popup__left">
@@ -1294,28 +1259,6 @@ window.parent.postMessage(
       </div>
     </footer>
 
-    <!-- Bundled & minified JS (built from src/js by `npm run build`) -->
     <script src="dist/main.min.js" defer></script>
-    <!-- <script>
-      const formWrapper = document.getElementById("contact-form-wrapper");
-      const success = document.getElementById("contact-success");
-      const formHeading = document.getElementById("contact-form-heading");
-      function showSuccessState() {
-        formWrapper.hidden = true;
-        success.hidden = false;
-        formHeading.hidden = true;
-        success.focus();
-      }
-
-      if (sessionStorage.getItem("contactFormSubmitted") === "true") {
-        showSuccessState();
-        sessionStorage.removeItem("contactFormSubmitted");
-      }
-      window.addEventListener("message", function (event) {
-        if (event.data && event.data.type === "CONTACT_FORM_SUBMITTED") {
-          showSuccessState();
-        }
-      });
-    </script> -->
   </body>
 </html>

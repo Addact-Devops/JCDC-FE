@@ -1,22 +1,8 @@
-/**
- * sections/search-page.js
- *
- * Drives the search page:
- *   - Reads `q` (query) and `page` from window.location.search
- *   - Renders mock results (10 items max for design preview — replace with
- *     real API fetch later)
- *   - Submits the search form and updates the URL with ?q=…&page=1
- *   - Pagination updates ?page=N, and Prev/Next stay disabled at the ends
- *   - Re-renders on language change so the "Showing Results for" line and
- *     the mock titles update properly.
- *
- * IIFE pattern (matches the rest of the codebase).
- */
 (function () {
   "use strict";
 
-  const PAGE_SIZE = 4; // Items per page in the design preview
-  const TOTAL_PAGES = 15; // Matches the Figma pagination "1, 2, …, 15"
+  const PAGE_SIZE = 4;
+  const TOTAL_PAGES = 15;
 
   function init() {
     const root = document.getElementById("search-page");
@@ -29,9 +15,6 @@
     const empty = root.querySelector("#search-empty");
     const paginationEl = root.querySelector("#search-pagination");
 
-    // ──────────────────────────────────────
-    // URL helpers
-    // ──────────────────────────────────────
     function getParams() {
       const sp = new URLSearchParams(window.location.search);
       const q = (sp.get("q") || "").trim();
@@ -55,9 +38,6 @@
       window.history[fn]({ q, page }, "", url);
     }
 
-    // ──────────────────────────────────────
-    // Rendering
-    // ──────────────────────────────────────
     function escapeHtml(s) {
       return String(s)
         .replace(/&/g, "&amp;")
@@ -68,8 +48,6 @@
     }
 
     function getMockResults(query, lang) {
-      // 10 mock results per Figma design — first one matches the active
-      // query so it looks natural; rest are static lorem-style copy.
       const ar = lang === "ar";
       const t = ar ? "العنوان" : "Title";
       const body = ar
@@ -121,9 +99,6 @@
         .join("");
     }
 
-    // ──────────────────────────────────────
-    // Pagination renderer (compact: prev / 1 / 2 / … / last / next)
-    // ──────────────────────────────────────
     function renderPagination(current, total, query) {
       if (total < 1) {
         paginationEl.innerHTML = "";
@@ -132,12 +107,9 @@
 
       const parts = [];
 
-      // Prev button
       parts.push(navItem("prev", current > 1 ? current - 1 : null, query));
 
-      // Smart page list: always show 1 and total; surrounding current; ellipsis between
       const visible = new Set([1, total, current, current - 1, current + 1]);
-      // Also show "2" early if total > 2 and we're near the start
       if (current === 1) visible.add(2);
       if (current === total) visible.add(total - 1);
 
@@ -156,12 +128,10 @@
         prev = n;
       });
 
-      // Next button
       parts.push(navItem("next", current < total ? current + 1 : null, query));
 
       paginationEl.innerHTML = parts.join("");
 
-      // Wire click handlers (delegated)
       paginationEl.querySelectorAll("[data-page]").forEach((btn) => {
         btn.addEventListener("click", (e) => {
           e.preventDefault();
@@ -203,9 +173,6 @@
             </li>`;
     }
 
-    // ──────────────────────────────────────
-    // Update flow
-    // ──────────────────────────────────────
     function update() {
       const { q, page } = getParams();
       const lang =
@@ -221,9 +188,6 @@
       renderPagination(page, TOTAL_PAGES, q);
     }
 
-    // ──────────────────────────────────────
-    // Event wiring
-    // ──────────────────────────────────────
     form.addEventListener("submit", (e) => {
       e.preventDefault();
       const q = input.value.trim();
@@ -231,10 +195,8 @@
       update();
     });
 
-    // Re-render when the user uses the back/forward buttons
     window.addEventListener("popstate", update);
 
-    // Re-render on language change (re-fetches the localized strings)
     if (window.I18n && window.I18n.onLangChange) {
       window.I18n.onLangChange(update);
     }

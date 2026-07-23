@@ -320,7 +320,7 @@
     &__description {
       font-size: 16px;
       line-height: 150%;
-      text-align: center; //  ADDED
+      text-align: center;
       [dir="rtl"] & {
         width: 100%;
         text-align: center;
@@ -332,12 +332,12 @@
       height: auto;
       margin-bottom: 32px;
       [dir="rtl"] & {
-        width: 100%; // 👈 ADDED — full width
-        display: flex; // 👈 ADDED
-        justify-content: center; // 👈 ADDED — pushes logo to right
+        width: 100%;
+        display: flex;
+        justify-content: center;
 
         img {
-          width: 80px; // 👈 ADDED — keep image 80px not full width
+          width: 80px;
           height: auto;
         }
       }
@@ -346,7 +346,7 @@
     &__cta-wrap {
       margin-top: 24px;
       width: 100%;
-      justify-content: center; //  ADDED
+      justify-content: center;
     }
 
     &__cta {
@@ -382,8 +382,8 @@
     min-height: 689px;
 
     &__content {
-      align-items: center; //  ADDED
-      text-align: left; //  ADDED
+      align-items: center;
+      text-align: left;
       [dir="rtl"] & {
         margin-right: 0;
         margin-left: auto;
@@ -394,12 +394,12 @@
 
     &__logo {
       [dir="rtl"] & {
-        width: 100%; // 👈 ADDED
-        display: flex; // 👈 ADDED
-        justify-content: center; // 👈 ADDED
+        width: 100%;
+        display: flex;
+        justify-content: center;
 
         img {
-          width: 64px; // 👈 ADDED — keep image 80px not full width
+          width: 64px;
           height: auto;
         }
       }
