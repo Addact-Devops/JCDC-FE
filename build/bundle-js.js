@@ -39,6 +39,7 @@ const FILES = [
   'sections/attraction-page.js',
   'sections/jcd-map.js',
   'sections/vision-mission.js',
+  'sections/core-values.js',
 ];
 
 function bundle() {

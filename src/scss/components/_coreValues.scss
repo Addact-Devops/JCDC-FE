@@ -139,6 +139,29 @@
     color: #ffffff;
     overflow: hidden;
 
+    // ==========================================
+    // Fading entrance (slide in from the right)
+    // Triggered by `.core-values__grid.in-view`, added via
+    // IntersectionObserver in core-values.js. Per-card transition-delay
+    // is set inline by core-values.js so cards animate in one by one.
+    // ==========================================
+    opacity: 0;
+    transform: translateX(60px);
+    transition:
+      opacity 0.8s var(--ease),
+      transform 0.8s var(--ease);
+
+    .core-values__grid.in-view & {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+      opacity: 1;
+      transform: none;
+    }
+
     > :not(.core-values__card-vector) {
       position: relative;
       z-index: 2;
