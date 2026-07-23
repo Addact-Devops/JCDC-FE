@@ -716,6 +716,15 @@
         "href": "centralDistrict.html",
         "attractions": [
           {
+            "id": "bazar",
+            "name": "Bazar",
+            "description": "A linear green space linking the Central and Culture & Creativity Districts, with shaded walkways and gathering areas that promote movement and connection.",
+            "image": "https://images.unsplash.com/photo-1518684079-3c830dcef090?w=1200&q=85",
+            "x": 32,
+            "y": 47,
+            "href": "centralDistrict.html"
+          },
+          {
             "id": "ribbon_Park",
             "name": "Ribbon Park",
             "description": "A linear green space linking the Central and Culture & Creativity Districts, with shaded walkways and gathering areas that promote movement and connection.",
