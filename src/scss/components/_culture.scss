@@ -65,6 +65,29 @@
     // &:hover &-img {
     //     transform: scale(1.04);
     // }
+
+    // ==========================================
+    // Fading entrance (slide in from the right)
+    // Triggered by `.culture__grid.in-view`, added via IntersectionObserver
+    // in culture.js. Per-card transition-delay is set inline by culture.js
+    // so cards animate in one by one.
+    // ==========================================
+    opacity: 0;
+    transform: translateX(60px);
+    transition:
+      opacity 0.8s var(--ease),
+      transform 0.8s var(--ease);
+
+    .culture__grid.in-view & {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+      opacity: 1;
+      transform: none;
+    }
   }
 
   &__card-img {
@@ -120,6 +143,25 @@
     [dir="rtl"] & {
       text-align: center;
     }
+
+    // Fading entrance — delay set inline per-card by culture.js so it
+    // fades in as its card settles into place.
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+      opacity 0.6s var(--ease),
+      transform 0.6s var(--ease);
+
+    .culture__grid.in-view & {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+      opacity: 1;
+      transform: none;
+    }
   }
 
   &__card-desc {
@@ -133,6 +175,25 @@
     text-align: center;
     [dir="rtl"] & {
       text-align: center;
+    }
+
+    // Fading entrance — delay set inline per-card by culture.js so it
+    // fades in just after the title, once its card settles into place.
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+      opacity 0.6s var(--ease),
+      transform 0.6s var(--ease);
+
+    .culture__grid.in-view & {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+      opacity: 1;
+      transform: none;
     }
   }
 
