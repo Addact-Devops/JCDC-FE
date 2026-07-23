@@ -99,6 +99,33 @@
     gap: 8px;
   }
 
+  &__stat-label,
+  &__stat-value {
+    // ==========================================
+    // Fading text reveal (staggered wave)
+    // Triggered by `.destination-highlight__stats.in-view`, added via
+    // IntersectionObserver in destination-highlight.js. Per-stat
+    // transition-delay is set inline so the row fades in as a wave.
+    // The stat-value's number count-up is driven separately by JS.
+    // ==========================================
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+      opacity 0.6s var(--ease),
+      transform 0.6s var(--ease);
+
+    .destination-highlight__stats.in-view & {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+      opacity: 1;
+      transform: none;
+    }
+  }
+
   &__stat-label {
     font-family: var(--font-body);
 
@@ -129,6 +156,47 @@
     align-items: center;
 
     gap: 123px;
+  }
+
+  // ==========================================
+  // Fading entrance (scroll reveal)
+  // Triggered by `.destination-highlight__body.in-view`, added via
+  // IntersectionObserver in destination-highlight.js. Same treatment as
+  // .jcdc / .our-story: text (left, first in markup) fades in first, then
+  // the image once the text's own fade has finished. This is independent
+  // of the stats reveal/count-up above and doesn't touch the existing
+  // hover zoom on &__image or the &::before vector shift.
+  // ==========================================
+
+  &__text,
+  &__image-wrapper {
+    opacity: 0;
+    transform: translateY(32px);
+    transition:
+      opacity 0.9s var(--ease),
+      transform 0.9s var(--ease);
+    transition-delay: 0.1s;
+  }
+
+  // Starts only once the text's own fade (0.1s delay + 0.9s duration)
+  // has finished.
+  &__image-wrapper {
+    transition-delay: 1s;
+  }
+
+  &__body.in-view &__text,
+  &__body.in-view &__image-wrapper {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &__text,
+    &__image-wrapper {
+      transition: none;
+      opacity: 1;
+      transform: none;
+    }
   }
 
   // ==========================================

@@ -45,6 +45,7 @@ const FILES = [
   'sections/attractions.js',
   'sections/sustainability-design.js',
   'sections/invest-central.js',
+  'sections/destination-highlight.js',
 ];
 
 function bundle() {
