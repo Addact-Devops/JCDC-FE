@@ -83,6 +83,45 @@ $text-color: rgba(91, 95, 98, 1);
     isolation: isolate;
   }
 
+  // ==========================================
+  // Fading entrance (scroll reveal)
+  // Triggered by `.in-view`, added via IntersectionObserver in
+  // invest-central.js. Same treatment as .jcdc / .our-story, but mirrored:
+  // the image (left side, first in markup) fades in first, then the text
+  // once the image's own fade has finished.
+  // ==========================================
+
+  &__image-wrapper,
+  &__text {
+    opacity: 0;
+    transform: translateY(32px);
+    transition:
+      opacity 0.9s var(--ease),
+      transform 0.9s var(--ease);
+    transition-delay: 0.1s;
+  }
+
+  // Starts only once the image's own fade (0.1s delay + 0.9s duration)
+  // has finished.
+  &__text {
+    transition-delay: 1s;
+  }
+
+  &.in-view &__image-wrapper,
+  &.in-view &__text {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &__image-wrapper,
+    &__text {
+      transition: none;
+      opacity: 1;
+      transform: none;
+    }
+  }
+
   &__image {
     width: 100%;
     height: 100%;
