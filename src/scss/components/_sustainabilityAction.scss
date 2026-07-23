@@ -86,6 +86,31 @@
 
             transform: translateY(0);
         }
+
+        // ==========================================
+        // Fading entrance (slide in from the right)
+        // Triggered by `.sustainability-action__grid.in-view`, added via
+        // IntersectionObserver in sustainability-action.js. Per-card
+        // transition-delay is set inline so cards animate in one by one.
+        // Only the card wrapper animates here — the existing hover reveal
+        // on .sustainability-action__card-desc is untouched.
+        // ==========================================
+        opacity: 0;
+        transform: translateX(60px);
+        transition:
+            opacity 0.8s var(--ease),
+            transform 0.8s var(--ease);
+
+        .sustainability-action__grid.in-view & {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            transition: none;
+            opacity: 1;
+            transform: none;
+        }
     }
 
     &__card-img {
