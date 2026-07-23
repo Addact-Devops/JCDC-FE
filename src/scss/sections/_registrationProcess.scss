@@ -63,6 +63,29 @@
   padding: 24px;
   gap: 12px;
 
+  // ==========================================
+  // Fading entrance (fade in up, one by one)
+  // Triggered by `.registration-process__grid.in-view`, added via
+  // IntersectionObserver in registration-process.js. Per-step
+  // transition-delay is set inline so steps animate in one at a time.
+  // ==========================================
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 0.8s var(--ease),
+    transform 0.8s var(--ease);
+
+  .registration-process__grid.in-view & {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+
   &__number {
     margin: 0;
     font-family: var(--font-body);
@@ -104,6 +127,29 @@
   display: flex;
   flex-direction: column;
   gap: 16px;
+
+  // ==========================================
+  // Fading entrance (slide in from the right)
+  // Triggered by `.registration-process__grid.in-view`, added via
+  // IntersectionObserver in registration-process.js. Starts right after
+  // the last process-step in the same one-by-one queue.
+  // ==========================================
+  opacity: 0;
+  transform: translateX(60px);
+  transition:
+    opacity 0.8s var(--ease),
+    transform 0.8s var(--ease);
+
+  .registration-process__grid.in-view & {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
 
   &__title {
     margin: 0;

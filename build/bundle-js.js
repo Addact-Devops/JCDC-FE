@@ -50,6 +50,9 @@ const FILES = [
   'sections/environmental-impact.js',
   'sections/sustainability-action.js',
   'sections/why-jeddah.js',
+  'sections/how-we-set.js',
+  'sections/who-register.js',
+  'sections/registration-process.js',
 ];
 
 function bundle() {

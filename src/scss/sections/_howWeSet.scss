@@ -64,7 +64,31 @@
     transition:
       transform var(--dur) var(--ease),
       box-shadow var(--dur) var(--ease),
-      background var(--dur) var(--ease);
+      background var(--dur) var(--ease),
+      opacity 0.8s var(--ease),
+      translate 0.8s var(--ease);
+
+    // ==========================================
+    // Fading entrance (slide in from the right)
+    // Triggered by `.how-we-set__grid.in-view`, added via
+    // IntersectionObserver in how-we-set.js. Per-card transition-delay is
+    // set inline so cards animate in one by one. Uses the `translate`
+    // property (not `transform`) so it never fights any future hover
+    // effect that uses `transform`.
+    // ==========================================
+    opacity: 0;
+    translate: 60px 0;
+
+    .how-we-set__grid.in-view & {
+      opacity: 1;
+      translate: 0 0;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+      opacity: 1;
+      translate: 0 0;
+    }
   }
 
   &__icon {
