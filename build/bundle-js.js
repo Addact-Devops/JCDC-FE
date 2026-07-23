@@ -43,6 +43,7 @@ const FILES = [
   'sections/culture.js',
   'sections/jcdc.js',
   'sections/attractions.js',
+  'sections/sustainability-design.js',
 ];
 
 function bundle() {

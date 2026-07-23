@@ -78,13 +78,37 @@
 
     transition:
       transform var(--dur) var(--ease),
-      box-shadow var(--dur) var(--ease);
+      box-shadow var(--dur) var(--ease),
+      opacity 0.9s var(--ease),
+      translate 0.9s var(--ease);
 
     // &:hover {
     //     transform: translateY(-4px);
 
     //     box-shadow: 0 12px 30px rgba(0, 118, 169, 0.08);
     // }
+
+    // ==========================================
+    // Staggered fade-in-up entrance
+    // Triggered by `.sustainability-design__grid.in-view`, added via
+    // IntersectionObserver in sustainability-design.js. Per-card
+    // transition-delay is set inline so cards fade in as a wave rather
+    // than one strict queue. Uses the `translate` property (not
+    // `transform`) so it never fights the hover lift/box-shadow above.
+    // ==========================================
+    opacity: 0;
+    translate: 0 32px;
+
+    .sustainability-design__grid.in-view & {
+      opacity: 1;
+      translate: 0 0;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+      opacity: 1;
+      translate: 0 0;
+    }
   }
 
   &__icon {
