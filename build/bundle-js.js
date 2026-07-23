@@ -41,6 +41,7 @@ const FILES = [
   'sections/vision-mission.js',
   'sections/core-values.js',
   'sections/culture.js',
+  'sections/jcdc.js',
 ];
 
 function bundle() {

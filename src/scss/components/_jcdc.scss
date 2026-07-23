@@ -69,6 +69,44 @@
     align-items: center;
   }
 
+  // ==========================================
+  // Fading entrance (scroll reveal)
+  // Triggered by `.in-view`, added via IntersectionObserver in jcdc.js.
+  // Same treatment as .our-story: left content fades in first, then the
+  // right media once the left content's own fade has finished.
+  // ==========================================
+
+  &__left,
+  &__media {
+    opacity: 0;
+    transform: translateY(32px);
+    transition:
+      opacity 0.9s var(--ease),
+      transform 0.9s var(--ease);
+    transition-delay: 0.1s;
+  }
+
+  // Starts only once the left content's own fade (0.1s delay + 0.9s
+  // duration) has finished.
+  &__media {
+    transition-delay: 1s;
+  }
+
+  &.in-view &__left,
+  &.in-view &__media {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &__left,
+    &__media {
+      transition: none;
+      opacity: 1;
+      transform: none;
+    }
+  }
+
   &__title {
     margin: 0;
 
