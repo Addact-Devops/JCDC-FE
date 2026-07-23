@@ -38,6 +38,7 @@ const FILES = [
   'sections/landmark-slider.js',
   'sections/attraction-page.js',
   'sections/jcd-map.js',
+  'sections/vision-mission.js',
 ];
 
 function bundle() {

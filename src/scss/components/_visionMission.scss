@@ -69,6 +69,29 @@ $bg-color: #ffffff;
     &:has(.vision-mission__bg--mission) {
       order: 2;
     }
+
+    // ==========================================
+    // Fading entrance (slide in from the right)
+    // Triggered by `.vision-mission__container.in-view`, added via
+    // IntersectionObserver in vision-mission.js. Per-card transition-delay
+    // is set inline by vision-mission.js so cards animate in one by one.
+    // ==========================================
+    opacity: 0;
+    transform: translateX(60px);
+    transition:
+      opacity 0.8s var(--ease),
+      transform 0.8s var(--ease);
+
+    .vision-mission__container.in-view & {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+      opacity: 1;
+      transform: none;
+    }
   }
 
   // ==========================================
@@ -127,6 +150,25 @@ $bg-color: #ffffff;
       text-align: right; //  text aligns right
       font-family: var(--font-ar);
     }
+
+    // Fading entrance — delay set inline per-card by vision-mission.js so
+    // it fades in as its card settles into place.
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+      opacity 0.6s var(--ease),
+      transform 0.6s var(--ease);
+
+    .vision-mission__container.in-view & {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+      opacity: 1;
+      transform: none;
+    }
   }
 
   // ==========================================
@@ -148,6 +190,25 @@ $bg-color: #ffffff;
       direction: rtl; //  text reads RTL
       text-align: right; //  text aligns right
       font-family: var(--font-ar);
+    }
+
+    // Fading entrance — delay set inline per-card by vision-mission.js so
+    // it fades in just after the title, once its card settles into place.
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+      opacity 0.6s var(--ease),
+      transform 0.6s var(--ease);
+
+    .vision-mission__container.in-view & {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+      opacity: 1;
+      transform: none;
     }
   }
 
