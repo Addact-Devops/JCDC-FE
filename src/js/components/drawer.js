@@ -1,12 +1,3 @@
-/**
- * components/drawer.js — Mobile navigation drawer
- *
- * Handles:
- *   • Open/close (hamburger, close button, overlay, Escape key)
- *   • Expandable sub-menu inside the drawer
- *   • Auto-close when viewport becomes desktop-wide (>=1024px)
- *   • Auto-close when language changes (avoids stale RTL/LTR artifacts)
- */
 window.Drawer = (function () {
   "use strict";
 
@@ -29,7 +20,6 @@ window.Drawer = (function () {
     drawer.setAttribute("aria-hidden", "true");
     document.body.style.overflow = "";
 
-    // Collapse any expanded sub-menus when closing
     drawer
       .querySelectorAll(".drawer__item--has-sub.is-expanded")
       .forEach((i) => i.classList.remove("is-expanded"));
@@ -45,7 +35,6 @@ window.Drawer = (function () {
         const item = btn.closest(".drawer__item--has-sub");
         if (!item) return;
 
-        // Close siblings
         drawer
           .querySelectorAll(".drawer__item--has-sub.is-expanded")
           .forEach((i) => {
@@ -88,16 +77,13 @@ window.Drawer = (function () {
 
     initExpanders();
     initLinkClose();
-    // Auto-close on resize to desktop width (fixes drawer "stuck open"
-    // between viewport transitions, including after language switch)
+
     const mq = window.matchMedia(`(min-width: ${DESKTOP_MIN}px)`);
     const onChange = () => {
       if (mq.matches) close();
     };
     mq.addEventListener?.("change", onChange);
 
-    // Auto-close on language change — guarantees the drawer can never
-    // appear as a side-effect of switching between EN and AR.
     window.addEventListener("langchange", () => {
       if (isOpen()) close();
     });

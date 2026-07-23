@@ -1,47 +1,18 @@
-/**
- * sections/landmark-slider.js
- *
- * Full-width landmark slider.
- *
- * Supports two variants via a modifier class on the root:
- *   - .landmark-slider                       → with bottom info card
- *   - .landmark-slider.landmark-slider--no-card  → image-only carousel
- *
- * Also supports multiple instances on the same page (queries by class
- * within each root, not by ID).
- *
- * The DOM is fully STATIC — every slide, every dot, and every card-content
- * variant is rendered in HTML. This module does NOT inject HTML.
- *
- * Responsibilities:
- *   - Compute and apply the track translateX so the active slide is
- *     centered in the viewport (RTL-aware).
- *   - Toggle .is-active on slides and dots.
- *   - When present, fade/swap the `.landmark-slider__card` copy —
- *     ported 1:1 from landmark-slider-3.html's `.content-card`: the
- *     card fades out, its title/description/CTA are swapped at the
- *     transition midpoint, then it fades back in (see renderCard()).
- *   - Wire up arrows, dots, keyboard arrow keys, pointer drag, autoplay.
- */
 (function () {
   "use strict";
 
   const AUTOPLAY_MS = 5000;
   const RESUME_AFTER_MS = 8000;
   const SWIPE_THRESHOLD = 60;
-  const FADE_MS = 300; // half of the 600ms --smart-duration card transition in SCSS
+  const FADE_MS = 300;
 
   function init() {
-    //  ▼ CHANGE #1 — find every slider on the page, not just one by id
     const roots = document.querySelectorAll(".landmark-slider");
     if (!roots.length) return;
     roots.forEach(initOne);
   }
 
   function initOne(root) {
-    //  ▼ CHANGE #2 — query by class within root, not by global id.
-    //  Makes the slider safe to use multiple times on one page and
-    //  decouples the JS from the markup's id attribute.
     const viewport = root.querySelector(".landmark-slider__viewport");
     const trackEl = root.querySelector(".landmark-slider__track");
     const dotsEl = root.querySelector(".landmark-slider__dots");
@@ -49,7 +20,6 @@
     const nextBtn = root.querySelector("[data-landmark-next]");
     const cardEl = root.querySelector(".landmark-slider__card");
 
-    //  ▼ CHANGE #3 — cardEl is no longer required to bail out.
     if (!viewport || !trackEl) return;
 
     const slides = Array.from(
@@ -59,8 +29,6 @@
       ? Array.from(dotsEl.querySelectorAll("[data-landmark-dot]"))
       : [];
 
-    //  ▼ CHANGE #4 — card is optional. Guard the queries and remember
-    //  the result so we can skip card-touching code paths cleanly.
     const cardTitleEl = cardEl
       ? cardEl.querySelector(".landmark-slider__card-title")
       : null;
@@ -72,9 +40,6 @@
       : null;
     const hasCard = Boolean(cardEl && cardTitleEl && cardDescEl);
 
-    //  ▼ CHANGE #5 — per-slide card copy, ported from the reference
-    //  slider's `slides` array but sourced from data-card-* on each
-    //  static slide element so translators still edit plain HTML.
     const cardData = slides.map((el) => ({
       titleKey: el.dataset.cardTitleKey || null,
       title: el.dataset.cardTitle || "",
@@ -91,16 +56,10 @@
     let pauseTimeout = null;
     let autoplayPaused = false;
 
-    // ──────────────────────────────────────
-    // Helpers
-    // ──────────────────────────────────────
     function isRTL() {
       return document.documentElement.dir === "rtl";
     }
 
-    // ──────────────────────────────────────
-    // Layout math (centred-active)
-    // ──────────────────────────────────────
     function getMetrics() {
       const slideEl = slides[0];
       if (!slideEl) return { slideWidth: 0, gap: 0, step: 0, viewportWidth: 0 };
@@ -114,8 +73,6 @@
     function applyTransform(animate = true) {
       const { slideWidth, step, viewportWidth } = getMetrics();
 
-      // Class & attribute toggles run unconditionally so the active
-      // state stays correct even before the layout has settled.
       slides.forEach((el, i) => {
         el.classList.toggle("is-active", i === current);
       });
@@ -158,22 +115,14 @@
       }
     }
 
-    // ──────────────────────────────────────
-    // Card content swap — no-op when this slider has no card.
-    // Ported 1:1 from landmark-slider-3.html's render(): fade the
-    // card out, swap its copy at the transition midpoint, fade
-    // back in — synced to the 600ms smart-ease curve in SCSS.
-    // ──────────────────────────────────────
     function renderCard(index) {
-      if (!hasCard) return; //  ▼ CHANGE #4 (cont.)
+      if (!hasCard) return;
       cardEl.classList.remove("is-visible");
       setTimeout(() => {
         const data = cardData[index];
         if (!data) return;
         if (data.titleKey) cardTitleEl.setAttribute("data-i18n", data.titleKey);
-        // Prefer the loaded translation over the HTML-authored
-        // (English) default, so a saved Arabic session doesn't
-        // flash English text while the language JSON loads.
+
         const translated =
           data.titleKey && window.I18n ? window.I18n.t(data.titleKey) : null;
         cardTitleEl.textContent =
@@ -184,9 +133,6 @@
       }, FADE_MS);
     }
 
-    // ──────────────────────────────────────
-    // Navigation
-    // ──────────────────────────────────────
     function goTo(index, opts) {
       const max = slides.length - 1;
       if (index < 0) index = 0;
@@ -195,14 +141,13 @@
 
       current = index;
       applyTransform(true);
-      renderCard(current); //  safely no-ops on the card-less variant
+      renderCard(current);
 
       if (opts && opts.userInitiated) pauseFor(RESUME_AFTER_MS);
     }
 
     function next() {
       if (current >= slides.length - 1) {
-        // Autoplay wrap: jump without animation
         current = 0;
         applyTransform(false);
         renderCard(0);
@@ -215,9 +160,6 @@
       goTo(idx);
     }
 
-    // ──────────────────────────────────────
-    // Autoplay (pause on hover/focus/off-screen/visibility-hidden)
-    // ──────────────────────────────────────
     function startAutoplay() {
       stopAutoplay();
       timer = setInterval(() => {
@@ -265,9 +207,6 @@
       io.observe(root);
     }
 
-    // ──────────────────────────────────────
-    // Event wiring
-    // ──────────────────────────────────────
     if (prevBtn)
       prevBtn.addEventListener("click", () => {
         prev();
@@ -286,7 +225,6 @@
       });
     });
 
-    // Keyboard navigation when viewport has focus
     viewport.tabIndex = 0;
     viewport.addEventListener("keydown", (e) => {
       if (e.key === "ArrowRight") {
@@ -300,10 +238,8 @@
       }
     });
 
-    // Pointer drag (swipe)
     let dragStart = null;
     viewport.addEventListener("pointerdown", (e) => {
-      // Don't hijack clicks on the card CTA or the arrow buttons
       if (e.target.closest("a, button")) return;
       dragStart = { x: e.clientX };
     });
@@ -320,25 +256,20 @@
       dragStart = null;
     });
 
-    // Resize — recompute the centered transform.
     let rzId = null;
     window.addEventListener("resize", () => {
       if (rzId) cancelAnimationFrame(rzId);
       rzId = requestAnimationFrame(() => applyTransform(false));
     });
 
-    // ──────────────────────────────────────
-    // Initial paint + language-change hook
-    // ──────────────────────────────────────
     function refreshLayout() {
       requestAnimationFrame(() => {
         applyTransform(false);
-        // Re-apply once more after images settle.
         setTimeout(() => applyTransform(false), 60);
       });
     }
 
-    renderCard(current); // initial fade-in, mirrors the reference's render() on load
+    renderCard(current);
 
     if (window.I18n && window.I18n.onLangChange) {
       window.I18n.onLangChange(() => {
@@ -347,7 +278,6 @@
     }
 
     refreshLayout();
-    // startAutoplay();
   }
 
   if (document.readyState === "loading") {

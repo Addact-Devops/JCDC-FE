@@ -99,7 +99,6 @@
       pointer-events: none;
     }
 
-    // ACTIVE MAIN SLIDE
     &.is-active {
       transform: scaleY(1);
       margin-top: 0;
@@ -110,7 +109,6 @@
     }
   }
 
-  // 👈 ADDED — overlay content on slide image
   &__slide-content {
     position: absolute;
     bottom: 1px;
@@ -131,12 +129,10 @@
     }
   }
 
-  // 👈 show content only on active slide
   &__slide.is-active &__slide-content {
     opacity: 1;
   }
 
-  // 👈 gradient overlay — darkens bottom of image for text readability
   &__slide::after {
     content: "";
     position: absolute;
@@ -159,7 +155,7 @@
     min-height: 38px;
     max-width: 455px;
     line-height: 1.3;
-    color: #ddbf8c; // 👈 gold color from Figma
+    color: #ddbf8c;
   }
 
   &__slide-span {
@@ -290,9 +286,7 @@
     }
 
     &--prev {
-      inset-inline-start: calc(
-        50% - 600px - 64px
-      ); // 👈 half slide width + half button
+      inset-inline-start: calc(50% - 600px - 64px);
       svg {
         transform: scaleX(-1);
         [dir="rtl"] & {
@@ -302,7 +296,7 @@
     }
 
     &--next {
-      inset-inline-end: calc(50% - 600px - 64px); // 👈 same on right side
+      inset-inline-end: calc(50% - 600px - 64px);
     }
   }
 
@@ -387,7 +381,6 @@
     }
   }
 
-  //  Defensive: if a stray .landmark-slider__card sneaks in, hide it
   .landmark-slider__card {
     display: none;
   }
@@ -395,20 +388,11 @@
     display: none;
 
     @media (max-width: 480px) {
-      display: flex; // 👈 show on mobile
+      display: flex;
     }
   }
-
-  //  Mobile already places nav at top: 8px and card overlays the
-  //  image, so no further mobile overrides are needed — just make
-  //  sure the absent card doesn't leave a gap. Nothing to do.
 }
 
-// ==========================================
-// Medium Desktop (1025–1199) — bridge between full desktop and tablet
-// Keeps card overlap + brings nav arrows inside the viewport
-// ==========================================
-// ◆ CHANGED — was (min-width: 1025px) → (min-width: 1024px)
 @media (max-width: 1281px) {
   .landmark-slider {
     padding: 64px 0px 32px 0px;
@@ -657,7 +641,7 @@
     }
 
     &__slide-content {
-      bottom: 31px; // 👈 from Figma
+      bottom: 31px;
       inset-inline-start: 24px;
       inset-inline-end: auto;
       width: 252px;
@@ -676,7 +660,7 @@
     &__slide-desc {
       font-size: 18px;
       line-height: 150%;
-      min-height: unset; // 👈 remove min-height
+      min-height: unset;
       color: #ffffff;
     }
 
@@ -733,7 +717,6 @@
     }
   }
 
-  // 👈 full class name — shows content on active slide
   .landmark-slider__slide.is-active .landmark-slider__slide-content {
     opacity: 1;
   }
@@ -755,7 +738,7 @@
       bottom: 31px;
       inset-inline-start: 24px;
       inset-inline-end: auto;
-      width: 252px; // 👈 from Figma
+      width: 252px;
 
       [dir="rtl"] & {
         margin-right: 0px;

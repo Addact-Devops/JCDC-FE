@@ -1,19 +1,6 @@
-/**
- * sections/news-item.js
- *
- * Renders a single news article + the "Other Articles" sidebar.
- * The article identifier comes from ?id=… in the URL; if absent, falls back
- * to the first item in the dataset.
- *
- * Mock dataset is shared with news-listing.js conceptually. To avoid coupling,
- * we maintain a separate copy here keyed by id. Replace with API fetch later.
- *
- * IIFE pattern.
- */
 (function () {
   "use strict";
 
-  // Same mock items used in news-listing.js (kept in sync manually for now)
   const MOCK_ITEMS = [
     {
       id: "jc-12bn-contract",
@@ -134,19 +121,16 @@
     function render(translations, lang) {
       const item = getActiveItem();
 
-      // Hero — title + date + (optional) background image
       const title = deepGet(translations, item.i18nKey + ".title") || "";
       if (titleEl) titleEl.textContent = title;
       if (dateEl) dateEl.textContent = formatDate(item.date, lang);
       if (heroImg) heroImg.src = item.image;
 
-      // Article body — paragraphs come from i18n (paragraphs array)
       const paragraphs = deepGet(translations, item.i18nKey + ".body") || [];
       articleEl.innerHTML = paragraphs
         .map((p) => `<p class="news-item__paragraph">${escapeHtml(p)}</p>`)
         .join("");
 
-      // Related — show the other 4 items (not the active one)
       const related = MOCK_ITEMS.filter((i) => i.id !== item.id).slice(0, 4);
       relatedEl.innerHTML = related
         .map((r) => {
@@ -168,7 +152,6 @@
         .join("");
     }
 
-    // Subscribe to i18n
     if (window.I18n && window.I18n.onLangChange) {
       window.I18n.onLangChange((lang, t) => render(t, lang));
     } else {

@@ -1,11 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56" fill="none" aria-hidden="true">
   <g stroke="#CC9F53" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none">
-    <!-- Bulb body -->
     <path d="M28 8 C 19 8, 13 14, 13 22 C 13 27, 15 31, 19 34 C 21 36, 22 38, 22 40 H 34 C 34 38, 35 36, 37 34 C 41 31, 43 27, 43 22 C 43 14, 37 8, 28 8 Z" />
-    <!-- Bulb base lines -->
     <path d="M22 44 H 34" />
     <path d="M24 48 H 32" />
-    <!-- Rays around the bulb -->
     <path d="M28 2 V 5" />
     <path d="M50 22 H 47" />
     <path d="M9 22 H 6" />
