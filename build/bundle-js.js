@@ -49,6 +49,7 @@ const FILES = [
   'sections/sustainability-pillars.js',
   'sections/environmental-impact.js',
   'sections/sustainability-action.js',
+  'sections/why-jeddah.js',
 ];
 
 function bundle() {

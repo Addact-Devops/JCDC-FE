@@ -96,6 +96,35 @@
     }
   }
 
+  &__icon,
+  &__card-content {
+    // ==========================================
+    // Column-staggered fade-in-up
+    // Triggered by `.why-jeddah__grid.in-view`, added via
+    // IntersectionObserver in why-jeddah.js. Per-card transition-delay is
+    // set inline based on column index (i % 3), so cards in the same
+    // column animate together as a wave moves left to right. Only the
+    // icon + text content animate — the divider lines on &::before /
+    // &::after are left untouched so the grid structure stays grounded.
+    // ==========================================
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+      opacity 1.1s var(--ease),
+      transform 1.1s var(--ease);
+
+    .why-jeddah__grid.in-view & {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+      opacity: 1;
+      transform: none;
+    }
+  }
+
   &__icon {
     width: 72px;
     height: 72px;
