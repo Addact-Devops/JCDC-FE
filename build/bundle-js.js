@@ -42,6 +42,7 @@ const FILES = [
   'sections/core-values.js',
   'sections/culture.js',
   'sections/jcdc.js',
+  'sections/attractions.js',
 ];
 
 function bundle() {

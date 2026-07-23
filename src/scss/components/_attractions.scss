@@ -93,6 +93,31 @@
     &:hover .attractions__card-img {
       transform: scale(1.04);
     }
+
+    // ==========================================
+    // Fading entrance (slide in from the right)
+    // Triggered by `.attractions__grid.in-view`, added via
+    // IntersectionObserver in attractions.js. Per-card transition-delay is
+    // set inline by attractions.js so cards animate in one by one.
+    // Only the card wrapper animates here — the existing hover reveal on
+    // .attractions__content / .attractions__card-desc is untouched.
+    // ==========================================
+    opacity: 0;
+    transform: translateX(60px);
+    transition:
+      opacity 0.8s var(--ease),
+      transform 0.8s var(--ease);
+
+    .attractions__grid.in-view & {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+      opacity: 1;
+      transform: none;
+    }
   }
 
   &__card:hover {
