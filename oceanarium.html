@@ -20,7 +20,6 @@
 </head>
 
 <body>
-    <!-- Header -->
     <header class="navbar" id="navbar">
         <div class="navbar__inner">
             <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
@@ -28,7 +27,6 @@
             </button>
             <a href="/" class="navbar__logo" aria-label="JCDC Home">
                 <img class="navbar__logo--light" src="assets/Frame 2.svg" alt="JCDC" width="104" height="56" />
-                <!-- Dark/colored logo — shown when scrolled -->
                 <img class="navbar__logo--dark" src="assets/coporate-PNG-01 1.svg" alt="JCDC" width="104" height="56" />
             </a>
 
@@ -85,7 +83,6 @@
         </div>
     </header>
 
-    <!-- Mobile drawer -->
   <aside class="drawer" id="drawer" aria-hidden="true">
             <div class="drawer__head">
                 <a href="/" class="drawer__logo">
@@ -289,24 +286,10 @@
                 </li>
             </ul>
 
-            <!-- <div class="drawer__footer">
-                <button class="lang-btn lang-btn--drawer" id="lang-btn-drawer">
-                    <span class="lang-btn__text" data-i18n="nav.lang">العربية</span>
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                        <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5" />
-                        <path
-                            d="M12 3c-2.5 2-4 5.5-4 9s1.5 7 4 9c2.5-2 4-5.5 4-9s-1.5-7-4-9z"
-                            stroke="currentColor"
-                            stroke-width="1.5"
-                        />
-                        <path d="M3 9h18M3 15h18" stroke="currentColor" stroke-width="1.5" />
-                    </svg>
-                </button>
-            </div> -->
+          
         </aside>
     <div class="overlay" id="overlay"></div>
 
-    <!-- Hero Section -->
     <section class="banner" aria-labelledby="invest-hero-title">
         <div class="hero__media">
             <img src="assets/JCDC/OceanArium subpage/Herobanner.svg" alt="" loading="eager" />
@@ -315,12 +298,10 @@
 
         <div class="container">
             <div class="banner__content">
-                <!-- Jeddah Central destination logo -->
                 <div class="banner__logo">
                     <img src="assets/jcdc-logo--white.ashx.svg" alt="Jeddah Central" />
                 </div>
 
-                <!-- Breadcrumbs -->
                 <nav class="banner__breadcrumbs" aria-label="Breadcrumb">
                     <a href="index.html" class="banner__breadcrumbs-link" data-i18n="invest.breadcrumb.home">Home</a>
                     <span class="banner__breadcrumbs-separator">
@@ -356,10 +337,8 @@
                 </nav>
 
                 <div>
-                    <!-- Title -->
                     <h1 class="banner__title">Oceanarium</h1>
 
-                    <!-- Description -->
                     <p class="banner__description">
                         The Oceanarium provides marine education through seven interactive pavilions showcasing Red
                         Sea ecosystems, conservation research, and coastal biodiversity for visitors of all ages.
@@ -369,10 +348,8 @@
         </div>
     </section>
 
-    <!-- Industrial Heritage and Environmental Education -->
     <section class="destination-highlight">
         <div class="destination-highlight__content">
-            <!-- Top Stats -->
             <div class="destination-highlight__stats">
                 <div class="destination-highlight__stat">
                     <span class="destination-highlight__stat-label">Location</span>
@@ -399,9 +376,7 @@
                 </div>
             </div>
 
-            <!-- Main Content -->
             <div class="destination-highlight__body">
-                <!-- Left -->
                 <div class="destination-highlight__text">
                     <h2 class="destination-highlight__title">Marine Education and Conservation Center</h2>
 
@@ -420,7 +395,6 @@
                     </div>
                 </div>
 
-                <!-- Right -->
                 <div class="destination-highlight__image-wrapper">
                     <img src="./assets/our story.webp" alt="Industrial Heritage and Environmental Education"
                         class="destination-highlight__image" />
@@ -429,17 +403,7 @@
         </div>
     </section>
 
-    <!-- ════════════════════════════════════════════
-        MAJOR LANDMARKS — Full-width slider
-        Track holds image-only slides centred in the viewport; previous/next
-        slides peek in from the edges. The info card (title / description /
-        Explore CTA) is a STATIC overlay at the bottom — its inner content
-        block is class-swapped (not innerHTML-swapped) on slide change.
-        Dots sit below the entire viewport.
-        Markup is fully STATIC — JS only toggles classes and computes the
-        translate transform on the track. EN/AR text is handled by
-        the i18n engine via data-i18n attributes.
-════════════════════════════════════════════ -->
+ 
 
     <section class="landmark-slider landmark-slider--no-card" id="landmark-slider" aria-roledescription="carousel"
         aria-label="Major Landmarks">
@@ -458,7 +422,6 @@
         </header>
 
         <div class="landmark-slider__viewport">
-            <!-- Track of slides (STATIC — one .landmark-slider__slide per landmark) -->
             <div class="landmark-slider__track" id="landmark-slider-track" aria-live="polite">
                 <div class="landmark-slider__slide is-active" data-landmark-slide="0" aria-roledescription="slide"
                     aria-label="1 of 4">
@@ -529,11 +492,7 @@
                     </svg>
             </button>
 
-            <!-- Static info card — does NOT translate with the track.
-                     It contains N pre-rendered content variants, only one
-                     of which has the .--active class at a time. The wrapper
-                     fades on slide change via the .is-fading class. -->
-                      <!-- Dots — sit BELOW the viewport (STATIC) -->
+           
         <ul class="landmark-slider__dots" id="landmark-slider-dots" role="tablist" aria-label="Slide navigation">
             <li>
                 <button type="button" class="landmark-slider__dot landmark-slider__dot--active" data-landmark-dot="0"
@@ -558,7 +517,6 @@
     </section>
 
 
-    <!-- Cookie Popup -->
     <div class="cookie-popup" id="cookiePopup">
         <div class="cookie-popup__content">
             <div class="cookie-popup__left">
@@ -600,8 +558,7 @@
             </button>
         </div>
     </div>
-    <!-- end Cookie Popup -->
-    <!-- Footer -->
+  
     <footer class="footer">
         <div class="footer__top">
             <a href="/" class="footer__logo-wrap">

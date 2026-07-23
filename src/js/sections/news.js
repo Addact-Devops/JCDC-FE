@@ -1,45 +1,36 @@
-/**
- * sections/news.js — News & Events
- *
- * Renders the 3 news cards from i18n data. Re-renders on language change
- * so Arabic titles and flipped arrows appear automatically.
- *
- * Images can be overridden by adding `data-images='["url1","url2","url3"]'`
- * to <div id="news-grid">; otherwise defaults below are used.
- */
 window.News = (function () {
-    "use strict";
+  "use strict";
 
-    const DEFAULT_IMAGES = [
-        "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=85",
-        "https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=800&q=85",
-        "https://images.unsplash.com/photo-1591115765373-5207764f72e7?w=800&q=85",
-    ];
+  const DEFAULT_IMAGES = [
+    "https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=800&q=85",
+    "https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=800&q=85",
+    "https://images.unsplash.com/photo-1591115765373-5207764f72e7?w=800&q=85",
+  ];
 
-    function escapeHtml(s) {
-        return String(s)
-            .replace(/&/g, "&amp;")
-            .replace(/</g, "&lt;")
-            .replace(/>/g, "&gt;")
-            .replace(/"/g, "&quot;")
-            .replace(/'/g, "&#39;");
+  function escapeHtml(s) {
+    return String(s)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#39;");
+  }
+
+  function render(grid, translations) {
+    const items = translations?.news?.items || [];
+    const learnMore = translations?.news?.learnMore || "Learn More";
+    if (!items.length) return;
+
+    let images = DEFAULT_IMAGES;
+    if (grid.dataset.images) {
+      try {
+        images = JSON.parse(grid.dataset.images);
+      } catch (_) {}
     }
 
-    function render(grid, translations) {
-        const items = translations?.news?.items || [];
-        const learnMore = translations?.news?.learnMore || "Learn More";
-        if (!items.length) return;
-
-        let images = DEFAULT_IMAGES;
-        if (grid.dataset.images) {
-            try {
-                images = JSON.parse(grid.dataset.images);
-            } catch (_) {}
-        }
-
-        grid.innerHTML = items
-            .map(
-                (title, i) => `
+    grid.innerHTML = items
+      .map(
+        (title, i) => `
       <article class="news-card">
         <div class="news-card__image">
           <img src="${images[i] || images[0]}" alt="${escapeHtml(title)}" loading="lazy" />
@@ -55,70 +46,67 @@ window.News = (function () {
         </a>
       </article>
     `,
-            )
-            .join("");
+      )
+      .join("");
+  }
+
+  function initReveal(root) {
+    const grid = root.querySelector(".news__grid");
+    if (!grid) return;
+
+    const cards = grid.querySelectorAll(".news-card");
+    cards.forEach((card, i) => {
+      card.style.transitionDelay = i * 0.95 + "s";
+    });
+
+    if (!("IntersectionObserver" in window)) {
+      grid.classList.add("in-view");
+      return;
     }
 
-    function initReveal(root) {
-        const grid = root.querySelector(".news__grid");
-        if (!grid) return;
-
-        // Each card's delay is spaced past the previous card's full
-        // animation (0.8s duration + a short pause) so they play one at a
-        // time instead of overlapping.
-        const cards = grid.querySelectorAll(".news-card");
-        cards.forEach((card, i) => {
-            card.style.transitionDelay = i * 0.95 + "s";
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          grid.classList.add("in-view");
+          observer.unobserve(grid);
         });
+      },
+      { threshold: 0, rootMargin: "0px 0px -20% 0px" },
+    );
 
-        if (!("IntersectionObserver" in window)) {
-            grid.classList.add("in-view");
-            return;
-        }
+    observer.observe(grid);
+  }
 
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (!entry.isIntersecting) return;
-                    grid.classList.add("in-view");
-                    observer.unobserve(grid);
-                });
-            },
-            { threshold: 0, rootMargin: "0px 0px -20% 0px" },
-        );
+  function init(root) {
+    root = root || document.querySelector(".news");
+    if (!root) return;
 
-        observer.observe(grid);
-    }
+    initReveal(root);
 
-    function init(root) {
-        root = root || document.querySelector(".news");
-        if (!root) return;
+    const grid =
+      root.querySelector("#news-grid1") || root.querySelector(".news__grid1");
+    if (!grid) return;
 
-        initReveal(root);
+    const bind = () => window.I18n.onLangChange((lang, t) => render(grid, t));
 
-        const grid = root.querySelector("#news-grid1") || root.querySelector(".news__grid1");
-        if (!grid) return;
-
-        // Subscribe to i18n — onLangChange fires immediately with current data
-        const bind = () => window.I18n.onLangChange((lang, t) => render(grid, t));
-
-        if (window.I18n) {
-            bind();
-        } else {
-            const poll = setInterval(() => {
-                if (window.I18n) {
-                    clearInterval(poll);
-                    bind();
-                }
-            }, 50);
-        }
-    }
-
-    if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", () => init());
+    if (window.I18n) {
+      bind();
     } else {
-        init();
+      const poll = setInterval(() => {
+        if (window.I18n) {
+          clearInterval(poll);
+          bind();
+        }
+      }, 50);
     }
+  }
 
-    return { init, render };
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", () => init());
+  } else {
+    init();
+  }
+
+  return { init, render };
 })();

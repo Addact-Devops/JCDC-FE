@@ -32,7 +32,6 @@
   </head>
 
   <body>
-    <!-- Header -->
     <header class="navbar" id="navbar">
       <div class="navbar__inner">
         <button
@@ -51,7 +50,6 @@
             width="104"
             height="56"
           />
-          <!-- Dark/colored logo — shown when scrolled -->
           <img
             class="navbar__logo--dark"
             src="assets/coporate-PNG-01 1.svg"
@@ -188,7 +186,6 @@
       </div>
     </header>
 
-    <!-- Mobile drawer -->
     <aside class="drawer" id="drawer" aria-hidden="true">
       <div class="drawer__head">
         <a href="/" class="drawer__logo">
@@ -415,25 +412,9 @@
           </a>
         </li>
       </ul>
-
-      <!-- <div class="drawer__footer">
-                <button class="lang-btn lang-btn--drawer" id="lang-btn-drawer">
-                    <span class="lang-btn__text" data-i18n="nav.lang">العربية</span>
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                        <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.5" />
-                        <path
-                            d="M12 3c-2.5 2-4 5.5-4 9s1.5 7 4 9c2.5-2 4-5.5 4-9s-1.5-7-4-9z"
-                            stroke="currentColor"
-                            stroke-width="1.5"
-                        />
-                        <path d="M3 9h18M3 15h18" stroke="currentColor" stroke-width="1.5" />
-                    </svg>
-                </button>
-            </div> -->
     </aside>
     <div class="overlay" id="overlay"></div>
 
-    <!-- Hero Section -->
     <section class="banner" aria-labelledby="invest-hero-title">
       <div class="hero__media">
         <img src="assets/JCDC/beach/Image.svg" alt="" loading="eager" />
@@ -442,12 +423,10 @@
 
       <div class="container">
         <div class="banner__content">
-          <!-- Jeddah Central destination logo -->
           <div class="banner__logo">
             <img src="assets/jcdc-logo--white.ashx.svg" alt="Jeddah Central" />
           </div>
 
-          <!-- Breadcrumbs -->
           <nav class="banner__breadcrumbs" aria-label="Breadcrumb">
             <a
               href="index.html"
@@ -492,10 +471,8 @@
           </nav>
 
           <div>
-            <!-- Title -->
             <h1 class="banner__title">Beach, Leisure & Lifestyle District</h1>
 
-            <!-- Description -->
             <p class="banner__description">
               A waterfront district featuring public beaches, hospitality
               facilities, and residential developments with direct Red Sea
@@ -505,7 +482,6 @@
         </div>
       </div>
     </section>
-    <!-- About Section -->
     <section class="our-story our-story--hoverable">
       <div class="our-story__content">
         <div class="our-story__text">
@@ -538,32 +514,15 @@
       </div>
     </section>
 
-    <!-- ════════════════════════════════════════════
-        JCD INTERACTIVE MAP
-        Six-district map with hover tooltips, zoom-on-click, and a
-        right-side info panel that swaps in attraction details when
-        an icon is clicked. Content sourced from i18n (jcdMap.*) so
-        EN/AR work. Mobile: stacks vertically (Figma 9745:19182).
-════════════════════════════════════════════ -->
     <section
       class="jcd-map jcd-map--beach"
       id="jcd-map"
       aria-label="Jeddah Central districts map"
     >
       <div class="jcd-map__container">
-        <!-- ── Map viewport (left on desktop / top on mobile) ── -->
-        <!--
-                    On mobile, .jcd-map__viewport becomes horizontally scrollable
-                    so that only the map scrolls — not the whole page. The
-                    .jcd-map__scroll wrapper holds the fixed-width canvas so
-                    the SVG retains its design proportions on small screens.
-                -->
         <div class="jcd-map__viewport" id="jcd-map-viewport">
           <div class="jcd-map__scroll">
-            <!-- Stage wraps everything that scales/translates on zoom -->
             <div class="jcd-map__stage" id="jcd-map-stage">
-              <!-- Layers: the three map visuals that zoom/translate together.
-                                 The stage background stays fixed so edge exposure is impossible. -->
               <div class="jcd-map__layers" id="jcd-map-layers">
                 <img
                   class="jcd-map__bg jcd-map__bg--mask"
@@ -574,18 +533,6 @@
                   decoding="async"
                 />
 
-                <!--
-                                SVG overlay: dim mask + 6 district paths + mobile labels.
-                                preserveAspectRatio="xMidYMid meet" matches the
-                                CSS object-fit:contain on the backgrounds — the SVG
-                                viewBox is scaled to FIT inside the viewport without
-                                cropping. Because the viewport itself has
-                                aspect-ratio: 1049/773, this is effectively a 1:1
-                                mapping, so attraction-icon coordinates (stored as
-                                % of viewport width/height in i18n) land on the same
-                                points as the underlying SVG paths.
-                            -->
-                <!-- overlay svg start -->
                 <svg
                   class="jcd-map__svg"
                   id="jcd-map-svg"
@@ -757,14 +704,11 @@
                   />
                 </svg>
 
-                <!-- overlay svg end -->
-                <!-- Attraction icon hotspots — all static buttons live in HTML, one set per district. Hidden by default; the matching set becomes visible when its district enters .is-active. left/top in % land on the same SVG coordinate frame as the district paths because .jcd-map__viewport keeps the 1049x773 aspect ratio. -->
                 <div
                   class="jcd-map__icons"
                   id="jcd-map-icons"
                   aria-live="polite"
                 >
-                  <!-- beach attractions -->
                   <button
                     type="button"
                     class="jcd-map__icon"
@@ -933,7 +877,6 @@
                       />
                     </svg>
                   </button>
-                  <!-- wellness attractions -->
                   <!-- <button
                                         type="button"
                                         class="jcd-map__icon"
@@ -1012,7 +955,6 @@
                                             />
                                         </svg>
                                     </button> -->
-                  <!-- central attractions -->
                   <button
                     type="button"
                     class="jcd-map__icon"
@@ -1097,7 +1039,6 @@
                       />
                     </svg>
                   </button>
-                  <!-- culture attractions -->
                   <button
                     type="button"
                     class="jcd-map__icon"
@@ -1182,7 +1123,6 @@
                       />
                     </svg>
                   </button>
-                  <!-- sport attractions -->
                   <button
                     type="button"
                     class="jcd-map__icon"
@@ -1267,7 +1207,6 @@
                       />
                     </svg>
                   </button>
-                  <!-- marina attractions -->
                   <button
                     type="button"
                     class="jcd-map__icon"
@@ -1438,11 +1377,8 @@
                   </button>
                 </div>
               </div>
-              <!-- /.jcd-map__layers -->
             </div>
 
-            <!-- Hover / pinned tooltip — outside the stage so it
-                             doesn't scale with the zoom. Positioned by JS. -->
             <div
               class="jcd-map__tooltip"
               id="jcd-map-tooltip"
@@ -1451,7 +1387,6 @@
             ></div>
           </div>
           <aside class="jcd-map__panel" id="jcd-map-panel" aria-live="polite">
-            <!-- Intro state — shown when no district is selected -->
             <div class="jcd-map__intro" data-panel-state="intro">
               <h2 class="jcd-map__panel-title" data-i18n="jcdMap.intro.title">
                 Six Districts. One Destination.
@@ -1472,7 +1407,6 @@
             </div>
           </aside>
         </div>
-        <!-- mobile jcd-map__intro section -->
         <div
           class="jcd-map__intro jcd-map__intro--mobile"
           data-panel-state="intro"
@@ -1491,7 +1425,6 @@
             Click on a district to learn more
           </p>
         </div>
-        <!-- Detail side-panel — sits OUTSIDE the viewport as a grid column -->
         <aside class="jcd-map__side-panel" id="jcd-map-side-panel" hidden>
           <div class="jcd-map__detail" data-panel-state="detail">
             <button
@@ -1565,10 +1498,8 @@
       </div>
     </section>
 
-    <!-- Invest in Jeddah Central -->
     <section class="invest-central">
       <div class="invest-central__content">
-        <!-- Image -->
         <div class="invest-central__image-wrapper">
           <img
             src="assets/our story.webp"
@@ -1578,7 +1509,6 @@
           />
         </div>
 
-        <!-- Content -->
         <div class="invest-central__text">
           <h2 class="invest-central__title" data-i18n="invest.title">
             Invest in Jeddah Central
@@ -1616,7 +1546,6 @@
       </div>
     </section>
 
-    <!-- Cookie Popup -->
     <div class="cookie-popup" id="cookiePopup">
       <div class="cookie-popup__content">
         <div class="cookie-popup__left">
@@ -1688,8 +1617,7 @@
         </button>
       </div>
     </div>
-    <!-- end Cookie Popup -->
-    <!-- Footer -->
+
     <footer class="footer">
       <div class="footer__top">
         <a href="https://www.pif.gov.sa/en/" class="footer__logo-wrap">

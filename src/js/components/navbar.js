@@ -1,10 +1,3 @@
-/**
- * components/navbar.js — Site navbar
- *
- * Reusable across pages. Handles:
- *   • Transparent → solid on scroll
- *   • Desktop dropdown toggle (click, outside-click, Escape)
- */
 window.Navbar = (function () {
   "use strict";
 
@@ -50,7 +43,6 @@ window.Navbar = (function () {
         e.stopPropagation();
         const open = item.classList.contains("is-open");
 
-        // Close all others first
         items.forEach((i) => {
           i.classList.remove("is-open");
           i.querySelector("[data-dropdown-toggle]")?.setAttribute(
@@ -66,7 +58,6 @@ window.Navbar = (function () {
       });
     });
 
-    // Close on outside click
     document.addEventListener("click", (e) => {
       if (!e.target.closest("[data-dropdown]")) {
         items.forEach((i) => {
@@ -79,7 +70,6 @@ window.Navbar = (function () {
       }
     });
 
-    // Close on Escape
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape") {
         items.forEach((i) => {

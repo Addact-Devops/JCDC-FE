@@ -264,7 +264,7 @@
     text-decoration: none;
 
     &:hover {
-      color: var(--primary-500) !important; // 👈 ADDED — stay blue on hover
+      color: var(--primary-500) !important;
     }
   }
 }
@@ -278,7 +278,6 @@
   }
 }
 
-// ── Icon button (search) ───────────────────────────────
 .icon-btn {
   width: 24px;
   height: 24px;
