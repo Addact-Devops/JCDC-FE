@@ -1,9 +1,70 @@
 (function () {
   "use strict";
 
+  function initChairmanReveal(root) {
+    const chairman = root.querySelector(".leadership__chairman");
+    if (!chairman) return;
+
+    if (!("IntersectionObserver" in window)) {
+      chairman.classList.add("in-view");
+      return;
+    }
+
+    // rootMargin shrinks the viewport's bottom edge by 45%, so it only
+    // counts as "in view" once scrolled up past roughly the middle of
+    // the screen — same treatment as .jcdc / .our-story.
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          chairman.classList.add("in-view");
+          observer.unobserve(chairman);
+        });
+      },
+      { threshold: 0, rootMargin: "0px 0px -45% 0px" },
+    );
+
+    observer.observe(chairman);
+  }
+
+  function initGridReveal(root) {
+    const grids = root.querySelectorAll(".leadership__grid");
+
+    grids.forEach((grid) => {
+      const cards = grid.querySelectorAll(".leader-card");
+      cards.forEach((card, i) => {
+        card.style.transitionDelay = i * 0.1 + "s";
+      });
+
+      if (!("IntersectionObserver" in window)) {
+        grid.classList.add("in-view");
+        return;
+      }
+
+      // Fires again independently for the executive grid once its panel
+      // is switched to and scrolled into view — each grid gets its own
+      // observer instance.
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (!entry.isIntersecting) return;
+            grid.classList.add("in-view");
+            observer.unobserve(grid);
+          });
+        },
+        { threshold: 0, rootMargin: "0px 0px -20% 0px" },
+      );
+
+      observer.observe(grid);
+    });
+  }
+
   function init() {
     const root = document.getElementById("leadership");
     if (!root) return;
+
+    initChairmanReveal(root);
+    initGridReveal(root);
 
     const tabBtns = root.querySelectorAll("[data-leader-tab]");
     const panels = root.querySelectorAll("[data-leader-panel]");

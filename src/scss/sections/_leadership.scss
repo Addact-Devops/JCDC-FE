@@ -106,6 +106,46 @@
     // ◆ min-height REMOVED — image drives the height
   }
 
+  // ==========================================
+  // Fading entrance — portrait and text reveal toward each other
+  // Triggered by `.leadership__chairman.in-view`, added via
+  // IntersectionObserver in leadership.js. The photo enters from the
+  // left (fadeInLeft) and the text from the right (fadeInRight), with a
+  // slight stagger, so they converge toward the center.
+  // ==========================================
+  &__chairman-photo,
+  &__chairman-body {
+    opacity: 0;
+    transition:
+      opacity 0.9s var(--ease),
+      transform 0.9s var(--ease);
+  }
+
+  &__chairman-photo {
+    transform: translateX(-40px);
+    transition-delay: 0.1s;
+  }
+
+  &__chairman-body {
+    transform: translateX(40px);
+    transition-delay: 0.25s;
+  }
+
+  &__chairman.in-view &__chairman-photo,
+  &__chairman.in-view &__chairman-body {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &__chairman-photo,
+    &__chairman-body {
+      transition: none;
+      opacity: 1;
+      transform: none;
+    }
+  }
+
   &__chairman-photo {
     flex: 0 0 545px; // ◆ was 0 0 420px
     height: 419px; // ◆ was 340px
@@ -181,7 +221,31 @@
   // overflow: hidden; // ◆ NEW — clip any overflow at 440px
   transition:
     transform 0.35s ease,
-    box-shadow 0.35s ease;
+    box-shadow 0.35s ease,
+    opacity 0.7s var(--ease),
+    translate 0.7s var(--ease);
+
+  // ==========================================
+  // Cascade / staggered fade-up
+  // Triggered by `.leadership__grid.in-view`, added via
+  // IntersectionObserver in leadership.js. Per-card transition-delay is
+  // set inline so cards ripple in one after another. Uses the
+  // `translate` property (not `transform`) so it never fights the
+  // existing hover lift/box-shadow transition above.
+  // ==========================================
+  opacity: 0;
+  translate: 0 32px;
+
+  .leadership__grid.in-view & {
+    opacity: 1;
+    translate: 0 0;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+    opacity: 1;
+    translate: 0 0;
+  }
 
   &__photo {
     width: 100%;
