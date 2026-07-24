@@ -1,27 +1,14 @@
-// ==========================================
-// Contact Us Page
-// Figma: 50/50 split — form (left) + address card (right)
-// Background: surface-grey (#F3F3F3)
-// Layout uses 1440px design width with 120px gutter.
-// ==========================================
-
 .contact-us {
   width: 100%;
   background: #f9f9f9;
   padding: 64px 120px;
 
-  // ==========================================
-  // Container
-  // ==========================================
   &__container {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
   }
 
-  // ==========================================
-  // Two-column layout (50 / 50)
-  // ==========================================
   &__grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -29,9 +16,6 @@
     align-items: center;
   }
 
-  // ==========================================
-  // Left column — form / success
-  // ==========================================
   &__left {
     display: flex;
     flex-direction: column;
@@ -50,10 +34,6 @@
     color: var(--primary-500);
   }
 
-  // ==========================================
-  // Right column — address card + get directions
-  // Offset from top to align with form block on desktop.
-  // ==========================================
   &__right {
     display: flex;
     flex-direction: column;
@@ -61,9 +41,6 @@
     max-width: 486px;
     width: 100%;
     justify-self: end;
-    [dir="rtl"] & {
-      // RTL: keep same offset, content flows right-to-left
-    }
   }
 
   &.is-success {
@@ -72,9 +49,6 @@
     }
   }
 
-  // ==========================================
-  // Address card
-  // ==========================================
   &__address-card {
     background: #f3f3f3;
     border-radius: 8px;
@@ -104,9 +78,6 @@
     font-style: normal;
   }
 
-  // ==========================================
-  // Get Directions link
-  // ==========================================
   &__directions {
     display: inline-flex;
     align-items: center;
@@ -143,9 +114,6 @@
   }
 }
 
-// ==========================================
-// Contact form (BEM block — sits inside .contact-us__left)
-// ==========================================
 .contact-form {
   display: flex;
   flex-direction: column;
@@ -167,18 +135,18 @@
 
   &__submit-row {
     display: flex;
-    justify-content: flex-end; // ◆ was center — align to right per Figma
+    justify-content: flex-end;
     margin-top: 4px;
 
     [dir="rtl"] & {
-      justify-content: flex-start; // ◆ flip for RTL
+      justify-content: flex-start;
     }
   }
 
   &__submit {
-    min-width: 0; // ◆ was 160px — let button hug content
+    min-width: 0;
     background: transparent;
-    // Match Figma exactly
+
     height: 48px;
     padding: 16px;
     border-radius: 4px;
@@ -188,11 +156,6 @@
   }
 }
 
-// ==========================================
-// Contact success / "Message Received" state
-// Replaces the form on submit.
-// Layout: small icon + title + paragraph + back link.
-// ==========================================
 .contact-success {
   display: flex;
   flex-direction: column;
@@ -202,7 +165,6 @@
   padding: 32px 24px;
   outline: none;
 
-  // Respect the HTML `hidden` attribute even though we set display:flex
   &[hidden] {
     display: none;
   }
@@ -275,9 +237,6 @@
   }
 }
 
-// ==========================================
-// Large Desktop / Smaller Desktop (1024-1199)
-// ==========================================
 @media (max-width: 1199px) {
   .contact-us {
     padding: 64px 48px;
@@ -302,9 +261,6 @@
   }
 }
 
-// ==========================================
-// Tablet (768-1023)
-// ==========================================
 @media (max-width: 1023px) {
   .contact-us {
     padding: 64px 32px;
@@ -331,31 +287,27 @@
   }
 }
 
-// ==========================================
-// Mobile (≤ 767) — per Figma mobile design
-// Stack vertically: heading → form → submit → address card → directions
-// ==========================================
 @media (max-width: 767px) {
   .contact-us {
-    padding: 64px 16px; // ◆ Figma exact
+    padding: 64px 16px;
 
     &__grid {
-      grid-template-columns: 1fr; // ◆ single column
-      gap: 32px; // ◆ spacing between form and address
+      grid-template-columns: 1fr;
+      gap: 32px;
     }
 
     &__left {
-      gap: 24px; // ◆ Figma — between heading and form
+      gap: 24px;
     }
 
     &__heading {
-      font-size: 32px; // ◆ H3 per Figma
-      margin-bottom: 0; // ◆ gap on parent handles spacing
+      font-size: 32px;
+      margin-bottom: 0;
       line-height: 1.2;
     }
 
     &__right {
-      padding-top: 0; // ◆ no offset on mobile
+      padding-top: 0;
       gap: 24px;
     }
 
@@ -365,19 +317,17 @@
     }
 
     &__address-title {
-      font-size: 20px; // ◆ H5 per Figma
+      font-size: 20px;
     }
 
     &__address-text {
-      font-size: 14px; // ◆ Regular per Figma
+      font-size: 14px;
     }
   }
 
   .contact-form {
     gap: 20px;
 
-    // ◆ First/Last name STAY side-by-side on mobile per Figma
-    // (Don't collapse to single column unless screen is very narrow)
     &__row {
       grid-template-columns: 1fr 1fr;
       gap: 16px;
@@ -390,11 +340,10 @@
     }
 
     &__submit-row {
-      justify-content: flex-end; // ◆ Figma — submit aligned to right
+      justify-content: flex-end;
       margin-top: 4px;
     }
 
-    // ◆ Mobile submit per Figma — filled gold (not outlined)
     &__submit {
       min-width: 0;
       height: 48px;
@@ -409,10 +358,6 @@
   }
 }
 
-// ==========================================
-// Small Mobile (≤ 480)
-// Now collapse first/last name row to single column
-// ==========================================
 @media (max-width: 480px) {
   .contact-us {
     padding: 64px 16px;
@@ -425,15 +370,12 @@
 
   .contact-form {
     &__row {
-      grid-template-rows: 1fr; // ◆ stack on very small screens
+      grid-template-rows: 1fr;
       gap: 20px;
     }
   }
 }
 
-// ==========================================
-// Extra Small Mobile (≤ 390) — Galaxy S8 etc
-// ==========================================
 @media (max-width: 390px) {
   .contact-us {
     padding: 40px 16px;

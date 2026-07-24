@@ -11,10 +11,6 @@
 
   overflow: hidden;
 
-  // ==========================================
-  // Background Vector
-  // ==========================================
-
   &::before {
     content: "";
 
@@ -36,10 +32,6 @@
     pointer-events: none;
   }
 
-  // ==========================================
-  // Container
-  // ==========================================
-
   &__content {
     width: 100%;
     max-width: 1440px;
@@ -58,15 +50,40 @@
     margin: 0 auto;
   }
 
-  // ==========================================
-  // Left Content
-  // ==========================================
-
   &__left {
     flex: 0 0 449px;
 
     display: flex;
     align-items: center;
+  }
+
+  &__left,
+  &__media {
+    opacity: 0;
+    transform: translateY(32px);
+    transition:
+      opacity 0.9s var(--ease),
+      transform 0.9s var(--ease);
+    transition-delay: 0.1s;
+  }
+
+  &__media {
+    transition-delay: 1s;
+  }
+
+  &.in-view &__left,
+  &.in-view &__media {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &__left,
+    &__media {
+      transition: none;
+      opacity: 1;
+      transform: none;
+    }
   }
 
   &__title {
@@ -84,10 +101,6 @@
       font-family: var(--font-ar);
     }
   }
-
-  // ==========================================
-  // Right Image
-  // ==========================================
 
   &__media {
     flex: 1;
@@ -141,10 +154,6 @@
   }
 }
 
-// ==========================================
-// Tablet
-// ==========================================
-
 @media (max-width: 1024px) {
   .jcdc {
     min-height: auto;
@@ -166,10 +175,6 @@
     }
   }
 }
-
-// ==========================================
-// Mobile
-// ==========================================
 
 @media (max-width: 768px) {
   .jcdc {
@@ -209,10 +214,6 @@
     }
   }
 }
-
-// ==========================================
-// Small Mobile
-// ==========================================
 
 @media (max-width: 480px) {
   .jcdc {

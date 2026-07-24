@@ -1,109 +1,97 @@
-// ==========================================
-// Pagination — shared by search, news listing
-// Figma: prev/[1][2]…[15]/next, square buttons,
-// active = soft blue background, others = white with primary-500 border.
-// ==========================================
-
 .pagination {
-    display: flex;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  &__item {
+    display: inline-flex;
+  }
+
+  &__btn {
+    min-width: 40px;
+    height: 40px;
+    padding: 0 8px;
+    border-radius: 4px;
+    border: 1px solid var(--primary-500);
+    background: var(--surface-white);
+    color: var(--primary-500);
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1;
+    cursor: pointer;
+
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 8px;
-    margin: 0;
-    padding: 0;
-    list-style: none;
 
-    &__item {
-        display: inline-flex;
+    text-decoration: none;
+    transition:
+      background var(--dur) var(--ease),
+      color var(--dur) var(--ease),
+      border-color var(--dur) var(--ease);
+
+    &:hover:not(:disabled):not(&--active):not(&--ellipsis) {
+      background: var(--primary-500);
+      color: var(--surface-white);
     }
 
-    &__btn {
-        min-width: 40px;
-        height: 40px;
-        padding: 0 8px;
-        border-radius: 4px;
-        border: 1px solid var(--primary-500);
-        background: var(--surface-white);
+    &:focus-visible {
+      outline: 2px solid var(--primary-500);
+      outline-offset: 2px;
+    }
+
+    &:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    &--active {
+      background: rgba(0, 118, 169, 0.1);
+      color: var(--primary-500);
+      cursor: default;
+
+      &:hover {
+        background: rgba(0, 118, 169, 0.1);
         color: var(--primary-500);
-        font-family: var(--font-body);
-        font-size: 14px;
-        font-weight: 700;
-        line-height: 1;
-        cursor: pointer;
-
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-
-        text-decoration: none;
-        transition:
-            background var(--dur) var(--ease),
-            color var(--dur) var(--ease),
-            border-color var(--dur) var(--ease);
-
-        &:hover:not(:disabled):not(&--active):not(&--ellipsis) {
-            background: var(--primary-500);
-            color: var(--surface-white);
-        }
-
-        &:focus-visible {
-            outline: 2px solid var(--primary-500);
-            outline-offset: 2px;
-        }
-
-        &:disabled {
-            opacity: 0.4;
-            cursor: not-allowed;
-        }
-
-        // Active page — soft blue background, primary text
-        &--active {
-            background: rgba(0, 118, 169, 0.10);
-            color: var(--primary-500);
-            cursor: default;
-
-            &:hover {
-                background: rgba(0, 118, 169, 0.10);
-                color: var(--primary-500);
-            }
-        }
-
-        // Prev / Next arrow buttons
-        &--nav svg {
-            width: 16px;
-            height: 16px;
-
-            [dir="rtl"] & {
-                transform: scaleX(-1);
-            }
-        }
-
-        // "..." ellipsis (non-interactive)
-        &--ellipsis {
-            border-color: transparent;
-            background: transparent;
-            cursor: default;
-            color: var(--text-500);
-
-            &:hover {
-                background: transparent;
-                color: var(--text-500);
-            }
-        }
+      }
     }
+
+    &--nav svg {
+      width: 16px;
+      height: 16px;
+
+      [dir="rtl"] & {
+        transform: scaleX(-1);
+      }
+    }
+
+    &--ellipsis {
+      border-color: transparent;
+      background: transparent;
+      cursor: default;
+      color: var(--text-500);
+
+      &:hover {
+        background: transparent;
+        color: var(--text-500);
+      }
+    }
+  }
 }
 
-// ==========================================
-// Mobile (≤ 768)
-// ==========================================
 @media (max-width: 768px) {
-    .pagination {
-        gap: 6px;
+  .pagination {
+    gap: 6px;
 
-        &__btn {
-            min-width: 36px;
-            height: 36px;
-            font-size: 13px;
-        }
+    &__btn {
+      min-width: 36px;
+      height: 36px;
+      font-size: 13px;
     }
+  }
 }

@@ -38,6 +38,21 @@ const FILES = [
   'sections/landmark-slider.js',
   'sections/attraction-page.js',
   'sections/jcd-map.js',
+  'sections/vision-mission.js',
+  'sections/core-values.js',
+  'sections/culture.js',
+  'sections/jcdc.js',
+  'sections/attractions.js',
+  'sections/sustainability-design.js',
+  'sections/invest-central.js',
+  'sections/destination-highlight.js',
+  'sections/sustainability-pillars.js',
+  'sections/environmental-impact.js',
+  'sections/sustainability-action.js',
+  'sections/why-jeddah.js',
+  'sections/how-we-set.js',
+  'sections/who-register.js',
+  'sections/registration-process.js',
 ];
 
 function bundle() {

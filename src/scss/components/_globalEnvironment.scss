@@ -1,7 +1,3 @@
-// ==========================================
-// Global Environmental Standards
-// ==========================================
-
 .global-standards {
   width: 100%;
 
@@ -15,10 +11,6 @@
 
     margin: 0 auto;
   }
-
-  // ==========================================
-  // Header
-  // ==========================================
 
   &__header {
     display: flex;
@@ -56,10 +48,6 @@
     color: var(--text-500);
   }
 
-  // ==========================================
-  // Grid
-  // ==========================================
-
   &__grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -68,10 +56,6 @@
     column-gap: 40px;
     row-gap: 32px;
   }
-
-  // ==========================================
-  // Item
-  // ==========================================
 
   &__item {
     position: relative;
@@ -116,7 +100,7 @@
 
       object-fit: contain;
 
-      filter: grayscale(100%); //  grey by default
+      filter: grayscale(100%);
       transition: filter 0.4s ease;
     }
   }
@@ -148,10 +132,6 @@
   }
 }
 
-// ==========================================
-// Tablet
-// ==========================================
-
 @media (max-width: 1024px) {
   .global-standards {
     padding: 56px 48px;
@@ -179,10 +159,6 @@
     }
   }
 }
-
-// ==========================================
-// Mobile
-// ==========================================
 
 @media (max-width: 768px) {
   .global-standards {
@@ -219,7 +195,7 @@
     }
 
     &__item {
-      flex: 0 0 210px; // important
+      flex: 0 0 210px;
       width: 210px;
       min-height: 229px;
       overflow: visible;
@@ -243,10 +219,6 @@
     }
   }
 }
-
-// ==========================================
-// Small Mobile
-// ==========================================
 
 @media (max-width: 480px) {
   .global-standards {

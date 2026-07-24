@@ -1,55 +1,11 @@
-// ==========================================================================
-//  JCD Map — Interactive 6-District Map
-//  Layout matches the provided Figma screenshots:
-//    • Default (jcdc.html): map on the LEFT (≤1045 × 770 px), solid dark
-//      panel on the RIGHT. The two are a real 2-column grid — the panel
-//      is NOT an absolute overlay, so it never sits on top of the map.
-//    • Selected (jcdc.html click or sub-page auto-select): same layout;
-//      the map dims everything except the active district and zooms
-//      slightly; the panel switches to the detail card (image flush at
-//      top, close X on top-inline-start corner of the image, then title,
-//      divider, description, CTA).
-//
-//  Hard constraints (from the latest brief)
-//    • Component max height: 770 px on desktop.
-//    • Right panel never overlaps the map.
-//    • Hover must register on the FULL fill area of each district
-//      (transparent fills used to swallow pointer events — fixed with
-//      `pointer-events: all`).
-//    • Attraction icons must clip to the active district's territory
-//      (CSS handles the placement; JS hides any icon whose centre falls
-//      outside the path via `isPointInFill`).
-//    • Sub-pages reuse this same component with `data-default-district`
-//      and `data-no-intro` so they boot straight into the detail view
-//      for the matching district.
-// ==========================================================================
-
 .jcd-map {
   scroll-margin-top: 96px;
   position: relative;
   width: 100%;
   overflow: hidden;
-  // Pure black — what shows through any gap between adjacent district
-  // paths (the requested "black gap" treatment).
-  // background: #000;
-  // Account for the project's fixed navbar (96 px tall + a little
-  // breathing room) on anchor jumps and `scrollIntoView` so the
-  // close X and the panel top are not hidden behind the header.
+
   scroll-margin-top: 100px;
 
-  // ── 2-column grid (map | panel) ───────────────────────────────
-  //  • Map column: flexible (1fr) — fills whatever space the panel
-  //    column doesn't take. JS reads the column's actual rendered
-  //    width at zoom-time (see applyZoom in jcd-map.js), so it isn't
-  //    tied to a hardcoded pixel value and adapts to this automatically.
-  //  • Panel column: 561px at the 1440px max-width (giving the map
-  //    879px, matching the original design), shrinking down to a
-  //    360px floor so it never gets crushed — and crucially, never a
-  //    fixed px width, so the grid's total never exceeds the
-  //    container and the panel can't be clipped on screens narrower
-  //    than 1440px.
-  //  Grid `align-items` is `stretch` by default, so the panel column
-  //  matches whatever height the map column produces.
   &__container {
     position: relative;
     z-index: 1;
@@ -57,7 +13,6 @@
     margin: 0;
     padding: 0;
 
-    // JS adds .is-detail when a district is selected
     &.is-detail {
       max-width: 1440px;
       margin: 0 auto;
@@ -67,20 +22,11 @@
       align-items: stretch;
     }
 
-    // RTL — `direction` is inherited from <html dir="rtl">, and CSS
-    // Grid mirrors column order whenever its own direction is rtl
-    // (column 1 renders on the physical right instead of the left).
-    // That would flip this 2-column grid to map-right/panel-left.
-    // Lock the grid itself to ltr so the physical layout always
-    // matches the EN version (map left, side-panel right); direction
-    // is handed back to rtl on the two children below so their text
-    // still reads correctly.
     [dir="rtl"] &.is-detail {
       direction: ltr;
     }
   }
 
-  // Viewport overrides when grid detail layout is active
   &__container.is-detail &__viewport {
     aspect-ratio: unset;
     width: 100%;
@@ -110,32 +56,10 @@
     position: relative;
     width: 100%;
     height: 100%;
-    // Matches the dark edge of the stage background so the tiny sliver
-    // exposed when a district zooms near the SVG boundary is seamless.
+
     background: #080808;
   }
 
-  // Stage — by default just fills the viewport (100%/inset:0), exactly
-  // like before: pure CSS, correct on first paint with zero dependency
-  // on JS having run yet.
-  //
-  // Once a district is active (.is-detail below), it switches to its
-  // native 1440x773 design size instead, and JS applies ONE computed
-  // transform (see applyZoom in jcd-map.js) that zooms into that
-  // district. This only needs to happen in detail mode — which is only
-  // ever entered via a user click, i.e. JS is already running by
-  // definition — so there's no flash-of-unfit-map risk the way there
-  // would be if this applied on cold page load too.
-  //
-  // Native size + one transform (rather than object-fit/preserveAspect-
-  // Ratio) is deliberate: those bake in a fixed, centred crop at layout
-  // time that a later ancestor transform can only rigidly scale/move —
-  // it can't reveal a different region — which made off-centre
-  // districts (e.g. Culture, hugging the map's west edge) render mostly
-  // empty. All three map visuals (background image here, plus the mask
-  // img + SVG + icons nested inside __layers) live inside this element,
-  // so the single shared transform keeps them moving together as one
-  // unit with no possibility of drifting out of sync.
   &__stage {
     position: absolute;
     inset: 0;
@@ -156,16 +80,11 @@
     height: 773px;
   }
 
-  // Layers — plain stacking wrapper for the mask img + SVG + icons; it
-  // inherits the zoom transform from __stage, its parent.
   &__layers {
     position: absolute;
     inset: 0;
   }
 
-  // Background images (mask img + SVG viewBox both 1440 × 773, matching
-  // the source images' native size exactly — no object-fit/preserveAspect-
-  // Ratio cropping or stretching needed since there's no aspect mismatch)
   &__bg {
     position: absolute;
     inset: 0;
@@ -183,7 +102,6 @@
     transition: opacity 0.45s var(--ease);
   }
 
-  // SVG overlay: dim-mask + 6 district paths + labels
   &__svg {
     position: absolute;
     inset: 0;
@@ -192,21 +110,7 @@
     z-index: 2;
   }
 
-  // ══════════════════════════════════════════════════════════════
-  //  District polygons
-  //  --------------------------------------------------------------
-  //   pointer-events: all  →  Critical fix. With a transparent fill
-  //                           (rgba(_,0)), the default
-  //                           `pointer-events: visiblePainted` only
-  //                           registers hits on the 1.5 px stroke,
-  //                           which is why hover felt unreliable on
-  //                           the interior of each shape. `all`
-  //                           makes the entire fill area hit-test
-  //                           regardless of paint.
-  //   stroke #000          →  Black gaps between districts.
-  // ══════════════════════════════════════════════════════════════
   .jcd-map__district {
-    // fill: rgba(204, 162, 88, 0);
     stroke: #000;
     stroke-width: 0;
     stroke-linejoin: round;
@@ -226,29 +130,17 @@
     }
   }
 
-  // ── Dim layer (spotlight on the active district) ──────────────
-  //  Faded in only when the viewport carries .is-detail. The SVG
-  //  <mask> punches out the active district's path so it stays
-  //  bright while everything else darkens. Strong opacity (0.85)
-  //  matches the Figma's near-black inactive-district treatment.
   &__dim {
-    // fill: #000;
     opacity: 0;
     pointer-events: none;
     transition: opacity 0.45s var(--ease);
   }
 
-  // Reserved (JS no-op) — kept in DOM for backwards compat.
   &__hover-fill {
     pointer-events: none;
     opacity: 0;
   }
 
-  // ── District name labels (centroids, JS-positioned) ───────────
-  //  Hidden by default; `.is-visible` is toggled by JS to show the
-  //  matching label on hover/focus. Sibling combinators can't span
-  //  the <g> wrappers around paths vs. labels, so a class is the
-  //  simplest reliable mechanism.
   &__label {
     font-family: var(--font-body);
     font-size: 20px;
@@ -259,27 +151,12 @@
     pointer-events: none;
     opacity: 0;
     transition: opacity 0.2s var(--ease);
-    // letter-spacing: 0.2px;
-    // Subtle dark halo so white text stays readable over both
-    // satellite imagery and the gold hover fill.
-    paint-order: stroke fill;
-    // stroke: rgba(0, 0, 0, 0.85);
-    // stroke-width: 3px;
-    // stroke-linejoin: round;
 
-    // `text-anchor` defaults to "start", which is direction-aware: it
-    // anchors the LEFT edge of the text to x for English but the
-    // RIGHT edge for Arabic (RTL) — so the same x makes Arabic grow
-    // leftward while English grows rightward, landing the two
-    // languages on opposite sides of x instead of the same spot.
-    // "middle" centres the text on x regardless of script direction;
-    // tspans inherit it automatically. The x values on each label
-    // element have been recentred to match (see jcdc.html /
-    // sub-pages) so English renders pixel-identical to before.
+    paint-order: stroke fill;
+
     text-anchor: middle;
   }
 
-  // ── Attraction-icon tooltip ────────────────────────────────────
   &__tooltip {
     position: absolute;
     z-index: 6;
@@ -316,17 +193,16 @@
     }
   }
 
-  // ── Attraction icon hotspots ──────────────────────────────────
   &__icons {
     position: absolute;
     inset: 0;
     z-index: 3;
-    pointer-events: none; // children re-enable
+    pointer-events: none;
   }
 
   &__icon {
     position: absolute;
-    // Counter-scale to compensate for stage zoom (inline CSS var)
+
     transform: translate(-50%, -50%) scale(var(--icon-counter-scale, 1));
     width: 44px;
     height: 44px;
@@ -348,12 +224,6 @@
       background 0.2s var(--ease),
       transform 0.25s var(--ease);
 
-    // CRITICAL: the `display: flex` above overrides the user-
-    // agent default for `[hidden]`, so non-active icons keep
-    // showing in detail mode. This rule restores the expected
-    // behaviour for hidden icons (and for icons whose centre
-    // falls outside the active district — see syncIconVisibility
-    // in sections/jcd-map.js).
     &[hidden] {
       display: none !important;
     }
@@ -373,57 +243,29 @@
     }
   }
 
-  // ══════════════════════════════════════════════════════════════
-  //  Detail-mode toggles
-  //  --------------------------------------------------------------
-  //  .is-detail is added to .__viewport when a district is
-  //  selected (click or `data-default-district` auto-select on a
-  //  sub-page). Restores the spotlight: dim everything else, zoom
-  //  the stage, fade in the icons. Note that the active district
-  //  itself gets NO border (per brief) — fill AND stroke are both
-  //  forced off, so the only boundary visible is the natural
-  //  transition between the dim mask (outside) and the bright
-  //  satellite (inside).
-  // ══════════════════════════════════════════════════════════════
   &__viewport.is-detail {
-    // Hide Map2 overlay → cleaner satellite render
     .jcd-map__bg--overlay {
       opacity: 0;
     }
 
-    // No hover labels in detail mode (district name lives in panel)
     .jcd-map__label {
       opacity: 0 !important;
     }
 
-    // Strong dim: 0.92 so inactive districts read as near-black,
-    // matching the Figma's heavy contrast between active and dim.
     .jcd-map__dim {
       opacity: 0.92;
     }
 
-    // Defensive: kill the legacy gold hover-fill path in case
-    // older JS is still around to update its `d`. The path stays
-    // in the DOM but is hard-hidden so nothing it does can paint
-    // a cream/gold border around the active district.
     .jcd-map__hover-fill {
       display: none !important;
       opacity: 0 !important;
       visibility: hidden !important;
     }
 
-    // Lock pointer events out on inactive districts so the user
-    // can't fight the active selection while reading the panel.
     .jcd-map__district:not(.is-active) {
       pointer-events: none;
     }
 
-    // Active district: NO fill AND NO stroke. The previous build
-    // kept a 1.5 px black stroke which, combined with the dim
-    // mask's edge anti-aliasing, occasionally read as a visible
-    // light/cream ring (the user's "white border" complaint).
-    // Removing the stroke leaves the dim/no-dim transition as
-    // the sole boundary, which is what the Figma shows.
     .jcd-map__district.is-active {
       fill: rgba(204, 159, 83, 1);
       stroke: none !important;
@@ -443,9 +285,6 @@
     }
   }
 
-  // ══════════════════════════════════════════════════════════════
-  //  Panel — absolute overlay, bottom-right of the map viewport
-  // ══════════════════════════════════════════════════════════════
   &__panel {
     position: absolute;
     bottom: 0;
@@ -470,7 +309,6 @@
     }
   }
 
-  // ── Detail side-panel (grid column, shown on district select) ─
   &__side-panel {
     position: relative;
     z-index: 2;
@@ -497,7 +335,6 @@
       display: none;
     }
 
-    // Title inside the detail panel is white and smaller
     .jcd-map__panel-title {
       font-size: 40px;
       line-height: 1.15;
@@ -512,8 +349,6 @@
     }
   }
 
-  // ── Intro state — centred copy ────────────────────────────────
-  //  Used on jcdc.html before any district has been clicked.
   &__intro {
     padding: 32px 14.5px;
     margin: 0 0 32px 0;
@@ -524,7 +359,6 @@
     }
   }
 
-  // Shared text styling
   &__panel-title {
     margin: 0;
     font-family: var(--font-body);
@@ -586,13 +420,6 @@
     margin-top: 16px;
   }
 
-  // ── Detail state ──────────────────────────────────────────────
-  //  The latest jcdc.html structure is FLAT — close button, image
-  //  wrap, title, divider, description, and CTA are all immediate
-  //  children of .jcd-map__detail (no inner .jcd-map__detail-body
-  //  wrapper). So we put the side padding on the detail container
-  //  itself and zero it out for the image wrap so the image can
-  //  remain flush with the panel edges.
   &__detail {
     position: relative;
     display: flex;
@@ -607,11 +434,6 @@
     }
   }
 
-  // ── Image wrap — flush with panel edges (top, left, right) ────
-  //  The detail container has 60px horizontal padding, so we use
-  //  negative margins to push the image back out to the panel's
-  //  full width. Negative top margin (-50px) accounts for the
-  //  default flex gap from `flex-direction: column`.
   &__detail-img-wrap {
     position: relative;
     width: 100%;
@@ -622,7 +444,6 @@
     margin: 0;
   }
 
-  // CONTENT WRAPPER
   &__detail-content {
     display: flex;
     flex-direction: column;
@@ -637,10 +458,6 @@
     display: block;
   }
 
-  // Close button — top-inline-start of the panel. Position is
-  // relative to .jcd-map__detail (which is position: relative).
-  // The ring + heavier background ensure visibility against any
-  // image colour the panel happens to display.
   &__close {
     position: absolute;
     top: 16px;
@@ -682,9 +499,6 @@
     }
   }
 
-  // Optional inner wrapper — supported for backwards compat with
-  // any markup that DOES still wrap text in .jcd-map__detail-body.
-  // The wrapper resets the parent padding to avoid doubling it.
   &__detail-body {
     padding: 0;
     flex: 1;
@@ -707,15 +521,10 @@
   }
 }
 
-// ──────────────────────────────────────────────────────────────────────
-//  Hover-driven label visibility (class is toggled by JS — see
-//  setHoverDistrict in sections/jcd-map.js).
-// ──────────────────────────────────────────────────────────────────────
 .jcd-map__viewport:not(.is-detail) .jcd-map__label.is-visible {
   opacity: 1;
 }
 
-// Mobile intro block: hidden on desktop, visible only on ≤ 991px
 .jcd-map__intro--mobile {
   display: none;
 }
@@ -728,7 +537,6 @@
 }
 
 @media (max-width: 991px) {
-  // Hide the panel intro (inside aside) on mobile — replaced by the block below the map
   .jcd-map__panel [data-panel-state="intro"]:not(.jcd-map__intro--mobile) {
     display: none;
   }
@@ -737,15 +545,11 @@
     display: block;
   }
 
-  // Hide mobile intro when a district is active
   .jcd-map__container.is-detail ~ .jcd-map__intro--mobile {
     display: none;
   }
 }
 
-// ──────────────────────────────────────────────────────────────────────
-//  Tablet (≤ 1199 px) — same 2-column layout, tighter panel padding
-// ──────────────────────────────────────────────────────────────────────
 @media (max-width: 1199px) {
   .jcd-map__container.is-detail {
     grid-template-columns: minmax(0, 1fr) minmax(360px, 480px);
@@ -768,14 +572,7 @@
   }
 }
 
-// ──────────────────────────────────────────────────────────────────────
-//  Tablet portrait / small laptop (≤ 991 px)
-//  Viewport is a fixed-height scroll box — users pan the full-res map
-//  horizontally and vertically, and scroll down inside the box to reach
-//  the intro panel below the map.
-// ──────────────────────────────────────────────────────────────────────
 @media (max-width: 991px) {
-  // Both idle and detail mode: single column, map on top, panel below
   .jcd-map__container,
   .jcd-map__container.is-detail {
     display: block;
@@ -784,7 +581,6 @@
     max-height: none;
   }
 
-  // Viewport: fixed-height scroll window in both modes
   .jcd-map__viewport,
   .jcd-map__container.is-detail .jcd-map__viewport {
     display: block;
@@ -800,25 +596,21 @@
     scrollbar-width: thin;
   }
 
-  // Lock scrolling when a district is active — zoom transform handles the view
   .jcd-map__viewport.is-detail {
     overflow: hidden;
   }
 
-  // Scroll: full-res map at 760px wide, height derived from aspect-ratio
   .jcd-map__scroll {
     width: 100%;
     height: auto;
     aspect-ratio: 1440 / 773;
   }
 
-  // Reset the desktop -118px left offset so the full map is reachable from scroll position 0
   .jcd-map__bg--mask,
   .jcd-map__svg {
     left: 0;
   }
 
-  // Panel flows after the map inside the scroll box — reached by scrolling down
   .jcd-map__panel {
     position: relative;
     bottom: auto;
@@ -841,7 +633,6 @@
     margin-inline: -40px;
   }
 
-  // Side-panel stacks below the map in detail mode
   .jcd-map__side-panel {
     display: block;
     height: auto;
@@ -866,17 +657,11 @@
   }
 }
 
-// ──────────────────────────────────────────────────────────────────────
-//  Mobile (≤ 767 px) — viewport scrolls both axes; full-res map is
-//  panned with touch/drag, intro panel reached by scrolling down.
-//  Labels always visible (no hover on touch).
-// ──────────────────────────────────────────────────────────────────────
 @media (max-width: 767px) {
   .jcd-map {
     overflow-x: clip;
   }
 
-  // Both idle and detail: single column, map on top, panel/side-panel below
   .jcd-map__container,
   .jcd-map__container.is-detail {
     display: block;
@@ -885,7 +670,6 @@
     max-height: none;
   }
 
-  // Viewport: fixed-height scroll window — horizontal scroll only
   .jcd-map__viewport,
   .jcd-map__container.is-detail .jcd-map__viewport {
     display: block;
@@ -902,8 +686,6 @@
     scrollbar-width: thin;
   }
 
-  // Scroll: fills the viewport height exactly; width derived from aspect ratio
-  // so the map is never taller than the viewport (no vertical scroll needed).
   .jcd-map__scroll {
     height: 100%;
     width: auto;
@@ -911,13 +693,11 @@
     min-width: 100%;
   }
 
-  // Reset the desktop -118px left offset so the full map is reachable from scroll position 0
   .jcd-map__bg--mask,
   .jcd-map__svg {
     left: 0;
   }
 
-  // Panel flows after the map — full screen width
   .jcd-map__panel {
     position: relative;
     bottom: auto;
@@ -974,7 +754,6 @@
     padding: 6px 10px;
   }
 
-  // Side-panel stacks below the map in detail mode
   .jcd-map__side-panel {
     display: block;
     height: auto;

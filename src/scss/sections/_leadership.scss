@@ -1,7 +1,3 @@
-// ==========================================
-// Leadership Section
-// ==========================================
-
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -25,9 +21,6 @@
     margin: 0 auto;
   }
 
-  // ==========================================
-  // Tabs
-  // ==========================================
   &__tabs-wrap {
     display: flex;
     justify-content: center;
@@ -42,7 +35,7 @@
     display: inline-flex;
     align-items: center;
     border: 1px solid var(--secondary-500);
-    border-radius: 10px; // ◆ was 4px
+    border-radius: 10px;
     overflow: hidden;
     background: #fff;
   }
@@ -50,14 +43,14 @@
   &__tab {
     min-width: 236px;
     height: 78px;
-    padding: 10px 23px; // ◆ was 24.5px 23px
+    padding: 10px 23px;
     border: 0;
     background: transparent;
     font-family: var(--font-body);
     font-size: 24px;
     font-weight: 500;
-    line-height: 1.2; // ◆ was 1
-    color: #7c7f81; // ◆ was var(--secondary-500)
+    line-height: 1.2;
+    color: #7c7f81;
     cursor: pointer;
     transition:
       background 0.3s ease,
@@ -70,7 +63,7 @@
 
     &--active {
       background: var(--secondary-500);
-      color: #efefef; // ◆ was #fff
+      color: #efefef;
       cursor: default;
     }
   }
@@ -80,9 +73,6 @@
     align-items: center;
   }
 
-  // ==========================================
-  // Panels
-  // ==========================================
   &__panel {
     display: none;
 
@@ -91,24 +81,53 @@
     }
   }
 
-  // ==========================================
-  // Chairman Card
-  // ==========================================
   &__chairman {
     display: flex;
     align-items: center;
     gap: 24px;
-    padding: 0 20px; // ◆ unchanged
+    padding: 0 20px;
     margin-bottom: 56px;
-    border: 1px solid var(--secondary-500); // ◆ was #d6b36a
+    border: 1px solid var(--secondary-500);
     border-radius: 2px;
     overflow: hidden;
-    // ◆ min-height REMOVED — image drives the height
+  }
+
+  &__chairman-photo,
+  &__chairman-body {
+    opacity: 0;
+    transition:
+      opacity 0.9s var(--ease),
+      transform 0.9s var(--ease);
   }
 
   &__chairman-photo {
-    flex: 0 0 545px; // ◆ was 0 0 420px
-    height: 419px; // ◆ was 340px
+    transform: translateX(-40px);
+    transition-delay: 0.1s;
+  }
+
+  &__chairman-body {
+    transform: translateX(40px);
+    transition-delay: 0.25s;
+  }
+
+  &__chairman.in-view &__chairman-photo,
+  &__chairman.in-view &__chairman-body {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &__chairman-photo,
+    &__chairman-body {
+      transition: none;
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  &__chairman-photo {
+    flex: 0 0 545px;
+    height: 419px;
 
     img {
       width: 100%;
@@ -121,26 +140,26 @@
 
   &__chairman-body {
     flex: 1;
-    max-width: 460px; // ◆ was 620px (matches Figma text width)
+    max-width: 460px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: 8px; // ◆ NEW — replaces individual margins
+    gap: 8px;
   }
 
   &__chairman-role {
-    margin: 0; // ◆ was 0 0 12px
+    margin: 0;
     font-family: var(--font-body);
     font-size: 14px;
-    font-weight: 700; // ◆ was 600
-    line-height: 1.43; // ◆ was 150%
+    font-weight: 700;
+    line-height: 1.43;
     color: var(--secondary-500);
   }
 
   &__chairman-name {
-    margin: 0; // ◆ was 0 0 16px
+    margin: 0;
     font-family: var(--font-body);
-    font-size: 24px; // ◆ was 34px
+    font-size: 24px;
     font-weight: 500;
     line-height: 1.2;
     color: var(--primary-500);
@@ -151,13 +170,10 @@
     font-family: var(--font-body);
     font-size: 18px;
     font-weight: 400;
-    line-height: 1.5; // ◆ was 170%
+    line-height: 1.5;
     color: var(--text-500);
   }
 
-  // ==========================================
-  // Grid
-  // ==========================================
   &__grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -165,28 +181,37 @@
   }
 }
 
-// ==========================================
-// Leader Card
-// ==========================================
 .leader-card {
   display: flex;
   flex-direction: column;
-  gap: 8px; // ◆ NEW — replaces individual margins
-  // height: 440px; // ◆ NEW — fixed height per Figma
-
+  gap: 8px;
   padding: 20px;
-  border: 1px solid var(--secondary-500); // ◆ was #d6b36a
-  border-radius: 0; // ◆ was 2px
+  border: 1px solid var(--secondary-500);
+  border-radius: 0;
   background: #fff;
-  // overflow: hidden; // ◆ NEW — clip any overflow at 440px
   transition:
     transform 0.35s ease,
-    box-shadow 0.35s ease;
+    box-shadow 0.35s ease,
+    opacity 0.7s var(--ease),
+    translate 0.7s var(--ease);
+  opacity: 0;
+  translate: 0 32px;
+
+  .leadership__grid.in-view & {
+    opacity: 1;
+    translate: 0 0;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+    opacity: 1;
+    translate: 0 0;
+  }
 
   &__photo {
     width: 100%;
     height: 240px;
-    border-radius: 0; // ◆ was 4px
+    border-radius: 0;
     overflow: hidden;
     background: #f3f3f3;
     flex-shrink: 0;
@@ -219,40 +244,35 @@
   }
 
   &__role {
-    margin: 0; // ◆ was 0 0 8px
+    margin: 0;
     font-family: var(--font-body);
     font-size: 14px;
-    font-weight: 700; // ◆ was 600
-    line-height: 1.43; // ◆ was 150%
+    font-weight: 700;
+    line-height: 1.43;
     color: var(--secondary-500);
   }
 
   &__name {
-    margin: 0; // ◆ was 0 0 12px
+    margin: 0;
     font-family: var(--font-body);
-    font-size: 24px; // ◆ was 20px
+    font-size: 24px;
     font-weight: 500;
-    line-height: 1.2; // ◆ was 130%
+    line-height: 1.2;
     color: var(--primary-500);
   }
 
   &__description {
     margin: 0;
     font-family: var(--font-body);
-    font-size: 18px; // ◆ was 14px
+    font-size: 18px;
     font-weight: 400;
-    line-height: 1.5; // ◆ was 160%
+    line-height: 1.5;
     color: var(--text-500);
   }
 
-  // ==========================================
-  // Executive Variant
-  // ==========================================
   &--executive {
     cursor: pointer;
     text-align: start;
-    // ◆ min-height: 100% REMOVED — parent height: 440px is enough
-
     &:focus-visible {
       outline: 2px solid var(--primary-500);
       outline-offset: 2px;
@@ -268,13 +288,6 @@
   }
 }
 
-// ==========================================
-// Modal
-// ==========================================
-
-// ==========================================
-// Modal
-// ==========================================
 .leader-modal {
   position: fixed;
   inset: 0;
@@ -313,24 +326,21 @@
     }
   }
 
-  // ◆ CHANGED: was grid, now flex with items-end per Figma
   &__content {
     display: none;
     gap: 24px;
-    align-items: flex-end; // ◆ NEW — content sits at the bottom
+    align-items: flex-end;
     height: 100%;
 
     &--active {
-      display: flex; // ◆ was: grid
+      display: flex;
     }
   }
 
-  // ◆ Close button — REMOVED absolute positioning.
-  //   Now lives inside the body column at the top-right.
   &__close {
-    align-self: flex-end; // ◆ NEW — sit at the end of its column
-    width: 34px; // ◆ was 32px
-    height: 34px; // ◆ was 32px
+    align-self: flex-end;
+    width: 34px;
+    height: 34px;
     border: 0;
     background: transparent;
     color: var(--secondary-500);
@@ -343,11 +353,11 @@
     transition: opacity 0.3s ease;
 
     &:hover {
-      opacity: 0.7; // ◆ was rgba(204,159,83,0.1) bg
+      opacity: 0.7;
     }
 
     svg {
-      width: 24px; // ◆ was 18px — bigger to match Figma
+      width: 24px;
       height: 24px;
     }
   }
@@ -357,7 +367,7 @@
     height: 434px;
     overflow: hidden;
     border-radius: 8px 0 0 8px;
-    flex-shrink: 0; // ◆ NEW — prevent shrinking in flex
+    flex-shrink: 0;
 
     img {
       width: 100%;
@@ -367,22 +377,18 @@
     }
   }
 
-  // ◆ CHANGED: body now uses items-end + height: 100%
-  //   Close button + text block stack vertically inside.
   &__body {
-    flex: 1; // ◆ NEW — fills remaining width
-    min-width: 0; // ◆ NEW — allow text to wrap
-    height: 100%; // ◆ NEW
+    flex: 1;
+    min-width: 0;
+    height: 100%;
     min-height: 470px;
     padding: 40px 32px;
     display: flex;
     flex-direction: column;
     align-items: stretch;
     gap: 8px;
-    // ◆ justify-content: center REMOVED — content sits at bottom via items-end on parent
   }
 
-  // ◆ NEW wrapper — text content block (role / name / description)
   &__text {
     display: flex;
     flex-direction: column;
@@ -392,8 +398,8 @@
   &__role {
     margin: 0;
     font-family: var(--font-body);
-    font-size: 16px; // ◆ was 14px
-    font-weight: 700; // ◆ was 500
+    font-size: 16px;
+    font-weight: 700;
     line-height: 1.5;
     color: var(--secondary-500);
   }
@@ -402,24 +408,20 @@
     margin: 0;
     font-family: var(--font-body);
     font-size: 32px;
-    font-weight: 500; // ◆ was 700 (Figma uses Medium)
+    font-weight: 500;
     line-height: 1.2;
     color: var(--primary-500);
   }
 
   &__description {
-    margin: 0; // ◆ was 8px 0 0 — gap on parent handles it
+    margin: 0;
     font-family: var(--font-body);
-    font-size: 18px; // ◆ was 16px
+    font-size: 18px;
     font-weight: 400;
-    line-height: 1.5; // ◆ was 170%
+    line-height: 1.5;
     color: var(--text-500);
   }
 }
-
-// ==========================================
-// Tablet
-// ==========================================
 
 @media (max-width: 1199px) {
   .leadership {
@@ -445,18 +447,16 @@
     }
   }
 
-  // ◆ NEW — release the fixed 440px card height for tablet
   .leader-card {
     height: auto;
     min-height: 380px;
     overflow: visible;
 
-    // ◆ NEW — taller photo on tablet so full portrait shows (head + face + shoulders)
     &__photo {
-      height: 360px; // ◆ taller for wider cards (2-col)
+      height: 360px;
 
       img {
-        object-position: center top; // ◆ anchor at top
+        object-position: center top;
       }
     }
   }
@@ -486,230 +486,6 @@
   }
 }
 
-// ==========================================
-// Mobile
-// ==========================================
-
-// @media (max-width: 768px) {
-//     .leadership {
-//         padding: 48px 24px;
-
-//         &__tabs-wrap {
-//             margin-bottom: 32px;
-//         }
-
-//         &__tabs {
-//             width: 100%;
-
-//             display: flex;
-
-//             border: 1px solid var(--secondary-500);
-
-//             border-radius: 10px;
-
-//             overflow: hidden;
-//         }
-
-//         &__tab {
-//             flex: 1 1 50%;
-
-//             min-width: 0;
-
-//             height: 78px;
-
-//             padding: 10px 23px;
-
-//             display: flex;
-//             align-items: center;
-
-//             text-align: left;
-
-//             font-size: 20px;
-//             font-weight: 500;
-//             line-height: 1.2;
-//         }
-
-//         &__chairman {
-//             flex-direction: column;
-
-//             gap: 24px;
-
-//             padding: 16px;
-
-//             min-height: auto;
-//             margin-bottom: 16px;
-//         }
-
-//         &__chairman-photo {
-//             flex: unset;
-
-//             width: 100%;
-
-//             height: auto;
-//         }
-
-//         &__chairman-name {
-//             font-size: 28px;
-//         }
-
-//         &__chairman-description {
-//             font-size: 16px;
-//         }
-
-//         &__grid {
-//             grid-template-columns: 1fr;
-
-//             gap: 16px;
-//         }
-//     }
-
-//     .leader-card {
-//         height: auto;
-//         overflow: visible;
-
-//         &__name {
-//             font-size: 18px;
-//         }
-
-//         &__photo {
-//             height: 450px; // ◆ was 400px — taller for full-width portraits
-
-//             img {
-//                 object-position: center top; // ◆ anchor at top
-//             }
-//         }
-
-//         &__description {
-//             font-size: 14px;
-//         }
-//     }
-//     .leader-modal {
-//         padding: 12px;
-
-//         &__dialog {
-//             width: 100%;
-//             height: auto; //  auto height — content drives it
-//             max-height: calc(100vh - 24px);
-//             overflow-y: auto; //  scroll if content overflows
-//         }
-
-//         &__content {
-//             flex-direction: column;
-//             align-items: stretch;
-//             min-height: auto;
-//         }
-
-//         &__photo {
-//             width: 100%;
-//             height: auto; //  fixed height on mobile
-//             aspect-ratio: unset;
-//             border-radius: 8px 8px 0 0; //  round top corners only
-
-//             img {
-//                 width: 100%;
-//                 height: auto; //  CHANGED — natural height
-//                 object-fit: contain; //  CHANGED — show full image
-//                 object-position: center center; //  CHANGED — centered
-//             }
-//         }
-
-//         &__body {
-//             padding: 24px;
-//             gap: 8px;
-//             min-height: auto;
-//         }
-
-//         &__name {
-//             font-size: 24px;
-//         }
-
-//         &__description {
-//             font-size: 14px;
-//             line-height: 1.6;
-//         }
-//     }
-// }
-
-// ==========================================
-// Small Mobile
-// ==========================================
-
-// @media (max-width: 480px) {
-//     .leadership {
-//         padding: 64px 16px;
-//     }
-//     .leader-modal {
-//         padding: 8px;
-
-//         .leader-card__photo {
-//             height: 252px; // ◆ slightly shorter than 450px mobile
-
-//             img {
-//                 height: 252px;
-//                 object-position: center top;
-//             }
-//         }
-//         .leader-modal {
-//             padding: 8px;
-
-//             &__dialog {
-//                 max-height: calc(100vh - 16px);
-//                 margin: 0 10px;
-//             }
-
-//             &__photo {
-//                 img {
-//                     width: 100%;
-//                     height: auto;
-//                     object-fit: contain;
-//                 }
-//             }
-
-//             &__body {
-//                 padding: 20px 16px;
-//             }
-
-//             &__name {
-//                 font-size: 20px;
-//             }
-
-//             &__role {
-//                 font-size: 13px;
-//             }
-
-//             &__description {
-//                 font-size: 13px;
-//                 margin-top: 4px;
-//             }
-//         }
-//     }
-
-//     .leader-card {
-//         height: auto;
-//         overflow: visible;
-
-//         &__name {
-//             font-size: 18px;
-//         }
-
-//         &__photo {
-//             height: 240px; // ◆ was 400px — taller for full-width portraits
-
-//             img {
-//                 object-position: center top; // ◆ anchor at top
-//             }
-//         }
-
-//         &__description {
-//             font-size: 14px;
-//         }
-//     }
-// }
-
-// ==========================================
-// Mobile (≤ 768) — modal per Figma node 14939:22475
-// Layout: photo on top (319px) + close button overlay + body below
-// ==========================================
 @media (max-width: 768px) {
   .leadership {
     padding: 48px 24px;
@@ -766,7 +542,7 @@
       gap: 16px;
     }
     &__chairman-role {
-      text-align: center; // ◆ center role text on mobile
+      text-align: center;
     }
   }
 
@@ -791,58 +567,52 @@
     }
   }
 
-  // ==========================================
-  // ◆ MODAL — Mobile per Figma (node 14939:22475)
-  // ==========================================
   .leader-modal {
     padding: 12px;
 
     &__dialog {
       width: 100%;
-      max-width: 400px; // ◆ Figma popup width
+      max-width: 400px;
       height: auto;
       max-height: calc(100vh - 24px);
       overflow-y: auto;
       border-radius: 8px;
     }
 
-    // ◆ Content is now a vertical stack — photo on top, body below
     &__content {
       flex-direction: column;
       align-items: stretch;
       min-height: auto;
       height: auto;
-      gap: 0; // ◆ no gap — body directly under photo
+      gap: 0;
     }
 
-    // ◆ Photo: fixed 319px height, full width, cover crop
     &__photo {
       width: 100%;
-      height: 319px; // ◆ Figma exact
+      height: 319px;
       aspect-ratio: unset;
       border-radius: 8px 8px 0 0;
-      position: relative; // ◆ NEW — for close button positioning
+      position: relative;
       flex-shrink: 0;
 
       img {
         width: 100%;
-        height: 100%; // ◆ fill the 319px height
-        object-fit: cover; // ◆ crop, don't shrink
-        object-position: center 10px; // ◆ show head + face
+        height: 100%;
+        object-fit: cover;
+        object-position: center 10px;
       }
     }
 
-    // ◆ Close button — overlay ON the photo, top-right
     &__close {
       position: absolute;
       top: 16px;
-      inset-inline-end: 16px; // ◆ 16px from right (RTL-safe)
+      inset-inline-end: 16px;
       z-index: 5;
-      align-self: auto; // ◆ kill desktop align-self
+      align-self: auto;
       width: 34px;
       height: 34px;
       background: transparent;
-      color: var(--secondary-500); // ◆ gold X icon
+      color: var(--secondary-500);
 
       img,
       svg {
@@ -852,17 +622,15 @@
       }
     }
 
-    // ◆ Body — padding 20px 16px per Figma, no min-height
     &__body {
       width: 100%;
       height: auto;
       min-height: auto;
-      padding: 20px 16px; // ◆ Figma exact
-      gap: 0; // ◆ gap on __text instead
+      padding: 20px 16px;
+      gap: 0;
       background: var(--surface-white);
     }
 
-    // ◆ Text wrapper — 8px gap between role / name / description
     &__text {
       display: flex;
       flex-direction: column;
@@ -871,21 +639,21 @@
     }
 
     &__role {
-      font-size: 16px; // ◆ Figma Regular/Bold (16px)
+      font-size: 16px;
       font-weight: 700;
       line-height: 1.5;
       color: var(--secondary-500);
     }
 
     &__name {
-      font-size: 32px; // ◆ Figma H4 (32px)
+      font-size: 32px;
       font-weight: 500;
       line-height: 1.2;
       color: var(--primary-500);
     }
 
     &__description {
-      font-size: 18px; // ◆ Figma Large (18px)
+      font-size: 18px;
       font-weight: 400;
       line-height: 1.5;
       color: var(--text-500);
@@ -894,9 +662,6 @@
   }
 }
 
-// ==========================================
-// Small Mobile (≤ 480)
-// ==========================================
 @media (max-width: 480px) {
   .leadership {
     padding: 64px 16px;
@@ -923,7 +688,6 @@
     }
   }
 
-  // ◆ Modal — keep same Figma layout, slight font tweaks
   .leader-modal {
     padding: 8px;
 
@@ -934,7 +698,7 @@
     }
 
     &__photo {
-      height: 319px; // ◆ same Figma height
+      height: 319px;
 
       img {
         width: 100%;
@@ -954,7 +718,7 @@
     }
 
     &__name {
-      font-size: 28px; // ◆ slightly smaller on very small phones
+      font-size: 28px;
     }
 
     &__role {

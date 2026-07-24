@@ -1,14 +1,3 @@
-// ==========================================
-// Attraction Slider (attraction.html)
-// Figma node: 7357:20545
-// Layout:
-//   - Big "active" image with a translucent title overlay at the bottom-left
-//   - Below the image: District line + description (regular text, no card)
-//   - Below the description: a horizontally-scrollable strip of all
-//     attraction thumbnails. Clicking a thumbnail makes it the active one.
-//   - No autoplay, no prev/next arrows.
-// ==========================================
-
 .attraction-slider {
   width: 100%;
   background: var(--surface-white);
@@ -20,9 +9,6 @@
     margin: 0 auto;
   }
 
-  // ==========================================
-  // Active image with title overlay
-  // ==========================================
   &__active {
     position: relative;
     width: 100%;
@@ -31,8 +17,8 @@
 
   &__active-image {
     width: 100%;
-    max-width: 1200px; //  ADDED — Figma Fixed 1200px
-    height: 656px; //  CHANGED — Figma Fixed 656px
+    max-width: 1200px;
+    height: 656px;
     aspect-ratio: unset;
     border-radius: 8px;
     overflow: hidden;
@@ -48,16 +34,11 @@
       transition: opacity 0.35s var(--ease);
     }
 
-    // Stacked image variants — one per attraction. Only the .is-active
-    // variant is visible. Positioned absolutely so they all occupy the
-    // same box.
     &.is-fading img {
       opacity: 0.35;
     }
   }
 
-  // Single image variant inside __active-image. Only the .is-active one
-  // is displayed; the rest are hidden.
   &__active-img {
     position: absolute;
     inset: 0;
@@ -72,16 +53,13 @@
     }
   }
 
-  // Translucent title bar near the bottom-left of the image.
-  // Contains N stacked .__title variants, one per attraction. The wrapper
-  // itself fades during the swap; only the .is-active title is visible.
   &__title-overlay {
-    position: static; //  CHANGED — was absolute
-    background: transparent; //  CHANGED — no background, inside box
-    backdrop-filter: none; //  CHANGED
+    position: static;
+    background: transparent;
+    backdrop-filter: none;
     -webkit-backdrop-filter: none;
     border-radius: 0;
-    padding: 0 0 16px 0; //  CHANGED — bottom padding only
+    padding: 0 0 16px 0;
     transition: opacity 0.35s var(--ease);
 
     &.is-fading {
@@ -97,7 +75,6 @@
     line-height: 1.2;
     color: var(--primary-500);
 
-    // Stacked variants — only the .is-active one is shown
     display: none;
 
     &.is-active {
@@ -105,15 +82,8 @@
     }
   }
 
-  // ==========================================
-  // District + description (below the image)
-  // Inset 56px from each edge so it lines up with the title overlay
-  // (which is also inset 56px on both sides above).
-  // Contains N stacked .__info-variant blocks, only the .is-active one
-  // is displayed. The wrapper itself fades during the swap.
-  // ==========================================
   &__info {
-    margin: 0 0 23px 0; //  CHANGED — remove old margins
+    margin: 0 0 23px 0;
     transition: opacity 0.35s var(--ease);
 
     &.is-fading {
@@ -130,11 +100,10 @@
     border-radius: 8px;
     padding: 40px 40px 0px 40px;
 
-    margin-top: -94px; //  ADDED — overlaps slightly over image bottom
+    margin-top: -94px;
     z-index: 2;
   }
 
-  // Single info variant — only the .is-active one is shown
   &__info-variant {
     display: none;
 
@@ -169,23 +138,17 @@
     max-width: 920px;
   }
 
-  // ==========================================
-  // Thumbnail strip — horizontally scrollable
-  // Inset 56px from each edge to line up with the active image edges
-  // (minus the matching 56px gutter the title overlay uses).
-  // ==========================================
   &__strip {
     display: flex;
     gap: 13px;
     overflow-x: auto;
     overflow-y: hidden;
     margin-left: 0;
-    padding: 16px 0 5px 0; // 56px inline = matches title-overlay inset
-    scroll-padding-inline: 56px; // keep snap-aligned thumbs respecting the inset
+    padding: 16px 0 5px 0;
+    scroll-padding-inline: 56px;
     scroll-behavior: smooth;
     scroll-snap-type: x proximity;
 
-    // Hide scrollbars for a cleaner look while still allowing scroll
     scrollbar-width: none;
     -ms-overflow-style: none;
 
@@ -209,11 +172,6 @@
   }
 }
 
-// ==========================================
-// Single thumbnail
-// Inactive thumbnails are slightly dimmed; hovering or activating one
-// restores full opacity. Matches the Figma rest/hover treatment.
-// ==========================================
 .attraction-thumb {
   flex: 0 0 auto;
   width: 122px;
@@ -242,8 +200,8 @@
     border-radius: 6px;
     overflow: hidden;
     background: #f3f3f3;
-    opacity: 0.7; // dimmed at rest
-    border: 2px solid transparent; // prevent layout shifting
+    opacity: 0.7;
+    border: 2px solid transparent;
     transition:
       opacity var(--dur) var(--ease),
       transform var(--dur) var(--ease),
@@ -266,16 +224,12 @@
     line-height: 1.35;
     color: var(--primary-500);
     transition: color var(--dur) var(--ease);
-    opacity: 0.7; // dimmed at rest
+    opacity: 0.7;
   }
 
-  // Hover — full opacity, slight lift, blue label and border
   &:hover &__image,
   &:focus-visible &__image {
     opacity: 1;
-    // transform: translateY(-2px);
-    // box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
-    // border-color: var(--primary-500); // Primary blue border (#0076A9)
   }
 
   &:hover &__label,
@@ -284,11 +238,10 @@
     color: var(--primary-500);
   }
 
-  // Active thumbnail — always full opacity, blue + bold label and border
   &--active &__image {
     opacity: 1;
     box-shadow: 0 4px 12px rgba(0, 118, 169, 0.18);
-    border-color: var(--primary-500); // Primary blue border (#0076A9)
+    border-color: var(--primary-500);
   }
 
   &--active &__label {
@@ -298,9 +251,6 @@
   }
 }
 
-// ==========================================
-// Tablet (≤ 1024)
-// ==========================================
 @media (max-width: 1024px) {
   .attraction-slider {
     padding: 56px 48px 64px;
@@ -331,9 +281,6 @@
   }
 }
 
-// ==========================================
-// Mobile (≤ 768)
-// ==========================================
 @media (max-width: 768px) {
   .attraction-slider {
     padding: 64px 16px;
@@ -366,11 +313,11 @@
     }
 
     &__bottom-box {
-      width: calc(100% - 33.6px); //  CHANGED — 16.8px each side
-      margin-inline: 16.8px; //  ADDED — left/right spacing from Figma
+      width: calc(100% - 33.6px);
+      margin-inline: 16.8px;
       margin-top: -98px;
-      border-radius: 8px; //  keep radius on mobile
-      padding: 40px 16px; //  Figma: top 40px, sides 16px
+      border-radius: 8px;
+      padding: 40px 16px;
       background: rgba(255, 255, 255, 0.8);
     }
   }
@@ -384,9 +331,6 @@
   }
 }
 
-// ==========================================
-// Small Mobile (≤ 480)
-// ==========================================
 @media (max-width: 480px) {
   .attraction-slider {
     padding: 64px 16px;

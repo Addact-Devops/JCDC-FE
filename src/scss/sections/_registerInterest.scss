@@ -1,18 +1,9 @@
-// ==========================================
-// Register your interest
-// 2-col layout: left intro / right form (or success)
-// Background: cream (--secondary-50 #FAF5EE)
-// ==========================================
-
 .register {
   width: 100%;
   background: var(--secondary-50);
   padding: 64px 120px;
-  scroll-margin-top: 100px; // account for fixed header on anchor jump
+  scroll-margin-top: 100px;
 
-  // ==========================================
-  // Container
-  // ==========================================
   &__container {
     width: 100%;
     max-width: 1440px;
@@ -23,9 +14,6 @@
     align-items: start;
   }
 
-  // ==========================================
-  // Left intro column
-  // ==========================================
   &__intro {
     display: flex;
     flex-direction: column;
@@ -58,9 +46,6 @@
     color: var(--text-500);
   }
 
-  // ==========================================
-  // Right column wrapper
-  // ==========================================
   &__panel {
     background: var(--surface-white);
     border-radius: 4px;
@@ -69,15 +54,11 @@
   }
 }
 
-// ==========================================
-// Form layout
-// ==========================================
 .register-form {
   display: flex;
   flex-direction: column;
   gap: 15px;
 
-  // [hidden] attribute must override display:flex
   &[hidden] {
     display: none;
   }
@@ -97,14 +78,12 @@
     gap: 16px;
   }
 
-  // Engagement type radio cards (4-up grid)
   &__engagement-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 20px;
   }
 
-  // Conditional sub-section (interests/target/description)
   &__conditional {
     display: flex;
     flex-direction: column;
@@ -112,13 +91,11 @@
     padding-top: 8px;
     animation: register-fade-in 250ms var(--ease);
 
-    // [hidden] attribute must override display:flex
     &[hidden] {
       display: none;
     }
   }
 
-  // The character counter wrapper for textarea
   &__textarea-wrap {
     position: relative;
 
@@ -127,7 +104,6 @@
     }
   }
 
-  // Submit
   &__submit {
     margin-top: 12px;
     width: 100% !important;
@@ -149,9 +125,6 @@
   }
 }
 
-// ==========================================
-// Success state (replaces form)
-// ==========================================
 .register-success {
   display: flex;
   flex-direction: column;
@@ -159,7 +132,6 @@
   padding: 16px 0 24px;
   animation: register-fade-in 300ms var(--ease);
 
-  // [hidden] attribute must override display:flex
   &[hidden] {
     display: none;
   }
@@ -232,9 +204,6 @@
   }
 }
 
-// ==========================================
-// Tablet (≤ 1024)
-// ==========================================
 @media (max-width: 1024px) {
   .register {
     padding: 64px 0;
@@ -266,9 +235,6 @@
   }
 }
 
-// ==========================================
-// Mobile (≤ 768)
-// ==========================================
 @media (max-width: 768px) {
   .register {
     padding: 48px 0;
@@ -316,9 +282,6 @@
   }
 }
 
-// ==========================================
-// Small Mobile (≤ 480)
-// ==========================================
 @media (max-width: 480px) {
   .register {
     padding: 64px 16px;

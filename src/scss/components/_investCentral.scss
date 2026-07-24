@@ -1,51 +1,29 @@
-// ==========================================
-// Invest Central Section
-// ==========================================
-
 $primary-color: rgba(0, 118, 169, 1);
 $text-color: rgba(91, 95, 98, 1);
 
 .invest-central {
   position: relative;
-
   width: 100%;
   min-height: 717px;
-
   display: flex;
   justify-content: center;
-
   background-color: #faf5ee;
-
   overflow: hidden;
-
-  // ==========================================
-  // KEEP SAME BACKGROUND VECTOR
-  // ==========================================
 
   &::before {
     content: "";
-
     position: absolute;
-
     top: -25px;
     left: 0;
-
     width: 785.32px;
-
     height: 773px;
     background-image: url("../../../assets/vector1.svg");
     background-repeat: no-repeat;
     background-position: left top;
     background-size: contain;
-
     opacity: 0.25;
-
     pointer-events: none;
   }
-
-  // ==========================================
-  // Container
-  // ==========================================
 
   &__content {
     width: 100%;
@@ -64,10 +42,6 @@ $text-color: rgba(91, 95, 98, 1);
     margin: 0 auto;
   }
 
-  // ==========================================
-  // Image Side
-  // ==========================================
-
   &__image-wrapper {
     width: 589px;
     height: 589px;
@@ -81,6 +55,35 @@ $text-color: rgba(91, 95, 98, 1);
     position: relative;
 
     isolation: isolate;
+  }
+
+  &__image-wrapper,
+  &__text {
+    opacity: 0;
+    transform: translateY(32px);
+    transition:
+      opacity 0.9s var(--ease),
+      transform 0.9s var(--ease);
+    transition-delay: 0.1s;
+  }
+
+  &__text {
+    transition-delay: 1s;
+  }
+
+  &.in-view &__image-wrapper,
+  &.in-view &__text {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    &__image-wrapper,
+    &__text {
+      transition: none;
+      opacity: 1;
+      transform: none;
+    }
   }
 
   &__image {
@@ -97,10 +100,6 @@ $text-color: rgba(91, 95, 98, 1);
   &:hover &__image {
     transform: scale(1.02);
   }
-
-  // ==========================================
-  // Text Side
-  // ==========================================
 
   &__text {
     width: 488px;
@@ -147,10 +146,6 @@ $text-color: rgba(91, 95, 98, 1);
     }
   }
 
-  // ==========================================
-  // Tablet
-  // ==========================================
-
   @media screen and (max-width: 1024px) {
     .invest-central {
       min-height: auto;
@@ -170,10 +165,6 @@ $text-color: rgba(91, 95, 98, 1);
       }
     }
   }
-
-  // ==========================================
-  // Mobile
-  // ==========================================
 
   @media screen and (max-width: 767px) {
     min-height: auto;
@@ -220,10 +211,6 @@ $text-color: rgba(91, 95, 98, 1);
       object-fit: cover;
     }
   }
-
-  // ==========================================
-  // Small Mobile
-  // ==========================================
 
   @media screen and (max-width: 425px) {
     &::before {

@@ -1,32 +1,19 @@
-// ==========================================
-// Error Page (403 / 404)
-// Figma: cream bg (#FAF5EE), large primary code,
-// title, description and gold-outlined CTA button.
-// Layout is centered, vertically padded, sits between
-// the navbar (96px) and footer.
-// ==========================================
-
 .error-page {
   width: 100%;
-  background: var(--secondary-50); // #FAF5EE cream
+  background: var(--secondary-50);
   padding: 120px 120px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  min-height: calc(100vh - 96px - 220px); // viewport minus nav and footer
+  min-height: calc(100vh - 96px - 220px);
 
-  // Standalone variant: page has no hero banner, so the fixed
-  // 96px navbar overlaps content. Push our top padding to clear it.
   &--standalone {
     padding-block-start: calc(120px + var(--nav-height));
     min-height: calc(100vh - 220px);
   }
 
-  // ==========================================
-  // Container — centred, single column
-  // ==========================================
   &__container {
     width: 100%;
     max-width: 1200px;
@@ -40,9 +27,6 @@
     gap: 40px;
   }
 
-  // ==========================================
-  // Code (huge "403" / "404" number)
-  // ==========================================
   &__code {
     margin: 0;
     font-family: var(--font-body);
@@ -57,9 +41,6 @@
     }
   }
 
-  // ==========================================
-  // Body block (title + description)
-  // ==========================================
   &__body {
     display: flex;
     flex-direction: column;
@@ -86,23 +67,16 @@
     color: var(--text-500);
   }
 
-  // ==========================================
-  // CTA wrapper
-  // ==========================================
   &__cta-wrap {
     margin-top: 8px;
   }
 
-  // CTA — outlined gold pill with arrow
   &__cta {
     min-width: 220px;
     background: transparent;
   }
 }
 
-// ==========================================
-// Tablet (≤ 1024)
-// ==========================================
 @media (max-width: 1024px) {
   .error-page {
     padding: 80px 48px;
@@ -122,9 +96,6 @@
   }
 }
 
-// ==========================================
-// Mobile (≤ 768)
-// ==========================================
 @media (max-width: 768px) {
   .error-page {
     padding: 64px 24px;
@@ -153,9 +124,6 @@
   }
 }
 
-// ==========================================
-// Small Mobile (≤ 480)
-// ==========================================
 @media (max-width: 480px) {
   .error-page {
     padding: 80px 16px;

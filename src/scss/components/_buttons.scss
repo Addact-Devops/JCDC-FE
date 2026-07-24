@@ -1,227 +1,197 @@
-// components/_buttons.scss
-// Figma: General button 48px high, 4px radius, 1px border, 16px padding, gap 16px
-
 .btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 16px;
-    height: 48px;
-    padding: 16px;
-    border-radius: 4px;
-    border: 1px solid transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  height: 48px;
+  padding: 16px;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  background: transparent;
+  font-family: var(--font-body);
+  font-size: var(--large);
+  font-weight: 700;
+  line-height: 1.5;
+  cursor: pointer;
+  transition:
+    background var(--dur) var(--ease),
+    color var(--dur) var(--ease),
+    border-color var(--dur) var(--ease);
+  text-decoration: none;
+  white-space: nowrap;
+
+  svg {
+    flex-shrink: 0;
+    [dir="rtl"] & {
+      transform: scaleX(-1);
+    }
+  }
+
+  &--outline-cream {
+    border-color: var(--secondary-50);
+    color: var(--secondary-50);
     background: transparent;
-    font-family: var(--font-body);
-    font-size: var(--large); // 18px
-    font-weight: 700; // Bold
-    line-height: 1.5;
-    cursor: pointer;
-    transition:
-        background var(--dur) var(--ease),
-        color var(--dur) var(--ease),
-        border-color var(--dur) var(--ease);
-    text-decoration: none;
-    white-space: nowrap;
-
-    svg {
-        flex-shrink: 0;
-        [dir="rtl"] & {
-            transform: scaleX(-1);
-        }
-    }
-
-    // Outlined cream button (for JCD slider)
-    &--outline-cream {
-        border-color: var(--secondary-50);
-        color: var(--secondary-50);
-        background: transparent;
-        overflow: hidden;
-
-        svg {
-            // transform: translateX(-4px); // resting position (slightly left)
-            // transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        &:hover {
-            background: var(--secondary-50);
-            color: var(--secondary-500);
-
-            // svg {
-            //     [dir="ltr"] & {
-            //         // transform: translateX(4px);
-            //     }
-
-            //     [dir="rtl"] & {
-            //         transform: translateX(-4px) scaleX(-1);
-            //     }
-            // }
-        }
-    }
-
-    // JCD Slider button — filled cream bg, gold text + arrow
-    // Width hugs parent (full-width inside slider content)
-    // Height hugs content — single line: 48px, wraps when text is long
-    // Figma: Components/General/Buttons/Button (filled cream variant)
-    &--slider {
-        width: 100%;
-        height: auto;
-        min-height: 48px;
-        justify-content: space-between;
-        gap: 20px;
-        background: var(--secondary-50); // #faf5ee cream
-        border-color: transparent;
-        color: var(--secondary-500); // #cc9f53 gold
-        white-space: normal; // allow text wrap
-        text-align: start;
-
-        span {
-            flex: 1;
-            min-width: 0;
-        }
-
-        svg {
-            width: 24px;
-            height: 24px;
-            color: var(--secondary-500);
-            transition: transform var(--dur) var(--ease);
-        }
-
-        &:hover {
-            background: #f0e6d2; // slightly darker cream
-            color: var(--secondary-500);
-
-            svg {
-                transform: translateX(4px);
-
-                [dir="rtl"] & {
-                    transform: translateX(-4px) scaleX(-1);
-                }
-            }
-        }
-
-        &:focus-visible {
-            outline: 2px solid var(--secondary-500);
-            outline-offset: 3px;
-        }
-    }
-
-    // Filled gold
-    &--gold {
-        border-color: var(--secondary-500);
-        color: var(--secondary-500);
-
-        &:hover {
-            background: var(--secondary-500);
-            border-color: var(--secondary-500);
-            color: #e6f1f6;
-
-            svg {
-                color: #e6f1f6;
-            }
-        }
-    }
-
-    // Outlined primary
-    &--outline-primary {
-        border-color: var(--primary-500);
-        color: var(--primary-500);
-
-        &:hover {
-            background: var(--primary-500);
-            color: #fff;
-        }
-    }
-
-    // Hero CTA — white outline + transparent → cream fill + primary text on hover
-    // Used on the Invest hero ("Register your interest" button with down-arrow)
-    &--hero-cta {
-        border-color: var(--surface-white);
-        color: var(--surface-white);
-        background: transparent;
-
-        svg {
-            transition: transform var(--dur) var(--ease);
-            // Down-arrow: don't flip horizontally in RTL
-            [dir="rtl"] & {
-                transform: none;
-            }
-        }
-
-        &:hover {
-            background: var(--secondary-50);
-            border-color: var(--secondary-50);
-            color: var(--primary-500);
-
-            svg {
-                transform: translateY(3px);
-
-                [dir="rtl"] & {
-                    transform: translateY(3px);
-                }
-            }
-        }
-
-        &:focus-visible {
-            outline: 2px solid var(--secondary-50);
-            outline-offset: 3px;
-        }
-    }
-
-    // Outlined gold (cream/secondary-50 bg) — used for the form Submit button
-    &--outline-gold {
-        background: var(--surface-white);
-        border-color: var(--secondary-500);
-        color: var(--secondary-500);
-
-        &:hover {
-            background: var(--secondary-500);
-            color: var(--surface-white);
-        }
-    }
-
-    &:active {
-        transform: scale(0.98);
-    }
-}
-
-// Text button with arrow (Figma: Components/General/Buttons/Text)
-.btn-text {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    height: 32px;
-    font-family: var(--font-body);
-    font-size: var(--large); // 18px
-    font-weight: 700;
-    line-height: 1.5;
-    color: var(--secondary-500); // Gold
-    transition: gap var(--dur) var(--ease);
-    cursor: pointer;
+    overflow: hidden;
 
     &:hover {
-        color: #d6b275;
-        gap: 10px;
+      background: var(--secondary-50);
+      color: var(--secondary-500);
+    }
+  }
+
+  &--slider {
+    width: 100%;
+    height: auto;
+    min-height: 48px;
+    justify-content: space-between;
+    gap: 20px;
+    background: var(--secondary-50);
+    border-color: transparent;
+    color: var(--secondary-500);
+    white-space: normal;
+    text-align: start;
+
+    span {
+      flex: 1;
+      min-width: 0;
     }
 
-    &__arrow {
-        flex-shrink: 0;
-        transition: transform var(--dur) var(--ease);
-        [dir="rtl"] & {
-            transform: scaleX(-1);
-        }
+    svg {
+      width: 24px;
+      height: 24px;
+      color: var(--secondary-500);
+      transition: transform var(--dur) var(--ease);
     }
 
-    &:hover .btn-text__arrow {
-        transform: translate(2px, -2px);
+    &:hover {
+      background: #f0e6d2;
+      color: var(--secondary-500);
+
+      svg {
+        transform: translateX(4px);
+
         [dir="rtl"] & {
-            transform: translate(-2px, -2px) scaleX(-1);
+          transform: translateX(-4px) scaleX(-1);
         }
+      }
     }
+
+    &:focus-visible {
+      outline: 2px solid var(--secondary-500);
+      outline-offset: 3px;
+    }
+  }
+
+  &--gold {
+    border-color: var(--secondary-500);
+    color: var(--secondary-500);
+
+    &:hover {
+      background: var(--secondary-500);
+      border-color: var(--secondary-500);
+      color: #e6f1f6;
+
+      svg {
+        color: #e6f1f6;
+      }
+    }
+  }
+
+  &--outline-primary {
+    border-color: var(--primary-500);
+    color: var(--primary-500);
+
+    &:hover {
+      background: var(--primary-500);
+      color: #fff;
+    }
+  }
+
+  &--hero-cta {
+    border-color: var(--surface-white);
+    color: var(--surface-white);
+    background: transparent;
+
+    svg {
+      transition: transform var(--dur) var(--ease);
+
+      [dir="rtl"] & {
+        transform: none;
+      }
+    }
+
+    &:hover {
+      background: var(--secondary-50);
+      border-color: var(--secondary-50);
+      color: var(--primary-500);
+
+      svg {
+        transform: translateY(3px);
+
+        [dir="rtl"] & {
+          transform: translateY(3px);
+        }
+      }
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--secondary-50);
+      outline-offset: 3px;
+    }
+  }
+
+  &--outline-gold {
+    background: var(--surface-white);
+    border-color: var(--secondary-500);
+    color: var(--secondary-500);
+
+    &:hover {
+      background: var(--secondary-500);
+      color: var(--surface-white);
+    }
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+.btn-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 32px;
+  font-family: var(--font-body);
+  font-size: var(--large);
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--secondary-500);
+  transition: gap var(--dur) var(--ease);
+  cursor: pointer;
+
+  &:hover {
+    color: #d6b275;
+    gap: 10px;
+  }
+
+  &__arrow {
+    flex-shrink: 0;
+    transition: transform var(--dur) var(--ease);
+    [dir="rtl"] & {
+      transform: scaleX(-1);
+    }
+  }
+
+  &:hover .btn-text__arrow {
+    transform: translate(2px, -2px);
+    [dir="rtl"] & {
+      transform: translate(-2px, -2px) scaleX(-1);
+    }
+  }
 }
 
 @media (max-width: 767px) {
-    .btn-text {
-        // no gap change on mobile
-        color: #d6b275;
-    }
+  .btn-text {
+    color: #d6b275;
+  }
 }
