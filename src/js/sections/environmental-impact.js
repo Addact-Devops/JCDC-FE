@@ -66,11 +66,11 @@ window.EnvironmentalImpact = (function () {
         if (!reduceMotion) prepareCounters(items);
 
         items.forEach((item, i) => {
-            const delay = i * 0.15;
+            const delay = i * 0.1;
             const number = item.querySelector(".environmental-impact__number");
             const text = item.querySelector(".environmental-impact__text");
             if (number) number.style.transitionDelay = delay + "s";
-            if (text) text.style.transitionDelay = delay + 0.1 + "s";
+            if (text) text.style.transitionDelay = delay + 0.06 + "s";
         });
 
         function reveal() {

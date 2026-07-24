@@ -62,13 +62,13 @@
     opacity: 0;
     transform: translateY(32px);
     transition:
-      opacity 0.9s var(--ease),
-      transform 0.9s var(--ease);
+      opacity 0.5s var(--ease),
+      transform 0.5s var(--ease);
     transition-delay: 0.1s;
   }
 
   &__media {
-    transition-delay: 1s;
+    transition-delay: 0.6s;
   }
 
   &.in-view &__left,

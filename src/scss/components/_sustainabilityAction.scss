@@ -74,8 +74,8 @@
     opacity: 0;
     transform: translateX(60px);
     transition:
-      opacity 0.8s var(--ease),
-      transform 0.8s var(--ease);
+      opacity 0.45s var(--ease),
+      transform 0.45s var(--ease);
 
     .sustainability-action__grid.in-view & {
       opacity: 1;

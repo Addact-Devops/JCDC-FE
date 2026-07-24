@@ -7,7 +7,7 @@ window.CoreValues = (function () {
 
     const cards = grid.querySelectorAll(".core-values__card");
     cards.forEach((card, i) => {
-      card.style.transitionDelay = i * 0.95 + "s";
+      card.style.transitionDelay = i * 0.5 + "s";
     });
 
     if (!("IntersectionObserver" in window)) {

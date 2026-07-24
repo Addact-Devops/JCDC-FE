@@ -9,6 +9,7 @@
     "news": "News & Events",
     "careers": "Careers",
     "suppliers": "Suppliers",
+    "sustainability": "Sustainability",
     "contact": "Contact Us",
     "lang": "العربية",
     "dropdown": {
@@ -639,6 +640,7 @@
     "newsEvents": "NEWS & EVENTS",
     "careers": "CAREERS",
     "suppliers": "SUPPLIERS",
+    "sustainability": "SUSTAINABILITY",
     "contact": "CONTACT US",
     "privacy": "Privacy Policy",
     "terms": "Terms & Conditions",
@@ -659,14 +661,14 @@
         "id": "beach",
         "name": "Beach, Leisure & Lifestyle District",
         "description": "A dynamic shoreline escape blending leisure, hospitality, and open access to the Red Sea.",
-        "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=85",
+        "image": "https://mc-a98fcbf7-40e2-4e52-8b4f-8054-cdn-endpoint.azureedge.net/-/media/project/jcdc/jeddah-central-destination/map/map-1.ashx?rev=1c570083e67b4bf7ab7244ecc809122d",
         "href": "beach.html",
         "attractions": [
           {
             "id": "opera",
             "name": "Opera House",
             "description": "Designed with a retractable floor and three flexible theaters, the Opera House is a multipurpose cultural venue hosting performances, exhibitions, and creative collaborations — blending tradition with innovation.",
-            "image": "https://images.unsplash.com/photo-1518998053901-5348d3961a04?w=1200&q=85",
+            "image": "https://mc-a98fcbf7-40e2-4e52-8b4f-8054-cdn-endpoint.azureedge.net/-/media/project/jcdc/jeddah-central-destination/map/opera-house.ashx?rev=4af05fafda0f4d6895a8e0e07eec3ce5",
             "x": 32,
             "y": 35,
             "href": "opera.html"
@@ -675,25 +677,25 @@
             "id": "publicBeach",
             "name": "Public Beach",
             "description": "A 2.1 km open and inclusive public beach featuring accessible design, shaded walkways, family areas, cafés, and year-round water-based recreation.",
-            "image": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=85",
+            "image": "https://mc-a98fcbf7-40e2-4e52-8b4f-8054-cdn-endpoint.azureedge.net/-/media/project/jcdc/jeddah-central-destination/map/public-beach.ashx?rev=a96c39f5c2d948c797693e331b2ccab1",
             "x": 58,
             "y": 50,
             "href": "beach.html"
           },
           {
-            "id": "entertainment",
-            "name": "Entertainment Pier",
+            "id": "pier",
+            "name": "Pier",
             "description": "A vibrant hub extending into the Red Sea, offering F&B outlets, event zones, and panoramic views.",
-            "image": "https://images.unsplash.com/photo-1583492936424-067be2bbcfc1?w=1200&q=85",
+            "image": "https://mc-a98fcbf7-40e2-4e52-8b4f-8054-cdn-endpoint.azureedge.net/-/media/project/jcdc/jeddah-central-destination/map/entertainment-pier.ashx?rev=3f3e951f5bc94afaa0fe6d66eda9d0f2",
             "x": 78,
             "y": 40,
             "href": "attraction.html"
           },
           {
-            "id": "luxuryBeach",
-            "name": "Luxury BeachResort",
+            "id": "resort",
+            "name": "Resort",
             "description": "A leisure-focused hospitality anchor offering extended stays, relaxation, and direct access to the Red Sea.",
-            "image": "https://images.unsplash.com/photo-1583492936424-067be2bbcfc1?w=1200&q=85",
+            "image": "https://mc-a98fcbf7-40e2-4e52-8b4f-8054-cdn-endpoint.azureedge.net/-/media/project/jcdc/jeddah-central-destination/map/luxury-beach-resort.ashx?rev=346baf8531df422d82c3a662104bc9de",
             "x": 78,
             "y": 40,
             "href": "attraction.html"
@@ -704,7 +706,7 @@
         "id": "wellness",
         "name": "Wellness District",
         "description": "A walkable haven for innovation, healing, and holistic wellbeing.",
-        "image": "https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=1200&q=85",
+        "image": "https://mc-a98fcbf7-40e2-4e52-8b4f-8054-cdn-endpoint.azureedge.net/-/media/project/jcdc/jeddah-central-destination/map/map-1.ashx?rev=1c570083e67b4bf7ab7244ecc809122d",
         "href": "wellness.html",
         "attractions": []
       },
@@ -712,7 +714,7 @@
         "id": "central",
         "name": "Central District",
         "description": "The vibrant and cultural heart of Jeddah Central.",
-        "image": "https://images.unsplash.com/photo-1518684079-3c830dcef090?w=1200&q=85",
+        "image": "https://mc-a98fcbf7-40e2-4e52-8b4f-8054-cdn-endpoint.azureedge.net/-/media/project/jcdc/jeddah-central-destination/map/map-1.ashx?rev=1c570083e67b4bf7ab7244ecc809122d",
         "href": "centralDistrict.html",
         "attractions": [
           {
@@ -728,7 +730,7 @@
             "id": "ribbon_Park",
             "name": "Ribbon Park",
             "description": "A linear green space linking the Central and Culture & Creativity Districts, with shaded walkways and gathering areas that promote movement and connection.",
-            "image": "https://images.unsplash.com/photo-1518684079-3c830dcef090?w=1200&q=85",
+            "image": "https://mc-a98fcbf7-40e2-4e52-8b4f-8054-cdn-endpoint.azureedge.net/-/media/project/jcdc/jeddah-central-destination/map/ribbon-park.ashx?rev=a22168616de84a70a3f95d540f90807c",
             "x": 32,
             "y": 47,
             "href": "centralDistrict.html"
@@ -737,7 +739,7 @@
             "id": "centralPlaza",
             "name": "Central Plaza",
             "description": "a major public open space that stands in contrast to the smaller barahat. Designed as a vibrant gathering point, it hosts commercial activity, community events, cultural programs, and everyday social interactions.",
-            "image": "https://images.unsplash.com/photo-1481437156560-3205f6a55735?w=1200&q=85",
+            "image": "https://mc-a98fcbf7-40e2-4e52-8b4f-8054-cdn-endpoint.azureedge.net/-/media/project/jcdc/jeddah-central-destination/map/central-district.ashx?rev=b5f32e0cd1f14160988a34580b10196b",
             "x": 42,
             "y": 60,
             "href": "centralDistrict.html"
@@ -748,14 +750,14 @@
         "id": "culture",
         "name": "Culture & Creativity District",
         "description": "Where industrial heritage meets creative expression, shaping the future of arts and culture.",
-        "image": "https://images.unsplash.com/photo-1565024144419-c8e2afb22a98?w=1200&q=85",
+        "image": "https://mc-a98fcbf7-40e2-4e52-8b4f-8054-cdn-endpoint.azureedge.net/-/media/project/jcdc/jeddah-central-destination/map/map-1.ashx?rev=1c570083e67b4bf7ab7244ecc809122d",
         "href": "culture.html",
         "attractions": [
           {
             "id": "ribbonPark",
             "name": "Ribbon Park",
             "description": "A linear green space linking the Central and Culture & Creativity Districts, with shaded walkways and gathering areas that promote movement and connection.",
-            "image": "https://images.unsplash.com/photo-1565024144419-c8e2afb22a98?w=1200&q=85",
+            "image": "https://mc-a98fcbf7-40e2-4e52-8b4f-8054-cdn-endpoint.azureedge.net/-/media/project/jcdc/jeddah-central-destination/map/ribbon-park.ashx?rev=a22168616de84a70a3f95d540f90807c",
             "x": 16,
             "y": 50,
             "href": "museum.html"
@@ -764,7 +766,7 @@
             "id": "museum",
             "name": "Museum",
             "description": "Located on the grounds of a former desalination plant, the Museum preserves Jeddah’s industrial legacy through immersive exhibits and interactive storytelling.",
-            "image": "https://images.unsplash.com/photo-1499781350541-7783f6c6a0c8?w=1200&q=85",
+            "image": "https://mc-a98fcbf7-40e2-4e52-8b4f-8054-cdn-endpoint.azureedge.net/-/media/project/jcdc/jeddah-central-destination/map/museum.ashx?rev=f58eb2e5388f436aac3d6f173599c5dd",
             "x": 14,
             "y": 60,
             "href": "museum.html"
@@ -784,23 +786,23 @@
         "id": "sport",
         "name": "Sport Park District",
         "description": "A year-round destination for play, wellness, and world-class sporting experiences.",
-        "image": "https://images.unsplash.com/photo-1577223625816-7546f13df25d?w=1200&q=85",
+        "image": "https://mc-a98fcbf7-40e2-4e52-8b4f-8054-cdn-endpoint.azureedge.net/-/media/project/jcdc/jeddah-central-destination/map/map-1.ashx?rev=1c570083e67b4bf7ab7244ecc809122d",
         "href": "sportPark.html",
         "attractions": [
           {
             "id": "stadium",
             "name": "Stadium",
-            "description": "Blending local architecture with cutting-edge technology to create a world-class sports & cultural hub.",
-            "image": "https://images.unsplash.com/photo-1577223625816-7546f13df25d?w=1200&q=85",
+            "description": "A 45,000-seat stadium built to FIFA standards. Featuring a retractable roof, advanced climate control, and adjacent lifestyle zones, the venue is ready to host global events including matches for the 2034 World Cup.",
+            "image": "https://mc-a98fcbf7-40e2-4e52-8b4f-8054-cdn-endpoint.azureedge.net/-/media/project/jcdc/jeddah-central-destination/map/stadium.ashx?rev=c6ef92d6a7c14eaf8d7cc918a2e92ab3",
             "x": 50,
             "y": 75,
             "href": "stadium.html"
           },
           {
-            "id": "sportPark",
-            "name": "Sport Park",
-            "description": "A network of pitches, tracks, and play areas open to all ages.",
-            "image": "https://images.unsplash.com/photo-1517649763962-0c623066013b?w=1200&q=85",
+            "id": "centralPark",
+            "name": "Central Park",
+            "description": "The masterplan’s largest open space, designed for recreation, wellness, and community gathering.",
+            "image": "https://mc-a98fcbf7-40e2-4e52-8b4f-8054-cdn-endpoint.azureedge.net/-/media/project/jcdc/jeddah-central-destination/map/central-park.ashx?rev=ab7d4ccd8b9246768171d5438ac3a782",
             "x": 60,
             "y": 78,
             "href": "sportPark.html"
@@ -811,41 +813,41 @@
         "id": "marina",
         "name": "Marina District",
         "description": "Jeddah's global gateway to the sea — where waterfront living meets marine discovery.",
-        "image": "https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?w=1200&q=85",
+        "image": "https://mc-a98fcbf7-40e2-4e52-8b4f-8054-cdn-endpoint.azureedge.net/-/media/project/jcdc/jeddah-central-destination/map/map-1.ashx?rev=1c570083e67b4bf7ab7244ecc809122d",
         "href": "marina.html",
         "attractions": [
           {
-            "id": "luxuryCruise",
-            "name": "Luxury Cruise Terminal",
-            "description": "A maritime gateway for international and regional cruise travel linking the Red Sea to the world.",
-            "image": "https://images.unsplash.com/photo-1473496169904-658ba7c44d8a?w=1200&q=85",
+            "id": "coralCove",
+            "name": "Coral Cove",
+            "description": "A shoreline plaza celebrating marine biodiversity through interactive design and open-air art — part of Jeddah Central’s conservation efforts.",
+            "image": "https://mc-a98fcbf7-40e2-4e52-8b4f-8054-cdn-endpoint.azureedge.net/-/media/project/jcdc/jeddah-central-destination/map/coral-cove.ashx?rev=0104306018ed4cc3bdb4dc888c4e1548",
             "x": 42,
             "y": 88,
             "href": "#"
           },
           {
-            "id": "yachtClub",
-            "name": "Yacht Club",
-            "description": "An exclusive harbour for yachts and small craft, with restaurants and promenades.",
-            "image": "https://images.unsplash.com/photo-1542728928-1413d1894ed1?w=1200&q=85",
+            "id": "oceanarium",
+            "name": "Oceanarium",
+            "description": "A marine center, blending coral conservation, immersive exhibits, and marine research — supporting broader ocean conservation initiatives in collaboration with academic and environmental institutions.",
+            "image": "https://mc-a98fcbf7-40e2-4e52-8b4f-8054-cdn-endpoint.azureedge.net/-/media/project/jcdc/jeddah-central-destination/map/oceanarium.ashx?rev=f3c9ff94e9f3493dbba26b960963b91c",
             "x": 32,
             "y": 90,
             "href": "#"
           },
           {
-            "id": "marinaPromenade",
-            "name": "Marina Promenade",
+            "id": "luxuryCruiseTerminal",
+            "name": "Luxury Cruise Terminal",
             "description": "A waterfront walkway lined with cafes, retail, and shaded seating overlooking the harbour.",
-            "image": "https://images.unsplash.com/photo-1502920514313-52581002a659?w=1200&q=85",
+            "image": "https://mc-a98fcbf7-40e2-4e52-8b4f-8054-cdn-endpoint.azureedge.net/-/media/project/jcdc/jeddah-central-destination/map/luxury-cruise-terminal.ashx?rev=5532dc18f4ac42429a4418227b5b4fce",
             "x": 26,
             "y": 86,
             "href": "#"
           },
           {
             "id": "marineDiscovery",
-            "name": "Marine Discovery",
-            "description": "Interactive exhibits and dive experiences celebrating Red Sea ecology.",
-            "image": "https://images.unsplash.com/photo-1535591273668-578e31182c4f?w=1200&q=85",
+            "name": "Marine",
+            "description": "A lively harbor with waterfront retail, dining, yacht berths, and year-round events.",
+            "image": "https://mc-a98fcbf7-40e2-4e52-8b4f-8054-cdn-endpoint.azureedge.net/-/media/project/jcdc/jeddah-central-destination/map/marina-district.ashx?rev=bfc0ee580d684ba19fd0e5d1bef6c16e",
             "x": 38,
             "y": 92,
             "href": "#"

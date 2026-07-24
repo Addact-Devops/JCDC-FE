@@ -7,7 +7,7 @@
 window.RegistrationProcess = (function () {
     "use strict";
 
-    const STEP_INTERVAL = 0.95;
+    const STEP_INTERVAL = 0.5;
 
     function initReveal(root) {
         const grid = root.querySelector(".registration-process__grid");

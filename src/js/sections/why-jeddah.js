@@ -10,7 +10,7 @@ window.WhyJeddah = (function () {
     "use strict";
 
     const COLUMNS = 3;
-    const COLUMN_STEP = 0.35;
+    const COLUMN_STEP = 0.2;
 
     function initReveal(root) {
         const grid = root.querySelector(".why-jeddah__grid");
@@ -22,7 +22,7 @@ window.WhyJeddah = (function () {
             const icon = card.querySelector(".why-jeddah__icon");
             const content = card.querySelector(".why-jeddah__card-content");
             if (icon) icon.style.transitionDelay = delay + "s";
-            if (content) content.style.transitionDelay = delay + 0.08 + "s";
+            if (content) content.style.transitionDelay = delay + 0.05 + "s";
         });
 
         if (!("IntersectionObserver" in window)) {

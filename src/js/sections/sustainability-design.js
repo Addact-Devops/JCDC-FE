@@ -13,7 +13,7 @@ window.SustainabilityDesign = (function () {
 
         const cards = grid.querySelectorAll(".sustainability-design__card");
         cards.forEach((card, i) => {
-            card.style.transitionDelay = i * 0.22 + "s";
+            card.style.transitionDelay = i * 0.12 + "s";
         });
 
         if (!("IntersectionObserver" in window)) {

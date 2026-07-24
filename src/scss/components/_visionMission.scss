@@ -57,8 +57,8 @@ $bg-color: #ffffff;
     opacity: 0;
     transform: translateX(60px);
     transition:
-      opacity 0.8s var(--ease),
-      transform 0.8s var(--ease);
+      opacity 0.45s var(--ease),
+      transform 0.45s var(--ease);
 
     .vision-mission__container.in-view & {
       opacity: 1;
@@ -120,8 +120,8 @@ $bg-color: #ffffff;
     opacity: 0;
     transform: translateY(20px);
     transition:
-      opacity 0.6s var(--ease),
-      transform 0.6s var(--ease);
+      opacity 0.35s var(--ease),
+      transform 0.35s var(--ease);
 
     .vision-mission__container.in-view & {
       opacity: 1;
@@ -155,8 +155,8 @@ $bg-color: #ffffff;
     opacity: 0;
     transform: translateY(20px);
     transition:
-      opacity 0.6s var(--ease),
-      transform 0.6s var(--ease);
+      opacity 0.35s var(--ease),
+      transform 0.35s var(--ease);
 
     .vision-mission__container.in-view & {
       opacity: 1;

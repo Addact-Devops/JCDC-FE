@@ -11,7 +11,7 @@ window.WhoRegister = (function () {
     "use strict";
 
     const COLUMNS = 2;
-    const COLUMN_STEP = 0.35;
+    const COLUMN_STEP = 0.2;
 
     function initReveal(root) {
         const grid = root.querySelector(".who-register__grid");
@@ -23,7 +23,7 @@ window.WhoRegister = (function () {
             const title = card.querySelector(".who-register__card-title");
             const description = card.querySelector(".who-register__card-description");
             if (title) title.style.transitionDelay = delay + "s";
-            if (description) description.style.transitionDelay = delay + 0.08 + "s";
+            if (description) description.style.transitionDelay = delay + 0.05 + "s";
         });
 
         if (!("IntersectionObserver" in window)) {
