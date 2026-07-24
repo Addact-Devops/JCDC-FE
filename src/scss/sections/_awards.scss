@@ -1,121 +1,253 @@
-// components/_awards.scss
-// Figma: white bg, padding 64px 120px, cards 285×310, 9 certs in a row (scrolls)
-
 .awards {
   background: var(--surface-white);
-  padding: 64px 0;
+  padding-top: 64px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 24px;
   overflow: hidden;
 
-  &__track-wrap {
+  &__slider {
     width: 100%;
+    direction: ltr;
+    padding: 0 120px;
+    box-sizing: border-box;
+  }
+}
+
+.certs {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  width: max-content;
+  direction: ltr;
+}
+
+.certs-3 {
+  justify-content: space-between;
+  width: 100%;
+}
+
+.awards--auto-scroll {
+  .awards__slider {
     overflow: hidden;
-    padding-block: 16px;
-    mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
-    -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+    cursor: default;
   }
 
-  &__track {
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    width: max-content;
-    animation: cert-scroll 30s linear infinite;
-
-    [dir="rtl"] & { animation-direction: reverse; }
+  .certs {
+    animation: scrollAwards 20s linear infinite;
   }
 }
 
-@keyframes cert-scroll {
-  from { transform: translateX(0); }
-  to   { transform: translateX(calc(-50% - 10px)); }
+[dir="rtl"] .awards--auto-scroll .certs {
+  animation-direction: reverse;
 }
 
-// Cert card (Figma: 285×310, centered logo 154×154, grayscale filter)
-.cert {
-  flex-shrink: 0;
+.awards:not(.awards--auto-scroll) {
+  .awards__slider {
+    overflow-x: auto;
+    overflow-y: hidden;
+    cursor: grab;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    &.is-dragging {
+      cursor: grabbing;
+      scroll-behavior: auto;
+      user-select: none;
+      -webkit-user-select: none;
+
+      img {
+        -webkit-user-drag: none;
+        user-drag: none;
+        pointer-events: none;
+      }
+    }
+
+    &:focus-visible {
+      outline: 2px solid var(--brand-primary, #0a66c2);
+      outline-offset: 4px;
+    }
+  }
+
+  .certs {
+    animation: none;
+
+    .cert-item[aria-hidden="true"] {
+      display: none;
+    }
+  }
+}
+
+@keyframes scrollAwards {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.cert-item {
   width: 285px;
   height: 310px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  filter: grayscale(1);
-  opacity: 0.75;
-  transition: filter var(--dur) var(--ease), opacity var(--dur) var(--ease);
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
 
-  &:hover {
-    filter: grayscale(0);
+  &__logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: translateY(0);
+    transition:
+      transform 0.4s ease,
+      filter 0.4s ease;
+
+    img {
+      width: 154px;
+      height: 154px;
+      object-fit: contain;
+      filter: grayscale(100%);
+      transition: filter 0.4s ease;
+    }
+  }
+
+  &__title {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0 20px;
+    margin: 0;
+    font-size: 14px;
+    font-weight: 400;
+    color: #5b5f62;
+    text-align: center;
+    line-height: 1.5;
+    opacity: 0;
+    transform: translateY(-50px);
+    transition: 0.4s ease;
+  }
+
+  &__title--sitecore-ee {
     opacity: 1;
   }
 
-  img {
-    width: 154px;
-    height: 154px;
-    object-fit: contain;
+  &__logo:hover {
+    transform: translateY(-20px);
+
+    img {
+      filter: grayscale(0) opacity(1);
+    }
   }
 
-  &__fallback {
-    display: inline-block;
-    font-family: var(--font-en);
-    font-size: 28px;
-    font-weight: 700;
-    color: var(--primary-500);
-    letter-spacing: 0.04em;
+  &__logo:hover ~ &__title {
+    opacity: 1;
   }
+}
 
-  &__circle {
-    width: 154px;
-    height: 154px;
-    border-radius: 50%;
-    border: 2px solid var(--primary-500);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+@media (max-width: 767px) {
+  .awards {
+    padding: 64px 16px;
+    gap: 32px;
+  }
+  .awards__slider {
+    padding: 0px;
+  }
+  .cert-item {
+    width: 210px;
+    height: auto;
+    min-height: 229px;
+    overflow: visible;
+    cursor: default;
+    gap: 16px;
 
-    span {
-      font-family: var(--font-en);
-      font-size: 16px;
-      font-weight: 700;
-      color: var(--primary-500);
-      text-align: center;
-      line-height: 1.3;
+    &__logo img {
+      filter: grayscale(0) opacity(1);
+      transition: none;
+    }
 
-      small {
-        font-size: 10px;
-        font-weight: 400;
-        letter-spacing: 0.1em;
+    &__title {
+      opacity: 1;
+      position: static;
+      transform: none;
+      padding: 0px;
+      font-size: 12px;
+    }
+
+    &:hover {
+      .cert-item__logo {
+        transform: translateY(0);
       }
     }
   }
+  .certs-3 {
+    width: max-content;
+  }
+}
 
-  &__iso {
-    width: 154px;
-    height: 154px;
-    border: 2px solid var(--primary-500);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 6px;
+@media (max-width: 425px) {
+  .awards--grid-mobile {
+    padding: 64px 0;
 
-    strong {
-      font-family: var(--font-en);
-      font-size: 32px;
-      font-weight: 700;
-      color: var(--primary-500);
-      letter-spacing: 0.02em;
-      line-height: 1;
+    .awards__slider {
+      overflow: hidden;
+      cursor: default;
+      mask-image: none;
+      -webkit-mask-image: none;
+      padding: 0 16px;
     }
 
-    small {
-      font-family: var(--font-en);
-      font-size: 13px;
-      font-weight: 400;
-      color: var(--primary-500);
-      letter-spacing: 0.04em;
+    .certs {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px 16px;
+      width: 100%;
+      animation: none !important;
+
+      .cert-item[aria-hidden="true"] {
+        display: none;
+      }
+    }
+
+    .cert-item {
+      width: 100%;
+      height: auto;
+      gap: 16px;
+      min-height: 180px;
+      cursor: default;
+
+      &__logo img {
+        height: 80px;
+        filter: grayscale(0) opacity(1);
+        transition: none;
+      }
+
+      &__title {
+        opacity: 1;
+        position: static;
+        transform: none;
+        font-size: 11px;
+        padding: 0 8px;
+        margin-top: 8px;
+      }
+
+      &:hover {
+        .cert-item__logo {
+          transform: translateY(0);
+        }
+      }
     }
   }
 }

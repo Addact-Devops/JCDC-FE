@@ -1,8 +1,5 @@
-// sections/_jcd-slider.scss
-// Auto-cycling background images behind fixed text content. No controls shown.
-
 .jcd-slider {
-  padding: 64px 120px;
+  padding: 64px 120px 82px 120px;
   background: var(--surface-white);
   display: flex;
   justify-content: center;
@@ -17,7 +14,6 @@
     isolation: isolate;
   }
 
-  // ── Background images (stacked, cross-fade) ─────────
   &__bg {
     position: absolute;
     inset: 0;
@@ -25,38 +21,57 @@
     background-size: cover;
     background-position: center;
     opacity: 0;
-    transition: opacity 1.2s var(--ease);
+    transition: opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 
-    &.is-active { opacity: 1; }
+    &.is-active {
+      opacity: 1;
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
   }
 
-  // ── Gradient overlay ────────────────────────────────
   &__overlay {
     position: absolute;
     inset: 0;
     z-index: 2;
-    background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.55) 100%);
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0) 0%,
+      rgba(0, 0, 0, 0.65) 55%
+    );
+    pointer-events: none;
   }
 
-  // ── Content (absolute, left-anchored per Figma) ─────
   &__content {
     position: absolute;
+
     inset-block-start: 50%;
     inset-inline-start: 5.33%;
     inset-inline-end: 44.33%;
+
     transform: translateY(-50%);
+
     z-index: 3;
-    display: flex;
+
+    display: none;
+
     flex-direction: column;
-    align-items: flex-start;         // so button hugs its own content
+    align-items: flex-start;
+
     gap: 24px;
+
     color: var(--text-50);
 
     [dir="rtl"] & {
-      inset-inline-start: 44.33%;
-      inset-inline-end: 5.33%;
       text-align: right;
-      align-items: flex-end;          // button hugs content on the right side
+    }
+
+    &.is-active {
+      display: flex;
     }
   }
 
@@ -68,6 +83,19 @@
     color: var(--text-50);
     white-space: nowrap;
     margin: 0;
+    [dir="rtl"] & {
+      white-space: normal;
+    }
+  }
+
+  &__label {
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 140%;
+    color: var(--text-50);
+
+    letter-spacing: 0;
   }
 
   &__body {
@@ -79,10 +107,12 @@
     margin: 0;
   }
 
-  // The CTA button in this context — intrinsic width (no `width: 100%`)
   .btn {
     align-self: flex-start;
+    margin-top: 8px;
 
-    [dir="rtl"] & { align-self: flex-end; }
+    [dir="rtl"] & {
+      align-self: flex-start;
+    }
   }
 }

@@ -1,5 +1,3 @@
-// components/_navbar.scss
-
 .navbar {
   position: fixed;
   inset-block-start: 0;
@@ -9,21 +7,32 @@
   padding: 16px 32px;
   background: transparent;
   color: #fff;
-  transition: background var(--dur) var(--ease), color var(--dur) var(--ease), box-shadow var(--dur) var(--ease);
+  transition:
+    background var(--dur) var(--ease),
+    color var(--dur) var(--ease),
+    box-shadow var(--dur) var(--ease);
 
-  // Solid state (scrolled)
-  &.is-solid {
-    background: rgba(255, 255, 255, 0.97);
+  &.is-solid,
+  &--always-solid {
+    background: #fffffff2;
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
     color: var(--primary-500);
     box-shadow: 0 1px 8px rgba(0, 0, 0, 0.05);
+    .navbar__logo--light {
+      opacity: 0;
+      visibility: hidden;
+    }
+    .navbar__logo--dark {
+      opacity: 1;
+      visibility: visible;
+    }
   }
 
   &__inner {
     height: 100%;
     width: 100%;
-    max-width: 1376px;   // 1440 - 2×32px
+    max-width: 1376px;
     margin-inline: auto;
     display: flex;
     align-items: center;
@@ -36,12 +45,26 @@
     height: 56px;
     width: 104px;
     display: block;
+    position: relative;
 
     img {
+      position: absolute;
+      inset: 0;
       width: 100%;
       height: 100%;
       object-fit: contain;
-      // Logo inherits color from navbar (white → blue)
+      transition: opacity var(--dur) var(--ease);
+      backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      transform: translateZ(0);
+    }
+    &--light {
+      opacity: 1;
+      visibility: visible;
+    }
+    &--dark {
+      opacity: 0;
+      visibility: hidden;
     }
   }
 
@@ -60,41 +83,46 @@
   }
 }
 
-// ── Nav items ──────────────────────────────────────────
 .nav-item {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   height: 32px;
-  padding: 8px;
+  padding: 8px 6px;
   font-family: var(--font-body);
   font-size: var(--small);
   font-weight: 400;
   line-height: 1.43;
-  color: inherit;
   white-space: nowrap;
   position: relative;
-  transition: color var(--dur) var(--ease);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+
+  a,
+  button {
+    color: inherit;
+  }
 
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     inset-block-end: 2px;
-    inset-inline-start: 8px;
-    inset-inline-end: 8px;
-    height: 1.5px;
-    background: currentColor;
+    inset-inline-start: 1px;
+    inset-inline-end: 1px;
+    height: 2px;
+    background: var(--primary-500);
     transform: scaleX(0);
     transform-origin: var(--origin, left);
     transition: transform var(--dur) var(--ease);
   }
 
   &:hover::after,
-  &.is-active::after { transform: scaleX(1); }
+  &.is-active::after {
+    transform: scaleX(1);
+  }
 
   &--dropdown {
-    padding: 0;            // button handles its own padding
-    position: relative;    // dropdown anchors to THIS element
+    position: relative;
   }
 
   &__btn {
@@ -110,36 +138,52 @@
     color: inherit;
     white-space: nowrap;
     cursor: pointer;
+    transition: color var(--dur) var(--ease);
   }
 }
 
-[dir="rtl"] .nav-item { --origin: right; }
-
-.chevron {
-  transition: transform var(--dur) var(--ease);
-  flex-shrink: 0;
-  [dir="rtl"] & { transform: scaleX(-1); }
+[dir="rtl"] .nav-item {
+  --origin: right;
 }
 
-.nav-item--dropdown.is-open .chevron { transform: rotate(180deg); }
-[dir="rtl"] .nav-item--dropdown.is-open .chevron { transform: rotate(180deg) scaleX(-1); }
+.chevron {
+  transition:
+    transform var(--dur) var(--ease),
+    color var(--dur) var(--ease);
+  flex-shrink: 0;
 
-// ── Dropdown menu ──────────────────────────────────────
-// Positioned 16px below the nav-item button (not from top of navbar)
+  path {
+    transition: stroke var(--dur) var(--ease);
+  }
+
+  [dir="rtl"] & {
+    transform: scaleX(-1);
+  }
+}
+
+.nav-item--dropdown.is-open .chevron {
+  transform: rotate(180deg);
+}
+[dir="rtl"] .nav-item--dropdown.is-open .chevron {
+  transform: rotate(180deg) scaleX(-1);
+}
+
 .dropdown {
   position: absolute;
-  top: calc(100% + 16px);          // 16px gap from the nav item (btn is 32px tall)
-  inset-inline-start: 8px;          // align with nav-item text (matches its 8px padding)
-  min-width: 220px;
+  top: calc(100%);
+  inset-inline-start: -18px;
+  min-width: 256px;
   background: #fff;
   color: var(--primary-500);
-  border-radius: 4px;
-  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
-  padding: 8px 0;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  padding: 12px 16px;
   opacity: 0;
   pointer-events: none;
   transform: translateY(-8px);
-  transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease);
+  transition:
+    opacity var(--dur) var(--ease),
+    transform var(--dur) var(--ease);
   z-index: 10;
 
   .nav-item--dropdown.is-open & {
@@ -150,18 +194,29 @@
 
   a {
     display: block;
-    padding: 10px 20px;
-    font-size: var(--small);
+    padding: 8px 0px;
+    font-size: 16px;
     font-weight: 400;
-    color: var(--primary-500);
+    color: #535659;
     transition: background var(--dur) var(--ease);
     white-space: nowrap;
+    text-decoration: none;
 
-    &:hover { background: var(--secondary-50); }
+    &:hover {
+      color: var(--primary-500) !important;
+    }
   }
 }
 
-// ── Icon button (search) ───────────────────────────────
+[dir="rtl"] .dropdown {
+  inset-inline-start: auto;
+  inset-inline-end: -18px;
+
+  a {
+    text-align: right;
+  }
+}
+
 .icon-btn {
   width: 24px;
   height: 24px;
@@ -171,16 +226,17 @@
   color: inherit;
   transition: opacity var(--dur) var(--ease);
 
-  &:hover { opacity: 0.7; }
+  &:hover {
+    opacity: 0.7;
+  }
 }
 
-// ── Lang toggle ────────────────────────────────────────
 .lang-btn {
   display: inline-flex;
   align-items: center;
   gap: 4px;
   height: 32px;
-  padding: 8px;
+  padding: 0px;
   font-size: var(--small);
   font-weight: 400;
   line-height: 16px;
@@ -188,15 +244,23 @@
   transition: opacity var(--dur) var(--ease);
   white-space: nowrap;
 
-  &__text {
-    font-family: var(--font-ar);  // Arabic text "العربية" in English state
-    [dir="rtl"] & { font-family: var(--font-en); }
+  [dir="rtl"] & {
+    flex-direction: row-reverse;
   }
 
-  &:hover { opacity: 0.7; }
+  &__text {
+    padding: 8px;
+    font-family: var(--font-cairo);
+    [dir="rtl"] & {
+      font-family: var(--font-en);
+    }
+  }
+
+  &:hover {
+    opacity: 0.7;
+  }
 }
 
-// ── Hamburger ──────────────────────────────────────────
 .hamburger {
   display: none;
   flex-direction: column;
@@ -211,12 +275,51 @@
     width: 100%;
     background: currentColor;
     border-radius: 2px;
-    transition: transform var(--dur) var(--ease), opacity var(--dur) var(--ease);
+    transition:
+      transform var(--dur) var(--ease),
+      opacity var(--dur) var(--ease);
   }
 
   &[aria-expanded="true"] {
-    span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
-    span:nth-child(2) { opacity: 0; }
-    span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+    span:nth-child(1) {
+      transform: translateY(8px) rotate(45deg);
+    }
+    span:nth-child(2) {
+      opacity: 0;
+    }
+    span:nth-child(3) {
+      transform: translateY(-8px) rotate(-45deg);
+    }
+  }
+}
+
+@media (max-width: 1320px) and (min-width: 1200px) {
+  .navbar {
+    padding-inline: 24px;
+
+    &__inner {
+      gap: 16px;
+    }
+
+    &__menu {
+      gap: 4px;
+    }
+
+    &__actions {
+      gap: 12px;
+    }
+  }
+
+  .nav-item {
+    padding-inline: 10px;
+    font-size: 13px;
+  }
+
+  .nav-item__btn {
+    padding-inline: 4px;
+  }
+
+  .lang-btn__text {
+    padding-inline: 4px;
   }
 }

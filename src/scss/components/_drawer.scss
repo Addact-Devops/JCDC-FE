@@ -1,73 +1,82 @@
-// components/_drawer.scss
-
 .drawer {
   position: fixed;
   inset-block: 0;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: auto;
   inset-inline-start: 0;
   width: min(400px, 100vw);
   background: var(--surface-white);
   z-index: 2000;
   transform: translateX(-100%);
-  transition: transform var(--dur-slow) var(--ease), visibility 0s linear var(--dur-slow);
+  transition:
+    transform var(--dur-slow) var(--ease),
+    visibility 0s linear var(--dur-slow);
   display: flex;
   flex-direction: column;
   overflow-y: auto;
-  padding: 24px;
+  padding: 24px 16px 0px 16px;
 
-  // When CLOSED: hide it completely so no paint artifacts bleed through
-  // regardless of RTL/LTR state or viewport width
   visibility: hidden;
   pointer-events: none;
-
-  [dir="rtl"] & {
-    inset-inline-start: auto;
-    inset-inline-end: 0;
-    transform: translateX(100%);
-  }
 
   &.is-open {
     transform: translateX(0);
     visibility: visible;
     pointer-events: auto;
-    transition: transform var(--dur-slow) var(--ease), visibility 0s linear 0s;
+    transition:
+      transform var(--dur-slow) var(--ease),
+      visibility 0s linear 0s;
   }
 
   &__head {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 16px;
+    margin-bottom: 0px;
   }
 
-  &__logo { width: 80px; height: 44px; object-fit: contain; color: var(--primary-500); }
+  &__logo {
+    width: 110px !important;
+    height: 60px !important;
+    object-fit: contain;
+    color: var(--primary-500);
+  }
 
   &__close {
-    width: 40px; height: 40px;
+    width: 40px;
+    height: 40px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 4px;
     color: var(--primary-500);
-    &:hover { background: var(--surface-grey); }
+    &:hover {
+      background: var(--surface-grey);
+    }
   }
 
   &__divider {
     height: 1px;
-    background: rgba(0,0,0,0.08);
-    margin-block: 8px 20px;
+    margin-block: 18px 24px;
+    border-bottom: 1px solid #d0d4dc;
   }
 
   &__label {
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 400;
-    color: rgba(0,0,0,0.4);
+    color: #b4b5b7;
     letter-spacing: 0.1em;
-    margin-bottom: 8px;
+    margin-bottom: 16px;
+    font-family: "Readex Pro";
+    padding: 0px 15px;
   }
 
   &__nav {
     display: flex;
     flex-direction: column;
+    padding: 0px 15px;
   }
 
   &__link {
@@ -76,14 +85,17 @@
     align-items: center;
     justify-content: space-between;
     gap: 12px;
-    padding: 18px 0;
+    padding: 16px 0px;
     font-size: 18px;
-    font-weight: 500;
+    font-weight: 400;
+    line-height: 155%;
     color: var(--primary-500);
-    border-bottom: 1px solid rgba(0,0,0,0.08);
     text-align: start;
+    font-family: var(--font-ar);
 
-    &:hover { color: var(--primary-500); }
+    &:hover {
+      color: var(--primary-500);
+    }
   }
 
   &__arrow {
@@ -93,13 +105,19 @@
 
     &--down {
       transform: rotate(0deg);
-      .is-expanded & { transform: rotate(180deg); }
+      .is-expanded & {
+        transform: rotate(180deg);
+      }
     }
   }
 
-  [dir="rtl"] &__arrow:not(&__arrow--down) { transform: scaleX(-1); }
+  [dir="rtl"] &__arrow:not(&__arrow--down) {
+    transform: scaleX(-1);
+  }
 
-  &__item--has-sub.is-expanded &__sub { display: flex; }
+  &__item--has-sub.is-expanded &__sub {
+    display: flex;
+  }
 
   &__sub {
     display: none;
@@ -114,7 +132,9 @@
       font-weight: 400;
       color: var(--text-500);
       transition: color var(--dur) var(--ease);
-      &:hover { color: var(--primary-500); }
+      &:hover {
+        color: var(--primary-500);
+      }
     }
   }
 
@@ -124,7 +144,7 @@
 
     .lang-btn--drawer {
       color: var(--primary-500);
-      border: 1px solid rgba(0,118,169,0.3);
+      border: 1px solid rgba(0, 118, 169, 0.3);
       border-radius: 4px;
       padding: 10px 16px;
       height: auto;
@@ -137,11 +157,24 @@
 .overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.5);
+  background: rgba(0, 0, 0, 0.5);
   z-index: 1999;
   opacity: 0;
   pointer-events: none;
   transition: opacity var(--dur-slow) var(--ease);
 
-  &.is-visible { opacity: 1; pointer-events: auto; }
+  &.is-visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+}
+
+html[dir="rtl"] .drawer {
+  left: auto !important;
+  right: 0 !important;
+  transform: translateX(100%);
+}
+
+html[dir="rtl"] .drawer.is-open {
+  transform: translateX(0);
 }

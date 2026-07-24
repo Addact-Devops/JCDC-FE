@@ -29,6 +29,7 @@
 
   // Apply translations to all [data-i18n]
   function applyTranslations(translations) {
+    // 1. Standard text translations: nodes with [data-i18n]
     const nodes = document.querySelectorAll('[data-i18n]');
     nodes.forEach(node => {
       const key = node.getAttribute('data-i18n');
@@ -46,11 +47,43 @@
         document.title = value;
       } else if (node.tagName === 'META') {
         node.setAttribute('content', value);
-      } else if ('placeholder' in node && node.hasAttribute('data-i18n-placeholder')) {
+      } else if ('placeholder' in node && node.hasAttribute('data-i18n-placeholder') && !node.getAttribute('data-i18n-placeholder')) {
+        // Legacy: data-i18n + boolean data-i18n-placeholder flag
         node.placeholder = value;
       } else {
         node.textContent = value;
       }
+    });
+
+    // 2. Placeholder-only translations: nodes with [data-i18n-placeholder="key"]
+    // (standalone attribute pattern — used when label and placeholder need different keys)
+    document.querySelectorAll('[data-i18n-placeholder]').forEach(node => {
+      const key = node.getAttribute('data-i18n-placeholder');
+      // Skip if used as a boolean flag (handled above)
+      if (!key) return;
+      const value = deepGet(translations, key);
+      if (typeof value !== 'string') return;
+      if ('placeholder' in node) node.placeholder = value;
+    });
+
+    // 3. Alt-text translations: nodes with [data-i18n-alt="key"]
+    // Used on <img> elements whose alt text needs to be localized
+    // (e.g. person photos where alt = person's name).
+    document.querySelectorAll('[data-i18n-alt]').forEach(node => {
+      const key = node.getAttribute('data-i18n-alt');
+      if (!key) return;
+      const value = deepGet(translations, key);
+      if (typeof value !== 'string') return;
+      node.setAttribute('alt', value);
+    });
+
+    // 4. Aria-label translations: nodes with [data-i18n-aria-label="key"]
+    document.querySelectorAll('[data-i18n-aria-label]').forEach(node => {
+      const key = node.getAttribute('data-i18n-aria-label');
+      if (!key) return;
+      const value = deepGet(translations, key);
+      if (typeof value !== 'string') return;
+      node.setAttribute('aria-label', value);
     });
   }
 

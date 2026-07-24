@@ -1,0 +1,186 @@
+$primary-color: rgba(0, 118, 169, 1);
+$text-color: rgba(91, 95, 98, 1);
+
+.clauses {
+  width: 100%;
+
+  max-width: 1440px;
+
+  margin: 0 auto;
+
+  padding: 64px 120px;
+
+  display: flex;
+  flex-direction: column;
+
+  gap: 56px;
+
+  background: #fff;
+
+  &__section {
+    width: 100%;
+
+    max-width: 960px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 32px;
+  }
+
+  &__title {
+    margin: 0;
+
+    font-family: "Ubuntu", sans-serif;
+
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 120%;
+
+    color: $primary-color;
+    [dir="rtl"] & {
+      font-family: var(--font-ar);
+    }
+  }
+
+  &__description {
+    width: 100%;
+
+    font-family: "Ubuntu", sans-serif;
+
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 170%;
+
+    color: $text-color;
+    [dir="rtl"] & {
+      font-family: var(--font-ar);
+    }
+
+    p {
+      margin: 0;
+
+      &:not(:last-child) {
+        margin-bottom: 12px;
+      }
+    }
+
+    p + p {
+      margin-top: 20px;
+    }
+
+    ul,
+    ol {
+      margin: 12px 0 20px;
+
+      padding-left: 24px;
+
+      display: flex;
+      flex-direction: column;
+
+      gap: 8px;
+    }
+
+    ul {
+      list-style-type: disc;
+    }
+
+    ol {
+      list-style-type: decimal;
+    }
+
+    li {
+      line-height: 170%;
+    }
+
+    a {
+      color: $primary-color;
+
+      text-decoration: none;
+
+      transition: opacity 0.3s ease;
+
+      &:hover {
+        opacity: 0.75;
+      }
+    }
+
+    strong,
+    b {
+      font-weight: 500;
+    }
+  }
+}
+
+@media (max-width: 1024px) {
+  .clauses {
+    padding: 56px 48px;
+
+    gap: 48px;
+
+    &__section {
+      max-width: 100%;
+    }
+
+    &__title {
+      font-size: 28px;
+    }
+
+    &__description {
+      font-size: 15px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .clauses {
+    padding: 48px 24px;
+
+    gap: 40px;
+
+    &__section {
+      gap: 20px;
+    }
+
+    &__title {
+      font-size: 24px;
+
+      line-height: 130%;
+    }
+
+    &__description {
+      font-size: 15px;
+
+      line-height: 170%;
+
+      p {
+        margin-bottom: 16px;
+      }
+
+      ul,
+      ol {
+        padding-left: 20px;
+
+        gap: 8px;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .clauses {
+    padding: 40px 16px;
+
+    gap: 36px;
+
+    &__title {
+      font-size: 22px;
+    }
+
+    &__description {
+      font-size: 14px;
+
+      line-height: 165%;
+    }
+  }
+}

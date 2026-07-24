@@ -1,8 +1,5 @@
-// components/_footer.scss
-// Figma: bg #EFEFEF, padding 24px 120px, gold divider, 220px height
-
 .footer {
-  background: var(--surface-footer);         // #EFEFEF
+  background: var(--surface-footer);
   padding: 24px 120px;
   display: flex;
   flex-direction: column;
@@ -16,8 +13,15 @@
     padding-block-end: 12px;
   }
 
-  &__logo-wrap { flex-shrink: 0; }
-  &__logo { width: 132px; height: 72px; object-fit: contain; color: var(--primary-500); }
+  &__logo-wrap {
+    flex-shrink: 0;
+  }
+  &__logo {
+    width: 132px;
+    height: 72px;
+    object-fit: contain;
+    color: var(--primary-500);
+  }
 
   &__right {
     display: flex;
@@ -25,7 +29,12 @@
     align-items: flex-end;
     gap: 8px;
 
-    [dir="rtl"] & { align-items: flex-start; }
+    [dir="rtl"] & {
+      align-items: flex-start;
+      width: 100%;
+      min-width: none;
+      max-width: 850px;
+    }
   }
 
   &__social {
@@ -43,16 +52,32 @@
 
     a {
       font-family: var(--font-body);
-      font-size: var(--small);           // 14px
+      font-size: var(--small);
       font-weight: 400;
       line-height: 1.43;
-      color: var(--primary-500);
       padding: 8px;
+      color: var(--primary-500);
       white-space: nowrap;
       text-align: center;
       transition: opacity var(--dur) var(--ease);
+      position: relative;
+      &::after {
+        content: "";
+        position: absolute;
+        inset-block-end: 2px;
+        inset-inline-start: 1px;
+        inset-inline-end: 1px;
+        height: 2px;
+        background: var(--primary-500);
+        transform: scaleX(0);
+        transform-origin: var(--origin, left);
+        transition: transform var(--dur) var(--ease);
+      }
 
-      &:hover { opacity: 0.7; }
+      &:hover::after,
+      &.is-active::after {
+        transform: scaleX(1);
+      }
     }
   }
 
@@ -81,12 +106,34 @@
     gap: 15px;
     flex-wrap: wrap;
 
+    [dir="rtl"] & {
+      min-width: 0px;
+    }
+
     a {
       font-size: var(--small);
       color: var(--primary-500);
       padding: 8px;
       transition: opacity var(--dur) var(--ease);
-      &:hover { opacity: 0.7; }
+      position: relative;
+
+      &::after {
+        content: "";
+        position: absolute;
+        inset-block-end: 2px;
+        inset-inline-start: 1px;
+        inset-inline-end: 1px;
+        height: 2px;
+        background: var(--primary-500);
+        transform: scaleX(0);
+        transform-origin: var(--origin, left);
+        transition: transform var(--dur) var(--ease);
+      }
+
+      &:hover::after,
+      &.is-active::after {
+        transform: scaleX(1);
+      }
     }
 
     span {
@@ -106,5 +153,164 @@
   color: var(--primary-500);
   transition: opacity var(--dur) var(--ease);
 
-  &:hover { opacity: 0.7; }
+  &:hover {
+    opacity: 0.7;
+  }
+}
+
+[dir="rtl"] {
+  .footer {
+    &__right {
+      align-items: flex-start;
+    }
+    &__social {
+      flex-direction: row-reverse;
+    }
+  }
+}
+
+@media (max-width: 1199px) and (min-width: 1024px) {
+  .footer {
+    padding: 24px 48px;
+
+    &__top {
+      align-items: center;
+      gap: 20px;
+    }
+
+    &__right {
+      gap: 12px;
+    }
+
+    &__nav {
+      gap: 8px 12px;
+      justify-content: flex-end;
+    }
+
+    &__legal {
+      gap: 8px 11px;
+      justify-content: start;
+    }
+  }
+}
+
+@media (max-width: 1023px) {
+  .footer {
+    padding: 24px 16px;
+    gap: 24px;
+
+    &__top {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 38px;
+    }
+
+    &__logo-wrap {
+      order: 2;
+      display: flex;
+      justify-content: center;
+    }
+
+    &__logo {
+      width: 120px;
+      height: 65px;
+    }
+
+    &__right {
+      align-items: center;
+      width: 100%;
+      gap: 16px;
+    }
+
+    &__social {
+      justify-content: center;
+      gap: 24px;
+    }
+
+    &__nav {
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+      width: 100%;
+
+      a {
+        font-size: 14px;
+        padding: 8px;
+        text-align: center;
+        width: 100%;
+      }
+    }
+
+    &__bottom {
+      flex-direction: column;
+      align-items: center;
+      gap: 35px;
+    }
+    &__pif-wrap {
+      order: 2;
+      display: flex;
+      justify-content: center;
+    }
+
+    &__pif {
+      width: 192px;
+      height: 35px;
+    }
+
+    &__legal {
+      order: 1;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      width: 100%;
+
+      a,
+      span {
+        font-size: 14px;
+        padding: 8px;
+        text-align: center;
+      }
+    }
+  }
+  [dir="rtl"] .footer__right {
+    min-width: auto !important;
+    align-items: center;
+    width: 100%;
+  }
+
+  [dir="rtl"] .footer__legal {
+    min-width: auto !important;
+    align-items: center;
+    width: 100%;
+  }
+  [dir="rtl"] .footer__social {
+    width: 100%;
+    justify-content: center;
+    flex-direction: row-reverse;
+  }
+
+  [dir="rtl"] .footer__nav {
+    align-items: center;
+  }
+}
+
+@media (max-width: 425px) {
+  [dir="rtl"] {
+    .footer__right {
+      align-items: center;
+      width: 100%;
+      min-width: auto;
+    }
+
+    .footer__social {
+      width: 100%;
+      justify-content: center;
+      flex-direction: row-reverse;
+    }
+
+    .footer__legal {
+      min-width: auto;
+    }
+  }
 }

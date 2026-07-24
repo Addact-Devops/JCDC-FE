@@ -1,19 +1,34 @@
-/**
- * sections/about.js — About JCDC section
- * Currently no JS behaviour; file exists so the section is self-contained
- * and can host future interactions (reveal-on-scroll, parallax, etc.)
- */
 window.About = (function () {
-  'use strict';
+  "use strict";
 
-  function init(root) {
-    root = root || document.querySelector('.about');
-    if (!root) return;
-    // Placeholder for future behaviours.
+  function initReveal(root) {
+    if (!("IntersectionObserver" in window)) {
+      root.classList.add("in-view");
+      return;
+    }
+
+    var observer = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          root.classList.add("in-view");
+          observer.unobserve(root);
+        });
+      },
+      { threshold: 0, rootMargin: "0px 0px -45% 0px" },
+    );
+
+    observer.observe(root);
   }
 
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => init());
+  function init(root) {
+    root = root || document.querySelector(".our-story");
+    if (!root) return;
+    initReveal(root);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", () => init());
   } else {
     init();
   }

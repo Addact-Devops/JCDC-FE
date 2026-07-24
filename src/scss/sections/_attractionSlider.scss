@@ -1,0 +1,358 @@
+.attraction-slider {
+  width: 100%;
+  background: var(--surface-white);
+  padding: 64px 120px;
+
+  &__container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  &__active {
+    position: relative;
+    width: 100%;
+    margin-bottom: 16px;
+  }
+
+  &__active-image {
+    width: 100%;
+    max-width: 1200px;
+    height: 656px;
+    aspect-ratio: unset;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #f3f3f3;
+    position: relative;
+    margin: 0 auto;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: opacity 0.35s var(--ease);
+    }
+
+    &.is-fading img {
+      opacity: 0.35;
+    }
+  }
+
+  &__active-img {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    &.is-active {
+      position: relative;
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+
+  &__title-overlay {
+    position: static;
+    background: transparent;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-radius: 0;
+    padding: 0 0 16px 0;
+    transition: opacity 0.35s var(--ease);
+
+    &.is-fading {
+      opacity: 0;
+    }
+  }
+
+  &__title {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--primary-500);
+
+    display: none;
+
+    &.is-active {
+      display: block;
+    }
+  }
+
+  &__info {
+    margin: 0 0 23px 0;
+    transition: opacity 0.35s var(--ease);
+
+    &.is-fading {
+      opacity: 0;
+    }
+  }
+
+  &__bottom-box {
+    position: relative;
+    width: 1088px;
+    max-width: 100%;
+    margin: 0 auto;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+    padding: 40px 40px 0px 40px;
+
+    margin-top: -94px;
+    z-index: 2;
+  }
+
+  &__info-variant {
+    display: none;
+
+    &.is-active {
+      display: block;
+    }
+  }
+
+  &__district {
+    margin: 0 0 9px;
+    padding: 0;
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--text-500);
+
+    strong {
+      font-weight: 700;
+      color: var(--text-500);
+    }
+  }
+
+  &__description {
+    margin: 0;
+    font-family: var(--font-body);
+    padding: 0;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.7;
+    color: var(--text-500);
+    max-width: 920px;
+  }
+
+  &__strip {
+    display: flex;
+    gap: 13px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    margin-left: 0;
+    padding: 16px 0 5px 0;
+    scroll-padding-inline: 56px;
+    scroll-behavior: smooth;
+    scroll-snap-type: x proximity;
+
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+    cursor: grab;
+
+    &.is-dragging {
+      cursor: grabbing;
+      scroll-behavior: auto;
+      scroll-snap-type: none;
+      user-select: none;
+      -webkit-user-select: none;
+
+      img {
+        -webkit-user-drag: none;
+        pointer-events: none;
+      }
+    }
+  }
+}
+
+.attraction-thumb {
+  flex: 0 0 auto;
+  width: 122px;
+  height: 163px;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+  scroll-snap-align: start;
+  text-align: center;
+
+  &:focus-visible {
+    outline: 2px solid var(--primary-500);
+    outline-offset: 4px;
+    border-radius: 6px;
+  }
+
+  &__image {
+    height: 114px;
+    width: 100%;
+    max-width: 122px;
+    aspect-ratio: 1 / 1;
+    border-radius: 6px;
+    overflow: hidden;
+    background: #f3f3f3;
+    opacity: 0.7;
+    border: 2px solid transparent;
+    transition:
+      opacity var(--dur) var(--ease),
+      transform var(--dur) var(--ease),
+      box-shadow var(--dur) var(--ease),
+      border-color var(--dur) var(--ease);
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+  }
+
+  &__label {
+    margin: 0;
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.35;
+    color: var(--primary-500);
+    transition: color var(--dur) var(--ease);
+    opacity: 0.7;
+  }
+
+  &:hover &__image,
+  &:focus-visible &__image {
+    opacity: 1;
+  }
+
+  &:hover &__label,
+  &:focus-visible &__label {
+    opacity: 1;
+    color: var(--primary-500);
+  }
+
+  &--active &__image {
+    opacity: 1;
+    box-shadow: 0 4px 12px rgba(0, 118, 169, 0.18);
+    border-color: var(--primary-500);
+  }
+
+  &--active &__label {
+    color: var(--primary-500);
+    font-weight: 700;
+    opacity: 1;
+  }
+}
+
+@media (max-width: 1024px) {
+  .attraction-slider {
+    padding: 56px 48px 64px;
+
+    &__title-overlay {
+      inset-inline-start: 32px;
+      inset-inline-end: 32px;
+      bottom: 24px;
+      padding: 18px 24px;
+    }
+
+    &__title {
+      font-size: 24px;
+    }
+
+    &__strip {
+      padding-inline: 32px;
+      scroll-padding-inline: 32px;
+    }
+  }
+
+  .attraction-thumb {
+    width: 110px;
+
+    &__label {
+      font-size: 12px;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .attraction-slider {
+    padding: 64px 16px;
+
+    &__active-image {
+      aspect-ratio: 4 / 3;
+    }
+
+    &__title-overlay {
+      inset-inline-start: 16px;
+      inset-inline-end: 16px;
+      bottom: 16px;
+      padding: 0px 0px 16px 0px;
+      border-radius: 6px;
+    }
+
+    &__title {
+      font-size: 30px;
+    }
+
+    &__district,
+    &__description {
+      font-size: 15px;
+    }
+
+    &__strip {
+      gap: 13px;
+      padding-inline: 16px;
+      scroll-padding-inline: 16px;
+    }
+
+    &__bottom-box {
+      width: calc(100% - 33.6px);
+      margin-inline: 16.8px;
+      margin-top: -98px;
+      border-radius: 8px;
+      padding: 40px 16px;
+      background: rgba(255, 255, 255, 0.8);
+    }
+  }
+
+  .attraction-thumb {
+    width: 96px;
+
+    &__label {
+      font-size: 12px;
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .attraction-slider {
+    padding: 64px 16px;
+
+    &__info {
+      margin-inline: 8px;
+    }
+
+    &__strip {
+      padding-inline: 8px;
+      scroll-padding-inline: 8px;
+    }
+    &__bottom-box {
+      width: calc(100% - 33.6px);
+      margin-inline: 16.8px;
+      margin-top: -96px;
+      border-radius: 8px;
+      padding: 40px 16px;
+    }
+  }
+
+  .attraction-thumb {
+    width: 88px;
+  }
+}

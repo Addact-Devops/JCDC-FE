@@ -1,21 +1,50 @@
-// main.scss — Entry point
-// Order: tokens → reset → components (reusable) → sections (page-specific) → responsive
+@use "tokens";
+@use "reset";
 
-@use 'tokens';
-@use 'reset';
+@use "components/navbar";
+@use "components/drawer";
+@use "components/buttons";
+@use "components/footer";
+@use "components/legalContent";
+@use "components/ourStory";
+@use "components/visionMission";
+@use "components/heroBanner";
+@use "components/coreValues";
+@use "components/partnersMarquee";
+@use "components/form";
+@use "components/culture";
+@use "components/jcdc";
+@use "components/investCentral";
+@use "components/attractions";
+@use "components/sustainability";
+@use "components/sustainabilityPillars";
+@use "components/sustainabilityAction";
+@use "components/globalEnvironment";
+@use "components/environmental";
+@use "components/pagination";
+@use "components/destination";
+@use "components/cookie-pop";
+@use "components/sitecoreForm";
 
-// Reusable components (can be used on other pages too)
-@use 'components/navbar';
-@use 'components/drawer';
-@use 'components/buttons';
-@use 'components/footer';
+@use "sections/hero";
+@use "sections/about";
+@use "sections/jcd-slider";
+@use "sections/news";
+@use "sections/awards";
+@use "sections/howWeSet";
+@use "sections/nextStep";
+@use "sections/whyJeddah";
+@use "sections/registerInterest";
+@use "sections/errorPage";
+@use "sections/contactUs";
+@use "sections/whoRegister";
+@use "sections/registrationProcess";
+@use "sections/searchPage";
+@use "sections/newsListing";
+@use "sections/newsItem";
+@use "sections/leadership";
+@use "sections/landmarkSlider";
+@use "sections/attractionSlider";
+@use "sections/jcdMap";
 
-// Page sections
-@use 'sections/hero';
-@use 'sections/about';
-@use 'sections/jcd-slider';
-@use 'sections/news';
-@use 'sections/awards';
-
-// Responsive rules (last — overrides all above)
-@use 'responsive';
+@use "responsive";
