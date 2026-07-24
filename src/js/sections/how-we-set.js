@@ -7,7 +7,7 @@ window.HowWeSet = (function () {
 
     const cards = grid.querySelectorAll(".how-we-set__card");
     cards.forEach((card, i) => {
-      card.style.transitionDelay = i * 0.95 + "s";
+      card.style.transitionDelay = i * 0.5 + "s";
     });
 
     if (!("IntersectionObserver" in window)) {

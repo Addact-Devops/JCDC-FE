@@ -74,11 +74,11 @@ window.DestinationHighlight = (function () {
     if (!reduceMotion) prepareCounters(stats);
 
     stats.forEach((stat, i) => {
-      const delay = i * 0.15;
+      const delay = i * 0.1;
       const label = stat.querySelector(".destination-highlight__stat-label");
       const value = stat.querySelector(".destination-highlight__stat-value");
       if (label) label.style.transitionDelay = delay + "s";
-      if (value) value.style.transitionDelay = delay + 0.1 + "s";
+      if (value) value.style.transitionDelay = delay + 0.06 + "s";
     });
 
     function reveal() {

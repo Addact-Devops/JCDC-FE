@@ -7,14 +7,14 @@ window.VisionMission = (function () {
 
     const cards = container.querySelectorAll(".vision-mission__card");
     cards.forEach((card, i) => {
-      const cardDelay = i * 0.95;
+      const cardDelay = i * 0.5;
       card.style.transitionDelay = cardDelay + "s";
 
       const title = card.querySelector(".vision-mission__title");
       const description = card.querySelector(".vision-mission__description");
-      if (title) title.style.transitionDelay = cardDelay + 0.4 + "s";
+      if (title) title.style.transitionDelay = cardDelay + 0.2 + "s";
       if (description)
-        description.style.transitionDelay = cardDelay + 0.6 + "s";
+        description.style.transitionDelay = cardDelay + 0.3 + "s";
     });
 
     if (!("IntersectionObserver" in window)) {

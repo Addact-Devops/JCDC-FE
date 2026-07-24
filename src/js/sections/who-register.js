@@ -8,54 +8,54 @@
  * are left untouched so the grid structure stays visually grounded.
  */
 window.WhoRegister = (function () {
-    "use strict";
+  "use strict";
 
-    const COLUMNS = 2;
-    const COLUMN_STEP = 0.35;
+  const COLUMNS = 2;
+  const COLUMN_STEP = 0.2;
 
-    function initReveal(root) {
-        const grid = root.querySelector(".who-register__grid");
-        if (!grid) return;
+  function initReveal(root) {
+    const grid = root.querySelector(".who-register__grid");
+    if (!grid) return;
 
-        const cards = grid.querySelectorAll(".who-register__card");
-        cards.forEach((card, i) => {
-            const delay = (i % COLUMNS) * COLUMN_STEP;
-            const title = card.querySelector(".who-register__card-title");
-            const description = card.querySelector(".who-register__card-description");
-            if (title) title.style.transitionDelay = delay + "s";
-            if (description) description.style.transitionDelay = delay + 0.08 + "s";
+    const cards = grid.querySelectorAll(".who-register__card");
+    cards.forEach((card, i) => {
+      const delay = (i % COLUMNS) * COLUMN_STEP;
+      const title = card.querySelector(".who-register__card-title");
+      const description = card.querySelector(".who-register__card-description");
+      if (title) title.style.transitionDelay = delay + "s";
+      if (description) description.style.transitionDelay = delay + 0.05 + "s";
+    });
+
+    if (!("IntersectionObserver" in window)) {
+      grid.classList.add("in-view");
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          grid.classList.add("in-view");
+          observer.unobserve(grid);
         });
+      },
+      { threshold: 0, rootMargin: "0px 0px -20% 0px" },
+    );
 
-        if (!("IntersectionObserver" in window)) {
-            grid.classList.add("in-view");
-            return;
-        }
+    observer.observe(grid);
+  }
 
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (!entry.isIntersecting) return;
-                    grid.classList.add("in-view");
-                    observer.unobserve(grid);
-                });
-            },
-            { threshold: 0, rootMargin: "0px 0px -20% 0px" },
-        );
+  function init(root) {
+    root = root || document.querySelector(".who-register");
+    if (!root) return;
+    initReveal(root);
+  }
 
-        observer.observe(grid);
-    }
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", () => init());
+  } else {
+    init();
+  }
 
-    function init(root) {
-        root = root || document.querySelector(".who-register");
-        if (!root) return;
-        initReveal(root);
-    }
-
-    if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", () => init());
-    } else {
-        init();
-    }
-
-    return { init };
+  return { init };
 })();

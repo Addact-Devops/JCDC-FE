@@ -30,7 +30,7 @@
     grids.forEach((grid) => {
       const cards = grid.querySelectorAll(".leader-card");
       cards.forEach((card, i) => {
-        card.style.transitionDelay = i * 0.1 + "s";
+        card.style.transitionDelay = i * 0.06 + "s";
       });
 
       if (!("IntersectionObserver" in window)) {

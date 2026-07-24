@@ -7,13 +7,13 @@ window.Culture = (function () {
 
     const cards = grid.querySelectorAll(".culture__card");
     cards.forEach((card, i) => {
-      const cardDelay = i * 0.95;
+      const cardDelay = i * 0.5;
       card.style.transitionDelay = cardDelay + "s";
 
       const title = card.querySelector(".culture__card-title");
       const desc = card.querySelector(".culture__card-desc");
-      if (title) title.style.transitionDelay = cardDelay + 0.4 + "s";
-      if (desc) desc.style.transitionDelay = cardDelay + 0.6 + "s";
+      if (title) title.style.transitionDelay = cardDelay + 0.2 + "s";
+      if (desc) desc.style.transitionDelay = cardDelay + 0.3 + "s";
     });
 
     if (!("IntersectionObserver" in window)) {

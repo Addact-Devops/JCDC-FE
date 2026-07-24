@@ -63,8 +63,8 @@
     transition:
       transform var(--dur) var(--ease),
       box-shadow var(--dur) var(--ease),
-      opacity 0.8s var(--ease),
-      translate 0.8s var(--ease);
+      opacity 0.45s var(--ease),
+      translate 0.45s var(--ease);
 
     opacity: 0;
     translate: 60px 0;
