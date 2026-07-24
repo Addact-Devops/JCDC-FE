@@ -1,414 +1,389 @@
-// ==========================================
-// Form components — shared form styles
-// Used by: register-interest form, future contact form, etc.
-// ==========================================
-
-// ==========================================
-// Field wrapper
-// ==========================================
 .form-field {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    margin: 0;
-    border: none;
-    padding: 0;
-    min-width: 0;
-    margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  border: none;
+  padding: 0;
+  min-width: 0;
+  margin-bottom: 10px;
 
-    &__label {
-        font-family: var(--font-body);
-        font-size: 14px;
-        font-weight: 400;
-        line-height: 143%;
-        color: var(--text-500);
+  &__label {
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 143%;
+    color: var(--text-500);
 
-        display: inline-flex;
-        align-items: center;
-        gap: 4px;
-        flex-wrap: wrap;
-    }
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    flex-wrap: wrap;
+  }
 
-    &__required {
-        color: var(--text-500);
-    }
+  &__required {
+    color: var(--text-500);
+  }
 
-    &__input,
-    &__select,
-    &__textarea {
-        width: 100%;
-        height: 48px;
-        padding: 12px 16px;
-        background: var(--surface-white);
-        border: 1px solid #d0d5dd;
-        border-radius: 4px;
-        font-family: var(--font-body);
-        font-size: 16px;
-        font-weight: 400;
-        line-height: 150%;
-        color: var(--text-500);
-        transition:
-            border-color var(--dur) var(--ease),
-            box-shadow var(--dur) var(--ease);
-
-        &::placeholder {
-            color: #98a2b3;
-        }
-
-        &:focus {
-            outline: none;
-            border-color: var(--primary-500);
-            box-shadow: 0 0 0 3px rgba(0, 118, 169, 0.12);
-        }
-
-        &[aria-invalid="true"],
-        &.is-invalid {
-            border-color: #d92d20;
-
-            &:focus {
-                box-shadow: 0 0 0 3px rgba(217, 45, 32, 0.12);
-            }
-        }
-    }
-
-    &__textarea {
-        height: auto;
-        min-height: 100px;
-        padding: 12px 14px;
-        resize: vertical;
-    }
-
-    &__select {
-        appearance: none;
-        background-image: url("../../../assets/icons/Drop\ Down.svg");
-        background-repeat: no-repeat;
-        background-position: right 14px center;
-        padding-right: 40px;
-        cursor: pointer;
-
-        // Logical positioning for the chevron — flips in RTL
-        [dir="rtl"] & {
-            background-position: left 14px center;
-            padding-right: 14px;
-            padding-left: 40px;
-        }
-    }
-
-    &__error {
-        display: none;
-        font-family: var(--font-body);
-        font-size: 13px;
-        font-weight: 400;
-        line-height: 1.4;
-        color: #d92d20;
-        margin-top: 2px;
-    }
-
-    &.has-error &__error {
-        display: block;
-    }
-
-    &__hint {
-        font-family: var(--font-body);
-        font-size: 12px;
-        font-weight: 400;
-        line-height: 1.4;
-        color: #98a2b3;
-        text-align: end;
-    }
-}
-
-// ==========================================
-// Phone input — +966 prefix + divider + input
-// ==========================================
-.form-phone {
-    display: flex;
-    align-items: stretch;
+  &__input,
+  &__select,
+  &__textarea {
     width: 100%;
-    height: 44px;
+    height: 48px;
+    padding: 12px 16px;
     background: var(--surface-white);
     border: 1px solid #d0d5dd;
     border-radius: 4px;
-    overflow: hidden;
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 150%;
+    color: var(--text-500);
     transition:
-        border-color var(--dur) var(--ease),
-        box-shadow var(--dur) var(--ease);
+      border-color var(--dur) var(--ease),
+      box-shadow var(--dur) var(--ease);
 
-    &:focus-within {
-        border-color: var(--primary-500);
-        box-shadow: 0 0 0 3px rgba(0, 118, 169, 0.12);
+    &::placeholder {
+      color: #98a2b3;
     }
 
+    &:focus {
+      outline: none;
+      border-color: var(--primary-500);
+      box-shadow: 0 0 0 3px rgba(0, 118, 169, 0.12);
+    }
+
+    &[aria-invalid="true"],
     &.is-invalid {
-        border-color: #d92d20;
-    }
+      border-color: #d92d20;
 
-    &__prefix {
-        display: flex;
-        align-items: center;
-        padding: 0 12px;
-        font-family: var(--font-body);
-        font-size: 16px;
-        font-weight: 400;
-        color: #475467;
-        background: transparent;
-        flex-shrink: 0;
+      &:focus {
+        box-shadow: 0 0 0 3px rgba(217, 45, 32, 0.12);
+      }
     }
+  }
 
-    &__divider {
-        width: 1px;
-        background: #d0d5dd;
-        flex-shrink: 0;
+  &__textarea {
+    height: auto;
+    min-height: 100px;
+    padding: 12px 14px;
+    resize: vertical;
+  }
+
+  &__select {
+    appearance: none;
+    background-image: url("../../../assets/icons/Drop\ Down.svg");
+    background-repeat: no-repeat;
+    background-position: right 14px center;
+    padding-right: 40px;
+    cursor: pointer;
+
+    [dir="rtl"] & {
+      background-position: left 14px center;
+      padding-right: 14px;
+      padding-left: 40px;
     }
+  }
 
-    &__input {
-        flex: 1;
-        min-width: 0;
-        height: 100%;
-        padding: 10px 14px;
-        border: none;
-        background: transparent;
-        font-family: var(--font-body);
-        font-size: 16px;
-        color: #101828;
-        outline: none;
+  &__error {
+    display: none;
+    font-family: var(--font-body);
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: #d92d20;
+    margin-top: 2px;
+  }
 
-        &::placeholder {
-            color: #98a2b3;
-        }
-    }
+  &.has-error &__error {
+    display: block;
+  }
+
+  &__hint {
+    font-family: var(--font-body);
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: #98a2b3;
+    text-align: end;
+  }
 }
 
-// ==========================================
-// Radio card (Engagement Type)
-// ==========================================
-.radio-card {
-    position: relative;
+.form-phone {
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  height: 44px;
+  background: var(--surface-white);
+  border: 1px solid #d0d5dd;
+  border-radius: 4px;
+  overflow: hidden;
+  transition:
+    border-color var(--dur) var(--ease),
+    box-shadow var(--dur) var(--ease);
+
+  &:focus-within {
+    border-color: var(--primary-500);
+    box-shadow: 0 0 0 3px rgba(0, 118, 169, 0.12);
+  }
+
+  &.is-invalid {
+    border-color: #d92d20;
+  }
+
+  &__prefix {
     display: flex;
     align-items: center;
-    gap: 10px;
-    padding: 15.5px 16px;
-    border: 1px solid #d0d5dd;
-    border-radius: 4px;
-    background: var(--surface-white);
-    cursor: pointer;
-    transition:
-        border-color var(--dur) var(--ease),
-        background var(--dur) var(--ease);
+    padding: 0 12px;
+    font-family: var(--font-body);
+    font-size: 16px;
+    font-weight: 400;
+    color: #475467;
+    background: transparent;
+    flex-shrink: 0;
+  }
+
+  &__divider {
+    width: 1px;
+    background: #d0d5dd;
+    flex-shrink: 0;
+  }
+
+  &__input {
+    flex: 1;
+    min-width: 0;
+    height: 100%;
+    padding: 10px 14px;
+    border: none;
+    background: transparent;
+    font-family: var(--font-body);
+    font-size: 16px;
+    color: #101828;
+    outline: none;
+
+    &::placeholder {
+      color: #98a2b3;
+    }
+  }
+}
+
+.radio-card {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 15.5px 16px;
+  border: 1px solid #d0d5dd;
+  border-radius: 4px;
+  background: var(--surface-white);
+  cursor: pointer;
+  transition:
+    border-color var(--dur) var(--ease),
+    background var(--dur) var(--ease);
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--primary-500);
+
+  &:hover {
+    border-color: var(--primary-500);
+  }
+
+  &__input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+  }
+
+  &__circle {
+    flex-shrink: 0;
+    width: 10px;
+    height: 10px;
+    border: 1.5px solid #d0d5dd;
+    border-radius: 50%;
+    position: relative;
+    transition: border-color var(--dur) var(--ease);
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      margin: auto;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--primary-500);
+      transform: scale(0);
+      transition: transform var(--dur) var(--ease);
+    }
+  }
+
+  &__label {
     font-family: var(--font-body);
     font-size: 16px;
     font-weight: 400;
     line-height: 1.5;
     color: var(--primary-500);
+  }
 
-    &:hover {
-        border-color: var(--primary-500);
+  &__input:checked ~ &__circle {
+    border-color: var(--primary-500);
+
+    &::after {
+      transform: scale(1);
     }
+  }
 
-    &__input {
-        // Real radio is visually hidden but accessible
-        position: absolute;
-        opacity: 0;
-        width: 0;
-        height: 0;
-        pointer-events: none;
-    }
+  &__input:checked ~ &__label {
+    font-weight: 700;
+  }
 
-    &__circle {
-        flex-shrink: 0;
-        width: 10px;
-        height: 10px;
-        border: 1.5px solid #d0d5dd;
-        border-radius: 50%;
-        position: relative;
-        transition: border-color var(--dur) var(--ease);
+  &:has(&__input:checked) {
+    border-color: var(--primary-500);
+    border-width: 2px;
+    padding: 11px 15px;
+  }
 
-        &::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            margin: auto;
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--primary-500);
-            transform: scale(0);
-            transition: transform var(--dur) var(--ease);
-        }
-    }
-
-    &__label {
-        font-family: var(--font-body);
-        font-size: 16px;
-        font-weight: 400;
-        line-height: 1.5;
-        color: var(--primary-500);
-    }
-
-    // Selected state
-    &__input:checked ~ &__circle {
-        border-color: var(--primary-500);
-
-        &::after {
-            transform: scale(1);
-        }
-    }
-
-    &__input:checked ~ &__label {
-        font-weight: 700;
-    }
-
-    &:has(&__input:checked) {
-        border-color: var(--primary-500);
-        border-width: 2px;
-        padding: 11px 15px; // compensate for thicker border
-    }
-
-    // Keyboard focus
-    &__input:focus-visible ~ &__circle {
-        outline: 2px solid var(--primary-500);
-        outline-offset: 3px;
-    }
+  &__input:focus-visible ~ &__circle {
+    outline: 2px solid var(--primary-500);
+    outline-offset: 3px;
+  }
 }
 
-// ==========================================
-// Checkbox (interests, terms)
-// ==========================================
 .form-check {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    cursor: pointer;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  cursor: pointer;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 150%;
+  color: var(--text-500);
+
+  &__input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    pointer-events: none;
+  }
+
+  &__box {
+    flex-shrink: 0;
+    width: 16px;
+    height: 16px;
+    margin-top: 2px;
+    border: 1.5px solid #d0d5dd;
+    border-radius: 3px;
+    background: var(--surface-white);
+    position: relative;
+    transition:
+      border-color var(--dur) var(--ease),
+      background var(--dur) var(--ease);
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      inset: 0;
+      margin: auto;
+      width: 9px;
+      height: 5px;
+      border-left: 2px solid var(--surface-white);
+      border-bottom: 2px solid var(--surface-white);
+      transform: translate(-50%, -60%) rotate(-45deg) scale(0);
+      transform-origin: center;
+      transition: transform var(--dur) var(--ease);
+    }
+  }
+
+  &__input:checked ~ &__box {
+    border-color: var(--primary-500);
+    background: var(--primary-500);
+
+    &::after {
+      transform: rotate(-45deg) scale(1);
+    }
+  }
+
+  &__input:focus-visible ~ &__box {
+    outline: 2px solid var(--primary-500);
+    outline-offset: 2px;
+  }
+
+  &__label {
+    flex: 1;
+    margin-bottom: 8px;
+
+    a {
+      text-decoration: underline;
+      text-underline-offset: 2px;
+
+      &:hover {
+        text-decoration-thickness: 2px;
+      }
+    }
+  }
+
+  &.has-error &__box {
+    border-color: #d92d20;
+  }
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  border: none;
+  padding: 0;
+  margin: 0;
+
+  &__legend {
+    font-family: var(--font-body);
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 150%;
+    color: var(--text-500);
+    margin-bottom: 24px;
+    padding: 0;
+  }
+
+  &__hint {
     font-family: var(--font-body);
     font-size: 14px;
     font-weight: 400;
     line-height: 150%;
     color: var(--text-500);
+    margin: 0 0 4px;
+  }
 
-    &__input {
-        position: absolute;
-        opacity: 0;
-        width: 0;
-        height: 0;
-        pointer-events: none;
-    }
+  &__error {
+    display: none;
+    font-family: var(--font-body);
+    font-size: 13px;
+    color: #d92d20;
+    margin-top: 4px;
+  }
 
-    &__box {
-        flex-shrink: 0;
-        width: 16px;
-        height: 16px;
-        margin-top: 2px;
-        border: 1.5px solid #d0d5dd;
-        border-radius: 3px;
-        background: var(--surface-white);
-        position: relative;
-        transition:
-            border-color var(--dur) var(--ease),
-            background var(--dur) var(--ease);
-
-        &::after {
-            content: "";
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            inset: 0;
-            margin: auto;
-            width: 9px;
-            height: 5px;
-            border-left: 2px solid var(--surface-white);
-            border-bottom: 2px solid var(--surface-white);
-            transform: translate(-50%, -60%) rotate(-45deg) scale(0);
-            transform-origin: center;
-            transition: transform var(--dur) var(--ease);
-        }
-    }
-
-    &__input:checked ~ &__box {
-        border-color: var(--primary-500);
-        background: var(--primary-500);
-
-        &::after {
-            transform: rotate(-45deg) scale(1);
-        }
-    }
-
-    &__input:focus-visible ~ &__box {
-        outline: 2px solid var(--primary-500);
-        outline-offset: 2px;
-    }
-
-    &__label {
-        flex: 1;
-        margin-bottom: 8px;
-
-        a {
-            text-decoration: underline;
-            text-underline-offset: 2px;
-
-            &:hover {
-                text-decoration-thickness: 2px;
-            }
-        }
-    }
-
-    // Required-but-empty visual cue
-    &.has-error &__box {
-        border-color: #d92d20;
-    }
-}
-
-// ==========================================
-// Group: Interests checkbox list (vertical)
-// ==========================================
-.form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 0px;
-    border: none;
-    padding: 0;
-    margin: 0;
-
-    &__legend {
-        font-family: var(--font-body);
-        font-size: 14px;
-        font-weight: 700;
-        line-height: 150%;
-        color: var(--text-500);
-        margin-bottom: 24px;
-        padding: 0;
-    }
-
-    &__hint {
-        font-family: var(--font-body);
-        font-size: 14px;
-        font-weight: 400;
-        line-height: 150%;
-        color: var(--text-500);
-        margin: 0 0 4px;
-    }
-
-    &__error {
-        display: none;
-        font-family: var(--font-body);
-        font-size: 13px;
-        color: #d92d20;
-        margin-top: 4px;
-    }
-
-    &.has-error &__error {
-        display: block;
-    }
+  &.has-error &__error {
+    display: block;
+  }
 }
 
 @media (max-width: 767px) {
-    .form-field {
-        &__label {
-            font-size: 12px;
-        }
-        &__input,
-        &__select,
-        &__textarea {
-            font-size: 14px;
-        }
+  .form-field {
+    &__label {
+      font-size: 12px;
     }
+    &__input,
+    &__select,
+    &__textarea {
+      font-size: 14px;
+    }
+  }
 }

@@ -1,7 +1,3 @@
-// ==========================================
-// Destination Highlight
-// ==========================================
-
 .destination-highlight {
   position: relative;
 
@@ -16,7 +12,6 @@
 
   overflow: hidden;
 
-  // SAME BACKGROUND STYLE
   &::before {
     content: "";
 
@@ -49,10 +44,6 @@
     }
   }
 
-  // ==========================================
-  // Content Wrapper
-  // ==========================================
-
   &__content {
     width: 100%;
     max-width: 1440px;
@@ -62,10 +53,6 @@
     position: relative;
     z-index: 2;
   }
-
-  // ==========================================
-  // Top Stats
-  // ==========================================
 
   &__stats {
     width: 100%;
@@ -101,13 +88,6 @@
 
   &__stat-label,
   &__stat-value {
-    // ==========================================
-    // Fading text reveal (staggered wave)
-    // Triggered by `.destination-highlight__stats.in-view`, added via
-    // IntersectionObserver in destination-highlight.js. Per-stat
-    // transition-delay is set inline so the row fades in as a wave.
-    // The stat-value's number count-up is driven separately by JS.
-    // ==========================================
     opacity: 0;
     transform: translateY(20px);
     transition:
@@ -147,26 +127,12 @@
     color: var(--primary-500);
   }
 
-  // ==========================================
-  // Main Body
-  // ==========================================
-
   &__body {
     display: flex;
     align-items: center;
 
     gap: 123px;
   }
-
-  // ==========================================
-  // Fading entrance (scroll reveal)
-  // Triggered by `.destination-highlight__body.in-view`, added via
-  // IntersectionObserver in destination-highlight.js. Same treatment as
-  // .jcdc / .our-story: text (left, first in markup) fades in first, then
-  // the image once the text's own fade has finished. This is independent
-  // of the stats reveal/count-up above and doesn't touch the existing
-  // hover zoom on &__image or the &::before vector shift.
-  // ==========================================
 
   &__text,
   &__image-wrapper {
@@ -178,8 +144,6 @@
     transition-delay: 0.1s;
   }
 
-  // Starts only once the text's own fade (0.1s delay + 0.9s duration)
-  // has finished.
   &__image-wrapper {
     transition-delay: 1s;
   }
@@ -198,10 +162,6 @@
       transform: none;
     }
   }
-
-  // ==========================================
-  // Left Content
-  // ==========================================
 
   &__text {
     width: 488px;
@@ -243,10 +203,6 @@
     }
   }
 
-  // ==========================================
-  // Image
-  // ==========================================
-
   &__image-wrapper {
     width: 589px;
     height: 589px;
@@ -282,10 +238,6 @@
   }
 }
 
-// ==========================================
-// Tablet
-// ==========================================
-
 @media (max-width: 1024px) {
   .destination-highlight {
     &__content {
@@ -312,10 +264,6 @@
     }
   }
 }
-
-// ==========================================
-// Mobile
-// ==========================================
 
 @media (max-width: 768px) {
   .destination-highlight {
@@ -382,10 +330,6 @@
     }
   }
 }
-
-// ==========================================
-// Small Mobile
-// ==========================================
 
 @media (max-width: 480px) {
   .destination-highlight {

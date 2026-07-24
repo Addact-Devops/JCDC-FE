@@ -1,26 +1,14 @@
-// ==========================================
-// How We Set Ourselves Apart
-// 4-card grid with feature icon + title + description
-// Figma: 1440px design, 120px gutter, 1200px content max
-// ==========================================
-
 .how-we-set {
   width: 100%;
   background: var(--surface-white);
   padding: 64px 120px;
 
-  // ==========================================
-  // Container
-  // ==========================================
   &__container {
     width: 100%;
     max-width: 1440px;
     margin: 0 auto;
   }
 
-  // ==========================================
-  // Header (title + xoxo pattern)
-  // ==========================================
   &__header {
     display: flex;
     flex-direction: column;
@@ -39,9 +27,6 @@
     text-align: center;
   }
 
-  // ==========================================
-  // Grid — 2 columns × 2 rows on desktop
-  // ==========================================
   &__grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -49,9 +34,6 @@
     width: 100%;
   }
 
-  // ==========================================
-  // Card
-  // ==========================================
   &__card {
     background: var(--surface-grey);
     border-radius: 8px;
@@ -68,14 +50,6 @@
       opacity 0.8s var(--ease),
       translate 0.8s var(--ease);
 
-    // ==========================================
-    // Fading entrance (slide in from the right)
-    // Triggered by `.how-we-set__grid.in-view`, added via
-    // IntersectionObserver in how-we-set.js. Per-card transition-delay is
-    // set inline so cards animate in one by one. Uses the `translate`
-    // property (not `transform`) so it never fights any future hover
-    // effect that uses `transform`.
-    // ==========================================
     opacity: 0;
     translate: 60px 0;
 
@@ -131,19 +105,13 @@
     color: var(--text-500);
   }
 
-  // ==========================================
-  // RTL: text-align direction
-  // ==========================================
   [dir="rtl"] & {
     &__card {
-      align-items: flex-start; // remains start, but logical flow flips
+      align-items: flex-start;
     }
   }
 }
 
-// ==========================================
-// Tablet (≤ 1024)
-// ==========================================
 @media (max-width: 1024px) {
   .how-we-set {
     padding: 64px 0;
@@ -166,9 +134,6 @@
   }
 }
 
-// ==========================================
-// Mobile (≤ 768)
-// ==========================================
 @media (max-width: 768px) {
   .how-we-set {
     padding: 48px 0;
@@ -215,9 +180,6 @@
   }
 }
 
-// ==========================================
-// Small Mobile (≤ 480)
-// ==========================================
 @media (max-width: 480px) {
   .how-we-set {
     padding: 64px 0;

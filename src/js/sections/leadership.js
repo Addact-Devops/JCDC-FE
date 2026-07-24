@@ -10,9 +10,6 @@
       return;
     }
 
-    // rootMargin shrinks the viewport's bottom edge by 45%, so it only
-    // counts as "in view" once scrolled up past roughly the middle of
-    // the screen — same treatment as .jcdc / .our-story.
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -41,9 +38,6 @@
         return;
       }
 
-      // Fires again independently for the executive grid once its panel
-      // is switched to and scrolled into view — each grid gets its own
-      // observer instance.
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {

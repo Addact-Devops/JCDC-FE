@@ -11,10 +11,6 @@
 
   overflow: hidden;
 
-  // ==========================================
-  // Background Vector
-  // ==========================================
-
   &::before {
     content: "";
 
@@ -36,10 +32,6 @@
     pointer-events: none;
   }
 
-  // ==========================================
-  // Container
-  // ==========================================
-
   &__content {
     width: 100%;
     max-width: 1440px;
@@ -58,23 +50,12 @@
     margin: 0 auto;
   }
 
-  // ==========================================
-  // Left Content
-  // ==========================================
-
   &__left {
     flex: 0 0 449px;
 
     display: flex;
     align-items: center;
   }
-
-  // ==========================================
-  // Fading entrance (scroll reveal)
-  // Triggered by `.in-view`, added via IntersectionObserver in jcdc.js.
-  // Same treatment as .our-story: left content fades in first, then the
-  // right media once the left content's own fade has finished.
-  // ==========================================
 
   &__left,
   &__media {
@@ -86,8 +67,6 @@
     transition-delay: 0.1s;
   }
 
-  // Starts only once the left content's own fade (0.1s delay + 0.9s
-  // duration) has finished.
   &__media {
     transition-delay: 1s;
   }
@@ -122,10 +101,6 @@
       font-family: var(--font-ar);
     }
   }
-
-  // ==========================================
-  // Right Image
-  // ==========================================
 
   &__media {
     flex: 1;
@@ -179,10 +154,6 @@
   }
 }
 
-// ==========================================
-// Tablet
-// ==========================================
-
 @media (max-width: 1024px) {
   .jcdc {
     min-height: auto;
@@ -204,10 +175,6 @@
     }
   }
 }
-
-// ==========================================
-// Mobile
-// ==========================================
 
 @media (max-width: 768px) {
   .jcdc {
@@ -247,10 +214,6 @@
     }
   }
 }
-
-// ==========================================
-// Small Mobile
-// ==========================================
 
 @media (max-width: 480px) {
   .jcdc {

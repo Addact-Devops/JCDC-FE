@@ -1,73 +1,42 @@
-// ==========================================
-// Core Values
-// ==========================================
-
 .core-values {
   width: 100%;
   min-height: 718px;
-
   padding: 64px 0;
-
   background: #ffffff;
-
-  // ==========================================
-  // Container
-  // ==========================================
 
   &__container {
     width: 100%;
     max-width: 1440px;
-
     margin: 0 auto;
-
     padding: 0 120px;
   }
-
-  // ==========================================
-  // Header
-  // ==========================================
 
   &__header {
     display: flex;
     flex-direction: column;
     align-items: center;
-
     gap: 16px;
-
     margin-bottom: 56px;
   }
 
-  // ==========================================
-  // Title
-  // ==========================================
-
   &__title {
     margin: 0;
-
     font-family: "Ubuntu", sans-serif;
-
     font-size: 40px;
     font-weight: 500;
     line-height: 120%;
-
     color: #0076a9;
-
     text-align: center;
-
     [dir="rtl"] & {
       font-family: var(--font-ar);
     }
   }
-  // ==========================================
-  // Grid
-  // ==========================================
 
   &__grid {
     position: relative;
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-
     display: flex;
     border-radius: 8px;
     overflow: hidden;
@@ -75,10 +44,9 @@
 
   &__bg-vectors {
     position: absolute;
-    inset: 0; // top: 0; right: 0; bottom: 0; left: 0
-    z-index: 3; // Above card backgrounds, below card content
-
-    pointer-events: none; // Clicks pass through to cards
+    inset: 0;
+    z-index: 3;
+    pointer-events: none;
     display: none;
   }
 
@@ -86,21 +54,17 @@
     position: absolute;
     top: 0;
     height: 100%;
-
     opacity: 0.08;
-    mix-blend-mode: screen; // Subtle overlay — adjust to match your design (0.08–0.18)
-
+    mix-blend-mode: screen;
     object-fit: contain;
 
-    // --- Left vector: anchored to the left side ---
     &--left {
       left: 0%;
-      transform: translateX(-20%); // nudge left to bleed off edge slightly
+      transform: translateX(-20%);
       width: 35%;
       opacity: 0.4;
     }
 
-    // --- Middle vector: centered ---
     &--middle {
       left: 49%;
       top: 0;
@@ -109,42 +73,25 @@
       opacity: 0.4;
     }
 
-    // --- Right vector: anchored to the right side ---
     &--right {
       right: 0%;
-      transform: translateX(20%); // nudge right to bleed off edge slightly
+      transform: translateX(20%);
       width: 35%;
       opacity: 0.4;
     }
   }
 
-  // ==========================================
-  // Card
-  // ==========================================
-
   &__card {
     position: relative;
-
     flex: 1;
     max-height: 454px;
-
     padding: 77px 24px;
-
     display: flex;
     flex-direction: column;
     align-items: center;
-
     text-align: center;
-
     color: #ffffff;
     overflow: hidden;
-
-    // ==========================================
-    // Fading entrance (slide in from the right)
-    // Triggered by `.core-values__grid.in-view`, added via
-    // IntersectionObserver in core-values.js. Per-card transition-delay
-    // is set inline by core-values.js so cards animate in one by one.
-    // ==========================================
     opacity: 0;
     transform: translateX(60px);
     transition:
@@ -198,10 +145,6 @@
     }
   }
 
-  // ==========================================
-  // Icon
-  // ==========================================
-
   &__icon {
     width: 88px;
     height: 88px;
@@ -214,10 +157,6 @@
       object-fit: contain;
     }
   }
-
-  // ==========================================
-  // Card Title
-  // ==========================================
 
   &__card-title {
     margin: 0 0 24px;
@@ -235,10 +174,6 @@
     }
   }
 
-  // ==========================================
-  // Card Description
-  // ==========================================
-
   &__card-description {
     margin: 0;
 
@@ -255,7 +190,7 @@
     }
   }
   .core-values__bg-vectors-mobile {
-    display: none; //  hidden on desktop
+    display: none;
   }
 
   &__card-vector {
@@ -305,9 +240,6 @@
     }
   }
 
-  // ==========================================
-  // Tablet & Medium Screens (1350px and below)
-  // ==========================================
   @media (max-width: 1350px) {
     &__container {
       padding: 0 80px;
@@ -323,18 +255,12 @@
     }
   }
 
-  // ==========================================
-  // Tablet & Medium Screens (1200px and below)
-  // ==========================================
   @media (max-width: 1200px) {
     &__container {
       padding: 0 60px;
     }
   }
 
-  // ==========================================
-  // Smaller Tablets (1024px and below)
-  // ==========================================
   @media (max-width: 1024px) {
     &__container {
       padding: 0 40px;
@@ -364,9 +290,6 @@
     }
   }
 
-  // ==========================================
-  // Targets tablets in portrait mode down to mobile phones
-  // ==========================================
   @media (max-width: 991.98px) {
     .core-values__bg-vectors {
       display: none;
@@ -438,23 +361,23 @@
     }
 
     &__grid {
-      position: relative; // Ensure z-index stacking context
+      position: relative;
       width: 100%;
       height: auto;
-      flex-direction: column; // Cards stack vertically
+      flex-direction: column;
       border-radius: 8px;
-      overflow: hidden; // Contain vectors within grid
+      overflow: hidden;
     }
 
     &__card {
-      position: relative; // Establish stacking context
+      position: relative;
       width: 100%;
       height: auto;
       min-height: auto;
       padding: 32px 24px;
-      overflow: hidden; // Prevent card content from overflowing
+      overflow: hidden;
 
-      flex-direction: row; // Icon left, text right
+      flex-direction: row;
       align-items: center;
       text-align: start;
       gap: 20px;
@@ -462,7 +385,7 @@
       > div:not(.core-values__icon) {
         flex: 1;
         min-width: 0;
-        overflow: hidden; // Ensure text wraps properly
+        overflow: hidden;
         word-wrap: break-word;
       }
 

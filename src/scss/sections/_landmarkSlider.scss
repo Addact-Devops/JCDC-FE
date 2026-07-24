@@ -1,25 +1,9 @@
-// ==========================================
-// Landmark Slider (jcdc.html) — full-width version
-// Figma node: 7357:32903
-// Layout:
-//   - Section spans full viewport width (no left/right padding)
-//   - Three slides visible at once: prev (peek left), active (centered),
-//     next (peek right)
-//   - The info card with title/description/CTA is a STATIC overlay anchored
-//     at the bottom of the viewport — it does not slide. Only its inner
-//     content fades out → swaps → fades back in on slide change.
-//   - Prev/Next arrows sit on the side edges; dots below the card.
-// ==========================================
-
 .landmark-slider {
   scroll-margin-top: 96px;
   width: 100%;
   background: var(--surface-white);
   padding: 64px 0px 32px 0px;
 
-  // ==========================================
-  // Header (title + xoxo pattern)
-  // ==========================================
   &__header {
     display: flex;
     flex-direction: column;
@@ -39,9 +23,6 @@
     color: var(--primary-500);
   }
 
-  // ==========================================
-  // Viewport
-  // ==========================================
   &__viewport {
     --slide-width: 80vw;
     --slide-gap: 32px;
@@ -49,7 +30,6 @@
     position: relative;
     width: 100%;
     overflow: hidden;
-    // padding-block-end: 120px;
   }
 
   &__track {
@@ -78,7 +58,6 @@
       opacity 0.45s var(--ease),
       margin 0.45s var(--ease);
 
-    // SIDE SLIDES
     transform: scaleY(0.82);
     margin-top: 48px;
     margin-bottom: 48px;
@@ -177,9 +156,6 @@
     color: #efefef;
   }
 
-  // ==========================================
-  // Static info card (desktop)
-  // ==========================================
   &__card {
     position: absolute;
     bottom: 73px;
@@ -187,7 +163,7 @@
     transform: translateX(-50%);
     width: 1088px;
     max-width: calc(100% - 80px);
-    // min-height: 188px;
+
     z-index: 4;
     background: #f3f3f3;
     border-radius: 6px;
@@ -238,9 +214,6 @@
     flex-shrink: 0;
   }
 
-  // ==========================================
-  // Prev / Next arrows (desktop — on image sides)
-  // ==========================================
   &__nav {
     position: absolute;
     top: 40%;
@@ -306,9 +279,6 @@
     pointer-events: none;
   }
 
-  // ==========================================
-  // Dots
-  // ==========================================
   &__dots {
     display: flex;
     justify-content: center;
@@ -351,18 +321,11 @@
   }
 }
 
-// ==========================================
-// Modifier — card-less variant
-// Use when the slider should be just images + arrows + dots.
-// Apply `.landmark-slider--no-card` on the .landmark-slider root.
-// ==========================================
 .landmark-slider--no-card {
   .landmark-slider__viewport {
-    padding-block-end: 0; //  reclaim card-overhang space (was 120px)
+    padding-block-end: 0;
   }
 
-  //  Nav arrows go back to vertical center of the image
-  //  (default rule offsets them by -60px to dodge the card)
   .landmark-slider__nav {
     transform: translateY(-50%);
 
@@ -404,7 +367,7 @@
     &__viewport {
       --slide-width: 90vw;
       --slide-gap: 24px;
-      padding-block-end: 0; // no padding — card overlaps
+      padding-block-end: 0;
     }
 
     &__slide {
@@ -458,7 +421,6 @@
   }
 }
 
-// ◆ CHANGED — was (max-width: 1024px) → (max-width: 1023px)
 @media (max-width: 1023px) {
   .landmark-slider {
     padding: 56px 0 32px;
@@ -522,14 +484,6 @@
   }
 }
 
-// ==========================================
-// Mobile (≤ 768) — matches Figma mobile layout:
-//   1. Header (title + pattern)
-//   2. Prev/Next buttons, side-by-side, centered
-//   3. Single full-width square image (no peeks)
-//   4. Info card overlays the bottom-LEFT of the image
-//   5. Dots below the viewport
-// ==========================================
 @media (max-width: 768px) {
   .landmark-slider {
     padding: 64px 16px;
@@ -591,11 +545,10 @@
     }
 
     &__nav#{&}__nav--hidden {
-      opacity: 1 !important; // ◆ override desktop hide
+      opacity: 1 !important;
       visibility: visible !important;
-      pointer-events: none; // ◆ keep non-clickable (acts like disabled)
+      pointer-events: none;
 
-      // ◆ Disabled visual style — white bg, light blue icon
       background: var(--surface-white);
       border: 1.4px solid #b0d5e4;
       color: #b0d5e4;

@@ -1,158 +1,146 @@
-// components/_news.scss
-// Figma: bg #F3F3F3, padding 64px 120px, cards 387×(240+text), gap 19.5px
-
 .news {
-    background: var(--surface-grey);
-    padding: 64px 120px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 48px;
+  background: var(--surface-grey);
+  padding: 64px 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 48px;
 
-    &__grid {
-        width: 100%;
-        max-width: 1200px;
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 19.5px;
-    }
-
-    &__viewall {
-        display: flex;
-        justify-content: center;
-        height: 32px;
-    }
-}
-
-// News card
-.news-card {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-
-    // ==========================================
-    // Fading entrance (slide in from the right)
-    // Triggered by `.news__grid.in-view`, added via IntersectionObserver
-    // in news.js. Per-card transition-delay is set inline by news.js so
-    // cards animate in one by one instead of all at once.
-    // ==========================================
-    opacity: 0;
-    transform: translateX(60px);
-    transition:
-        opacity 0.8s var(--ease),
-        transform 0.8s var(--ease);
-
-    .news__grid.in-view & {
-        opacity: 1;
-        transform: translateX(0);
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-        transition: none;
-        opacity: 1;
-        transform: none;
-    }
-
-    &__image {
-        width: 100%;
-        aspect-ratio: 387 / 240;
-        border-radius: 8px;
-        overflow: hidden;
-        position: relative;
-
-        img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s var(--ease);
-        }
-    }
-    &:hover &__image img {
-        transform: scale(1.04);
-    }
-    &__body {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    &__title {
-        flex: 1;
-        font-family: var(--font-body);
-        font-size: var(--large); // 18px
-        font-weight: 700; // Bold
-        line-height: 1.5;
-        color: var(--primary-500);
-        margin: 0;
-
-        // Underline-on-hover (2nd card style in Figma, we apply to all for consistency)
-        text-decoration: none;
-
-        &:hover {
-            text-decoration: underline;
-        }
-    }
-
-    &__cta {
-        display: inline-flex;
-        align-items: center;
-        gap: 6px;
-        height: 32px;
-        font-family: var(--font-body);
-        font-size: var(--large);
-        font-weight: 700;
-        line-height: 1.5;
-        color: var(--secondary-500); // gold
-        transition: gap var(--dur) var(--ease);
-
-        svg {
-            [dir="rtl"] & {
-                transform: scaleX(-1);
-            }
-            path {
-                stroke: var(--secondary-500);
-            }
-        }
-
-        &:hover {
-            gap: 10px;
-            color: #d6b275;
-
-            svg {
-                transform: translateX(3px);
-
-                [dir="rtl"] & {
-                    transform: translateX(-2px) scaleX(-1);
-                }
-            }
-        }
-    }
-}
-
-// Section title with decorative pattern
-.section-title {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 8px;
+  &__grid {
     width: 100%;
-    max-width: 633px;
-    margin-inline: auto;
+    max-width: 1200px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 19.5px;
+  }
 
-    h3 {
-        font-family: var(--font-body);
-        font-size: var(--h3); // 40px
-        font-weight: 500; // Medium
-        line-height: 1.2;
-        color: var(--primary-500);
-        text-align: center;
-        margin: 0;
+  &__viewall {
+    display: flex;
+    justify-content: center;
+    height: 32px;
+  }
+}
+
+.news-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  opacity: 0;
+  transform: translateX(60px);
+  transition:
+    opacity 0.8s var(--ease),
+    transform 0.8s var(--ease);
+
+  .news__grid.in-view & {
+    opacity: 1;
+    transform: translateX(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  &__image {
+    width: 100%;
+    aspect-ratio: 387 / 240;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s var(--ease);
     }
+  }
+  &:hover &__image img {
+    transform: scale(1.04);
+  }
+  &__body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__title {
+    flex: 1;
+    font-family: var(--font-body);
+    font-size: var(--large);
+    font-weight: 700;
+    line-height: 1.5;
+    color: var(--primary-500);
+    margin: 0;
+
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    height: 32px;
+    font-family: var(--font-body);
+    font-size: var(--large);
+    font-weight: 700;
+    line-height: 1.5;
+    color: var(--secondary-500);
+    transition: gap var(--dur) var(--ease);
+
+    svg {
+      [dir="rtl"] & {
+        transform: scaleX(-1);
+      }
+      path {
+        stroke: var(--secondary-500);
+      }
+    }
+
+    &:hover {
+      gap: 10px;
+      color: #d6b275;
+
+      svg {
+        transform: translateX(3px);
+
+        [dir="rtl"] & {
+          transform: translateX(-2px) scaleX(-1);
+        }
+      }
+    }
+  }
+}
+
+.section-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  max-width: 633px;
+  margin-inline: auto;
+
+  h3 {
+    font-family: var(--font-body);
+    font-size: var(--h3);
+    font-weight: 500;
+    line-height: 1.2;
+    color: var(--primary-500);
+    text-align: center;
+    margin: 0;
+  }
 }
 
 .section-pattern {
-    position: relative;
-    width: 104px;
-    height: 24px;
-    flex-shrink: 0; // prevents it from squishing if header is flexbox
+  position: relative;
+  width: 104px;
+  height: 24px;
+  flex-shrink: 0;
 }

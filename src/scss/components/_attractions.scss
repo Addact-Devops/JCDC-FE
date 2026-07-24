@@ -1,7 +1,3 @@
-// ==========================================
-// Attractions Section
-// ==========================================
-
 .attractions {
   width: 100%;
   scroll-margin-top: 96px;
@@ -16,10 +12,6 @@
     width: 100%;
     max-width: 1440px;
   }
-
-  // ==========================================
-  // Header
-  // ==========================================
 
   &__header {
     display: flex;
@@ -59,10 +51,6 @@
     color: var(--text-500);
   }
 
-  // ==========================================
-  // Grid
-  // ==========================================
-
   &__grid {
     display: grid;
 
@@ -72,10 +60,6 @@
 
     width: 100%;
   }
-
-  // ==========================================
-  // Card
-  // ==========================================
 
   &__card {
     position: relative;
@@ -94,14 +78,6 @@
       transform: scale(1.04);
     }
 
-    // ==========================================
-    // Fading entrance (slide in from the right)
-    // Triggered by `.attractions__grid.in-view`, added via
-    // IntersectionObserver in attractions.js. Per-card transition-delay is
-    // set inline by attractions.js so cards animate in one by one.
-    // Only the card wrapper animates here — the existing hover reveal on
-    // .attractions__content / .attractions__card-desc is untouched.
-    // ==========================================
     opacity: 0;
     transform: translateX(60px);
     transition:
@@ -126,7 +102,7 @@
     }
 
     .attractions__content {
-      transform: translateY(-35px); //  moves content upward
+      transform: translateY(-35px);
     }
 
     .attractions__card-desc {
@@ -170,7 +146,7 @@
     align-items: flex-start;
     gap: 16px;
 
-    transform: translateY(81px); // ◆ default — content sits lower
+    transform: translateY(81px);
     transition: transform 0.45s ease;
   }
 
@@ -188,9 +164,8 @@
     margin: 0;
     max-width: 320px;
 
-    // ◆ NEW — fixed height so all descriptions reserve the same space
-    height: 81px; // 3 lines × 27px (18 × 1.5)
-    overflow: hidden; // hide overflow if text is longer
+    height: 81px;
+    overflow: hidden;
 
     font-family: var(--font-body);
     font-size: 18px;
@@ -206,20 +181,12 @@
       transform 0.35s ease;
   }
 
-  // ==========================================
-  // Bottom CTA
-  // ==========================================
-
   &__bottom {
     margin-top: 56px;
 
     display: flex;
     justify-content: center;
   }
-
-  // ==========================================
-  // Tablet
-  // ==========================================
 
   @media (max-width: 1024px) {
     padding: 56px 48px;
@@ -240,10 +207,6 @@
       font-size: 28px;
     }
   }
-
-  // ==========================================
-  // Mobile
-  // ==========================================
 
   @media (max-width: 768px) {
     padding: 64px 24px;
@@ -290,10 +253,6 @@
       font-size: 15px;
     }
   }
-
-  // ==========================================
-  // Small Mobile
-  // ==========================================
 
   @media (max-width: 480px) {
     padding: 64px 16px;

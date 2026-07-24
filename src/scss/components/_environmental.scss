@@ -1,7 +1,3 @@
-// ==========================================
-// Environmental Impact
-// ==========================================
-
 .environmental-impact {
   width: 100%;
 
@@ -15,10 +11,6 @@
 
     margin: 0 auto;
   }
-
-  // ==========================================
-  // Header
-  // ==========================================
 
   &__header {
     display: flex;
@@ -46,10 +38,6 @@
     color: var(--primary-500);
   }
 
-  // ==========================================
-  // Stats Box
-  // ==========================================
-
   &__stats {
     width: 100%;
 
@@ -70,10 +58,6 @@
     align-items: center;
   }
 
-  // ==========================================
-  // Item
-  // ==========================================
-
   &__item {
     display: flex;
     flex-direction: column;
@@ -86,13 +70,6 @@
 
   &__number,
   &__text {
-    // ==========================================
-    // Fading text reveal (staggered wave)
-    // Triggered by `.environmental-impact__stats.in-view`, added via
-    // IntersectionObserver in environmental-impact.js. Per-item
-    // transition-delay is set inline so the row fades in as a wave.
-    // The number's count-up is driven separately by JS.
-    // ==========================================
     opacity: 0;
     transform: translateY(20px);
     transition:
@@ -137,10 +114,6 @@
     color: var(--text-500);
   }
 
-  // ==========================================
-  // Divider
-  // ==========================================
-
   &__divider {
     width: 1px;
 
@@ -151,10 +124,6 @@
     opacity: 0.6;
   }
 }
-
-// ==========================================
-// Tablet
-// ==========================================
 
 @media (max-width: 1024px) {
   .environmental-impact {
@@ -175,10 +144,6 @@
     }
   }
 }
-
-// ==========================================
-// Mobile
-// ==========================================
 
 @media (max-width: 768px) {
   .environmental-impact {
@@ -218,10 +183,6 @@
     }
   }
 }
-
-// ==========================================
-// Small Mobile
-// ==========================================
 
 @media (max-width: 480px) {
   .environmental-impact {
