@@ -500,11 +500,9 @@
 <head>
 <meta charset="utf-8">
 <style>
-  /* Transparent so page background shows */
   html,body { margin:0; padding:0; background:transparent; overflow:hidden }
   body{ font-family: "Ubuntu", sans-serif; padding:0; color:#111; }
 
-  /* Text-like inputs ONLY (exclude checkbox, radio, submit) */
   input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]),
   select, textarea{
     width:100%; padding:14px 16px; box-sizing:border-box;
@@ -520,14 +518,12 @@
 
   input[type="checkbox"], input[type="radio"]{ width:auto; }
 
-  /* Make the Message Box bigger than other fields */
   textarea#inp_8778{
-    min-height: 170px;        /* bigger than the default */
+    min-height: 170px;        
     line-height: 1.4;
-    resize: vertical;         /* allow user to expand if needed */
+    resize: vertical;         
   }
 
-  /* Navy submit button */
   .btn{ min-width: 0;
     background: rgba(0, 0, 0, 0);
     height: 48px;
@@ -541,14 +537,12 @@ border-color: #cc9f53;
   .btn:hover{ background:  #cc9f53;
     color: #ffffff;border-style:solid }
 
-  /* Rows with checkbox + label */
   .optin{
     display:flex; align-items:flex-start; gap:10px;
     margin:8px 0; font-weight:400; color:#1a1a1a;
   }
   .optin input{ margin-top:4px; }
 
-  /* Success modal (soft beige + dark overlay) */
   .modal{ position:fixed; inset:0; display:none; }
   .modal.show{ display:block; }
   .modal .backdrop{ position:absolute; inset:0; background:rgba(0,0,0,.55); }
@@ -804,7 +798,6 @@ function validateName(id, fieldName) {
     return false;
   }
 
-  // Allows only letters and spaces
   var nameRegex = /^[A-Za-z\s]+$/;
 
   if (!nameRegex.test(value)) {
@@ -930,10 +923,8 @@ document
       if (!form.checkValidity()) { form.reportValidity(); return; }
       if (!CheckInputs()) return;
 
-      // Collect current values
       var fd = new FormData(form);
 
-      // Ghost form to Emarsys
       var ghost = document.createElement("form");
       ghost.action = form.action;
       ghost.method = form.method;
@@ -951,7 +942,6 @@ document
       ghost.submit();
       document.body.removeChild(ghost);
 
-      // Clear visible form
       form.reset();
       var sel = document.getElementById("inp_8618");
       if (sel) sel.selectedIndex = 0;

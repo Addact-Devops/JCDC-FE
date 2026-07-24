@@ -147,7 +147,6 @@
     }
 
     function validateField(field, msgs) {
-      // Skip hidden/disabled
       if (field.disabled) return true;
 
       const wrapper = getWrapper(field);
@@ -166,7 +165,6 @@
         }
       }
 
-      // Type-specific
       if (
         field.type === "email" &&
         field.value &&

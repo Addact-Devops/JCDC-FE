@@ -1,10 +1,6 @@
-// main.scss — Entry point
-// Order: tokens → reset → components (reusable) → sections (page-specific) → responsive
-
 @use "tokens";
 @use "reset";
 
-// Reusable components (can be used on other pages too)
 @use "components/navbar";
 @use "components/drawer";
 @use "components/buttons";
@@ -30,7 +26,6 @@
 @use "components/cookie-pop";
 @use "components/sitecoreForm";
 
-// Page sections
 @use "sections/hero";
 @use "sections/about";
 @use "sections/jcd-slider";
@@ -52,5 +47,4 @@
 @use "sections/attractionSlider";
 @use "sections/jcdMap";
 
-// Responsive rules (last — overrides all above)
 @use "responsive";

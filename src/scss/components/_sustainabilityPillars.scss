@@ -127,8 +127,6 @@
     color: var(--text-500);
   }
 
-  // RTL
-
   [dir="rtl"] & {
     &__card {
       text-align: right;

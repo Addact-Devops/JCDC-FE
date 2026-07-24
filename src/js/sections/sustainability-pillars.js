@@ -1,54 +1,45 @@
-/**
- * sections/sustainability-pillars.js — Sustainability Pillars cards
- * (sustainability.html)
- * Fading entrance: cards slide+fade in from the right, one by one, once
- * the grid scrolls into view.
- */
 window.SustainabilityPillars = (function () {
-    "use strict";
+  "use strict";
 
-    function initReveal(root) {
-        const grid = root.querySelector(".sustainability-pillars__grid");
-        if (!grid) return;
+  function initReveal(root) {
+    const grid = root.querySelector(".sustainability-pillars__grid");
+    if (!grid) return;
 
-        // Each card's delay is spaced past the previous card's full
-        // animation (0.8s duration + a short pause) so they play one at a
-        // time instead of overlapping.
-        const cards = grid.querySelectorAll(".sustainability-pillars__card");
-        cards.forEach((card, i) => {
-            card.style.transitionDelay = i * 0.95 + "s";
+    const cards = grid.querySelectorAll(".sustainability-pillars__card");
+    cards.forEach((card, i) => {
+      card.style.transitionDelay = i * 0.95 + "s";
+    });
+
+    if (!("IntersectionObserver" in window)) {
+      grid.classList.add("in-view");
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          grid.classList.add("in-view");
+          observer.unobserve(grid);
         });
+      },
+      { threshold: 0, rootMargin: "0px 0px -20% 0px" },
+    );
 
-        if (!("IntersectionObserver" in window)) {
-            grid.classList.add("in-view");
-            return;
-        }
+    observer.observe(grid);
+  }
 
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (!entry.isIntersecting) return;
-                    grid.classList.add("in-view");
-                    observer.unobserve(grid);
-                });
-            },
-            { threshold: 0, rootMargin: "0px 0px -20% 0px" },
-        );
+  function init(root) {
+    root = root || document.querySelector(".sustainability-pillars");
+    if (!root) return;
+    initReveal(root);
+  }
 
-        observer.observe(grid);
-    }
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", () => init());
+  } else {
+    init();
+  }
 
-    function init(root) {
-        root = root || document.querySelector(".sustainability-pillars");
-        if (!root) return;
-        initReveal(root);
-    }
-
-    if (document.readyState === "loading") {
-        document.addEventListener("DOMContentLoaded", () => init());
-    } else {
-        init();
-    }
-
-    return { init };
+  return { init };
 })();

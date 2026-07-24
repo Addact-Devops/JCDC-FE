@@ -1,8 +1,5 @@
-// components/_footer.scss
-// Figma: bg #EFEFEF, padding 24px 120px, gold divider, 220px height
-
 .footer {
-  background: var(--surface-footer); // #EFEFEF
+  background: var(--surface-footer);
   padding: 24px 120px;
   display: flex;
   flex-direction: column;
@@ -55,7 +52,7 @@
 
     a {
       font-family: var(--font-body);
-      font-size: var(--small); // 14px
+      font-size: var(--small);
       font-weight: 400;
       line-height: 1.43;
       padding: 8px;
@@ -202,7 +199,6 @@
     padding: 24px 16px;
     gap: 24px;
 
-    //  stack top section vertically centered
     &__top {
       flex-direction: column;
       align-items: center;
@@ -221,20 +217,17 @@
       height: 65px;
     }
 
-    //  center everything in right section
     &__right {
       align-items: center;
       width: 100%;
       gap: 16px;
     }
 
-    //  social icons centered
     &__social {
       justify-content: center;
       gap: 24px;
     }
 
-    //  nav links stacked vertically centered
     &__nav {
       flex-direction: column;
       align-items: center;
@@ -249,7 +242,6 @@
       }
     }
 
-    //  bottom section stacked centered
     &__bottom {
       flex-direction: column;
       align-items: center;
@@ -266,7 +258,6 @@
       height: 35px;
     }
 
-    //  legal links stacked vertically centered
     &__legal {
       order: 1;
       flex-direction: column;
