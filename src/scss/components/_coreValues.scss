@@ -92,22 +92,6 @@
     text-align: center;
     color: #ffffff;
     overflow: hidden;
-    opacity: 0;
-    transform: translateX(60px);
-    transition:
-      opacity 0.45s var(--ease),
-      transform 0.45s var(--ease);
-
-    .core-values__grid.in-view & {
-      opacity: 1;
-      transform: translateX(0);
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      transition: none;
-      opacity: 1;
-      transform: none;
-    }
 
     > :not(.core-values__card-vector) {
       position: relative;
@@ -142,6 +126,35 @@
 
     &--5 {
       background: #327aab;
+    }
+  }
+
+  &__icon,
+  &__card-title,
+  &__card-description {
+    // ==========================================
+    // Fading entrance
+    // Triggered by `.core-values__grid.in-view`, added via
+    // IntersectionObserver in core-values.js. Per-element
+    // transition-delay is set inline so icon → title → description fade
+    // in in sequence within each card. The card itself stays fixed in
+    // place — only these three elements animate.
+    // ==========================================
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+      opacity 0.45s var(--ease),
+      transform 0.45s var(--ease);
+
+    .core-values__grid.in-view & {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      transition: none;
+      opacity: 1;
+      transform: none;
     }
   }
 

@@ -7,7 +7,14 @@ window.CoreValues = (function () {
 
     const cards = grid.querySelectorAll(".core-values__card");
     cards.forEach((card, i) => {
-      card.style.transitionDelay = i * 0.5 + "s";
+      const cardDelay = i * 0.5;
+      const icon = card.querySelector(".core-values__icon");
+      const title = card.querySelector(".core-values__card-title");
+      const description = card.querySelector(".core-values__card-description");
+      if (icon) icon.style.transitionDelay = cardDelay + "s";
+      if (title) title.style.transitionDelay = cardDelay + 0.15 + "s";
+      if (description)
+        description.style.transitionDelay = cardDelay + 0.3 + "s";
     });
 
     if (!("IntersectionObserver" in window)) {
